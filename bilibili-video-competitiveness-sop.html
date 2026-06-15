@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜B站视频竞争力提升SOP与周/月目标规划</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-2: #ffffff;
+      --card: rgba(255, 255, 255, 0.88);
+      --text: #101828;
+      --soft: #667085;
+      --muted: #98a2b3;
+      --line: rgba(16, 24, 40, 0.1);
+      --blue: #1677ff;
+      --cyan: #00b8d9;
+      --pink: #fb7299;
+      --green: #12b76a;
+      --orange: #f79009;
+      --purple: #7a5af8;
+      --red: #f04438;
+      --shadow: 0 30px 90px rgba(16, 24, 40, 0.14);
+      --gradient: linear-gradient(135deg, #1677ff 0%, #00b8d9 42%, #fb7299 100%);
+      --gradient-dark: linear-gradient(135deg, rgba(22,119,255,.25), rgba(251,114,153,.22));
+      --thead: #eef4ff;
+      --nav: rgba(255, 255, 255, 0.76);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #050814;
+      --bg-2: #0b1020;
+      --card: rgba(16, 24, 40, 0.78);
+      --text: #f8fbff;
+      --soft: #cbd5e1;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.1);
+      --shadow: 0 30px 100px rgba(0, 0, 0, 0.46);
+      --thead: rgba(255, 255, 255, 0.06);
+      --nav: rgba(5, 8, 20, 0.76);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(22, 119, 255, 0.32), transparent 32%),
+        radial-gradient(circle at 88% 10%, rgba(251, 114, 153, 0.22), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(0, 184, 217, 0.18), transparent 32%),
+        var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1280px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 950;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--gradient);
+      box-shadow: 0 18px 38px rgba(22, 119, 255, 0.32);
+      font-weight: 950;
+      font-size: 20px;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 17px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--soft);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: var(--card);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: flex;
+      align-items: center;
+      padding: 82px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black, transparent 68%);
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid rgba(0, 184, 217, 0.28);
+      border-radius: 999px;
+      background: rgba(0, 184, 217, 0.1);
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 950;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+    }
+
+    .grad {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      margin: 26px 0 32px;
+      color: var(--soft);
+      font-size: 19px;
+      max-width: 820px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 19px;
+      border-radius: 15px;
+      font-weight: 950;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: .22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      border: none;
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(22, 119, 255, 0.28);
+    }
+
+    .hero-board {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), var(--card);
+      border-radius: 36px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-board::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: -80px;
+      background: var(--gradient);
+      opacity: .25;
+      filter: blur(18px);
+      border-radius: 50%;
+    }
+
+    .board-title {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .board-title h3 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .board-title p {
+      margin: 8px 0 0;
+      color: var(--soft);
+    }
+
+    .metric-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 13px;
+      font-weight: 950;
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4.3vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -1.6px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--soft);
+      max-width: 520px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%);
+      pointer-events: none;
+    }
+
+    .card > * {
+      position: relative;
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--gradient);
+      font-weight: 950;
+      font-size: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 16px 34px rgba(22,119,255,.22);
+    }
+
+    .icon.green { background: linear-gradient(135deg, #12b76a, #5fe0a4); }
+    .icon.orange { background: linear-gradient(135deg, #f79009, #ffc861); }
+    .icon.purple { background: linear-gradient(135deg, #7a5af8, #b692f6); }
+    .icon.red { background: linear-gradient(135deg, #f04438, #fb7185); }
+    .icon.pink { background: linear-gradient(135deg, #fb7299, #ff9fba); }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 11px;
+      color: var(--soft);
+    }
+
+    .list-item i {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(18, 183, 106, 0.14);
+      color: var(--green);
+      font-style: normal;
+      font-weight: 950;
+      margin-top: 2px;
+      font-size: 13px;
+    }
+
+    .wide-callout {
+      border: 1px solid rgba(0,184,217,.24);
+      background: var(--gradient-dark);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      margin-top: 26px;
+    }
+
+    .wide-callout h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .wide-callout p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 17px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1120px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--thead);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    td strong {
+      color: var(--text);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .pill.green { background: var(--green); }
+    .pill.orange { background: var(--orange); }
+    .pill.purple { background: var(--purple); }
+    .pill.red { background: var(--red); }
+    .pill.pink { background: var(--pink); }
+
+    .sop-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px 16px;
+      background: var(--card);
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+      text-align: center;
+      position: relative;
+      min-height: 170px;
+    }
+
+    .flow-num {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 12px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--gradient);
+      color: #fff;
+      font-weight: 950;
+    }
+
+    .flow-step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .agenda {
+      display: grid;
+      gap: 16px;
+    }
+
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 150px 1fr 210px;
+      gap: 18px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--card);
+      padding: 22px;
+      box-shadow: 0 16px 42px rgba(0,0,0,.1);
+    }
+
+    .agenda-time {
+      color: var(--cyan);
+      font-weight: 950;
+    }
+
+    .agenda-main strong {
+      display: block;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .agenda-main span {
+      color: var(--soft);
+    }
+
+    .agenda-output {
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 56px 0 70px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .sop-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, 1280px);
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+      }
+
+      .brand small,
+      .theme-btn span:last-child {
+        display: none;
+      }
+
+      h1 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+      }
+
+      .metric-grid,
+      .sop-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .agenda-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      header,
+      .hero-actions,
+      .theme-btn {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .card,
+      .hero-board,
+      .table-wrap,
+      .wide-callout,
+      .flow-step,
+      .agenda-item {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-mark">超</div>
+        <div>
+          <span>超红传媒｜B站视频竞争力提升SOP</span>
+          <small>User · Brand · Platform · Weekly · Monthly</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#opening">会议开头</a>
+        <a href="#target">竞争目标</a>
+        <a href="#sop">内容SOP</a>
+        <a href="#weekly">周目标</a>
+        <a href="#monthly">月目标</a>
+        <a href="#meeting">会议流程</a>
+      </nav>
+
+      <button class="theme-btn" id="themeToggle" type="button">
+        <span id="themeIcon">☀️</span>
+        <span id="themeText">浅色模式</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">超红传媒 · B站家电 / 数码内容竞争力专项</div>
+          <h1>
+            做B站上
+            <span class="grad">最有竞争力</span>
+            的视频
+          </h1>
+          <p class="hero-desc">
+            本页面用于每周六主创会与月度内容规划会。会议先从B站用户、品牌方、B站官方三方对内容的要求出发，
+            再统一我们的创作目标、执行SOP、每周提升重点和每月竞争力目标。
+          </p>
+
+          <div class="hero-actions">
+            <a href="#opening" class="btn btn-primary">进入会议开头</a>
+            <a href="#sop" class="btn">查看完整SOP</a>
+            <a href="#weekly" class="btn">查看周目标</a>
+          </div>
+        </div>
+
+        <aside class="hero-board">
+          <div class="board-title">
+            <h3>本次会议要统一的4件事</h3>
+            <p>不只讨论单条视频，而是建立可持续提升的视频竞争力系统。</p>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>01</strong>
+              <span>B站内容环境与三方要求</span>
+            </div>
+            <div class="metric">
+              <strong>02</strong>
+              <span>最有竞争力视频的定义</span>
+            </div>
+            <div class="metric">
+              <strong>03</strong>
+              <span>选题到复盘的标准SOP</span>
+            </div>
+            <div class="metric">
+              <strong>04</strong>
+              <span>每周、每月提升目标</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="opening">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">01 / Opening Topic</div>
+            <h2>会议开头：先看清B站内容的三方要求</h2>
+          </div>
+          <p>
+            我们不是单纯做“能发布的视频”，而是要同时满足用户愿意看、品牌方愿意投、B站官方愿意推荐的内容。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">用</div>
+            <h3>B站用户要什么？</h3>
+            <p>
+              B站用户对内容的判断越来越直接：有没有信息量、有没有真实体验、有没有观点、有没有帮我省时间或省钱。
+            </p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>希望看到真实体验，而不是单纯念卖点。</span></div>
+              <div class="list-item"><i>✓</i><span>希望看到对比、测试、避坑、结论。</span></div>
+              <div class="list-item"><i>✓</i><span>希望内容节奏快、废话少、画面清楚。</span></div>
+              <div class="list-item"><i>✓</i><span>希望UP主有判断力，而不是做产品说明书。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">品</div>
+            <h3>品牌方要什么？</h3>
+            <p>
+              品牌方要的不只是曝光，而是内容能不能把产品价值讲清楚，能不能建立信任，能不能带来有效讨论和转化。
+            </p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>希望产品卖点被场景化表达，而不是硬广。</span></div>
+              <div class="list-item"><i>✓</i><span>希望评论区情绪正向，有真实用户反馈。</span></div>
+              <div class="list-item"><i>✓</i><span>希望视频具备长尾搜索和反复观看价值。</span></div>
+              <div class="list-item"><i>✓</i><span>希望账号有稳定栏目和专业标签。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">站</div>
+            <h3>B站官方要什么？</h3>
+            <p>
+              平台希望推荐能带来用户停留、互动、关注和社区讨论的优质内容。内容越清晰、越垂直、越有用户反馈，越容易被识别。
+            </p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>希望内容垂直稳定，有明确账号标签。</span></div>
+              <div class="list-item"><i>✓</i><span>希望标题封面准确，不欺骗点击。</span></div>
+              <div class="list-item"><i>✓</i><span>希望视频有较好的点击、留存、互动表现。</span></div>
+              <div class="list-item"><i>✓</i><span>希望形成系列化、栏目化、可持续内容。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wide-callout">
+          <h3>会议开头结论</h3>
+          <p>
+            超红传媒要做的视频，不能只满足“拍完能发”，而要同时满足三件事：
+            用户觉得有用，品牌觉得有价值，B站觉得值得推荐。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="target">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">02 / Our Target</div>
+            <h2>我们的目标：做最有竞争力的视频</h2>
+          </div>
+          <p>
+            最有竞争力的视频，不等于单条播放最高，而是选题、表达、画面、封面、转化、复盘都强。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>竞争力维度</th>
+                <th>我们要达到的状态</th>
+                <th>当前重点短板</th>
+                <th>本阶段提升方向</th>
+                <th>核心负责人</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">选题竞争力</span></td>
+                <td><strong>提前规划、方向清楚、用户需求明确、可系列化。</strong></td>
+                <td>选题规划弱，容易临时化，和专栏承接不足。</td>
+                <td>建立周度选题表、月度选题池、家电/数码细分方向库。</td>
+                <td>创作一号位、文案</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill green">专栏竞争力</span></td>
+                <td><strong>有固定栏目、固定用户价值、固定结构和长期记忆点。</strong></td>
+                <td>专栏深度弱，单条视频多，系列资产少。</td>
+                <td>每个账号至少打造1个主专栏、2个辅助专栏。</td>
+                <td>创作一号位</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">点击竞争力</span></td>
+                <td><strong>标题封面一眼看懂，点击理由明确，且不标题党。</strong></td>
+                <td>封面设计弱，视觉焦点和利益点不够突出。</td>
+                <td>每条重点视频3个标题、2版封面，周六统一复盘点击表现。</td>
+                <td>美工、文案</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill purple">观看竞争力</span></td>
+                <td><strong>前30秒抓人，中段有信息密度，结尾有明确结论。</strong></td>
+                <td>视频节奏弱，开头、中段、结尾缺少统一检查标准。</td>
+                <td>建立前30秒钩子、3个信息节点、明确结论的剪辑检查表。</td>
+                <td>剪辑、文案、创作一号位</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">品质竞争力</span></td>
+                <td><strong>画面清楚、细节可信、测试过程完整、关键结论有画面支撑。</strong></td>
+                <td>画质细节弱，光线、收音、细节镜头、测试画面不够稳定。</td>
+                <td>拍摄前必须完成素材清单，拍摄后检查缺镜头问题。</td>
+                <td>创作一号位、剪辑、美工</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="wide-callout">
+          <h3>一句话目标</h3>
+          <p>
+            超红传媒的视频要做到：选题有判断、专栏有深度、封面有点击、内容有节奏、画面有质感、复盘有动作。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">03 / Full SOP</div>
+            <h2>整体流程SOP：从选题到复盘的6步闭环</h2>
+          </div>
+          <p>
+            所有家电、数码账号统一使用这套SOP。区别只在选题方向，不在执行标准。
+          </p>
+        </div>
+
+        <div class="sop-flow">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <h3>选题规划</h3>
+            <p>确认用户需求、平台趋势、品牌价值、账号专栏承接。</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <h3>脚本结构</h3>
+            <p>确定前30秒钩子、3个信息节点、测试逻辑、结尾结论。</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <h3>拍摄准备</h3>
+            <p>准备产品、场景、测试、细节、封面、补充镜头清单。</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <h3>剪辑包装</h3>
+            <p>优化节奏、字幕、信息图、转场、重点画面和广告衔接。</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">5</div>
+            <h3>封面发布</h3>
+            <p>确认3个标题、2版封面、简介文案、评论引导和发布时间。</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">6</div>
+            <h3>数据复盘</h3>
+            <p>复盘点击、留存、互动、评论、转化，沉淀下周动作。</p>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 26px;">
+          <table>
+            <thead>
+              <tr>
+                <th>SOP阶段</th>
+                <th>必须完成的动作</th>
+                <th>交付物</th>
+                <th>合格标准</th>
+                <th>负责人</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">1. 选题规划</span></td>
+                <td>从月度选题池中确认本周优先选题，判断是否属于专栏。</td>
+                <td>下周选题表</td>
+                <td>至少3个备选，1个优先；每个选题说明用户需求、看点、栏目归属。</td>
+                <td>创作一号位、文案</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill green">2. 脚本结构</span></td>
+                <td>完成开头钩子、内容段落、测试过程、核心结论。</td>
+                <td>脚本大纲</td>
+                <td>前30秒有冲突/问题/结论；中段有3个信息节点；结尾有明确建议。</td>
+                <td>文案</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">3. 拍摄准备</span></td>
+                <td>确认主画面、细节画面、测试画面、封面素材和补充镜头。</td>
+                <td>拍摄素材清单</td>
+                <td>关键结论必须有画面支撑；不能缺测试和细节镜头。</td>
+                <td>创作一号位</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill purple">4. 剪辑包装</span></td>
+                <td>优化节奏、字幕、信息图、转场、测试段落和广告段。</td>
+                <td>成片初版/终版</td>
+                <td>前30秒无废话；每1-2分钟有信息点；画面、字幕、节奏统一。</td>
+                <td>剪辑</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill pink">5. 封面发布</span></td>
+                <td>完成标题封面、简介文案、评论引导、发布设置。</td>
+                <td>标题封面备选表</td>
+                <td>每条重点视频3个标题、2版封面；封面一眼看懂利益点。</td>
+                <td>美工、文案</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">6. 数据复盘</span></td>
+                <td>复盘点击、留存、互动、评论、转化和执行问题。</td>
+                <td>周度复盘表</td>
+                <td>必须输出：有效动作、最大问题、下周必须改的一件事。</td>
+                <td>创作一号位</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="weekly">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">04 / Weekly Goals</div>
+            <h2>每周提升重点目标</h2>
+          </div>
+          <p>
+            每周不求推翻重做，只抓一个核心：让下周的视频比本周在一个关键模块上更强。
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="icon">周</div>
+            <h3>每周必须完成的5个提升动作</h3>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>每个账号确定1个优先选题、2个备选选题。</span></div>
+              <div class="list-item"><i>2</i><span>每个账号明确1个重点专栏，并补充3期延展选题。</span></div>
+              <div class="list-item"><i>3</i><span>每条重点视频完成3个标题、2版封面。</span></div>
+              <div class="list-item"><i>4</i><span>每条重点视频完成前30秒钩子和节奏检查。</span></div>
+              <div class="list-item"><i>5</i><span>每条重点视频完成画质细节和素材清单检查。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">复</div>
+            <h3>每周必须复盘的5个问题</h3>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>本周点击最好/最差的视频，问题在选题还是封面？</span></div>
+              <div class="list-item"><i>2</i><span>本周留存最好/最差的视频，问题在开头还是节奏？</span></div>
+              <div class="list-item"><i>3</i><span>本周评论区用户最关心的问题是什么？</span></div>
+              <div class="list-item"><i>4</i><span>本周哪个选题值得进入专栏继续做？</span></div>
+              <div class="list-item"><i>5</i><span>下周每个账号必须改掉的一个问题是什么？</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 26px;">
+          <table>
+            <thead>
+              <tr>
+                <th>周度模块</th>
+                <th>本周提升目标</th>
+                <th>交付标准</th>
+                <th>负责人</th>
+                <th>周六检查口径</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">选题</span></td>
+                <td>不再临时选题，形成下周选题表。</td>
+                <td>1个优先选题 + 2个备选选题。</td>
+                <td>创作一号位、文案</td>
+                <td>能否说清楚用户为什么看、视频看点是什么、是否能系列化。</td>
+              </tr>
+              <tr>
+                <td><span class="pill green">专栏</span></td>
+                <td>每个账号至少推进1个重点专栏。</td>
+                <td>1个专栏名 + 3期延展选题。</td>
+                <td>创作一号位</td>
+                <td>专栏是否有固定用户价值和固定内容结构。</td>
+              </tr>
+              <tr>
+                <td><span class="pill orange">封面</span></td>
+                <td>提升点击理由和视觉清晰度。</td>
+                <td>3个标题 + 2版封面。</td>
+                <td>美工、文案</td>
+                <td>是否一眼看懂主题、冲突、利益点。</td>
+              </tr>
+              <tr>
+                <td><span class="pill purple">节奏</span></td>
+                <td>优化前30秒和中段信息密度。</td>
+                <td>前30秒钩子 + 3个信息节点 + 结尾结论。</td>
+                <td>剪辑、文案</td>
+                <td>前30秒是否拖沓；中段是否每1-2分钟有信息点。</td>
+              </tr>
+              <tr>
+                <td><span class="pill red">画质</span></td>
+                <td>减少虚焦、欠曝、收音差、缺镜头问题。</td>
+                <td>拍摄素材清单。</td>
+                <td>创作一号位、剪辑</td>
+                <td>关键结论是否有画面支撑，产品细节是否清楚。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="monthly">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">05 / Monthly Goals</div>
+            <h2>每月提升重点目标</h2>
+          </div>
+          <p>
+            月度目标解决的是：账号标签有没有更清楚，专栏有没有更深，选题池有没有更准，数据有没有更稳定。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>月度目标</th>
+                <th>家电账号重点</th>
+                <th>数码账号重点</th>
+                <th>交付物</th>
+                <th>验收标准</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">月度选题池</span></td>
+                <td>
+                  围绕大家电、清洁家电、环境家电分别建立选题储备。
+                </td>
+                <td>
+                  围绕体验、横评、参数解读、买前建议建立选题储备。
+                </td>
+                <td>月度选题池</td>
+                <td>每个账号不少于20个选题，标注方向、用户需求、优先级。</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill green">月度专栏</span></td>
+                <td>
+                  至少确定1个主打专栏，例如大家电避坑、清洁家电横评、环境家电买前必看。
+                </td>
+                <td>
+                  至少确定1个主打专栏，例如参数翻译、真实体验、同价位横评。
+                </td>
+                <td>专栏规划表</td>
+                <td>1个主专栏 + 2个辅助专栏，每个专栏至少3期选题。</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">月度封面库</span></td>
+                <td>
+                  沉淀家电类高点击封面结构，例如对比、避坑、结果型、场景型。
+                </td>
+                <td>
+                  沉淀数码类高点击封面结构，例如参数冲突、体验结论、价格对比。
+                </td>
+                <td>标题封面案例库</td>
+                <td>每月沉淀不少于10个标题封面案例，标注有效/无效原因。</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill purple">月度节奏模板</span></td>
+                <td>
+                  建立测评、横评、避坑、购买建议的视频结构模板。
+                </td>
+                <td>
+                  建立体验、对比、参数解读、场景测试的视频结构模板。
+                </td>
+                <td>脚本节奏模板</td>
+                <td>每月沉淀不少于3套可复用视频结构模板。</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">月度品质提升</span></td>
+                <td>
+                  重点提升产品细节、使用场景、测试过程和大件产品空间感。
+                </td>
+                <td>
+                  重点提升屏幕、接口、操作、性能展示和细节特写。
+                </td>
+                <td>画质问题清单</td>
+                <td>本月重复出现的画质问题，下月必须减少。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="wide-callout">
+          <h3>月度复盘必须回答的4个问题</h3>
+          <p>
+            1）本月哪个专栏最值得继续？  
+            2）本月哪个选题方向最有效？  
+            3）本月封面、节奏、画质分别最大的进步是什么？  
+            4）下月最应该集中突破的一个竞争力模块是什么？
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="meeting">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">06 / Meeting Agenda</div>
+            <h2>周六主创会建议流程</h2>
+          </div>
+          <p>
+            建议控制在60-75分钟。会议要从环境共识开始，以任务表结束。
+          </p>
+        </div>
+
+        <div class="agenda">
+          <div class="agenda-item">
+            <div class="agenda-time">0-10分钟</div>
+            <div class="agenda-main">
+              <strong>开场：B站三方要求共识</strong>
+              <span>快速回顾用户、品牌方、B站官方对内容的要求，统一“为什么要提升竞争力”。</span>
+            </div>
+            <div class="agenda-output">输出：本周内容判断共识。</div>
+          </div>
+
+          <div class="agenda-item">
+            <div class="agenda-time">10-25分钟</div>
+            <div class="agenda-main">
+              <strong>数据复盘：看本周视频表现</strong>
+              <span>看点击、留存、互动、评论和画面质量，找出最好和最差案例。</span>
+            </div>
+            <div class="agenda-output">输出：本周最有效动作、最大问题。</div>
+          </div>
+
+          <div class="agenda-item">
+            <div class="agenda-time">25-40分钟</div>
+            <div class="agenda-main">
+              <strong>选题专栏：确定下周方向</strong>
+              <span>每个账号确认1个优先选题、2个备选选题，并明确所属专栏。</span>
+            </div>
+            <div class="agenda-output">输出：下周选题表、专栏延展表。</div>
+          </div>
+
+          <div class="agenda-item">
+            <div class="agenda-time">40-55分钟</div>
+            <div class="agenda-main">
+              <strong>封面节奏：明确重点视频标准</strong>
+              <span>确定标题封面方向、前30秒钩子、视频结构、画质素材要求。</span>
+            </div>
+            <div class="agenda-output">输出：标题封面方向、节奏检查点。</div>
+          </div>
+
+          <div class="agenda-item">
+            <div class="agenda-time">55-75分钟</div>
+            <div class="agenda-main">
+              <strong>任务确认：负责人和交付时间</strong>
+              <span>创作一号位确认每条视频的负责人、协作人、交付时间和周中检查节点。</span>
+            </div>
+            <div class="agenda-output">输出：下周任务执行表。</div>
+          </div>
+        </div>
+
+        <div class="wide-callout">
+          <h3>会议最终交付</h3>
+          <p>
+            每个账号会后必须形成一张表：
+            下周优先选题、所属专栏、标题封面方向、节奏优化点、画质注意点、负责人、交付时间。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">07 / Final Standard</div>
+            <h2>超红传媒的视频竞争力标准</h2>
+          </div>
+          <p>
+            这是每周、每月都要反复检查的最终标准。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">看</div>
+            <h3>用户愿意看</h3>
+            <p>
+              选题有用、开头抓人、过程有信息量、结论有判断。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">投</div>
+            <h3>品牌愿意投</h3>
+            <p>
+              产品价值讲得清楚，内容可信，评论区健康，有长期合作价值。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon green">推</div>
+            <h3>B站愿意推</h3>
+            <p>
+              账号垂直，内容稳定，点击、留存、互动表现良好，具备系列化能力。
+            </p>
+          </div>
+        </div>
+
+        <div class="wide-callout">
+          <h3>最终一句话</h3>
+          <p>
+            超红传媒要用标准化SOP，把每个账号的视频从“完成发布”升级为“具备竞争力、可复用、可增长、可商业化”的内容资产。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>超红传媒｜B站视频竞争力提升SOP与周/月目标规划</strong>
+      <br />
+      用于家电、数码账号周六主创会、月度内容规划会、视频复盘与团队执行管理。
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    const savedTheme = localStorage.getItem("chaohong-bilibili-sop-theme");
+
+    if (savedTheme) {
+      root.setAttribute("data-theme", savedTheme);
+      updateTheme(savedTheme);
+    }
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("chaohong-bilibili-sop-theme", next);
+      updateTheme(next);
+    });
+
+    function updateTheme(theme) {
+      if (theme === "dark") {
+        icon.textContent = "☀️";
+        text.textContent = "浅色模式";
+      } else {
+        icon.textContent = "🌙";
+        text.textContent = "深色模式";
+      }
+    }
+  </script>
+</body>
+</html>

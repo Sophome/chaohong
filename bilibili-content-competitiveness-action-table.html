@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B站内容竞争力提升行动总表</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-soft: #ffffff;
+      --text: #172033;
+      --text-soft: #5f6b7a;
+      --text-muted: #8a94a6;
+      --border: rgba(23, 32, 51, 0.08);
+      --shadow: 0 24px 70px rgba(25, 36, 58, 0.12);
+
+      --blue: #00a1d6;
+      --pink: #fb7299;
+      --green: #19c37d;
+      --orange: #ff9f43;
+      --purple: #7c3aed;
+      --red: #ef4444;
+
+      --gradient-main: linear-gradient(135deg, #00a1d6 0%, #48c6ef 42%, #fb7299 100%);
+      --gradient-blue: linear-gradient(135deg, #00a1d6, #48c6ef);
+      --gradient-pink: linear-gradient(135deg, #fb7299, #ff9fba);
+      --gradient-green: linear-gradient(135deg, #19c37d, #70e1b2);
+      --gradient-orange: linear-gradient(135deg, #ff9f43, #ffd166);
+      --gradient-purple: linear-gradient(135deg, #7c3aed, #a78bfa);
+
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --table-head: #f2f7fb;
+      --nav-bg: rgba(255, 255, 255, 0.78);
+      --grid-line: rgba(0, 161, 214, 0.06);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #090d16;
+      --bg-card: rgba(16, 24, 39, 0.86);
+      --bg-soft: #101827;
+      --text: #f3f7ff;
+      --text-soft: #c7d0df;
+      --text-muted: #8f9bb0;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --table-head: #141f31;
+      --nav-bg: rgba(9, 13, 22, 0.78);
+      --grid-line: rgba(255, 255, 255, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(0, 161, 214, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(251, 114, 153, 0.16), transparent 28%),
+        radial-gradient(circle at 50% 92%, rgba(124, 58, 237, 0.11), transparent 32%),
+        var(--bg);
+      line-height: 1.75;
+      transition: 0.28s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1220px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--gradient-main);
+      box-shadow: 0 14px 30px rgba(0, 161, 214, 0.28);
+      font-weight: 950;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text small {
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--text-soft);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 950;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .hero {
+      position: relative;
+      padding: 84px 0 70px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0, 161, 214, 0.12);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 950;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(36px, 5.8vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .gradient-text {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      margin: 24px 0 30px;
+      max-width: 760px;
+      color: var(--text-soft);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      padding: 13px 18px;
+      border-radius: 15px;
+      font-weight: 950;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--gradient-main);
+      box-shadow: 0 16px 32px rgba(0, 161, 214, 0.25);
+      border: none;
+    }
+
+    .btn-ghost {
+      background: var(--bg-card);
+      color: var(--text);
+    }
+
+    .hero-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(251, 114, 153, 0.18);
+    }
+
+    .hero-panel h3 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .triangle {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 16px;
+    }
+
+    .triangle-item {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .mini-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 950;
+      background: var(--gradient-blue);
+    }
+
+    .mini-icon.pink {
+      background: var(--gradient-pink);
+    }
+
+    .mini-icon.green {
+      background: var(--gradient-green);
+    }
+
+    .triangle-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .triangle-item span {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.15;
+    }
+
+    .section-title p {
+      margin: 12px 0 0;
+      color: var(--text-soft);
+      max-width: 880px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      letter-spacing: -0.4px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 950;
+      font-size: 22px;
+      margin-bottom: 18px;
+      background: var(--gradient-blue);
+      box-shadow: 0 12px 28px rgba(0, 161, 214, 0.2);
+    }
+
+    .icon.pink { background: var(--gradient-pink); }
+    .icon.green { background: var(--gradient-green); }
+    .icon.orange { background: var(--gradient-orange); }
+    .icon.purple { background: var(--gradient-purple); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 161, 214, 0.1);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(0, 161, 214, 0.12);
+    }
+
+    .tag.pink {
+      background: rgba(251, 114, 153, 0.1);
+      color: var(--pink);
+      border-color: rgba(251, 114, 153, 0.14);
+    }
+
+    .tag.green {
+      background: rgba(25, 195, 125, 0.1);
+      color: var(--green);
+      border-color: rgba(25, 195, 125, 0.14);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1080px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--table-head);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    td {
+      color: var(--text-soft);
+    }
+
+    td strong {
+      color: var(--text);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12px;
+      color: white;
+      background: var(--blue);
+      white-space: nowrap;
+    }
+
+    .pill.pink { background: var(--pink); }
+    .pill.green { background: var(--green); }
+    .pill.orange { background: var(--orange); }
+    .pill.purple { background: var(--purple); }
+    .pill.red { background: var(--red); }
+
+    .action-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .action {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      color: var(--text-soft);
+    }
+
+    .action i {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(25, 195, 125, 0.12);
+      color: var(--green);
+      font-style: normal;
+      font-weight: 950;
+      margin-top: 2px;
+    }
+
+    .standard-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .standard-item {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--bg-card);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.06);
+    }
+
+    .num {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--gradient-main);
+      font-weight: 950;
+      font-size: 18px;
+    }
+
+    .standard-item h3 {
+      margin: 0 0 6px;
+      font-size: 21px;
+    }
+
+    .standard-item p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .callout {
+      margin-top: 24px;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(0, 161, 214, 0.16);
+      background: linear-gradient(135deg, rgba(0, 161, 214, 0.11), rgba(251, 114, 153, 0.11));
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .callout p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .formula {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .formula-item {
+      padding: 18px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      text-align: center;
+      box-shadow: 0 12px 34px rgba(0,0,0,0.06);
+    }
+
+    .formula-item strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .formula-item span {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .footer {
+      padding: 46px 0 58px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .formula {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1220px);
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+      }
+
+      .brand-text small {
+        display: none;
+      }
+
+      .theme-toggle span:last-child {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .standard-item,
+      .triangle-item {
+        grid-template-columns: 1fr;
+      }
+
+      .formula {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      header,
+      .hero-actions,
+      .theme-toggle {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .card,
+      .hero-panel,
+      .table-wrap,
+      .standard-item,
+      .callout,
+      .formula-item {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="brand-icon">B</div>
+        <div class="brand-text">
+          <span>B站内容竞争力提升总表</span>
+          <small>Platform · Fans · Brand Action Summary</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#three">三方需求</a>
+        <a href="#summary">行动总表</a>
+        <a href="#actions">重点动作</a>
+        <a href="#standard">执行标准</a>
+        <a href="#metrics">验收指标</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" type="button">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">深色模式</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">B站内容经营 · 三方需求驱动版</div>
+          <h1>
+            同时满足
+            <span class="gradient-text">平台、粉丝、品牌方</span>
+            的内容竞争力提升方案
+          </h1>
+          <p class="hero-desc">
+            内容竞争力不是单纯追求播放量，而是让平台愿意推荐、粉丝愿意信任、品牌方愿意持续合作。
+            本页面将三方诉求拆解为可执行动作，帮助创作团队形成稳定增长、稳定转化、稳定复盘的内容体系。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#summary">查看行动总表</a>
+            <a class="btn btn-ghost" href="#standard">查看执行标准</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h3>竞争力三角模型</h3>
+
+          <div class="triangle">
+            <div class="triangle-item">
+              <div class="mini-icon">站</div>
+              <div>
+                <strong>平台喜欢</strong>
+                <span>原创、垂直、稳定、高留存、高互动、社区讨论健康。</span>
+              </div>
+            </div>
+
+            <div class="triangle-item">
+              <div class="mini-icon pink">粉</div>
+              <div>
+                <strong>粉丝喜欢</strong>
+                <span>真实、有用、有趣、有陪伴、有结论、有避坑价值。</span>
+              </div>
+            </div>
+
+            <div class="triangle-item">
+              <div class="mini-icon green">牌</div>
+              <div>
+                <strong>品牌方喜欢</strong>
+                <span>人群精准、种草自然、转化明确、内容安全、口碑正向。</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="three">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">01 / Three-side Needs</div>
+          <h2>三方核心喜好与内容要求</h2>
+          <p>
+            创作团队需要从“自己想拍什么”转向“平台为什么推、粉丝为什么看、品牌为什么投”。
+            只有三方同时成立，内容才能具备长期竞争力。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">站</div>
+            <h3>平台侧：要的是生态价值</h3>
+            <p>
+              B站平台更倾向推荐能够带来用户停留、互动讨论、垂类建设和正向社区氛围的内容。
+              对低质重复、强标题党、硬广、搬运内容容忍度低。
+            </p>
+            <div class="tag-list">
+              <span class="tag">原创度</span>
+              <span class="tag">完播率</span>
+              <span class="tag">互动率</span>
+              <span class="tag">垂类稳定</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">粉</div>
+            <h3>粉丝侧：要的是信任和价值</h3>
+            <p>
+              粉丝愿意长期关注的原因，不是单条内容好看，而是UP主持续提供真实、有用、清晰、有态度的价值。
+              家电测评尤其需要可信测试和明确购买建议。
+            </p>
+            <div class="tag-list">
+              <span class="tag pink">真实体验</span>
+              <span class="tag pink">避坑结论</span>
+              <span class="tag pink">陪伴感</span>
+              <span class="tag pink">专业可信</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">牌</div>
+            <h3>品牌侧：要的是确定性回报</h3>
+            <p>
+              品牌方关注的不只是播放量，而是目标人群是否精准、内容是否安全、卖点是否被理解、
+              评论区是否正向，以及是否能带来搜索、咨询和转化。
+            </p>
+            <div class="tag-list">
+              <span class="tag green">人群匹配</span>
+              <span class="tag green">自然种草</span>
+              <span class="tag green">口碑安全</span>
+              <span class="tag green">转化线索</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">02 / Action Summary</div>
+          <h2>平台、粉丝、品牌方视角下的行动总表</h2>
+          <p>
+            以下表格是内容团队提升竞争力的核心执行清单，可直接作为选题会、脚本会、发布复盘会的检查标准。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>对象</th>
+                <th>对方真正想要什么</th>
+                <th>当前常见问题</th>
+                <th>提升竞争力要做的事情</th>
+                <th>执行标准</th>
+                <th>验收指标</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">平台</span></td>
+                <td>
+                  <strong>高质量原创内容、稳定更新、清晰垂类、高留存和高互动。</strong>
+                </td>
+                <td>
+                  选题分散、更新不稳定、内容标签不清、标题封面点击弱、前30秒流失高。
+                </td>
+                <td>
+                  建立垂类内容矩阵；固定栏目；优化标题封面；强化开头钩子；
+                  增加弹幕和评论互动点；持续沉淀系列内容。
+                </td>
+                <td>
+                  每周稳定更新；每条视频至少3个标题、2版封面；脚本必须有前30秒钩子；
+                  发布后2小时和24小时复盘。
+                </td>
+                <td>
+                  点击率、平均观看时长、完播率、互动率、粉丝复访率、推荐流量占比。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill pink">粉丝</span></td>
+                <td>
+                  <strong>真实、有用、有趣、能解决问题、能减少决策成本。</strong>
+                </td>
+                <td>
+                  信息密度不足、测试过程不透明、结论模糊、广告感强、互动不足、用户问题没有被回应。
+                </td>
+                <td>
+                  提升测评可信度；明确购买建议；增加避坑清单；评论区答疑；
+                  把用户高频问题转化为下一期选题。
+                </td>
+                <td>
+                  每期必须有明确结论；测评过程可视化；评论区高频问题48小时内整理；
+                  下期选题至少包含1个用户反馈来源。
+                </td>
+                <td>
+                  收藏率、评论质量、弹幕密度、关注转化、评论正向率、私信咨询量。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill green">品牌方</span></td>
+                <td>
+                  <strong>精准触达、自然种草、口碑安全、卖点清晰、可衡量转化。</strong>
+                </td>
+                <td>
+                  广告植入生硬、卖点表达像口播、品牌和账号调性不匹配、评论区负面未处理、转化链路弱。
+                </td>
+                <td>
+                  严格筛选品牌；把卖点转译成用户场景；广告自然嵌入测评流程；
+                  商业内容单独复盘转化和口碑。
+                </td>
+                <td>
+                  只接与账号定位匹配的品牌；商业视频必须标记植入节点；
+                  广告段不得破坏内容逻辑；7天内输出商业复盘。
+                </td>
+                <td>
+                  品牌评论情绪、链接点击、咨询线索、搜索提升、转化率、复购合作意愿。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">团队自身</span></td>
+                <td>
+                  <strong>提高爆款概率、降低返工成本、形成可复制的内容资产。</strong>
+                </td>
+                <td>
+                  靠灵感创作、缺少选题评分、脚本审核弱、复盘不完整、经验无法复用。
+                </td>
+                <td>
+                  建立选题池、标题库、封面库、脚本模板、测试方法库、用户问题库和商业案例库。
+                </td>
+                <td>
+                  每周一次选题会；每条视频完整复盘；每月整理一次资产库；
+                  爆款视频必须拆解可复制因素。
+                </td>
+                <td>
+                  选题命中率、制作周期、返工率、爆款率、资产复用率、商业报价提升。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <strong>核心结论</strong>
+          <p>
+            提升竞争力的关键，不是单点优化，而是同时做到：
+            平台侧“更容易被推荐”、粉丝侧“更愿意信任”、品牌侧“更愿意投放”、团队侧“更容易复制”。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="actions">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">03 / Key Actions</div>
+          <h2>提升内容竞争力必须做的12件事</h2>
+          <p>
+            这12件事是内容部门的关键抓手，覆盖选题、脚本、拍摄、剪辑、运营、商业化和复盘。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>建立选题评分机制</h3>
+            <p>
+              不再凭感觉选题，而是从热度、用户痛点、差异化、商业价值、制作成本五个维度打分。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>每周更新选题池</span></div>
+              <div class="action"><i>✓</i><span>每个选题必须有用户需求来源</span></div>
+              <div class="action"><i>✓</i><span>优先做高痛点、高搜索、高收藏价值选题</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">02</div>
+            <h3>固定账号垂类定位</h3>
+            <p>
+              明确账号在B站的标签，让平台更容易识别，让粉丝更容易关注，让品牌更容易判断合作价值。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>确定核心品类和内容边界</span></div>
+              <div class="action"><i>✓</i><span>形成固定栏目和系列内容</span></div>
+              <div class="action"><i>✓</i><span>减少与账号定位无关的随机内容</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">03</div>
+            <h3>强化前30秒钩子</h3>
+            <p>
+              B站用户愿意看长内容，但必须在开头快速确认价值，尤其是家电测评要尽早给出测试目的和看点。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>开头直接抛出问题、冲突或结论</span></div>
+              <div class="action"><i>✓</i><span>避免无效寒暄和长铺垫</span></div>
+              <div class="action"><i>✓</i><span>前30秒出现核心产品或测试场景</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon orange">04</div>
+            <h3>升级标题封面体系</h3>
+            <p>
+              标题封面决定点击率，但不能标题党。要突出产品、痛点、结果、对比和用户利益。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>每条视频准备3个标题</span></div>
+              <div class="action"><i>✓</i><span>每条视频准备2版封面</span></div>
+              <div class="action"><i>✓</i><span>沉淀高点击标题和封面模板</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon purple">05</div>
+            <h3>提升测评可信度</h3>
+            <p>
+              家电测评的核心资产是信任。测试过程要透明、标准要清楚、结论要克制。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>说明测试方法和测试条件</span></div>
+              <div class="action"><i>✓</i><span>展示真实使用场景和限制条件</span></div>
+              <div class="action"><i>✓</i><span>避免绝对化、夸张化结论</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon">06</div>
+            <h3>提高信息密度和结构感</h3>
+            <p>
+              用户需要持续获得反馈。每一段内容都应该回答一个问题，提供一个判断或产生一个情绪点。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>脚本按照问题、测试、结果、建议组织</span></div>
+              <div class="action"><i>✓</i><span>每1-2分钟设置一个信息节点</span></div>
+              <div class="action"><i>✓</i><span>参数必须转译成用户能理解的体验</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">07</div>
+            <h3>增强评论区运营</h3>
+            <p>
+              评论区不是发布后的附属环节，而是选题来源、信任建设和转化线索的重要阵地。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>发布后2小时重点回复评论</span></div>
+              <div class="action"><i>✓</i><span>置顶有讨论价值的问题</span></div>
+              <div class="action"><i>✓</i><span>整理高频问题进入下一期选题池</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">08</div>
+            <h3>将广告原生化</h3>
+            <p>
+              好的商业内容不是把广告塞进视频，而是让产品成为解决用户问题的一部分。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>品牌卖点必须转译成使用场景</span></div>
+              <div class="action"><i>✓</i><span>植入位置不破坏观看节奏</span></div>
+              <div class="action"><i>✓</i><span>商业视频必须复盘评论情绪</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon orange">09</div>
+            <h3>做系列化栏目</h3>
+            <p>
+              系列栏目可以强化平台标签、提升粉丝复访、降低选题成本，并提高品牌合作的长期价值。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>设计固定栏目名称和内容结构</span></div>
+              <div class="action"><i>✓</i><span>每个爆款选题延展3-5个相关选题</span></div>
+              <div class="action"><i>✓</i><span>形成专题页或合集，提高长尾播放</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon purple">10</div>
+            <h3>建立内容资产库</h3>
+            <p>
+              把每次成功和失败都沉淀下来，让团队不是重复试错，而是基于资产迭代。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>建立选题库、标题库、封面库</span></div>
+              <div class="action"><i>✓</i><span>建立测试方法库和用户问题库</span></div>
+              <div class="action"><i>✓</i><span>建立商业案例库和品牌反馈库</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon">11</div>
+            <h3>执行分阶段复盘</h3>
+            <p>
+              不同时间看不同问题。2小时看点击，24小时看留存，72小时看互动，7天看长尾和转化。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>每条视频至少做24小时复盘</span></div>
+              <div class="action"><i>✓</i><span>重点视频必须做7天复盘</span></div>
+              <div class="action"><i>✓</i><span>复盘必须输出下一步动作</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">12</div>
+            <h3>建立团队协同SOP</h3>
+            <p>
+              从个人灵感创作转向团队流程创作，让选题、脚本、拍摄、剪辑、运营、商务都有明确标准。
+            </p>
+            <div class="action-list">
+              <div class="action"><i>✓</i><span>每周固定选题会和复盘会</span></div>
+              <div class="action"><i>✓</i><span>脚本、标题、封面必须审核</span></div>
+              <div class="action"><i>✓</i><span>每个动作明确负责人和验收标准</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="standard">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">04 / Execution Standard</div>
+          <h2>团队执行标准：必须做到这6条</h2>
+          <p>
+            如果没有执行标准，策略就会停留在口号。以下6条是内容团队提升竞争力的最低执行要求。
+          </p>
+        </div>
+
+        <div class="standard-list">
+          <div class="standard-item">
+            <div class="num">01</div>
+            <div>
+              <h3>选题必须有来源</h3>
+              <p>
+                每个选题必须说明来源：B站热门、用户评论、搜索需求、品牌节点、竞品爆款、生活场景或产品痛点。
+                没有来源的选题，不进入优先排期。
+              </p>
+            </div>
+          </div>
+
+          <div class="standard-item">
+            <div class="num">02</div>
+            <div>
+              <h3>脚本必须先过结构审核</h3>
+              <p>
+                脚本必须明确：前30秒钩子、核心问题、测试方法、信息节点、结论表达、互动问题、商业植入点。
+                没有结构审核，不进入拍摄。
+              </p>
+            </div>
+          </div>
+
+          <div class="standard-item">
+            <div class="num">03</div>
+            <div>
+              <h3>标题封面必须多版本</h3>
+              <p>
+                每条视频至少准备3个标题、2版封面。标题要有点击理由，封面要有视觉焦点。
+                不能只靠发布后自然表现验证。
+              </p>
+            </div>
+          </div>
+
+          <div class="standard-item">
+            <div class="num">04</div>
+            <div>
+              <h3>商业内容必须不伤害用户体验</h3>
+              <p>
+                品牌植入必须服务内容主题，不能强行中断观看。广告表达要场景化、体验化、结论化，
+                避免过长口播和夸张承诺。
+              </p>
+            </div>
+          </div>
+
+          <div class="standard-item">
+            <div class="num">05</div>
+            <div>
+              <h3>发布后必须运营评论区</h3>
+              <p>
+                发布后2小时内，运营和主创必须关注评论区，回复高价值问题，置顶核心讨论，
+                收集质疑点和下一期选题线索。
+              </p>
+            </div>
+          </div>
+
+          <div class="standard-item">
+            <div class="num">06</div>
+            <div>
+              <h3>复盘必须转化为资产</h3>
+              <p>
+                每次复盘必须更新至少一个资产库：选题库、标题库、封面库、测试方法库、用户问题库或商业案例库。
+                没有资产沉淀，复盘视为不完整。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>执行判断标准</strong>
+          <p>
+            每个动作都要满足“四个明确”：明确为什么做、明确谁来做、明确什么时候做、明确用什么指标验收。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">05 / Metrics</div>
+          <h2>竞争力提升的验收指标</h2>
+          <p>
+            内容是否变强，不能只靠主观判断。要从平台推荐、粉丝信任、品牌转化和团队效率四个维度验证。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>核心指标</th>
+                <th>说明</th>
+                <th>提升方向</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">平台推荐力</span></td>
+                <td>
+                  <strong>点击率、完播率、平均观看时长、互动率、推荐流量占比</strong>
+                </td>
+                <td>
+                  判断平台是否愿意继续分发内容。
+                </td>
+                <td>
+                  优化标题封面、前30秒、内容结构和互动设计。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill pink">粉丝信任力</span></td>
+                <td>
+                  <strong>收藏率、评论正向率、关注转化、弹幕密度、私信咨询</strong>
+                </td>
+                <td>
+                  判断粉丝是否认可UP主的专业度和真实度。
+                </td>
+                <td>
+                  强化真实测试、明确结论、评论答疑和避坑价值。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill green">品牌转化力</span></td>
+                <td>
+                  <strong>品牌评论情绪、链接点击、搜索提升、转化线索、复购合作</strong>
+                </td>
+                <td>
+                  判断内容是否具备商业价值和持续合作价值。
+                </td>
+                <td>
+                  提高品牌匹配度、卖点场景化、广告原生化和商业复盘能力。
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">团队复制力</span></td>
+                <td>
+                  <strong>选题命中率、制作周期、返工率、爆款率、资产复用率</strong>
+                </td>
+                <td>
+                  判断团队是否从灵感驱动走向体系驱动。
+                </td>
+                <td>
+                  建立SOP、模板化脚本、资产库和周度复盘机制。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula">
+          <div class="formula-item">
+            <strong>选题</strong>
+            <span>命中需求</span>
+          </div>
+          <div class="formula-item">
+            <strong>点击</strong>
+            <span>包装吸引</span>
+          </div>
+          <div class="formula-item">
+            <strong>留存</strong>
+            <span>结构成立</span>
+          </div>
+          <div class="formula-item">
+            <strong>互动</strong>
+            <span>关系建立</span>
+          </div>
+          <div class="formula-item">
+            <strong>信任</strong>
+            <span>人设资产</span>
+          </div>
+          <div class="formula-item">
+            <strong>转化</strong>
+            <span>商业价值</span>
+          </div>
+          <div class="formula-item">
+            <strong>复盘</strong>
+            <span>持续迭代</span>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>内容竞争力公式</strong>
+          <p>
+            内容竞争力 = 选题命中率 × 点击包装 × 前30秒留存 × 信息密度 × 信任感 × 互动运营 × 商业适配 × 复盘迭代。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">06 / Weekly Workflow</div>
+          <h2>建议周度执行机制</h2>
+          <p>
+            将提升竞争力的动作固化到每周工作节奏中，避免策略停留在文档里。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>动作</th>
+                <th>负责人</th>
+                <th>重点检查</th>
+                <th>输出物</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>周一</strong></td>
+                <td>数据复盘会</td>
+                <td>运营 / 编导 / 主创</td>
+                <td>播放、点击、留存、互动、评论、商业反馈</td>
+                <td>周度复盘表、问题清单</td>
+              </tr>
+
+              <tr>
+                <td><strong>周二</strong></td>
+                <td>选题会</td>
+                <td>策划 / 运营</td>
+                <td>选题来源、用户痛点、平台热度、品牌价值</td>
+                <td>选题池、选题评分表</td>
+              </tr>
+
+              <tr>
+                <td><strong>周三</strong></td>
+                <td>脚本会</td>
+                <td>编导 / 主创 / 商务</td>
+                <td>前30秒、测试结构、信息节点、广告植入</td>
+                <td>脚本大纲、分镜表</td>
+              </tr>
+
+              <tr>
+                <td><strong>周四</strong></td>
+                <td>拍摄执行</td>
+                <td>拍摄 / 主创</td>
+                <td>测试画面、产品细节、封面素材、补充镜头</td>
+                <td>原始素材包</td>
+              </tr>
+
+              <tr>
+                <td><strong>周五</strong></td>
+                <td>剪辑包装</td>
+                <td>剪辑 / 运营</td>
+                <td>前30秒节奏、字幕信息、标题封面、多版本包装</td>
+                <td>成片、标题封面备选</td>
+              </tr>
+
+              <tr>
+                <td><strong>周末</strong></td>
+                <td>发布与运营</td>
+                <td>运营 / 主创</td>
+                <td>评论区、动态预热、二次分发、数据监控</td>
+                <td>发布记录、评论反馈、初步数据</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>B站内容竞争力提升行动总表</strong>
+      <br />
+      适用于UP主团队、MCN机构、品牌内容团队、家电测评栏目组内部培训与执行。
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    const savedTheme = localStorage.getItem("bili-competitiveness-theme");
+
+    if (savedTheme) {
+      root.setAttribute("data-theme", savedTheme);
+      updateThemeButton(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initialTheme = prefersDark ? "dark" : "light";
+      root.setAttribute("data-theme", initialTheme);
+      updateThemeButton(initialTheme);
+    }
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("bili-competitiveness-theme", next);
+      updateThemeButton(next);
+    });
+
+    function updateThemeButton(theme) {
+      if (theme === "dark") {
+        icon.textContent = "☀️";
+        text.textContent = "浅色模式";
+      } else {
+        icon.textContent = "🌙";
+        text.textContent = "深色模式";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站数码家电内容竞争力优化白皮书 2026</title>
+<style>
+/* ============ CSS Variables: Light & Dark Themes ============ */
+:root {
+  /* Light Theme (default) */
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F0F0ED;
+  --bg-card: #FFFFFF;
+  --bg-glass: rgba(255,255,255,0.82);
+  --bg-elevated: #F8F7F4;
+  --border: #E8E6E0;
+  --border-light: #F0EFEB;
+  --border-focus: #D5D1C9;
+  --text-primary: #1A1A18;
+  --text-secondary: #5C5B57;
+  --text-muted: #94928E;
+  --text-inverse: #FAFAF8;
+
+  /* Accent colors - consistent across themes */
+  --bili-pink: #FB7299;
+  --bili-pink-light: #FF8DAB;
+  --bili-pink-dark: #E55A80;
+  --bili-blue: #00A1D6;
+  --bili-blue-light: #33B8E2;
+  --bili-blue-dark: #0088B8;
+  --bili-purple: #534AB7;
+  --bili-purple-light: #7B73D4;
+  --green: #23D18B;
+  --green-bg: rgba(35,209,139,0.1);
+  --orange: #FF8C42;
+  --orange-bg: rgba(255,140,66,0.1);
+  --amber: #F5A623;
+  --red: #EF4444;
+  --red-bg: rgba(239,68,68,0.08);
+
+  /* Gradients */
+  --grad-hero: linear-gradient(135deg, #FB7299 0%, #FF8DAB 30%, #534AB7 100%);
+  --grad-fan: linear-gradient(135deg, #FB7299 0%, #FF8DAB 100%);
+  --grad-brand: linear-gradient(135deg, #534AB7 0%, #7B73D4 100%);
+  --grad-platform: linear-gradient(135deg, #00A1D6 0%, #33B8E2 100%);
+  --grad-card-hover: linear-gradient(135deg, rgba(251,114,153,0.06) 0%, rgba(83,74,183,0.06) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+  --shadow-glow-pink: 0 0 40px rgba(251,114,153,0.15);
+  --shadow-glow-blue: 0 0 40px rgba(0,161,214,0.15);
+  --shadow-glow-purple: 0 0 40px rgba(83,74,183,0.15);
+
+  /* Misc */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #0A0A10;
+  --bg-secondary: #111118;
+  --bg-card: #181825;
+  --bg-glass: rgba(24,24,37,0.78);
+  --bg-elevated: #1E1E2E;
+  --border: #252538;
+  --border-light: #2E2E42;
+  --border-focus: #3E3E56;
+  --text-primary: #E8E8F5;
+  --text-secondary: #9A9AB0;
+  --text-muted: #6A6A82;
+  --text-inverse: #1A1A18;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.4);
+}
+
+/* ============ Reset & Base ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+}
+
+/* ============ Ambient Background Decor ============ */
+.bg-ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.bg-orb {
+  position: absolute; border-radius: 50%; filter: blur(160px);
+  opacity: 0.08; transition: opacity var(--transition);
+}
+.bg-orb-1 { width: 640px; height: 640px; background: var(--bili-pink); top: -120px; left: -80px; }
+.bg-orb-2 { width: 500px; height: 500px; background: var(--bili-blue); bottom: -100px; right: -100px; }
+.bg-orb-3 { width: 400px; height: 400px; background: var(--bili-purple); top: 55%; left: 55%; }
+[data-theme="dark"] .bg-orb { opacity: 0.12; }
+
+/* ============ Theme Toggle ============ */
+.theme-toggle-wrapper {
+  position: fixed; top: 24px; right: 24px; z-index: 1000;
+  display: flex; align-items: center; gap: 8px;
+}
+.theme-toggle {
+  width: 52px; height: 28px; border-radius: 14px;
+  background: var(--border); border: 2px solid var(--border-focus);
+  cursor: pointer; position: relative; transition: all var(--transition);
+  padding: 0; outline: none;
+}
+.theme-toggle:hover { border-color: var(--bili-pink); }
+.theme-toggle::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bili-pink);
+  transition: all var(--transition);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .theme-toggle { background: var(--bili-pink); border-color: var(--bili-pink); }
+[data-theme="dark"] .theme-toggle::after {
+  left: 27px; background: #fff;
+}
+.theme-icon { font-size: 18px; line-height: 1; transition: opacity var(--transition-fast); }
+
+/* ============ Container ============ */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+/* ============ Hero ============ */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 120px 0 80px; position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--bg-glass); border: 1px solid var(--border);
+  border-radius: 100px; padding: 7px 22px; font-size: 13px;
+  color: var(--text-secondary); backdrop-filter: blur(20px);
+  margin-bottom: 28px; letter-spacing: 0.5px;
+}
+.hero-eyebrow .dot {
+  width: 7px; height: 7px; background: var(--bili-pink);
+  border-radius: 50%; animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.65)} }
+.hero h1 {
+  font-size: clamp(40px, 7vw, 72px); font-weight: 900;
+  line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 20px;
+  max-width: 900px;
+}
+.hero h1 .grad {
+  background: var(--grad-hero);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  font-size: 17px; color: var(--text-secondary); max-width: 600px;
+  line-height: 1.7; margin-bottom: 36px;
+}
+.hero-stats {
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-size: 42px; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: 12px; animation: float 2.5s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+.scroll-hint .arrow { font-size: 20px; }
+
+/* ============ Nav ============ */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-glass); backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--border); transition: all var(--transition);
+}
+[data-theme="dark"] .sticky-nav { background: rgba(10,10,16,0.85); }
+.nav-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.nav-logo { font-weight: 700; font-size: 16px; color: var(--bili-pink); letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-link {
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  color: var(--text-secondary); text-decoration: none;
+  transition: all var(--transition-fast); border: none; background: none; cursor: pointer;
+  white-space: nowrap;
+}
+.nav-link:hover { background: var(--bg-secondary); color: var(--text-primary); }
+.nav-link.active { background: var(--bili-pink); color: #fff; }
+.nav-link.active:hover { background: var(--bili-pink-dark); }
+
+/* ============ Section Common ============ */
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-label {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+}
+.section-label.fan { color: var(--bili-pink); background: rgba(251,114,153,0.1); }
+.section-label.brand { color: var(--bili-purple); background: rgba(83,74,183,0.1); }
+.section-label.platform { color: var(--bili-blue); background: rgba(0,161,214,0.1); }
+.section-label.roadmap { color: var(--green); background: rgba(35,209,139,0.1); }
+.section-title {
+  font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px;
+}
+.section-subtitle { color: var(--text-secondary); font-size: 15px; max-width: 580px; margin: 0 auto; }
+
+/* ============ Perspective Intro Card ============ */
+.perspective-intro {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 40px;
+  position: relative; overflow: hidden;
+  margin-bottom: 48px; box-shadow: var(--shadow-sm);
+}
+.perspective-intro::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+.perspective-intro.fan::before { background: var(--grad-fan); }
+.perspective-intro.brand::before { background: var(--grad-brand); }
+.perspective-intro.platform::before { background: var(--grad-platform); }
+.perspective-intro .pi-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.perspective-intro.fan .pi-tag { color: var(--bili-pink); }
+.perspective-intro.brand .pi-tag { color: var(--bili-purple); }
+.perspective-intro.platform .pi-tag { color: var(--bili-blue); }
+.perspective-intro h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.perspective-intro p { color: var(--text-secondary); font-size: 15px; max-width: 700px; line-height: 1.8; }
+
+/* ============ Grid Layouts ============ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
+/* ============ Cards ============ */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  transition: all var(--transition); position: relative; overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+  background: var(--bg-card);
+  background-image: var(--grad-card-hover);
+}
+.card-accent {
+  border-top: 3px solid transparent; border-radius: var(--radius);
+}
+.card-accent.pink { border-top-color: var(--bili-pink); }
+.card-accent.blue { border-top-color: var(--bili-blue); }
+.card-accent.purple { border-top-color: var(--bili-purple); }
+.card-accent.green { border-top-color: var(--green); }
+.card-accent.orange { border-top-color: var(--orange); }
+
+.card-icon {
+  width: 44px; height: 44px; border-radius: 12px; display: flex;
+  align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px;
+}
+.card-icon.pink { background: rgba(251,114,153,0.12); color: var(--bili-pink); }
+.card-icon.blue { background: rgba(0,161,214,0.12); color: var(--bili-blue); }
+.card-icon.purple { background: rgba(83,74,183,0.12); color: var(--bili-purple); }
+.card-icon.green { background: var(--green-bg); color: var(--green); }
+.card-icon.orange { background: var(--orange-bg); color: var(--orange); }
+
+.card h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.card p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+
+/* Data Card */
+.data-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 28px;
+  text-align: center; transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.data-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.data-card .data-value {
+  font-size: 36px; font-weight: 800; letter-spacing: -1.5px;
+  margin-bottom: 6px; line-height: 1.1;
+}
+.data-card .data-label { font-size: 13px; color: var(--text-muted); }
+.data-card .data-change { font-size: 12px; margin-top: 4px; }
+.data-card .data-change.up { color: var(--green); }
+.data-card .data-change.down { color: var(--red); }
+
+/* ============ Strategy Module ============ */
+.strategy-module {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  margin-bottom: 24px; box-shadow: var(--shadow-sm);
+}
+.strategy-module-header {
+  padding: 20px 28px; display: flex; align-items: center; gap: 16px;
+  cursor: pointer; user-select: none; border-bottom: 1px solid transparent;
+  transition: all var(--transition);
+}
+.strategy-module-header:hover { background: var(--bg-secondary); }
+.strategy-module.open .strategy-module-header { border-bottom-color: var(--border); }
+.strategy-module-header .sm-number {
+  width: 36px; height: 36px; border-radius: 10px; display: flex;
+  align-items: center; justify-content: center; font-weight: 800; font-size: 15px;
+  color: #fff; flex-shrink: 0;
+}
+.sm-number.pink { background: var(--grad-fan); }
+.sm-number.purple { background: var(--grad-brand); }
+.sm-number.blue { background: var(--grad-platform); }
+.strategy-module-header .sm-title { font-size: 17px; font-weight: 700; flex: 1; }
+.strategy-module-header .sm-arrow {
+  transition: transform var(--transition); color: var(--text-muted); font-size: 18px;
+}
+.strategy-module.open .sm-arrow { transform: rotate(180deg); }
+.strategy-module-body {
+  padding: 0 28px; max-height: 0; overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.strategy-module.open .strategy-module-body { padding: 28px; max-height: 2000px; }
+.strategy-module-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+.strategy-module-body .highlight-list {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+}
+.strategy-module-body .highlight-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 18px; background: var(--bg-elevated);
+  border-radius: var(--radius-sm); font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.strategy-module-body .highlight-list li .hl-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* ============ Check card ============ */
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; background: var(--bg-elevated);
+  border-radius: var(--radius-sm); font-size: 14px; color: var(--text-secondary);
+}
+.check-item .check { color: var(--green); font-weight: 700; font-size: 16px; }
+
+/* ============ Priority Matrix ============ */
+.priority-matrix {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.pm-cell {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px 28px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.pm-cell::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+.pm-cell.high::before { background: var(--bili-pink); }
+.pm-cell.mid::before { background: var(--amber); }
+.pm-cell.long::before { background: var(--bili-blue); }
+.pm-cell h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.pm-cell .pm-badge {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  padding: 3px 10px; border-radius: 10px; margin-bottom: 14px;
+}
+.pm-cell.high .pm-badge { color: #fff; background: var(--bili-pink); }
+.pm-cell.mid .pm-badge { color: #fff; background: var(--amber); }
+.pm-cell.long .pm-badge { color: #fff; background: var(--bili-blue); }
+.pm-cell ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.pm-cell li { font-size: 14px; color: var(--text-secondary); padding-left: 16px; position: relative; line-height: 1.7; }
+.pm-cell li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.pm-cell.high li::before { background: var(--bili-pink); }
+.pm-cell.mid li::before { background: var(--amber); }
+.pm-cell.long li::before { background: var(--bili-blue); }
+
+/* ============ KPI Dashboard ============ */
+.kpi-dashboard {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 40px;
+}
+.kpi-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 20px; text-align: center;
+  transition: all var(--transition); box-shadow: var(--shadow-sm);
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.kpi-card .kpi-icon { font-size: 24px; margin-bottom: 10px; }
+.kpi-card .kpi-value { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+.kpi-card .kpi-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.kpi-card .kpi-bar {
+  height: 4px; border-radius: 2px; margin-top: 12px; background: var(--border);
+  overflow: hidden;
+}
+.kpi-card .kpi-bar-fill {
+  height: 100%; border-radius: 2px; transition: width 1.2s ease;
+}
+.kpi-card .kpi-bar-fill.pink { background: var(--grad-fan); }
+.kpi-card .kpi-bar-fill.purple { background: var(--grad-brand); }
+.kpi-card .kpi-bar-fill.blue { background: var(--grad-platform); }
+.kpi-card .kpi-bar-fill.green { background: var(--green); }
+
+/* ============ Table ============ */
+.data-table-wrap { overflow-x: auto; margin: 24px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table thead { background: var(--bg-elevated); }
+.data-table th {
+  padding: 14px 18px; text-align: left; font-weight: 600; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 14px 18px; border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary); line-height: 1.6;
+}
+.data-table tbody tr { transition: background var(--transition-fast); }
+.data-table tbody tr:hover { background: var(--bg-elevated); }
+.data-table .tag {
+  display: inline-block; padding: 3px 10px; border-radius: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+}
+.tag-pink { background: rgba(251,114,153,0.12); color: var(--bili-pink); }
+.tag-blue { background: rgba(0,161,214,0.12); color: var(--bili-blue); }
+.tag-purple { background: rgba(83,74,183,0.12); color: var(--bili-purple); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-amber { background: rgba(245,166,35,0.12); color: var(--amber); }
+
+/* ============ Flow Chart ============ */
+.flow-steps {
+  display: flex; align-items: flex-start; gap: 0; padding: 24px 0;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.flow-step {
+  flex: 1; min-width: 140px; text-align: center; position: relative;
+  padding: 0 12px;
+}
+.flow-step::after {
+  content: '→'; position: absolute; right: -8px; top: 24px;
+  font-size: 20px; color: var(--text-muted);
+}
+.flow-step:last-child::after { display: none; }
+.flow-step .fs-number {
+  width: 52px; height: 52px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-weight: 800; font-size: 20px;
+  color: #fff; margin: 0 auto 12px;
+}
+.flow-step .fs-number.fan { background: var(--grad-fan); }
+.flow-step .fs-number.brand { background: var(--grad-brand); }
+.flow-step .fs-number.blue { background: var(--grad-platform); }
+.flow-step .fs-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.flow-step .fs-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ============ Quote ============ */
+.insight-quote {
+  background: var(--bg-elevated); border-left: 4px solid var(--bili-pink);
+  padding: 24px 28px; border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 24px 0; position: relative;
+}
+.insight-quote::before {
+  content: '"'; position: absolute; top: 8px; left: 16px;
+  font-size: 48px; color: var(--bili-pink); opacity: 0.2; line-height: 1;
+  font-family: Georgia, serif;
+}
+.insight-quote p { color: var(--text-secondary); font-size: 15px; line-height: 1.8; padding-left: 16px; }
+
+/* ============ Footer ============ */
+.footer {
+  border-top: 1px solid var(--border); padding: 48px 0;
+  text-align: center; color: var(--text-muted); font-size: 13px;
+}
+.footer .footer-brand { font-weight: 700; color: var(--bili-pink); font-size: 16px; margin-bottom: 8px; }
+.footer p { max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+/* ============ Responsive ============ */
+@media (max-width: 960px) {
+  .container { padding: 0 20px; }
+  .grid-2, .grid-2-1 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .kpi-dashboard { grid-template-columns: repeat(3, 1fr); }
+  .priority-matrix { grid-template-columns: 1fr; }
+  .check-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34px; }
+  .hero-stats { gap: 24px; }
+  .hero-stat .num { font-size: 30px; }
+  .section-title { font-size: 26px; }
+  .sticky-nav { display: none; }
+  .theme-toggle-wrapper { top: 16px; right: 16px; }
+}
+@media (max-width: 600px) {
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .kpi-dashboard { grid-template-columns: 1fr 1fr; }
+  .hero { padding: 80px 0 60px; }
+  .perspective-intro { padding: 24px; }
+  .card { padding: 20px; }
+}
+
+/* ============ Print ============ */
+@media print {
+  .sticky-nav, .theme-toggle-wrapper, .bg-ambient, .scroll-hint { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card, .data-card, .strategy-module { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  .section { padding: 40px 0; }
+}
+
+/* ============ Animation ============ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeInUp 0.6s ease forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="bg-ambient">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+
+<!-- Theme Toggle -->
+<div class="theme-toggle-wrapper">
+  <span class="theme-icon">☀️</span>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"></button>
+  <span class="theme-icon">🌙</span>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span>B站数码家电 · 内容竞争力白皮书</div>
+  <h1>B站数码家电<span class="grad">内容竞争力</span><br>三维优化白皮书 2026</h1>
+  <p class="subtitle">从粉丝需求、品牌合作、平台生态三大核心视角出发，为B站数码家电UP主提供系统级内容竞争力提升方案</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4.2亿+</div><div class="label">B站数码家电月活用户</div></div>
+    <div class="hero-stat"><div class="num">180%</div><div class="label">家电内容GMV同比增长</div></div>
+    <div class="hero-stat"><div class="num">3大</div><div class="label">核心优化视角</div></div>
+    <div class="hero-stat"><div class="num">24项</div><div class="label">可执行策略模块</div></div>
+  </div>
+  <div class="scroll-hint"><span>向下探索</span><span class="arrow">↓</span></div>
+</section>
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" id="stickyNav">
+  <div class="nav-inner">
+    <div class="nav-logo">📺 赛博家电</div>
+    <div class="nav-links">
+      <a href="#summary" class="nav-link active">总览</a>
+      <a href="#fan" class="nav-link">粉丝视角</a>
+      <a href="#brand" class="nav-link">品牌视角</a>
+      <a href="#platform" class="nav-link">平台视角</a>
+      <a href="#roadmap" class="nav-link">路线图</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ SECTION: Executive Summary ============ -->
+<section class="section" id="summary">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label roadmap">EXECUTIVE SUMMARY</span>
+      <h2 class="section-title">内容竞争力全景诊断</h2>
+      <p class="section-subtitle">基于B站数码家电领域的深度研究与数据分析，我们识别出制约UP主内容竞争力的三个关键维度</p>
+    </div>
+
+    <!-- Three pillars -->
+    <div class="grid-3 animate-in">
+      <div class="card card-accent pink">
+        <div class="card-icon pink">👥</div>
+        <h4>粉丝维度</h4>
+        <p>B站数码家电用户决策链路变长，平均观看4.2个评测视频后才产生购买意向。信任是核心货币——"真实、专业、不恰烂饭"是用户最看重的三项UP主品质。内容供给与用户需求之间存在结构性错配。</p>
+      </div>
+      <div class="card card-accent purple">
+        <div class="card-icon purple">💼</div>
+        <h4>品牌商维度</h4>
+        <p>2026年家电品牌在B站的商单投放同比增长67%，但大量预算集中在头部UP主。腰尾部UP主面临"接不到好商单"与"商单质量参差"的双重困境。品牌方更看重UP主的品类专业度而非粉丝量级。</p>
+      </div>
+      <div class="card card-accent blue">
+        <div class="card-icon blue">🏛️</div>
+        <h4>平台维度</h4>
+        <p>B站搜索广告与推荐算法持续升级，蓝链带货、花火平台、直播带货构成三大商业化基建。理解平台流量分配逻辑和内容质量评估体系，是获取自然流量的基础。</p>
+      </div>
+    </div>
+
+    <!-- Key Insight Quote -->
+    <div class="insight-quote animate-in delay-1">
+      <p><strong>核心洞察：</strong>B站数码家电领域的竞争已从"谁能做评测"升级为"谁能让粉丝信任、让品牌买单、让平台推流"的三维博弈。单一维度的优化已无法带来显著竞争力提升，必须构建系统性的三维协同策略。</p>
+    </div>
+
+    <!-- KPI Dashboard -->
+    <div class="kpi-dashboard animate-in delay-2">
+      <div class="kpi-card">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-value">67%</div>
+        <div class="kpi-label">家电品牌B站投放增长率</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill pink" style="width:67%"></div></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🎯</div>
+        <div class="kpi-value">4.2次</div>
+        <div class="kpi-label">用户平均决策前观看数</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill purple" style="width:62%"></div></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🔍</div>
+        <div class="kpi-value">85%</div>
+        <div class="kpi-label">搜索流量占比（长尾词）</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill blue" style="width:85%"></div></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💬</div>
+        <div class="kpi-value">3.8%</div>
+        <div class="kpi-label">家电品类平均互动率</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill green" style="width:38%"></div></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💰</div>
+        <div class="kpi-value">¥8.6K</div>
+        <div class="kpi-label">家电客单价中位数</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill pink" style="width:72%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION: Fan Perspective ============ -->
+<section class="section" id="fan" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label fan">视角一 · 粉丝维度</span>
+      <h2 class="section-title">以用户为中心的内容策略</h2>
+      <p class="section-subtitle">理解B站数码家电用户的深层需求、决策心理与内容消费习惯，构建以信任为核心的内容体系</p>
+    </div>
+
+    <div class="perspective-intro fan">
+      <span class="pi-tag">核心命题</span>
+      <h3>粉丝为什么关注你？下一步为什么取关？</h3>
+      <p>B站数码家电用户是全网最"挑剔"的消费群体——他们信息获取能力极强、对恰饭内容高度敏感、决策周期长达数周甚至数月。赢得他们的信任，需要超越"参数罗列"的传统评测模式，构建有深度、有温度、有态度的内容体系。</p>
+    </div>
+
+    <!-- Fan Strategy Modules -->
+    <div class="strategy-module open" id="fan-m1">
+      <div class="strategy-module-header" onclick="toggleModule('fan-m1')">
+        <div class="sm-number pink">01</div>
+        <div class="sm-title">粉丝画像重构：从流量思维到用户思维</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>传统UP主运营依赖"播放量-粉丝数"二维指标，但数码家电品类的高客单价属性要求更深层的用户理解：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">📌</span><div><strong>决策阶段分层：</strong>将粉丝按购买决策阶段分为「种草期（40%）→ 比价期（35%）→ 决策期（20%）→ 购后期（5%）」，针对不同阶段提供差异化内容。种草期需要场景化内容，比价期需要横评对比，决策期需要深度单品评测。</div></li>
+          <li><span class="hl-icon">📌</span><div><strong>品类偏好聚类：</strong>电视/投影（29%）、扫地机/洗地机（24%）、冰箱/洗衣机（18%）、空调（15%）、厨房电器（14%）。根据粉丝画像数据，优化不同品类的排期比例。</div></li>
+          <li><span class="hl-icon">📌</span><div><strong>预算段位匹配：</strong>3000元以下（入门）、3000-8000元（主流）、8000-20000元（高端）、20000元以上（旗舰）。确保每个季度覆盖至少3个价位段的内容。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="fan-m2">
+      <div class="strategy-module-header" onclick="toggleModule('fan-m2')">
+        <div class="sm-number pink">02</div>
+        <div class="sm-title">信任构建体系：从"做评测"到"做顾问"</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站用户对数码家电UP主的信任度打分中，排名前三的要素为：<strong>实测数据真实性（91%）> 使用场景贴合度（78%）> 优缺点坦诚度（75%）</strong>。构建信任体系的四个支柱：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">🔬</span><div><strong>实测透明化：</strong>展示测试环境、仪器设备、数据采集过程；标注所有测试条件（温度、距离、模式等）；公开自购vs品牌送测的产品清单，建立"送测声明"标准模板。</div></li>
+          <li><span class="hl-icon">🎯</span><div><strong>场景真实化：</strong>每条评测内容绑定至少2个具体使用场景（如"三口之家客厅观影"而非笼统的"画质好"）；加入长期使用后的"三个月回访"内容形式。</div></li>
+          <li><span class="hl-icon">⚖️</span><div><strong>评价平衡化：</strong>每个产品必须明确列出"三个优点+三个缺点+一个适合谁/不适合谁"；拒绝"万物皆可推荐"的模糊态度。</div></li>
+          <li><span class="hl-icon">🤝</span><div><strong>人设持续化：</strong>建立固定的评测标准体系（如"XX实验室测试流程"），让粉丝形成稳定的内容预期；定期公布年度推荐/避坑清单。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="fan-m3">
+      <div class="strategy-module-header" onclick="toggleModule('fan-m3')">
+        <div class="sm-number pink">03</div>
+        <div class="sm-title">内容形态矩阵：覆盖完整决策链路</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>不同决策阶段对应不同的内容形态需求。构建"5+3+1"内容矩阵：</p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>内容形态</th><th>对应阶段</th><th>建议频率</th><th>时长建议</th><th>核心KPI</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>新品速览/开箱</strong></td><td><span class="tag tag-pink">种草期</span></td><td>每周1-2期</td><td>5-8分钟</td><td>曝光量、CTR</td></tr>
+              <tr><td><strong>场景化体验</strong></td><td><span class="tag tag-pink">种草期</span></td><td>每周1期</td><td>8-12分钟</td><td>完播率、互动率</td></tr>
+              <tr><td><strong>品类横评</strong></td><td><span class="tag tag-blue">比价期</span></td><td>每月1-2期</td><td>15-25分钟</td><td>收藏量、搜索排名</td></tr>
+              <tr><td><strong>深度单品评测</strong></td><td><span class="tag tag-purple">决策期</span></td><td>每月2-3期</td><td>12-18分钟</td><td>蓝链点击、转化率</td></tr>
+              <tr><td><strong>选购指南/避坑</strong></td><td><span class="tag tag-blue">比价期</span></td><td>每月2期</td><td>10-15分钟</td><td>搜索流量、长尾播放</td></tr>
+              <tr><td><strong>长期使用报告</strong></td><td><span class="tag tag-purple">决策期</span></td><td>每季度1-2期</td><td>10-15分钟</td><td>信任度、粉丝增长</td></tr>
+              <tr><td><strong>技术科普/行业解读</strong></td><td><span class="tag tag-pink">种草期</span></td><td>每月1-2期</td><td>8-15分钟</td><td>涨粉率、分享量</td></tr>
+              <tr><td><strong>粉丝问答/直播答疑</strong></td><td><span class="tag tag-green">购后期</span></td><td>每周1次</td><td>30-60分钟</td><td>粉丝粘性、复购引导</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="fan-m4">
+      <div class="strategy-module-header" onclick="toggleModule('fan-m4')">
+        <div class="sm-number pink">04</div>
+        <div class="sm-title">互动与社区运营：从单向输出到双向共建</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站数码家电品类平均互动率仅3.8%，但头部UP主可达8-12%。差距不在内容质量，而在互动运营：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">💬</span><div><strong>评论区即第二内容场：</strong>每条视频发布后48小时内，UP主亲自回复前20条高质量评论；置顶一条"互动引导评论"（如"你在选电视时最纠结的点是什么？"），激发讨论。</div></li>
+          <li><span class="hl-icon">📋</span><div><strong>粉丝共创选题：</strong>每月发起一次"下期测什么"投票/征集；将高赞粉丝建议制作成视频并@致谢，形成"粉丝点单→UP主制作→粉丝传播"的正循环。</div></li>
+          <li><span class="hl-icon">🎯</span><div><strong>私域沉淀策略：</strong>利用B站动态功能发布"拍摄花絮""选购短问答""限时团购通知"等内容；建立粉丝群（注意合规），进行深度互动与早期内容测试。</div></li>
+          <li><span class="hl-icon">🏆</span><div><strong>粉丝分层权益：</strong>舰长/提督粉丝享受优先问答、专属直播、产品内测机会等权益；普通粉丝通过参与投票、评论互动获得"被看见"的满足感。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="fan-m5">
+      <div class="strategy-module-header" onclick="toggleModule('fan-m5')">
+        <div class="sm-number pink">05</div>
+        <div class="sm-title">封面与标题优化：粉丝视角的点击决策</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>在信息流中，用户决定是否点击的时间仅0.5-1.5秒。封面和标题是内容竞争力的第一道关卡：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">🖼️</span><div><strong>封面公式：</strong>产品高清图（60%面积）+ 对比/测试数据可视化（25%）+ 情绪化文字标签（15%）。数码家电封面优先展示产品实物而非合成图，"真实感"比"设计感"更重要。</div></li>
+          <li><span class="hl-icon">✍️</span><div><strong>标题结构：</strong>[数字锚定] + [约束条件] + [价值承诺]，例如 "5款万元内85寸电视实测 | 最后一款画质越级"、"用了3个月的真实感受 | 这台扫地机值不值4000块？"</div></li>
+          <li><span class="hl-icon">📊</span><div><strong>A/B测试机制：</strong>重要视频发布前准备2-3个封面标题方案，在粉丝群/动态中进行投票测试，选择CTR最高的方案发布。</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION: Brand Perspective ============ -->
+<section class="section" id="brand">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label brand">视角二 · 品牌商维度</span>
+      <h2 class="section-title">商业价值最大化策略</h2>
+      <p class="section-subtitle">从品牌方需求出发，构建专业的商业合作体系，实现内容质量与商业回报的双赢</p>
+    </div>
+
+    <div class="perspective-intro brand">
+      <span class="pi-tag">核心命题</span>
+      <h3>品牌方为什么选你而不是别人？</h3>
+      <p>2026年B站家电品牌投放预算持续向平台倾斜，但品牌方的选择标准已从"粉丝量"升级为"品类匹配度×内容专业度×转化确定性"的三维评估。UP主需要学会用品牌方的语言展示自己的商业价值。</p>
+    </div>
+
+    <!-- Brand Strategy Modules -->
+    <div class="strategy-module open" id="brand-m1">
+      <div class="strategy-module-header" onclick="toggleModule('brand-m1')">
+        <div class="sm-number purple">06</div>
+        <div class="sm-title">品牌方需求洞察：他们的KPI是什么？</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>不同品类、不同阶段的品牌方核心诉求完全不同，不可一概而论：</p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>品牌类型</th><th>核心诉求</th><th>偏好的UP主类型</th><th>考核指标</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>国际大牌新品</strong><br><small>索尼、三星、LG</small></td><td>技术背书、高端形象</td><td>技术流、画质党UP主</td><td>品牌词搜索量提升、正面评论占比</td></tr>
+              <tr><td><strong>国产头部品牌</strong><br><small>TCL、海信、小米</small></td><td>市场份额、销量转化</td><td>性价比评测型UP主</td><td>蓝链点击量、ROI、搜索占位</td></tr>
+              <tr><td><strong>新锐品牌</strong><br><small>追觅、云鲸、徕芬</small></td><td>品类认知、差异化</td><td>场景化/生活方式UP主</td><td>A3人群增长、品牌搜索量</td></tr>
+              <tr><td><strong>电商平台</strong><br><small>京东、天猫、拼多多</small></td><td>大促引流、GMV</td><td>全品类横评UP主</td><td>GMV、引流UV、ROI</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px;"><strong>关键洞察：</strong>品牌方最怕的不是报价高，而是"花了钱说不清效果"。提供可量化的效果预估和结案报告，是赢得品牌长期合作的核心竞争力。</p>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="brand-m2">
+      <div class="strategy-module-header" onclick="toggleModule('brand-m2')">
+        <div class="sm-number purple">07</div>
+        <div class="sm-title">商单产品化：把"接广告"变成"卖产品"</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>头部数码家电UP主的共同特征：不卖"广告位"，而是卖"解决方案"。建立标准化的商业产品矩阵：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">📦</span><div><strong>产品A · 单品深度评测：</strong>适合有明确新品推广需求的品牌。包含：开箱→外观→实测数据→场景体验→优缺点总结→购买建议。建议报价：按粉丝量×品类系数×权益包定价。</div></li>
+          <li><span class="hl-icon">📦</span><div><strong>产品B · 品类横评植入：</strong>适合需要建立品类地位的品牌。以"N款产品对比"为主内容框架，品牌产品作为其中一款（或推荐款）自然植入。优势是长尾流量高、用户信任度强。</div></li>
+          <li><span class="hl-icon">📦</span><div><strong>产品C · 品牌专属内容IP：</strong>如"XX品牌的实验室探访""XX工厂流水线解密"等深度品牌内容。适合大预算品牌Campaign，建立品牌深度认知。</div></li>
+          <li><span class="hl-icon">📦</span><div><strong>产品D · 直播专场+蓝链：</strong>配合大促节点（618、双11、年货节），进行品牌专场直播带货。需提前2-3周预热，配合短视频内容矩阵引流。</div></li>
+          <li><span class="hl-icon">📦</span><div><strong>产品E · 长期品牌大使：</strong>以季度/年度为单位与品牌合作，进行新品首发、长期使用追踪、粉丝专属福利等持续性输出。适合已建立深度合作关系的品牌。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="brand-m3">
+      <div class="strategy-module-header" onclick="toggleModule('brand-m3')">
+        <div class="sm-number purple">08</div>
+        <div class="sm-title">报价与权益体系：让品牌觉得"值"</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>数码家电UP主报价建议参考框架（以10-50万粉丝腰部UP主为基准）：</p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>权益层级</th><th>包含内容</th><th>建议溢价</th><th>适用场景</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>基础包</strong></td><td>视频内容植入（30-60秒）</td><td>基准价</td><td>预算有限的品牌测试合作</td></tr>
+              <tr><td><strong>标准包</strong></td><td>视频 + 蓝链 + 评论区置顶</td><td>基准×1.3</td><td>有明确转化需求的品牌</td></tr>
+              <tr><td><strong>进阶包</strong></td><td>标准包 + 动态推广(2条) + 粉丝群推送</td><td>基准×1.6</td><td>新品上市/大促节点</td></tr>
+              <tr><td><strong>旗舰包</strong></td><td>进阶包 + 直播专场 + 数据结案报告</td><td>基准×2.2</td><td>品牌Campaign/长期合作</td></tr>
+              <tr><td><strong>独占包</strong></td><td>旗舰包 + 品类独占(30天) + 品牌大使身份</td><td>基准×3.0+</td><td>年度战略合作</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px;"><strong>报价红线：</strong>不低于粉丝数×0.08元/粉（即10万粉不低于8000元），这是维持内容质量的基本线。低于此价格的内容合作将被迫降低制作标准，最终损害账号长期价值。</p>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="brand-m4">
+      <div class="strategy-module-header" onclick="toggleModule('brand-m4')">
+        <div class="sm-number purple">09</div>
+        <div class="sm-title">带货转化优化：从流量到销量</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站蓝链带货是数码家电品类最具潜力的转化路径。优化策略：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">🔗</span><div><strong>蓝链位置优化：</strong>在视频的"购买冲动峰值"时刻弹出蓝链（通常在展示实际使用效果后10-15秒内），而非视频开头或结尾。AB测试不同弹出时间点。</div></li>
+          <li><span class="hl-icon">📝</span><div><strong>蓝链文案公式：</strong>不要写"点击购买"，而是写具体的价值——"[限时价]XX品牌85寸MiniLED到手¥XXXX"、"粉丝专属赠品：下单备注「XX」送HDMI2.1线"。</div></li>
+          <li><span class="hl-icon">🎬</span><div><strong>口播引导艺术：</strong>在展示产品核心优势后自然引导——"如果对这款感兴趣，可以点下方链接看看现在的价格，最近活动力度挺大"——而非生硬的"快下单"。</div></li>
+          <li><span class="hl-icon">📊</span><div><strong>数据追踪与复用：</strong>每次商单后生成转化数据报告（曝光→点击→加购→成交），用于下一次合作的效果预估，形成正向飞轮。</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION: Platform Perspective ============ -->
+<section class="section" id="platform" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label platform">视角三 · 平台维度</span>
+      <h2 class="section-title">B站生态红利最大化</h2>
+      <p class="section-subtitle">深入理解B站的内容推荐机制、搜索流量逻辑与商业化基础设施，让好内容被更多人看到</p>
+    </div>
+
+    <div class="perspective-intro platform">
+      <span class="pi-tag">核心命题</span>
+      <h3>为什么好内容没人看？</h3>
+      <p>B站的流量分发逻辑并非"好内容自动火"。理解推荐算法的核心指标（CTR→完播率→互动率→转粉率→长期价值）、搜索排名的关键因素（关键词匹配×内容质量分×互动系数×时效性），以及花火平台与蓝链体系的运作规则，是让优质内容获得应有曝光的必修课。</p>
+    </div>
+
+    <!-- Platform Strategy Modules -->
+    <div class="strategy-module open" id="platform-m1">
+      <div class="strategy-module-header" onclick="toggleModule('platform-m1')">
+        <div class="sm-number blue">10</div>
+        <div class="sm-title">推荐算法优化：让系统帮你推流</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站推荐系统的核心逻辑可以简化为：<strong>质量分 = CTR×完播率×互动率×转粉率×长期价值系数</strong>。针对数码家电品类的优化方向：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">🎯</span><div><strong>提升CTR（点击率）：</strong>封面突出"对比感"和"数据感"（如左右画质对比、测试数据图表化），标题使用精准关键词+数字+悬念结构。参考CTR标杆：数码品类 > 6%。</div></li>
+          <li><span class="hl-icon">⏱️</span><div><strong>提升完播率：</strong>前15秒必须建立"观看理由"（提出一个用户关心的问题/悬念），每3-5分钟设置一个"信息高潮"（测试结果/对比结论/惊喜发现）。数码品类目标完播率 > 45%。</div></li>
+          <li><span class="hl-icon">💬</span><div><strong>提升互动率：</strong>视频中埋设"互动钩子"——如"你们觉得这个价格值不值？弹幕告诉我"、"在评论区说说你最看重电视的哪个参数"。目标互动率 > 5%。</div></li>
+          <li><span class="hl-icon">🔔</span><div><strong>提升转粉率：</strong>视频结尾设置"关注理由"——展示下期预告、固定栏目承诺（"每周一期真实评测"），让观众有明确的关注动机。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="platform-m2">
+      <div class="strategy-module-header" onclick="toggleModule('platform-m2')">
+        <div class="sm-number blue">11</div>
+        <div class="sm-title">搜索流量矩阵：关键词金字塔策略</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>数码家电品类85%的长尾流量来自搜索。B站搜索排名 = 关键词匹配度 × 内容质量分 × 互动系数 × 时效性衰减。构建五层关键词覆盖体系：</p>
+
+        <!-- Keyword Pyramid -->
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="fs-number fan">L1</div>
+            <div class="fs-title">品牌收口词</div>
+            <div class="fs-desc">索尼电视、三星QN90D<br>精确匹配，转化率最高<br>占预算5-8%</div>
+          </div>
+          <div class="flow-step">
+            <div class="fs-number brand">L2</div>
+            <div class="fs-title">决策对比词</div>
+            <div class="fs-desc">MiniLED vs OLED<br>5000元电视推荐<br>占预算12-15%</div>
+          </div>
+          <div class="flow-step">
+            <div class="fs-number blue">L3</div>
+            <div class="fs-title">品类需求词</div>
+            <div class="fs-desc">85寸电视、游戏电视<br>扫地机器人推荐<br>占预算20-25%</div>
+          </div>
+          <div class="flow-step">
+            <div class="fs-number blue">L4</div>
+            <div class="fs-title">技术认知词</div>
+            <div class="fs-desc">MiniLED是什么<br>分区背光原理<br>占预算25-30%</div>
+          </div>
+          <div class="flow-step">
+            <div class="fs-number blue">L5</div>
+            <div class="fs-title">场景唤醒词</div>
+            <div class="fs-desc">客厅改造、家庭影院<br>新房装修清单<br>占预算20-25%</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 24px;"><strong>执行要点：</strong></p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">📝</span><div><strong>标题/简介/标签三维关键词布局：</strong>核心关键词必须同时出现在标题中、简介前100字中、以及视频标签中。三个位置的关键词一致性能显著提升搜索排名。</div></li>
+          <li><span class="hl-icon">🔄</span><div><strong>时效性关键词抢占：</strong>CES/618/双11/新品发布会等节点前2周，提前布局相应关键词内容，抢占搜索红利期。</div></li>
+          <li><span class="hl-icon">🎯</span><div><strong>B站特色长尾词：</strong>用户会搜索"XXUP主 评测""电视 闭眼入""扫地机 智商税"等B站特有表达，在标题和标签中自然融入这些社区语言。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="platform-m3">
+      <div class="strategy-module-header" onclick="toggleModule('platform-m3')">
+        <div class="sm-number blue">12</div>
+        <div class="sm-title">发布时间与频率策略</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站数码家电用户的活跃时间集中在工作日晚上和周末下午：</p>
+
+        <div class="grid-2">
+          <div class="card card-accent blue">
+            <h4>📅 最佳发布窗口</h4>
+            <div class="check-grid" style="margin-top:12px;">
+              <div class="check-item"><span class="check">✓</span> 周五 18:00-20:00（周末决策）</div>
+              <div class="check-item"><span class="check">✓</span> 周六 11:00-14:00（午间浏览）</div>
+              <div class="check-item"><span class="check">✓</span> 周三 18:00-20:00（周中种草）</div>
+              <div class="check-item"><span class="check">✓</span> 大促前3天密集发布</div>
+              <div class="check-item"><span class="check">✗</span> 周日深夜/周一上午（低迷）</div>
+              <div class="check-item"><span class="check">✗</span> 节假日清晨（流量低）</div>
+            </div>
+          </div>
+          <div class="card card-accent purple">
+            <h4>⏰ 发布频率建议</h4>
+            <div class="check-grid" style="margin-top:12px;">
+              <div class="check-item"><span class="check">✓</span> 长视频：每周2-3期（稳定预期）</div>
+              <div class="check-item"><span class="check">✓</span> 短视频/动态：每日1-2条</div>
+              <div class="check-item"><span class="check">✓</span> 直播：每周1-2次固定时间</div>
+              <div class="check-item"><span class="check">✓</span> 大促期：频率翻倍</div>
+              <div class="check-item"><span class="check">✗</span> 低于每周1期（粉丝流失）</div>
+              <div class="check-item"><span class="check">✗</span> 超过每天2期（质量下降）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="platform-m4">
+      <div class="strategy-module-header" onclick="toggleModule('platform-m4')">
+        <div class="sm-number blue">13</div>
+        <div class="sm-title">花火平台与蓝链体系：商业基建全攻略</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>B站的商业基建在2025-2026年实现了关键升级，数码家电UP主需要充分利用三大工具：</p>
+        <ul class="highlight-list">
+          <li><span class="hl-icon">🔥</span><div><strong>花火平台（商单撮合）：</strong>是品牌方与UP主官方合作的唯一合规渠道。建议完善花火主页的品类标签（精确到二级品类如"电视/投影"而非泛"数码"）、上传历史商单案例、定期更新报价。花火报价建议比私下报价高15-20%，因为提供了合规保障和平台背书。</div></li>
+          <li><span class="hl-icon">🔗</span><div><strong>蓝链带货（电商转化）：</strong>支持淘宝/京东/拼多多等多平台链接。关键优化点：每个视频最多3个蓝链（最佳转化数为1-2个）；蓝链标题包含具体利益点；在视频中预留蓝链出现的"视觉锤"（如统一的产品特写镜头）。</div></li>
+          <li><span class="hl-icon">📺</span><div><strong>直播带货（实时转化）：</strong>B站直播带货仍在成长期，竞争相对低。数码家电直播策略：以"专家答疑"为核心而非"疯狂推销"，单场讲解3-5款产品，留足Q&A时间。大促期间直播与短视频配合形成内容矩阵。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-module" id="platform-m5">
+      <div class="strategy-module-header" onclick="toggleModule('platform-m5')">
+        <div class="sm-number blue">14</div>
+        <div class="sm-title">数据复盘体系：用数据指导内容迭代</div>
+        <div class="sm-arrow">▼</div>
+      </div>
+      <div class="strategy-module-body">
+        <p>建立系统性的内容数据复盘机制，而不是凭感觉做内容：</p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>复盘维度</th><th>核心指标</th><th>健康基准</th><th>优化动作</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>流量来源</td><td>推荐/搜索/关注/外部占比</td><td>推荐>50%，搜索>25%</td><td>搜索占比低→优化关键词；推荐低→优化CTR/完播</td></tr>
+              <tr><td>观众留存</td><td>前15秒流失率、整体完播率</td><td>15秒流失<30%，完播>45%</td><td>前15秒重建开场钩子；中段检查信息密度</td></tr>
+              <tr><td>互动质量</td><td>弹幕/评论/点赞/收藏/分享</td><td>互动率>5%，收藏率>3%</td><td>增加互动引导；提升内容"收藏价值"</td></tr>
+              <tr><td>粉丝转化</td><td>播放转粉率、取关率</td><td>转粉率>0.5%</td><td>优化关注引导；检查内容调性一致性</td></tr>
+              <tr><td>商业转化</td><td>蓝链CTR、商单ROI、GMV</td><td>蓝链CTR>2%</td><td>优化蓝链文案和弹出时机</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION: Roadmap ============ -->
+<section class="section" id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label roadmap">ACTION PLAN</span>
+      <h2 class="section-title">三维协同优化路线图</h2>
+      <p class="section-subtitle">将三大视角的策略整合为可执行的阶段性行动计划，按优先级逐步推进</p>
+    </div>
+
+    <!-- Priority Matrix -->
+    <div class="priority-matrix">
+      <div class="pm-cell high">
+        <span class="pm-badge">🔴 立即执行 · 第1-2周</span>
+        <h4>基础建设阶段</h4>
+        <ul>
+          <li>完善花火平台品类标签与历史案例</li>
+          <li>建立内容标题/简介/标签关键词模板</li>
+          <li>设计品牌合作Media Kit（媒体资料包）</li>
+          <li>搭建标准化商单产品体系（5个产品包）</li>
+          <li>优化蓝链文案与弹出逻辑</li>
+          <li>建立数据复盘模板与周报机制</li>
+        </ul>
+      </div>
+      <div class="pm-cell mid">
+        <span class="pm-badge">🟡 短期推进 · 第3-6周</span>
+        <h4>内容升级阶段</h4>
+        <ul>
+          <li>实施"5+3+1"内容矩阵排期</li>
+          <li>上线A/B封面标题测试流程</li>
+          <li>启动评论区运营与粉丝共创机制</li>
+          <li>批量优化历史视频的标题/标签/封面</li>
+          <li>开启每周固定时间直播答疑</li>
+          <li>拓展3-5个品牌方的初步合作接触</li>
+        </ul>
+      </div>
+      <div class="pm-cell long">
+        <span class="pm-badge">🔵 中期布局 · 第2-3个月</span>
+        <h4>商业放大阶段</h4>
+        <ul>
+          <li>签约1-2个品牌的长期大使合作</li>
+          <li>打造1个自有内容IP（如"XX实验室"）</li>
+          <li>618大促期间直播+短视频联动作战</li>
+          <li>建立粉丝社群与会员权益体系</li>
+          <li>纵向拓展关联品类（如智能家居）</li>
+        </ul>
+      </div>
+      <div class="pm-cell long">
+        <span class="pm-badge">🟢 长期建设 · 第3-6个月</span>
+        <h4>竞争壁垒阶段</h4>
+        <ul>
+          <li>建立行业评测标准（测试方法论文档化）</li>
+          <li>搭建数据中台（自建产品数据库）</li>
+          <li>孵化子账号或矩阵号覆盖更多品类</li>
+          <li>参与行业标准制定/品牌顾问合作</li>
+          <li>探索自有品牌联名/定制产品可能性</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Final Insight -->
+    <div class="insight-quote" style="margin-top: 40px;">
+      <p><strong>写在最后：</strong>B站数码家电领域的竞争正在从"内容红利期"进入"专业化竞争期"。粉丝越来越聪明，品牌越来越挑剔，平台越来越成熟。唯有从粉丝信任、品牌价值、平台规则三个维度同时发力，才能在这片正在快速商业化的土壤上建立真正的竞争壁垒。别只做一个"做评测的"——做一个让粉丝信赖的消费决策顾问、让品牌尊重的内容合作伙伴、让平台重视的生态建设者。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">📺 赛博家电 · B站内容竞争力白皮书</div>
+    <p>本报告基于B站公开数据、行业趋势研究及内容运营最佳实践编制，仅供内部策略参考。<br>数据截至2026年6月 · 赛博家电内容策略团队</p>
+  </div>
+</footer>
+
+<script>
+// ============ Theme Toggle ============
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? null : 'dark';
+  if (next) {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('bili-report-theme', 'dark');
+  } else {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('bili-report-theme', 'light');
+  }
+}
+
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('bili-report-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+
+// ============ Module Toggle ============
+function toggleModule(id) {
+  const module = document.getElementById(id);
+  module.classList.toggle('open');
+}
+
+// ============ Sticky Nav Active State ============
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id]');
+
+function updateActiveNav() {
+  const scrollPos = window.scrollY + 100;
+  let currentId = 'summary';
+  sections.forEach(section => {
+    if (section.offsetTop <= scrollPos) {
+      currentId = section.id;
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+
+// ============ Scroll Animation ============
+const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe sections and cards
+document.querySelectorAll('.section, .card, .data-card, .strategy-module, .insight-quote').forEach(el => {
+  observer.observe(el);
+});
+
+// ============ KPI Bar Animation ============
+const kpiObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bars = entry.target.querySelectorAll('.kpi-bar-fill');
+      bars.forEach(bar => {
+        const targetWidth = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = targetWidth; }, 100);
+      });
+      kpiObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const kpiDash = document.querySelector('.kpi-dashboard');
+if (kpiDash) kpiObserver.observe(kpiDash);
+</script>
+
+</body>
+</html>
