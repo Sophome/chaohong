@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜结果导向带货与商单执行看板</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: rgba(255,255,255,0.92);
+      --text: #101828;
+      --soft: #667085;
+      --muted: #98a2b3;
+      --line: rgba(16,24,40,0.1);
+      --blue: #1677ff;
+      --cyan: #00b8d9;
+      --pink: #fb7299;
+      --green: #12b76a;
+      --orange: #f79009;
+      --purple: #7a5af8;
+      --red: #f04438;
+      --shadow: 0 28px 80px rgba(16,24,40,.14);
+      --gradient: linear-gradient(135deg,#1677ff 0%,#00b8d9 45%,#fb7299 100%);
+      --thead: #eef4ff;
+      --nav: rgba(255,255,255,.78);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #050814;
+      --card: rgba(16,24,40,0.82);
+      --text: #f8fbff;
+      --soft: #cbd5e1;
+      --muted: #94a3b8;
+      --line: rgba(255,255,255,0.1);
+      --shadow: 0 30px 100px rgba(0,0,0,.46);
+      --thead: rgba(255,255,255,.06);
+      --nav: rgba(5,8,20,.78);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(22,119,255,.32), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(251,114,153,.22), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(0,184,217,.18), transparent 36%),
+        var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1240px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 950;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--gradient);
+      box-shadow: 0 18px 38px rgba(22,119,255,.32);
+      font-size: 20px;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 17px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--soft);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero {
+      padding: 78px 0 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black, transparent 72%);
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,184,217,.28);
+      background: rgba(0,184,217,.1);
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 950;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 5.8vw, 76px);
+      line-height: 1.03;
+      letter-spacing: -3px;
+    }
+
+    .grad {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      margin: 26px 0 32px;
+      color: var(--soft);
+      font-size: 19px;
+      max-width: 820px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 13px 19px;
+      border-radius: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: .22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      border: none;
+      color: #fff;
+      background: var(--gradient);
+      box-shadow: 0 18px 42px rgba(22,119,255,.28);
+    }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 36px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: -90px;
+      right: -90px;
+      background: var(--gradient);
+      opacity: .25;
+      filter: blur(18px);
+      border-radius: 50%;
+    }
+
+    .hero-card h3 {
+      position: relative;
+      margin: 0 0 18px;
+      font-size: 26px;
+    }
+
+    .result-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .result-item {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .result-item strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .result-item span {
+      display: block;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 13px;
+      font-weight: 950;
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4.2vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -1.4px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--soft);
+      max-width: 560px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 44%);
+      pointer-events: none;
+    }
+
+    .card > * {
+      position: relative;
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 950;
+      font-size: 20px;
+      background: var(--gradient);
+      margin-bottom: 16px;
+      box-shadow: 0 16px 34px rgba(22,119,255,.24);
+    }
+
+    .icon.green { background: linear-gradient(135deg, #12b76a, #5fe0a4); }
+    .icon.orange { background: linear-gradient(135deg, #f79009, #ffc861); }
+    .icon.purple { background: linear-gradient(135deg, #7a5af8, #b692f6); }
+    .icon.red { background: linear-gradient(135deg, #f04438, #fb7185); }
+    .icon.pink { background: linear-gradient(135deg, #fb7299, #ff9fba); }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.28;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      color: var(--soft);
+      font-size: 15px;
+    }
+
+    .list-item i {
+      width: 23px;
+      height: 23px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(18,183,106,.14);
+      color: var(--green);
+      font-style: normal;
+      font-weight: 950;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1080px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--thead);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    td strong {
+      color: var(--text);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .pill.green { background: var(--green); }
+    .pill.orange { background: var(--orange); }
+    .pill.purple { background: var(--purple); }
+    .pill.red { background: var(--red); }
+    .pill.pink { background: var(--pink); }
+
+    .callout {
+      margin-top: 26px;
+      padding: 30px;
+      border-radius: 32px;
+      border: 1px solid rgba(0,184,217,.24);
+      background: linear-gradient(135deg, rgba(22,119,255,.2), rgba(251,114,153,.14));
+      box-shadow: var(--shadow);
+    }
+
+    .callout h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    .callout p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .priority {
+      display: grid;
+      gap: 18px;
+    }
+
+    .priority-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 240px;
+      gap: 18px;
+      align-items: stretch;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .priority-num {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--gradient);
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .priority-main strong {
+      display: block;
+      color: var(--text);
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .priority-main span {
+      color: var(--soft);
+    }
+
+    .priority-owner {
+      color: var(--soft);
+      font-size: 14px;
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+    }
+
+    .footer {
+      padding: 56px 0 70px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .priority-row {
+        grid-template-columns: 1fr;
+      }
+
+      .priority-owner {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, 1240px);
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+      }
+
+      .brand small,
+      .theme-btn span:last-child {
+        display: none;
+      }
+
+      h1 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      header,
+      .hero-actions,
+      .theme-btn {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero-card,
+      .card,
+      .table-wrap,
+      .callout,
+      .priority-row {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-mark">超</div>
+        <div>
+          <span>超红传媒｜结果导向带货与商单执行看板</span>
+          <small>Sales · Commercial · Content · Data · Growth</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#result">结果目标</a>
+        <a href="#reverse">反推路径</a>
+        <a href="#priority">最简安排</a>
+        <a href="#weekly">周执行</a>
+        <a href="#stop">停止清单</a>
+      </nav>
+
+      <button class="theme-btn" id="themeToggle" type="button">
+        <span id="themeIcon">☀️</span>
+        <span id="themeText">浅色模式</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">超红传媒 · 结果导向 · 最简执行版</div>
+          <h1>
+            从
+            <span class="grad">带货和商单结果</span>
+            反推每天最重要的工作
+          </h1>
+          <p class="hero-desc">
+            这份看板不追求复杂流程，只保留最重要的动作：
+            选对产品、做出能转化的视频、拿到客户预算、用数据放大有效内容。
+          </p>
+
+          <div class="hero-actions">
+            <a href="#result" class="btn btn-primary">查看结果目标</a>
+            <a href="#priority" class="btn">查看最简工作安排</a>
+            <a href="#weekly" class="btn">查看每周执行表</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>本阶段只看4个结果</h3>
+          <div class="result-grid">
+            <div class="result-item">
+              <strong>01</strong>
+              <span>带货成交：产品点击、转化、销售额。</span>
+            </div>
+            <div class="result-item">
+              <strong>02</strong>
+              <span>商单成交：客户线索、报价、合作签单。</span>
+            </div>
+            <div class="result-item">
+              <strong>03</strong>
+              <span>内容增长：点击率、完播、互动、涨粉。</span>
+            </div>
+            <div class="result-item">
+              <strong>04</strong>
+              <span>数据放大：投流ROI、爆款复用、转化复盘。</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="result">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">01 / Result First</div>
+            <h2>先定义结果：我们到底要什么</h2>
+          </div>
+          <p>
+            如果目标是带货和商单，就不能只用播放量判断工作价值，要看内容是否推动购买、合作和客户信任。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon green">货</div>
+            <h3>带货结果</h3>
+            <p>用户看完内容后，愿意点击、收藏、咨询、下单。</p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>产品排行榜有人看。</span></div>
+              <div class="list-item"><i>✓</i><span>视频能讲清楚为什么值得买。</span></div>
+              <div class="list-item"><i>✓</i><span>评论区有购买问题和使用咨询。</span></div>
+              <div class="list-item"><i>✓</i><span>有明确成交路径和商品承接页。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon pink">单</div>
+            <h3>商单结果</h3>
+            <p>品牌方看完账号和案例后，愿意询价、沟通、投放、复购。</p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>客户网站能展示账号价值。</span></div>
+              <div class="list-item"><i>✓</i><span>有清楚的合作形式和报价逻辑。</span></div>
+              <div class="list-item"><i>✓</i><span>有成功案例和数据证明。</span></div>
+              <div class="list-item"><i>✓</i><span>商务能快速拿资料去成交。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon orange">增</div>
+            <h3>增长结果</h3>
+            <p>好内容能被识别、被投流放大、被复用成栏目和销售资产。</p>
+            <div class="list">
+              <div class="list-item"><i>✓</i><span>有效选题持续复用。</span></div>
+              <div class="list-item"><i>✓</i><span>高转化视频能二次投流。</span></div>
+              <div class="list-item"><i>✓</i><span>数据能反推选题和封面。</span></div>
+              <div class="list-item"><i>✓</i><span>账号形成稳定商业价值。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>核心判断标准</h3>
+          <p>
+            一条视频如果不能帮助用户做购买决策，不能帮助品牌理解我们的价值，不能被数据复盘和放大，就不是本阶段最重要的视频。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reverse">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">02 / Reverse Path</div>
+            <h2>从结果反推：必须做的关键链路</h2>
+          </div>
+          <p>
+            带货和商单不是发布后自然发生的，而是从产品选择、内容表达、承接页面、客户资料和数据运营共同反推出来的。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>最终结果</th>
+                <th>必须先具备什么</th>
+                <th>要做的最小动作</th>
+                <th>核心交付物</th>
+                <th>主负责人</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill green">带货成交</span></td>
+                <td>
+                  用户知道该买什么、为什么买、在哪里买。
+                </td>
+                <td>
+                  每周确定一批重点带货产品，做排行榜、测评、避坑、购买建议内容。
+                </td>
+                <td>
+                  产品排行榜、带货视频、购买理由表、商品链接承接。
+                </td>
+                <td>创作一号位 / 运营</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill pink">商单成交</span></td>
+                <td>
+                  品牌方知道我们能做什么、做得怎么样、合作有什么价值。
+                </td>
+                <td>
+                  搭建客户网站，整理账号资源、合作案例、报价方案和联系方式。
+                </td>
+                <td>
+                  客户网站、商单案例页、合作方案、账号数据包。
+                </td>
+                <td>商务 / 运营 / 项目负责人</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">内容转化</span></td>
+                <td>
+                  视频必须解决购买问题，而不是只介绍产品参数。
+                </td>
+                <td>
+                  每条重点视频必须回答：适合谁、不适合谁、和竞品比怎么样、怎么买不亏。
+                </td>
+                <td>
+                  转化型脚本模板、标题封面、评论区引导话术。
+                </td>
+                <td>文案 / 创作一号位</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill purple">数据放大</span></td>
+                <td>
+                  知道哪条视频值得投、哪类选题值得继续做。
+                </td>
+                <td>
+                  每周复盘点击、留存、商品点击、咨询、商单线索，选择内容投流。
+                </td>
+                <td>
+                  数据周报、投流记录表、有效选题复用清单。
+                </td>
+                <td>运营负责人</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="priority">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">03 / Most Important Work</div>
+            <h2>最简最重要的工作安排</h2>
+          </div>
+          <p>
+            当前阶段不要把任务做复杂，只抓这5件事。其他事情如果不能服务带货和商单，优先级都往后放。
+          </p>
+        </div>
+
+        <div class="priority">
+          <div class="priority-row">
+            <div class="priority-num">1</div>
+            <div class="priority-main">
+              <strong>每周确定重点带货产品池</strong>
+              <span>
+                先选产品，再做内容。产品要按转化潜力排序，不是看到什么拍什么。
+                家电优先围绕大家电、清洁家电、环境家电；新增品类围绕影视音频、厨电设备。
+              </span>
+            </div>
+            <div class="priority-owner">
+              <strong>负责人：</strong>创作一号位 + 运营<br />
+              <strong>交付：</strong>每周重点产品池、产品优先级、带货理由。
+            </div>
+          </div>
+
+          <div class="priority-row">
+            <div class="priority-num">2</div>
+            <div class="priority-main">
+              <strong>每周做转化型内容，而不是普通内容</strong>
+              <span>
+                视频必须围绕购买决策设计：谁适合买、解决什么痛点、和竞品比强在哪、价格是否值得、怎么买不后悔。
+              </span>
+            </div>
+            <div class="priority-owner">
+              <strong>负责人：</strong>文案 + 创作一号位<br />
+              <strong>交付：</strong>转化型脚本、购买建议、标题封面。
+            </div>
+          </div>
+
+          <div class="priority-row">
+            <div class="priority-num">3</div>
+            <div class="priority-main">
+              <strong>尽快上线粉丝产品排行榜网站</strong>
+              <span>
+                粉丝网站不是展示公司用的，而是帮助用户快速决策：哪个产品值得买、不同预算怎么选、同类产品怎么排名。
+              </span>
+            </div>
+            <div class="priority-owner">
+              <strong>负责人：</strong>项目负责人 + 运营<br />
+              <strong>交付：</strong>排行榜页、品类页、产品推荐理由、购买入口。
+            </div>
+          </div>
+
+          <div class="priority-row">
+            <div class="priority-num">4</div>
+            <div class="priority-main">
+              <strong>尽快上线客户商单合作网站</strong>
+              <span>
+                客户网站要让品牌方快速理解：超红传媒有哪些账号、能做哪些内容、过往案例如何、合作怎么推进。
+              </span>
+            </div>
+            <div class="priority-owner">
+              <strong>负责人：</strong>商务 + 项目负责人<br />
+              <strong>交付：</strong>客户首页、账号矩阵、案例页、合作形式、联系方式。
+            </div>
+          </div>
+
+          <div class="priority-row">
+            <div class="priority-num">5</div>
+            <div class="priority-main">
+              <strong>运营建立投流和转化数据周报</strong>
+              <span>
+                运营不只是发布视频，要负责判断哪条内容值得放大、哪个产品值得继续推、哪个商单方向值得重点开发。
+              </span>
+            </div>
+            <div class="priority-owner">
+              <strong>负责人：</strong>运营负责人<br />
+              <strong>交付：</strong>数据周报、投流记录、带货转化表、商单线索表。
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>一句话执行原则</h3>
+          <p>
+            先有产品和商业目标，再做选题；先有转化路径，再做视频；先有数据判断，再决定投流和复用。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="weekly">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">04 / Weekly Execution</div>
+            <h2>每周执行表：只检查这些</h2>
+          </div>
+          <p>
+            周会不要泛泛复盘播放量，只围绕带货、商单、转化、投流检查。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>周度动作</th>
+                <th>必须完成什么</th>
+                <th>检查指标</th>
+                <th>负责人</th>
+                <th>周会只问一句话</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill green">产品池</span></td>
+                <td>
+                  确定本周重点带货产品，按转化潜力排序。
+                </td>
+                <td>
+                  产品数量、优先级、佣金/合作价值、用户需求强度。
+                </td>
+                <td>创作一号位 / 运营</td>
+                <td>
+                  本周最值得推的产品是哪几个，为什么？
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill orange">转化视频</span></td>
+                <td>
+                  围绕重点产品制作测评、避坑、横评、排行榜、购买建议内容。
+                </td>
+                <td>
+                  点击率、完播率、评论购买问题、商品点击、收藏。
+                </td>
+                <td>文案 / 剪辑 / 一号位</td>
+                <td>
+                  这条视频有没有让用户更想买、更会买？
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill pink">商单资料</span></td>
+                <td>
+                  更新客户网站、案例页、账号数据和合作方案。
+                </td>
+                <td>
+                  客户咨询数、报价次数、方案发送数、成交进度。
+                </td>
+                <td>商务 / 运营</td>
+                <td>
+                  品牌方看完后，是否能立刻知道怎么合作？
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill purple">投流放大</span></td>
+                <td>
+                  选择高潜内容进行小额测试投流，记录成本和效果。
+                </td>
+                <td>
+                  投流成本、播放成本、互动成本、商品点击成本、ROI。
+                </td>
+                <td>运营负责人</td>
+                <td>
+                  哪条内容值得继续加预算，哪条必须停止？
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">数据复盘</span></td>
+                <td>
+                  用数据反推下周产品、选题、封面、脚本和投流方向。
+                </td>
+                <td>
+                  带货转化、商单线索、内容表现、投流效果。
+                </td>
+                <td>运营 / 一号位</td>
+                <td>
+                  下周必须复制什么，必须改掉什么？
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h3>周会最终输出</h3>
+          <p>
+            每周会后只输出一张表：
+            下周重点产品、对应视频选题、转化卖点、承接页面、是否投流、商单机会、负责人、交付时间。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">05 / Daily Minimum Actions</div>
+            <h2>每日最小动作</h2>
+          </div>
+          <p>
+            如果每天只能做最少的事情，就做下面这些。它们直接影响带货和商单。
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div class="icon">选</div>
+            <h3>一号位</h3>
+            <p>每天确认内容是否服务重点产品和商单方向。</p>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>看产品池优先级。</span></div>
+              <div class="list-item"><i>2</i><span>确认视频是否有购买理由。</span></div>
+              <div class="list-item"><i>3</i><span>决定哪些选题继续做成系列。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon orange">写</div>
+            <h3>文案</h3>
+            <p>每天把内容从介绍型改成决策型。</p>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>明确适合谁、不适合谁。</span></div>
+              <div class="list-item"><i>2</i><span>写清楚对比和购买建议。</span></div>
+              <div class="list-item"><i>3</i><span>标题要体现痛点和结果。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon purple">剪</div>
+            <h3>剪辑</h3>
+            <p>每天保证用户看得下去、看得懂、愿意行动。</p>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>前30秒给购买冲突。</span></div>
+              <div class="list-item"><i>2</i><span>关键卖点必须有画面。</span></div>
+              <div class="list-item"><i>3</i><span>结尾强化购买建议。</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon green">投</div>
+            <h3>运营</h3>
+            <p>每天看数据，判断内容是否值得放大。</p>
+            <div class="list">
+              <div class="list-item"><i>1</i><span>记录商品点击和咨询。</span></div>
+              <div class="list-item"><i>2</i><span>筛选可投流内容。</span></div>
+              <div class="list-item"><i>3</i><span>更新商单线索和数据周报。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">06 / Stop Doing</div>
+            <h2>停止做低价值动作</h2>
+          </div>
+          <p>
+            结果导向不是多做，而是少做无效动作，把精力集中在能带来成交和商单的事情上。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>低价值动作</th>
+                <th>为什么要减少</th>
+                <th>替换成什么</th>
+                <th>判断标准</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill red">临时想选题</span></td>
+                <td>容易脱离产品和商业目标，视频做完没有转化。</td>
+                <td>从重点产品池反推选题。</td>
+                <td>这个选题能不能带货或服务商单？</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">只讲参数</span></td>
+                <td>用户不缺参数，缺购买判断。</td>
+                <td>讲场景、对比、避坑、购买建议。</td>
+                <td>用户看完是否知道该不该买？</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">只看播放量</span></td>
+                <td>播放高不代表能成交，也不代表能接商单。</td>
+                <td>同时看商品点击、咨询、收藏、评论、商单线索。</td>
+                <td>这条视频有没有产生商业价值？</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">没有承接页面</span></td>
+                <td>用户想买或客户想合作时，没有下一步路径。</td>
+                <td>建设粉丝排行榜网站和客户商单网站。</td>
+                <td>用户和客户是否能快速找到入口？</td>
+              </tr>
+
+              <tr>
+                <td><span class="pill red">盲目投流</span></td>
+                <td>没有数据判断，容易浪费预算。</td>
+                <td>先小额测试，再根据转化决定是否加预算。</td>
+                <td>投流后是否提升有效点击和转化？</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h3>最终工作口径</h3>
+          <p>
+            超红传媒当前最重要的工作，不是做更多视频，而是做更能带货、更能拿商单、更能被数据放大的视频。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>超红传媒｜结果导向带货与商单执行看板</strong>
+      <br />
+      从带货成交、商单成交、内容转化、投流放大反推最简最重要的工作安排。
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    const savedTheme = localStorage.getItem("chaohong-result-board-theme");
+
+    if (savedTheme) {
+      root.setAttribute("data-theme", savedTheme);
+      updateTheme(savedTheme);
+    }
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("chaohong-result-board-theme", next);
+      updateTheme(next);
+    });
+
+    function updateTheme(theme) {
+      if (theme === "dark") {
+        icon.textContent = "☀️";
+        text.textContent = "浅色模式";
+      } else {
+        icon.textContent = "🌙";
+        text.textContent = "深色模式";
+      }
+    }
+  </script>
+</body>
+</html>
