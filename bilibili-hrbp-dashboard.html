@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>B站家电博主独立HRBP驾驶舱</title>
+<style>
+  :root{
+    --bg:#061827;
+    --panel:#0d2438;
+    --panel2:#102f49;
+    --line:rgba(64,196,255,.28);
+    --blue:#40c4ff;
+    --cyan:#22d3ee;
+    --green:#34d399;
+    --yellow:#fbbf24;
+    --red:#fb7185;
+    --purple:#a78bfa;
+    --text:#eaf7ff;
+    --muted:#8fb3c8;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 10% 0%,rgba(64,196,255,.22),transparent 28%),
+      radial-gradient(circle at 90% 10%,rgba(167,139,250,.16),transparent 28%),
+      linear-gradient(180deg,#020914,#061827 55%,#020617);
+  }
+  .wrap{max-width:1480px;margin:auto;padding:24px}
+  .top{
+    display:flex;justify-content:space-between;gap:18px;align-items:center;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:22px 24px;
+    background:linear-gradient(135deg,rgba(13,36,56,.96),rgba(16,47,73,.72));
+    box-shadow:0 0 36px rgba(64,196,255,.12);
+  }
+  h1{margin:0;font-size:30px}
+  .sub{margin-top:8px;color:var(--muted);font-size:14px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .tag{
+    padding:7px 11px;
+    border-radius:999px;
+    border:1px solid rgba(64,196,255,.3);
+    background:rgba(2,6,23,.46);
+    font-size:12px;
+    color:#bfdbfe;
+  }
+  .kpis{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin:18px 0;
+  }
+  .kpi,.panel{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(13,36,56,.94),rgba(5,15,28,.92));
+    border-radius:22px;
+    box-shadow:0 18px 50px rgba(0,0,0,.25);
+  }
+  .kpi{padding:16px}
+  .kpi small{color:var(--muted)}
+  .kpi strong{display:block;margin-top:8px;font-size:28px}
+  .kpi p{margin:6px 0 0;color:#93c5fd;font-size:12px}
+  .grid{
+    display:grid;
+    grid-template-columns:1.05fr 1.4fr 1.05fr;
+    gap:18px;
+  }
+  .bottom{
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1fr;
+    gap:18px;
+    margin-top:18px;
+  }
+  .panel{padding:18px;position:relative;overflow:hidden}
+  .panel h2{
+    margin:0 0 14px;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .panel h2:before{
+    content:"";
+    width:8px;height:18px;border-radius:8px;
+    background:var(--blue);
+    box-shadow:0 0 16px var(--blue);
+  }
+  .task{
+    display:grid;
+    grid-template-columns:22px 1fr auto;
+    gap:10px;
+    align-items:center;
+    padding:11px 12px;
+    border-radius:15px;
+    background:rgba(15,35,55,.82);
+    border:1px solid rgba(148,163,184,.14);
+    margin-bottom:10px;
+  }
+  .dot{
+    width:11px;height:11px;border-radius:50%;
+    background:currentColor;
+    box-shadow:0 0 12px currentColor;
+  }
+  .task strong{font-size:14px}
+  .task small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+  .badge{
+    padding:4px 8px;border-radius:999px;
+    font-size:11px;white-space:nowrap;
+    color:#bae6fd;
+    border:1px solid rgba(64,196,255,.28);
+    background:rgba(64,196,255,.1);
+  }
+  .blue{color:var(--blue)}
+  .cyan{color:var(--cyan)}
+  .green{color:var(--green)}
+  .yellow{color:var(--yellow)}
+  .red{color:var(--red)}
+  .purple{color:var(--purple)}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+  .card{
+    padding:13px;
+    border-radius:16px;
+    background:rgba(15,35,55,.72);
+    border:1px solid rgba(148,163,184,.15);
+  }
+  .card h3{margin:0 0 7px;font-size:14px}
+  .card p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  th{
+    text-align:left;
+    color:#93c5fd;
+    padding:10px 8px;
+    border-bottom:1px solid rgba(64,196,255,.24);
+  }
+  td{
+    padding:10px 8px;
+    color:#dbeafe;
+    border-bottom:1px solid rgba(148,163,184,.12);
+    vertical-align:top;
+  }
+  .alert{
+    border-color:rgba(251,113,133,.36);
+    background:rgba(251,113,133,.07);
+  }
+  .warn{
+    border-color:rgba(251,191,36,.36);
+    background:rgba(251,191,36,.07);
+  }
+  .full{margin-top:18px}
+  .summary{
+    margin-top:18px;
+    padding:18px 20px;
+    border-radius:22px;
+    border:1px solid rgba(64,196,255,.32);
+    background:linear-gradient(135deg,rgba(64,196,255,.12),rgba(167,139,250,.1));
+    line-height:1.75;
+    color:#dbeafe;
+    font-size:14px;
+  }
+  @media(max-width:1100px){
+    .grid,.bottom,.kpis{grid-template-columns:1fr}
+    .top{flex-direction:column;align-items:flex-start}
+    .tags{justify-content:flex-start}
+  }
+  @media(max-width:650px){
+    .wrap{padding:14px}
+    h1{font-size:24px}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>B站家电博主团队 · 独立HRBP组织驾驶舱</h1>
+      <div class="sub">适用：家电测评UP主 / 家居家电账号 / 科技生活类账号 / B站+抖音+小红书矩阵团队</div>
+    </div>
+    <div class="tags">
+      <span class="tag">核心：真实测评</span>
+      <span class="tag">重点：内容信任</span>
+      <span class="tag">场景：测评+商单+直播</span>
+      <span class="tag">优先级：交付 &gt; 招聘 &gt; 合规 &gt; 激励</span>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi">
+      <small>内容交付健康度</small>
+      <strong class="green">≥85%</strong>
+      <p>选题、拍摄、剪辑、发布准时率</p>
+    </div>
+    <div class="kpi">
+      <small>核心岗位招聘响应</small>
+      <strong class="cyan">7D</strong>
+      <p>7天出有效候选人</p>
+    </div>
+    <div class="kpi">
+      <small>测评可信度红线</small>
+      <strong class="red">0</strong>
+      <p>虚假测评、未披露合作、数据造假</p>
+    </div>
+    <div class="kpi">
+      <small>关键人才风险</small>
+      <strong class="yellow">≤2人</strong>
+      <p>编导、剪辑、商务、测评执行</p>
+    </div>
+    <div class="kpi">
+      <small>商业转化监控</small>
+      <strong class="purple">周更</strong>
+      <p>商单、直播、带货、人效复盘</p>
+    </div>
+  </section>
+
+  <main class="grid">
+
+    <section class="panel">
+      <h2>一、HRBP核心职责</h2>
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>保障内容生产不断档</strong>
+          <small>选题、样机、实测、拍摄、剪辑、封面、发布全链路不卡人</small>
+        </div>
+        <span class="badge">交付</span>
+      </div>
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>快速补齐关键岗位</strong>
+          <small>编导、测评执行、剪辑、摄影、封面、商务、直播运营</small>
+        </div>
+        <span class="badge">招聘</span>
+      </div>
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>建立绩效与奖金机制</strong>
+          <small>把播放、三连、涨粉、商单、直播转化和个人贡献挂钩</small>
+        </div>
+        <span class="badge">激励</span>
+      </div>
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>控制测评与商单风险</strong>
+          <small>广告法、商单披露、样机归属、素材版权、账号权限</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>二、每日 / 每周作战清单</h2>
+      <div class="task">
+        <span class="dot blue"></span>
+        <div>
+          <strong>检查B站内容排期</strong>
+          <small>本周几条视频？哪条卡在样机、脚本、拍摄、剪辑或审核？</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>跟进样机与测评场地</strong>
+          <small>家电到货、安装、退换、测试环境、安全用电、拍摄空间</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>更新招聘漏斗</strong>
+          <small>Boss直聘、猎聘、脉脉、B站私信、小红书、剪辑社群候选人</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>复盘爆款与低效内容</strong>
+          <small>CTR、完播率、三连率、评论情绪、涨粉、收藏、转化</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>识别团队疲劳和离职风险</strong>
+          <small>连续大促、618/双11、直播、加班剪辑、商务催稿压力</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>三、关键岗位雷达</h2>
+      <div class="cards">
+        <div class="card">
+          <h3 class="cyan">选题/编导</h3>
+          <p>懂B站语境、家电痛点、消费决策、脚本结构和评论区情绪。</p>
+        </div>
+        <div class="card">
+          <h3 class="green">测评执行</h3>
+          <p>负责拆箱、安装、测试记录、数据留档、样机管理。</p>
+        </div>
+        <div class="card">
+          <h3 class="blue">摄影/灯光</h3>
+          <p>适配大件家电、家居场景、对比实验和细节特写。</p>
+        </div>
+        <div class="card">
+          <h3 class="purple">剪辑/包装</h3>
+          <p>控制节奏、信息密度、字幕、图表、测评结论呈现。</p>
+        </div>
+        <div class="card">
+          <h3 class="yellow">封面/标题</h3>
+          <p>提升点击率，不夸大、不标题党，保持信任感。</p>
+        </div>
+        <div class="card">
+          <h3 class="green">商务/媒介</h3>
+          <p>对接品牌、报价、排期、回款、合作边界和复购。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>四、B站家电内容绩效指标</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>岗位</th>
+            <th>核心指标</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>编导</td>
+            <td>选题命中率 / 完播率 / 评论有效信息 / 爆款率 / 返工率</td>
+          </tr>
+          <tr>
+            <td>测评执行</td>
+            <td>测试准确性 / 数据留档 / 样机管理 / 安全事故为0 / 结论可靠性</td>
+          </tr>
+          <tr>
+            <td>剪辑</td>
+            <td>交付速度 / 返工率 / 信息清晰度 / 前30秒留存 / 字幕错误率</td>
+          </tr>
+          <tr>
+            <td>封面标题</td>
+            <td>CTR / A-B测试胜率 / 标题合规 / 风格稳定性</td>
+          </tr>
+          <tr>
+            <td>商务</td>
+            <td>商单金额 / 回款率 / 品牌复购 / 毛利 / 合作边界控制</td>
+          </tr>
+          <tr>
+            <td>直播运营</td>
+            <td>GMV / 转化率 / 退货率 / 客诉率 / 话术合规</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>五、招聘配置清单</h2>
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>作品集优先</strong>
+          <small>剪辑、封面、编导必须看B站案例或实战测试</small>
+        </div>
+        <span class="badge">必做</span>
+      </div>
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>岗位测试贴近真实业务</strong>
+          <small>给一个洗地机/冰箱/空调选题，限时做脚本或剪辑片段</small>
+        </div>
+        <span class="badge">实测</span>
+      </div>
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>重点看消费理解</strong>
+          <small>是否懂参数、体验、痛点、价格带和用户决策链路</small>
+        </div>
+        <span class="badge">筛选</span>
+      </div>
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>候选人渠道</strong>
+          <small>Boss直聘 / 猎聘 / 脉脉 / B站私信 / 小红书 / 剪辑社群 / 校招</small>
+        </div>
+        <span class="badge">渠道</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>六、合规与风险警报</h2>
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>商单披露</strong>
+          <small>合作内容、置换、赞助、带货利益关系要有内部记录</small>
+        </div>
+        <span class="badge">高</span>
+      </div>
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>测评真实性</strong>
+          <small>禁止编造数据、摆拍结论、未测试就推荐</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>广告法与极限词</strong>
+          <small>避免“第一、最强、永久、绝对”等高风险表达</small>
+        </div>
+        <span class="badge">中</span>
+      </div>
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>样机与账号权限</strong>
+          <small>样机入库、归还、处置留痕；B站账号权限分级</small>
+        </div>
+        <span class="badge">中</span>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>七、30 / 60 / 90天建设路径</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>HRBP动作</th>
+            <th>交付物</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0-30天</td>
+            <td>盘点团队、岗位、账号、样机、合同、内容流程、商单流程</td>
+            <td>组织图 / 岗位表 / 风险清单 / 招聘优先级</td>
+          </tr>
+          <tr>
+            <td>31-60天</td>
+            <td>建立招聘标准、面试题库、入职SOP、测评流程、绩效指标</td>
+            <td>岗位画像 / 面试评分表 / 测评SOP / 绩效表</td>
+          </tr>
+          <tr>
+            <td>61-90天</td>
+            <td>建立奖金方案、人才梯队、核心岗位备份、月度人效复盘</td>
+            <td>奖金机制 / 人才地图 / 备份名单 / HR数据看板</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>八、组织效率清单</h2>
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>每条视频必须有Owner</strong>
+          <small>选题、样机、脚本、拍摄、剪辑、封面、发布、复盘</small>
+        </div>
+        <span class="badge">RACI</span>
+      </div>
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>建立测评资料库</strong>
+          <small>参数、价格、竞品、测试数据、素材、品牌沟通记录</small>
+        </div>
+        <span class="badge">资产</span>
+      </div>
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>UP主减少低价值审批</strong>
+          <small>只盯选题方向、结论可信度、重要商单和核心人才</small>
+        </div>
+        <span class="badge">提效</span>
+      </div>
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>大促前置排班</strong>
+          <small>618、双11、双12、年货节提前4-6周排人和排内容</small>
+        </div>
+        <span class="badge">节点</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>九、最小工具包</h2>
+      <div class="cards">
+        <div class="card"><h3>岗位说明书</h3><p>明确产出、协作、考核口径。</p></div>
+        <div class="card"><h3>面试评分表</h3><p>统一作品、能力、审美、协作标准。</p></div>
+        <div class="card"><h3>测评SOP</h3><p>测试方法、数据留档、结论审核。</p></div>
+        <div class="card"><h3>商单流程表</h3><p>报价、排期、脚本确认、回款。</p></div>
+        <div class="card"><h3>样机台账</h3><p>到货、安装、使用、归还、处置。</p></div>
+        <div class="card"><h3>离职交接表</h3><p>账号、素材、客户、项目、设备回收。</p></div>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="panel full">
+    <h2>十、月度指挥表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>模块</th>
+          <th>每月必问</th>
+          <th>HRBP输出</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>内容人效</td>
+          <td>人力成本是否匹配播放、涨粉、商单和直播收益？</td>
+          <td>增员 / 外包 / 优化建议</td>
+        </tr>
+        <tr>
+          <td>人才稳定</td>
+          <td>谁是核心人才？谁过载？谁有离职风险？</td>
+          <td>1v1记录 / 保留计划 / 替补名单</td>
+        </tr>
+        <tr>
+          <td>招聘质量</td>
+          <td>哪些岗位难招？哪些渠道有效？试用期通过率如何？</td>
+          <td>渠道评分 / 岗位画像更新</td>
+        </tr>
+        <tr>
+          <td>绩效激励</td>
+          <td>爆款贡献者是否被奖励？低绩效是否被辅导？</td>
+          <td>奖金建议 / PIP计划 / 晋升建议</td>
+        </tr>
+        <tr>
+          <td>合规风险</td>
+          <td>商单、样机、版权、广告法、账号权限是否安全？</td>
+          <td>风险清单 / 整改截止日</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="summary">
+    <strong>驾驶舱结论：</strong>
+    B站家电博主团队的独立HRBP，不是传统行政HR，而是“内容信任与组织效率控制塔”。
+    重点抓四件事：稳定内容交付、补齐专业人才、守住测评与商单合规、用绩效激励放大爆款和商业化。
+  </div>
+
+</div>
+</body>
+</html>
