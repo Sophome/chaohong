@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>B站长视频家电领域媒体包｜Media Kit</title>
+
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --bg-soft: #eef3f9;
+      --card: rgba(255, 255, 255, 0.86);
+      --card-strong: rgba(255, 255, 255, 0.98);
+      --text: #111827;
+      --muted: #5d6b82;
+      --border: rgba(17, 24, 39, 0.1);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+
+      --blue: #00aeec;
+      --pink: #fb7299;
+      --green: #20c997;
+      --yellow: #f59e0b;
+      --purple: #7c3aed;
+      --red: #ef4444;
+
+      --hero-gradient:
+        radial-gradient(circle at 8% 8%, rgba(0, 174, 236, 0.2), transparent 30%),
+        radial-gradient(circle at 92% 4%, rgba(251, 114, 153, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 82%, rgba(124, 58, 237, 0.14), transparent 35%),
+        linear-gradient(135deg, #f9fbff 0%, #eef6fb 48%, #fff5f8 100%);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #07111f;
+      --bg-soft: #0d1828;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.13);
+      --text: #f5f7fb;
+      --muted: #aeb8c8;
+      --border: rgba(255, 255, 255, 0.13);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+
+      --hero-gradient:
+        radial-gradient(circle at 8% 8%, rgba(0, 174, 236, 0.35), transparent 30%),
+        radial-gradient(circle at 92% 4%, rgba(251, 114, 153, 0.3), transparent 30%),
+        radial-gradient(circle at 50% 82%, rgba(139, 124, 246, 0.28), transparent 35%),
+        linear-gradient(135deg, #06111f 0%, #0a1020 45%, #101827 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--hero-gradient);
+      color: var(--text);
+      line-height: 1.75;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 16px;
+      z-index: 99;
+      width: min(1180px, calc(100% - 40px));
+      margin: 16px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      box-shadow: 0 12px 28px rgba(0, 174, 236, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--card-strong);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      padding: 72px 0 42px;
+    }
+
+    .hero-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      backdrop-filter: blur(16px);
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--text), var(--blue) 35%, var(--pink) 76%, var(--text));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 780px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: 900;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      border: none;
+      color: #fff;
+    }
+
+    .glass {
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+    }
+
+    .profile-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -80px auto auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(0,174,236,0.36), transparent 70%);
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      box-shadow: 0 18px 40px rgba(0, 174, 236, 0.22);
+      position: relative;
+    }
+
+    .profile-card h3 {
+      margin: 18px 0 6px;
+      font-size: 26px;
+      position: relative;
+    }
+
+    .profile-card p {
+      position: relative;
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+      position: relative;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(127, 127, 127, 0.1);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      margin: 8px 0 10px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 900px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .cards.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .card.equal {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      margin: 10px 0 8px;
+      font-size: 21px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card-desc {
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-start;
+      padding-top: 14px;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(0,174,236,0.22), rgba(251,114,153,0.22));
+      font-size: 23px;
+      flex: 0 0 auto;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(0, 174, 236, 0.13);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .quote {
+      padding: 30px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(0,174,236,0.16), rgba(251,114,153,0.14));
+      border: 1px solid var(--border);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .quote span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 400;
+      margin-top: 12px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .proof {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .proof span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .packages {
+      display: grid;
+      gap: 18px;
+    }
+
+    .package {
+      display: grid;
+      grid-template-columns: 96px 1fr 240px;
+      gap: 22px;
+      padding: 26px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.06);
+    }
+
+    .package-no {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      border-radius: 23px;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      color: white;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 16px 36px rgba(0, 174, 236, 0.22);
+    }
+
+    .package h3 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+
+    .package p {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 15px;
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .deliverable {
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: rgba(127, 127, 127, 0.1);
+      color: var(--text);
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .deliverable::before {
+      content: "✓";
+      color: var(--green);
+      margin-right: 8px;
+      font-weight: 900;
+    }
+
+    .price-box {
+      border-radius: 22px;
+      background: rgba(127, 127, 127, 0.1);
+      border: 1px solid var(--border);
+      padding: 18px;
+      align-self: start;
+    }
+
+    .price-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .price-box strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 23px;
+      line-height: 1.25;
+    }
+
+    .price-box small {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+    }
+
+    th,
+    td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--text);
+      background: rgba(127, 127, 127, 0.1);
+      font-size: 15px;
+    }
+
+    td {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .process-step {
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .process-step strong {
+      display: block;
+      color: var(--blue);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-card h3 {
+      font-size: 26px;
+      margin: 0 0 10px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-item {
+      padding: 13px 15px;
+      border-radius: 16px;
+      background: rgba(127, 127, 127, 0.1);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .info-item strong {
+      color: var(--text);
+      margin-right: 8px;
+    }
+
+    .footer {
+      padding: 50px 0 80px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        border-radius: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .cards,
+      .cards.two,
+      .cards.four,
+      .contact,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverables {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        letter-spacing: -1.4px;
+      }
+
+      .card.equal {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page,
+      .nav {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-logo">B</div>
+      <span>家电长视频媒体包</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#profile">账号定位</a>
+      <a href="#value">合作价值</a>
+      <a href="#packages">合作套餐</a>
+      <a href="#proof">投放保障</a>
+      <a href="#contact">商务联系</a>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button">
+      <span id="themeIcon">🌙</span>
+      <span id="themeText">深色模式</span>
+    </button>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge"><span></span>Bilibili Home Appliance Long-form Video Media Kit</div>
+
+          <h1>
+            B站长视频<br />
+            <span class="gradient-text">家电领域媒体包</span>
+          </h1>
+
+          <p>
+            面向家电、智能家居、清洁电器、厨房电器、环境电器、个护电器、数码家居等品牌，
+            提供从深度内容种草、真实测评、新品体验、节点整合营销、年度框架合作，
+            到直播转化与内容咨询数据服务的一站式商单解决方案。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#packages">查看合作方案</a>
+            <a class="btn" href="#contact">获取报价与档期</a>
+          </div>
+        </div>
+
+        <div class="glass profile-card">
+          <div class="avatar">🏠</div>
+
+          <h3>账号名称：XXX家电研究所</h3>
+          <p>
+            B站家电 / 智能生活 / 消费决策类长视频账号。
+            以真实体验、横向对比、参数拆解、消费避坑和场景化测评为核心内容方向，
+            帮助用户更高效地完成家电选购决策。
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>XX万+</strong>
+              <span>B站粉丝量</span>
+            </div>
+            <div class="stat">
+              <strong>XX万+</strong>
+              <span>近30天播放</span>
+            </div>
+            <div class="stat">
+              <strong>XX%</strong>
+              <span>25—40岁消费人群</span>
+            </div>
+            <div class="stat">
+              <strong>XX%</strong>
+              <span>一二线及新一线城市</span>
+            </div>
+          </div>
+
+          <p style="margin-top: 18px;">
+            注：以上为可替换字段，正式对外版本建议填入账号后台真实数据与截图。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profile">
+      <div class="section-title">
+        <div class="eyebrow">01 / Account Positioning</div>
+        <h2>账号定位：家电消费决策型内容账号</h2>
+        <p>
+          家电属于高客单价、强功能决策、重售后体验的品类。用户在购买前通常会经历“搜索信息、比较参数、查看测评、确认场景、等待节点、最终下单”的完整链路。
+          B站长视频能够用更完整的测试过程、更真实的使用场景和更可信的表达方式，帮助品牌把产品价值讲透。
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card equal">
+          <div class="icon">🔍</div>
+          <h3>深度测评</h3>
+          <p class="card-desc">
+            通过真实场景、参数拆解、横向对比、优缺点说明，
+            降低用户理解成本，提升品牌产品力的可信表达。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">冰箱</span>
+            <span class="tag">洗烘套装</span>
+            <span class="tag">扫地机器人</span>
+            <span class="tag">洗地机</span>
+          </div>
+        </div>
+
+        <div class="card equal">
+          <div class="icon">🧪</div>
+          <h3>真实体验</h3>
+          <p class="card-desc">
+            以家庭生活场景作为内容入口，展示产品在真实居住空间、实际使用频率和长期体验中的表现，
+            让卖点从“参数描述”变成“可感知的生活改善”。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">厨房场景</span>
+            <span class="tag">母婴家庭</span>
+            <span class="tag">宠物家庭</span>
+            <span class="tag">小户型</span>
+          </div>
+        </div>
+
+        <div class="card equal">
+          <div class="icon">📊</div>
+          <h3>消费决策</h3>
+          <p class="card-desc">
+            围绕“值不值得买、适合谁买、怎么选不踩坑”，
+            帮助用户完成从种草、对比、收藏、咨询到下单的完整决策链路。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">避坑指南</span>
+            <span class="tag">选购清单</span>
+            <span class="tag">参数科普</span>
+            <span class="tag">节点推荐</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="value">
+      <div class="section-title">
+        <div class="eyebrow">02 / Why Us</div>
+        <h2>品牌为什么适合选择B站家电长视频？</h2>
+        <p>
+          对家电品牌来说，真正的难点不是“让用户知道产品”，而是让用户相信产品、理解差异、认可价格，并在大促节点做出购买决策。
+          长视频能够承担比短平快内容更重的教育、解释和信任建立功能。
+        </p>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>讲清复杂卖点</h3>
+          <p>
+            家电产品通常涉及电机、吸力、能耗、除菌、烘干、智能算法、耗材、噪音等复杂信息。
+            长视频可以用测试、演示和对比把卖点讲透。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛒</div>
+          <h3>影响购买决策</h3>
+          <p>
+            用户在购买高客单家电前，会主动搜索测评和避坑内容。
+            具备搜索沉淀价值的长视频，能持续影响后续购买人群。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>收集真实反馈</h3>
+          <p>
+            弹幕、评论、私信和社群反馈可以帮助品牌了解用户对价格、功能、外观、售后和使用场景的真实疑问。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>形成长尾资产</h3>
+          <p>
+            优质家电长视频不是一次性曝光，而是可被搜索、收藏、转发和反复观看的内容资产，
+            持续为品牌带来认知和线索。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="quote">
+        家电品牌在B站做长视频，不是简单“买一次曝光”，而是用一条内容讲清产品为什么值得买、适合谁买、比竞品强在哪里。
+        <span>
+          核心目标：用专业内容建立信任，用真实场景降低决策成本，用节点组合提高转化效率。
+        </span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">03 / Brand Pain Points</div>
+        <h2>我们帮助品牌解决的关键问题</h2>
+        <p>
+          家电品牌投放内容时，常遇到“卖点讲不清、用户不信任、种草不转化、大促声量不足、内容投完即结束”等问题。
+          我们将内容制作和商业目标绑定，让合作更可衡量、更可复盘。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>品牌常见痛点</th>
+            <th>我们的内容解法</th>
+            <th>可带来的结果</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>产品卖点复杂，用户看不懂</td>
+            <td>用实测、对比、场景演示和结论总结，把参数翻译成用户利益点</td>
+            <td>提升用户理解度，降低购买前的信息阻力</td>
+          </tr>
+
+          <tr>
+            <td>新品缺少可信背书</td>
+            <td>通过深度体验、新品测评、真实使用过程建立第一轮信任</td>
+            <td>增强新品认知，形成可传播的专业内容素材</td>
+          </tr>
+
+          <tr>
+            <td>竞品多，差异化不明显</td>
+            <td>用横向对比、功能拆解、适用人群判断突出产品定位</td>
+            <td>帮助用户理解“为什么选择你，而不是别人”</td>
+          </tr>
+
+          <tr>
+            <td>节点大促缺少内容蓄水</td>
+            <td>提前用长视频种草，短视频强化卖点，直播和社群承接转化</td>
+            <td>提升大促前用户认知与下单效率</td>
+          </tr>
+
+          <tr>
+            <td>投放结束后内容价值衰减</td>
+            <td>制作选购指南、避坑指南、测评横评等具备搜索长尾的内容</td>
+            <td>形成长期可被搜索和复看的内容资产</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">04 / Content Matrix</div>
+        <h2>可合作内容方向</h2>
+        <p>
+          根据品牌推广目标不同，可选择不同内容模型。建议将“种草认知型内容”和“转化决策型内容”组合使用。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>内容类型</th>
+            <th>适用品类</th>
+            <th>内容价值</th>
+            <th>适合目标</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>单品深度测评</td>
+            <td>扫地机器人、洗地机、空气净化器、净水器、吹风机等</td>
+            <td>讲清核心卖点、使用体验、适用人群和购买建议</td>
+            <td>新品种草、卖点教育、专业背书</td>
+          </tr>
+
+          <tr>
+            <td>横向对比评测</td>
+            <td>冰箱、洗衣机、洗烘套装、智能马桶、厨电等</td>
+            <td>通过多品牌对比突出产品差异和选择理由</td>
+            <td>竞争突围、品类教育、转化前置</td>
+          </tr>
+
+          <tr>
+            <td>场景化体验</td>
+            <td>厨房电器、清洁电器、环境电器、母婴家电</td>
+            <td>以真实生活问题切入，展示产品如何解决具体痛点</td>
+            <td>用户共鸣、种草认知、家庭人群触达</td>
+          </tr>
+
+          <tr>
+            <td>选购指南 / 避坑指南</td>
+            <td>全品类适用</td>
+            <td>建立专业认知和用户信任，适合承接搜索流量</td>
+            <td>长尾流量、品牌露出、消费决策影响</td>
+          </tr>
+
+          <tr>
+            <td>节点大促推荐</td>
+            <td>618、双11、年货节重点品类</td>
+            <td>结合价格机制、福利、套装、优惠券，提高购买效率</td>
+            <td>节点转化、站内外种草、直播承接</td>
+          </tr>
+
+          <tr>
+            <td>品牌专题 / 工厂探访</td>
+            <td>大家电、智能家居、高端厨电、技术型品牌</td>
+            <td>展示品牌技术、制造能力、研发实力和长期主义</td>
+            <td>品牌心智、高端形象、信任建设</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="section-title">
+        <div class="eyebrow">05 / Cooperation Packages</div>
+        <h2>五层合作方案</h2>
+        <p>
+          合作从基础商单到年度框架、直播转化和内容咨询逐层递进。
+          品牌可根据预算、推广周期、产品阶段和转化目标灵活选择。
+        </p>
+      </div>
+
+      <div class="packages">
+        <div class="package">
+          <div class="package-no">01</div>
+
+          <div>
+            <h3>第一层：基础商单合作</h3>
+            <p>
+              适合新品首发、单品种草、卖点教育、测评背书。
+              是账号商业现金流基础，也是品牌低门槛试水合作的最佳方式。
+            </p>
+
+            <div class="deliverables">
+              <div class="deliverable">单条B站长视频合作</div>
+              <div class="deliverable">视频口播植入 / 场景露出</div>
+              <div class="deliverable">单品测评 / 新品体验</div>
+              <div class="deliverable">评论区置顶信息 / 购买指引</div>
+              <div class="deliverable">动态预热 / 发布提醒</div>
+              <div class="deliverable">基础数据复盘报告</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <span>参考报价</span>
+            <strong>¥XX,XXX 起</strong>
+            <small>根据视频形式、植入深度、排期、产品寄送和授权范围定价。</small>
+          </div>
+        </div>
+
+        <div class="package">
+          <div class="package-no">02</div>
+
+          <div>
+            <h3>第二层：节点整合营销</h3>
+            <p>
+              适合618、双11、双12、年货节、新品季、装修季等高转化节点。
+              通过长视频建立信任，短视频强化卖点，直播、图文和社群承接转化。
+            </p>
+
+            <div class="deliverables">
+              <div class="deliverable">B站长视频主内容 1—2条</div>
+              <div class="deliverable">短视频切片 3—6条</div>
+              <div class="deliverable">直播专场 / 连麦讲解</div>
+              <div class="deliverable">图文清单 / 动态推荐</div>
+              <div class="deliverable">粉丝群 / 社群福利触达</div>
+              <div class="deliverable">节点战报与复盘报告</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <span>参考报价</span>
+            <strong>¥XX,XXX — ¥XXX,XXX</strong>
+            <small>适合重点节点前2—4周启动，建议提前锁定档期。</small>
+          </div>
+        </div>
+
+        <div class="package">
+          <div class="package-no">03</div>
+
+          <div>
+            <h3>第三层：季度 / 年度框架合作</h3>
+            <p>
+              适合与优质品牌建立长期内容合作关系。
+              通过季度或年度框架锁定内容档期，降低品牌投放波动，提升内容连贯性和用户心智沉淀。
+            </p>
+
+            <div class="deliverables">
+              <div class="deliverable">季度 / 年度内容排期规划</div>
+              <div class="deliverable">每月固定长视频 / 短视频内容</div>
+              <div class="deliverable">新品、节点、大促优先排期</div>
+              <div class="deliverable">品牌栏目共创 / 专题策划</div>
+              <div class="deliverable">用户反馈月度汇总</div>
+              <div class="deliverable">季度策略复盘与优化会议</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <span>参考报价</span>
+            <strong>季度 / 年度定制</strong>
+            <small>建议按内容数量、合作周期、类目独家和数据服务深度综合报价。</small>
+          </div>
+        </div>
+
+        <div class="package">
+          <div class="package-no">04</div>
+
+          <div>
+            <h3>第四层：带货与直播转化</h3>
+            <p>
+              适合价格机制清晰、售后可靠、产品力稳定的品牌和品类。
+              建议用于高认知度产品、节点爆品、组合套装和明确福利机制的产品。
+            </p>
+
+            <div class="deliverables">
+              <div class="deliverable">B站视频挂链 / 商品卡承接</div>
+              <div class="deliverable">直播专场讲解 / 选品推荐</div>
+              <div class="deliverable">节点福利机制设计</div>
+              <div class="deliverable">短视频引流直播间</div>
+              <div class="deliverable">粉丝群限时福利触达</div>
+              <div class="deliverable">转化数据复盘与优化建议</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <span>合作模式</span>
+            <strong>坑位费 + 佣金</strong>
+            <small>适合明确价格优势、库存稳定、客服售后响应及时的品牌。</small>
+          </div>
+        </div>
+
+        <div class="package">
+          <div class="package-no">05</div>
+
+          <div>
+            <h3>第五层：内容咨询与数据服务</h3>
+            <p>
+              适合希望持续优化B站内容表达、产品卖点、用户沟通和节点营销策略的品牌。
+              基于账号内容经验和用户反馈，向品牌输出可执行的内容建议。
+            </p>
+
+            <div class="deliverables">
+              <div class="deliverable">用户评论与弹幕反馈分析</div>
+              <div class="deliverable">家电品类选题趋势洞察</div>
+              <div class="deliverable">产品卖点表达优化建议</div>
+              <div class="deliverable">竞品内容观察与拆解</div>
+              <div class="deliverable">B站内容策略工作坊</div>
+              <div class="deliverable">月度 / 季度数据简报</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <span>参考报价</span>
+            <strong>项目制 / 月费制</strong>
+            <small>适合长期经营B站内容阵地的品牌市场部、电商部和内容团队。</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="section-title">
+        <div class="eyebrow">06 / Delivery Proof</div>
+        <h2>合作保障：让品牌投放更可控</h2>
+        <p>
+          商单合作不是简单发布内容，而是从前期选题、脚本表达、拍摄制作、上线运营到数据复盘的完整项目管理。
+          我们提供清晰的交付标准，帮助品牌降低沟通成本和投放风险。
+        </p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof">
+          <strong>01</strong>
+          <span>前期明确内容目标、植入方式、卖点边界、上线时间和复盘口径。</span>
+        </div>
+
+        <div class="proof">
+          <strong>02</strong>
+          <span>内容以真实体验为基础，兼顾品牌表达与用户信任，不做生硬硬广。</span>
+        </div>
+
+        <div class="proof">
+          <strong>03</strong>
+          <span>发布后配合评论维护、动态预热、社群触达，提高冷启动表现。</span>
+        </div>
+
+        <div class="proof">
+          <strong>04</strong>
+          <span>提供基础数据复盘，可升级为用户反馈分析和内容策略建议。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">07 / KPI Dashboard</div>
+        <h2>可量化交付指标</h2>
+        <p>
+          我们建议品牌不要只看播放量，而应结合曝光、互动、收藏、评论、转化线索和用户反馈综合评估内容价值。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>指标类型</th>
+            <th>可观察数据</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>曝光表现</td>
+            <td>播放量、曝光量、点击率、推荐来源</td>
+            <td>判断标题封面、选题热度和平台推荐表现。</td>
+          </tr>
+
+          <tr>
+            <td>内容质量</td>
+            <td>完播率、平均观看时长、分段流失点</td>
+            <td>判断用户是否愿意看完，内容结构是否有效。</td>
+          </tr>
+
+          <tr>
+            <td>用户兴趣</td>
+            <td>点赞、投币、收藏、转发、弹幕</td>
+            <td>判断用户对产品、观点和内容本身的认可度。</td>
+          </tr>
+
+          <tr>
+            <td>购买意向</td>
+            <td>评论咨询、置顶评论点击、商品卡点击、私信咨询</td>
+            <td>判断内容是否带来真实决策行为和转化线索。</td>
+          </tr>
+
+          <tr>
+            <td>品牌资产</td>
+            <td>搜索长尾播放、合集播放、二次传播、用户正向反馈</td>
+            <td>判断内容是否形成长期可复用的品牌资产。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">08 / Cooperation Process</div>
+        <h2>标准合作流程</h2>
+        <p>
+          建议基础商单预留2—4周制作周期，节点整合营销预留4—8周，年度合作可提前锁定季度档期。
+        </p>
+      </div>
+
+      <div class="process">
+        <div class="process-step">
+          <strong>01</strong>
+          <p>需求沟通：品类、产品、目标、预算、节点、KPI。</p>
+        </div>
+
+        <div class="process-step">
+          <strong>02</strong>
+          <p>方案报价：内容形式、交付物、排期、授权范围。</p>
+        </div>
+
+        <div class="process-step">
+          <strong>03</strong>
+          <p>寄样资料：样机、卖点、价格机制、售后政策。</p>
+        </div>
+
+        <div class="process-step">
+          <strong>04</strong>
+          <p>脚本拍摄：真实体验、场景测试、内容制作。</p>
+        </div>
+
+        <div class="process-step">
+          <strong>05</strong>
+          <p>发布运营：视频上线、评论维护、动态预热。</p>
+        </div>
+
+        <div class="process-step">
+          <strong>06</strong>
+          <p>数据复盘：播放、互动、收藏、反馈、建议。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">09 / Brand Matching</div>
+        <h2>适合合作的品牌与品类</h2>
+        <p>
+          为保证内容质量与用户信任，优先合作产品力稳定、售后体系可靠、价格机制清晰、可提供真实体验样机的品牌。
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card equal">
+          <div class="icon">🏠</div>
+          <h3>大家电</h3>
+          <p class="card-desc">
+            冰箱、洗衣机、干衣机、洗烘套装、电视、空调、中央空调、新风系统、热水器。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">高客单</span>
+            <span class="tag">重决策</span>
+            <span class="tag">适合深度内容</span>
+          </div>
+        </div>
+
+        <div class="card equal">
+          <div class="icon">🍳</div>
+          <h3>厨电与小家电</h3>
+          <p class="card-desc">
+            洗碗机、集成灶、蒸烤箱、空气炸锅、咖啡机、破壁机、电饭煲、净水器。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">场景强</span>
+            <span class="tag">体验感强</span>
+            <span class="tag">适合种草</span>
+          </div>
+        </div>
+
+        <div class="card equal">
+          <div class="icon">🧹</div>
+          <h3>清洁与环境电器</h3>
+          <p class="card-desc">
+            扫地机器人、洗地机、吸尘器、空气净化器、除湿机、加湿器、除螨仪。
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">痛点明确</span>
+            <span class="tag">适合横评</span>
+            <span class="tag">转化潜力高</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-title">
+        <div class="eyebrow">10 / Contact</div>
+        <h2>商务合作联系</h2>
+        <p>
+          欢迎家电、智能家居、清洁电器、厨电、环境电器、个护电器品牌沟通合作。
+          为提升响应效率，请尽量提供产品资料、合作目标、预算区间和期望上线时间。
+        </p>
+      </div>
+
+      <div class="contact">
+        <div class="contact-card">
+          <h3>适合我们的合作</h3>
+          <p>
+            我们更倾向于与重视产品力、真实体验和用户长期信任的品牌合作。
+            内容会兼顾品牌诉求与用户价值，避免生硬植入和过度营销。
+          </p>
+
+          <div class="info-list">
+            <div class="info-item"><strong>合作邮箱：</strong>business@example.com</div>
+            <div class="info-item"><strong>微信联系：</strong>请填写商务微信</div>
+            <div class="info-item"><strong>B站账号：</strong>XXX家电研究所</div>
+            <div class="info-item"><strong>报价有效期：</strong>通常为30天，节点档期另议</div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>需求提交建议</h3>
+          <p>
+            为快速评估合作可行性，建议品牌方首次沟通时提供：
+          </p>
+
+          <div class="info-list">
+            <div class="info-item"><strong>1.</strong>品牌名称、产品型号、核心卖点</div>
+            <div class="info-item"><strong>2.</strong>合作目标：曝光、种草、转化、节点大促或年度合作</div>
+            <div class="info-item"><strong>3.</strong>期望内容形式：测评、植入、直播、整合营销等</div>
+            <div class="info-item"><strong>4.</strong>预算区间、上线时间、是否需要授权投放</div>
+            <div class="info-item"><strong>5.</strong>是否可提供样机、优惠机制、售后说明和数据链路</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="quote">
+        我们希望为品牌提供的不只是一次曝光，而是一套能被用户相信、能被搜索沉淀、能在节点转化的内容资产。
+        <span>
+          合作原则：真实体验、专业表达、用户价值优先、商业目标清晰。
+        </span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        © B站长视频家电领域媒体包 Media Kit｜适用于家电、智能家居、清洁电器、厨电、环境电器、个护电器品牌商单对接。
+      </p>
+      <p>
+        提示：正式对外版本建议补充账号后台截图、粉丝画像、历史爆款链接、合作案例截图、报价有效期和商务联系人二维码。
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const html = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      html.setAttribute("data-theme", savedTheme);
+      updateThemeButton(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const defaultTheme = prefersDark ? "dark" : "light";
+      html.setAttribute("data-theme", defaultTheme);
+      updateThemeButton(defaultTheme);
+    }
+
+    toggle.addEventListener("click", () => {
+      const currentTheme = html.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+      html.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme);
+      updateThemeButton(nextTheme);
+    });
+
+    function updateThemeButton(theme) {
+      if (theme === "dark") {
+        icon.textContent = "🌙";
+        text.textContent = "深色模式";
+      } else {
+        icon.textContent = "☀️";
+        text.textContent = "浅色模式";
+      }
+    }
+  </script>
+</body>
+</html>
