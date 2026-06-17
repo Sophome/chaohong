@@ -252,33 +252,43 @@
     /* ── STATS BAR ── */
     .stats-bar {
       display: flex;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 10px;
+      margin-bottom: 28px;
       flex-wrap: wrap;
     }
     .stat-item {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 20px;
+      border-radius: 10px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       flex: 1;
-      min-width: 150px;
+      min-width: 120px;
       box-shadow: var(--shadow);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
     }
-    .stat-icon { font-size: 1.4rem; }
+    .stat-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(79,110,247,0.16);
+      border-color: var(--accent);
+    }
+    .stat-icon { font-size: 1.25rem; }
     .stat-num {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--accent);
       line-height: 1;
     }
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--text3);
-      margin-top: 2px;
+      margin-top: 1px;
+      white-space: nowrap;
     }
 
     /* ── FOOTER ── */
@@ -322,38 +332,38 @@
       <a href="timeline.html" style="color:var(--accent);font-size:0.82rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">📅 查看更新时间线</a>
     </div>
   <div class="stats-bar">
-    <div class="stat-item">
+    <a class="stat-item" href="#dashboards">
       <span class="stat-icon">🚀</span>
       <div><div class="stat-num">6</div><div class="stat-label">驾驶舱</div></div>
-    </div>
-    <div class="stat-item">
+    </a>
+    <a class="stat-item" href="#buying-guides">
       <span class="stat-icon">🛒</span>
       <div><div class="stat-num">11</div><div class="stat-label">选购指南</div></div>
-    </div>
-    <div class="stat-item">
+    </a>
+    <a class="stat-item" href="#sop">
       <span class="stat-icon">📋</span>
       <div><div class="stat-num">11</div><div class="stat-label">SOP 指南</div></div>
-    </div>
-    <div class="stat-item">
+    </a>
+    <a class="stat-item" href="#project-plans">
       <span class="stat-icon">📊</span>
-      <div><div class="stat-num">9</div><div class="stat-label">项目策划报告</div></div>
-    </div>
-    <div class="stat-item">
+      <div><div class="stat-num">9</div><div class="stat-label">项目策划</div></div>
+    </a>
+    <a class="stat-item" href="#category-plans">
       <span class="stat-icon">🏠</span>
       <div><div class="stat-num">8</div><div class="stat-label">品类策划</div></div>
-    </div>
-    <div class="stat-item">
+    </a>
+    <a class="stat-item" href="#content-strategy">
       <span class="stat-icon">🧠</span>
       <div><div class="stat-num">3</div><div class="stat-label">内容策略</div></div>
-    </div>
-    <div class="stat-item">
+    </a>
+    <a class="stat-item" href="#kol-reports">
       <span class="stat-icon">📈</span>
-      <div><div class="stat-num">7</div><div class="stat-label">达人商单报告</div></div>
-    </div>
+      <div><div class="stat-num">7</div><div class="stat-label">达人商单</div></div>
+    </a>
   </div>
 
   <!-- ⓪ 驾驶舱 -->
-  <div class="section s6">
+  <div class="section s6" id="dashboards">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">驾驶舱</span>
@@ -407,7 +417,7 @@
   </div>
 
   <!-- ⓪·5 选购指南 -->
-  <div class="section s7">
+  <div class="section s7" id="buying-guides">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">选购指南</span>
@@ -496,7 +506,7 @@
   </div>
 
   <!-- ① SOP 指南 -->
-  <div class="section s1">
+  <div class="section s1" id="sop">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">SOP 指南</span>
@@ -585,7 +595,7 @@
   </div>
 
   <!-- ② 项目策划报告 -->
-  <div class="section s2">
+  <div class="section s2" id="project-plans">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">项目策划报告</span>
@@ -660,7 +670,7 @@
   </div>
 
   <!-- ③ 品类策划 -->
-  <div class="section s3">
+  <div class="section s3" id="category-plans">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">品类策划</span>
@@ -728,7 +738,7 @@
   </div>
 
   <!-- ④ 内容策略 -->
-  <div class="section s4">
+  <div class="section s4" id="content-strategy">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">内容策略</span>
@@ -761,7 +771,7 @@
   </div>
 
   <!-- ⑤ 达人商单报告 -->
-  <div class="section s5">
+  <div class="section s5" id="kol-reports">
     <div class="section-header">
       <div class="section-dot"></div>
       <span class="section-title">达人商单报告</span>
