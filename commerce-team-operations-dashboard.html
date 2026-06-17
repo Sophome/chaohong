@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>B站家电商务团队经营驾驶舱</title>
+<style>
+:root{
+  --bg:#050b14;
+  --panel:#0d2235;
+  --panel2:#102b42;
+  --line:rgba(56,189,248,.28);
+  --blue:#38bdf8;
+  --cyan:#22d3ee;
+  --green:#34d399;
+  --yellow:#fbbf24;
+  --red:#fb7185;
+  --purple:#a78bfa;
+  --text:#eaf7ff;
+  --muted:#91a9bd;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(56,189,248,.22),transparent 28%),
+    radial-gradient(circle at 92% 8%,rgba(167,139,250,.16),transparent 30%),
+    linear-gradient(180deg,#020617,#061827 55%,#020617);
+}
+.wrap{max-width:1480px;margin:auto;padding:24px}
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 24px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(13,34,53,.96),rgba(16,43,66,.72));
+  box-shadow:0 0 36px rgba(56,189,248,.13);
+}
+h1{margin:0;font-size:30px}
+.sub{margin-top:8px;color:var(--muted);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.tag{
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid rgba(56,189,248,.32);
+  background:rgba(2,6,23,.45);
+  color:#bfdbfe;
+  font-size:12px;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin:18px 0;
+}
+.kpi,.panel{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(13,34,53,.95),rgba(4,14,27,.93));
+  border-radius:22px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+.kpi{padding:16px}
+.kpi small{color:var(--muted)}
+.kpi strong{display:block;margin-top:8px;font-size:28px}
+.kpi p{margin:6px 0 0;color:#93c5fd;font-size:12px}
+.grid{
+  display:grid;
+  grid-template-columns:1.05fr 1.4fr 1.05fr;
+  gap:18px;
+}
+.bottom{
+  display:grid;
+  grid-template-columns:1.1fr 1fr 1fr;
+  gap:18px;
+  margin-top:18px;
+}
+.panel{padding:18px;overflow:hidden}
+.panel h2{
+  margin:0 0 14px;
+  font-size:17px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.panel h2:before{
+  content:"";
+  width:8px;height:18px;border-radius:8px;
+  background:var(--blue);
+  box-shadow:0 0 16px var(--blue);
+}
+.task{
+  display:grid;
+  grid-template-columns:22px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:11px 12px;
+  border-radius:15px;
+  background:rgba(15,35,55,.82);
+  border:1px solid rgba(148,163,184,.14);
+  margin-bottom:10px;
+}
+.dot{
+  width:11px;height:11px;border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 12px currentColor;
+}
+.task strong{font-size:14px}
+.task small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.badge{
+  padding:4px 8px;border-radius:999px;
+  font-size:11px;white-space:nowrap;
+  color:#bae6fd;
+  border:1px solid rgba(56,189,248,.28);
+  background:rgba(56,189,248,.1);
+}
+.blue{color:var(--blue)}
+.cyan{color:var(--cyan)}
+.green{color:var(--green)}
+.yellow{color:var(--yellow)}
+.red{color:var(--red)}
+.purple{color:var(--purple)}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.card{
+  padding:13px;
+  border-radius:16px;
+  background:rgba(15,35,55,.72);
+  border:1px solid rgba(148,163,184,.15);
+}
+.card h3{margin:0 0 7px;font-size:14px}
+.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+th{
+  text-align:left;
+  color:#93c5fd;
+  padding:10px 8px;
+  border-bottom:1px solid rgba(56,189,248,.24);
+}
+td{
+  padding:10px 8px;
+  color:#dbeafe;
+  border-bottom:1px solid rgba(148,163,184,.12);
+  vertical-align:top;
+}
+.alert{
+  border-color:rgba(251,113,133,.36);
+  background:rgba(251,113,133,.07);
+}
+.warn{
+  border-color:rgba(251,191,36,.36);
+  background:rgba(251,191,36,.07);
+}
+.summary{
+  margin-top:18px;
+  padding:18px 20px;
+  border-radius:22px;
+  border:1px solid rgba(56,189,248,.32);
+  background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(167,139,250,.1));
+  line-height:1.75;
+  color:#dbeafe;
+  font-size:14px;
+}
+@media(max-width:1100px){
+  .grid,.bottom,.kpis{grid-template-columns:1fr}
+  .header{flex-direction:column;align-items:flex-start}
+  .tags{justify-content:flex-start}
+}
+@media(max-width:650px){
+  .wrap{padding:14px}
+  h1{font-size:24px}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div>
+      <h1>B站家电商务团队 · 经营驾驶舱</h1>
+      <div class="sub">适用：商务负责人 / 品牌BD / 媒介对接 / 商单执行 / 直播带货 / 渠道合作 / 回款管理</div>
+    </div>
+    <div class="tags">
+      <span class="tag">目标：收入增长</span>
+      <span class="tag">核心：品牌复购</span>
+      <span class="tag">前提：内容信任</span>
+      <span class="tag">红线：不乱接、不虚假、不拖款</span>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi">
+      <small>月度商单收入</small>
+      <strong class="green">目标制</strong>
+      <p>按品牌合作、带货佣金、直播、整合营销拆分</p>
+    </div>
+    <div class="kpi">
+      <small>品牌复购率</small>
+      <strong class="cyan">≥30%</strong>
+      <p>重点维护高质量、长期合作品牌</p>
+    </div>
+    <div class="kpi">
+      <small>回款完成率</small>
+      <strong class="yellow">≥90%</strong>
+      <p>合同、验收、发票、回款节点闭环</p>
+    </div>
+    <div class="kpi">
+      <small>高风险商单</small>
+      <strong class="red">0单</strong>
+      <p>虚假宣传、强控结论、产品不合规直接拒绝</p>
+    </div>
+    <div class="kpi">
+      <small>商单交付准时率</small>
+      <strong class="purple">≥85%</strong>
+      <p>排期、脚本、拍摄、初稿、发布、数据回传</p>
+    </div>
+  </section>
+
+  <main class="grid">
+
+    <section class="panel">
+      <h2>一、商务团队核心目标</h2>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>把商业收入做稳</strong>
+          <small>建立稳定品牌池，不只靠临时商单和大促冲量。</small>
+        </div>
+        <span class="badge">收入</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>把品牌关系做深</strong>
+          <small>从单次投放升级为年度合作、栏目冠名、直播专场、节点整合营销。</small>
+        </div>
+        <span class="badge">复购</span>
+      </div>
+
+      <div class="task">
+        <span class="dot blue"></span>
+        <div>
+          <strong>把合作需求翻译成内容方案</strong>
+          <small>不能只传话，要把品牌卖点转成B站用户愿意看的内容逻辑。</small>
+        </div>
+        <span class="badge">方案</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>把交付节点管住</strong>
+          <small>报价、合同、脚本、样机、拍摄、审核、发布、复盘、回款全部闭环。</small>
+        </div>
+        <span class="badge">交付</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>把账号信任守住</strong>
+          <small>拒绝强控结论、虚假体验、夸大宣传、与粉丝需求不匹配的合作。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>二、每日 / 每周商务作战清单</h2>
+
+      <div class="task">
+        <span class="dot blue"></span>
+        <div>
+          <strong>每日更新客户跟进表</strong>
+          <small>新增线索、报价中、谈判中、待合同、执行中、待回款、复购机会。</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>每日跟进执行项目</strong>
+          <small>样机是否到位？品牌是否反馈？脚本是否确认？发布是否延期？</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>每周开发品牌客户</strong>
+          <small>冰箱、洗衣机、空调、扫地机、洗地机、净水器、厨电、小家电品牌。</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>每周复盘商单效果</strong>
+          <small>播放、互动、评论情绪、涨粉、转化、品牌满意度、是否可复购。</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>每周检查回款风险</strong>
+          <small>合同、验收单、数据截图、发票、账期、逾期提醒。</small>
+        </div>
+        <span class="badge">回款</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>三、商务岗位雷达</h2>
+      <div class="cards">
+        <div class="card">
+          <h3 class="cyan">商务负责人</h3>
+          <p>负责收入目标、报价体系、品牌策略、重点客户、合作边界和风险决策。</p>
+        </div>
+        <div class="card">
+          <h3 class="green">品牌BD</h3>
+          <p>负责新客户开发、线索转化、提案沟通、报价谈判和年度合作推进。</p>
+        </div>
+        <div class="card">
+          <h3 class="blue">媒介执行</h3>
+          <p>负责合同、排期、样机、品牌反馈、内容节点、数据回传和验收。</p>
+        </div>
+        <div class="card">
+          <h3 class="purple">内容商务策划</h3>
+          <p>负责将品牌卖点转成选题方案、脚本brief、栏目包装和整合营销方案。</p>
+        </div>
+        <div class="card">
+          <h3 class="yellow">直播/带货商务</h3>
+          <p>负责选品、佣金、坑位、价格机制、赠品、库存、客服和售后承接。</p>
+        </div>
+        <div class="card">
+          <h3 class="red">回款/合同管理</h3>
+          <p>负责合同归档、发票、验收、账期提醒、逾期跟进和风险预警。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>四、商务合作流程SOP</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>环节</th>
+            <th>负责人</th>
+            <th>交付标准</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>线索获取</td>
+            <td>BD / 负责人</td>
+            <td>明确品牌、品类、预算、时间、目标、合作形式。</td>
+          </tr>
+          <tr>
+            <td>需求诊断</td>
+            <td>商务 / 策划</td>
+            <td>判断是曝光、种草、转化、口碑修复，还是大促节点营销。</td>
+          </tr>
+          <tr>
+            <td>报价提案</td>
+            <td>商务负责人</td>
+            <td>提供刊例价、组合包、权益清单、交付周期和付款条件。</td>
+          </tr>
+          <tr>
+            <td>合作评估</td>
+            <td>UP主 / 商务 / 内容</td>
+            <td>确认产品是否可测、是否匹配账号、是否存在合规或口碑风险。</td>
+          </tr>
+          <tr>
+            <td>合同确认</td>
+            <td>媒介 / 财务</td>
+            <td>明确金额、权益、排期、修改次数、验收标准、付款节点。</td>
+          </tr>
+          <tr>
+            <td>内容执行</td>
+            <td>商务 / 编导 / 制作</td>
+            <td>脚本、样机、拍摄、初稿、品牌反馈、发布节点全部留痕。</td>
+          </tr>
+          <tr>
+            <td>数据复盘</td>
+            <td>运营 / 商务</td>
+            <td>发布后提供播放、互动、评论情绪、转化、截图和优化建议。</td>
+          </tr>
+          <tr>
+            <td>回款复购</td>
+            <td>商务 / 财务</td>
+            <td>完成验收、发票、回款，并推动下一次合作。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>五、客户分层管理</h2>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>A类客户：长期战略品牌</strong>
+          <small>预算稳定、产品可靠、尊重内容表达，适合年度框架和节点整合营销。</small>
+        </div>
+        <span class="badge">重点</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>B类客户：潜力合作品牌</strong>
+          <small>预算中等、品类匹配，可通过单条视频或大促合作测试复购潜力。</small>
+        </div>
+        <span class="badge">培育</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>C类客户：低频项目客户</strong>
+          <small>临时投放、预算有限、需求单一，适合标准化报价和轻量执行。</small>
+        </div>
+        <span class="badge">标准</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>D类客户：高风险客户</strong>
+          <small>强控结论、拖款、产品争议大、过度干预内容，谨慎合作或拒绝。</small>
+        </div>
+        <span class="badge">慎接</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>六、商单风险红线</h2>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>产品没测清楚，不能强推荐</strong>
+          <small>家电属于高决策、高客单品类，结论必须基于真实体验和证据。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>品牌不能强控测评结论</strong>
+          <small>可以确认参数和事实错误，不能要求删除真实缺点或伪造体验。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>谨慎使用极限词</strong>
+          <small>避免“第一、最强、永久、绝对、唯一、全网最低”等高风险表达。</small>
+        </div>
+        <span class="badge">合规</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>商单权益必须写清</strong>
+          <small>视频时长、口播位置、挂链、评论置顶、二剪授权、投流授权都要明确。</small>
+        </div>
+        <span class="badge">合同</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>修改次数必须限制</strong>
+          <small>建议合同约定1-2轮修改，防止品牌反复改稿导致项目失控。</small>
+        </div>
+        <span class="badge">控交付</span>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>七、报价与产品包设计</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>产品包</th>
+            <th>适合客户</th>
+            <th>包含权益</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>单条测评视频</td>
+            <td>新品上市、单品种草</td>
+            <td>B站长视频、产品体验、口播露出、简介链接、数据回传。</td>
+          </tr>
+          <tr>
+            <td>横评植入合作</td>
+            <td>有竞争力的头部/腰部品牌</td>
+            <td>多品牌对比、真实测试、适用人群推荐、评论区承接。</td>
+          </tr>
+          <tr>
+            <td>大促整合包</td>
+            <td>618、双11、年货节重点品牌</td>
+            <td>长视频+短切片+直播+清单图文+评论置顶+复盘报告。</td>
+          </tr>
+          <tr>
+            <td>栏目冠名</td>
+            <td>年度预算稳定品牌</td>
+            <td>系列栏目露出、固定口播、主题内容共创、季度数据复盘。</td>
+          </tr>
+          <tr>
+            <td>直播带货专场</td>
+            <td>供应链和价格机制成熟品牌</td>
+            <td>直播坑位、讲解、挂车、优惠机制、售后承接和转化数据。</td>
+          </tr>
+          <tr>
+            <td>多平台分发包</td>
+            <td>需要全域种草客户</td>
+            <td>B站主视频+抖音短切+小红书图文/视频+视频号分发。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>八、商务数据复盘指标</h2>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>线索转化率</strong>
+          <small>从新增客户到报价、合同、成交的转化情况。</small>
+        </div>
+        <span class="badge">销售</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>单客收入</strong>
+          <small>每个品牌贡献的年度金额，识别重点客户和低效客户。</small>
+        </div>
+        <span class="badge">收入</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>品牌复购率</strong>
+          <small>复购说明交付质量、沟通体验和内容效果被认可。</small>
+        </div>
+        <span class="badge">复购</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>毛利与人效</strong>
+          <small>不能只看营收，还要看制作成本、样机成本、投放成本和团队时间。</small>
+        </div>
+        <span class="badge">利润</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>逾期回款金额</strong>
+          <small>超过账期必须预警，影响后续合作排期和客户评级。</small>
+        </div>
+        <span class="badge">风险</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>九、大促商务作战机制</h2>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>提前6-8周锁定品牌预算</strong>
+          <small>618、双11、双12、年货节不能等临近节点才谈。</small>
+        </div>
+        <span class="badge">预算</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>提前4-6周锁定样机和排期</strong>
+          <small>家电样机涉及发货、安装、测试、退换，周期必须前置。</small>
+        </div>
+        <span class="badge">排期</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>提前确认价格机制</strong>
+          <small>到手价、赠品、安装费、售后、库存、历史低价都要核实。</small>
+        </div>
+        <span class="badge">转化</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>主视频+直播+切片联动</strong>
+          <small>长视频建立信任，直播承接转化，切片做搜索和二次触达。</small>
+        </div>
+        <span class="badge">组合</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>避免过度商业化刷屏</strong>
+          <small>大促期间也要保留非商单内容，避免粉丝感知“全是广告”。</small>
+        </div>
+        <span class="badge">口碑</span>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="panel" style="margin-top:18px;">
+    <h2>十、商务项目状态总表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>项目状态</th>
+          <th>定义</th>
+          <th>商务动作</th>
+          <th>风险提示</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>线索池</td>
+          <td>已有品牌或代理联系，但未明确需求</td>
+          <td>补充预算、品类、节点、目标、联系人、决策链</td>
+          <td>防止只加微信不推进</td>
+        </tr>
+        <tr>
+          <td>报价中</td>
+          <td>已提供刊例或合作方案</td>
+          <td>跟进预算反馈，准备组合包和替代方案</td>
+          <td>防止低价成交或权益过度赠送</td>
+        </tr>
+        <tr>
+          <td>合同中</td>
+          <td>价格和权益基本确认</td>
+          <td>确认付款、修改次数、授权范围、违约责任</td>
+          <td>防止口头约定不落合同</td>
+        </tr>
+        <tr>
+          <td>执行中</td>
+          <td>内容进入样机、脚本、拍摄、剪辑阶段</td>
+          <td>同步品牌反馈，控制节点，避免反复修改</td>
+          <td>防止品牌临时加需求</td>
+        </tr>
+        <tr>
+          <td>待发布</td>
+          <td>成片、标题、封面、链接基本确认</td>
+          <td>核对发布时间、简介、挂链、评论置顶、合规词</td>
+          <td>防止发布前临时改稿</td>
+        </tr>
+        <tr>
+          <td>待回款</td>
+          <td>内容已发布或验收完成</td>
+          <td>发送数据报告、验收材料、发票和回款提醒</td>
+          <td>防止账期失控</td>
+        </tr>
+        <tr>
+          <td>复购推进</td>
+          <td>完成首单合作且效果较好</td>
+          <td>提供复盘报告和下一节点合作方案</td>
+          <td>防止做完一单就断联</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="summary">
+    <strong>驾驶舱结论：</strong>
+    B站家电商务团队的核心不是“卖广告位”，而是把品牌需求、用户信任和内容表达三者平衡好。
+    商务要围绕四件事运转：客户开发、合作筛选、交付管理、回款复购。
+    能赚钱很重要，但更重要的是赚不伤账号信任的钱。
+  </div>
+
+</div>
+</body>
+</html>

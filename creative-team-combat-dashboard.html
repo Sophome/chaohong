@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>B站家电创作团队作战驾驶舱</title>
+<style>
+:root{
+  --bg:#050b14;
+  --panel:#0d2235;
+  --panel2:#102b42;
+  --line:rgba(56,189,248,.28);
+  --blue:#38bdf8;
+  --cyan:#22d3ee;
+  --green:#34d399;
+  --yellow:#fbbf24;
+  --red:#fb7185;
+  --purple:#a78bfa;
+  --text:#eaf7ff;
+  --muted:#91a9bd;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(56,189,248,.22),transparent 28%),
+    radial-gradient(circle at 92% 8%,rgba(167,139,250,.16),transparent 30%),
+    linear-gradient(180deg,#020617,#061827 55%,#020617);
+}
+.wrap{max-width:1480px;margin:auto;padding:24px}
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 24px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(13,34,53,.96),rgba(16,43,66,.72));
+  box-shadow:0 0 36px rgba(56,189,248,.13);
+}
+h1{margin:0;font-size:30px}
+.sub{margin-top:8px;color:var(--muted);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.tag{
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid rgba(56,189,248,.32);
+  background:rgba(2,6,23,.45);
+  color:#bfdbfe;
+  font-size:12px;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin:18px 0;
+}
+.kpi,.panel{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(13,34,53,.95),rgba(4,14,27,.93));
+  border-radius:22px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+.kpi{padding:16px}
+.kpi small{color:var(--muted)}
+.kpi strong{display:block;margin-top:8px;font-size:28px}
+.kpi p{margin:6px 0 0;color:#93c5fd;font-size:12px}
+.grid{
+  display:grid;
+  grid-template-columns:1.05fr 1.4fr 1.05fr;
+  gap:18px;
+}
+.bottom{
+  display:grid;
+  grid-template-columns:1.1fr 1fr 1fr;
+  gap:18px;
+  margin-top:18px;
+}
+.panel{padding:18px;overflow:hidden}
+.panel h2{
+  margin:0 0 14px;
+  font-size:17px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.panel h2:before{
+  content:"";
+  width:8px;height:18px;border-radius:8px;
+  background:var(--blue);
+  box-shadow:0 0 16px var(--blue);
+}
+.task{
+  display:grid;
+  grid-template-columns:22px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:11px 12px;
+  border-radius:15px;
+  background:rgba(15,35,55,.82);
+  border:1px solid rgba(148,163,184,.14);
+  margin-bottom:10px;
+}
+.dot{
+  width:11px;height:11px;border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 12px currentColor;
+}
+.task strong{font-size:14px}
+.task small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.badge{
+  padding:4px 8px;border-radius:999px;
+  font-size:11px;white-space:nowrap;
+  color:#bae6fd;
+  border:1px solid rgba(56,189,248,.28);
+  background:rgba(56,189,248,.1);
+}
+.blue{color:var(--blue)}
+.cyan{color:var(--cyan)}
+.green{color:var(--green)}
+.yellow{color:var(--yellow)}
+.red{color:var(--red)}
+.purple{color:var(--purple)}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.card{
+  padding:13px;
+  border-radius:16px;
+  background:rgba(15,35,55,.72);
+  border:1px solid rgba(148,163,184,.15);
+}
+.card h3{margin:0 0 7px;font-size:14px}
+.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+th{
+  text-align:left;
+  color:#93c5fd;
+  padding:10px 8px;
+  border-bottom:1px solid rgba(56,189,248,.24);
+}
+td{
+  padding:10px 8px;
+  color:#dbeafe;
+  border-bottom:1px solid rgba(148,163,184,.12);
+  vertical-align:top;
+}
+.alert{
+  border-color:rgba(251,113,133,.36);
+  background:rgba(251,113,133,.07);
+}
+.warn{
+  border-color:rgba(251,191,36,.36);
+  background:rgba(251,191,36,.07);
+}
+.summary{
+  margin-top:18px;
+  padding:18px 20px;
+  border-radius:22px;
+  border:1px solid rgba(56,189,248,.32);
+  background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(167,139,250,.1));
+  line-height:1.75;
+  color:#dbeafe;
+  font-size:14px;
+}
+@media(max-width:1100px){
+  .grid,.bottom,.kpis{grid-template-columns:1fr}
+  .header{flex-direction:column;align-items:flex-start}
+  .tags{justify-content:flex-start}
+}
+@media(max-width:650px){
+  .wrap{padding:14px}
+  h1{font-size:24px}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div>
+      <h1>B站家电创作团队 · 作战驾驶舱</h1>
+      <div class="sub">适用：编导 / 测评执行 / 摄影 / 剪辑 / 封面 / 运营 / 商务 / 直播团队</div>
+    </div>
+    <div class="tags">
+      <span class="tag">目标：稳定交付</span>
+      <span class="tag">核心：真实测评</span>
+      <span class="tag">方法：数据复盘</span>
+      <span class="tag">红线：不造假、不虚标、不乱推</span>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi">
+      <small>周内容交付</small>
+      <strong class="green">2-4条</strong>
+      <p>常规视频、横评、短视频、直播切片</p>
+    </div>
+    <div class="kpi">
+      <small>准时交付率</small>
+      <strong class="cyan">≥85%</strong>
+      <p>脚本、拍摄、剪辑、封面、发布节点</p>
+    </div>
+    <div class="kpi">
+      <small>返工控制</small>
+      <strong class="yellow">≤2轮</strong>
+      <p>脚本、剪辑、封面减少无效返工</p>
+    </div>
+    <div class="kpi">
+      <small>测评可信度</small>
+      <strong class="red">0事故</strong>
+      <p>数据造假、样机混乱、结论无依据为0</p>
+    </div>
+    <div class="kpi">
+      <small>复盘频率</small>
+      <strong class="purple">每周</strong>
+      <p>爆款、扑街、商单、直播全部复盘</p>
+    </div>
+  </section>
+
+  <main class="grid">
+
+    <section class="panel">
+      <h2>一、团队共同目标</h2>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>把内容做准</strong>
+          <small>选题要命中真实消费痛点，不做自嗨内容。</small>
+        </div>
+        <span class="badge">选题</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>把测评做真</strong>
+          <small>测试过程可解释，数据可追溯，结论经得起评论区质疑。</small>
+        </div>
+        <span class="badge">信任</span>
+      </div>
+
+      <div class="task">
+        <span class="dot blue"></span>
+        <div>
+          <strong>把视频做顺</strong>
+          <small>前30秒抓人，中段信息密度高，结尾结论清晰。</small>
+        </div>
+        <span class="badge">留存</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>把节奏做稳</strong>
+          <small>大促、新品、横评、避坑、商单内容提前排期。</small>
+        </div>
+        <span class="badge">交付</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>把底线守住</strong>
+          <small>不虚假测评、不夸大宣传、不为商单牺牲账号信任。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>二、每日 / 每周作战清单</h2>
+
+      <div class="task">
+        <span class="dot blue"></span>
+        <div>
+          <strong>每日同步内容卡点</strong>
+          <small>哪条卡在样机、脚本、拍摄、剪辑、封面、审核、品牌确认？</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>每日更新项目进度</strong>
+          <small>每条视频必须有负责人、截止时间、当前状态和下一步动作。</small>
+        </div>
+        <span class="badge">每日</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>每周选题会</strong>
+          <small>从评论、搜索、大促、新品、竞品、品牌信息里筛选高价值选题。</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>每周数据复盘</strong>
+          <small>拆CTR、前30秒留存、完播率、三连率、评论情绪、涨粉率。</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>每周风险检查</strong>
+          <small>商单话术、广告法、样机台账、素材版权、账号权限、测试数据留档。</small>
+        </div>
+        <span class="badge">每周</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>三、岗位作战雷达</h2>
+      <div class="cards">
+        <div class="card">
+          <h3 class="cyan">编导</h3>
+          <p>负责选题、脚本、结构、观点。核心指标：选题命中率、完播率、返工率。</p>
+        </div>
+        <div class="card">
+          <h3 class="green">测评执行</h3>
+          <p>负责样机、测试、数据记录。核心指标：测试准确性、数据留档、样机管理。</p>
+        </div>
+        <div class="card">
+          <h3 class="blue">摄影</h3>
+          <p>负责画面、灯光、收音、场景。核心指标：素材可用率、补拍率、画面质感。</p>
+        </div>
+        <div class="card">
+          <h3 class="purple">剪辑</h3>
+          <p>负责节奏、包装、字幕、信息呈现。核心指标：交付速度、返工率、前30秒留存。</p>
+        </div>
+        <div class="card">
+          <h3 class="yellow">封面标题</h3>
+          <p>负责点击理由和视觉表达。核心指标：CTR、A/B测试胜率、标题合规。</p>
+        </div>
+        <div class="card">
+          <h3 class="green">运营/商务</h3>
+          <p>负责发布、评论、商单、直播。核心指标：涨粉、转化、回款、合作边界。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>四、内容生产流水线</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>环节</th>
+            <th>负责人</th>
+            <th>交付标准</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>选题立项</td>
+            <td>编导 / UP主</td>
+            <td>明确用户痛点、标题方向、核心结论、预期数据目标。</td>
+          </tr>
+          <tr>
+            <td>样机准备</td>
+            <td>测评 / 商务</td>
+            <td>确认到货、安装、测试环境、品牌要求、样机归属。</td>
+          </tr>
+          <tr>
+            <td>脚本撰写</td>
+            <td>编导</td>
+            <td>开头钩子、测试流程、优缺点、结论、口播逻辑完整。</td>
+          </tr>
+          <tr>
+            <td>拍摄执行</td>
+            <td>摄影 / 测评</td>
+            <td>关键画面、对比实验、产品细节、缺点证据全部拍到。</td>
+          </tr>
+          <tr>
+            <td>剪辑包装</td>
+            <td>剪辑</td>
+            <td>节奏紧凑、字幕准确、图表清楚、前30秒有效。</td>
+          </tr>
+          <tr>
+            <td>封面标题</td>
+            <td>运营 / 设计</td>
+            <td>点击理由明确，不夸大、不误导、不踩广告法风险。</td>
+          </tr>
+          <tr>
+            <td>发布复盘</td>
+            <td>运营 / 全员</td>
+            <td>24小时初判，72小时复盘，沉淀可复制经验。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>五、选题判断清单</h2>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>有没有明确消费痛点？</strong>
+          <small>例如：贵不贵、值不值、适不适合、会不会踩坑。</small>
+        </div>
+        <span class="badge">必看</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>有没有搜索和讨论价值？</strong>
+          <small>用户是否会在B站、小红书、知乎、京东评论区搜索相关问题？</small>
+        </div>
+        <span class="badge">增长</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>有没有对比或冲突？</strong>
+          <small>同价位横评、新旧款对比、参数与体验反差、网红款翻车。</small>
+        </div>
+        <span class="badge">看点</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>有没有清晰结论？</strong>
+          <small>适合谁、不适合谁、怎么买、怎么避坑，必须说清楚。</small>
+        </div>
+        <span class="badge">转化</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>证据是否支撑观点？</strong>
+          <small>争议型选题必须有测试数据、画面证据和清楚逻辑。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>六、测评合规红线</h2>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>禁止未测先推</strong>
+          <small>没有实际使用、测试或体验，不得给出强推荐结论。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>禁止数据造假</strong>
+          <small>测试条件、测试方法、测试结果必须可解释、可复查。</small>
+        </div>
+        <span class="badge">红线</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>慎用极限词</strong>
+          <small>避免“全网第一、最强、永久、绝对、唯一”等高风险表达。</small>
+        </div>
+        <span class="badge">合规</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>商单边界留痕</strong>
+          <small>品牌需求、修改意见、合作权益、发布时间、回款节点都要记录。</small>
+        </div>
+        <span class="badge">商单</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>样机管理清楚</strong>
+          <small>样机来源、到货时间、测试人、归还/留用/处置方式全部登记。</small>
+        </div>
+        <span class="badge">台账</span>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="bottom">
+
+    <section class="panel">
+      <h2>七、数据复盘看板</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>指标</th>
+            <th>说明</th>
+            <th>团队动作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CTR</td>
+            <td>标题封面是否有点击理由</td>
+            <td>低于预期，优先换封面、调标题。</td>
+          </tr>
+          <tr>
+            <td>前30秒留存</td>
+            <td>开头是否抓住用户</td>
+            <td>减少铺垫，开头直接给痛点、冲突或结论。</td>
+          </tr>
+          <tr>
+            <td>完播率</td>
+            <td>结构和节奏是否顺畅</td>
+            <td>删废话，压缩低信息密度段落。</td>
+          </tr>
+          <tr>
+            <td>三连率</td>
+            <td>内容是否有价值感</td>
+            <td>增加清单、结论、避坑点、购买建议。</td>
+          </tr>
+          <tr>
+            <td>评论情绪</td>
+            <td>用户是否信任结论</td>
+            <td>收集质疑点，补充测试或做二次内容。</td>
+          </tr>
+          <tr>
+            <td>转化率</td>
+            <td>是否影响购买决策</td>
+            <td>优化适用人群、价格带、购买场景表达。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>八、团队协作规则</h2>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>每条视频一个Owner</strong>
+          <small>Owner负责推动，不代表所有工作都自己做。</small>
+        </div>
+        <span class="badge">责任</span>
+      </div>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>每个节点有截止时间</strong>
+          <small>脚本、拍摄、初剪、精剪、封面、发布都要有明确DDL。</small>
+        </div>
+        <span class="badge">效率</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>反馈必须具体</strong>
+          <small>不要说“不高级、不好看”，要说改哪里、为什么、目标是什么。</small>
+        </div>
+        <span class="badge">沟通</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>复盘不甩锅</strong>
+          <small>用数据、用户反馈和流程节点说话，不做情绪化归因。</small>
+        </div>
+        <span class="badge">复盘</span>
+      </div>
+
+      <div class="task alert">
+        <span class="dot red"></span>
+        <div>
+          <strong>风险必须提前说</strong>
+          <small>样机异常、测试不充分、商单冲突、素材侵权不能拖到发布前。</small>
+        </div>
+        <span class="badge">预警</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>九、大促作战机制</h2>
+
+      <div class="task">
+        <span class="dot cyan"></span>
+        <div>
+          <strong>提前4-6周排期</strong>
+          <small>618、双11、双12、年货节必须提前确定内容池和样机需求。</small>
+        </div>
+        <span class="badge">排期</span>
+      </div>
+
+      <div class="task">
+        <span class="dot green"></span>
+        <div>
+          <strong>优先做高决策品类</strong>
+          <small>冰箱、洗衣机、空调、扫地机、洗地机、净水器、洗碗机。</small>
+        </div>
+        <span class="badge">品类</span>
+      </div>
+
+      <div class="task">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>提前准备价格表</strong>
+          <small>日常价、大促价、历史低价、赠品、售后、安装费都要核实。</small>
+        </div>
+        <span class="badge">转化</span>
+      </div>
+
+      <div class="task">
+        <span class="dot purple"></span>
+        <div>
+          <strong>主视频+短切片联动</strong>
+          <small>B站长视频建立信任，短视频和图文承接搜索与转化。</small>
+        </div>
+        <span class="badge">矩阵</span>
+      </div>
+
+      <div class="task warn">
+        <span class="dot yellow"></span>
+        <div>
+          <strong>排班防过载</strong>
+          <small>大促期间避免剪辑、运营、直播连续高强度透支。</small>
+        </div>
+        <span class="badge">人效</span>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="panel" style="margin-top:18px;">
+    <h2>十、项目状态总表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>项目状态</th>
+          <th>定义</th>
+          <th>团队动作</th>
+          <th>风险提示</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>选题池</td>
+          <td>有方向但未立项</td>
+          <td>补充痛点、数据、竞品、标题方向</td>
+          <td>防止选题太散</td>
+        </tr>
+        <tr>
+          <td>已立项</td>
+          <td>确定拍摄和发布时间</td>
+          <td>明确Owner、脚本人、样机、拍摄日期</td>
+          <td>防止无人推进</td>
+        </tr>
+        <tr>
+          <td>待拍摄</td>
+          <td>脚本和样机基本就绪</td>
+          <td>确认场地、设备、镜头清单、测试道具</td>
+          <td>防止漏拍关键证据</td>
+        </tr>
+        <tr>
+          <td>剪辑中</td>
+          <td>进入初剪或精剪</td>
+          <td>优先完成结构，再做包装和字幕</td>
+          <td>防止无限返工</td>
+        </tr>
+        <tr>
+          <td>待发布</td>
+          <td>成片、封面、标题完成</td>
+          <td>检查合规、简介、标签、合集、评论引导</td>
+          <td>防止标题夸大或素材侵权</td>
+        </tr>
+        <tr>
+          <td>已复盘</td>
+          <td>发布后完成数据分析</td>
+          <td>沉淀可复制经验和下次优化项</td>
+          <td>防止只发布不复盘</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="summary">
+    <strong>驾驶舱结论：</strong>
+    B站家电创作团队的核心任务不是“把视频做完”，而是“把可信、有用、能影响消费决策的内容稳定交付出来”。
+    团队要围绕四件事协作：选题命中、测评真实、交付稳定、数据复盘。
+    每个人都可以负责一个环节，但所有人共同守住账号信任。
+  </div>
+
+</div>
+</body>
+</html>
