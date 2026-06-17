@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>冰箱选购指南 SOP｜保鲜与智能化配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #153f5c;
+      --primary-dark: #082b42;
+      --accent: #67b7dc;
+      --accent-gold: #d8aa5f;
+      --bg: #f5f8fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #e5eaf0;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(8, 43, 66, 0.98), rgba(21, 63, 92, 0.92)),
+        radial-gradient(circle at 82% 16%, rgba(103, 183, 220, 0.48), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(216, 170, 95, 0.24), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #062335;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(103, 183, 220, 0.32);
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #dff6ff);
+    }
+
+    /* Section Head */
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Grid Card */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(21,63,92,0.08);
+      color: var(--primary);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    /* Gold Box */
+    .gold-box {
+      background:
+        linear-gradient(135deg, rgba(8,43,66,0.98), rgba(21,63,92,0.94)),
+        radial-gradient(circle at top right, rgba(103,183,220,0.44), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    /* SOP */
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eef7fb;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Optimized Table: 不换行、不滚动、不超宽 */
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 29%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 29%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    /* Checklist */
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(21,63,92,0.98), rgba(8,43,66,0.98)),
+        radial-gradient(circle at top right, rgba(103,183,220,0.36), transparent 42%);
+      border-radius: 34px;
+      color: #fff;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">REFRIGERATOR BUYING SOP</div>
+          <h1>冰箱选购指南<br><span>从保鲜到智能化</span></h1>
+          <p>
+            一套适用于新房装修、旧机换新、品质厨房升级的冰箱选购 SOP。
+            从保鲜能力、容量分区、制冷系统、智能体验、节能静音和安装售后六大维度，
+            帮你快速判断一台冰箱是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>保鲜能力</span>
+              <strong>35%</strong>
+            </div>
+            <div class="bar"><span style="width: 94%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>容量分区</span>
+              <strong>20%</strong>
+            </div>
+            <div class="bar"><span style="width: 76%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>制冷系统</span>
+              <strong>18%</strong>
+            </div>
+            <div class="bar"><span style="width: 70%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>智能体验</span>
+              <strong>12%</strong>
+            </div>
+            <div class="bar"><span style="width: 52%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>节能静音</span>
+              <strong>15%</strong>
+            </div>
+            <div class="bar"><span style="width: 60%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Core Logic -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>冰箱不是越大越好，而是保鲜、分区和适配更重要</h2>
+          <p>
+            真正值得买的冰箱，应优先满足食材保鲜稳定、容量够用、分区合理、噪音低、耗电少和安装不翻车。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">🥬</div>
+            <h3>保鲜能力</h3>
+            <p>
+              冰箱的核心不是简单制冷，而是让肉类、蔬果、熟食和母婴食材保持更久的新鲜状态。
+            </p>
+            <ul>
+              <li>优先看风冷无霜和温控稳定性</li>
+              <li>肉类家庭关注宽幅变温区</li>
+              <li>蔬果多的家庭关注湿度控制</li>
+              <li>母婴家庭关注净味和除菌</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📦</div>
+            <h3>容量分区</h3>
+            <p>
+              容量要按家庭人数和囤货习惯选，不建议只追求大容量，更要看冷藏、冷冻和变温区比例是否合理。
+            </p>
+            <ul>
+              <li>1-2人建议 300L 左右</li>
+              <li>3-4人建议 400-500L</li>
+              <li>囤货家庭建议 500L 以上</li>
+              <li>中式家庭冷冻空间要充足</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>智能舒适</h3>
+            <p>
+              智能功能的价值在于减少管理成本，例如温度可视化、远程控温、开门提醒、食材管理和智能节能。
+            </p>
+            <ul>
+              <li>温控面板要清晰易用</li>
+              <li>开门报警非常实用</li>
+              <li>APP 控温属于加分项</li>
+              <li>复杂食材管理不必强求</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Golden Rule -->
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>冰箱四大黄金选购原则</h2>
+          <p>
+            先把保鲜、容量、分区和安装选对，再看智能屏幕、语音互联等高级功能。冰箱是长期高频家电，稳定比花哨更重要。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>看保鲜</strong>
+              <span>优先关注温控、净味、除菌和变温能力。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看分区</strong>
+              <span>冷藏、冷冻、变温比例要符合饮食习惯。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看适配</strong>
+              <span>先量尺寸、预留散热和开门空间。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看能效</strong>
+              <span>一级能效、低噪运行更适合长期使用。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>冰箱选购 SOP</h2>
+          <p>
+            按以下 8 个步骤筛选，可以避免买大装不下、买小不够用、串味严重、噪音大和耗电高等问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number">
+              <strong>01</strong>
+              <span>尺寸</span>
+            </div>
+            <div class="step-content">
+              <h3>先确认摆放位置、开门空间和散热距离</h3>
+              <p>
+                冰箱下单前一定要先量宽度、深度、高度、门洞、电梯和入户通道。嵌入式或零嵌冰箱尤其要确认散热方式。
+              </p>
+              <div class="tag-list">
+                <span class="tag">先量宽深高</span>
+                <span class="tag">预留开门空间</span>
+                <span class="tag">确认入户通道</span>
+                <span class="tag">零嵌看散热</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>02</strong>
+              <span>容量</span>
+            </div>
+            <div class="step-content">
+              <h3>根据人数和囤货习惯确定容量</h3>
+              <p>
+                容量不是越大越好，而是要匹配家庭人数、做饭频率和囤货习惯。经常做饭、囤肉、囤半成品的家庭要提高冷冻占比。
+              </p>
+              <div class="tag-list">
+                <span class="tag">1-2人：250-350L</span>
+                <span class="tag">3-4人：400-500L</span>
+                <span class="tag">囤货：500L+</span>
+                <span class="tag">中式家庭重冷冻</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>03</strong>
+              <span>门型</span>
+            </div>
+            <div class="step-content">
+              <h3>按空间和取物习惯选择门型</h3>
+              <p>
+                三门适合小户型，十字门适合分类存储，对开门容量大但冷冻抽屉体验一般，法式多门更适合大容量和精细分区。
+              </p>
+              <div class="tag-list">
+                <span class="tag">三门省空间</span>
+                <span class="tag">十字门好分类</span>
+                <span class="tag">对开门容量大</span>
+                <span class="tag">法式多门体验好</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>04</strong>
+              <span>保鲜</span>
+            </div>
+            <div class="step-content">
+              <h3>重点看风冷无霜、变温和湿度控制</h3>
+              <p>
+                保鲜能力决定日常体验。建议优先选择风冷无霜、精准温控、独立变温、干湿分储和净味除菌能力更好的产品。
+              </p>
+              <div class="tag-list">
+                <span class="tag">风冷无霜</span>
+                <span class="tag">精准温控</span>
+                <span class="tag">宽幅变温</span>
+                <span class="tag">干湿分储</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>05</strong>
+              <span>制冷</span>
+            </div>
+            <div class="step-content">
+              <h3>优先选择双循环或多循环系统</h3>
+              <p>
+                单循环容易串味，双循环或多循环可以让冷藏、冷冻独立控温，温度更稳定，也更适合存放肉类、海鲜、蔬果和熟食。
+              </p>
+              <div class="tag-list">
+                <span class="tag">双循环优先</span>
+                <span class="tag">多循环更佳</span>
+                <span class="tag">减少串味</span>
+                <span class="tag">温度更稳</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>06</strong>
+              <span>智能</span>
+            </div>
+            <div class="step-content">
+              <h3>选择高频实用的智能功能</h3>
+              <p>
+                冰箱智能化不必盲目追求大屏，温度可视化、开门提醒、远程控温、智能节能和故障提醒更实用。
+              </p>
+              <div class="tag-list">
+                <span class="tag">温控可视</span>
+                <span class="tag">开门报警</span>
+                <span class="tag">远程控温</span>
+                <span class="tag">故障提醒</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>07</strong>
+              <span>能耗</span>
+            </div>
+            <div class="step-content">
+              <h3>关注能效等级、噪音和压缩机</h3>
+              <p>
+                冰箱全年 24 小时运行，能耗和噪音很重要。建议优先选择一级能效、变频压缩机、低噪运行和保温能力较好的产品。
+              </p>
+              <div class="tag-list">
+                <span class="tag">一级能效</span>
+                <span class="tag">变频压缩机</span>
+                <span class="tag">低噪运行</span>
+                <span class="tag">保温稳定</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>08</strong>
+              <span>售后</span>
+            </div>
+            <div class="step-content">
+              <h3>确认配送、安装、质保和退换规则</h3>
+              <p>
+                冰箱体积大，运输和安装容易出问题。购买前要确认送装服务、入户条件、外观验收、整机质保、压缩机质保和退换货规则。
+              </p>
+              <div class="tag-list">
+                <span class="tag">送装确认</span>
+                <span class="tag">入户测量</span>
+                <span class="tag">质保清晰</span>
+                <span class="tag">验收拍照</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Priority Table -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>保鲜与智能化配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>容量</td>
+                <td><span class="level must">必</span>人数匹配｜分区合理</td>
+                <td><span class="level nice">加</span>大冷冻｜宽变温</td>
+                <td><span class="level avoid">避</span>只看总容｜比例差</td>
+              </tr>
+
+              <tr>
+                <td>保鲜</td>
+                <td><span class="level must">必</span>风冷｜温控｜不结霜</td>
+                <td><span class="level nice">加</span>干湿储｜微冻鲜</td>
+                <td><span class="level avoid">避</span>温漂｜风干｜结霜</td>
+              </tr>
+
+              <tr>
+                <td>制冷</td>
+                <td><span class="level must">必</span>变频｜均冷｜速冻</td>
+                <td><span class="level nice">加</span>双循环｜多循环</td>
+                <td><span class="level avoid">避</span>串味｜冷量弱</td>
+              </tr>
+
+              <tr>
+                <td>净味</td>
+                <td><span class="level must">必</span>净味｜抗菌｜易清洁</td>
+                <td><span class="level nice">加</span>除菌｜母婴仓</td>
+                <td><span class="level avoid">避</span>异味｜难清洗</td>
+              </tr>
+
+              <tr>
+                <td>智能</td>
+                <td><span class="level must">必</span>温显｜门警｜控温</td>
+                <td><span class="level nice">加</span>APP｜食材管家</td>
+                <td><span class="level avoid">避</span>大屏噱头｜卡顿</td>
+              </tr>
+
+              <tr>
+                <td>舒适</td>
+                <td><span class="level must">必</span>抽屉顺｜照明好</td>
+                <td><span class="level nice">加</span>悬停门｜静音轨</td>
+                <td><span class="level avoid">避</span>开门挤｜抽屉卡</td>
+              </tr>
+
+              <tr>
+                <td>能效</td>
+                <td><span class="level must">必</span>一级｜低耗｜保温</td>
+                <td><span class="level nice">加</span>智能节能｜假日</td>
+                <td><span class="level avoid">避</span>虚标｜耗电高</td>
+              </tr>
+
+              <tr>
+                <td>静音</td>
+                <td><span class="level must">必</span>低噪｜稳压缩机</td>
+                <td><span class="level nice">加</span>变频静音｜减震</td>
+                <td><span class="level avoid">避</span>嗡鸣｜共振</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>尺寸｜门洞｜散热</td>
+                <td><span class="level nice">加</span>零嵌｜可调脚</td>
+                <td><span class="level avoid">避</span>塞不进｜门打不开</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜送装稳</td>
+                <td><span class="level nice">加</span>压缩机长保</td>
+                <td><span class="level avoid">避</span>外包乱｜退换难</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            冰箱要根据家庭人数、厨房空间、做饭频率和囤货习惯来选，不建议盲目追求最大容量。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">👩‍❤️‍👨</div>
+            <h3>1-2 人小家庭</h3>
+            <p>
+              建议选择 250-350L 左右的三门或小十字门冰箱，重点看节能、静音和基础保鲜能力。
+            </p>
+            <ul>
+              <li>推荐：三门 / 小十字门</li>
+              <li>容量：250-350L</li>
+              <li>重点：省空间、低噪、低耗电</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👨‍👩‍👧</div>
+            <h3>3-4 人家庭</h3>
+            <p>
+              建议选择 400-500L 十字门或法式多门，冷藏、冷冻和变温区都要均衡。
+            </p>
+            <ul>
+              <li>推荐：十字门 / 法式多门</li>
+              <li>容量：400-500L</li>
+              <li>重点：分区合理、双循环、净味</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🥩</div>
+            <h3>囤货型家庭</h3>
+            <p>
+              经常囤肉、海鲜、速冻食品和半成品的家庭，要优先选择大冷冻容量和强速冻能力。
+            </p>
+            <ul>
+              <li>推荐：500L+ 大容量</li>
+              <li>重点：大冷冻、速冻、宽幅变温</li>
+              <li>避坑：冷藏很大但冷冻太小</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏡</div>
+            <h3>新房装修 / 嵌入式厨房</h3>
+            <p>
+              新房装修建议提前确认冰箱尺寸、散热方式、插座位置和柜体预留，零嵌冰箱要重点看开门角度。
+            </p>
+            <ul>
+              <li>推荐：零嵌 / 平嵌 / 底部散热</li>
+              <li>重点：尺寸预留、散热、开门角度</li>
+              <li>避坑：柜子做好后冰箱放不进</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>
+            下单前逐项核对，建议至少满足 11 项以上，再考虑购买。
+          </p>
+
+          <div class="check-grid">
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认摆放位置的宽度、深度和高度。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认门洞、电梯、楼道和入户通道尺寸。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认冰箱开门方向和开门角度。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认散热方式和柜体预留空间。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>根据家庭人数选择合适容量。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认冷藏、冷冻和变温比例合理。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>优先选择风冷无霜冰箱。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>优先选择双循环或多循环系统。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认是否具备净味、抗菌或除菌功能。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认变温区是否满足肉类、母婴或囤货需求。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认能效等级，优先选择一级能效。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认运行噪音，开放式厨房更要重视静音。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认送装服务、外观验收和退换规则。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认整机、压缩机和主要部件质保范围。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pitfalls -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>冰箱选购常见误区</h2>
+          <p>
+            很多冰箱不好用，并不是因为价格低，而是忽略了容量比例、安装尺寸、循环系统和长期使用成本。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看总容量</h3>
+            <p>
+              总容量大不代表好用。中式家庭如果冷冻区太小，后期囤肉、囤海鲜、囤半成品都会很不方便。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：忽略安装尺寸</h3>
+            <p>
+              冰箱能不能进门、能不能开门、能不能散热，都要提前确认。尤其是嵌入式厨房，尺寸误差很容易翻车。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：盲目追求大屏智能</h3>
+            <p>
+              大屏、语音、菜谱推荐属于加分项。真正高频实用的是温控稳定、开门提醒、净味除菌和节能静音。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「容量合适、风冷无霜、变频制冷、分区合理、一级能效、低噪运行」；
+            追求体验升级时，再增加「双循环、宽幅变温、干湿分储、净味除菌、零嵌设计、APP 智能控温」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 冰箱选购指南 SOP｜基于保鲜、容量、智能化与舒适化的家庭厨房选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

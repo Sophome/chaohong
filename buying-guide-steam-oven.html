@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>嵌入式蒸烤箱选购指南 SOP｜蒸烤性能与安装配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #5a3524;
+      --primary-dark: #2f1b12;
+      --accent: #e0a15a;
+      --bg: #faf7f3;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #e8ded5;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(80, 45, 25, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(47,27,18,0.98), rgba(90,53,36,0.94)),
+        radial-gradient(circle at 82% 16%, rgba(224,161,90,0.48), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(255,226,176,0.2), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #231207;
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #fff0d4);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(90,53,36,0.08);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .gold-box,
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(47,27,18,0.98), rgba(90,53,36,0.94)),
+        radial-gradient(circle at top right, rgba(224,161,90,0.4), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2,
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p,
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #fff2df;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">BUILT-IN STEAM OVEN BUYING SOP</div>
+          <h1>嵌入式蒸烤箱选购指南<br><span>从蒸汽到烘烤控温</span></h1>
+          <p>
+            一套适用于新房装修、厨房升级、烘焙入门、家庭蒸菜和中西餐一体化烹饪的嵌入式蒸烤箱选购 SOP。
+            从容量尺寸、蒸汽系统、烘烤结构、控温精度、内胆清洁、安装散热和售后耗材七大维度，
+            帮你快速判断一台嵌入式蒸烤箱是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title"><span>蒸烤性能</span><strong>35%</strong></div>
+            <div class="bar"><span style="width:94%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>控温均匀</span><strong>25%</strong></div>
+            <div class="bar"><span style="width:84%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>容量尺寸</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:66%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>清洁维护</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:62%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>安装售后</span><strong>10%</strong></div>
+            <div class="bar"><span style="width:48%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>嵌入式蒸烤箱不是功能越多越好，而是蒸得透、烤得匀、装得稳</h2>
+          <p>
+            真正好用的蒸烤箱，应做到蒸汽足、温控准、热风均匀、容量够用、清洁方便，并且与橱柜尺寸和厨房散热条件匹配。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">♨️</div>
+            <h3>蒸汽系统</h3>
+            <p>
+              蒸汽能力决定蒸菜、蒸鱼、蒸包子和嫩烤体验。建议关注直喷蒸汽、蒸汽量、补水方式和冷凝水处理。
+            </p>
+            <ul>
+              <li>直喷蒸汽更均匀</li>
+              <li>外置水箱更方便</li>
+              <li>高温蒸适合中式烹饪</li>
+              <li>冷凝水处理要顺手</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🔥</div>
+            <h3>烘烤能力</h3>
+            <p>
+              烘烤效果主要看上下加热管、背部热风、风扇循环和温度均匀性。烘焙用户尤其要重视控温。
+            </p>
+            <ul>
+              <li>上下管是基础</li>
+              <li>背部热风更均匀</li>
+              <li>多层同烤看风道</li>
+              <li>烤色均匀才实用</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📐</div>
+            <h3>安装适配</h3>
+            <p>
+              嵌入式产品必须提前确认橱柜开孔、散热空间、电源位置、承重和门板干涉，否则容易安装翻车。
+            </p>
+            <ul>
+              <li>新房提前预留尺寸</li>
+              <li>注意前置散热</li>
+              <li>插座别放机器正后方</li>
+              <li>确认橱柜承重</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>嵌入式蒸烤箱四大黄金选购原则</h2>
+          <p>
+            先看蒸汽和烘烤结构，再看控温、容量、清洁和安装。蒸烤箱是重安装型厨电，尺寸和散热一定要提前规划。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>蒸得透</strong>
+              <span>蒸汽足、升温快、冷凝少。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>烤得匀</strong>
+              <span>上下管、热风、控温都要稳。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>容量够</strong>
+              <span>家庭日用建议 50L 左右起步。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>装得稳</strong>
+              <span>开孔、散热、电源要提前确认。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>嵌入式蒸烤箱选购 SOP</h2>
+          <p>
+            按以下 8 个步骤筛选，可以避免容量不够、烤不均匀、蒸汽弱、清洁麻烦、安装翻车和售后不清等问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number"><strong>01</strong><span>场景</span></div>
+            <div class="step-content">
+              <h3>先确认主要使用场景</h3>
+              <p>
+                如果主要蒸菜，要重点看蒸汽量和冷凝水；如果经常烘焙，要重点看上下管、热风和控温；如果追求一机多用，要看蒸烤组合能力。
+              </p>
+              <div class="tag-list">
+                <span class="tag">蒸菜看蒸汽</span>
+                <span class="tag">烘焙看控温</span>
+                <span class="tag">嫩烤看组合</span>
+                <span class="tag">家用看易清洁</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>02</strong><span>容量</span></div>
+            <div class="step-content">
+              <h3>根据家庭人数和餐盘尺寸选容量</h3>
+              <p>
+                嵌入式蒸烤箱建议优先选择 50L 左右及以上，能放整鱼、烤鸡、披萨盘和多层蒸盘，使用场景更宽。
+              </p>
+              <div class="tag-list">
+                <span class="tag">3口之家 45L+</span>
+                <span class="tag">常做饭 50L+</span>
+                <span class="tag">烘焙看层架</span>
+                <span class="tag">大盘能放下</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>03</strong><span>蒸汽</span></div>
+            <div class="step-content">
+              <h3>重点看直喷蒸汽和高温蒸</h3>
+              <p>
+                好的蒸烤箱应蒸汽均匀、升温快、补水方便，并能减少食物表面水塌和腔体积水。
+              </p>
+              <div class="tag-list">
+                <span class="tag">直喷蒸汽</span>
+                <span class="tag">高温蒸</span>
+                <span class="tag">外置水箱</span>
+                <span class="tag">冷凝处理</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>04</strong><span>烘烤</span></div>
+            <div class="step-content">
+              <h3>看上下管、背部热风和风道设计</h3>
+              <p>
+                烘烤不是温度越高越好，而是温度稳定、热量均匀、烤色一致。烘焙用户建议优先选上下管加背部热风。
+              </p>
+              <div class="tag-list">
+                <span class="tag">上下加热管</span>
+                <span class="tag">背部热风</span>
+                <span class="tag">多层同烤</span>
+                <span class="tag">烤色均匀</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>05</strong><span>控温</span></div>
+            <div class="step-content">
+              <h3>控温精度决定烘焙成功率</h3>
+              <p>
+                做蛋糕、面包、饼干、肉类嫩烤时，温度波动会直接影响口感。建议关注温控探头、预热速度和温差表现。
+              </p>
+              <div class="tag-list">
+                <span class="tag">温控稳定</span>
+                <span class="tag">预热快</span>
+                <span class="tag">温差小</span>
+                <span class="tag">探针加分</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>06</strong><span>清洁</span></div>
+            <div class="step-content">
+              <h3>关注内胆材质和自清洁方式</h3>
+              <p>
+                蒸烤箱长期使用会有油污、水垢和异味。建议选择易擦内胆、蒸汽清洁、除垢提醒和可拆门板结构。
+              </p>
+              <div class="tag-list">
+                <span class="tag">搪瓷内胆</span>
+                <span class="tag">不锈钢内胆</span>
+                <span class="tag">蒸汽清洁</span>
+                <span class="tag">除垢提醒</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>07</strong><span>安装</span></div>
+            <div class="step-content">
+              <h3>提前确认开孔、散热和电源</h3>
+              <p>
+                嵌入式蒸烤箱必须预留标准开孔、后部或前部散热空间、电源插座和橱柜承重，避免安装后打不开门或散热不良。
+              </p>
+              <div class="tag-list">
+                <span class="tag">确认开孔</span>
+                <span class="tag">预留散热</span>
+                <span class="tag">电源独立</span>
+                <span class="tag">橱柜承重</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>08</strong><span>售后</span></div>
+            <div class="step-content">
+              <h3>确认质保、安装和耗材规则</h3>
+              <p>
+                购买前要确认安装是否收费、是否提供上门测量、内胆和加热管质保、水箱配件、除垢剂和维修响应速度。
+              </p>
+              <div class="tag-list">
+                <span class="tag">上门测量</span>
+                <span class="tag">安装费用</span>
+                <span class="tag">配件易买</span>
+                <span class="tag">质保清晰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>蒸烤性能与安装配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>容量</td>
+                <td><span class="level must">必</span>45L+｜大盘可放</td>
+                <td><span class="level nice">加</span>50L+｜多层同烹</td>
+                <td><span class="level avoid">避</span>容量小｜层距窄</td>
+              </tr>
+
+              <tr>
+                <td>蒸汽</td>
+                <td><span class="level must">必</span>直喷蒸｜蒸汽足</td>
+                <td><span class="level nice">加</span>高温蒸｜外置箱</td>
+                <td><span class="level avoid">避</span>蒸不透｜积水多</td>
+              </tr>
+
+              <tr>
+                <td>烘烤</td>
+                <td><span class="level must">必</span>上下管｜热风</td>
+                <td><span class="level nice">加</span>背部热风｜多层烤</td>
+                <td><span class="level avoid">避</span>上色差｜受热偏</td>
+              </tr>
+
+              <tr>
+                <td>控温</td>
+                <td><span class="level must">必</span>温控准｜预热快</td>
+                <td><span class="level nice">加</span>多探头｜食物探针</td>
+                <td><span class="level avoid">避</span>温差大｜忽高低</td>
+              </tr>
+
+              <tr>
+                <td>组合</td>
+                <td><span class="level must">必</span>蒸烤独立｜嫩烤</td>
+                <td><span class="level nice">加</span>蒸汽烤｜发酵解冻</td>
+                <td><span class="level avoid">避</span>模式虚｜逻辑乱</td>
+              </tr>
+
+              <tr>
+                <td>内胆</td>
+                <td><span class="level must">必</span>易擦｜耐腐蚀</td>
+                <td><span class="level nice">加</span>搪瓷｜无缝腔体</td>
+                <td><span class="level avoid">避</span>难清洁｜藏污多</td>
+              </tr>
+
+              <tr>
+                <td>清洁</td>
+                <td><span class="level must">必</span>蒸汽洁｜除垢醒</td>
+                <td><span class="level nice">加</span>烘干腔｜可拆门</td>
+                <td><span class="level avoid">避</span>水垢厚｜异味重</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>开孔准｜散热足</td>
+                <td><span class="level nice">加</span>前置散热｜测量</td>
+                <td><span class="level avoid">避</span>装不进｜门干涉</td>
+              </tr>
+
+              <tr>
+                <td>安全</td>
+                <td><span class="level must">必</span>童锁｜隔热门</td>
+                <td><span class="level nice">加</span>三层门｜防烫柄</td>
+                <td><span class="level avoid">避</span>外壳烫｜漏汽</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜安装稳</td>
+                <td><span class="level nice">加</span>上门快｜配件足</td>
+                <td><span class="level avoid">避</span>乱收费｜维修慢</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            嵌入式蒸烤箱要根据厨房空间、做饭频率、是否烘焙、是否中式蒸菜和装修阶段来选。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">🍚</div>
+            <h3>中式家常蒸菜家庭</h3>
+            <p>
+              建议优先关注直喷蒸汽、高温蒸、外置水箱和冷凝水处理，适合蒸鱼、蒸蛋、蒸包子和热菜。
+            </p>
+            <ul>
+              <li>推荐：蒸汽强机型</li>
+              <li>重点：蒸汽足、升温快</li>
+              <li>避坑：蒸汽弱、积水多</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🥐</div>
+            <h3>烘焙 / 西餐用户</h3>
+            <p>
+              建议选择上下管、背部热风、温控稳定和多层同烤表现好的机型，烤色和温差比菜单数量更重要。
+            </p>
+            <ul>
+              <li>推荐：强烘烤结构</li>
+              <li>重点：热风、控温、层架</li>
+              <li>避坑：上色不均、温差大</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👨‍👩‍👧</div>
+            <h3>三口之家 / 日常高频</h3>
+            <p>
+              建议选择 45L-50L 左右容量，具备蒸、烤、蒸汽烤、发酵、解冻和自动菜单，日常使用更均衡。
+            </p>
+            <ul>
+              <li>推荐：均衡型蒸烤一体</li>
+              <li>重点：容量、易用、清洁</li>
+              <li>避坑：容量小、清洁麻烦</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏠</div>
+            <h3>新房装修 / 高端厨房</h3>
+            <p>
+              新房建议在橱柜设计阶段确认嵌入尺寸、散热、电源和高度，搭配洗碗机、冰箱、烟灶形成完整厨房动线。
+            </p>
+            <ul>
+              <li>推荐：前置散热嵌入款</li>
+              <li>重点：开孔、水电、动线</li>
+              <li>避坑：装修后发现装不下</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>下单前逐项核对，建议至少满足 11 项以上，再考虑购买。</p>
+
+          <div class="check-grid">
+            <div class="check-item"><span>✓</span><div>确认主要用途是蒸菜、烘焙还是蒸烤一体。</div></div>
+            <div class="check-item"><span>✓</span><div>确认家庭人数和常用餐盘、烤盘尺寸。</div></div>
+            <div class="check-item"><span>✓</span><div>优先选择 45L 或 50L 以上容量。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否支持直喷蒸汽和高温蒸。</div></div>
+            <div class="check-item"><span>✓</span><div>确认水箱位置、容量和补水是否方便。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否有上下加热管和背部热风。</div></div>
+            <div class="check-item"><span>✓</span><div>确认控温精度、预热速度和烤色均匀性。</div></div>
+            <div class="check-item"><span>✓</span><div>确认内胆材质是否易清洁、耐腐蚀。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否支持蒸汽清洁和除垢提醒。</div></div>
+            <div class="check-item"><span>✓</span><div>确认开孔尺寸、高度、深度和门体干涉。</div></div>
+            <div class="check-item"><span>✓</span><div>确认散热方式和橱柜预留空间。</div></div>
+            <div class="check-item"><span>✓</span><div>确认电源插座位置和功率是否匹配。</div></div>
+            <div class="check-item"><span>✓</span><div>确认安装、测量和辅材是否额外收费。</div></div>
+            <div class="check-item"><span>✓</span><div>确认整机、加热管、水泵和主板质保。</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>嵌入式蒸烤箱选购常见误区</h2>
+          <p>
+            很多蒸烤箱不好用，不是因为功能少，而是蒸汽、控温、清洁和安装没有选对。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看菜单数量</h3>
+            <p>
+              自动菜单多不等于好用。蒸汽量、加热结构、控温精度和烤色均匀性，才是真正影响成品的核心。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：忽略清洁维护</h3>
+            <p>
+              蒸烤箱长期会有油污、水垢和异味。内胆难擦、无除垢提醒、冷凝水多，会明显降低使用频率。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：装修后才看尺寸</h3>
+            <p>
+              嵌入式产品对橱柜开孔、散热、电源和门体空间要求高。最好在橱柜设计阶段就确定型号尺寸。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「45L+容量、直喷蒸汽、上下管热风、基础控温、易清洁内胆、尺寸适配」；
+            追求体验升级时，再增加「50L+大容量、背部热风、多点控温、高温蒸、蒸汽烤、食物探针、前置散热和上门测量」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 嵌入式蒸烤箱选购指南 SOP｜基于蒸汽、烘烤、控温、清洁与安装适配的厨房家电选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

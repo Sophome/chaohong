@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>空调选购指南 SOP｜制冷制热与智能舒适配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #17465e;
+      --primary-dark: #082d3e;
+      --accent: #6ec6e8;
+      --accent-warm: #f5b45b;
+      --bg: #f4f8fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #e5eaf0;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(8, 45, 62, 0.98), rgba(23, 70, 94, 0.92)),
+        radial-gradient(circle at 82% 16%, rgba(110, 198, 232, 0.48), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(245, 180, 91, 0.24), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #062335;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(110, 198, 232, 0.32);
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #dff6ff);
+    }
+
+    /* Section Head */
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Grid Card */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(23,70,94,0.08);
+      color: var(--primary);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    /* Gold Box */
+    .gold-box {
+      background:
+        linear-gradient(135deg, rgba(8,45,62,0.98), rgba(23,70,94,0.94)),
+        radial-gradient(circle at top right, rgba(110,198,232,0.44), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    /* SOP */
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eef8fc;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Optimized Table: 不换行、不滚动、不超宽 */
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    /* Checklist */
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(23,70,94,0.98), rgba(8,45,62,0.98)),
+        radial-gradient(circle at top right, rgba(110,198,232,0.36), transparent 42%);
+      border-radius: 34px;
+      color: #fff;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">AIR CONDITIONER BUYING SOP</div>
+          <h1>空调选购指南<br><span>从制冷热到舒适风</span></h1>
+          <p>
+            一套适用于新房装修、旧机换新、卧室客厅升级的空调选购 SOP。
+            从匹数选择、制冷制热、能效省电、舒适送风、智能控制、静音和安装售后七大维度，
+            帮你快速判断一台空调是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>制冷热能力</span>
+              <strong>30%</strong>
+            </div>
+            <div class="bar"><span style="width: 92%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>能效省电</span>
+              <strong>25%</strong>
+            </div>
+            <div class="bar"><span style="width: 82%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>舒适送风</span>
+              <strong>20%</strong>
+            </div>
+            <div class="bar"><span style="width: 72%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>静音体验</span>
+              <strong>15%</strong>
+            </div>
+            <div class="bar"><span style="width: 60%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>智能售后</span>
+              <strong>10%</strong>
+            </div>
+            <div class="bar"><span style="width: 46%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Core Logic -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>空调不是匹数越大越好，而是空间、能效和舒适度要匹配</h2>
+          <p>
+            真正值得买的空调，应优先满足制冷快、制热稳、省电、静音、风感舒适、安装规范和后期维护方便。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">❄️</div>
+            <h3>制冷热能力</h3>
+            <p>
+              空调核心能力是快速达到设定温度，并保持稳定。要根据房间面积、朝向、层高、保温和使用场景选择匹数。
+            </p>
+            <ul>
+              <li>卧室常见 1.5 匹</li>
+              <li>小客厅建议 2 匹起</li>
+              <li>大客厅建议 3 匹柜机</li>
+              <li>北方冬季关注制热和电辅热</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>能效省电</h3>
+            <p>
+              空调是高耗电家电，能效等级、变频技术、压缩机和温控策略会直接影响长期电费和舒适度。
+            </p>
+            <ul>
+              <li>优先新一级能效</li>
+              <li>变频比定频更舒适</li>
+              <li>APF 值越高越省电</li>
+              <li>长期使用更应重视能效</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌬️</div>
+            <h3>舒适送风</h3>
+            <p>
+              空调好不好用，不只看冷不冷，还要看是否直吹、温差是否大、夜间是否安静、风量是否柔和。
+            </p>
+            <ul>
+              <li>卧室优先防直吹</li>
+              <li>老人小孩关注柔风</li>
+              <li>客厅关注大风量循环</li>
+              <li>睡眠模式要安静稳定</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Golden Rule -->
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>空调四大黄金选购原则</h2>
+          <p>
+            先选对匹数和能效，再看舒适风、智能控制和高级净化。空调长期使用，稳定、省电、安静比花哨功能更重要。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>匹数准</strong>
+              <span>按面积、朝向、层高和保温条件选择。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>能效高</strong>
+              <span>优先新一级能效和高 APF 机型。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>风感好</strong>
+              <span>卧室看防直吹，客厅看大循环。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>安装稳</strong>
+              <span>空调三分买、七分装，安装很关键。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>空调选购 SOP</h2>
+          <p>
+            按以下 8 个步骤筛选，可以避免匹数不够、耗电高、直吹难受、噪音大、安装乱收费等常见问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number">
+              <strong>01</strong>
+              <span>空间</span>
+            </div>
+            <div class="step-content">
+              <h3>先确认房间面积、朝向和使用场景</h3>
+              <p>
+                选空调第一步不是看价格，而是看房间条件。面积、层高、西晒、顶楼、落地窗、保温情况都会影响匹数选择。
+              </p>
+              <div class="tag-list">
+                <span class="tag">卧室看静音</span>
+                <span class="tag">客厅看循环</span>
+                <span class="tag">西晒适当加匹</span>
+                <span class="tag">顶楼关注制冷</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>02</strong>
+              <span>匹数</span>
+            </div>
+            <div class="step-content">
+              <h3>按面积匹配空调匹数</h3>
+              <p>
+                匹数过小会一直高负荷运行，制冷慢又费电；匹数过大则容易频繁启停。建议在标准面积基础上结合房间条件微调。
+              </p>
+              <div class="tag-list">
+                <span class="tag">10-15㎡：1匹</span>
+                <span class="tag">15-23㎡：1.5匹</span>
+                <span class="tag">23-32㎡：2匹</span>
+                <span class="tag">32-45㎡：3匹</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>03</strong>
+              <span>类型</span>
+            </div>
+            <div class="step-content">
+              <h3>根据空间选择挂机、柜机或风管机</h3>
+              <p>
+                卧室和小房间适合挂机，客厅和大空间适合柜机，新房装修可考虑风管机或中央空调，但要提前规划吊顶和检修口。
+              </p>
+              <div class="tag-list">
+                <span class="tag">卧室选挂机</span>
+                <span class="tag">客厅选柜机</span>
+                <span class="tag">新房可选风管机</span>
+                <span class="tag">大宅看中央空调</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>04</strong>
+              <span>能效</span>
+            </div>
+            <div class="step-content">
+              <h3>优先选择新一级能效变频空调</h3>
+              <p>
+                空调使用频率高，长期电费差距明显。建议优先选择新一级能效、全直流变频、高 APF 值和温控稳定的机型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">新一级能效</span>
+                <span class="tag">全直流变频</span>
+                <span class="tag">高 APF</span>
+                <span class="tag">温控稳定</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>05</strong>
+              <span>舒适</span>
+            </div>
+            <div class="step-content">
+              <h3>重点看防直吹、柔风和温控体验</h3>
+              <p>
+                卧室、儿童房、老人房尤其要关注风感。防直吹、上下左右扫风、柔风、睡眠模式和低噪运行都很实用。
+              </p>
+              <div class="tag-list">
+                <span class="tag">防直吹</span>
+                <span class="tag">上下左右扫风</span>
+                <span class="tag">柔风模式</span>
+                <span class="tag">睡眠模式</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>06</strong>
+              <span>制热</span>
+            </div>
+            <div class="step-content">
+              <h3>冬季使用要关注制热能力</h3>
+              <p>
+                南方湿冷地区和北方过渡季使用空调制热时，要看低温制热能力、化霜逻辑、电辅热和出风温度稳定性。
+              </p>
+              <div class="tag-list">
+                <span class="tag">低温制热</span>
+                <span class="tag">智能化霜</span>
+                <span class="tag">电辅热可选</span>
+                <span class="tag">出风稳定</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>07</strong>
+              <span>智能</span>
+            </div>
+            <div class="step-content">
+              <h3>选择高频实用的智能功能</h3>
+              <p>
+                空调智能化的重点是远程开关、预约定时、温度控制、耗电查看和故障提醒。语音控制和联动场景属于加分项。
+              </p>
+              <div class="tag-list">
+                <span class="tag">远程控制</span>
+                <span class="tag">预约定时</span>
+                <span class="tag">耗电查看</span>
+                <span class="tag">故障提醒</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>08</strong>
+              <span>安装</span>
+            </div>
+            <div class="step-content">
+              <h3>确认安装费用、铜管长度和售后规则</h3>
+              <p>
+                空调安装直接影响制冷、噪音、漏水和寿命。购买前要确认基础安装包含内容、高空费、支架费、打孔费、加长铜管和抽真空规范。
+              </p>
+              <div class="tag-list">
+                <span class="tag">确认高空费</span>
+                <span class="tag">确认铜管费</span>
+                <span class="tag">必须抽真空</span>
+                <span class="tag">质保清晰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Priority Table -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>制冷热与智能舒适配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>匹数</td>
+                <td><span class="level must">必</span>面积匹配｜余量合理</td>
+                <td><span class="level nice">加</span>西晒加配｜大风量</td>
+                <td><span class="level avoid">避</span>小匹拖大屋｜虚标</td>
+              </tr>
+
+              <tr>
+                <td>制冷</td>
+                <td><span class="level must">必</span>速冷｜温控稳｜循环强</td>
+                <td><span class="level nice">加</span>大导风｜强劲风</td>
+                <td><span class="level avoid">避</span>降温慢｜风量弱</td>
+              </tr>
+
+              <tr>
+                <td>制热</td>
+                <td><span class="level must">必</span>速热｜化霜｜出风稳</td>
+                <td><span class="level nice">加</span>低温热｜电辅热</td>
+                <td><span class="level avoid">避</span>热衰快｜频繁霜</td>
+              </tr>
+
+              <tr>
+                <td>能效</td>
+                <td><span class="level must">必</span>一级｜变频｜高 APF</td>
+                <td><span class="level nice">加</span>全直流｜节能控</td>
+                <td><span class="level avoid">避</span>高耗电｜低能效</td>
+              </tr>
+
+              <tr>
+                <td>舒适</td>
+                <td><span class="level must">必</span>防直吹｜柔风｜睡眠</td>
+                <td><span class="level nice">加</span>无风感｜湿度控</td>
+                <td><span class="level avoid">避</span>直吹冷｜温差大</td>
+              </tr>
+
+              <tr>
+                <td>静音</td>
+                <td><span class="level must">必</span>低噪｜稳运行｜减震</td>
+                <td><span class="level nice">加</span>静音风｜夜间模式</td>
+                <td><span class="level avoid">避</span>嗡鸣｜共振｜异响</td>
+              </tr>
+
+              <tr>
+                <td>净化</td>
+                <td><span class="level must">必</span>自清洁｜防霉｜滤网易拆</td>
+                <td><span class="level nice">加</span>除菌｜新风｜净化</td>
+                <td><span class="level avoid">避</span>异味｜清洗难</td>
+              </tr>
+
+              <tr>
+                <td>智能</td>
+                <td><span class="level must">必</span>定时｜遥控｜温显</td>
+                <td><span class="level nice">加</span>APP｜语音｜耗电看</td>
+                <td><span class="level avoid">避</span>联网差｜操作繁</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>抽真空｜排水顺｜固定稳</td>
+                <td><span class="level nice">加</span>费用明｜辅材清</td>
+                <td><span class="level avoid">避</span>乱收费｜不抽空</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜网点多</td>
+                <td><span class="level nice">加</span>上门快｜保养便</td>
+                <td><span class="level avoid">避</span>外包乱｜响应慢</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            空调要根据房间面积、使用时长、家庭成员和安装条件来选，不建议只看价格或只看匹数。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">🛏️</div>
+            <h3>卧室 / 儿童房</h3>
+            <p>
+              建议优先选择 1.5 匹新一级能效变频挂机，重点看静音、防直吹、睡眠模式和柔风体验。
+            </p>
+            <ul>
+              <li>推荐：1.5 匹挂机</li>
+              <li>重点：静音、防直吹、柔风</li>
+              <li>避坑：噪音大、夜间温差明显</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🛋️</div>
+            <h3>客厅 / 大空间</h3>
+            <p>
+              客厅更看重循环风量和快速降温。建议根据面积选择 2 匹或 3 匹柜机，空间大则优先大风量机型。
+            </p>
+            <ul>
+              <li>推荐：2 匹 / 3 匹柜机</li>
+              <li>重点：大风量、循环快、制冷强</li>
+              <li>避坑：匹数偏小、远端不凉</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👵</div>
+            <h3>老人 / 敏感人群</h3>
+            <p>
+              老人和敏感人群对直吹、温差和干燥更敏感，建议选择柔风、防直吹、低噪和温控稳定的产品。
+            </p>
+            <ul>
+              <li>推荐：柔风挂机 / 舒适风柜机</li>
+              <li>重点：防直吹、温控稳、低噪</li>
+              <li>避坑：风口直吹床位或沙发</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏡</div>
+            <h3>新房装修 / 全屋规划</h3>
+            <p>
+              新房可提前规划挂机、柜机、风管机或中央空调。重点确认外机位、插座、排水、打孔和检修空间。
+            </p>
+            <ul>
+              <li>推荐：分体机 / 风管机 / 中央空调</li>
+              <li>重点：外机位、管线、排水</li>
+              <li>避坑：装修后发现无法安装</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>
+            下单前逐项核对，建议至少满足 11 项以上，再考虑购买。
+          </p>
+
+          <div class="check-grid">
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认房间面积、层高、朝向和保温情况。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认匹数是否与房间面积匹配。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认选择挂机、柜机、风管机或中央空调。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>优先选择新一级能效变频空调。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认 APF 值、制冷量和制热量。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>卧室优先关注静音、防直吹和睡眠模式。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>客厅优先关注风量、循环和快速制冷。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>冬季使用需关注制热能力和化霜表现。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认是否支持自清洁、防霉和滤网易拆洗。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认外机位、插座、排水和打孔条件。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认基础安装包含内容和额外收费项。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认安装时是否规范抽真空。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认整机、压缩机和主要部件质保范围。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认售后网点、上门时效和保养服务。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pitfalls -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>空调选购常见误区</h2>
+          <p>
+            很多空调不好用，不是品牌问题，而是匹数、安装、能效和风感没有选对。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看价格不看匹数</h3>
+            <p>
+              匹数不足会导致降温慢、耗电高、压缩机长期高负荷运行。西晒、顶楼、大窗户房间要适当提高匹数。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：只看制冷不看安装</h3>
+            <p>
+              空调安装影响制冷、漏水、噪音和寿命。抽真空、排水坡度、支架固定、铜管保护都要确认。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：忽略舒适送风</h3>
+            <p>
+              卧室空调如果直吹床、噪音大、温差明显，即使制冷很强也不好用。睡眠场景要优先看舒适风。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「匹数匹配、新一级能效、变频、制冷热稳定、低噪运行、规范安装」；
+            追求体验升级时，再增加「防直吹、柔风、上下左右扫风、自清洁、APP 控制、新风净化、低温制热」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 空调选购指南 SOP｜基于制冷热、能效、智能化与舒适化的家庭家电选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

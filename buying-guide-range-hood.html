@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>吸油烟机选购指南 SOP｜风量风压与拢烟排烟配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #243447;
+      --primary-dark: #101c2b;
+      --accent: #4fb3ff;
+      --bg: #f5f8fb;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #e3eaf2;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(16,28,43,0.98), rgba(36,52,71,0.94)),
+        radial-gradient(circle at 82% 16%, rgba(79,179,255,0.5), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(138,196,255,0.22), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #071827;
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #d8f1ff);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(36,52,71,0.08);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .gold-box,
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(16,28,43,0.98), rgba(36,52,71,0.94)),
+        radial-gradient(circle at top right, rgba(79,179,255,0.42), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2,
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p,
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eaf6ff;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">RANGE HOOD BUYING SOP</div>
+          <h1>吸油烟机选购指南<br><span>从拢烟到排烟静音</span></h1>
+          <p>
+            一套适用于新房装修、厨房换新、中式爆炒、开放式厨房和烟灶套装搭配的吸油烟机选购 SOP。
+            从机型结构、风量风压、拢烟能力、油脂分离、噪音控制、清洁维护、安装距离和售后服务八大维度，
+            帮你快速判断一台吸油烟机是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title"><span>排烟能力</span><strong>35%</strong></div>
+            <div class="bar"><span style="width:94%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>拢烟防逃</span><strong>25%</strong></div>
+            <div class="bar"><span style="width:84%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>噪音体验</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:66%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>清洁维护</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:62%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>安装售后</span><strong>10%</strong></div>
+            <div class="bar"><span style="width:48%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>吸油烟机不是风量越大越好，而是拢得住、排得出、噪音低</h2>
+          <p>
+            真正好用的吸油烟机，应做到爆炒不跑烟、高楼层不倒灌、开放厨房不串味、长期使用不难清洁，
+            并且与燃气灶、烟道环境和安装高度匹配。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">🌪️</div>
+            <h3>风量风压</h3>
+            <p>
+              风量决定吸得快，风压决定排得出。高楼层、公共烟道、做饭高峰期，更要关注最大静压和巡航增压。
+            </p>
+            <ul>
+              <li>日常建议 20m³/min 起</li>
+              <li>爆炒建议 23m³/min+</li>
+              <li>高楼层看最大静压</li>
+              <li>公共烟道看防倒灌</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌀</div>
+            <h3>拢烟能力</h3>
+            <p>
+              烟机能否不跑烟，不只看吸力，还看进烟口位置、负压区、机身形态、挡烟板和安装高度。
+            </p>
+            <ul>
+              <li>侧吸近烟源</li>
+              <li>顶侧双吸更全能</li>
+              <li>顶吸适合大厨房</li>
+              <li>低吸近排防逃烟</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🧽</div>
+            <h3>清洁维护</h3>
+            <p>
+              油烟机长期使用会积油。油脂分离、免拆洗、自清洁、油杯设计和面板材质，会直接影响后期体验。
+            </p>
+            <ul>
+              <li>油脂分离率要高</li>
+              <li>自清洁降低维护</li>
+              <li>油杯易拆更方便</li>
+              <li>面板平整更好擦</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>吸油烟机四大黄金选购原则</h2>
+          <p>
+            先看厨房类型和烟道环境，再看风量、风压、拢烟、噪音和清洁。中式厨房油烟重，不能只看单一参数。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>拢得住</strong>
+              <span>近吸、负压区、挡烟结构要合理。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>排得出</strong>
+              <span>高楼层和公共烟道重点看静压。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>不倒灌</strong>
+              <span>止逆阀和增压排烟不能忽略。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>好清洁</strong>
+              <span>油脂分离和自清洁更省心。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>吸油烟机选购 SOP</h2>
+          <p>
+            按以下 8 个步骤筛选，可以避免风量虚标、风压不够、爆炒跑烟、噪音过大、清洁麻烦和安装翻车等问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number"><strong>01</strong><span>机型</span></div>
+            <div class="step-content">
+              <h3>先确认顶吸、侧吸、顶侧双吸或集成灶</h3>
+              <p>
+                侧吸更靠近油烟源，适合中式爆炒；顶吸颜值简洁，适合空间较大的厨房；顶侧双吸兼顾拢烟和排烟；集成灶适合重油烟和开放厨房。
+              </p>
+              <div class="tag-list">
+                <span class="tag">侧吸近烟源</span>
+                <span class="tag">顶吸更简洁</span>
+                <span class="tag">顶侧双吸全能</span>
+                <span class="tag">集成灶强拢烟</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>02</strong><span>风量</span></div>
+            <div class="step-content">
+              <h3>根据做饭频率选择合适风量</h3>
+              <p>
+                日常家庭建议 20m³/min 起步，经常爆炒建议 23m³/min 以上。开放式厨房和重油烟家庭可进一步提高风量。
+              </p>
+              <div class="tag-list">
+                <span class="tag">日常 20m³/min+</span>
+                <span class="tag">爆炒 23m³/min+</span>
+                <span class="tag">开放厨房看大风量</span>
+                <span class="tag">别只看瞬时风量</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>03</strong><span>风压</span></div>
+            <div class="step-content">
+              <h3>高楼层和公共烟道重点看静压</h3>
+              <p>
+                风压不足会导致油烟排不出去，甚至出现倒灌。楼层高、烟道长、做饭高峰期明显串味的家庭，要优先选高静压和自动增压机型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">最大静压高</span>
+                <span class="tag">公共烟道必看</span>
+                <span class="tag">防倒灌重要</span>
+                <span class="tag">巡航增压加分</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>04</strong><span>拢烟</span></div>
+            <div class="step-content">
+              <h3>关注进烟口、挡烟板和负压区</h3>
+              <p>
+                不跑烟的关键是油烟升腾路径被及时拦截。近吸式、宽域拢烟、低空近排和挡烟板结构，对爆炒体验影响很大。
+              </p>
+              <div class="tag-list">
+                <span class="tag">宽域拢烟</span>
+                <span class="tag">低空近排</span>
+                <span class="tag">挡烟板</span>
+                <span class="tag">负压区稳定</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>05</strong><span>噪音</span></div>
+            <div class="step-content">
+              <h3>看噪音标称，也看实际体感</h3>
+              <p>
+                大风量往往伴随噪音提升。开放厨房、客餐厨一体空间，建议选择低噪风道、电机减震和多档调节更细的机型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">低噪电机</span>
+                <span class="tag">风道顺畅</span>
+                <span class="tag">多档调节</span>
+                <span class="tag">开放厨房慎选</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>06</strong><span>清洁</span></div>
+            <div class="step-content">
+              <h3>关注油脂分离和自清洁能力</h3>
+              <p>
+                油烟机不是买完就结束，后期清洁很关键。建议重点看油脂分离率、免拆洗、自清洁、油杯容量和面板易擦程度。
+              </p>
+              <div class="tag-list">
+                <span class="tag">油脂分离率</span>
+                <span class="tag">高温自清洁</span>
+                <span class="tag">免拆洗</span>
+                <span class="tag">油杯易拆</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>07</strong><span>安装</span></div>
+            <div class="step-content">
+              <h3>确认尺寸、烟管、止逆阀和安装高度</h3>
+              <p>
+                烟机安装高度、烟管长度、弯头数量、止逆阀质量和吊柜预留都会影响最终效果。烟管越短越直，排烟越顺。
+              </p>
+              <div class="tag-list">
+                <span class="tag">烟管短直</span>
+                <span class="tag">止逆阀合格</span>
+                <span class="tag">高度合适</span>
+                <span class="tag">吊柜预留</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>08</strong><span>联动</span></div>
+            <div class="step-content">
+              <h3>烟灶联动和售后服务作为加分项</h3>
+              <p>
+                烟灶联动能减少忘开烟机的问题。购买前还要确认安装费用、辅材费用、清洗服务、电机质保和售后响应。
+              </p>
+              <div class="tag-list">
+                <span class="tag">烟灶联动</span>
+                <span class="tag">挥手智控</span>
+                <span class="tag">电机质保</span>
+                <span class="tag">安装费用清晰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>风量风压与拢烟排烟配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>机型</td>
+                <td><span class="level must">必</span>按厨型选｜不碰头</td>
+                <td><span class="level nice">加</span>顶侧双吸｜低吸近排</td>
+                <td><span class="level avoid">避</span>只看颜值｜易跑烟</td>
+              </tr>
+
+              <tr>
+                <td>风量</td>
+                <td><span class="level must">必</span>20m³+｜吸得快</td>
+                <td><span class="level nice">加</span>23m³+｜爆炒强</td>
+                <td><span class="level avoid">避</span>虚标风量｜噪声大</td>
+              </tr>
+
+              <tr>
+                <td>风压</td>
+                <td><span class="level must">必</span>高静压｜排得出</td>
+                <td><span class="level nice">加</span>巡航增压｜防倒灌</td>
+                <td><span class="level avoid">避</span>低风压｜串味</td>
+              </tr>
+
+              <tr>
+                <td>拢烟</td>
+                <td><span class="level must">必</span>宽域拢｜近烟源</td>
+                <td><span class="level nice">加</span>挡烟板｜低空吸</td>
+                <td><span class="level avoid">避</span>负压散｜逃烟</td>
+              </tr>
+
+              <tr>
+                <td>油分</td>
+                <td><span class="level must">必</span>油分高｜少积油</td>
+                <td><span class="level nice">加</span>免拆洗｜油杯大</td>
+                <td><span class="level avoid">避</span>油网堵｜滴油</td>
+              </tr>
+
+              <tr>
+                <td>噪音</td>
+                <td><span class="level must">必</span>低噪｜档位细</td>
+                <td><span class="level nice">加</span>变频｜减震风道</td>
+                <td><span class="level avoid">避</span>轰鸣大｜共振</td>
+              </tr>
+
+              <tr>
+                <td>清洁</td>
+                <td><span class="level must">必</span>易擦｜油杯易拆</td>
+                <td><span class="level nice">加</span>高温洗｜蒸汽洗</td>
+                <td><span class="level avoid">避</span>缝隙多｜难清洗</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>尺寸准｜烟管顺</td>
+                <td><span class="level nice">加</span>包安装｜好止逆阀</td>
+                <td><span class="level avoid">避</span>管太长｜弯头多</td>
+              </tr>
+
+              <tr>
+                <td>智控</td>
+                <td><span class="level must">必</span>基础档｜照明清</td>
+                <td><span class="level nice">加</span>挥手控｜烟灶联动</td>
+                <td><span class="level avoid">避</span>感应迟｜误触多</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜清洗便</td>
+                <td><span class="level nice">加</span>电机保｜网点多</td>
+                <td><span class="level avoid">避</span>乱收费｜维修慢</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            吸油烟机要根据厨房开放程度、楼层烟道、爆炒频率、燃气灶火力和吊柜设计来选。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">🍳</div>
+            <h3>中式爆炒家庭</h3>
+            <p>
+              建议选择大风量、高静压、宽域拢烟、低空近吸的机型，优先侧吸或顶侧双吸，避免爆炒时油烟外逃。
+            </p>
+            <ul>
+              <li>推荐：23m³/min+ 大风量</li>
+              <li>重点：拢烟、风压、防跑烟</li>
+              <li>避坑：只看风量忽略风压</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏙️</div>
+            <h3>高楼层 / 公共烟道</h3>
+            <p>
+              建议重点看最大静压、巡航增压、防倒灌止逆阀和排烟路径。烟道压力大时，风压比风量更关键。
+            </p>
+            <ul>
+              <li>推荐：高静压增压款</li>
+              <li>重点：静压、防倒灌、止逆阀</li>
+              <li>避坑：低风压导致串味</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏠</div>
+            <h3>开放式厨房</h3>
+            <p>
+              建议选择拢烟强、噪音低、风量充足、联动方便的机型。开放厨房对逃烟和噪音更敏感。
+            </p>
+            <ul>
+              <li>推荐：顶侧双吸 / 集成灶</li>
+              <li>重点：不跑烟、低噪、联动</li>
+              <li>避坑：风大但噪音刺耳</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🧽</div>
+            <h3>高频做饭 / 懒清洁家庭</h3>
+            <p>
+              建议优先选择油脂分离率高、面板易擦、自清洁和油杯易拆的机型，降低长期维护成本。
+            </p>
+            <ul>
+              <li>推荐：自清洁免拆洗款</li>
+              <li>重点：油分、油杯、易擦</li>
+              <li>避坑：缝隙多、油网难拆</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>下单前逐项核对，建议至少满足 11 项以上，再考虑购买。</p>
+
+          <div class="check-grid">
+            <div class="check-item"><span>✓</span><div>确认厨房是封闭式、半开放还是开放式。</div></div>
+            <div class="check-item"><span>✓</span><div>确认做饭频率和是否经常中式爆炒。</div></div>
+            <div class="check-item"><span>✓</span><div>确认选择顶吸、侧吸、顶侧双吸或集成灶。</div></div>
+            <div class="check-item"><span>✓</span><div>日常家庭优先选择 20m³/min 以上风量。</div></div>
+            <div class="check-item"><span>✓</span><div>爆炒家庭优先选择 23m³/min 以上风量。</div></div>
+            <div class="check-item"><span>✓</span><div>高楼层和公共烟道重点确认最大静压。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否支持防倒灌和自动增压。</div></div>
+            <div class="check-item"><span>✓</span><div>确认进烟口位置、挡烟板和拢烟范围。</div></div>
+            <div class="check-item"><span>✓</span><div>确认噪音水平是否适合开放厨房。</div></div>
+            <div class="check-item"><span>✓</span><div>确认油脂分离率、油杯和自清洁方式。</div></div>
+            <div class="check-item"><span>✓</span><div>确认烟管长度、弯头数量和止逆阀质量。</div></div>
+            <div class="check-item"><span>✓</span><div>确认烟机尺寸、吊柜预留和安装高度。</div></div>
+            <div class="check-item"><span>✓</span><div>确认安装、打孔、加长烟管和辅材收费。</div></div>
+            <div class="check-item"><span>✓</span><div>确认整机、电机、叶轮和主板质保范围。</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>吸油烟机选购常见误区</h2>
+          <p>
+            很多烟机不好用，不是因为风量小，而是风压、拢烟、安装和清洁维护没有匹配真实厨房环境。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看风量不看风压</h3>
+            <p>
+              风量代表吸烟速度，风压代表排烟能力。高楼层和公共烟道如果风压不足，容易排不出、倒灌和串味。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：忽略安装高度和烟管</h3>
+            <p>
+              烟机安装太高、烟管太长、弯头太多、止逆阀差，都会让好烟机效果打折。安装同样是排烟能力的一部分。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：只买大吸力不看噪音</h3>
+            <p>
+              大风量如果风道设计差，噪音和共振会明显影响体验。开放厨房尤其要平衡吸力和低噪。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「20m³/min+风量、高静压、防倒灌、拢烟结构好、油脂分离高、安装适配」；
+            追求体验升级时，再增加「23m³/min+大风量、巡航增压、顶侧双吸、低噪变频、自清洁、烟灶联动和优质止逆阀」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 吸油烟机选购指南 SOP｜基于风量、风压、拢烟、噪音、清洁与安装适配的厨房家电选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

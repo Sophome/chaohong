@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>电视选购指南 SOP｜画质与智能舒适配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #1c3f62;
+      --primary-dark: #09253c;
+      --accent: #5fb7e1;
+      --accent-warm: #d8aa5f;
+      --bg: #f5f8fb;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #e5eaf0;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(9, 37, 60, 0.98), rgba(28, 63, 98, 0.92)),
+        radial-gradient(circle at 82% 16%, rgba(95, 183, 225, 0.5), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(216, 170, 95, 0.24), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #062335;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(95, 183, 225, 0.32);
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #dff4ff);
+    }
+
+    /* Section Head */
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Grid Card */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(28,63,98,0.08);
+      color: var(--primary);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    /* Gold Box */
+    .gold-box {
+      background:
+        linear-gradient(135deg, rgba(9,37,60,0.98), rgba(28,63,98,0.94)),
+        radial-gradient(circle at top right, rgba(95,183,225,0.44), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    /* SOP */
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eef7fb;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Optimized Table: 不换行、不滚动、不超宽 */
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    /* Checklist */
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(28,63,98,0.98), rgba(9,37,60,0.98)),
+        radial-gradient(circle at top right, rgba(95,183,225,0.36), transparent 42%);
+      border-radius: 34px;
+      color: #fff;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">TV BUYING SOP</div>
+          <h1>电视选购指南<br><span>从画质到智能体验</span></h1>
+          <p>
+            一套适用于客厅升级、卧室观影、影音娱乐和家庭电视换新的选购 SOP。
+            从尺寸匹配、画质核心、面板类型、刷新率、智能系统、音画体验和安装售后六大维度，
+            帮你快速判断一台电视是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>画质表现</span>
+              <strong>35%</strong>
+            </div>
+            <div class="bar"><span style="width: 94%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>尺寸匹配</span>
+              <strong>20%</strong>
+            </div>
+            <div class="bar"><span style="width: 78%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>智能系统</span>
+              <strong>15%</strong>
+            </div>
+            <div class="bar"><span style="width: 62%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>音画体验</span>
+              <strong>15%</strong>
+            </div>
+            <div class="bar"><span style="width: 60%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title">
+              <span>安装售后</span>
+              <strong>15%</strong>
+            </div>
+            <div class="bar"><span style="width: 58%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Core Logic -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>电视不是屏幕越大越好，而是画质、尺寸和观看距离要匹配</h2>
+          <p>
+            真正值得买的电视，应优先满足清晰度、对比度、亮度、刷新率、系统流畅度和安装适配。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">🖼️</div>
+            <h3>画质核心</h3>
+            <p>
+              电视的核心是画质，不是参数堆砌。建议重点关注分辨率、亮度、对比度、控光和色彩表现。
+            </p>
+            <ul>
+              <li>4K 是当前主流起点</li>
+              <li>高亮度更适合客厅</li>
+              <li>对比度影响立体感</li>
+              <li>控光决定暗场表现</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📐</div>
+            <h3>尺寸匹配</h3>
+            <p>
+              屏幕太小影响沉浸感，太大则容易压迫。电视尺寸要根据观看距离、客厅宽度和安装方式来选。
+            </p>
+            <ul>
+              <li>卧室常见 55-65 寸</li>
+              <li>客厅常见 65-75 寸</li>
+              <li>大客厅可选 85 寸+</li>
+              <li>要留安装和开箱空间</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>智能系统</h3>
+            <p>
+              电视智能化的价值在于开机快、操作顺、App 齐、投屏稳，而不是菜单越多越好。
+            </p>
+            <ul>
+              <li>系统流畅度很重要</li>
+              <li>投屏稳定更实用</li>
+              <li>语音控制属于加分项</li>
+              <li>广告少体验更好</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Golden Rule -->
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>电视四大黄金选购原则</h2>
+          <p>
+            先选对尺寸和画质，再看刷新率、控光、智能系统和音响。电视是高频娱乐设备，体验稳定比堆料更重要。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>看距离</strong>
+              <span>按观看距离选尺寸，别盲目买大。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看画质</strong>
+              <span>亮度、对比度、控光比花哨参数更重要。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看流畅</strong>
+              <span>系统不卡、投屏稳、开机快才实用。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>看安装</strong>
+              <span>挂装、底座、承重和线材要提前确认。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>电视选购 SOP</h2>
+          <p>
+            按以下 8 个步骤筛选，可以避免尺寸不合适、画质不清晰、系统卡顿、音效一般和安装翻车等问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number">
+              <strong>01</strong>
+              <span>距离</span>
+            </div>
+            <div class="step-content">
+              <h3>先确认观看距离和摆放空间</h3>
+              <p>
+                电视下单前一定要先量沙发到电视墙的距离、墙面宽度、安装高度和电视柜尺寸。观看距离决定尺寸上限。
+              </p>
+              <div class="tag-list">
+                <span class="tag">先量观看距离</span>
+                <span class="tag">确认墙面宽度</span>
+                <span class="tag">预留挂装空间</span>
+                <span class="tag">看底座高度</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>02</strong>
+              <span>尺寸</span>
+            </div>
+            <div class="step-content">
+              <h3>根据距离选择合适尺寸</h3>
+              <p>
+                电视尺寸越大沉浸感越强，但不是越大越好。建议结合家庭观影习惯和客厅空间，选择更合适的比例。
+              </p>
+              <div class="tag-list">
+                <span class="tag">2-2.5m：55/65 寸</span>
+                <span class="tag">2.5-3m：65/75 寸</span>
+                <span class="tag">3m+：75/85 寸</span>
+                <span class="tag">卧室可适当小一档</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>03</strong>
+              <span>面板</span>
+            </div>
+            <div class="step-content">
+              <h3>根据使用场景选择面板类型</h3>
+              <p>
+                不同面板各有优势。想要高亮度和强对比可关注 Mini LED，追求暗场和色彩可关注 OLED，预算型可选普通 LCD 高刷款。
+              </p>
+              <div class="tag-list">
+                <span class="tag">Mini LED：高亮强控光</span>
+                <span class="tag">OLED：黑位好对比高</span>
+                <span class="tag">LCD：预算友好</span>
+                <span class="tag">别只看面板名</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>04</strong>
+              <span>画质</span>
+            </div>
+            <div class="step-content">
+              <h3>重点看亮度、控光、色域和处理芯片</h3>
+              <p>
+                电视好不好看，核心还是画质。建议优先选择高亮度、分区控光、广色域和成熟画质芯片的机型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">4K 分辨率</span>
+                <span class="tag">高亮度</span>
+                <span class="tag">广色域</span>
+                <span class="tag">分区控光</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>05</strong>
+              <span>刷新率</span>
+            </div>
+            <div class="step-content">
+              <h3>高刷电视更适合体育和游戏</h3>
+              <p>
+                如果常看体育、打主机游戏或高动态内容，建议优先选择 120Hz 及以上高刷电视，画面更顺滑，拖影更少。
+              </p>
+              <div class="tag-list">
+                <span class="tag">120Hz 优先</span>
+                <span class="tag">游戏更流畅</span>
+                <span class="tag">体育更顺滑</span>
+                <span class="tag">低拖影</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>06</strong>
+              <span>智能</span>
+            </div>
+            <div class="step-content">
+              <h3>选择高频实用的智能功能</h3>
+              <p>
+                电视智能化的重点是系统流畅、投屏稳定、语音好用、应用丰富。大屏互动、智能家居联动属于加分项。
+              </p>
+              <div class="tag-list">
+                <span class="tag">系统流畅</span>
+                <span class="tag">投屏稳定</span>
+                <span class="tag">语音控制</span>
+                <span class="tag">应用丰富</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>07</strong>
+              <span>音响</span>
+            </div>
+            <div class="step-content">
+              <h3>音画一体，音效也要一起看</h3>
+              <p>
+                电视内置音响差异很大。客厅建议关注扬声器功率、低音表现和杜比支持；追求影院感可直接配回音壁。
+              </p>
+              <div class="tag-list">
+                <span class="tag">杜比支持</span>
+                <span class="tag">大功率扬声器</span>
+                <span class="tag">低音更厚</span>
+                <span class="tag">回音壁加分</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">
+              <strong>08</strong>
+              <span>安装</span>
+            </div>
+            <div class="step-content">
+              <h3>确认安装方式、承重和售后规则</h3>
+              <p>
+                电视挂装要确认墙体承重、挂架规格和隐藏走线；购买前还要确认送装、开箱验机、延保和退换规则。
+              </p>
+              <div class="tag-list">
+                <span class="tag">挂装承重要够</span>
+                <span class="tag">走线提前规划</span>
+                <span class="tag">开箱验机</span>
+                <span class="tag">售后清晰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Priority Table -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>画质与智能舒适配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>尺寸</td>
+                <td><span class="level must">必</span>距离匹配｜比例合适</td>
+                <td><span class="level nice">加</span>大屏沉浸｜超窄边</td>
+                <td><span class="level avoid">避</span>盲目巨屏｜压空间</td>
+              </tr>
+
+              <tr>
+                <td>画质</td>
+                <td><span class="level must">必</span>4K｜高亮｜色准稳</td>
+                <td><span class="level nice">加</span>分区控光｜高对比</td>
+                <td><span class="level avoid">避</span>暗淡｜发灰｜泛白</td>
+              </tr>
+
+              <tr>
+                <td>面板</td>
+                <td><span class="level must">必</span>适场景｜够亮度</td>
+                <td><span class="level nice">加</span>Mini LED｜OLED</td>
+                <td><span class="level avoid">避</span>只看名词｜不看实测</td>
+              </tr>
+
+              <tr>
+                <td>刷新</td>
+                <td><span class="level must">必</span>60Hz 起｜低拖影</td>
+                <td><span class="level nice">加</span>120Hz｜VRR｜MEMC</td>
+                <td><span class="level avoid">避</span>抖动｜卡顿｜撕裂</td>
+              </tr>
+
+              <tr>
+                <td>智能</td>
+                <td><span class="level must">必</span>流畅｜投屏稳｜语音</td>
+                <td><span class="level nice">加</span>APP｜多场景联动</td>
+                <td><span class="level avoid">避</span>卡顿｜广告多｜难用</td>
+              </tr>
+
+              <tr>
+                <td>音效</td>
+                <td><span class="level must">必</span>清晰｜人声稳</td>
+                <td><span class="level nice">加</span>杜比｜回音壁</td>
+                <td><span class="level avoid">避</span>闷声｜破音｜共振</td>
+              </tr>
+
+              <tr>
+                <td>接口</td>
+                <td><span class="level must">必</span>HDMI 2.1｜USB</td>
+                <td><span class="level nice">加</span>多接口｜eARC</td>
+                <td><span class="level avoid">避</span>接口少｜扩展差</td>
+              </tr>
+
+              <tr>
+                <td>护眼</td>
+                <td><span class="level must">必</span>低蓝光｜无频闪</td>
+                <td><span class="level nice">加</span>环境光感｜防眩光</td>
+                <td><span class="level avoid">避</span>刺眼｜反光强</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>承重｜挂架｜走线</td>
+                <td><span class="level nice">加</span>隐藏线｜零贴墙</td>
+                <td><span class="level avoid">避</span>装歪｜线乱｜不稳</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜送装稳</td>
+                <td><span class="level nice">加</span>延保｜上门快</td>
+                <td><span class="level avoid">避</span>外包乱｜维修慢</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            电视要根据观看距离、使用场景、是否游戏、是否追剧和音响需求来选，不建议只看参数。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">🛋️</div>
+            <h3>客厅主电视</h3>
+            <p>
+              客厅电视建议优先考虑大尺寸、高亮度、高刷和更强控光，适合多人观看和白天使用。
+            </p>
+            <ul>
+              <li>推荐：65-85 寸</li>
+              <li>重点：画质、亮度、控光</li>
+              <li>避坑：尺寸太小、白天发灰</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🛏️</div>
+            <h3>卧室电视</h3>
+            <p>
+              卧室更看重尺寸合适、开机快、系统简单和低蓝光，夜间观看不要过亮，也不要太大。
+            </p>
+            <ul>
+              <li>推荐：50-65 寸</li>
+              <li>重点：护眼、静音、易用</li>
+              <li>避坑：太大压迫、过亮刺眼</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🎮</div>
+            <h3>游戏 / 电竞用户</h3>
+            <p>
+              游戏用户要重点看 120Hz、高响应、VRR、HDMI 2.1 和低延迟模式，画面顺滑比单纯大屏更重要。
+            </p>
+            <ul>
+              <li>推荐：120Hz 及以上</li>
+              <li>重点：低延迟、高刷、接口</li>
+              <li>避坑：拖影重、输入延迟高</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏡</div>
+            <h3>新房装修 / 全屋定制</h3>
+            <p>
+              新房建议提前规划电视墙、插座、网口、挂架和走线。大尺寸电视要特别注意承重和安装高度。
+            </p>
+            <ul>
+              <li>推荐：提前预埋线材</li>
+              <li>重点：承重、走线、安装高度</li>
+              <li>避坑：装修后发现插座不对位</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>
+            下单前逐项核对，建议至少满足 11 项以上，再考虑购买。
+          </p>
+
+          <div class="check-grid">
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认沙发到电视墙的观看距离。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认电视墙宽度和安装空间。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>根据距离选择合适尺寸。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>根据使用场景选择面板类型。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>优先关注 4K、亮度、对比度和控光。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>常看体育或游戏建议选 120Hz。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认系统流畅、投屏稳定和语音可用。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认接口数量和 HDMI 版本。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认是否支持护眼、低蓝光和防眩光。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认音响表现和是否需要回音壁。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认挂装承重和支架规格。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认走线、插座和网口位置。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认送装、开箱验机和退换规则。</div>
+            </div>
+
+            <div class="check-item">
+              <span>✓</span>
+              <div>确认整机、屏幕和主要部件质保。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pitfalls -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>电视选购常见误区</h2>
+          <p>
+            很多电视不好用，不是因为品牌问题，而是尺寸、画质、系统和安装没选对。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看尺寸不看距离</h3>
+            <p>
+              屏幕太大可能压迫，太小又没沉浸感。电视尺寸要结合观看距离和墙面空间一起选。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：只看参数不看实感</h3>
+            <p>
+              分辨率、刷新率只是基础。真正体验差异来自亮度、控光、色彩和系统流畅度。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：忽略安装和走线</h3>
+            <p>
+              电视挂装如果承重不足、线材外露、插座不对位，会严重影响美观和使用体验。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「尺寸匹配、4K 画质、系统流畅、基础护眼、接口够用、规范安装」；
+            追求体验升级时，再增加「120Hz 高刷、Mini LED / OLED、分区控光、杜比音效、VRR、智能联动」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 电视选购指南 SOP｜基于画质、尺寸、智能化与舒适化的家庭影音选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

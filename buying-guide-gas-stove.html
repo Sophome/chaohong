@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>燃气灶选购指南 SOP｜火力热效与安全安装配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #5a231b;
+      --primary-dark: #2d100c;
+      --accent: #f06b3f;
+      --bg: #fff8f4;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #f0ded6;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(80, 35, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(45,16,12,0.98), rgba(90,35,27,0.94)),
+        radial-gradient(circle at 82% 16%, rgba(240,107,63,0.52), transparent 34%),
+        radial-gradient(circle at 12% 85%, rgba(255,205,150,0.22), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #ffd2bd);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(90,35,27,0.08);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .gold-box,
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(45,16,12,0.98), rgba(90,35,27,0.94)),
+        radial-gradient(circle at top right, rgba(240,107,63,0.42), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2,
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p,
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #fff0e8;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 13px 8px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 11px 5px;
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">GAS STOVE BUYING SOP</div>
+          <h1>燃气灶选购指南<br><span>从猛火到安全热效</span></h1>
+          <p>
+            一套适用于新房装修、厨房换新、中式爆炒、开放式厨房和烟灶套装搭配的燃气灶选购 SOP。
+            从气源适配、火力热负荷、热效率、燃烧器结构、面板材质、安全保护、安装开孔和售后维保八大维度，
+            帮你快速判断一台燃气灶是否值得买。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>推荐选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title"><span>火力热效</span><strong>30%</strong></div>
+            <div class="bar"><span style="width:92%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>安全保护</span><strong>25%</strong></div>
+            <div class="bar"><span style="width:84%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>燃烧稳定</span><strong>20%</strong></div>
+            <div class="bar"><span style="width:74%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>清洁耐用</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:62%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>安装售后</span><strong>10%</strong></div>
+            <div class="bar"><span style="width:48%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Selection Logic</span>
+          <h2>燃气灶不是火越大越好，而是猛火、稳火、安全和易清洁要兼顾</h2>
+          <p>
+            真正好用的燃气灶，应做到爆炒有力、小火稳定、热效率高、点火顺畅、熄火保护可靠，并且安装尺寸和气源类型完全匹配。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">🔥</div>
+            <h3>火力热负荷</h3>
+            <p>
+              中式爆炒用户要重点看热负荷和火力集中度。家用主流可关注 4.5kW-5.2kW 区间，同时不能忽略热效率。
+            </p>
+            <ul>
+              <li>日常家用 4.2kW 起</li>
+              <li>爆炒建议 4.8kW+</li>
+              <li>火力大也要看热效</li>
+              <li>小火稳定同样重要</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>安全保护</h3>
+            <p>
+              燃气灶是强安全属性厨电，必须具备熄火保护。家有老人、儿童，建议重点看童锁、防干烧和防漏气设计。
+            </p>
+            <ul>
+              <li>熄火保护必须有</li>
+              <li>热电偶反应要稳定</li>
+              <li>防干烧适合老人家庭</li>
+              <li>旋钮手感要清晰</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🧽</div>
+            <h3>清洁耐用</h3>
+            <p>
+              面板材质、炉头结构、锅架设计和盛液盘决定后期清洁体验。经常做饭家庭不建议忽略易清洁设计。
+            </p>
+            <ul>
+              <li>钢化玻璃颜值高</li>
+              <li>不锈钢耐造耐刮</li>
+              <li>可拆炉头更好洗</li>
+              <li>防溢结构更省心</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>燃气灶四大黄金选购原则</h2>
+          <p>
+            先确认气源和安装尺寸，再看火力、热效率、安全保护和清洁维护。燃气灶属于高频高安全属性厨电，适配和安全比参数堆叠更重要。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>气源准</strong>
+              <span>天然气、液化气不能买错。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>火力猛</strong>
+              <span>爆炒看热负荷和聚火能力。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>热效高</strong>
+              <span>省气、升温快、锅底受热好。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>安全稳</strong>
+              <span>熄火保护、防干烧更安心。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>燃气灶选购 SOP</h2>
+          <p>
+            以下8个步骤筛选，可以避免气源买错、开孔不匹配、火力虚标、小火不稳、清洁麻烦和售后安装翻车等问题。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number"><strong>01</strong><span>气源</span></div>
+            <div class="step-content">
+              <h3>先确认天然气、液化气或人工煤气</h3>
+              <p>
+                燃气灶必须与家庭气源匹配，天然气、液化气、人工煤气喷嘴和燃烧参数不同，不能混用。下单前一定核对气源类型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">天然气 12T</span>
+                <span class="tag">液化气 20Y</span>
+                <span class="tag">人工煤气慎选</span>
+                <span class="tag">气源不能混用</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>02</strong><span>安装</span></div>
+            <div class="step-content">
+              <h3>确认台嵌方式和开孔尺寸</h3>
+              <p>
+                换新用户要测量原灶开孔尺寸，新房用户要提前与橱柜确认开孔、台面厚度、底部通风和燃气管位置。
+              </p>
+              <div class="tag-list">
+                <span class="tag">测量开孔</span>
+                <span class="tag">台嵌两用</span>
+                <span class="tag">底部通风</span>
+                <span class="tag">管路不干涉</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>03</strong><span>火力</span></div>
+            <div class="step-content">
+              <h3>根据烹饪习惯选择热负荷</h3>
+              <p>
+                如果经常爆炒，建议选择 4.8kW 及以上；如果日常煎煮炖为主，4.2kW-4.5kW 已够用。不要只看大火，也要看小火稳定。
+              </p>
+              <div class="tag-list">
+                <span class="tag">日常 4.2kW+</span>
+                <span class="tag">爆炒 4.8kW+</span>
+                <span class="tag">猛火看聚火</span>
+                <span class="tag">小火看稳定</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>04</strong><span>热效</span></div>
+            <div class="step-content">
+              <h3>关注一级能效和热效率</h3>
+              <p>
+                热效率越高，代表更多热量作用到锅底，升温更快也更省气。火力大但热效低，实际体验未必更好。
+              </p>
+              <div class="tag-list">
+                <span class="tag">一级能效</span>
+                <span class="tag">热效高</span>
+                <span class="tag">省气快热</span>
+                <span class="tag">锅底受热好</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>05</strong><span>炉头</span></div>
+            <div class="step-content">
+              <h3>看燃烧器、火盖和进风方式</h3>
+              <p>
+                燃烧稳定性取决于炉头材质、火孔设计、进风方式和锅架高度。黄火、离焰、回火都会影响安全和效率。
+              </p>
+              <div class="tag-list">
+                <span class="tag">铜火盖</span>
+                <span class="tag">全进风</span>
+                <span class="tag">聚能燃烧</span>
+                <span class="tag">火焰均匀</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>06</strong><span>安全</span></div>
+            <div class="step-content">
+              <h3>熄火保护必须作为底线配置</h3>
+              <p>
+                汤汁溢出、风吹熄火或意外熄火时，熄火保护应能及时切断燃气。老人家庭可优先考虑防干烧和童锁。
+              </p>
+              <div class="tag-list">
+                <span class="tag">熄火保护</span>
+                <span class="tag">防干烧</span>
+                <span class="tag">童锁保护</span>
+                <span class="tag">旋钮防误触</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>07</strong><span>清洁</span></div>
+            <div class="step-content">
+              <h3>根据做饭频率选择面板和结构</h3>
+              <p>
+                钢化玻璃好擦、颜值高；不锈钢耐刮耐造；搪瓷锅架、防溢盘和可拆火盖能降低后期清洁成本。
+              </p>
+              <div class="tag-list">
+                <span class="tag">玻璃好擦</span>
+                <span class="tag">不锈钢耐造</span>
+                <span class="tag">可拆火盖</span>
+                <span class="tag">防溢设计</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>08</strong><span>售后</span></div>
+            <div class="step-content">
+              <h3>确认安装、改孔、气管和质保规则</h3>
+              <p>
+                购买前要确认是否包安装、是否需要更换燃气软管、开孔是否收费、点火针和热电偶等易损件维修是否方便。
+              </p>
+              <div class="tag-list">
+                <span class="tag">安装费用</span>
+                <span class="tag">开孔收费</span>
+                <span class="tag">气管合规</span>
+                <span class="tag">质保清晰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>火力热效与安全安装配置优先级</h2>
+          <p>
+            表格已做短词压缩，文字单行展示，不设置横向滚动条，适合直接用于页面展示。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>气源</td>
+                <td><span class="level must">必</span>气源匹配｜标识清</td>
+                <td><span class="level nice">加</span>可换喷嘴｜服务稳</td>
+                <td><span class="level avoid">避</span>气源买错｜混用</td>
+              </tr>
+
+              <tr>
+                <td>火力</td>
+                <td><span class="level must">必</span>4.2kW+｜火稳</td>
+                <td><span class="level nice">加</span>4.8kW+｜爆炒强</td>
+                <td><span class="level avoid">避</span>虚标大火｜黄火</td>
+              </tr>
+
+              <tr>
+                <td>热效</td>
+                <td><span class="level must">必</span>一级能效｜热效高</td>
+                <td><span class="level nice">加</span>聚能环｜省气快</td>
+                <td><span class="level avoid">避</span>火大低效｜费气</td>
+              </tr>
+
+              <tr>
+                <td>小火</td>
+                <td><span class="level must">必</span>小火稳｜不熄火</td>
+                <td><span class="level nice">加</span>精控火｜宽火段</td>
+                <td><span class="level avoid">避</span>炖煮易灭｜火飘</td>
+              </tr>
+
+              <tr>
+                <td>炉头</td>
+                <td><span class="level must">必</span>火盖耐用｜火匀</td>
+                <td><span class="level nice">加</span>铜火盖｜全进风</td>
+                <td><span class="level avoid">避</span>堵孔多｜回火</td>
+              </tr>
+
+              <tr>
+                <td>安全</td>
+                <td><span class="level must">必</span>熄火保护｜断气</td>
+                <td><span class="level nice">加</span>防干烧｜童锁</td>
+                <td><span class="level avoid">避</span>无保护｜反应慢</td>
+              </tr>
+
+              <tr>
+                <td>面板</td>
+                <td><span class="level must">必</span>耐热｜易擦</td>
+                <td><span class="level nice">加</span>防爆玻璃｜拉丝钢</td>
+                <td><span class="level avoid">避</span>易裂｜易刮花</td>
+              </tr>
+
+              <tr>
+                <td>锅架</td>
+                <td><span class="level must">必</span>稳锅｜不滑</td>
+                <td><span class="level nice">加</span>搪瓷架｜防滑齿</td>
+                <td><span class="level avoid">避</span>锅晃｜架变形</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>开孔准｜通风足</td>
+                <td><span class="level nice">加</span>台嵌用｜包安装</td>
+                <td><span class="level avoid">避</span>装不下｜管干涉</td>
+              </tr>
+
+              <tr>
+                <td>售后</td>
+                <td><span class="level must">必</span>质保清｜维修便</td>
+                <td><span class="level nice">加</span>网点多｜响应快</td>
+                <td><span class="level avoid">避</span>乱收费｜配件贵</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Buying Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            燃气灶要根据气源类型、做饭频率、爆炒需求、老人儿童使用和原有开孔尺寸来选。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">🍳</div>
+            <h3>中式爆炒家庭</h3>
+            <p>
+              建议选择 4.8kW 及以上热负荷、一级能效、聚火能力强、小火稳定的机型，适合爆炒、煎炸和快速升温。
+            </p>
+            <ul>
+              <li>推荐：大火力高热效款</li>
+              <li>重点：猛火、聚火、小火稳</li>
+              <li>避坑：只火大但费气</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👨‍👩‍👧</div>
+            <h3>日常三口之家</h3>
+            <p>
+              建议选择 4.2kW-4.8kW、熄火保护、一级能效和易清洁面板的均衡款，满足炒菜、煲汤、煎煮等日常需求。
+            </p>
+            <ul>
+              <li>推荐：均衡双灶款</li>
+              <li>重点：安全、热效、清洁</li>
+              <li>避坑：低价无安全细节</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👵</div>
+            <h3>老人家庭 / 安全优先</h3>
+            <p>
+              建议优先选择熄火保护灵敏、防干烧、旋钮反馈清晰、点火成功率高的机型，减少忘关火和溢锅风险。
+            </p>
+            <ul>
+              <li>推荐：安全防护款</li>
+              <li>重点：熄火、防干烧、易操作</li>
+              <li>避坑：旋钮松、点火慢</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏠</div>
+            <h3>新房装修 / 烟灶套装</h3>
+            <p>
+              新房建议在橱柜设计阶段确认开孔、燃气管、电源、烟机距离和烟灶联动，整体厨房动线会更顺。
+            </p>
+            <ul>
+              <li>推荐：烟灶联动套装</li>
+              <li>重点：尺寸、排烟、联动</li>
+              <li>避坑：先装台面后选灶</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 14 项确认清单</h2>
+          <p>下单前逐项核对，建议至少满足 11 项以上，再考虑购买。</p>
+
+          <div class="check-grid">
+            <div class="check-item"><span>✓</span><div>确认家庭气源是天然气、液化气还是人工煤气。</div></div>
+            <div class="check-item"><span>✓</span><div>确认燃气灶气源型号与家中气源完全一致。</div></div>
+            <div class="check-item"><span>✓</span><div>确认台面开孔尺寸、外形尺寸和台面厚度。</div></div>
+            <div class="check-item"><span>✓</span><div>确认底部橱柜是否有足够通风空间。</div></div>
+            <div class="check-item"><span>✓</span><div>确认燃气管、阀门位置不会与灶具干涉。</div></div>
+            <div class="check-item"><span>✓</span><div>爆炒家庭优先选择 4.8kW 以上火力。</div></div>
+            <div class="check-item"><span>✓</span><div>确认热效率和能效等级，优先一级能效。</div></div>
+            <div class="check-item"><span>✓</span><div>确认小火是否稳定，适合煲汤和炖煮。</div></div>
+            <div class="check-item"><span>✓</span><div>确认必须具备熄火保护功能。</div></div>
+            <div class="check-item"><span>✓</span><div>老人家庭确认是否支持防干烧和童锁。</div></div>
+            <div class="check-item"><span>✓</span><div>确认面板材质、锅架材质和清洁难度。</div></div>
+            <div class="check-item"><span>✓</span><div>确认点火方式、旋钮手感和火力调节范围。</div></div>
+            <div class="check-item"><span>✓</span><div>确认安装、改孔、气管和辅材是否收费。</div></div>
+            <div class="check-item"><span>✓</span><div>确认整机、阀体、点火针和热电偶质保范围。</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>燃气灶选购常见误区</h2>
+          <p>
+            很多燃气灶不好用，不是因为价格低，而是气源、开孔、火力热效、安全保护和清洁结构没有选对。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：只看火力数值</h3>
+            <p>
+              热负荷高不等于真实好用。还要看热效率、聚火能力、火焰稳定性和小火表现，否则可能费气又不好控火。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：忽略气源和开孔</h3>
+            <p>
+              气源买错不能直接使用，开孔不匹配可能需要改台面。换新用户一定先量尺寸，再看型号。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：只看面板颜值</h3>
+            <p>
+              钢化玻璃好看好擦，但也要看防爆、安全边框和承重；不锈钢耐用但可能更显划痕，应按使用习惯选择。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话选购结论</h2>
+          <p>
+            预算有限时，优先保证「气源匹配、开孔适配、4.2kW+、一级能效、熄火保护、小火稳定、易清洁面板」；
+            追求体验升级时，再增加「4.8kW+爆炒火力、铜火盖、全进风、防干烧、烟灶联动、防爆玻璃和上门安装」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 燃气灶选购指南 SOP｜基于气源、火力、热效、安全、清洁与安装适配的厨房家电选购标准
+    </footer>
+
+  </div>
+</body>
+</html>

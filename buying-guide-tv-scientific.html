@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>电视机科学选购指南 SOP｜Mini LED、OLED、大屏、HDR 与游戏电视配置优先级</title>
+
+  <style>
+    :root {
+      --primary: #18204f;
+      --primary-dark: #090d24;
+      --accent: #7d8cff;
+      --accent-2: #28d7ff;
+      --bg: #f5f7ff;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --line: #e3e7ff;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(9, 13, 36, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(9,13,36,0.98), rgba(24,32,79,0.95)),
+        radial-gradient(circle at 84% 12%, rgba(40,215,255,0.42), transparent 32%),
+        radial-gradient(circle at 10% 84%, rgba(125,140,255,0.36), transparent 36%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: 1.16fr 0.84fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: var(--accent-2);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 750;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      color: #060819;
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      margin-bottom: 18px;
+    }
+
+    .score-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-2), #e4e8ff);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 850;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.24;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      max-width: 820px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(24,32,79,0.08);
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .formula {
+      padding: 22px;
+      border-radius: 20px;
+      background: #eef2ff;
+      border: 1px solid var(--line);
+      color: var(--primary);
+      font-size: 15px;
+      margin-top: 18px;
+    }
+
+    .gold-box,
+    .checklist {
+      background:
+        linear-gradient(135deg, rgba(9,13,36,0.98), rgba(24,32,79,0.95)),
+        radial-gradient(circle at top right, rgba(40,215,255,0.34), transparent 42%);
+      border-radius: 34px;
+      padding: 44px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .gold-box h2,
+    .checklist h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .gold-box p,
+    .checklist p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gold-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .gold-item strong {
+      display: block;
+      color: var(--accent-2);
+      font-size: 23px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .gold-item span {
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+    }
+
+    .step-number {
+      min-height: 124px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .step-number span {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.78;
+    }
+
+    .step-content {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-content h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      width: 100%;
+      background: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 15px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 13.5px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: var(--primary-dark);
+      color: #fff;
+      font-weight: 850;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      color: var(--primary-dark);
+      font-weight: 850;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 29%;
+    }
+
+    .level {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 850;
+      margin-right: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .must {
+      color: var(--success);
+      background: rgba(22,163,74,0.12);
+    }
+
+    .nice {
+      color: var(--warning);
+      background: rgba(245,158,11,0.14);
+    }
+
+    .avoid {
+      color: var(--danger);
+      background: rgba(220,38,38,0.1);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .check-item span {
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+
+    .check-item div {
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 54px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .grid-3,
+      .grid-2,
+      .gold-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        min-height: auto;
+        padding: 18px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      th,
+      td {
+        padding: 12px 7px;
+        font-size: 12px;
+      }
+
+      .level {
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .card,
+      .step-content,
+      .gold-box,
+      .checklist {
+        padding: 24px;
+      }
+
+      .gold-box h2,
+      .checklist h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+
+      th,
+      td {
+        padding: 10px 5px;
+        font-size: 10.2px;
+        letter-spacing: -0.35px;
+      }
+
+      .level {
+        display: none;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 16%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">SCIENTIFIC TV BUYING SOP 2026</div>
+          <h1>电视机科学选购指南<br><span>大屏、Mini LED、OLED 与游戏 HDR</span></h1>
+          <p>
+            新版电视选购不能再只看“4K、尺寸、刷新率”。真正影响体验的是观看视角、环境光、峰值亮度、
+            全屏亮度、分区控光、面板类型、色彩准确性、HDR 格式、满血 HDMI 2.1、系统广告和安装入户。
+            本指南按当前主流技术和市场偏好，重新建立一套更科学的电视选购 SOP。
+          </p>
+          <div class="hero-actions">
+            <a href="#sop" class="btn btn-primary">查看科学选购流程</a>
+            <a href="#checklist" class="btn btn-ghost">获取购买核对清单</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>新版选购权重</h3>
+
+          <div class="score-item">
+            <div class="score-title"><span>尺寸视角</span><strong>18%</strong></div>
+            <div class="bar"><span style="width:72%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>画质硬件</span><strong>32%</strong></div>
+            <div class="bar"><span style="width:96%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>控光 HDR</span><strong>20%</strong></div>
+            <div class="bar"><span style="width:84%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>游戏接口</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:66%;"></span></div>
+          </div>
+
+          <div class="score-item">
+            <div class="score-title"><span>系统安装</span><strong>15%</strong></div>
+            <div class="bar"><span style="width:62%;"></span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Core Logic</span>
+          <h2>科学选电视：不是越大越好，也不是参数越高越好</h2>
+          <p>
+            电视体验由「房间环境 × 内容类型 × 画质硬件 × 系统接口 × 安装条件」共同决定。
+            明亮客厅优先 Mini LED，高端暗室电影优先 OLED / QD-OLED，主机游戏优先高刷和满血 HDMI 2.1，
+            老人家庭则要把系统简洁和广告控制放在前面。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">📐</div>
+            <h3>先算观看视角</h3>
+            <p>
+              电视尺寸应按观看视角选择。普通舒适观影建议约 30°，沉浸影院感可到 36°-40°。
+              4K 大屏时代，3 米客厅选 75-85 英寸更符合当前体验。
+            </p>
+            <ul>
+              <li>2.0m：55-65 英寸</li>
+              <li>2.5m：65-75 英寸</li>
+              <li>3.0m：75-85 英寸</li>
+              <li>3.5m：85-100 英寸</li>
+            </ul>
+            <div class="formula">
+              简化公式：推荐尺寸 ≈ 观看距离 cm × 0.24-0.30。  
+              例如 300cm × 0.24-0.30 ≈ 72-90 英寸。
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">💡</div>
+            <h3>再看环境光</h3>
+            <p>
+              白天看得多、客厅窗户大、灯光强，优先高亮 Mini LED 和抗反光屏。
+              晚上关灯看电影、追求黑位和对比度，则 OLED / QD-OLED 更有优势。
+            </p>
+            <ul>
+              <li>明亮客厅：Mini LED</li>
+              <li>暗室电影：OLED / QD-OLED</li>
+              <li>长时间新闻：Mini LED 更稳</li>
+              <li>窗边摆放：重点看抗反光</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🎮</div>
+            <h3>最后看内容场景</h3>
+            <p>
+              电影看 HDR 和控光，体育看动态清晰，游戏看高刷和接口，老人看系统简单。
+              电视不是买参数，而是买你每天真实使用的体验。
+            </p>
+            <ul>
+              <li>电影党：亮度、黑位、色准</li>
+              <li>体育党：高刷、MEMC、响应</li>
+              <li>游戏党：HDMI 2.1、VRR、ALLM</li>
+              <li>老人用：少广告、遥控简单</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="gold-box">
+          <h2>新版电视四大黄金原则</h2>
+          <p>
+            当前电视市场已经进入“大屏化、Mini LED 普及化、高刷游戏化、系统体验分化”的阶段。
+            选购时应优先判断真实场景，而不是只看宣传参数。
+          </p>
+
+          <div class="gold-grid">
+            <div class="gold-item">
+              <strong>按视角买尺寸</strong>
+              <span>3 米客厅优先 75-85 英寸。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>按光线选技术</strong>
+              <span>明厅 Mini LED，暗室 OLED。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>按 HDR 看硬件</strong>
+              <span>亮度、控光、色准缺一不可。</span>
+            </div>
+
+            <div class="gold-item">
+              <strong>按设备看接口</strong>
+              <span>主机、回音壁、盒子要提前规划。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sop">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Standard Operating Procedure</span>
+          <h2>电视机科学选购 SOP</h2>
+          <p>
+            按以下 10 个步骤筛选，可以避免尺寸买小、亮度虚标、控光翻车、假高刷、接口缩水、系统广告多和大屏入户失败。
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <div class="step-number"><strong>01</strong><span>尺寸</span></div>
+            <div class="step-content">
+              <h3>用观看距离和视角确定尺寸</h3>
+              <p>
+                不再简单套用“几米看几寸”的老公式。现在 4K 片源和大屏内容更多，客厅电视建议以 30°-40°观看视角判断。
+                2.5 米可考虑 65-75 英寸，3 米优先 75-85 英寸，3.5 米以上可考虑 85-100 英寸。
+              </p>
+              <div class="tag-list">
+                <span class="tag">30° 舒适观影</span>
+                <span class="tag">36°-40° 沉浸影院</span>
+                <span class="tag">3m 选 75-85</span>
+                <span class="tag">先量入户通道</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>02</strong><span>技术</span></div>
+            <div class="step-content">
+              <h3>按环境光选择 Mini LED、OLED 或普通 LCD</h3>
+              <p>
+                Mini LED 适合明亮客厅、体育、综艺、长时间观看和大尺寸性价比；OLED / QD-OLED 适合暗室电影、极致黑位和高对比；
+                普通 LCD 适合预算有限、轻度观看和卧室场景。
+              </p>
+              <div class="tag-list">
+                <span class="tag">明厅 Mini LED</span>
+                <span class="tag">暗室 OLED</span>
+                <span class="tag">预算低选 LCD</span>
+                <span class="tag">长时间 HUD 慎选 OLED</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>03</strong><span>亮度</span></div>
+            <div class="step-content">
+              <h3>看真实 HDR 亮度，而不是只看宣传峰值</h3>
+              <p>
+                峰值亮度影响 HDR 高光冲击力，全屏亮度影响白天画面是否发灰。明亮客厅建议选择 HDR 峰值亮度 1000nits 以上，
+                中高端 Mini LED 建议 1500-2500nits 起，高端机型可进一步追求 3000nits+。
+              </p>
+              <div class="tag-list">
+                <span class="tag">HDR 峰值亮度</span>
+                <span class="tag">全屏亮度</span>
+                <span class="tag">白天不发灰</span>
+                <span class="tag">避开虚标峰值</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>04</strong><span>控光</span></div>
+            <div class="step-content">
+              <h3>Mini LED 重点看物理分区、算法和芯片</h3>
+              <p>
+                分区数量不是唯一答案。真正好的 Mini LED 要看物理背光分区、控光算法、画质芯片、光晕控制、暗部细节和字幕泛光表现。
+                入门 Mini LED 至少看百级分区，中端建议 300-1000 区，高端建议千级以上。
+              </p>
+              <div class="tag-list">
+                <span class="tag">物理分区</span>
+                <span class="tag">控光算法</span>
+                <span class="tag">画质芯片</span>
+                <span class="tag">少光晕</span>
+                <span class="tag">暗部不糊</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>05</strong><span>色彩</span></div>
+            <div class="step-content">
+              <h3>看色域、色准和真实模式</h3>
+              <p>
+                不要只看“色彩鲜艳”。更科学的指标是 DCI-P3 色域、BT.2020 覆盖、色准 ΔE、灰阶、肤色还原和电影模式调校。
+                电影党优先选择色准好、有 Filmmaker / Movie / Cinema 模式的机型。
+              </p>
+              <div class="tag-list">
+                <span class="tag">DCI-P3 95%+</span>
+                <span class="tag">BT.2020 越高越好</span>
+                <span class="tag">ΔE≤2 更佳</span>
+                <span class="tag">电影模式准确</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>06</strong><span>刷新</span></div>
+            <div class="step-content">
+              <h3>辨别真高刷、假高刷和降分辨率高刷</h3>
+              <p>
+                体育、动作片和游戏用户建议原生 120Hz 起步。144Hz、165Hz、240Hz、288Hz 属于加分项，
+                但要确认是否为 4K 原生高刷，还是通过降低分辨率、插帧或特殊模式实现。
+              </p>
+              <div class="tag-list">
+                <span class="tag">原生 120Hz 起</span>
+                <span class="tag">144Hz/165Hz 加分</span>
+                <span class="tag">警惕降分辨率</span>
+                <span class="tag">MEMC 看调校</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>07</strong><span>游戏</span></div>
+            <div class="step-content">
+              <h3>主机玩家确认满血 HDMI 2.1 和游戏功能</h3>
+              <p>
+                PS5、Xbox、PC 游戏用户要重点看 4K120 输入、满血 HDMI 2.1、VRR 可变刷新、ALLM 自动低延迟、低输入延迟、
+                FreeSync / G-Sync 兼容和游戏菜单。接口数量最好 2 个以上，避免回音壁占用 eARC 后不够用。
+              </p>
+              <div class="tag-list">
+                <span class="tag">满血 HDMI 2.1</span>
+                <span class="tag">4K120</span>
+                <span class="tag">VRR</span>
+                <span class="tag">ALLM</span>
+                <span class="tag">eARC</span>
+                <span class="tag">低延迟</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>08</strong><span>护眼</span></div>
+            <div class="step-content">
+              <h3>护眼不是低蓝光一句话，要看亮度、频闪和反光</h3>
+              <p>
+                真正影响眼睛舒适度的是观看距离、环境光、屏幕亮度、频闪控制、低蓝光方案、抗反光和画面稳定性。
+                明亮客厅尤其要看抗反光屏，否则亮度再高也会被环境光干扰。
+              </p>
+              <div class="tag-list">
+                <span class="tag">低蓝光</span>
+                <span class="tag">无频闪</span>
+                <span class="tag">抗反光</span>
+                <span class="tag">亮度自适应</span>
+                <span class="tag">距离合适</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>09</strong><span>系统</span></div>
+            <div class="step-content">
+              <h3>系统体验比很多人想象得更重要</h3>
+              <p>
+                电视每天都要用，系统卡顿、广告多、投屏差会显著降低满意度。建议关注开机广告、暂停广告、会员入口、
+                运行内存、存储空间、语音识别、投屏协议和应用安装限制。
+              </p>
+              <div class="tag-list">
+                <span class="tag">少广告</span>
+                <span class="tag">内存够用</span>
+                <span class="tag">投屏稳定</span>
+                <span class="tag">语音好用</span>
+                <span class="tag">老人模式</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number"><strong>10</strong><span>安装</span></div>
+            <div class="step-content">
+              <h3>大屏电视下单前必须确认入户和安装</h3>
+              <p>
+                85、98、100 英寸电视要提前确认电梯、楼道、门洞、电视墙承重、挂架费用、安装高度、插座位置、HDMI 线预埋、
+                是否需要回音壁和整机/屏幕质保。
+              </p>
+              <div class="tag-list">
+                <span class="tag">电梯入户</span>
+                <span class="tag">挂墙承重</span>
+                <span class="tag">挂架费用</span>
+                <span class="tag">接口预留</span>
+                <span class="tag">屏幕质保</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Feature Priority</span>
+          <h2>电视机核心配置优先级表</h2>
+          <p>
+            表格按当前主流技术重新整理，采用短词压缩，单行展示，不设置横向滚动条，适合直接用于页面发布。
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>必须配置</th>
+                <th>加分配置</th>
+                <th>慎选避坑</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>尺寸</td>
+                <td><span class="level must">必</span>按视角｜先量墙</td>
+                <td><span class="level nice">加</span>85寸+｜100寸</td>
+                <td><span class="level avoid">避</span>买小｜入户难</td>
+              </tr>
+
+              <tr>
+                <td>技术</td>
+                <td><span class="level must">必</span>按光线｜选路线</td>
+                <td><span class="level nice">加</span>MiniLED｜OLED</td>
+                <td><span class="level avoid">避</span>低端LED｜概念混</td>
+              </tr>
+
+              <tr>
+                <td>亮度</td>
+                <td><span class="level must">必</span>HDR真亮｜不发灰</td>
+                <td><span class="level nice">加</span>1500nit+｜高全屏</td>
+                <td><span class="level avoid">避</span>虚标峰值｜过曝</td>
+              </tr>
+
+              <tr>
+                <td>控光</td>
+                <td><span class="level must">必</span>分区真｜算法稳</td>
+                <td><span class="level nice">加</span>千级区｜芯片强</td>
+                <td><span class="level avoid">避</span>光晕重｜黑场灰</td>
+              </tr>
+
+              <tr>
+                <td>色彩</td>
+                <td><span class="level must">必</span>P3高｜肤色准</td>
+                <td><span class="level nice">加</span>BT2020｜ΔE低</td>
+                <td><span class="level avoid">避</span>过饱和｜偏色</td>
+              </tr>
+
+              <tr>
+                <td>刷新</td>
+                <td><span class="level must">必</span>原生120｜运动顺</td>
+                <td><span class="level nice">加</span>144/165｜高刷真</td>
+                <td><span class="level avoid">避</span>假高刷｜降清晰</td>
+              </tr>
+
+              <tr>
+                <td>游戏</td>
+                <td><span class="level must">必</span>低延迟｜VRR</td>
+                <td><span class="level nice">加</span>双满血2.1｜ALLM</td>
+                <td><span class="level avoid">避</span>端口少｜带宽低</td>
+              </tr>
+
+              <tr>
+                <td>HDR</td>
+                <td><span class="level must">必</span>HDR10｜HLG</td>
+                <td><span class="level nice">加</span>杜比视界｜HDR10+</td>
+                <td><span class="level avoid">避</span>只解码｜显示弱</td>
+              </tr>
+
+              <tr>
+                <td>护眼</td>
+                <td><span class="level must">必</span>低蓝光｜无频闪</td>
+                <td><span class="level nice">加</span>抗反光｜自适应</td>
+                <td><span class="level avoid">避</span>反光强｜刺眼</td>
+              </tr>
+
+              <tr>
+                <td>系统</td>
+                <td><span class="level must">必</span>流畅｜投屏稳</td>
+                <td><span class="level nice">加</span>少广告｜内存大</td>
+                <td><span class="level avoid">避</span>卡顿｜广告多</td>
+              </tr>
+
+              <tr>
+                <td>音频</td>
+                <td><span class="level must">必</span>人声清｜eARC</td>
+                <td><span class="level nice">加</span>低音炮｜全景声</td>
+                <td><span class="level avoid">避</span>声薄｜破音</td>
+              </tr>
+
+              <tr>
+                <td>安装</td>
+                <td><span class="level must">必</span>入户准｜质保清</td>
+                <td><span class="level nice">加</span>包安装｜屏保长</td>
+                <td><span class="level avoid">避</span>挂架贵｜搬运难</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Scenario Advice</span>
+          <h2>不同家庭场景怎么选？</h2>
+          <p>
+            电视不是统一答案。根据你的客厅亮度、观看内容、游戏需求和预算，优先级完全不同。
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">☀️</div>
+            <h3>明亮客厅 / 白天看得多</h3>
+            <p>
+              优先选择高亮 Mini LED，重点看峰值亮度、全屏亮度、抗反光屏和控光算法。
+              不建议买低亮度 OLED 或低端 LCD 放在强光客厅。
+            </p>
+            <ul>
+              <li>推荐：Mini LED / QD-Mini LED</li>
+              <li>重点：亮度、抗反光、控光</li>
+              <li>避坑：低亮屏、镜面强反光</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>暗室影院 / 电影发烧友</h3>
+            <p>
+              优先 OLED / QD-OLED 或高端 Mini LED。暗部层次、黑位、色准、HDR 格式和电影模式比单纯亮度更重要。
+            </p>
+            <ul>
+              <li>推荐：OLED / QD-OLED / 高端 Mini LED</li>
+              <li>重点：黑位、色准、HDR、暗部细节</li>
+              <li>避坑：黑场发灰、肤色偏色</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🎮</div>
+            <h3>PS5 / Xbox / PC 游戏玩家</h3>
+            <p>
+              优先原生 120Hz 以上、满血 HDMI 2.1、VRR、ALLM、低输入延迟和游戏菜单。
+              如果长时间玩固定 HUD 游戏，Mini LED 比 OLED 更省心。
+            </p>
+            <ul>
+              <li>推荐：高刷 Mini LED / OLED 游戏电视</li>
+              <li>重点：4K120、VRR、延迟、端口数量</li>
+              <li>避坑：假 HDMI 2.1、4K120 不满血</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏟️</div>
+            <h3>体育赛事 / 综艺 / 新闻</h3>
+            <p>
+              优先 Mini LED 或高刷 LCD。体育看动态清晰和运动补偿，新闻和综艺看全屏亮度、长时间稳定性和抗烧屏风险。
+            </p>
+            <ul>
+              <li>推荐：120Hz+ Mini LED</li>
+              <li>重点：动态、亮度、稳定性</li>
+              <li>避坑：拖影、插帧假、亮度不足</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">👵</div>
+            <h3>老人家庭 / 操作简单</h3>
+            <p>
+              画质不是唯一重点。系统简单、遥控器好用、语音准确、广告少、字体清晰和售后方便更重要。
+            </p>
+            <ul>
+              <li>推荐：系统简洁的大屏电视</li>
+              <li>重点：遥控、语音、少广告、字体</li>
+              <li>避坑：菜单复杂、会员入口混乱</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏠</div>
+            <h3>新房装修 / 追求家居美学</h3>
+            <p>
+              提前规划电视墙、插座、网线、HDMI 线、回音壁、电源隐藏和挂架。想做贴墙效果，可看超薄 Mini LED 或壁纸电视。
+            </p>
+            <ul>
+              <li>推荐：超薄 / 零贴墙 / 大屏 Mini LED</li>
+              <li>重点：厚度、接口位置、线材预埋</li>
+              <li>避坑：装修后发现插座挡住</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="container">
+        <div class="checklist">
+          <h2>购买前 18 项科学核对清单</h2>
+          <p>下单前逐项核对，建议至少满足 14 项以上，再考虑购买。</p>
+
+          <div class="check-grid">
+            <div class="check-item"><span>✓</span><div>确认观看距离，并按 30°-40°视角选择尺寸。</div></div>
+            <div class="check-item"><span>✓</span><div>确认电视墙宽度、电视柜高度和安装高度。</div></div>
+            <div class="check-item"><span>✓</span><div>确认电梯、楼道、门洞能否让 85/100 英寸入户。</div></div>
+            <div class="check-item"><span>✓</span><div>确认客厅是否强光、窗边或白天观看较多。</div></div>
+            <div class="check-item"><span>✓</span><div>明亮客厅优先 Mini LED，暗室电影可优先 OLED。</div></div>
+            <div class="check-item"><span>✓</span><div>确认 HDR 峰值亮度和全屏亮度，不只看宣传词。</div></div>
+            <div class="check-item"><span>✓</span><div>Mini LED 确认物理分区数量和控光算法表现。</div></div>
+            <div class="check-item"><span>✓</span><div>确认暗场、字幕、星空画面是否有明显光晕。</div></div>
+            <div class="check-item"><span>✓</span><div>确认 DCI-P3、BT.2020、色准和电影模式调校。</div></div>
+            <div class="check-item"><span>✓</span><div>确认刷新率是否为原生 120Hz 或更高。</div></div>
+            <div class="check-item"><span>✓</span><div>确认高刷是否降低分辨率，避免假高刷宣传。</div></div>
+            <div class="check-item"><span>✓</span><div>主机游戏确认 HDMI 2.1、VRR、ALLM、低延迟。</div></div>
+            <div class="check-item"><span>✓</span><div>确认 HDMI 2.1 数量，避免 eARC 占口后不够用。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否支持 Dolby Vision、HDR10+、HLG 等格式。</div></div>
+            <div class="check-item"><span>✓</span><div>确认抗反光、低蓝光、无频闪和亮度自适应。</div></div>
+            <div class="check-item"><span>✓</span><div>确认开机广告、暂停广告、投屏和应用安装限制。</div></div>
+            <div class="check-item"><span>✓</span><div>确认是否需要回音壁，并检查 eARC 音频回传。</div></div>
+            <div class="check-item"><span>✓</span><div>确认送装、挂架、打孔、屏幕和整机质保规则。</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Avoid Pitfalls</span>
+          <h2>新版电视选购常见误区</h2>
+          <p>
+            当前电视宣传参数很多，真正要避开的不是某一种技术，而是“参数看起来强，实际场景不匹配”。
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区一：把 Mini LED 当成万能答案</h3>
+            <p>
+              Mini LED 也分入门、中端和旗舰。低分区、低亮度、算法差的 Mini LED，实际控光可能不如优秀高端 LCD。
+              要看物理分区、峰值亮度、全屏亮度和光晕控制。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区二：只看 144Hz / 240Hz</h3>
+            <p>
+              高刷新率要确认是否原生、是否 4K 分辨率下可用、是否有 VRR、是否低延迟。
+              如果需要降分辨率才能开高刷，对大多数客厅用户意义有限。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区三：只看峰值亮度</h3>
+            <p>
+              峰值亮度只是很小窗口的表现。真实体验还要看全屏亮度、EOTF 跟踪、控光算法、高光是否过曝、暗部是否丢细节。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区四：忽略抗反光</h3>
+            <p>
+              明亮客厅里，抗反光比很多参数更影响体验。反光严重的电视，峰值亮度再高，白天看也会觉得画面发灰、眼睛累。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区五：OLED 不看使用习惯</h3>
+            <p>
+              OLED 黑位优秀，但如果长时间播放新闻台、股票软件、固定游戏 HUD，仍需考虑残影和烧屏风险。
+              暗室电影党适合，强光客厅和长时间固定画面用户要慎重。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>误区六：大屏不确认入户</h3>
+            <p>
+              85、98、100 英寸电视很容易遇到电梯、楼道、门洞、转角和挂墙承重问题。
+              下单前一定要让客服确认包装尺寸和送装规则。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>一句话科学选购结论</h2>
+          <p>
+            预算有限时，优先保证「尺寸合适、真 4K、原生 120Hz、亮度够用、系统流畅、少广告、接口够用、售后清晰」；
+            追求主流高画质时，优先选「75/85 英寸 Mini LED、1000nits+、真实分区控光、P3 高色域、双 HDMI 2.1」；
+            追求旗舰体验时，再看「高端 Mini LED / RGB-Mini LED / QD-OLED、千级分区、3000nits+、优秀抗反光、画质芯片、杜比视界、eARC 和影院音响」。
+          </p>
+          <a href="#sop" class="btn btn-primary">重新查看 SOP</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 电视机科学选购指南 SOP｜基于观看视角、环境光、Mini LED、OLED、HDR、控光、游戏接口、系统体验与安装适配的电视选购标准
+    </footer>
+
+  </div>
+</body>
+</html>
