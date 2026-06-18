@@ -127,6 +127,23 @@
     }
     .sort-btn:hover:not(.active) { background:var(--surface2); }
 
+    /* ── TIME ORDER TOGGLE ── */
+    .time-order-bar {
+      display:flex; gap:0; margin-bottom:28px; margin-left:16px;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; overflow:hidden; width:fit-content;
+    }
+    .time-order-btn {
+      padding:8px 18px; font-size:0.82rem; font-weight:500;
+      border:none; cursor:pointer; background:transparent;
+      color:var(--text2); font-family:inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+    .time-order-btn.active {
+      background:var(--accent); color:#fff;
+    }
+    .time-order-btn:hover:not(.active) { background:var(--surface2); }
+
     /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:36px; }
     .timeline::before {
@@ -264,9 +281,15 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
   </div>
 
-  <div class="sort-bar">
-    <button class="sort-btn active" onclick="switchSort('time', this)">📅 按时间</button>
-    <button class="sort-btn" onclick="switchSort('category', this)">📂 按分类</button>
+  <div style="display:flex;align-items:flex-start;margin-bottom:28px;">
+    <div class="sort-bar">
+      <button class="sort-btn active" onclick="switchSort('time', this)">📅 按时间</button>
+      <button class="sort-btn" onclick="switchSort('category', this)">📂 按分类</button>
+    </div>
+    <div class="time-order-bar" id="timeOrderBar">
+      <button class="time-order-btn active" onclick="setTimeOrder('newest', this)">↓ 最新优先</button>
+      <button class="time-order-btn" onclick="setTimeOrder('oldest', this)">↑ 最早优先</button>
+    </div>
   </div>
 
   <div class="timeline" id="timeline-time-view">
@@ -914,9 +937,13 @@
     document.getElementById('toggleText').textContent = '浅色';
   }
 
+  // Apply default time order (newest first)
+  applyTimeOrder();
+
   /* ── Sort switching ── */
   const CATEGORY_ORDER = ['驾驶舱','选购指南','商务工具','组织架构','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
   let categoryBuilt = false;
+  let currentTimeOrder = 'newest';
 
   function switchSort(mode, btn) {
     const timeView = document.getElementById('timeline-time-view');
@@ -927,11 +954,60 @@
     if (mode === 'time') {
       timeView.style.display = '';
       catView.style.display  = 'none';
+      document.getElementById('timeOrderBar').style.display = 'flex';
+      applyTimeOrder();
     } else {
       timeView.style.display = 'none';
       catView.style.display  = '';
+      document.getElementById('timeOrderBar').style.display = 'none';
       if (!categoryBuilt) buildCategoryView();
     }
+  }
+
+  function setTimeOrder(order, btn) {
+    currentTimeOrder = order;
+    document.querySelectorAll('.time-order-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyTimeOrder();
+  }
+
+  function applyTimeOrder() {
+    const timeView = document.getElementById('timeline-time-view');
+    const dateGroups = timeView.querySelectorAll('.date-group');
+    const groupsArray = Array.from(dateGroups);
+
+    // Extract date from id or data-date attribute
+    groupsArray.sort((a, b) => {
+      const dateA = extractDate(a);
+      const dateB = extractDate(b);
+      if (currentTimeOrder === 'newest') {
+        return dateB.localeCompare(dateA);
+      } else {
+        return dateA.localeCompare(dateB);
+      }
+    });
+
+    // Re-append in sorted order
+    groupsArray.forEach(g => timeView.appendChild(g));
+  }
+
+  function extractDate(group) {
+    // Try to get date from id (e.g., date-2026-06-18)
+    const id = group.id;
+    if (id) {
+      const match = id.match(/date-(\d{4}-\d{2}-\d{2})/);
+      if (match) return match[1];
+    }
+    // Fallback: try to parse from date-label text
+    const label = group.querySelector('.date-label');
+    if (label) {
+      const text = label.textContent;
+      const match = text.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+      if (match) {
+        return match[1] + '-' + match[2].padStart(2, '0') + '-' + match[3].padStart(2, '0');
+      }
+    }
+    return '2000-01-01';
   }
 
   function buildCategoryView() {
