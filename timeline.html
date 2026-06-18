@@ -110,39 +110,21 @@
     .legend-item { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text2); }
     .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
-    /* ── SORT TOGGLE ── */
-    .sort-bar {
-      display:flex; gap:0; margin-bottom:28px;
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display:flex; gap:0;
       background:var(--surface); border:1px solid var(--border);
       border-radius:10px; overflow:hidden; width:fit-content;
+      margin-bottom:28px;
     }
-    .sort-btn {
-      padding:8px 22px; font-size:0.82rem; font-weight:500;
+    .filter-btn {
+      padding:9px 22px; font-size:0.82rem; font-weight:500;
       border:none; cursor:pointer; background:transparent;
       color:var(--text2); font-family:inherit;
       transition: background 0.15s, color 0.15s;
     }
-    .sort-btn.active {
-      background:var(--accent); color:#fff;
-    }
-    .sort-btn:hover:not(.active) { background:var(--surface2); }
-
-    /* ── TIME ORDER TOGGLE ── */
-    .time-order-bar {
-      display:flex; gap:0; margin-bottom:28px; margin-left:16px;
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:10px; overflow:hidden; width:fit-content;
-    }
-    .time-order-btn {
-      padding:8px 18px; font-size:0.82rem; font-weight:500;
-      border:none; cursor:pointer; background:transparent;
-      color:var(--text2); font-family:inherit;
-      transition: background 0.15s, color 0.15s;
-    }
-    .time-order-btn.active {
-      background:var(--accent); color:#fff;
-    }
-    .time-order-btn:hover:not(.active) { background:var(--surface2); }
+    .filter-btn.active { background:var(--accent); color:#fff; }
+    .filter-btn:hover:not(.active) { background:var(--surface2); }
 
     /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:36px; }
@@ -281,15 +263,10 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
   </div>
 
-  <div style="display:flex;align-items:flex-start;margin-bottom:28px;">
-    <div class="sort-bar">
-      <button class="sort-btn active" onclick="switchSort('time', this)">📅 按时间</button>
-      <button class="sort-btn" onclick="switchSort('category', this)">📂 按分类</button>
-    </div>
-    <div class="time-order-bar" id="timeOrderBar">
-      <button class="time-order-btn active" onclick="setTimeOrder('newest', this)">↓ 最新优先</button>
-      <button class="time-order-btn" onclick="setTimeOrder('oldest', this)">↑ 最早优先</button>
-    </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="switchFilter('newest', this)">📅 最新</button>
+    <button class="filter-btn" onclick="switchFilter('oldest', this)">📅 最早</button>
+    <button class="filter-btn" onclick="switchFilter('category', this)">📂 分类</button>
   </div>
 
   <div class="timeline" id="timeline-time-view">
@@ -1109,57 +1086,43 @@
     document.getElementById('toggleText').textContent = '浅色';
   }
 
-  // Apply default time order (newest first)
-  applyTimeOrder();
 
-  /* ── Sort switching ── */
+  /* ── Filter switching ── */
   const CATEGORY_ORDER = ['驾驶舱','选购指南','商务工具','组织架构','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
   let categoryBuilt = false;
-  let currentTimeOrder = 'newest';
 
-  function switchSort(mode, btn) {
+  function switchFilter(mode, btn) {
     const timeView = document.getElementById('timeline-time-view');
     const catView  = document.getElementById('timeline-category-view');
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    if (mode === 'time') {
-      timeView.style.display = '';
-      catView.style.display  = 'none';
-      document.getElementById('timeOrderBar').style.display = 'flex';
-      applyTimeOrder();
-    } else {
+    if (mode === 'category') {
       timeView.style.display = 'none';
       catView.style.display  = '';
-      document.getElementById('timeOrderBar').style.display = 'none';
       if (!categoryBuilt) buildCategoryView();
+    } else {
+      catView.style.display = 'none';
+      timeView.style.display = '';
+      applyTimeOrder(mode);
     }
   }
 
-  function setTimeOrder(order, btn) {
-    currentTimeOrder = order;
-    document.querySelectorAll('.time-order-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyTimeOrder();
-  }
-
-  function applyTimeOrder() {
+  function applyTimeOrder(mode) {
     const timeView = document.getElementById('timeline-time-view');
     const dateGroups = timeView.querySelectorAll('.date-group');
     const groupsArray = Array.from(dateGroups);
 
-    // Extract date from id or data-date attribute
     groupsArray.sort((a, b) => {
       const dateA = extractDate(a);
       const dateB = extractDate(b);
-      if (currentTimeOrder === 'newest') {
+      if (mode === 'newest') {
         return dateB.localeCompare(dateA);
       } else {
         return dateA.localeCompare(dateB);
       }
     });
 
-    // Re-append in sorted order
     groupsArray.forEach(g => timeView.appendChild(g));
   }
 
@@ -1237,6 +1200,9 @@
 
     categoryBuilt = true;
   }
+
+  // Apply default filter (newest first)
+  switchFilter('newest', document.querySelector('.filter-btn.active'));
 </script>
 </body>
 </html>
