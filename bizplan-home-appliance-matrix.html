@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红家电矩阵账号商业化方案</title>
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --panel:rgba(255,255,255,.92);
+      --line:rgba(15,23,42,.10);
+      --text:#122033;
+      --muted:#64748b;
+
+      /* 双色主题：墨绿 + 暖金 */
+      --primary:#0f3d3e;
+      --primary-2:#146c68;
+      --accent:#f5a524;
+      --accent-2:#d97706;
+
+      --soft-green:#ecfdf5;
+      --soft-gold:#fff7e6;
+      --soft-blue:#eff6ff;
+      --soft-gray:#f8fafc;
+
+      --shadow:0 26px 70px rgba(15,23,42,.10);
+      --shadow-soft:0 10px 32px rgba(15,23,42,.06);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      color:var(--text);
+      line-height:1.7;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(20,108,104,.14), transparent 28%),
+        radial-gradient(circle at 90% 8%, rgba(245,165,36,.14), transparent 26%),
+        linear-gradient(180deg,#fbfdff 0%, var(--bg) 45%, #f8fafc 100%);
+    }
+
+    .page{
+      max-width:1320px;
+      margin:0 auto;
+      padding:34px 22px 80px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:36px;
+      padding:56px 56px 46px;
+      color:#fff;
+      background:
+        linear-gradient(135deg, rgba(15,61,62,.98), rgba(20,108,104,.96) 55%, rgba(15,61,62,.98)),
+        radial-gradient(circle at 82% 20%, rgba(245,165,36,.32), transparent 30%);
+      box-shadow:0 32px 90px rgba(15,61,62,.24);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .hero:before,
+    .hero:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .hero:before{
+      width:430px;
+      height:430px;
+      right:-170px;
+      top:-180px;
+      background:radial-gradient(circle, rgba(245,165,36,.36), transparent 62%);
+    }
+
+    .hero:after{
+      width:320px;
+      height:320px;
+      left:44%;
+      bottom:-210px;
+      background:radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+    }
+
+    .eyebrow{
+      position:relative;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.16);
+      color:rgba(255,255,255,.88);
+      font-size:13px;
+      backdrop-filter:blur(10px);
+    }
+
+    .hero h1{
+      position:relative;
+      z-index:2;
+      margin:18px 0 0;
+      font-size:46px;
+      line-height:1.14;
+      letter-spacing:-1px;
+      font-weight:900;
+      max-width:980px;
+    }
+
+    .hero p{
+      position:relative;
+      z-index:2;
+      margin:18px 0 0;
+      max-width:1000px;
+      font-size:17px;
+      color:rgba(255,255,255,.82);
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      margin-top:30px;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      padding:18px 16px;
+      backdrop-filter:blur(12px);
+    }
+
+    .stat b{
+      display:block;
+      font-size:24px;
+      line-height:1.1;
+      color:#fff;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      color:rgba(255,255,255,.72);
+      font-size:13px;
+    }
+
+    .section{
+      margin-top:34px;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:28px;
+      line-height:1.2;
+      letter-spacing:-.3px;
+      color:var(--primary);
+    }
+
+    .section-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:30px;
+      padding:0 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .badge.green{background:var(--soft-green);color:var(--primary);}
+    .badge.gold{background:var(--soft-gold);color:var(--accent-2);}
+    .badge.blue{background:var(--soft-blue);color:#1d4ed8;}
+    .badge.deep{background:rgba(15,61,62,.08);color:var(--primary);}
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(10px);
+    }
+
+    /* 01 总体目标：两个模块内容对齐 */
+    .summary{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .summary-main,
+    .summary-side{
+      padding:28px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .summary-main h3,
+    .summary-side h3{
+      margin:0 0 12px;
+      font-size:22px;
+      line-height:1.25;
+      color:var(--primary);
+    }
+
+    .summary-main > p,
+    .summary-side > p{
+      margin:0;
+      color:var(--muted);
+      min-height:58px;
+    }
+
+    .okr-list,
+    .account-list{
+      margin-top:20px;
+      display:grid;
+      gap:12px;
+      flex:1;
+      align-content:start;
+    }
+
+    .okr-item{
+      display:grid;
+      grid-template-columns:44px 1fr;
+      gap:12px;
+      align-items:flex-start;
+      padding:15px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fff,#fbfffd);
+      border:1px solid rgba(15,23,42,.08);
+      min-height:92px;
+    }
+
+    .okr-num{
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;
+      font-weight:900;
+    }
+
+    .okr-item b{
+      display:block;
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+
+    .okr-item span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .account{
+      padding:15px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fff,#fbfffd);
+      border:1px solid rgba(15,23,42,.08);
+      min-height:92px;
+    }
+
+    .account strong{
+      display:block;
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+
+    .account span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(9,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .category{
+      padding:14px 10px;
+      text-align:center;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:var(--shadow-soft);
+      color:var(--primary);
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .role-wrap{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .role{
+      overflow:hidden;
+      border-radius:32px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .role-header{
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+      color:#fff;
+    }
+
+    .role-header.creator{
+      background:linear-gradient(135deg,#0f3d3e,#146c68 55%,#1b8a84);
+    }
+
+    .role-header.business{
+      background:linear-gradient(135deg,#0f3d3e,#a16207 58%,#f5a524);
+    }
+
+    .role-header:after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(255,255,255,.10);
+    }
+
+    .role-header h3{
+      position:relative;
+      z-index:2;
+      margin:0;
+      font-size:26px;
+      line-height:1.2;
+    }
+
+    .role-header p{
+      position:relative;
+      z-index:2;
+      margin:10px 0 0;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+    }
+
+    .role-body{
+      padding:24px;
+    }
+
+    .task-group{
+      margin-bottom:18px;
+    }
+
+    .task-group:last-child{
+      margin-bottom:0;
+    }
+
+    .task-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .task-title i{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 5px rgba(245,165,36,.14);
+    }
+
+    .task-title h4{
+      margin:0;
+      font-size:17px;
+      color:var(--primary);
+    }
+
+    .task-card{
+      padding:15px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fff,#fbfffd);
+      border:1px solid rgba(15,23,42,.08);
+      margin-bottom:10px;
+    }
+
+    .task-card b{
+      display:block;
+      color:var(--primary);
+      margin-bottom:5px;
+    }
+
+    .task-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .table-card{
+      overflow:hidden;
+      border-radius:var(--radius);
+      border:1px solid rgba(15,23,42,.08);
+      background:#fff;
+      box-shadow:var(--shadow-soft);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th,td{
+      padding:16px 18px;
+      vertical-align:top;
+      text-align:left;
+      border-bottom:1px solid rgba(15,23,42,.08);
+      font-size:14px;
+    }
+
+    th{
+      background:linear-gradient(180deg,#f7fffb,#effaf5);
+      color:var(--primary);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    tr:last-child td{
+      border-bottom:none;
+    }
+
+    td strong{
+      color:var(--primary);
+    }
+
+    td ul{
+      margin:6px 0 0;
+      padding-left:18px;
+    }
+
+    td li{
+      margin:3px 0;
+      color:var(--muted);
+    }
+
+    .level-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .level-card{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      min-height:250px;
+    }
+
+    .level-card:after{
+      content:"";
+      position:absolute;
+      right:-30px;
+      bottom:-30px;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:rgba(245,165,36,.08);
+    }
+
+    .level-card h3{
+      margin:12px 0 8px;
+      font-size:19px;
+      color:var(--primary);
+    }
+
+    .level-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .level-card ul{
+      position:relative;
+      z-index:2;
+      margin:12px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .level-card li{
+      margin:4px 0;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .flow-step{
+      padding:18px 15px;
+      border-radius:20px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:var(--shadow-soft);
+      min-height:150px;
+    }
+
+    .flow-step b{
+      display:grid;
+      place-items:center;
+      width:36px;
+      height:36px;
+      border-radius:13px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;
+      margin-bottom:12px;
+    }
+
+    .flow-step h4{
+      margin:0 0 6px;
+      font-size:16px;
+      color:var(--primary);
+    }
+
+    .flow-step p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .footer{
+      margin-top:36px;
+      padding:28px;
+      border-radius:28px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),#082b2c);
+      box-shadow:var(--shadow);
+    }
+
+    .footer h3{
+      margin:0 0 8px;
+      font-size:22px;
+    }
+
+    .footer p{
+      margin:0;
+      color:rgba(255,255,255,.78);
+    }
+
+    @media(max-width:1180px){
+      .category-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+
+      .hero-grid,
+      .level-grid,
+      .flow{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .summary,
+      .role-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .summary-main > p,
+      .summary-side > p{
+        min-height:auto;
+      }
+    }
+
+    @media(max-width:760px){
+      .page{
+        padding:20px 14px 60px;
+      }
+
+      .hero{
+        padding:34px 22px 30px;
+        border-radius:28px;
+      }
+
+      .hero h1{
+        font-size:30px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .hero-grid,
+      .level-grid,
+      .flow,
+      .category-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+      .section-head h2{
+        font-size:24px;
+      }
+
+      .table-card{
+        overflow-x:auto;
+      }
+
+      table{
+        min-width:860px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="eyebrow">超红传媒 · 家电内容矩阵商业化</div>
+      <h1>超红家电矩阵账号商业化方案</h1>
+      <p>
+        围绕「家电总动员、家电百大、赛博家电」三个家电内容账号，
+        建立统一媒体包、标准化商单产品和商务中台机制。
+        重点承接电视、空调、冰箱、洗衣机、厨电、卫电、环境家电、清洁家电、宠物家电等品牌合作，
+        以场景种草、专业评测、榜单导购、智能趋势和节点转化为核心商业路径。
+      </p>
+
+      <div class="hero-grid">
+        <div class="stat"><b>3个</b><span>家电矩阵账号</span></div>
+        <div class="stat"><b>9大类</b><span>重点商单品类</span></div>
+        <div class="stat"><b>2大模块</b><span>主创 / 商务协同</span></div>
+        <div class="stat"><b>4层产品</b><span>商单合作体系</span></div>
+      </div>
+    </section>
+
+    <!-- 总体目标 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>01｜总体目标</h2>
+          <p>把家电矩阵打造为品牌可采购、可复投、可沉淀用户信任的内容商业阵地。</p>
+        </div>
+        <span class="badge gold">季度目标</span>
+      </div>
+
+      <div class="summary">
+        <div class="summary-main card">
+          <h3>目标</h3>
+          <p>
+            建立超红家电矩阵账号的商业化中台能力：
+            主创端持续输出真实可信的家电内容资产，商务端统一完成品牌触达、方案提案、报价成交、项目管理和复购运营。
+          </p>
+
+          <div class="okr-list">
+            <div class="okr-item">
+              <div class="okr-num">01</div>
+              <div>
+                <b>明确账号矩阵商业定位</b>
+                <span>三个账号形成清晰分工：生活场景种草、专业榜单评测、智能家电趋势。</span>
+              </div>
+            </div>
+
+            <div class="okr-item">
+              <div class="okr-num">02</div>
+              <div>
+                <b>完成统一媒体包与报价体系</b>
+                <span>输出可直接对外发送的媒体包、报价单、合作套餐、案例库和商务话术。</span>
+              </div>
+            </div>
+
+            <div class="okr-item">
+              <div class="okr-num">03</div>
+              <div>
+                <b>建立家电商单内容模型</b>
+                <span>沉淀评测、横评、场景体验、清单导购、装修季/换新季/大促节点等内容模板。</span>
+              </div>
+            </div>
+
+            <div class="okr-item">
+              <div class="okr-num">04</div>
+              <div>
+                <b>推动品牌合作成交</b>
+                <span>季度完成100个家电品牌/代理线索、30个有效触达、10份方案输出、4-6个成交或强意向合作。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-side card">
+          <h3>账号定位概览</h3>
+          <p>
+            通过三个账号的差异化内容定位，覆盖从新品认知、家庭场景体验、购买决策到智能家居趋势的完整家电消费链路。
+          </p>
+
+          <div class="account-list">
+            <div class="account">
+              <strong>家电总动员</strong>
+              <span>
+                家庭场景种草、真实使用体验、生活方式内容。适合电视、空调、冰箱、洗衣机、清洁家电、宠物家电等产品的场景化推荐。
+              </span>
+            </div>
+
+            <div class="account">
+              <strong>家电百大</strong>
+              <span>
+                专业评测、榜单导购、横评对比、避坑指南。适合大件家电、厨卫家电、环境家电等需要建立信任和购买理由的品类。
+              </span>
+            </div>
+
+            <div class="account">
+              <strong>赛博家电</strong>
+              <span>
+                智能科技、新品趋势、未来家居、黑科技家电。适合智能电视、AI家电、扫地机器人、洗地机、智能厨电等新品推广。
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 品类覆盖 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>02｜重点商单品类覆盖</h2>
+          <p>围绕家庭消费决策场景，建立从传统大件家电到新兴智能家电的完整招商品类池。</p>
+        </div>
+        <span class="badge green">品类矩阵</span>
+      </div>
+
+      <div class="category-grid">
+        <div class="category">电视</div>
+        <div class="category">空调</div>
+        <div class="category">冰箱</div>
+        <div class="category">洗衣机</div>
+        <div class="category">厨电</div>
+        <div class="category">卫电</div>
+        <div class="category">环境家电</div>
+        <div class="category">清洁家电</div>
+        <div class="category">宠物家电</div>
+      </div>
+    </section>
+
+    <!-- 分工 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>03｜主创与商务分工</h2>
+          <p>主创负责“内容是否可信、好看、能种草”，商务负责“品牌是否理解、愿意投、能复购”。</p>
+        </div>
+      </div>
+
+      <div class="role-wrap">
+
+        <!-- 主创 -->
+        <div class="role">
+          <div class="role-header creator">
+            <h3>01 主创需要做的部分</h3>
+            <p>负责账号策划、内容创作、商单内容交付、用户反馈和内容资产沉淀。</p>
+          </div>
+
+          <div class="role-body">
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>账号策划与栏目建设</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  明确三个账号的内容定位、人设风格、适配品类和用户购买场景。
+                  家电内容重点覆盖装修、换新、租房、母婴、养宠、懒人生活、品质生活、智能家居等场景。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  每个账号输出1页定位说明；每号至少3个固定栏目；
+                  季度选题池不少于60个，其中可商单化选题不少于30个。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>内容创作与样板案例</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  围绕电视、空调、冰箱、洗衣机、厨卫电器、环境家电、清洁家电、宠物家电等重点品类，
+                  制作自然内容、横评内容、导购内容、场景体验和招商样板案例。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  季度沉淀不少于12条招商可用内容案例；
+                  不少于8套家电商单脚本结构，包括新品首发、真实体验、横评对比、场景种草、大促导购、装修季清单等。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>商单内容交付</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  将品牌参数转化为家庭用户能理解的体验语言，
+                  例如制冷速度、保鲜效果、清洁效率、噪音控制、能耗成本、安装便利性、空间适配和智能联动等。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  需求确认后2个工作日内反馈内容方向和风险点；
+                  脚本3-5个工作日内提交；
+                  内容必须做到卖点清楚、场景真实、体验具体、适合人群明确。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>数据复盘与用户洞察</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  复盘播放、完播、收藏、评论、转发等内容表现，
+                  从评论区和弹幕中提取用户真实家电购买问题，反哺下一次内容和品牌提案。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  每月输出1份内容复盘表；
+                  每条商单发布后3日内提供初步数据截图和评论反馈；
+                  每月沉淀不少于20条高价值用户问题。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 商务 -->
+        <div class="role">
+          <div class="role-header business">
+            <h3>02 商务需要做的部分</h3>
+            <p>负责媒体包搭建、客户拓展、方案报价、项目管理、合同回款和复购运营。</p>
+          </div>
+
+          <div class="role-body">
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>统一媒体包与销售工具</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  将三个家电账号包装成统一对外销售的家电内容矩阵，
+                  清晰展示账号价值、用户画像、内容能力、合作产品和报价逻辑。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  2周内完成《超红家电矩阵账号统一媒体包》V1；
+                  同步输出报价单、套餐表、商务话术、案例库和客户跟进表。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>品牌线索池建设</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  围绕电视、空调、冰箱、洗衣机、厨电、卫电、环境家电、清洁家电、宠物家电建立品牌和代理线索池。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  季度建立不少于100个家电品牌/代理/电商渠道线索；
+                  每周更新客户状态；
+                  618、双11、双12、年货节、装修季、换新季提前45-60天触达。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>方案成交与合作升级</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  根据品牌目标匹配账号、内容形式和投放节奏。
+                  基础商单用于试水，节点整合用于转化，季度框架用于长期心智，内容咨询用于深度服务。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  季度完成30个有效触达、10份定制方案输出、4-6个成交或强意向合作；
+                  其中至少2个为节点整合或季度框架类合作。
+                </p>
+              </div>
+            </div>
+
+            <div class="task-group">
+              <div class="task-title"><i></i><h4>项目管理与客户复购</h4></div>
+              <div class="task-card">
+                <b>工作内容</b>
+                <p>
+                  负责需求确认、报价、合同、样品协调、安装沟通、排期、审核、回款和复盘，
+                  确保主创交付与品牌预期一致。
+                </p>
+              </div>
+              <div class="task-card">
+                <b>交付标准</b>
+                <p>
+                  每个商单建立项目单；
+                  发布后7日内提交品牌复盘；
+                  项目结束后15日内完成复购沟通和下一阶段合作建议。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 交付标准总表 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>04｜主创与商务交付标准总表</h2>
+          <p>明确责任边界，降低沟通成本，保证家电商单从销售到交付稳定执行。</p>
+        </div>
+        <span class="badge green">执行标准</span>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>模块</th>
+              <th>主创负责</th>
+              <th>商务负责</th>
+              <th>共同交付标准</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><strong>账号策划</strong></td>
+              <td>
+                <ul>
+                  <li>账号定位、人设风格、栏目方向。</li>
+                  <li>适配家电品类和内容边界判断。</li>
+                  <li>内容选题池和商单化选题储备。</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>将账号定位转化为品牌可理解的招商话术。</li>
+                  <li>整理成媒体包账号介绍页。</li>
+                  <li>根据客户需求反馈市场机会。</li>
+                </ul>
+              </td>
+              <td>
+                <strong>每个账号形成：</strong>
+                <ul>
+                  <li>账号定位页。</li>
+                  <li>适配品类页。</li>
+                  <li>代表案例页。</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>内容创作</strong></td>
+              <td>
+                <ul>
+                  <li>脚本创意、拍摄剪辑、内容发布。</li>
+                  <li>产品体验、场景搭建、测试逻辑。</li>
+                  <li>评论维护和内容复盘。</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>确认品牌需求、核心卖点和内容禁区。</li>
+                  <li>协调样品、安装、拍摄周期和审核节点。</li>
+                  <li>控制修改次数和交付边界。</li>
+                </ul>
+              </td>
+              <td>
+                <strong>每条商单必须做到：</strong>
+                <ul>
+                  <li>场景真实。</li>
+                  <li>卖点清楚。</li>
+                  <li>体验具体。</li>
+                  <li>适合人群明确。</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>媒体包</strong></td>
+              <td>
+                <ul>
+                  <li>提供账号数据、内容案例、评论反馈。</li>
+                  <li>提供视频链接、截图和内容亮点。</li>
+                  <li>提供可招商的栏目说明。</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>负责媒体包结构、视觉包装和销售表达。</li>
+                  <li>负责报价单、套餐表和客户版本更新。</li>
+                  <li>负责对外发送和方案讲解。</li>
+                </ul>
+              </td>
+              <td>
+                <strong>媒体包V1两周内完成，后续每月更新一次：</strong>
+                <ul>
+                  <li>账号数据更新。</li>
+                  <li>案例更新。</li>
+                  <li>报价与套餐更新。</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>商务成交</strong></td>
+              <td>
+                <ul>
+                  <li>提供内容可行性判断。</li>
+                  <li>参与重点客户方案共创。</li>
+                  <li>判断产品和表达是否损害账号口碑。</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>线索拓展、客户沟通、方案输出。</li>
+                  <li>报价谈判、合同回款、客户维护。</li>
+                  <li>推动基础商单升级为节点整合和框架合作。</li>
+                </ul>
+              </td>
+              <td>
+                <strong>季度目标：</strong>
+                <ul>
+                  <li>100个线索。</li>
+                  <li>30个有效触达。</li>
+                  <li>10份合作方案。</li>
+                  <li>4-6个成交或强意向。</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>数据复盘</strong></td>
+              <td>
+                <ul>
+                  <li>提供播放、互动、收藏、评论表现。</li>
+                  <li>提炼用户关注点和购买疑虑。</li>
+                  <li>输出内容优化建议。</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>整理成品牌可读的复盘报告。</li>
+                  <li>输出复购建议和下一次合作方案。</li>
+                </ul>
+              </td>
+              <td>
+                <strong>商单发布后7日内完成复盘报告：</strong>
+                <ul>
+                  <li>基础数据。</li>
+                  <li>评论反馈。</li>
+                  <li>内容亮点。</li>
+                  <li>后续建议。</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 四层商单产品 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>05｜四层商单产品体系</h2>
+          <p>统一由商务中台对外销售，主创根据合作层级完成对应内容交付。</p>
+        </div>
+        <span class="badge gold">商业产品</span>
+      </div>
+
+      <div class="level-grid">
+        <div class="level-card card">
+          <span class="badge green">第一层</span>
+          <h3>基础商单合作</h3>
+          <p>适合新品首发、单品种草、卖点教育和基础测评背书。</p>
+          <ul>
+            <li>单条长视频 / 短视频 / 图文动态。</li>
+            <li>适合品牌低门槛试水。</li>
+            <li>重点强调真实体验和产品卖点。</li>
+          </ul>
+        </div>
+
+        <div class="level-card card">
+          <span class="badge gold">第二层</span>
+          <h3>节点整合营销</h3>
+          <p>适合618、双11、双12、年货节、装修季、换新季等高转化节点。</p>
+          <ul>
+            <li>长视频建立信任。</li>
+            <li>短视频强化种草。</li>
+            <li>图文动态承接促销信息。</li>
+          </ul>
+        </div>
+
+        <div class="level-card card">
+          <span class="badge deep">第三层</span>
+          <h3>季度 / 年度框架合作</h3>
+          <p>适合与家电品牌建立长期内容合作关系，持续沉淀品牌心智。</p>
+          <ul>
+            <li>月度固定内容露出。</li>
+            <li>重点节点优先排期。</li>
+            <li>持续打造品牌可信度。</li>
+          </ul>
+        </div>
+
+        <div class="level-card card">
+          <span class="badge blue">第四层</span>
+          <h3>内容咨询与数据服务</h3>
+          <p>适合希望优化B站内容表达、卖点包装、用户沟通和节点策略的品牌。</p>
+          <ul>
+            <li>产品卖点诊断。</li>
+            <li>内容策略建议。</li>
+            <li>评论反馈和用户痛点分析。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 媒体包结构 -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>06｜统一媒体包结构</h2>
+          <p>媒体包由商务主导，主创提供内容素材与数据支持，让客户快速理解价值并形成合作决策。</p>
+        </div>
+        <span class="badge green">核心物料</span>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>模块</th>
+              <th>主要内容</th>
+              <th>责任人</th>
+              <th>交付标准</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><strong>封面与定位</strong></td>
+              <td>超红家电矩阵一句话介绍，突出家电内容能力与商业价值。</td>
+              <td>商务</td>
+              <td>表达大气专业，可直接对外发送。</td>
+            </tr>
+
+            <tr>
+              <td><strong>账号矩阵总览</strong></td>
+              <td>家电总动员、家电百大、赛博家电的定位、优势、适配品类和代表案例。</td>
+              <td>商务 + 主创</td>
+              <td>每个账号1页介绍，清晰展示品牌投放场景。</td>
+            </tr>
+
+            <tr>
+              <td><strong>用户画像</strong></td>
+              <td>年龄、家庭阶段、消费场景、装修/换新需求、内容偏好和购买关注点。</td>
+              <td>主创提供，商务包装</td>
+              <td>以品牌能理解的方式呈现，突出家庭消费决策价值。</td>
+            </tr>
+
+            <tr>
+              <td><strong>内容案例</strong></td>
+              <td>自然爆款、商单案例、横评案例、节点导购案例、评论反馈。</td>
+              <td>主创提供</td>
+              <td>每个账号至少3条代表案例，附核心数据和链接。</td>
+            </tr>
+
+            <tr>
+              <td><strong>合作产品</strong></td>
+              <td>基础商单、节点整合、季度框架、内容咨询四层产品。</td>
+              <td>商务</td>
+              <td>说明适合客户、交付内容、推荐预算和预期价值。</td>
+            </tr>
+
+            <tr>
+              <td><strong>报价与套餐</strong></td>
+              <td>单账号报价、矩阵组合报价、节点整合报价、框架合作报价。</td>
+              <td>商务</td>
+              <td>注明权益、排期、修改次数、样品/安装责任和付款节点。</td>
+            </tr>
+
+            <tr>
+              <td><strong>合作流程</strong></td>
+              <td>需求沟通、方案报价、合同付款、样品安装、脚本审核、拍摄发布、数据复盘。</td>
+              <td>商务</td>
+              <td>流程标准化，降低客户决策成本，提高成交效率。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>07｜商单交付SOP</h2>
+          <p>以流程保证交付质量，尤其适配家电类产品样品周期长、安装复杂、体验链路长的特点。</p>
+        </div>
+        <span class="badge gold">项目管理</span>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <b>1</b>
+          <h4>需求确认</h4>
+          <p>商务收集品牌目标、产品信息、预算、时间、必说点和禁区，主创判断内容可行性。</p>
+        </div>
+
+        <div class="flow-step">
+          <b>2</b>
+          <h4>方案报价</h4>
+          <p>商务输出账号组合、内容形式、交付数量、报价和排期，主创确认内容容量。</p>
+        </div>
+
+        <div class="flow-step">
+          <b>3</b>
+          <h4>样品安装</h4>
+          <p>商务协调样品、物流、安装和售后支持，主创确认拍摄条件与体验周期。</p>
+        </div>
+
+        <div class="flow-step">
+          <b>4</b>
+          <h4>脚本创意</h4>
+          <p>主创提交脚本方向，商务同步品牌审核，确保卖点、表达和审核边界一致。</p>
+        </div>
+
+        <div class="flow-step">
+          <b>5</b>
+          <h4>拍摄发布</h4>
+          <p>主创完成体验、拍摄、剪辑和发布，商务管理审核反馈和发布时间节点。</p>
+        </div>
+
+        <div class="flow-step">
+          <b>6</b>
+          <h4>数据复盘</h4>
+          <p>主创提供数据与评论洞察，商务形成客户复盘报告并推动复购。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <h3>最终目标</h3>
+      <p>
+        超红家电矩阵的商业化核心，是把「家电总动员、家电百大、赛博家电」
+        从单一内容账号升级为家电品牌可长期合作的内容营销阵地。
+        主创负责内容资产与用户信任，商务负责客户开发与合作转化，
+        共同完成从内容种草、专业背书到节点转化和长期复购的商业闭环。
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>
