@@ -4,17 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>超红传媒组织分工方案</title>
+  <title>超红传媒组织分工方案 2.0</title>
 
   <style>
     :root {
-      --bg: #f6f8fc;
-      --bg-2: #eef4ff;
-      --card: rgba(255, 255, 255, 0.9);
-      --card-solid: #ffffff;
+      --bg: #f7f9fc;
+      --card: rgba(255,255,255,.9);
+      --solid: #ffffff;
       --text: #111827;
       --muted: #64748b;
-      --border: rgba(148, 163, 184, 0.32);
+      --border: rgba(148,163,184,.34);
       --primary: #2563eb;
       --primary-soft: #dbeafe;
       --purple: #7c3aed;
@@ -26,42 +25,39 @@
       --orange-soft: #fef3c7;
       --red: #ef4444;
       --red-soft: #fee2e2;
-      --dark: #0f172a;
+      --shadow: 0 24px 70px rgba(15,23,42,.1);
       --table-head: #f8fafc;
-      --shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
-      --hero-gradient:
-        radial-gradient(circle at 8% 8%, rgba(37, 99, 235, 0.16), transparent 30%),
-        radial-gradient(circle at 92% 6%, rgba(124, 58, 237, 0.14), transparent 30%),
-        radial-gradient(circle at 50% 92%, rgba(6, 182, 212, 0.12), transparent 36%),
-        linear-gradient(135deg, #f8fafc 0%, #eef4ff 48%, #f7f3ff 100%);
+      --hero:
+        radial-gradient(circle at 8% 8%, rgba(37,99,235,.16), transparent 30%),
+        radial-gradient(circle at 92% 6%, rgba(124,58,237,.14), transparent 30%),
+        radial-gradient(circle at 50% 92%, rgba(6,182,212,.12), transparent 36%),
+        linear-gradient(135deg, #f8fafc 0%, #eef4ff 50%, #f7f3ff 100%);
     }
 
     html[data-theme="dark"] {
-      --bg: #070b16;
-      --bg-2: #0f172a;
-      --card: rgba(15, 23, 42, 0.78);
-      --card-solid: #111827;
+      --bg: #020617;
+      --card: rgba(15,23,42,.78);
+      --solid: #111827;
       --text: #f8fafc;
       --muted: #94a3b8;
-      --border: rgba(148, 163, 184, 0.22);
+      --border: rgba(148,163,184,.22);
       --primary: #60a5fa;
-      --primary-soft: rgba(37, 99, 235, 0.18);
+      --primary-soft: rgba(37,99,235,.2);
       --purple: #a78bfa;
-      --purple-soft: rgba(124, 58, 237, 0.18);
+      --purple-soft: rgba(124,58,237,.18);
       --cyan: #22d3ee;
       --green: #34d399;
-      --green-soft: rgba(16, 185, 129, 0.18);
+      --green-soft: rgba(16,185,129,.18);
       --orange: #fbbf24;
-      --orange-soft: rgba(245, 158, 11, 0.18);
+      --orange-soft: rgba(245,158,11,.18);
       --red: #f87171;
-      --red-soft: rgba(239, 68, 68, 0.18);
-      --dark: #020617;
-      --table-head: rgba(15, 23, 42, 0.92);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
-      --hero-gradient:
-        radial-gradient(circle at 8% 8%, rgba(37, 99, 235, 0.22), transparent 30%),
-        radial-gradient(circle at 92% 6%, rgba(124, 58, 237, 0.2), transparent 30%),
-        radial-gradient(circle at 50% 92%, rgba(6, 182, 212, 0.16), transparent 36%),
+      --red-soft: rgba(239,68,68,.18);
+      --shadow: 0 24px 80px rgba(0,0,0,.3);
+      --table-head: rgba(15,23,42,.92);
+      --hero:
+        radial-gradient(circle at 8% 8%, rgba(37,99,235,.22), transparent 30%),
+        radial-gradient(circle at 92% 6%, rgba(124,58,237,.2), transparent 30%),
+        radial-gradient(circle at 50% 92%, rgba(6,182,212,.16), transparent 36%),
         linear-gradient(135deg, #020617 0%, #0f172a 55%, #111827 100%);
     }
 
@@ -75,12 +71,12 @@
 
     body {
       margin: 0;
-      color: var(--text);
-      line-height: 1.72;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
         "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-      background: var(--hero-gradient);
-      transition: background 0.25s ease, color 0.25s ease;
+      color: var(--text);
+      background: var(--hero);
+      line-height: 1.72;
+      transition: background .25s ease, color .25s ease;
     }
 
     a {
@@ -100,15 +96,15 @@
       width: min(1180px, calc(100% - 40px));
       margin: 16px auto 0;
       padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--card);
       backdrop-filter: blur(20px);
-      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 12px 36px rgba(15,23,42,.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
 
     .brand {
@@ -119,7 +115,7 @@
       white-space: nowrap;
     }
 
-    .brand-logo {
+    .logo {
       width: 38px;
       height: 38px;
       display: grid;
@@ -127,7 +123,7 @@
       border-radius: 14px;
       color: #fff;
       background: linear-gradient(135deg, #2563eb, #7c3aed);
-      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.24);
+      box-shadow: 0 14px 28px rgba(37,99,235,.24);
     }
 
     .nav-right {
@@ -136,38 +132,37 @@
       gap: 14px;
     }
 
-    .nav-links {
+    .links {
       display: flex;
-      align-items: center;
       gap: 14px;
       color: var(--muted);
       font-size: 14px;
       font-weight: 800;
     }
 
-    .nav-links a:hover {
+    .links a:hover {
       color: var(--primary);
     }
 
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .theme-btn {
       border: 1px solid var(--border);
-      background: var(--card-solid);
+      background: var(--solid);
       color: var(--text);
       border-radius: 999px;
       padding: 8px 12px;
       cursor: pointer;
       font-weight: 900;
       font-size: 13px;
-      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 22px rgba(15,23,42,.08);
     }
 
     .hero {
       padding: 88px 0 48px;
       display: grid;
-      grid-template-columns: 1.14fr 0.86fr;
+      grid-template-columns: 1.12fr .88fr;
       gap: 42px;
       align-items: center;
     }
@@ -184,25 +179,24 @@
       font-size: 14px;
       font-weight: 900;
       backdrop-filter: blur(14px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     }
 
-    .badge span {
+    .badge i {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.16);
+      box-shadow: 0 0 0 6px rgba(16,185,129,.16);
     }
 
     h1 {
       margin: 20px 0 18px;
       font-size: clamp(42px, 7vw, 76px);
       line-height: 1.05;
-      letter-spacing: -2.6px;
+      letter-spacing: -2.4px;
     }
 
-    .gradient-text {
+    .gradient {
       background: linear-gradient(90deg, var(--primary), var(--purple), var(--cyan));
       -webkit-background-clip: text;
       background-clip: text;
@@ -216,87 +210,41 @@
       font-size: 18px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 20px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: var(--card-solid);
-      color: var(--text);
-      font-weight: 900;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.13);
-    }
-
-    .btn.primary {
-      border: none;
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-    }
-
     .hero-card {
-      position: relative;
-      overflow: hidden;
       padding: 28px;
       border-radius: 32px;
       background: var(--card);
-      backdrop-filter: blur(20px);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: -90px;
-      right: -90px;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.24), transparent 68%);
+      backdrop-filter: blur(20px);
     }
 
     .hero-card h3 {
-      position: relative;
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       font-size: 25px;
     }
 
-    .summary-grid {
-      position: relative;
+    .summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .summary {
+    .sum {
       padding: 16px;
       border-radius: 18px;
-      background: var(--card-solid);
+      background: var(--solid);
       border: 1px solid var(--border);
     }
 
-    .summary strong {
+    .sum strong {
       display: block;
       color: var(--primary);
       font-size: 24px;
       line-height: 1.2;
     }
 
-    .summary span {
+    .sum span {
       display: block;
       margin-top: 5px;
       color: var(--muted);
@@ -306,10 +254,6 @@
 
     .section {
       padding: 42px 0;
-    }
-
-    .section-title {
-      margin-bottom: 24px;
     }
 
     .eyebrow {
@@ -324,7 +268,7 @@
       margin: 8px 0 10px;
       font-size: clamp(28px, 4vw, 44px);
       line-height: 1.15;
-      letter-spacing: -1.2px;
+      letter-spacing: -1.1px;
     }
 
     .section-title p {
@@ -337,6 +281,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+      margin-top: 24px;
     }
 
     .cards.two {
@@ -352,17 +297,28 @@
       border-radius: 26px;
       background: var(--card);
       border: 1px solid var(--border);
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 14px 36px rgba(15,23,42,.06);
       backdrop-filter: blur(14px);
     }
 
     .card.highlight {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
-      border-color: rgba(37, 99, 235, 0.28);
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.1));
+      border-color: rgba(37,99,235,.3);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary-soft), var(--purple-soft));
+      font-size: 23px;
     }
 
     .card h3 {
-      margin: 12px 0 8px;
+      margin: 0 0 8px;
       font-size: 21px;
     }
 
@@ -373,25 +329,15 @@
     }
 
     .card ul {
-      padding-left: 20px;
       margin: 10px 0 0;
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--primary-soft), var(--purple-soft));
-      font-size: 23px;
+      padding-left: 20px;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .tag {
@@ -417,94 +363,87 @@
       color: var(--orange);
     }
 
-    .quote {
-      padding: 30px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
-      border: 1px solid var(--border);
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.58;
-    }
-
-    .quote span {
-      display: block;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 400;
-    }
-
-    .org-chart {
+    .org {
+      margin-top: 24px;
       padding: 28px;
       border-radius: 34px;
       background: var(--card);
       border: 1px solid var(--border);
-      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
-      overflow: hidden;
+      backdrop-filter: blur(18px);
     }
 
-    .org-level {
+    .org-top {
+      padding: 22px;
+      border-radius: 24px;
+      color: #fff;
+      text-align: center;
+      background: linear-gradient(135deg, #020617, #1e293b);
+    }
+
+    .org-top h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .org-top p {
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+    }
+
+    .org-mid {
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .org-level:last-child {
-      margin-bottom: 0;
+      margin-top: 18px;
     }
 
     .org-node {
       padding: 20px;
       border-radius: 24px;
-      background: var(--card-solid);
+      background: var(--solid);
       border: 1px solid var(--border);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
     }
 
-    .org-node.leader {
-      text-align: center;
-      background: linear-gradient(135deg, #020617, #1e293b);
-      color: #fff;
-      border: none;
+    .org-node h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
     }
 
-    .org-node.leader p {
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .org-node h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-
-    .org-node p {
+    .org-node ul {
       margin: 0;
+      padding-left: 18px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .org-branches {
+    .account-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+      margin-top: 18px;
     }
 
-    .org-branch {
-      padding: 20px;
-      border-radius: 24px;
+    .account {
+      padding: 22px;
+      border-radius: 26px;
+      background: var(--solid);
       border: 1px solid var(--border);
-      background: var(--card-solid);
     }
 
-    .org-branch h4 {
-      margin: 0 0 10px;
-      font-size: 17px;
+    .account h3 {
+      margin: 0 0 8px;
+      font-size: 23px;
     }
 
-    .org-branch ul {
+    .account p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .account ul {
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
@@ -514,42 +453,35 @@
     .role-grid {
       display: grid;
       gap: 18px;
+      margin-top: 24px;
     }
 
-    .role-card {
+    .role {
       display: grid;
       grid-template-columns: 180px 1fr 220px;
       gap: 20px;
-      align-items: start;
       padding: 24px;
       border-radius: 28px;
       background: var(--card);
       border: 1px solid var(--border);
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 14px 36px rgba(15,23,42,.06);
       backdrop-filter: blur(14px);
     }
 
-    .role-card.key-role {
-      border-color: rgba(37, 99, 235, 0.28);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.08));
-    }
-
-    .role-title {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
+    .role.key {
+      border-color: rgba(37,99,235,.3);
+      background: linear-gradient(135deg, rgba(37,99,235,.1), rgba(124,58,237,.08));
     }
 
     .role-title h3 {
       margin: 0;
       font-size: 22px;
-      line-height: 1.25;
       white-space: nowrap;
     }
 
     .role-title span {
       display: block;
-      margin-top: 5px;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 13px;
       font-weight: 700;
@@ -559,7 +491,6 @@
     .role-output h4 {
       margin: 0 0 8px;
       font-size: 15px;
-      color: var(--text);
     }
 
     .role-content ul,
@@ -573,30 +504,29 @@
     .role-output {
       padding: 16px;
       border-radius: 18px;
-      background: var(--card-solid);
+      background: var(--solid);
       border: 1px solid var(--border);
     }
 
     .table-wrap {
       width: 100%;
+      margin-top: 24px;
       overflow-x: auto;
       border-radius: 24px;
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 14px 36px rgba(15,23,42,.06);
     }
 
-    .matrix {
+    table {
       width: 100%;
       min-width: 860px;
       table-layout: fixed;
       border-collapse: collapse;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
     }
 
-    .matrix th,
-    .matrix td {
+    th,
+    td {
       padding: 14px 12px;
       border-bottom: 1px solid var(--border);
       text-align: left;
@@ -605,104 +535,69 @@
       overflow-wrap: anywhere;
     }
 
-    .matrix th {
+    th {
       background: var(--table-head);
       color: var(--text);
       font-size: 14px;
       line-height: 1.45;
     }
 
-    .matrix td {
+    td {
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
     }
 
-    .matrix tr:last-child td {
+    tr:last-child td {
       border-bottom: none;
-    }
-
-    .matrix .w-sm {
-      width: 13%;
-    }
-
-    .matrix .w-md {
-      width: 22%;
-    }
-
-    .matrix .w-lg {
-      width: 32%;
     }
 
     .process {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
       gap: 14px;
+      margin-top: 24px;
     }
 
-    .process-step {
+    .step {
       padding: 18px;
       border-radius: 22px;
       background: var(--card);
       border: 1px solid var(--border);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
 
-    .process-step strong {
+    .step strong {
       display: block;
       color: var(--primary);
       font-size: 18px;
       margin-bottom: 6px;
     }
 
-    .process-step p {
+    .step p {
       margin: 0;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
     }
 
-    .plan {
-      display: grid;
-      gap: 16px;
-    }
-
-    .phase {
-      display: grid;
-      grid-template-columns: 150px 1fr 230px;
-      gap: 18px;
-      padding: 22px;
-      border-radius: 26px;
-      background: var(--card);
+    .quote {
+      padding: 30px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.12));
       border: 1px solid var(--border);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
-      align-items: start;
-    }
-
-    .phase-time {
+      box-shadow: 0 14px 36px rgba(15,23,42,.06);
+      font-size: 22px;
       font-weight: 900;
-      color: var(--primary);
-      font-size: 18px;
+      line-height: 1.58;
     }
 
-    .phase h3 {
-      margin: 0 0 8px;
-      font-size: 21px;
-    }
-
-    .phase p {
-      margin: 0;
+    .quote span {
+      display: block;
+      margin-top: 12px;
       color: var(--muted);
-      font-size: 14px;
-    }
-
-    .phase-output {
-      padding: 14px;
-      border-radius: 16px;
-      background: var(--card-solid);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 400;
     }
 
     .footer {
@@ -712,24 +607,21 @@
     }
 
     @media (max-width: 1080px) {
-      .nav-links {
+      .links {
         display: none;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
+      .hero,
       .cards,
       .cards.two,
       .cards.four,
-      .org-branches,
+      .org-mid,
+      .account-grid,
       .process {
         grid-template-columns: 1fr;
       }
 
-      .role-card,
-      .phase {
+      .role {
         grid-template-columns: 1fr;
       }
 
@@ -744,20 +636,16 @@
         width: min(100% - 24px, 1180px);
       }
 
-      h1 {
-        letter-spacing: -1.2px;
-      }
-
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
-
       .brand span {
         display: none;
       }
 
-      .theme-toggle {
-        padding: 8px 10px;
+      h1 {
+        letter-spacing: -1.2px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -765,22 +653,22 @@
 
 <body>
   <nav class="nav">
-    <a class="brand" href="#">
-      <div class="brand-logo">超</div>
-      <span>超红传媒组织分工方案</span>
+    <a href="#" class="brand">
+      <div class="logo">超</div>
+      <span>超红传媒组织分工方案 2.0</span>
     </a>
 
     <div class="nav-right">
-      <div class="nav-links">
-        <a href="#overview">架构</a>
+      <div class="links">
+        <a href="#overview">总览</a>
+        <a href="#accounts">账号</a>
+        <a href="#shared">共用中台</a>
         <a href="#roles">职责</a>
-        <a href="#workflow">流程</a>
         <a href="#matrix">矩阵</a>
-        <a href="#business">商业</a>
-        <a href="#plan">落地</a>
+        <a href="#workflow">流程</a>
       </div>
 
-      <button class="theme-toggle" id="themeToggle" type="button">
+      <button class="theme-btn" id="themeBtn" type="button">
         <span id="themeIcon">🌙</span>
         <span id="themeText">深色</span>
       </button>
@@ -790,118 +678,131 @@
   <main class="page">
     <section class="hero">
       <div>
-        <div class="badge"><span></span>Chaohong Media Organization Plan</div>
+        <div class="badge"><i></i> Chaohong Media Organization Plan 2.0</div>
 
         <h1>
           超红传媒<br />
-          <span class="gradient-text">组织分工方案</span>
+          <span class="gradient">组织分工方案 2.0</span>
         </h1>
 
         <p class="hero-desc">
-          本方案基于超红传媒现有团队，升级为「内容生产、账号运营、商业拓展、组织发展」四线协同架构。
-          重点补齐账号运营、商业化推进、数据复盘、品牌合作、知识库管理和绩效在线化能力，形成从选题、生产、发布、投流、评论、复盘到商业合作的完整闭环。
+          本方案基于超红传媒多账号运营现状重新设计。公司旗下账号包括「家电总动员」「家电百大」「赛博家电」。
+          新组织采用「账号内容小组 + 共用运营中台 + 共用商务中台 + 共用HRBP组织中台」的矩阵模式，
+          解决多账号同时运转下的职责重复、资源冲突、数据分散和商务多头沟通问题。
         </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href="#roles">查看岗位职责</a>
-          <a class="btn" href="#matrix">查看责任矩阵</a>
-        </div>
       </div>
 
       <aside class="hero-card">
-        <h3>本版核心升级</h3>
+        <h3>2.0 核心变化</h3>
 
-        <div class="summary-grid">
-          <div class="summary">
-            <strong>8岗</strong>
-            <span>岗位名称统一四字</span>
+        <div class="summary">
+          <div class="sum">
+            <strong>3个</strong>
+            <span>核心账号矩阵管理</span>
           </div>
 
-          <div class="summary">
-            <strong>4线</strong>
-            <span>内容、运营、商业、组织</span>
+          <div class="sum">
+            <strong>3类</strong>
+            <span>共用中台岗位</span>
           </div>
 
-          <div class="summary">
-            <strong>双审</strong>
-            <span>文案初审，主创终审</span>
+          <div class="sum">
+            <strong>1套</strong>
+            <span>统一排期和复盘机制</span>
           </div>
 
-          <div class="summary">
-            <strong>双主题</strong>
-            <span>深色 / 浅色可切换</span>
+          <div class="sum">
+            <strong>1个</strong>
+            <span>统一商务入口</span>
           </div>
         </div>
 
-        <p style="position: relative; margin: 18px 0 0; color: var(--muted); font-size: 14px;">
-          建议：账号运营与商业拓展应尽量明确专人负责；若短期人手不足，可先由主创兼任运营判断，由HRBP推动岗位拆分和在线化管理。
+        <p style="margin:18px 0 0;color:var(--muted);font-size:14px;">
+          组织原则：账号主创管内容方向，账号运营管全账号增长，商务统一对外合作，HRBP统一组织系统和人才建设。
         </p>
       </aside>
     </section>
 
     <section class="section" id="overview">
       <div class="section-title">
-        <div class="eyebrow">01 / Organization Overview</div>
-        <h2>优化后的组织架构总览</h2>
+        <div class="eyebrow">01 / Structure Overview</div>
+        <h2>组织架构总览：多账号矩阵制</h2>
         <p>
-          新架构建议采用「账号主创统筹内容方向，账号运营负责流量增长，商业拓展负责外部合作，组织发展负责人才和系统建设」的方式。
+          2.0版本建议采用「前台账号内容负责制 + 中台能力共用制」。每个账号有自己的内容定位和主创负责人；
+          账号运营、商务、HRBP作为公司级共用能力，统一服务所有账号。
         </p>
       </div>
 
-      <div class="org-chart">
-        <div class="org-level">
-          <div class="org-node leader">
-            <h3>账号主创</h3>
-            <p>
-              负责账号定位、内容方向、选题判断、内容调性、视频质量最终审核和关键用户沟通口径。
-            </p>
+      <div class="org">
+        <div class="org-top">
+          <h3>超红传媒管理层 / 内容业务负责人</h3>
+          <p>负责公司内容战略、账号组合、商业方向、组织配置和资源优先级。</p>
+        </div>
+
+        <div class="account-grid" id="accounts">
+          <div class="account">
+            <h3>家电总动员</h3>
+            <p>建议定位：大众家电、消费科普、导购决策、生活场景内容。</p>
+            <ul>
+              <li>账号主创负责内容方向</li>
+              <li>内容小组负责脚本与制作</li>
+              <li>共用运营负责发布和复盘</li>
+            </ul>
+          </div>
+
+          <div class="account">
+            <h3>家电百大</h3>
+            <p>建议定位：榜单评测、横评测评、品牌盘点、行业选品内容。</p>
+            <ul>
+              <li>强调数据化和权威感</li>
+              <li>适合沉淀榜单栏目</li>
+              <li>适合承接品牌合作</li>
+            </ul>
+          </div>
+
+          <div class="account">
+            <h3>赛博家电</h3>
+            <p>建议定位：智能家电、科技趋势、未来生活、年轻化表达内容。</p>
+            <ul>
+              <li>强调科技感和视觉风格</li>
+              <li>适合新品、黑科技、趋势内容</li>
+              <li>适合平台热点和投流测试</li>
+            </ul>
           </div>
         </div>
 
-        <div class="org-level">
-          <div class="org-branches">
-            <div class="org-branch">
-              <h4>内容生产线</h4>
-              <ul>
-                <li>内容文案</li>
-                <li>摄影拍摄</li>
-                <li>后期剪辑</li>
-                <li>视觉设计</li>
-              </ul>
-            </div>
+        <div class="org-mid">
+          <div class="org-node">
+            <h4>共用账号运营</h4>
+            <ul>
+              <li>统一发布排期</li>
+              <li>站内热门与SEO</li>
+              <li>封面测试与投流</li>
+              <li>全账号数据复盘</li>
+              <li>品牌方数据输出</li>
+            </ul>
+          </div>
 
-            <div class="org-branch">
-              <h4>账号运营线</h4>
-              <ul>
-                <li>发布配置</li>
-                <li>站内热门</li>
-                <li>SEO优化</li>
-                <li>封面测试</li>
-                <li>投流复盘</li>
-              </ul>
-            </div>
+          <div class="org-node">
+            <h4>共用商务中台</h4>
+            <ul>
+              <li>媒体包统一制作</li>
+              <li>品牌PR统一入口</li>
+              <li>MCN与代理联系</li>
+              <li>样品和佣金申请</li>
+              <li>商单和客户开发</li>
+            </ul>
+          </div>
 
-            <div class="org-branch">
-              <h4>商业拓展线</h4>
-              <ul>
-                <li>媒体包制作</li>
-                <li>品牌PR</li>
-                <li>MCN联系</li>
-                <li>商单推进</li>
-                <li>客户开发</li>
-              </ul>
-            </div>
-
-            <div class="org-branch">
-              <h4>组织发展线</h4>
-              <ul>
-                <li>人才配置</li>
-                <li>知识库管理</li>
-                <li>绩效在线化</li>
-                <li>人才库管理</li>
-                <li>生产力升级</li>
-              </ul>
-            </div>
+          <div class="org-node">
+            <h4>共用HRBP中台</h4>
+            <ul>
+              <li>人才库管理</li>
+              <li>人才需求申请</li>
+              <li>绩效在线化评估</li>
+              <li>知识库管理</li>
+              <li>生产力升级</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -909,41 +810,90 @@
 
     <section class="section">
       <div class="quote">
-        超红传媒的组织升级重点，是让内容、流量、商业、组织能力形成闭环。
+        2.0版本的关键，不是每个账号都重新配一套完整团队，而是让账号拥有独立内容判断，让运营、商务、HRBP形成公司级共享能力。
         <span>
-          核心分工：主创管方向和终审，运营管增长和数据，文案管表达和初审，美工管视觉体系，商业管合作变现，HRBP管组织效率。
+          简单理解：前台账号负责内容差异化，中台岗位负责效率规模化。
         </span>
+      </div>
+    </section>
+
+    <section class="section" id="shared">
+      <div class="section-title">
+        <div class="eyebrow">02 / Shared Middle Office</div>
+        <h2>三个共用中台：运营、商务、HRBP</h2>
+        <p>
+          多账号同时运转时，最容易出现的问题是排期冲突、数据分散、商务多头沟通和人才需求不清。
+          因此建议把「账号运营、商务、HRBP」明确为共用中台岗位。
+        </p>
+      </div>
+
+      <div class="cards three">
+        <div class="card highlight">
+          <div class="icon">🚀</div>
+          <h3>账号运营共用</h3>
+          <p>
+            统一负责家电总动员、家电百大、赛博家电的发布、站内热门、SEO、封面测试、投流和数据复盘。
+          </p>
+          <div class="tag-row">
+            <span class="tag">全账号排期</span>
+            <span class="tag">全账号数据</span>
+            <span class="tag">统一复盘</span>
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="icon">💼</div>
+          <h3>商务共用</h3>
+          <p>
+            统一负责对外媒体包、品牌PR、MCN联系、样品申请、佣金申请、商单推进和客户开发。
+          </p>
+          <div class="tag-row">
+            <span class="tag green">统一入口</span>
+            <span class="tag green">统一报价</span>
+            <span class="tag green">统一客户池</span>
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="icon">🤝</div>
+          <h3>HRBP共用</h3>
+          <p>
+            统一负责人力配置、知识库、绩效在线化、人才库、人才需求申请表和创作 / 商务生产力升级。
+          </p>
+          <div class="tag-row">
+            <span class="tag orange">组织效率</span>
+            <span class="tag orange">人才系统</span>
+            <span class="tag orange">知识沉淀</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section" id="roles">
       <div class="section-title">
-        <div class="eyebrow">02 / Role Responsibilities</div>
-        <h2>优化后的岗位职责说明</h2>
+        <div class="eyebrow">03 / Role Responsibilities</div>
+        <h2>优化后的岗位职责说明 2.0</h2>
         <p>
-          以下岗位名称均压缩为四字，方便在组织架构图、绩效表、项目看板中统一使用。
+          以下岗位按照「账号前台 + 共用中台 + 制作支持」拆分。账号运营、商务、HRBP为公司级共用岗位。
         </p>
       </div>
 
       <div class="role-grid">
-        <div class="role-card key-role">
+        <div class="role key">
           <div class="role-title">
             <div class="icon">🧭</div>
-            <div>
-              <h3>账号主创</h3>
-              <span>方向与终审</span>
-            </div>
+            <h3>账号主创</h3>
+            <span>各账号内容负责人</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>制定账号定位、内容方向、栏目策略和阶段增长目标。</li>
-              <li>判断选题价值，确定重点内容优先级。</li>
-              <li>把控观点、调性、价值观、商业边界和用户沟通口径。</li>
-              <li>负责视频质量最终审核，确认是否可发布。</li>
-              <li>回复重要、专业、争议类用户评论。</li>
-              <li>暂无运营时，负责运营策略和复盘判断。</li>
+              <li>分别负责家电总动员、家电百大、赛博家电的账号定位和内容方向。</li>
+              <li>判断选题价值，确定栏目规划、内容调性和阶段性增长目标。</li>
+              <li>负责视频质量最终审核，确认内容是否可发布。</li>
+              <li>负责重要、专业、争议类评论回复口径。</li>
+              <li>与运营共看数据，与商务共定商单内容边界。</li>
             </ul>
           </div>
 
@@ -951,64 +901,119 @@
             <h4>关键交付</h4>
             <ul>
               <li>账号定位</li>
-              <li>选题方向</li>
+              <li>栏目规划</li>
+              <li>选题清单</li>
               <li>终审意见</li>
               <li>评论口径</li>
-              <li>复盘判断</li>
             </ul>
           </div>
         </div>
 
-        <div class="role-card key-role">
+        <div class="role key">
           <div class="role-title">
             <div class="icon">🚀</div>
-            <div>
-              <h3>账号运营</h3>
-              <span>增长与复盘</span>
-            </div>
+            <h3>账号运营</h3>
+            <span>多账号共用中台</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>负责发布配置：标题、简介、标签、合集、分区、发布时间。</li>
-              <li>负责站内热门：冷启动、互动引导、热点挂靠和平台推荐节奏。</li>
-              <li>负责SEO：关键词布局、搜索词追踪、标题描述优化。</li>
-              <li>负责封面测试：点击率对比、封面迭代和测试记录。</li>
-              <li>负责投流：预算、人群、素材、目标和ROI复盘。</li>
-              <li>负责每期视频复盘数据，尤其关注品牌方关心指标。</li>
+              <li>统一管理三个账号的内容排期、发布配置和平台运营节奏。</li>
+              <li>负责站内热门、SEO关键词、封面测试、标题测试和投流执行。</li>
+              <li>建立全账号数据看板，按账号、栏目、内容类型进行横向对比。</li>
+              <li>每期视频输出复盘数据，尤其包括品牌方关心的数据。</li>
+              <li>向主创反馈选题、封面、开头、完播、转粉和评论问题。</li>
             </ul>
           </div>
 
           <div class="role-output">
             <h4>关键交付</h4>
             <ul>
+              <li>全账号排期</li>
               <li>发布检查表</li>
               <li>SEO词表</li>
-              <li>封面测试表</li>
               <li>投流复盘</li>
-              <li>单期数据报告</li>
+              <li>数据看板</li>
             </ul>
           </div>
         </div>
 
-        <div class="role-card">
+        <div class="role key">
           <div class="role-title">
-            <div class="icon">✍️</div>
-            <div>
-              <h3>内容文案</h3>
-              <span>脚本与初审</span>
-            </div>
+            <div class="icon">💼</div>
+            <h3>商务拓展</h3>
+            <span>多账号共用中台</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>参与选题策划，负责脚本结构、观点表达和信息准确性。</li>
-              <li>完成口播文案、标题备选、拍摄需求和SEO文案支持。</li>
-              <li>负责视频成品第一道审核，检查逻辑、字幕、事实和表达。</li>
-              <li>回复解释类、补充类、观点延展类用户评论。</li>
-              <li>沉淀评论中的用户问题、质疑点和新选题线索。</li>
+              <li>统一制作和维护超红传媒对外媒体包，覆盖三个账号的账号价值。</li>
+              <li>负责品牌PR、MCN、代理商、渠道客户的联系和关系维护。</li>
+              <li>负责样品申请、佣金申请、品牌合作政策和商务资料管理。</li>
+              <li>推进商单合作，包括需求、报价、排期、合同、交付和回款协同。</li>
+              <li>建立客户池，并按行业、品牌、预算、合作阶段分层管理。</li>
+            </ul>
+          </div>
+
+          <div class="role-output">
+            <h4>关键交付</h4>
+            <ul>
+              <li>公司媒体包</li>
+              <li>品牌PR表</li>
+              <li>客户池</li>
+              <li>样品台账</li>
+              <li>商单进度表</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="role key">
+          <div class="role-title">
+            <div class="icon">🤝</div>
+            <h3>组织发展</h3>
+            <span>HRBP共用中台</span>
+          </div>
+
+          <div class="role-content">
+            <h4>核心职责</h4>
+            <ul>
+              <li>负责多账号团队的人才配置、招聘计划、岗位说明和组织协作机制。</li>
+              <li>管理团队知识库，包括选题库、脚本库、剪辑模板、封面模板和商单案例。</li>
+              <li>推动创作生产力升级和商务生产力升级，沉淀工具、SOP和模板。</li>
+              <li>建立工作绩效在线化评估机制，支持OKR和ABCD交付评估。</li>
+              <li>管理人才库、人才需求申请表和岗位需求流转。</li>
+            </ul>
+          </div>
+
+          <div class="role-output">
+            <h4>关键交付</h4>
+            <ul>
+              <li>人才库</li>
+              <li>需求申请表</li>
+              <li>知识库</li>
+              <li>绩效系统</li>
+              <li>组织看板</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">
+            <div class="icon">✍️</div>
+            <h3>内容文案</h3>
+            <span>脚本与初审</span>
+          </div>
+
+          <div class="role-content">
+            <h4>核心职责</h4>
+            <ul>
+              <li>根据不同账号定位完成选题拆解、脚本结构、标题备选和拍摄需求。</li>
+              <li>负责视频成品第一道审核，检查逻辑、字幕、事实、表达和风险点。</li>
+              <li>配合运营完成SEO标题、简介、关键词和内容摘要。</li>
+              <li>负责解释类、补充类、观点延展类评论回复。</li>
+              <li>沉淀用户问题、评论需求和下一期选题线索。</li>
             </ul>
           </div>
 
@@ -1019,27 +1024,25 @@
               <li>视频脚本</li>
               <li>标题备选</li>
               <li>初审意见</li>
-              <li>评论清单</li>
+              <li>用户问题表</li>
             </ul>
           </div>
         </div>
 
-        <div class="role-card">
+        <div class="role">
           <div class="role-title">
             <div class="icon">🎥</div>
-            <div>
-              <h3>摄影拍摄</h3>
-              <span>素材与现场</span>
-            </div>
+            <h3>摄影拍摄</h3>
+            <span>素材与现场</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>根据脚本制定拍摄方案、机位、灯光、收音和场景调度。</li>
-              <li>确保主素材、补充素材、产品细节和人物表达完整采集。</li>
-              <li>为封面和投流预留可用画面，包括高能片段和产品镜头。</li>
-              <li>建立设备、场景、参数、素材命名和交付规范。</li>
+              <li>根据不同账号内容风格制定拍摄方案、机位、灯光、收音和场景调度。</li>
+              <li>确保主素材、补充素材、产品细节、封面素材和投流素材完整采集。</li>
+              <li>为家电测评、榜单盘点、科技表达等不同内容预留合适镜头。</li>
+              <li>建立素材命名、设备参数、拍摄规范和素材交付标准。</li>
             </ul>
           </div>
 
@@ -1048,29 +1051,27 @@
             <ul>
               <li>拍摄计划</li>
               <li>原始素材</li>
-              <li>素材备注</li>
+              <li>产品镜头</li>
+              <li>封面素材</li>
               <li>补拍清单</li>
-              <li>设备清单</li>
             </ul>
           </div>
         </div>
 
-        <div class="role-card">
+        <div class="role">
           <div class="role-title">
             <div class="icon">🎬</div>
-            <div>
-              <h3>后期剪辑</h3>
-              <span>节奏与成片</span>
-            </div>
+            <h3>后期剪辑</h3>
+            <span>节奏与成片</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>负责视频结构、节奏、钩子、字幕、音效、BGM和包装。</li>
-              <li>优化前3秒、前30秒和关键流失点。</li>
-              <li>配合运营输出投流素材、短切片和不同开头测试版。</li>
-              <li>参与复盘完播率、流失点、节奏问题和剪辑方法沉淀。</li>
+              <li>根据不同账号调性完成剪辑节奏、包装、字幕、音效和开头钩子设计。</li>
+              <li>配合运营输出投流切片、不同开头版本和平台适配版本。</li>
+              <li>参与复盘完播率、流失点、节奏问题和爆款剪辑方法。</li>
+              <li>沉淀栏目剪辑模板，提升多账号生产效率。</li>
             </ul>
           </div>
 
@@ -1086,23 +1087,20 @@
           </div>
         </div>
 
-        <div class="role-card">
+        <div class="role">
           <div class="role-title">
             <div class="icon">🎨</div>
-            <div>
-              <h3>视觉设计</h3>
-              <span>视觉与封面</span>
-            </div>
+            <h3>视觉设计</h3>
+            <span>账号视觉体系</span>
           </div>
 
           <div class="role-content">
             <h4>核心职责</h4>
             <ul>
-              <li>提供整套账号视觉方案，包括色彩、字体、版式和视觉识别。</li>
-              <li>建立封面风格设计，并通过竞品、数据和点击逻辑进行论证。</li>
-              <li>设计封面模板、栏目模板、商单物料和账号视觉资产。</li>
-              <li>配合运营制作2—3版测试封面，复盘点击表现。</li>
-              <li>持续维护视觉规范，提升账号识别度和内容点击率。</li>
+              <li>为三个账号分别提供视觉方案，包括色彩、字体、版式、封面风格和识别系统。</li>
+              <li>完成封面风格设计，并通过竞品、数据和点击逻辑进行论证。</li>
+              <li>建立账号模板、栏目模板、商单物料模板和视觉资产库。</li>
+              <li>配合运营制作测试封面，持续复盘封面点击率和视觉效率。</li>
             </ul>
           </div>
 
@@ -1111,255 +1109,59 @@
             <ul>
               <li>视觉方案</li>
               <li>封面体系</li>
-              <li>模板规范</li>
-              <li>测试封面</li>
+              <li>栏目模板</li>
+              <li>商单物料</li>
               <li>视觉资产库</li>
             </ul>
           </div>
-        </div>
-
-        <div class="role-card key-role" id="business">
-          <div class="role-title">
-            <div class="icon">💼</div>
-            <div>
-              <h3>商业拓展</h3>
-              <span>合作与变现</span>
-            </div>
-          </div>
-
-          <div class="role-content">
-            <h4>核心职责</h4>
-            <ul>
-              <li>负责对外媒体包制作，包装账号价值、案例、报价和合作形式。</li>
-              <li>负责品牌PR、品牌方沟通、MCN联系和渠道资源维护。</li>
-              <li>负责样品申请、佣金申请、合作政策确认和商务资料收集。</li>
-              <li>推进品牌商单合作，包括需求沟通、报价、排期、合同和交付协调。</li>
-              <li>负责客户开发，建立潜在品牌、代理商、MCN和渠道客户池。</li>
-            </ul>
-          </div>
-
-          <div class="role-output">
-            <h4>关键交付</h4>
-            <ul>
-              <li>媒体包</li>
-              <li>客户池</li>
-              <li>PR清单</li>
-              <li>样品台账</li>
-              <li>商单进度表</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="role-card key-role">
-          <div class="role-title">
-            <div class="icon">🤝</div>
-            <div>
-              <h3>组织发展</h3>
-              <span>HRBP与系统</span>
-            </div>
-          </div>
-
-          <div class="role-content">
-            <h4>核心职责</h4>
-            <ul>
-              <li>负责招聘配置、岗位说明书、人才发展和组织协作机制。</li>
-              <li>管理团队知识库，推动创作生产力和商务生产力升级。</li>
-              <li>建立工作绩效在线化评估机制，实现过程记录、评分和反馈。</li>
-              <li>管理人才库、人才需求申请表和岗位需求流转。</li>
-              <li>识别主创过载、岗位缺口、协作卡点和组织风险。</li>
-            </ul>
-          </div>
-
-          <div class="role-output">
-            <h4>关键交付</h4>
-            <ul>
-              <li>岗位说明</li>
-              <li>知识库</li>
-              <li>绩效系统</li>
-              <li>人才库</li>
-              <li>需求申请表</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="workflow">
-      <div class="section-title">
-        <div class="eyebrow">03 / Full Workflow</div>
-        <h2>完整工作流：从选题到商业复盘</h2>
-        <p>
-          建议把「内容发布」后面的运营、评论、数据、商业反馈全部纳入流程，避免内容发完即结束。
-        </p>
-      </div>
-
-      <div class="process">
-        <div class="process-step">
-          <strong>01</strong>
-          <p>账号规划<br />主创定定位、栏目和阶段目标。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>02</strong>
-          <p>选题立项<br />主创、文案、运营判断价值。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>03</strong>
-          <p>脚本策划<br />文案写脚本、标题和需求。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>04</strong>
-          <p>拍摄执行<br />拍摄完成素材和封面储备。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>05</strong>
-          <p>剪辑设计<br />剪辑成片，视觉出封面。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>06</strong>
-          <p>双重审核<br />文案初审，主创终审。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>07</strong>
-          <p>发布运营<br />SEO、热门、测试、投流。</p>
-        </div>
-
-        <div class="process-step">
-          <strong>08</strong>
-          <p>数据复盘<br />运营输出品牌关心数据。</p>
         </div>
       </div>
     </section>
 
     <section class="section" id="matrix">
       <div class="section-title">
-        <div class="eyebrow">04 / Responsibility Matrix</div>
-        <h2>关键事项责任矩阵</h2>
+        <div class="eyebrow">04 / Account Responsibility Matrix</div>
+        <h2>多账号责任矩阵</h2>
         <p>
-          表格内容已压缩，适合内部汇报使用。移动端可横向滑动查看。
+          通过矩阵明确「每个账号谁负责内容，谁负责运营，谁负责商务，谁负责组织支持」，避免多账号下职责模糊。
         </p>
       </div>
 
       <div class="table-wrap">
-        <table class="matrix">
+        <table>
           <thead>
             <tr>
-              <th class="w-sm">事项</th>
-              <th class="w-sm">负责人</th>
-              <th class="w-md">参与人</th>
-              <th class="w-lg">交付标准</th>
-              <th class="w-md">输出物</th>
+              <th style="width:15%;">账号</th>
+              <th style="width:20%;">内容负责人</th>
+              <th style="width:22%;">共用运营职责</th>
+              <th style="width:22%;">共用商务职责</th>
+              <th style="width:21%;">HRBP支持</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>账号定位</td>
-              <td>账号主创</td>
-              <td>运营、文案、商业</td>
-              <td>明确人群、调性、栏目、商业边界。</td>
-              <td>定位文档</td>
+              <td>家电总动员</td>
+              <td>账号主创负责定位、选题、终审和评论口径。</td>
+              <td>发布、SEO、热门、投流、数据复盘。</td>
+              <td>承接大众消费、导购、家电品牌合作。</td>
+              <td>配置内容生产资源，沉淀生活家电知识库。</td>
             </tr>
 
             <tr>
-              <td>选题立项</td>
-              <td>账号主创</td>
-              <td>文案、运营</td>
-              <td>有用户需求、平台机会、内容角度。</td>
-              <td>选题Brief</td>
+              <td>家电百大</td>
+              <td>账号主创负责榜单逻辑、评测标准和内容权威性。</td>
+              <td>管理榜单栏目数据、搜索词和品牌方复盘数据。</td>
+              <td>承接榜单植入、评测合作、品牌年度合作。</td>
+              <td>沉淀评测标准、榜单模板和复盘案例。</td>
             </tr>
 
             <tr>
-              <td>脚本表达</td>
-              <td>内容文案</td>
-              <td>主创、运营</td>
-              <td>结构清楚，事实准确，适合拍剪。</td>
-              <td>脚本、标题</td>
-            </tr>
-
-            <tr>
-              <td>拍摄素材</td>
-              <td>摄影拍摄</td>
-              <td>文案、剪辑</td>
-              <td>素材完整，声音清晰，有封面和投流素材。</td>
-              <td>素材包</td>
-            </tr>
-
-            <tr>
-              <td>剪辑成片</td>
-              <td>后期剪辑</td>
-              <td>主创、文案、运营</td>
-              <td>节奏顺畅，前段吸引，适配平台。</td>
-              <td>成片、切片</td>
-            </tr>
-
-            <tr>
-              <td>视觉体系</td>
-              <td>视觉设计</td>
-              <td>主创、运营</td>
-              <td>有整套方案、模板、封面风格和论证。</td>
-              <td>视觉方案</td>
-            </tr>
-
-            <tr>
-              <td>成品初审</td>
-              <td>内容文案</td>
-              <td>剪辑、美工</td>
-              <td>检查逻辑、字幕、事实、表达错误。</td>
-              <td>初审意见</td>
-            </tr>
-
-            <tr>
-              <td>最终审核</td>
-              <td>账号主创</td>
-              <td>文案、运营</td>
-              <td>确认内容质量、风险、调性和发布许可。</td>
-              <td>终审意见</td>
-            </tr>
-
-            <tr>
-              <td>发布运营</td>
-              <td>账号运营</td>
-              <td>文案、美工、剪辑</td>
-              <td>标题、简介、标签、SEO、封面和投流配置完整。</td>
-              <td>发布检查表</td>
-            </tr>
-
-            <tr>
-              <td>评论回复</td>
-              <td>文案/主创</td>
-              <td>运营筛选</td>
-              <td>解释类文案回，专业/争议类主创回。</td>
-              <td>评论清单</td>
-            </tr>
-
-            <tr>
-              <td>单期复盘</td>
-              <td>账号运营</td>
-              <td>主创、商业</td>
-              <td>包含播放、点击、完播、互动、转粉、品牌关注数据。</td>
-              <td>单期报告</td>
-            </tr>
-
-            <tr>
-              <td>商单推进</td>
-              <td>商业拓展</td>
-              <td>主创、运营</td>
-              <td>完成沟通、报价、排期、样品、合同和交付协调。</td>
-              <td>商单表</td>
-            </tr>
-
-            <tr>
-              <td>组织系统</td>
-              <td>组织发展</td>
-              <td>各岗位</td>
-              <td>知识库、绩效在线化、人才库和需求表持续更新。</td>
-              <td>管理台账</td>
+              <td>赛博家电</td>
+              <td>账号主创负责科技表达、年轻化内容和新品判断。</td>
+              <td>负责热点追踪、封面测试、投流测试和平台趋势复盘。</td>
+              <td>承接新品PR、智能家电、科技品牌和MCN合作。</td>
+              <td>沉淀科技内容模板、视觉规范和人才需求。</td>
             </tr>
           </tbody>
         </table>
@@ -1368,332 +1170,284 @@
 
     <section class="section">
       <div class="section-title">
-        <div class="eyebrow">05 / Operation Review Data</div>
-        <h2>账号运营每期复盘数据</h2>
+        <div class="eyebrow">05 / Shared Operation Rules</div>
+        <h2>共用账号运营机制</h2>
         <p>
-          运营需要为每期视频输出复盘数据，尤其要覆盖品牌方、MCN和商业合作方关心的指标。
-        </p>
-      </div>
-
-      <div class="table-wrap">
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th class="w-sm">分类</th>
-              <th class="w-lg">核心数据</th>
-              <th class="w-lg">品牌方关注点</th>
-              <th class="w-md">输出</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>基础曝光</td>
-              <td>播放量、阅读量、曝光量、推荐量、搜索量。</td>
-              <td>内容是否获得足够触达，是否进入平台推荐。</td>
-              <td>曝光概览</td>
-            </tr>
-
-            <tr>
-              <td>点击表现</td>
-              <td>封面点击率、标题点击率、不同封面对比。</td>
-              <td>品牌露出和内容包装是否有吸引力。</td>
-              <td>封面测试</td>
-            </tr>
-
-            <tr>
-              <td>观看质量</td>
-              <td>完播率、平均观看时长、3秒留存、流失点。</td>
-              <td>用户是否真正看完品牌或产品信息。</td>
-              <td>留存分析</td>
-            </tr>
-
-            <tr>
-              <td>互动反馈</td>
-              <td>点赞、收藏、评论、转发、弹幕、评论情绪。</td>
-              <td>用户对品牌、产品、卖点的真实反馈。</td>
-              <td>互动报告</td>
-            </tr>
-
-            <tr>
-              <td>转化线索</td>
-              <td>涨粉、私信、进群、表单、挂链点击、商品点击。</td>
-              <td>内容是否带来潜在客户或销售线索。</td>
-              <td>线索数据</td>
-            </tr>
-
-            <tr>
-              <td>投流数据</td>
-              <td>消耗、CPM、CPC、CTR、转化成本、ROI。</td>
-              <td>投放效率、放大价值和后续预算建议。</td>
-              <td>投流复盘</td>
-            </tr>
-
-            <tr>
-              <td>品牌资产</td>
-              <td>品牌提及、关键词评论、用户问题、负面反馈。</td>
-              <td>品牌认知、产品疑问、风险点和二次传播机会。</td>
-              <td>品牌反馈</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
-        <div class="eyebrow">06 / Business Development</div>
-        <h2>商业拓展工作模块</h2>
-        <p>
-          商业拓展岗位负责把账号影响力转化为品牌合作、MCN资源、样品资源、佣金合作和客户资产。
+          账号运营作为共用中台，需要避免被单一账号临时需求拖散，因此必须建立统一排期、统一优先级和统一复盘格式。
         </p>
       </div>
 
       <div class="cards four">
         <div class="card">
-          <div class="icon">📦</div>
-          <h3>媒体包</h3>
-          <p>制作账号介绍、受众画像、案例数据、报价、合作形式和交付流程。</p>
+          <div class="icon">📅</div>
+          <h3>统一排期</h3>
+          <p>维护三个账号的周排期、月排期、商单排期和投流排期，避免撞车。</p>
         </div>
 
         <div class="card">
-          <div class="icon">📣</div>
-          <h3>品牌PR</h3>
-          <p>维护品牌方、代理商、PR、MCN联系人，建立对外合作资源池。</p>
+          <div class="icon">🔍</div>
+          <h3>统一SEO</h3>
+          <p>建立关键词库，按账号沉淀搜索词、标题词、长尾词和热点词。</p>
         </div>
 
         <div class="card">
-          <div class="icon">🧾</div>
-          <h3>合作推进</h3>
-          <p>推进样品申请、佣金申请、报价沟通、合同确认和商单排期。</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🤝</div>
-          <h3>客户开发</h3>
-          <p>建立客户分层，跟进潜在客户、复购客户和重点行业品牌。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
-        <div class="eyebrow">07 / HRBP System</div>
-        <h2>组织发展管理机制</h2>
-        <p>
-          HRBP从单一招聘支持升级为组织发展角色，重点推动知识库、人才库、绩效在线化和生产力升级。
-        </p>
-      </div>
-
-      <div class="cards four">
-        <div class="card">
-          <div class="icon">📚</div>
-          <h3>知识库</h3>
-          <p>管理选题库、脚本库、剪辑模板、封面模板、商单案例和复盘报告。</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">⚙️</div>
-          <h3>生产升级</h3>
-          <p>推动创作生产力升级和商务生产力升级，沉淀工具、SOP和模板。</p>
+          <div class="icon">🧪</div>
+          <h3>统一测试</h3>
+          <p>对重点内容进行封面、标题、开头、投流素材的A/B测试。</p>
         </div>
 
         <div class="card">
           <div class="icon">📊</div>
-          <h3>在线绩效</h3>
-          <p>建立在线化绩效评估机制，记录目标、过程、结果、反馈和改进。</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🧑‍💼</div>
-          <h3>人才管理</h3>
-          <p>管理人才库、岗位画像、人才需求申请表和招聘进度台账。</p>
+          <h3>统一复盘</h3>
+          <p>按单期、栏目、账号、品牌合作维度输出数据复盘和优化建议。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-title">
-        <div class="eyebrow">08 / Role Metrics</div>
-        <h2>各岗位建议指标</h2>
+        <div class="eyebrow">06 / Business Rules</div>
+        <h2>共用商务机制</h2>
         <p>
-          指标尽量短、清晰、可量化，避免表格内容过宽。
+          商务必须作为公司对外统一入口，避免不同账号各自报价、各自联系品牌，造成客户体验混乱和价格体系不一致。
         </p>
       </div>
 
       <div class="table-wrap">
-        <table class="matrix">
+        <table>
           <thead>
             <tr>
-              <th class="w-sm">岗位</th>
-              <th class="w-lg">核心指标</th>
-              <th class="w-lg">辅助指标</th>
-              <th class="w-md">避免只看</th>
+              <th style="width:18%;">模块</th>
+              <th style="width:32%;">工作内容</th>
+              <th style="width:25%;">管理方式</th>
+              <th style="width:25%;">关键输出</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>账号主创</td>
-              <td>选题命中率、内容质量、终审准确率、账号增长。</td>
-              <td>评论口碑、商单内容质量、复盘判断。</td>
-              <td>单条播放</td>
+              <td>媒体包</td>
+              <td>统一包装公司、账号矩阵、受众画像、案例、报价和合作方式。</td>
+              <td>月度更新，商单后补充案例。</td>
+              <td>公司媒体包</td>
             </tr>
 
             <tr>
-              <td>账号运营</td>
-              <td>点击率、完播率、SEO表现、投流ROI、单期复盘质量。</td>
-              <td>发布准时率、评论筛选、品牌数据完整度。</td>
-              <td>发布数量</td>
+              <td>客户开发</td>
+              <td>开发品牌方、代理商、MCN、PR公司和渠道客户。</td>
+              <td>按行业、预算、阶段分层。</td>
+              <td>客户池</td>
             </tr>
 
             <tr>
-              <td>内容文案</td>
-              <td>脚本通过率、初审准确率、标题表现、评论回复质量。</td>
-              <td>返工次数、用户问题沉淀、信息准确率。</td>
-              <td>字数多少</td>
+              <td>样品佣金</td>
+              <td>统一申请样品、佣金、链接、优惠政策和合作权限。</td>
+              <td>建立样品和佣金台账。</td>
+              <td>样品表、佣金表</td>
             </tr>
 
             <tr>
-              <td>摄影拍摄</td>
-              <td>素材可用率、拍摄准时率、素材完整度。</td>
-              <td>收音画质、封面素材、投流素材储备。</td>
-              <td>拍摄时长</td>
+              <td>商单推进</td>
+              <td>推进需求、报价、排期、合同、交付、验收和回款。</td>
+              <td>统一项目表管理。</td>
+              <td>商单进度表</td>
             </tr>
 
             <tr>
-              <td>后期剪辑</td>
-              <td>成片准时率、完播表现、返工率、投流素材适配。</td>
-              <td>字幕准确率、模板沉淀、流失点优化。</td>
-              <td>剪辑条数</td>
-            </tr>
-
-            <tr>
-              <td>视觉设计</td>
-              <td>封面点击率、视觉方案完整度、模板复用率。</td>
-              <td>测试封面完成率、商单物料质量。</td>
-              <td>做图数量</td>
-            </tr>
-
-            <tr>
-              <td>商业拓展</td>
-              <td>客户开发数、商单推进率、合作金额、复购率。</td>
-              <td>媒体包质量、样品申请、佣金合作。</td>
-              <td>联系人数</td>
-            </tr>
-
-            <tr>
-              <td>组织发展</td>
-              <td>招聘达成率、知识库更新、绩效在线化、人才库质量。</td>
-              <td>培训完成率、组织问题解决率。</td>
-              <td>招聘人数</td>
+              <td>品牌复盘</td>
+              <td>结合运营数据输出品牌方关心的数据和二次合作建议。</td>
+              <td>商单结束后复盘。</td>
+              <td>品牌复盘报告</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="section" id="plan">
+    <section class="section" id="workflow">
       <div class="section-title">
-        <div class="eyebrow">09 / Implementation Plan</div>
-        <h2>30天落地推进计划</h2>
+        <div class="eyebrow">07 / Full Workflow</div>
+        <h2>多账号完整工作流</h2>
         <p>
-          建议先用30天完成职责确认、运营复盘模板、商业台账和组织在线化工具上线。
+          多账号协作建议统一为8步流程。所有账号遵循同一流程，但内容定位和表达方式保持差异化。
         </p>
       </div>
 
-      <div class="plan">
-        <div class="phase">
-          <div class="phase-time">第1周</div>
-          <div>
-            <h3>职责确认</h3>
-            <p>
-              明确8个岗位的负责人、兼任关系和交付物。确认文案初审、主创终审机制。
-            </p>
-          </div>
-          <div class="phase-output">
-            产出：岗位表、审核规则、责任矩阵。
-          </div>
+      <div class="process">
+        <div class="step">
+          <strong>01</strong>
+          <p>账号规划<br />主创明确账号定位和栏目。</p>
         </div>
 
-        <div class="phase">
-          <div class="phase-time">第2周</div>
-          <div>
-            <h3>模板上线</h3>
-            <p>
-              上线发布检查表、SEO词表、封面测试表、单期复盘表、媒体包模板。
-            </p>
-          </div>
-          <div class="phase-output">
-            产出：运营模板、媒体包、复盘模板。
-          </div>
+        <div class="step">
+          <strong>02</strong>
+          <p>选题立项<br />主创、文案、运营共评估。</p>
         </div>
 
-        <div class="phase">
-          <div class="phase-time">第3周</div>
-          <div>
-            <h3>试跑闭环</h3>
-            <p>
-              选择3—5期内容跑通选题、制作、双审、发布、投流、评论、复盘。
-            </p>
-          </div>
-          <div class="phase-output">
-            产出：试运行报告、问题清单。
-          </div>
+        <div class="step">
+          <strong>03</strong>
+          <p>脚本策划<br />文案完成脚本和拍摄需求。</p>
         </div>
 
-        <div class="phase">
-          <div class="phase-time">第4周</div>
-          <div>
-            <h3>系统固化</h3>
-            <p>
-              HRBP上线知识库、人才库、需求申请表和绩效在线化评估机制。
-            </p>
-          </div>
-          <div class="phase-output">
-            产出：知识库、人才库、绩效看板。
-          </div>
+        <div class="step">
+          <strong>04</strong>
+          <p>拍摄制作<br />拍摄、剪辑、视觉完成内容。</p>
+        </div>
+
+        <div class="step">
+          <strong>05</strong>
+          <p>双重审核<br />文案初审，主创终审。</p>
+        </div>
+
+        <div class="step">
+          <strong>06</strong>
+          <p>发布运营<br />运营统一发布、SEO、测试。</p>
+        </div>
+
+        <div class="step">
+          <strong>07</strong>
+          <p>商务联动<br />商务同步客户和品牌反馈。</p>
+        </div>
+
+        <div class="step">
+          <strong>08</strong>
+          <p>数据复盘<br />运营输出账号和品牌数据。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">08 / Meeting System</div>
+        <h2>多账号协同会议机制</h2>
+        <p>
+          会议要少而有效，重点解决跨账号排期、资源优先级、商单插入和数据复盘问题。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:16%;">会议</th>
+              <th style="width:18%;">频率</th>
+              <th style="width:26%;">参与人</th>
+              <th style="width:25%;">核心议题</th>
+              <th style="width:15%;">输出</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>账号选题会</td>
+              <td>每周1次</td>
+              <td>各账号主创、文案、运营</td>
+              <td>确定下周选题、重点内容、拍摄优先级。</td>
+              <td>选题表</td>
+            </tr>
+
+            <tr>
+              <td>运营复盘会</td>
+              <td>每周1次</td>
+              <td>运营、主创、文案、剪辑、视觉</td>
+              <td>复盘点击、完播、转粉、评论、投流。</td>
+              <td>复盘表</td>
+            </tr>
+
+            <tr>
+              <td>商务同步会</td>
+              <td>每周1次</td>
+              <td>商务、主创、运营、管理层</td>
+              <td>同步客户、样品、商单排期和品牌需求。</td>
+              <td>商单表</td>
+            </tr>
+
+            <tr>
+              <td>组织效率会</td>
+              <td>每月1次</td>
+              <td>HRBP、管理层、各岗位负责人</td>
+              <td>人才需求、绩效评估、知识库和流程问题。</td>
+              <td>组织看板</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">09 / Priority Rules</div>
+        <h2>资源优先级规则</h2>
+        <p>
+          当三个账号同时有内容需求、投流需求或商务需求时，需要用统一规则判断优先级。
+        </p>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">💰</div>
+          <h3>商单优先</h3>
+          <p>已签约、有明确交付节点的商单内容，优先进入制作和运营排期。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🔥</div>
+          <h3>热点优先</h3>
+          <p>平台热点、新品发布、行业事件类内容，可临时插入高优先级。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>增长优先</h3>
+          <p>数据已验证、有放大潜力的栏目和选题，优先获得投流和测试资源。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧱</div>
+          <h3>资产优先</h3>
+          <p>能沉淀长期搜索、榜单、评测、品牌案例的内容，优先进入内容库。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="quote">
-        最终建议：超红传媒应尽快把「账号运营」和「商业拓展」从隐性工作变为显性岗位。
+        2.0最终建议：超红传媒应以三个账号作为前台内容阵地，以账号运营、商务、HRBP作为共用中台，形成「内容差异化、运营规模化、商务统一化、组织在线化」的管理模式。
         <span>
-          内容负责影响力，运营负责增长效率，商业负责变现路径，组织发展负责系统能力。
+          这样既能保持家电总动员、家电百大、赛博家电的账号特色，也能提升整体运营效率和商业化能力。
         </span>
       </div>
     </section>
 
     <footer class="footer">
       <p>
-        © 超红传媒组织分工方案｜深浅主题可切换｜适用于短视频团队、MCN、品牌内容团队、垂类媒体公司。
+        © 超红传媒组织分工方案 2.0｜适用于多账号矩阵管理、短视频团队、MCN、品牌内容公司。
       </p>
     </footer>
   </main>
 
   <script>
     const html = document.documentElement;
-    const btn = document.getElementById("themeToggle");
+    const btn = document.getElementById("themeBtn");
     const icon = document.getElementById("themeIcon");
     const text = document.getElementById("themeText");
 
-    const savedTheme = localStorage.getItem("chaohong-theme");
-    if (savedTheme) {
-      html.setAttribute("data-theme", savedTheme);
-      updateThemeText(savedTheme);
+    const saved = localStorage.getItem("chaohong-org-2-theme");
+
+    if (saved) {
+      html.setAttribute("data-theme", saved);
+      updateTheme(saved);
     }
 
     btn.addEventListener("click", () => {
       const current = html.getAttribute("data-theme");
       const next = current === "dark" ? "light" : "dark";
       html.setAttribute("data-theme", next);
-      localStorage.setItem("chaohong-theme", next);
-      updateThemeText(next);
+      localStorage.setItem("chaohong-org-2-theme", next);
+      updateTheme(next);
     });
 
-    function updateThemeText(theme) {
+    function updateTheme(theme) {
       if (theme === "dark") {
         icon.textContent = "☀️";
         text.textContent = "浅色";
