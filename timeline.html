@@ -59,10 +59,11 @@
     .header {
       background: var(--header-bg);
       color: var(--header-text);
-      padding: 44px 40px 36px;
+      padding: 44px 0 36px;
       position: relative;
       overflow: hidden;
     }
+    .header-inner { padding: 0 24px; box-sizing: border-box; }
     .header::before {
       content:''; position: absolute; top:-60px; right:-60px;
       width:300px; height:300px; border-radius:50%;
@@ -109,22 +110,6 @@
     .legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
     .legend-item { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text2); }
     .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      display:flex; gap:0;
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:10px; overflow:hidden; width:fit-content;
-      margin-bottom:28px;
-    }
-    .filter-btn {
-      padding:9px 22px; font-size:0.82rem; font-weight:500;
-      border:none; cursor:pointer; background:transparent;
-      color:var(--text2); font-family:inherit;
-      transition: background 0.15s, color 0.15s;
-    }
-    .filter-btn.active { background:var(--accent); color:#fff; }
-    .filter-btn:hover:not(.active) { background:var(--surface2); }
 
     /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:36px; }
@@ -263,13 +248,6 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
   </div>
 
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="switchFilter('newest', this)">📅 最新</button>
-    <button class="filter-btn" onclick="switchFilter('oldest', this)">📅 最早</button>
-    <button class="filter-btn" onclick="switchFilter('category', this)">📂 分类</button>
-  </div>
-
-  <div class="timeline" id="timeline-time-view">
 
     <!-- 2026-06-17 选购指南 -->
     <div class="date-group" id="date-2026-06-17-guide">
@@ -1062,8 +1040,6 @@
 
   </div><!-- /timeline (time view) -->
 
-  <div class="timeline" id="timeline-category-view" style="display:none;"></div>
-
 </div><!-- /main -->
 
 <div class="footer">
@@ -1086,54 +1062,15 @@
     document.getElementById('toggleText').textContent = '浅色';
   }
 
-
-  /* ── Filter switching ── */
-  const CATEGORY_ORDER = ['驾驶舱','选购指南','商务工具','组织架构','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
-  let categoryBuilt = false;
-
-  function switchFilter(mode, btn) {
-    const timeView = document.getElementById('timeline-time-view');
-    const catView  = document.getElementById('timeline-category-view');
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    if (mode === 'category') {
-      timeView.style.display = 'none';
-      catView.style.display  = '';
-      if (!categoryBuilt) buildCategoryView();
-    } else {
-      catView.style.display = 'none';
-      timeView.style.display = '';
-      applyTimeOrder(mode);
-    }
-  }
-
-  function applyTimeOrder(mode) {
-    const timeView = document.getElementById('timeline-time-view');
-    const dateGroups = timeView.querySelectorAll('.date-group');
-    const groupsArray = Array.from(dateGroups);
-
-    groupsArray.sort((a, b) => {
-      const dateA = extractDate(a);
-      const dateB = extractDate(b);
-      if (mode === 'newest') {
-        return dateB.localeCompare(dateA);
-      } else {
-        return dateA.localeCompare(dateB);
-      }
-    });
-
-    groupsArray.forEach(g => timeView.appendChild(g));
-  }
-
+  /* ── Sort by newest on page load ── */
   function extractDate(group) {
-    // Try to get date from id (e.g., date-2026-06-18)
+    const dt = group.getAttribute('data-date');
+    if (dt) return dt;
     const id = group.id;
     if (id) {
       const match = id.match(/date-(\d{4}-\d{2}-\d{2})/);
       if (match) return match[1];
     }
-    // Fallback: try to parse from date-label text
     const label = group.querySelector('.date-label');
     if (label) {
       const text = label.textContent;
@@ -1145,64 +1082,20 @@
     return '2000-01-01';
   }
 
-  function buildCategoryView() {
-    const catView = document.getElementById('timeline-category-view');
-    const sourceCards = document.querySelectorAll('#timeline-time-view .tl-card');
-    const catMap = {};
+  function sortByNewest() {
+    const timeView = document.getElementById('timeline-time-view');
+    const dateGroups = timeView.querySelectorAll('.date-group');
+    const groupsArray = Array.from(dateGroups);
 
-    sourceCards.forEach(card => {
-      const badge = card.querySelector('.tl-badge');
-      let cat = '其他';
-      if (badge.classList.contains('dashboard'))  cat = '驾驶舱';
-      else if (badge.classList.contains('guide')) cat = '选购指南';
-      else if (badge.classList.contains('biz'))  cat = '商务工具';
-      else if (badge.classList.contains('org'))  cat = '组织架构';
-      else if (badge.classList.contains('sop'))   cat = 'SOP 指南';
-      else if (badge.classList.contains('plan'))  cat = '项目策划';
-      else if (badge.classList.contains('category')) cat = '品类策划';
-      else if (badge.classList.contains('strategy')) cat = '内容策略';
-      else if (badge.classList.contains('report')) cat = '达人商单';
-
-      if (!catMap[cat]) catMap[cat] = [];
-      catMap[cat].push(card.cloneNode(true));
+    groupsArray.sort((a, b) => {
+      return extractDate(b).localeCompare(extractDate(a));
     });
 
-    // Sort cards within each category by time (newest first)
-    Object.keys(catMap).forEach(cat => {
-      catMap[cat].sort((a, b) => {
-        const ta = a.querySelector('.tl-time').textContent;
-        const tb = b.querySelector('.tl-time').textContent;
-        return tb.localeCompare(ta);
-      });
-    });
-
-    CATEGORY_ORDER.forEach(cat => {
-      if (!catMap[cat] || catMap[cat].length === 0) return;
-
-      const group = document.createElement('div');
-      group.className = 'date-group';
-      group.id = 'cat-' + cat;
-
-      const header = document.createElement('div');
-      header.className = 'date-header';
-      header.innerHTML = '<div class="date-dot"></div>'
-        + '<span class="date-label">' + cat + '</span>'
-        + '<span class="date-count">' + catMap[cat].length + ' 篇</span>';
-      group.appendChild(header);
-
-      const cardsDiv = document.createElement('div');
-      cardsDiv.className = 'tl-cards';
-      catMap[cat].forEach(c => cardsDiv.appendChild(c));
-      group.appendChild(cardsDiv);
-
-      catView.appendChild(group);
-    });
-
-    categoryBuilt = true;
+    groupsArray.forEach(g => timeView.appendChild(g));
   }
 
-  // Apply default filter (newest first)
-  switchFilter('newest', document.querySelector('.filter-btn.active'));
+  // Sort by newest first on page load
+  sortByNewest();
 </script>
 </body>
 </html>
