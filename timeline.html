@@ -108,6 +108,23 @@
     .legend-item { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text2); }
     .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
+    /* ── SORT TOGGLE ── */
+    .sort-bar {
+      display:flex; gap:0; margin-bottom:28px;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; overflow:hidden; width:fit-content;
+    }
+    .sort-btn {
+      padding:8px 22px; font-size:0.82rem; font-weight:500;
+      border:none; cursor:pointer; background:transparent;
+      color:var(--text2); font-family:inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sort-btn.active {
+      background:var(--accent); color:#fff;
+    }
+    .sort-btn:hover:not(.active) { background:var(--surface2); }
+
     /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:36px; }
     .timeline::before {
@@ -233,7 +250,12 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
   </div>
 
-  <div class="timeline">
+  <div class="sort-bar">
+    <button class="sort-btn active" onclick="switchSort('time', this)">📅 按时间</button>
+    <button class="sort-btn" onclick="switchSort('category', this)">📂 按分类</button>
+  </div>
+
+  <div class="timeline" id="timeline-time-view">
 
     <!-- 2026-06-17 选购指南 -->
     <div class="date-group" id="date-2026-06-17-guide">
@@ -787,7 +809,10 @@
       </div>
     </div>
 
-  </div><!-- /timeline -->
+  </div><!-- /timeline (time view) -->
+
+  <div class="timeline" id="timeline-category-view" style="display:none;"></div>
+
 </div><!-- /main -->
 
 <div class="footer">
@@ -808,6 +833,80 @@
     document.documentElement.setAttribute('data-theme', 'dark');
     document.getElementById('toggleIcon').textContent = '☀️';
     document.getElementById('toggleText').textContent = '浅色';
+  }
+
+  /* ── Sort switching ── */
+  const CATEGORY_ORDER = ['驾驶舱','选购指南','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
+  let categoryBuilt = false;
+
+  function switchSort(mode, btn) {
+    const timeView = document.getElementById('timeline-time-view');
+    const catView  = document.getElementById('timeline-category-view');
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (mode === 'time') {
+      timeView.style.display = '';
+      catView.style.display  = 'none';
+    } else {
+      timeView.style.display = 'none';
+      catView.style.display  = '';
+      if (!categoryBuilt) buildCategoryView();
+    }
+  }
+
+  function buildCategoryView() {
+    const catView = document.getElementById('timeline-category-view');
+    const sourceCards = document.querySelectorAll('#timeline-time-view .tl-card');
+    const catMap = {};
+
+    sourceCards.forEach(card => {
+      const badge = card.querySelector('.tl-badge');
+      let cat = '其他';
+      if (badge.classList.contains('dashboard'))  cat = '驾驶舱';
+      else if (badge.classList.contains('guide')) cat = '选购指南';
+      else if (badge.classList.contains('sop'))   cat = 'SOP 指南';
+      else if (badge.classList.contains('plan'))  cat = '项目策划';
+      else if (badge.classList.contains('category')) cat = '品类策划';
+      else if (badge.classList.contains('strategy')) cat = '内容策略';
+      else if (badge.classList.contains('report')) cat = '达人商单';
+
+      if (!catMap[cat]) catMap[cat] = [];
+      catMap[cat].push(card.cloneNode(true));
+    });
+
+    // Sort cards within each category by time (newest first)
+    Object.keys(catMap).forEach(cat => {
+      catMap[cat].sort((a, b) => {
+        const ta = a.querySelector('.tl-time').textContent;
+        const tb = b.querySelector('.tl-time').textContent;
+        return tb.localeCompare(ta);
+      });
+    });
+
+    CATEGORY_ORDER.forEach(cat => {
+      if (!catMap[cat] || catMap[cat].length === 0) return;
+
+      const group = document.createElement('div');
+      group.className = 'date-group';
+      group.id = 'cat-' + cat;
+
+      const header = document.createElement('div');
+      header.className = 'date-header';
+      header.innerHTML = '<div class="date-dot"></div>'
+        + '<span class="date-label">' + cat + '</span>'
+        + '<span class="date-count">' + catMap[cat].length + ' 篇</span>';
+      group.appendChild(header);
+
+      const cardsDiv = document.createElement('div');
+      cardsDiv.className = 'tl-cards';
+      catMap[cat].forEach(c => cardsDiv.appendChild(c));
+      group.appendChild(cardsDiv);
+
+      catView.appendChild(group);
+    });
+
+    categoryBuilt = true;
   }
 </script>
 </body>
