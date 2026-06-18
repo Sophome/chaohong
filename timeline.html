@@ -28,6 +28,8 @@
       --badge-report: #ef4444;
       --badge-dashboard: #8b5cf6;
       --badge-guide: #f97316;
+      --badge-biz: #0891b2;
+      --badge-org: #059669;
     }
     [data-theme="dark"] {
       --bg: #0f1117;
@@ -165,6 +167,8 @@
     .tl-badge.report { background:var(--badge-report); }
     .tl-badge.dashboard { background:var(--badge-dashboard); }
     .tl-badge.guide { background:var(--badge-guide); }
+    .tl-badge.biz { background:var(--badge-biz); }
+    .tl-badge.org { background:var(--badge-org); }
     .tl-info { flex:1; min-width:0; }
     .tl-title { font-size:0.88rem; font-weight:600; color:var(--text); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .tl-desc { font-size:0.72rem; color:var(--text3); margin-top:2px; }
@@ -243,6 +247,8 @@
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-dashboard)"></div>驾驶舱</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-guide)"></div>选购指南</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--badge-biz)"></div>商务工具</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--badge-org)"></div>组织架构</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-sop)"></div>SOP 指南</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-plan)"></div>项目策划</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-category)"></div>品类策划</div>
@@ -427,6 +433,35 @@
             <div class="tl-desc">B站家电博主人事运营与绩效管理仪表盘</div>
           </div>
           <span class="tl-time">13:16</span>
+          <span class="tl-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2026-06-18 -->
+    <div class="date-group" id="date-2026-06-18">
+      <div class="date-header">
+        <div class="date-dot"></div>
+        <span class="date-label">2026年6月18日</span>
+        <span class="date-count">2 篇更新</span>
+      </div>
+      <div class="tl-cards">
+        <a class="tl-card" href="sop-feishu-delivery.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒飞书交付SOP 2.0</div>
+            <div class="tl-desc">飞书协同交付标准化流程与规范</div>
+          </div>
+          <span class="tl-time">17:17</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="org-structure-plan.html" target="_blank">
+          <span class="tl-badge org">组织架构</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒组织分工方案 2.0</div>
+            <div class="tl-desc">团队岗位分工、协作流程与组织架构设计</div>
+          </div>
+          <span class="tl-time">17:17</span>
           <span class="tl-arrow">→</span>
         </a>
       </div>
@@ -836,7 +871,7 @@
   }
 
   /* ── Sort switching ── */
-  const CATEGORY_ORDER = ['驾驶舱','选购指南','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
+  const CATEGORY_ORDER = ['驾驶舱','选购指南','商务工具','组织架构','SOP 指南','项目策划','品类策划','内容策略','达人商单'];
   let categoryBuilt = false;
 
   function switchSort(mode, btn) {
@@ -865,6 +900,8 @@
       let cat = '其他';
       if (badge.classList.contains('dashboard'))  cat = '驾驶舱';
       else if (badge.classList.contains('guide')) cat = '选购指南';
+      else if (badge.classList.contains('biz'))  cat = '商务工具';
+      else if (badge.classList.contains('org'))  cat = '组织架构';
       else if (badge.classList.contains('sop'))   cat = 'SOP 指南';
       else if (badge.classList.contains('plan'))  cat = '项目策划';
       else if (badge.classList.contains('category')) cat = '品类策划';
