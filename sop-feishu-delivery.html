@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>超红传媒飞书交付SOP 2.0</title>
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: rgba(255,255,255,.92);
+      --solid: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --border: rgba(148,163,184,.34);
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --purple: #7c3aed;
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --green-soft: #d1fae5;
+      --orange: #f59e0b;
+      --orange-soft: #fef3c7;
+      --red: #ef4444;
+      --red-soft: #fee2e2;
+      --shadow: 0 22px 60px rgba(15,23,42,.1);
+      --table-head: #f8fafc;
+      --hero:
+        radial-gradient(circle at 8% 8%, rgba(37,99,235,.15), transparent 30%),
+        radial-gradient(circle at 92% 6%, rgba(124,58,237,.13), transparent 30%),
+        radial-gradient(circle at 50% 92%, rgba(6,182,212,.11), transparent 34%),
+        linear-gradient(135deg, #f8fafc 0%, #eef4ff 52%, #f7f3ff 100%);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #020617;
+      --card: rgba(15,23,42,.82);
+      --solid: #111827;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(148,163,184,.22);
+      --primary: #60a5fa;
+      --primary-soft: rgba(37,99,235,.2);
+      --purple: #a78bfa;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --green-soft: rgba(16,185,129,.18);
+      --orange: #fbbf24;
+      --orange-soft: rgba(245,158,11,.18);
+      --red: #f87171;
+      --red-soft: rgba(239,68,68,.18);
+      --shadow: 0 24px 80px rgba(0,0,0,.32);
+      --table-head: rgba(15,23,42,.95);
+      --hero:
+        radial-gradient(circle at 8% 8%, rgba(37,99,235,.22), transparent 30%),
+        radial-gradient(circle at 92% 6%, rgba(124,58,237,.18), transparent 30%),
+        radial-gradient(circle at 50% 92%, rgba(6,182,212,.14), transparent 34%),
+        linear-gradient(135deg, #020617 0%, #0f172a 58%, #111827 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--hero);
+      line-height: 1.65;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 16px;
+      z-index: 99;
+      width: min(1180px, calc(100% - 40px));
+      margin: 16px auto 0;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 32px rgba(15,23,42,.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      box-shadow: 0 12px 26px rgba(37,99,235,.24);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .links {
+      display: flex;
+      gap: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .links a:hover {
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--solid);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.08);
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 82px 0 42px;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      backdrop-filter: blur(14px);
+    }
+
+    .badge i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(16,185,129,.16);
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(40px, 6.6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -2.4px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--primary), var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-card {
+      padding: 26px;
+      border-radius: 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .sum {
+      padding: 15px;
+      border-radius: 18px;
+      background: var(--solid);
+      border: 1px solid var(--border);
+    }
+
+    .sum strong {
+      display: block;
+      color: var(--primary);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .sum span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 7px 0 9px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.16;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      margin: 0;
+      max-width: 940px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .cards.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(15,23,42,.06);
+      backdrop-filter: blur(14px);
+    }
+
+    .card.highlight {
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.1));
+      border-color: rgba(37,99,235,.3);
+    }
+
+    .card.green {
+      background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(6,182,212,.1));
+      border-color: rgba(16,185,129,.3);
+    }
+
+    .card.orange {
+      background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(239,68,68,.08));
+      border-color: rgba(245,158,11,.3);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 13px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--primary-soft), rgba(124,58,237,.16));
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      min-height: 26px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 11.5px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .tag.orange {
+      background: var(--orange-soft);
+      color: var(--orange);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .step {
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15,23,42,.06);
+    }
+
+    .step strong {
+      display: block;
+      color: var(--primary);
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .table-wrap {
+      width: 100%;
+      margin-top: 22px;
+      overflow-x: auto;
+      border-radius: 22px;
+      box-shadow: 0 12px 32px rgba(15,23,42,.06);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: var(--card);
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    th {
+      background: var(--table-head);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 900;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--muted);
+      font-size: 12.2px;
+      line-height: 1.48;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .nowrap {
+      white-space: nowrap;
+    }
+
+    .clip {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .w-10 { width: 10%; }
+    .w-12 { width: 12%; }
+    .w-14 { width: 14%; }
+    .w-16 { width: 16%; }
+    .w-18 { width: 18%; }
+    .w-20 { width: 20%; }
+    .w-22 { width: 22%; }
+    .w-24 { width: 24%; }
+    .w-26 { width: 26%; }
+    .w-28 { width: 28%; }
+    .w-30 { width: 30%; }
+
+    .quote {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.12));
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(15,23,42,.06);
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .footer {
+      padding: 44px 0 78px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1080px) {
+      .links {
+        display: none;
+      }
+
+      .hero,
+      .cards,
+      .cards.two,
+      .cards.four,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page,
+      .nav {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -1.2px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 960px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <a class="brand" href="#">
+      <div class="logo">超</div>
+      <span>超红传媒飞书交付SOP 2.0</span>
+    </a>
+
+    <div class="nav-right">
+      <div class="links">
+        <a href="#overview">总览</a>
+        <a href="#main-table">总表</a>
+        <a href="#workflow">流程</a>
+        <a href="#digital">数字资产</a>
+        <a href="#device">设备资产</a>
+        <a href="#rules">规则</a>
+      </div>
+
+      <button class="theme-btn" id="themeBtn" type="button">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">深色</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="badge"><i></i> Feishu Delivery SOP 2.0</div>
+
+        <h1>
+          超红传媒<br />
+          <span class="gradient">飞书交付SOP 2.0</span>
+        </h1>
+
+        <p class="hero-desc">
+          本SOP基于超红传媒现有协作方式升级：飞书继续作为内部工作对接和经营记录工具，
+          《超红传媒总表》作为经营管理主入口；极空间NAS作为公司数字资产和文件资产存储中心。
+          2.0版本新增「数字资产管理」和「设备资产管理」，让内容、商务、样品、素材、数据、设备都能被记录、追踪、归档和复用。
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <h3>2.0 核心升级</h3>
+
+        <div class="summary">
+          <div class="sum">
+            <strong>1表</strong>
+            <span>超红传媒总表</span>
+          </div>
+
+          <div class="sum">
+            <strong>1盘</strong>
+            <span>极空间NAS资产库</span>
+          </div>
+
+          <div class="sum">
+            <strong>2类</strong>
+            <span>数字/设备资产</span>
+          </div>
+
+          <div class="sum">
+            <strong>8步</strong>
+            <span>内容交付流程</span>
+          </div>
+        </div>
+
+        <p style="margin:16px 0 0;color:var(--muted);font-size:13px;">
+          核心原则：飞书管流程和记录，NAS管文件和资产；总表管经营，资产库管沉淀。
+        </p>
+      </aside>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-title">
+        <div class="eyebrow">01 / Tool Positioning</div>
+        <h2>工具定位：飞书总表 + 极空间NAS</h2>
+        <p>
+          2.0版本明确工具边界，避免文件、状态、任务、资产混在一起。飞书负责协作和记录，极空间NAS负责文件存储和资产沉淀。
+        </p>
+      </div>
+
+      <div class="cards three">
+        <div class="card highlight">
+          <div class="icon">📊</div>
+          <h3>飞书《超红传媒总表》</h3>
+          <p>
+            公司经营管理主入口。负责记录项目、内容、商务、样品、测试、资产、设备、复盘、绩效等经营信息。
+          </p>
+          <div class="tag-row">
+            <span class="tag">状态管理</span>
+            <span class="tag">流程跟踪</span>
+            <span class="tag">经营记录</span>
+          </div>
+        </div>
+
+        <div class="card green">
+          <div class="icon">🗄️</div>
+          <h3>极空间NAS</h3>
+          <p>
+            公司文件和数字资产中心。负责存储素材、成片、工程文件、封面、测试素材、合同、媒体包、案例归档。
+          </p>
+          <div class="tag-row">
+            <span class="tag green">素材归档</span>
+            <span class="tag green">资产复用</span>
+            <span class="tag green">权限管理</span>
+          </div>
+        </div>
+
+        <div class="card orange">
+          <div class="icon">🔗</div>
+          <h3>链接与编号打通</h3>
+          <p>
+            飞书总表不存大文件，只记录NAS路径、分享链接、资产编号、负责人、版本号和调用状态。
+          </p>
+          <div class="tag-row">
+            <span class="tag orange">编号统一</span>
+            <span class="tag orange">路径统一</span>
+            <span class="tag orange">版本统一</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote" style="margin-top:24px;">
+        2.0的关键不是增加一个工具，而是建立“表管业务，盘管资产”的工作方式。
+        <span>
+          飞书记录发生了什么、谁负责、做到哪一步；NAS沉淀交付物、文件版本、可复用资产。
+        </span>
+      </div>
+    </section>
+
+    <section class="section" id="main-table">
+      <div class="section-title">
+        <div class="eyebrow">02 / Main Table Structure</div>
+        <h2>《超红传媒总表》经营模块分类</h2>
+        <p>
+          现有《超红传媒总表》建议继续作为总入口，在原有经营模块分类基础上，新增或强化「资产管理」模块。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-16">经营模块</th>
+              <th class="w-22">管理对象</th>
+              <th class="w-24">核心字段</th>
+              <th class="w-18">主负责人</th>
+              <th class="w-20">关联资产</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>账号内容模块</td>
+              <td>家电总动员、家电百大、赛博家电内容任务。</td>
+              <td>账号、标题、状态、负责人、截止时间、发布链接。</td>
+              <td>账号运营</td>
+              <td>脚本、素材、成片、封面。</td>
+            </tr>
+
+            <tr>
+              <td>商务经营模块</td>
+              <td>客户、品牌、MCN、PR、商单、报价、回款。</td>
+              <td>客户、需求、预算、阶段、合同、回款、复盘。</td>
+              <td>商务拓展</td>
+              <td>媒体包、合同、报价单、案例。</td>
+            </tr>
+
+            <tr>
+              <td>样品管理模块</td>
+              <td>品牌样品、自购样品、测评样品、商单样品。</td>
+              <td>样品编号、来源、型号、归属、状态、归还时间。</td>
+              <td>商务/运营</td>
+              <td>样品照片、测试素材、基础拍摄素材。</td>
+            </tr>
+
+            <tr>
+              <td>测试数据模块</td>
+              <td>家电测试、横评数据、榜单数据、体验结论。</td>
+              <td>测试项目、环境、工具、原始数据、结论、风险备注。</td>
+              <td>测试负责人/主创</td>
+              <td>测试视频、测试图片、数据表。</td>
+            </tr>
+
+            <tr>
+              <td>数字资产模块</td>
+              <td>脚本、素材、成片、工程、封面、模板、案例。</td>
+              <td>资产编号、类型、NAS路径、版本、权限、调用记录。</td>
+              <td>账号运营/HRBP</td>
+              <td>NAS资产文件夹。</td>
+            </tr>
+
+            <tr>
+              <td>设备资产模块</td>
+              <td>相机、镜头、灯光、收音、电脑、硬盘、NAS、测试工具。</td>
+              <td>资产编号、名称、状态、保管人、位置、维修、折旧。</td>
+              <td>HRBP/行政负责人</td>
+              <td>设备照片、购买凭证、维修记录。</td>
+            </tr>
+
+            <tr>
+              <td>复盘知识模块</td>
+              <td>单期复盘、栏目复盘、商单复盘、爆款案例。</td>
+              <td>数据、问题、结论、动作、复用建议。</td>
+              <td>账号运营/HRBP</td>
+              <td>复盘报告、案例文件。</td>
+            </tr>
+
+            <tr>
+              <td>组织绩效模块</td>
+              <td>岗位任务、绩效记录、人才需求、知识库建设。</td>
+              <td>目标、交付、评分、问题、改进项。</td>
+              <td>HRBP</td>
+              <td>SOP、模板、培训资料。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="section-title">
+        <div class="eyebrow">03 / Delivery Workflow</div>
+        <h2>内容交付8步SOP 2.0</h2>
+        <p>
+          内容流转仍以飞书总表为主线，但所有大文件、素材和成片都必须进入极空间NAS，并在飞书总表中回填NAS路径或链接。
+        </p>
+      </div>
+
+      <div class="flow">
+        <div class="step">
+          <strong>01</strong>
+          <p>选题入表<br />飞书建记录</p>
+        </div>
+
+        <div class="step">
+          <strong>02</strong>
+          <p>立项确认<br />主创定方向</p>
+        </div>
+
+        <div class="step">
+          <strong>03</strong>
+          <p>脚本交付<br />文档挂链接</p>
+        </div>
+
+        <div class="step">
+          <strong>04</strong>
+          <p>素材拍摄<br />NAS归档</p>
+        </div>
+
+        <div class="step">
+          <strong>05</strong>
+          <p>剪辑封面<br />版本管理</p>
+        </div>
+
+        <div class="step">
+          <strong>06</strong>
+          <p>审核发布<br />记录状态</p>
+        </div>
+
+        <div class="step">
+          <strong>07</strong>
+          <p>数据复盘<br />结果入表</p>
+        </div>
+
+        <div class="step">
+          <strong>08</strong>
+          <p>资产沉淀<br />归档复用</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-12">步骤</th>
+              <th class="w-18">飞书动作</th>
+              <th class="w-20">NAS动作</th>
+              <th class="w-16">负责人</th>
+              <th class="w-18">交付物</th>
+              <th class="w-16">完成标准</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>选题入表</td>
+              <td>在总表新建内容记录。</td>
+              <td>无需建文件夹。</td>
+              <td>主创/文案</td>
+              <td>选题记录</td>
+              <td>字段完整。</td>
+            </tr>
+
+            <tr>
+              <td>立项确认</td>
+              <td>状态改为已立项。</td>
+              <td>确认是否已有可复用素材。</td>
+              <td>账号主创</td>
+              <td>立项意见</td>
+              <td>方向明确。</td>
+            </tr>
+
+            <tr>
+              <td>脚本交付</td>
+              <td>回填脚本文档链接。</td>
+              <td>脚本定稿可归档到NAS。</td>
+              <td>内容文案</td>
+              <td>脚本文档</td>
+              <td>可拍摄。</td>
+            </tr>
+
+            <tr>
+              <td>素材拍摄</td>
+              <td>回填素材路径。</td>
+              <td>上传原始素材和精选素材。</td>
+              <td>摄影拍摄</td>
+              <td>素材包</td>
+              <td>命名规范。</td>
+            </tr>
+
+            <tr>
+              <td>剪辑封面</td>
+              <td>回填成片和封面路径。</td>
+              <td>上传工程、成片、封面源文件。</td>
+              <td>剪辑/视觉</td>
+              <td>成片/封面</td>
+              <td>版本清楚。</td>
+            </tr>
+
+            <tr>
+              <td>审核发布</td>
+              <td>记录初审、终审、发布链接。</td>
+              <td>终版成片归档。</td>
+              <td>文案/主创/运营</td>
+              <td>发布链接</td>
+              <td>审核完整。</td>
+            </tr>
+
+            <tr>
+              <td>数据复盘</td>
+              <td>填写播放、完播、互动、转化。</td>
+              <td>复盘报告归档。</td>
+              <td>账号运营</td>
+              <td>复盘记录</td>
+              <td>有结论。</td>
+            </tr>
+
+            <tr>
+              <td>资产沉淀</td>
+              <td>标记可复用资产。</td>
+              <td>归入资产库和案例库。</td>
+              <td>运营/HRBP</td>
+              <td>资产记录</td>
+              <td>可搜索。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="digital">
+      <div class="section-title">
+        <div class="eyebrow">04 / Digital Asset Management</div>
+        <h2>数字资产管理SOP</h2>
+        <p>
+          数字资产指公司生产过程中形成的可复用内容文件和经营文件。所有数字资产必须有编号、有路径、有版本、有负责人。
+        </p>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">🎬</div>
+          <h3>内容资产</h3>
+          <p>脚本、原素材、成片、剪辑工程、封面、字幕、栏目模板。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>数据资产</h3>
+          <p>测试数据、投流数据、复盘数据、榜单评分、用户评论。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>商务资产</h3>
+          <p>媒体包、报价单、合同、品牌Brief、案例、复盘报告。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>知识资产</h3>
+          <p>SOP、模板、培训资料、爆款案例、账号方法论。</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-14">资产类型</th>
+              <th class="w-20">存放位置</th>
+              <th class="w-20">飞书记录字段</th>
+              <th class="w-16">负责人</th>
+              <th class="w-16">更新节点</th>
+              <th class="w-14">复用规则</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>脚本资产</td>
+              <td>NAS/01内容资产/脚本库</td>
+              <td>脚本链接、版本、账号、栏目。</td>
+              <td>内容文案</td>
+              <td>脚本定稿后</td>
+              <td>同类选题可复用。</td>
+            </tr>
+
+            <tr>
+              <td>原始素材</td>
+              <td>NAS/01内容资产/原始素材</td>
+              <td>素材路径、拍摄日期、样品编号。</td>
+              <td>摄影拍摄</td>
+              <td>拍摄当天</td>
+              <td>跨账号可调用。</td>
+            </tr>
+
+            <tr>
+              <td>成片资产</td>
+              <td>NAS/01内容资产/成片库</td>
+              <td>成片路径、版本、发布链接。</td>
+              <td>后期剪辑</td>
+              <td>发布前</td>
+              <td>切片和案例复用。</td>
+            </tr>
+
+            <tr>
+              <td>封面资产</td>
+              <td>NAS/01内容资产/封面库</td>
+              <td>封面路径、CTR、账号、模板。</td>
+              <td>视觉设计</td>
+              <td>发布前后</td>
+              <td>高点击模板复用。</td>
+            </tr>
+
+            <tr>
+              <td>测试数据</td>
+              <td>NAS/02测试数据/品类</td>
+              <td>原始数据、测试环境、风险备注。</td>
+              <td>测试负责人</td>
+              <td>测试完成后</td>
+              <td>榜单/测评复用。</td>
+            </tr>
+
+            <tr>
+              <td>商务文件</td>
+              <td>NAS/03商务资产/客户名</td>
+              <td>客户、合同、报价、回款、复盘。</td>
+              <td>商务拓展</td>
+              <td>商单推进中</td>
+              <td>案例和二次合作。</td>
+            </tr>
+
+            <tr>
+              <td>知识模板</td>
+              <td>NAS/04知识库/SOP模板</td>
+              <td>模板名、适用场景、维护人。</td>
+              <td>HRBP</td>
+              <td>每周/月</td>
+              <td>团队统一使用。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">05 / NAS Folder Standard</div>
+        <h2>极空间NAS文件夹标准</h2>
+        <p>
+          建议极空间NAS按公司经营模块建立一级目录，避免个人随意建文件夹导致后续找不到、用不了、无法复盘。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-20">一级目录</th>
+              <th class="w-24">二级目录</th>
+              <th class="w-24">存放内容</th>
+              <th class="w-16">维护人</th>
+              <th class="w-16">权限建议</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>01_内容资产</td>
+              <td>账号/栏目/日期/项目名</td>
+              <td>脚本、素材、成片、工程、封面。</td>
+              <td>运营/剪辑</td>
+              <td>内容团队可读写。</td>
+            </tr>
+
+            <tr>
+              <td>02_样品测试</td>
+              <td>品类/品牌型号/样品编号</td>
+              <td>测试素材、数据表、样品照片。</td>
+              <td>测试负责人</td>
+              <td>内容团队可读。</td>
+            </tr>
+
+            <tr>
+              <td>03_商务资产</td>
+              <td>客户名/项目名/年份</td>
+              <td>媒体包、报价、合同、Brief、复盘。</td>
+              <td>商务拓展</td>
+              <td>商务/管理层。</td>
+            </tr>
+
+            <tr>
+              <td>04_知识库</td>
+              <td>SOP/模板/案例/培训</td>
+              <td>流程、模板、爆款案例、培训资料。</td>
+              <td>HRBP</td>
+              <td>全员可读。</td>
+            </tr>
+
+            <tr>
+              <td>05_设备资产</td>
+              <td>设备类型/设备编号</td>
+              <td>设备照片、发票、保修、维修记录。</td>
+              <td>HRBP/行政</td>
+              <td>管理层/资产负责人。</td>
+            </tr>
+
+            <tr>
+              <td>06_公司经营</td>
+              <td>财务/合同/制度/组织</td>
+              <td>公司经营资料和管理文件。</td>
+              <td>管理层/HRBP</td>
+              <td>限制权限。</td>
+            </tr>
+
+            <tr>
+              <td>99_归档备份</td>
+              <td>年份/月份/项目</td>
+              <td>已结项项目、历史素材、备份文件。</td>
+              <td>运营/HRBP</td>
+              <td>只读为主。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cards two">
+        <div class="card">
+          <div class="icon">🏷️</div>
+          <h3>命名规则</h3>
+          <ul>
+            <li>内容项目：账号_栏目_日期_标题。</li>
+            <li>样品文件：品类_品牌_型号_样品编号。</li>
+            <li>成片版本：账号_标题_V01/V02/Final。</li>
+            <li>商务项目：客户_项目_年份_阶段。</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🔐</div>
+          <h3>权限规则</h3>
+          <ul>
+            <li>原素材和成片：内容团队可读写。</li>
+            <li>商务合同和报价：商务与管理层可见。</li>
+            <li>设备资产和财务资料：限制权限。</li>
+            <li>知识库模板：全员可读，指定人员维护。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="device">
+      <div class="section-title">
+        <div class="eyebrow">06 / Equipment Asset Management</div>
+        <h2>设备资产管理SOP</h2>
+        <p>
+          设备资产包括拍摄设备、办公设备、存储设备、测试工具和家电样品。所有设备必须进入飞书总表，并保留NAS资产资料。
+        </p>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">📷</div>
+          <h3>拍摄设备</h3>
+          <p>相机、镜头、三脚架、稳定器、灯光、收音设备。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💻</div>
+          <h3>办公设备</h3>
+          <p>电脑、显示器、剪辑主机、移动硬盘、路由器。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🗄️</div>
+          <h3>存储设备</h3>
+          <p>极空间NAS、硬盘、备份盘、存储配件。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧪</div>
+          <h3>测试工具</h3>
+          <p>分贝仪、功率计、温湿度计、测温枪、测试耗材。</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-14">字段</th>
+              <th class="w-16">类型</th>
+              <th class="w-26">填写说明</th>
+              <th class="w-22">示例</th>
+              <th class="w-22">责任人</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>资产编号</td>
+              <td>文本</td>
+              <td>每个设备唯一编号。</td>
+              <td>CH-SB-CAM-001</td>
+              <td>HRBP/行政</td>
+            </tr>
+
+            <tr>
+              <td>设备名称</td>
+              <td>文本</td>
+              <td>品牌、型号、规格。</td>
+              <td>索尼A7M4机身</td>
+              <td>资产录入人</td>
+            </tr>
+
+            <tr>
+              <td>设备分类</td>
+              <td>单选</td>
+              <td>便于筛选和盘点。</td>
+              <td>拍摄/办公/存储/测试</td>
+              <td>HRBP</td>
+            </tr>
+
+            <tr>
+              <td>当前状态</td>
+              <td>单选</td>
+              <td>记录设备是否可用。</td>
+              <td>在用/闲置/维修/报废</td>
+              <td>保管人</td>
+            </tr>
+
+            <tr>
+              <td>保管人</td>
+              <td>人员</td>
+              <td>当前责任人。</td>
+              <td>拍摄负责人</td>
+              <td>HRBP</td>
+            </tr>
+
+            <tr>
+              <td>存放位置</td>
+              <td>文本</td>
+              <td>设备实际位置。</td>
+              <td>拍摄间A柜/办公室</td>
+              <td>保管人</td>
+            </tr>
+
+            <tr>
+              <td>购买信息</td>
+              <td>文本/链接</td>
+              <td>购买日期、价格、渠道、发票。</td>
+              <td>2026-01-01/京东/发票链接</td>
+              <td>行政/财务</td>
+            </tr>
+
+            <tr>
+              <td>维修记录</td>
+              <td>文本/链接</td>
+              <td>故障、维修时间、费用。</td>
+              <td>镜头维修/500元</td>
+              <td>保管人</td>
+            </tr>
+
+            <tr>
+              <td>NAS资料路径</td>
+              <td>链接/文本</td>
+              <td>设备照片、发票、保修卡。</td>
+              <td>NAS/05设备资产/CAM001</td>
+              <td>HRBP</td>
+            </tr>
+
+            <tr>
+              <td>盘点日期</td>
+              <td>日期</td>
+              <td>最近一次盘点时间。</td>
+              <td>2026-03-31</td>
+              <td>HRBP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">07 / Asset Flow</div>
+        <h2>资产流转SOP</h2>
+        <p>
+          数字资产和设备资产都要有流转记录。谁创建、谁使用、谁修改、谁归档，都必须能在飞书总表中追踪。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-14">资产类型</th>
+              <th class="w-18">创建/入库</th>
+              <th class="w-18">使用/调用</th>
+              <th class="w-18">更新/维修</th>
+              <th class="w-18">归档/报废</th>
+              <th class="w-14">责任人</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>数字资产</td>
+              <td>交付完成后入NAS。</td>
+              <td>调用时记录项目名。</td>
+              <td>更新版本号。</td>
+              <td>结项后归档。</td>
+              <td>运营/HRBP</td>
+            </tr>
+
+            <tr>
+              <td>原始素材</td>
+              <td>拍摄当天上传。</td>
+              <td>剪辑和账号调用。</td>
+              <td>补拍后追加。</td>
+              <td>项目结项后备份。</td>
+              <td>摄影拍摄</td>
+            </tr>
+
+            <tr>
+              <td>成片工程</td>
+              <td>剪辑完成后上传。</td>
+              <td>二剪、切片、复用。</td>
+              <td>按V01/V02/Final。</td>
+              <td>发布后归档。</td>
+              <td>后期剪辑</td>
+            </tr>
+
+            <tr>
+              <td>商务文件</td>
+              <td>客户立项后建夹。</td>
+              <td>报价、合同、复盘。</td>
+              <td>按合作阶段更新。</td>
+              <td>商单结项后归档。</td>
+              <td>商务拓展</td>
+            </tr>
+
+            <tr>
+              <td>设备资产</td>
+              <td>购买/领用时入表。</td>
+              <td>借用需记录。</td>
+              <td>维修需记录。</td>
+              <td>报废需审批。</td>
+              <td>HRBP/行政</td>
+            </tr>
+
+            <tr>
+              <td>测试工具</td>
+              <td>购买后编号入库。</td>
+              <td>测试项目绑定。</td>
+              <td>校准/损坏记录。</td>
+              <td>报废记录。</td>
+              <td>测试负责人</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="eyebrow">08 / Role Responsibility</div>
+        <h2>岗位交付责任升级</h2>
+        <p>
+          2.0版本要求每个岗位不仅完成自己的任务，还要完成对应资产的记录和归档。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="w-14">岗位</th>
+              <th class="w-22">飞书责任</th>
+              <th class="w-22">NAS责任</th>
+              <th class="w-22">资产责任</th>
+              <th class="w-20">验收标准</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>账号主创</td>
+              <td>立项、终审、风险口径。</td>
+              <td>确认可复用素材和数据。</td>
+              <td>判断内容资产价值。</td>
+              <td>方向清楚，风险可控。</td>
+            </tr>
+
+            <tr>
+              <td>账号运营</td>
+              <td>维护总表、排期、发布、复盘。</td>
+              <td>回填NAS路径和归档状态。</td>
+              <td>维护数字资产索引。</td>
+              <td>状态、链接、复盘完整。</td>
+            </tr>
+
+            <tr>
+              <td>商务拓展</td>
+              <td>维护客户、商单、样品、回款。</td>
+              <td>归档合同、报价、Brief、复盘。</td>
+              <td>维护商务资产和样品记录。</td>
+              <td>客户阶段清楚。</td>
+            </tr>
+
+            <tr>
+              <td>内容文案</td>
+              <td>上传脚本、初审记录。</td>
+              <td>归档脚本定稿。</td>
+              <td>沉淀脚本模板和选题案例。</td>
+              <td>脚本可查可复用。</td>
+            </tr>
+
+            <tr>
+              <td>摄影拍摄</td>
+              <td>填写拍摄状态和素材路径。</td>
+              <td>上传原始素材和精选素材。</td>
+              <td>维护基础素材包。</td>
+              <td>素材完整，命名规范。</td>
+            </tr>
+
+            <tr>
+              <td>后期剪辑</td>
+              <td>回填成片版本和路径。</td>
+              <td>归档工程、成片、字幕。</td>
+              <td>沉淀剪辑模板和切片资产。</td>
+              <td>版本清楚，可追溯。</td>
+            </tr>
+
+            <tr>
+              <td>视觉设计</td>
+              <td>回填封面路径和测试结果。</td>
+              <td>归档封面源文件和模板。</td>
+              <td>沉淀封面模板库。</td>
+              <td>模板可复用。</td>
+            </tr>
+
+            <tr>
+              <td>HRBP/行政</td>
+              <td>维护绩效、知识库、设备表。</td>
+              <td>维护设备资料和制度文件。</td>
+              <td>负责资产盘点和权限规则。</td>
+              <td>资产账实一致。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="section-title">
+        <div class="eyebrow">09 / Hard Rules</div>
+        <h2>2.0执行硬规则</h2>
+        <p>
+          为保证飞书总表和极空间NAS真正协同，建议设置以下硬规则。
+        </p>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>无表不执行</h3>
+          <p>没有进入《超红传媒总表》的任务，不进入正式排期、拍摄、剪辑和商务推进。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>无盘不交付</h3>
+          <p>素材、成片、工程、封面、合同、案例没有进入NAS，不视为正式交付完成。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>无链不结项</h3>
+          <p>飞书总表中没有回填NAS路径、发布链接、复盘链接的项目，不允许结项。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">4</div>
+          <h3>无编号不入库</h3>
+          <p>样品、设备、数字资产必须有统一编号，否则不得进入资产库和设备台账。</p>
+        </div>
+      </div>
+
+      <div class="cards four">
+        <div class="card">
+          <div class="icon">5</div>
+          <h3>无版本不修改</h3>
+          <p>成片、封面、合同、媒体包修改必须保留版本号，禁止覆盖最终文件。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">6</div>
+          <h3>无权限不外发</h3>
+          <p>商务合同、客户资料、未发布内容、品牌Brief不得随意外发或公开分享。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">7</div>
+          <h3>无复盘不沉淀</h3>
+          <p>内容和商单发布后必须完成复盘，优秀案例进入知识库和案例库。</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">8</div>
+          <h3>无盘点不报废</h3>
+          <p>设备报废、遗失、维修必须在设备资产表中记录，并由负责人确认。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="quote">
+        超红传媒飞书交付SOP 2.0 的核心，是把工作流、经营表、NAS资产库打通。
+        <span>
+          飞书总表解决“事情有没有推进”，极空间NAS解决“资产有没有沉淀”，资产管理解决“未来能不能复用”。
+        </span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        © 超红传媒飞书交付SOP 2.0｜飞书总表 / 极空间NAS / 数字资产管理 / 设备资产管理 / 多账号内容交付。
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    const saved = localStorage.getItem("chaohong-feishu-sop-2-theme");
+
+    if (saved) {
+      html.setAttribute("data-theme", saved);
+      updateTheme(saved);
+    }
+
+    btn.addEventListener("click", () => {
+      const current = html.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("chaohong-feishu-sop-2-theme", next);
+      updateTheme(next);
+    });
+
+    function updateTheme(theme) {
+      if (theme === "dark") {
+        icon.textContent = "☀️";
+        text.textContent = "浅色";
+      } else {
+        icon.textContent = "🌙";
+        text.textContent = "深色";
+      }
+    }
+  </script>
+</body>
+</html>
