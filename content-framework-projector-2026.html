@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒 投影仪全年内容框架</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#111832;
+      --card:#172346;
+      --line:rgba(255,255,255,.12);
+      --text:#edf3ff;
+      --title:#ffffff;
+      --muted:#aab7d6;
+      --blue:#6aa8ff;
+      --cyan:#56d6ff;
+      --purple:#b58cff;
+      --orange:#ffb86b;
+      --green:#73e2a7;
+      --red:#ff7b8a;
+      --gold:#ffd36a;
+      --thead1:#21305d;
+      --thead2:#19264d;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+      --glass:rgba(255,255,255,.06);
+      --glass2:rgba(255,255,255,.08);
+      --hover:rgba(106,168,255,.1);
+      --table-even:rgba(255,255,255,.028);
+      --hero-gradient:linear-gradient(135deg,rgba(21,31,61,.96),rgba(12,18,36,.96));
+      --body-gradient:
+        radial-gradient(circle at 10% 0%,rgba(86,214,255,.18),transparent 32%),
+        radial-gradient(circle at 90% 8%,rgba(181,140,255,.18),transparent 34%),
+        radial-gradient(circle at 50% 100%,rgba(255,184,107,.12),transparent 38%),
+        var(--bg);
+    }
+
+    body.light{
+      --bg:#f4f7fb;
+      --panel:#ffffff;
+      --card:#ffffff;
+      --line:rgba(15,23,42,.13);
+      --text:#162033;
+      --title:#07111f;
+      --muted:#56657d;
+      --blue:#2563eb;
+      --cyan:#0891b2;
+      --purple:#7c3aed;
+      --orange:#ea580c;
+      --green:#059669;
+      --red:#e11d48;
+      --gold:#b7791f;
+      --thead1:#eaf1ff;
+      --thead2:#dfeaff;
+      --shadow:0 18px 42px rgba(15,23,42,.10);
+      --glass:rgba(15,23,42,.04);
+      --glass2:rgba(15,23,42,.055);
+      --hover:rgba(37,99,235,.075);
+      --table-even:rgba(15,23,42,.025);
+      --hero-gradient:linear-gradient(135deg,rgba(255,255,255,.98),rgba(240,246,255,.98));
+      --body-gradient:
+        radial-gradient(circle at 10% 0%,rgba(37,99,235,.10),transparent 32%),
+        radial-gradient(circle at 90% 8%,rgba(124,58,237,.10),transparent 34%),
+        radial-gradient(circle at 50% 100%,rgba(234,88,12,.075),transparent 38%),
+        var(--bg);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      background:var(--body-gradient);
+      color:var(--text);
+      line-height:1.65;
+      padding:28px;
+      transition:.35s ease;
+    }
+    .page{max-width:1680px;margin:0 auto;}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px;}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0;}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:linear-gradient(135deg,var(--red),var(--orange),var(--gold));
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:900;box-shadow:0 14px 32px rgba(255,123,138,.22);
+      flex:0 0 auto;
+    }
+    .brand-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
+    .brand-text strong{color:var(--title);font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .brand-text span{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+    .theme-switch{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 12px;border:1px solid var(--line);
+      border-radius:999px;background:var(--glass);box-shadow:var(--shadow);
+      user-select:none;flex:0 0 auto;
+    }
+    .theme-label{color:var(--muted);font-size:13px;white-space:nowrap;}
+    .switch{position:relative;display:inline-block;width:58px;height:30px;flex:0 0 auto;}
+    .switch input{opacity:0;width:0;height:0;}
+    .slider{
+      position:absolute;cursor:pointer;inset:0;
+      background:linear-gradient(135deg,#263452,#111827);
+      border:1px solid var(--line);border-radius:999px;transition:.3s;overflow:hidden;
+    }
+    .slider:before{
+      content:"☾";position:absolute;width:24px;height:24px;left:3px;top:2px;
+      border-radius:50%;background:#fff;color:#111827;
+      display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;
+      transition:.3s;box-shadow:0 6px 14px rgba(0,0,0,.24);
+    }
+    input:checked + .slider{background:linear-gradient(135deg,#bfdbfe,#fef3c7);}
+    input:checked + .slider:before{content:"☀";transform:translateX(28px);color:#b45309;}
+
+    .hero{
+      display:flex;justify-content:space-between;align-items:stretch;gap:22px;
+      padding:34px;border:1px solid var(--line);border-radius:28px;
+      background:var(--hero-gradient);box-shadow:var(--shadow);
+      overflow:hidden;position:relative;
+    }
+    .hero:before{
+      content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+      right:-120px;top:-160px;background:radial-gradient(circle,rgba(106,168,255,.28),transparent 68%);
+      pointer-events:none;
+    }
+    body.light .hero:before{background:radial-gradient(circle,rgba(37,99,235,.16),transparent 68%);}
+    .hero-main{flex:1 1 auto;position:relative;z-index:2;}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 12px;border:1px solid rgba(106,168,255,.35);
+      border-radius:999px;color:var(--text);background:rgba(106,168,255,.11);
+      font-size:13px;margin-bottom:18px;white-space:nowrap;
+    }
+    h1{color:var(--title);font-size:42px;line-height:1.16;letter-spacing:-.6px;margin-bottom:14px;}
+    .hero-desc{max-width:920px;color:var(--muted);font-size:16px;}
+    .hero-side{flex:0 0 420px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:2;}
+    .side-card{padding:18px 20px;border:1px solid var(--line);border-radius:20px;background:var(--glass);backdrop-filter:blur(10px);}
+    .side-card strong{display:block;color:var(--title);font-size:24px;margin-bottom:4px;}
+    .side-card span{color:var(--muted);font-size:13px;}
+
+    .section{
+      margin-top:28px;padding:28px;border:1px solid var(--line);
+      border-radius:22px;background:rgba(17,24,50,.88);box-shadow:var(--shadow);
+    }
+    body.light .section{background:rgba(255,255,255,.92);}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px;}
+    .section-title{display:flex;flex-direction:column;gap:6px;}
+    .section-title h2{color:var(--title);font-size:26px;line-height:1.25;}
+    .section-title p{color:var(--muted);font-size:14px;}
+    .tag{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:7px 11px;border-radius:999px;border:1px solid var(--line);
+      background:var(--glass);color:var(--text);font-size:12px;white-space:nowrap;
+    }
+
+    .flex-grid{display:flex;gap:18px;flex-wrap:wrap;}
+    .pillar-card{
+      flex:1 1 320px;min-width:280px;padding:22px;border-radius:22px;
+      border:1px solid var(--line);background:linear-gradient(180deg,var(--glass2),rgba(255,255,255,.035));
+      position:relative;overflow:hidden;transition:.25s ease;
+    }
+    body.light .pillar-card{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,251,255,.88));}
+    .pillar-card:hover{transform:translateY(-3px);}
+    .pillar-card:after{content:"";position:absolute;width:170px;height:170px;right:-64px;bottom:-70px;border-radius:50%;opacity:.35;}
+    .pillar-card.high:after{background:var(--purple);}
+    .pillar-card.mid:after{background:var(--cyan);}
+    .pillar-card.sale:after{background:var(--orange);}
+    .pillar-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;position:relative;z-index:2;}
+    .pillar-name{color:var(--title);font-size:20px;font-weight:800;}
+    .percent{font-size:34px;font-weight:900;letter-spacing:-1px;}
+    .pillar-card.high .percent{color:var(--purple);}
+    .pillar-card.mid .percent{color:var(--cyan);}
+    .pillar-card.sale .percent{color:var(--orange);}
+    .pillar-card p{color:var(--muted);font-size:14px;margin-bottom:14px;position:relative;z-index:2;}
+    .mini-list{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:2;}
+    .mini-list span{padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid var(--line);color:var(--text);font-size:12px;white-space:nowrap;}
+
+    .strategy-row{display:flex;flex-wrap:wrap;gap:14px;}
+    .strategy-card{flex:1 1 240px;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--glass);}
+    .strategy-card b{display:block;margin-bottom:6px;color:var(--title);font-size:15px;}
+    .strategy-card span{color:var(--muted);font-size:13px;}
+
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:rgba(5,8,18,.35);}
+    body.light .table-wrap{background:rgba(255,255,255,.72);}
+    table{width:100%;border-collapse:collapse;min-width:1480px;}
+    th,td{
+      padding:13px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+      text-align:left;vertical-align:middle;white-space:nowrap;font-size:13px;
+    }
+    th:last-child,td:last-child{border-right:none;}
+    thead th{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--thead1),var(--thead2));color:var(--title);font-weight:800;}
+    tbody tr:nth-child(even){background:var(--table-even);}
+    tbody tr:hover{background:var(--hover);}
+    .month{color:var(--title);font-weight:900;}
+    .type{display:inline-flex;align-items:center;justify-content:center;min-width:72px;padding:5px 9px;border-radius:999px;font-weight:800;font-size:12px;}
+    .type.high{color:#f0e7ff;background:rgba(181,140,255,.18);border:1px solid rgba(181,140,255,.38);}
+    .type.mid{color:#e1fbff;background:rgba(86,214,255,.16);border:1px solid rgba(86,214,255,.36);}
+    .type.sale{color:#fff0dc;background:rgba(255,184,107,.16);border:1px solid rgba(255,184,107,.38);}
+    body.light .type.high{color:#5b21b6;background:rgba(124,58,237,.10);border-color:rgba(124,58,237,.22);}
+    body.light .type.mid{color:#0e7490;background:rgba(8,145,178,.10);border-color:rgba(8,145,178,.22);}
+    body.light .type.sale{color:#c2410c;background:rgba(234,88,12,.10);border-color:rgba(234,88,12,.24);}
+    .score{font-weight:900;color:var(--gold);}
+    .priority{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid transparent;}
+    .p-s{color:#08151f;background:linear-gradient(135deg,#ffd36a,#ff9f4a);}
+    .p-a{color:#071820;background:linear-gradient(135deg,#73e2a7,#56d6ff);}
+    .p-b{color:var(--text);background:var(--glass);border-color:var(--line);}
+
+    .note-box{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;}
+    .note{flex:1 1 260px;border:1px solid var(--line);border-radius:18px;background:var(--glass);padding:16px;}
+    .note b{color:var(--title);display:block;margin-bottom:6px;}
+    .note p{color:var(--muted);font-size:13px;}
+    .footer{color:var(--muted);text-align:center;padding:30px 0 8px;font-size:13px;}
+
+    @media(max-width:980px){
+      body{padding:16px;}
+      .hero{flex-direction:column;padding:24px;}
+      .hero-side{flex:1 1 auto;}
+      h1{font-size:30px;}
+      .eyebrow{white-space:normal;}
+      .section{padding:20px;}
+      .section-head{flex-direction:column;align-items:flex-start;}
+      .theme-label{display:none;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">超</div>
+        <div class="brand-text">
+          <strong>超红传媒</strong>
+          <span>投影仪内容运营 · 年度选题规划 · 技术科普与电商转化</span>
+        </div>
+      </div>
+      <div class="theme-switch" title="切换深浅主题">
+        <span class="theme-label" id="themeText">深色主题</span>
+        <label class="switch">
+          <input type="checkbox" id="themeToggle" aria-label="切换深浅主题" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">超红传媒 · 投影仪内容运营 · 全年选题框架 · 参数科普/场景解决方案/大促带货</div>
+        <h1>超红传媒 投影仪全年内容框架</h1>
+        <p class="hero-desc">
+          本框架围绕投影仪全年内容增长与转化设计：高端内容建立行业趋势、品牌格局、测评标准和技术话语权；中端内容重点覆盖亮度、分辨率、投射比、幕布、自动校正、激光光源、卧室客厅露营等场景问题；带货内容根据年货节、装修季、618、暑期、818、双11、双12节点输出清单、榜单、预算方案和直播转化素材。
+        </p>
+      </div>
+      <div class="hero-side">
+        <div class="side-card"><strong>15% / 55% / 30%</strong><span>高端内容、中端内容、带货内容全年资源配比</span></div>
+        <div class="side-card"><strong>36个年度核心选题</strong><span>覆盖品牌分析、参数科普、场景教程、幕布搭配和大促清单</span></div>
+        <div class="side-card"><strong>搜索 + 种草 + 成交</strong><span>将投影仪复杂参数转化为用户能理解、能决策、能下单的内容资产</span></div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <h2>第一层：投影仪全年内容结构与资源配比</h2>
+          <p>投影仪用户决策链路长，内容需要同时解决参数信任、场景想象和价格转化。</p>
+        </div>
+        <span class="tag">年度目标：技术信任 + 场景种草 + 大促成交</span>
+      </div>
+
+      <div class="flex-grid">
+        <div class="pillar-card high">
+          <div class="pillar-top"><div class="pillar-name">高端内容</div><div class="percent">15%</div></div>
+          <p>重点输出行业白皮书、品牌竞争分析、亮度与画质标准、投影仪测评SOP、技术趋势报告，建立平台专业权威。</p>
+          <div class="mini-list"><span>品牌分析</span><span>行业白皮书</span><span>测评SOP</span><span>亮度标准</span><span>光源趋势</span><span>高端横评</span></div>
+        </div>
+        <div class="pillar-card mid">
+          <div class="pillar-top"><div class="pillar-name">中端内容</div><div class="percent">55%</div></div>
+          <p>围绕新品发布、亮度单位、4K、投射比、幕布、激光投影、便携投影、卧室客厅场景、安装调试持续产出。</p>
+          <div class="mini-list"><span>新品发布</span><span>参数科普</span><span>幕布搭配</span><span>安装教程</span><span>场景方案</span><span>避坑指南</span></div>
+        </div>
+        <div class="pillar-card sale">
+          <div class="pillar-top"><div class="pillar-name">带货内容</div><div class="percent">30%</div></div>
+          <p>根据全年节点输出入门清单、卧室清单、客厅清单、露营清单、学生党清单、大促捡漏榜和直播转化素材。</p>
+          <div class="mini-list"><span>年货节</span><span>装修季</span><span>618</span><span>暑期</span><span>双11</span><span>双12</span></div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <div class="note"><b>高端内容收益方向</b><p>建立投影仪测评公信力，吸引品牌新品测评、行业合作、渠道合作和媒体转载。</p></div>
+        <div class="note"><b>中端内容收益方向</b><p>覆盖“投影仪怎么选、亮度怎么看、投影仪和电视哪个好、幕布怎么配”等长尾搜索需求。</p></div>
+        <div class="note"><b>带货内容收益方向</b><p>通过预算分层、使用场景、优惠节点和产品对比提升点击、收藏、加购、咨询与成交。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <h2>内容立项评分模型</h2>
+          <p>每个投影仪选题按照粉丝关注度、商单潜力、带货潜力三项打分，总分100分。</p>
+        </div>
+        <span class="tag">S级≥88分，A档80-87分，B档70-79分</span>
+      </div>
+      <div class="strategy-row">
+        <div class="strategy-card"><b>粉丝关注度：40分</b><span>判断是否解决亮度、分辨率、投射距离、幕布、安装、噪音、白天能不能看等真实痛点。</span></div>
+        <div class="strategy-card"><b>商单潜力：30分</b><span>判断是否适合投影品牌、幕布品牌、音响品牌、家装渠道、露营场景、内容平台会员合作。</span></div>
+        <div class="strategy-card"><b>带货潜力：30分</b><span>判断是否能植入产品卡、价位榜单、套装清单、优惠券、直播间和电商详情页入口。</span></div>
+        <div class="strategy-card"><b>交付规格建议</b><span>S级做长文+短视频+对比图+直播话术；A级做教程+清单；B级做轻量科普、问答和社群卡片。</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <h2>第二层 + 第三层：每月选题清单、立项打分与交付标准</h2>
+          <p>表格内容不换行，适合复制进内容排期系统、项目管理表或运营看板。</p>
+        </div>
+        <span class="tag">投影仪年度选题表</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>月份</th>
+              <th>内容分类</th>
+              <th>选题名称</th>
+              <th>粉丝关注度</th>
+              <th>商单潜力</th>
+              <th>带货潜力</th>
+              <th>总分</th>
+              <th>优先级</th>
+              <th>交付标准与重点收益方向</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="month">1月</td><td><span class="type high">高端内容</span></td><td>《年度投影仪消费趋势与家庭大屏用户画像》</td><td>34/40</td><td>28/30</td><td>21/30</td><td class="score">83</td><td><span class="priority p-a">A</span></td><td>交付年度报告长文+信息图，重点获取品牌背书、媒体引用和新品合作线索。</td></tr>
+            <tr><td class="month">1月</td><td><span class="type mid">中端内容</span></td><td>春节客厅投影仪快速搭建指南</td><td>38/40</td><td>21/30</td><td>28/30</td><td class="score">87</td><td><span class="priority p-a">A</span></td><td>交付图文教程+短视频，重点解决临时观影、投射距离、幕布和音响搭配问题。</td></tr>
+            <tr><td class="month">1月</td><td><span class="type sale">带货内容</span></td><td>年货节投影仪入门套装清单</td><td>37/40</td><td>21/30</td><td>30/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付预算榜单+优惠卡片，重点推动入门投影、幕布、支架和音响套装成交。</td></tr>
+
+            <tr><td class="month">2月</td><td><span class="type high">高端内容</span></td><td>《投影仪品牌价值榜：智能投影、激光投影与传统品牌格局》</td><td>33/40</td><td>29/30</td><td>22/30</td><td class="score">84</td><td><span class="priority p-a">A</span></td><td>交付品牌格局分析长文，重点吸引品牌合作、渠道关注和高端用户讨论。</td></tr>
+            <tr><td class="month">2月</td><td><span class="type mid">中端内容</span></td><td>新房装修投影仪怎么预留插座、网线和幕布槽</td><td>40/40</td><td>25/30</td><td>28/30</td><td class="score">93</td><td><span class="priority p-s">S</span></td><td>交付装修节点教程+预留图，重点沉淀装修季搜索流量和安装服务咨询。</td></tr>
+            <tr><td class="month">2月</td><td><span class="type sale">带货内容</span></td><td>开工装修季投影仪预埋采购包</td><td>35/40</td><td>24/30</td><td>30/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付线材、幕布、吊架、插座、安装服务清单，重点提升配件与服务收入。</td></tr>
+
+            <tr><td class="month">3月</td><td><span class="type high">高端内容</span></td><td>《投影仪测评SOP：亮度、色彩、对焦、噪音、延迟》</td><td>36/40</td><td>30/30</td><td>20/30</td><td class="score">86</td><td><span class="priority p-a">A</span></td><td>交付测评标准文档+评分模板，重点建立测评权威和后续品牌测评招商基础。</td></tr>
+            <tr><td class="month">3月</td><td><span class="type mid">中端内容</span></td><td>ANSI、CVIA、ISO亮度到底怎么看</td><td>40/40</td><td>24/30</td><td>25/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付参数科普+换算图，重点覆盖高频搜索词并降低用户选购误区。</td></tr>
+            <tr><td class="month">3月</td><td><span class="type sale">带货内容</span></td><td>装修季投影仪首购清单</td><td>38/40</td><td>23/30</td><td>30/30</td><td class="score">91</td><td><span class="priority p-s">S</span></td><td>交付价位分层榜单+场景搭配图，重点推动卧室、客厅、影音室三类成交。</td></tr>
+
+            <tr><td class="month">4月</td><td><span class="type high">高端内容</span></td><td>《高端激光投影画质体验白皮书》</td><td>32/40</td><td>30/30</td><td>21/30</td><td class="score">83</td><td><span class="priority p-a">A</span></td><td>交付白皮书PDF+画质对比图，重点服务激光投影品牌合作和高端用户决策。</td></tr>
+            <tr><td class="month">4月</td><td><span class="type mid">中端内容</span></td><td>投影幕布怎么选：白幕、灰幕、抗光幕、菲涅尔屏</td><td>39/40</td><td>25/30</td><td>28/30</td><td class="score">92</td><td><span class="priority p-s">S</span></td><td>交付幕布选购教程+实拍样张，重点带动幕布品类和套装成交。</td></tr>
+            <tr><td class="month">4月</td><td><span class="type sale">带货内容</span></td><td>五一投影仪客厅升级预售清单</td><td>36/40</td><td>23/30</td><td>30/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付预售落地页+直播脚本，重点获取预约、加购和五一节点转化。</td></tr>
+
+            <tr><td class="month">5月</td><td><span class="type high">高端内容</span></td><td>《618前投影仪品牌竞争力观察》</td><td>35/40</td><td>29/30</td><td>25/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付品牌观察长文+价格趋势图，重点为618招商、品牌合作和榜单内容预热。</td></tr>
+            <tr><td class="month">5月</td><td><span class="type mid">中端内容</span></td><td>618前投影仪新品参数解读</td><td>38/40</td><td>25/30</td><td>28/30</td><td class="score">91</td><td><span class="priority p-s">S</span></td><td>交付新品参数表+短视频，重点抢占618前搜索流量和导购入口。</td></tr>
+            <tr><td class="month">5月</td><td><span class="type sale">带货内容</span></td><td>618投影仪预售必买清单</td><td>40/40</td><td>26/30</td><td>30/30</td><td class="score">96</td><td><span class="priority p-s">S</span></td><td>交付主推清单+优惠日历+直播预告，重点完成预售蓄水、收藏和加购。</td></tr>
+
+            <tr><td class="month">6月</td><td><span class="type high">高端内容</span></td><td>《618投影仪成交复盘与价格趋势洞察》</td><td>34/40</td><td>28/30</td><td>24/30</td><td class="score">86</td><td><span class="priority p-a">A</span></td><td>交付数据复盘报告，重点沉淀行业影响力并为下半年品牌合作提供证据。</td></tr>
+            <tr><td class="month">6月</td><td><span class="type mid">中端内容</span></td><td>618投影仪怎么选才不后悔</td><td>40/40</td><td>24/30</td><td>30/30</td><td class="score">94</td><td><span class="priority p-s">S</span></td><td>交付冲刺导购文+价格提醒，重点提高最后一公里成交效率。</td></tr>
+            <tr><td class="month">6月</td><td><span class="type sale">带货内容</span></td><td>618最后48小时投影仪捡漏榜</td><td>39/40</td><td>22/30</td><td>30/30</td><td class="score">91</td><td><span class="priority p-s">S</span></td><td>交付限时榜单+倒计时视觉，重点制造紧迫感并推动即时成交。</td></tr>
+
+            <tr><td class="month">7月</td><td><span class="type high">高端内容</span></td><td>《暑期家庭娱乐与便携投影需求报告》</td><td>33/40</td><td>26/30</td><td>23/30</td><td class="score">82</td><td><span class="priority p-a">A</span></td><td>交付场景报告，重点覆盖亲子观影、卧室娱乐和露营大屏需求。</td></tr>
+            <tr><td class="month">7月</td><td><span class="type mid">中端内容</span></td><td>卧室投影仪怎么摆放、怎么避开噪音和亮度坑</td><td>39/40</td><td>22/30</td><td>28/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付卧室方案图+摆位教程，重点转化卧室投影、支架和小幕布套装。</td></tr>
+            <tr><td class="month">7月</td><td><span class="type sale">带货内容</span></td><td>暑期亲子投影仪套装清单</td><td>36/40</td><td>20/30</td><td>29/30</td><td class="score">85</td><td><span class="priority p-a">A</span></td><td>交付亲子片单+产品清单，重点转化家庭娱乐和假期陪伴预算。</td></tr>
+
+            <tr><td class="month">8月</td><td><span class="type high">高端内容</span></td><td>《高端投影空间案例拆解：客厅、卧室、影音室、露营》</td><td>34/40</td><td>30/30</td><td>24/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付案例合集+空间图，重点提升高端项目咨询和场景合作价值。</td></tr>
+            <tr><td class="month">8月</td><td><span class="type mid">中端内容</span></td><td>开学季宿舍投影仪怎么选</td><td>35/40</td><td>18/30</td><td>27/30</td><td class="score">80</td><td><span class="priority p-a">A</span></td><td>交付学生党预算清单+使用规范，重点覆盖低预算用户和便携投影成交。</td></tr>
+            <tr><td class="month">8月</td><td><span class="type sale">带货内容</span></td><td>818投影仪换新节清单</td><td>36/40</td><td>22/30</td><td>30/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付换新榜单+以旧换新权益，重点刺激老款投影升级和高亮机型成交。</td></tr>
+
+            <tr><td class="month">9月</td><td><span class="type high">高端内容</span></td><td>《金九银十家装投影空间白皮书》</td><td>35/40</td><td>29/30</td><td>25/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付白皮书+渠道版PPT，重点服务家装渠道、幕布品牌和投影仪品牌合作。</td></tr>
+            <tr><td class="month">9月</td><td><span class="type mid">中端内容</span></td><td>客厅投影仪和电视怎么取舍</td><td>40/40</td><td>25/30</td><td>28/30</td><td class="score">93</td><td><span class="priority p-s">S</span></td><td>交付对比型内容+决策图，重点承接高争议搜索词和客厅场景转化。</td></tr>
+            <tr><td class="month">9月</td><td><span class="type sale">带货内容</span></td><td>99装修节客厅投影套装清单</td><td>37/40</td><td>24/30</td><td>30/30</td><td class="score">91</td><td><span class="priority p-s">S</span></td><td>交付投影+幕布+支架+音响+安装套餐页，重点提升客单价和组合成交。</td></tr>
+
+            <tr><td class="month">10月</td><td><span class="type high">高端内容</span></td><td>《国庆档大屏观影体验与投影仪画质标准对照》</td><td>35/40</td><td>27/30</td><td>23/30</td><td class="score">85</td><td><span class="priority p-a">A</span></td><td>交付体验测评+画质标准对照，重点借势国庆档大片和宅家观影热点。</td></tr>
+            <tr><td class="month">10月</td><td><span class="type mid">中端内容</span></td><td>投影仪吊装、桌放、侧投到底怎么选</td><td>38/40</td><td>23/30</td><td>27/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付安装决策图+户型示意，重点带动支架、吊装、布线和上门安装服务。</td></tr>
+            <tr><td class="month">10月</td><td><span class="type sale">带货内容</span></td><td>双11预热投影仪升级清单</td><td>39/40</td><td>25/30</td><td>30/30</td><td class="score">94</td><td><span class="priority p-s">S</span></td><td>交付预热榜单+收藏加购提醒，重点完成双11前流量蓄水。</td></tr>
+
+            <tr><td class="month">11月</td><td><span class="type high">高端内容</span></td><td>《双11投影仪消费决策报告》</td><td>36/40</td><td>29/30</td><td>27/30</td><td class="score">92</td><td><span class="priority p-s">S</span></td><td>交付数据报告+榜单复盘，重点提升行业引用和品牌合作价值。</td></tr>
+            <tr><td class="month">11月</td><td><span class="type mid">中端内容</span></td><td>双11投影仪避坑指南</td><td>40/40</td><td>25/30</td><td>30/30</td><td class="score">95</td><td><span class="priority p-s">S</span></td><td>交付重点导购长文+短视频矩阵，重点承接搜索高峰和转化高峰。</td></tr>
+            <tr><td class="month">11月</td><td><span class="type sale">带货内容</span></td><td>双11投影仪终极购买清单</td><td>40/40</td><td>26/30</td><td>30/30</td><td class="score">96</td><td><span class="priority p-s">S</span></td><td>交付核心成交页+直播脚本+短视频切片，重点最大化GMV、客单价和套装成交。</td></tr>
+
+            <tr><td class="month">12月</td><td><span class="type high">高端内容</span></td><td>《年度投影仪行业白皮书与来年趋势预测》</td><td>35/40</td><td>30/30</td><td>23/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付年度白皮书+趋势图，重点沉淀年度内容资产和品牌权威。</td></tr>
+            <tr><td class="month">12月</td><td><span class="type mid">中端内容</span></td><td>年度投影仪新品盘点与选购总结</td><td>37/40</td><td>25/30</td><td>27/30</td><td class="score">89</td><td><span class="priority p-s">S</span></td><td>交付年度盘点榜单，重点承接年终搜索、品牌合作和用户复盘需求。</td></tr>
+            <tr><td class="month">12月</td><td><span class="type sale">带货内容</span></td><td>双12投影仪补货与年末升级清单</td><td>36/40</td><td>22/30</td><td>30/30</td><td class="score">88</td><td><span class="priority p-s">S</span></td><td>交付补货清单+价格对比，重点承接双11未成交用户和年末礼品需求。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      超红传媒 投影仪全年内容框架 · 适用于品牌官网内容中心、公众号、小红书、B站、抖音、视频号与电商大促内容排期
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle=document.getElementById("themeToggle");
+    const themeText=document.getElementById("themeText");
+    const key="ch_theme_projector";
+    const saved=localStorage.getItem(key);
+    if(saved==="light"){
+      document.body.classList.add("light");
+      themeToggle.checked=true;
+      themeText.textContent="浅色主题";
+    }
+    themeToggle.addEventListener("change",function(){
+      if(this.checked){
+        document.body.classList.add("light");
+        themeText.textContent="浅色主题";
+        localStorage.setItem(key,"light");
+      }else{
+        document.body.classList.remove("light");
+        themeText.textContent="深色主题";
+        localStorage.setItem(key,"dark");
+      }
+    });
+  </script>
+</body>
+</html>

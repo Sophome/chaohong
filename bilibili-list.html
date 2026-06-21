@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超红传媒 · B站内容框架</title>
+  <style>
+    :root {
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface2: #f0f2f8;
+      --border: #e2e6ef;
+      --text: #1a1d2e;
+      --text2: #5a607a;
+      --text3: #8892aa;
+      --accent: #4f6ef7;
+      --accent-soft: #eef0ff;
+      --tag-bg: #eef0ff;
+      --tag-text: #4f6ef7;
+      --shadow: 0 2px 12px rgba(79,110,247,0.07);
+      --shadow-hover: 0 8px 28px rgba(79,110,247,0.15);
+      --header-bg: linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);
+      --header-text: #fff;
+      --toggle-bg: rgba(255,255,255,0.2);
+      --card-accent: #ec4899;
+    }
+    [data-theme="dark"] {
+      --bg: #0f1117;
+      --surface: #1c1f2e;
+      --surface2: #252838;
+      --border: #2e3248;
+      --text: #eef0ff;
+      --text2: #a0a8c4;
+      --text3: #666e90;
+      --accent: #7c9fff;
+      --accent-soft: #1e2440;
+      --tag-bg: #1e2440;
+      --tag-text: #7c9fff;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 28px rgba(0,0,0,0.5);
+      --header-bg: linear-gradient(135deg,#1e2a7a 0%,#4a1d96 100%);
+      --header-text: #eef0ff;
+      --toggle-bg: rgba(0,0,0,0.25);
+      --card-accent: #f472b6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 44px 0 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content:'';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header::after {
+      content:'';
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 400px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .header-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index:1; padding: 0 24px; box-sizing: border-box; }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .header-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 24px; right: 32px;
+      z-index: 10;
+      background: var(--toggle-bg);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 40px;
+      padding: 7px 16px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .toggle-btn:hover { background: rgba(255,255,255,0.25); }
+
+    .main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 60px; }
+
+    .nav-links { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
+    .nav-links a { color:var(--accent); font-size:0.82rem; text-decoration:none; }
+
+    .intro {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .intro h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .intro p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 24px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent);
+    }
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--card-accent);
+      border-radius: 6px;
+      padding: 3px 10px;
+      width: fit-content;
+    }
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text3);
+      line-height: 1.6;
+    }
+    .card-meta {
+      display: flex;
+      gap: 14px;
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--text3);
+    }
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card-arrow {
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .card:hover .card-arrow { opacity: 1; }
+
+    .footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.78rem;
+      color: var(--text3);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 32px 0 28px; }
+      .header-inner { padding: 0 14px; }
+      .header h1 { font-size: 1.4rem; }
+      .main { padding: 24px 14px 50px; }
+      .toggle-btn { top: 16px; right: 16px; padding: 6px 12px; font-size: 0.78rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
+    <span id="toggleIcon">🌙</span>
+    <span id="toggleText">深色</span>
+  </button>
+  <div class="header-inner">
+    <h1>超红传媒 · B站内容框架</h1>
+    <p>家电品类全年内容框架导航 &nbsp;|&nbsp; 高端内容 + 中端内容 + 带货内容 三层结构</p>
+    <div class="header-meta">
+      <span class="header-badge">📺 3 大品类</span>
+      <span class="header-badge">📋 内容策略</span>
+      <span class="header-badge">📅 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="nav-links">
+    <a href="index.html">← 返回模块导航</a>
+    <a href="timeline.html">📅 更新时间线</a>
+  </div>
+
+  <div class="intro">
+    <h2>📖 内容框架总览</h2>
+    <p>以下为超红传媒 B站长视频家电内容的全年框架方案，均采用"高端内容建立行业信任、中端内容承接搜索与粉丝增长、带货内容完成销售转化"的三层结构，覆盖从品牌认知、技术科普到大促转化的完整链路。</p>
+  </div>
+
+  <div class="cards-grid">
+    <a class="card" href="content-framework-tv-2026.html" target="_blank">
+      <div class="card-badge">📺 电视机</div>
+      <div class="card-title">超红传媒 电视机全年内容框架</div>
+      <div class="card-desc">围绕Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，覆盖年货节、618、818、双11等大促节点</div>
+      <div class="card-meta">
+        <span>🎯 36个核心选题</span>
+        <span>📐 3层结构</span>
+      </div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <a class="card" href="content-framework-projector-2026.html" target="_blank">
+      <div class="card-badge">🎬 投影仪</div>
+      <div class="card-title">超红传媒 投影仪全年内容框架</div>
+      <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景，将复杂参数转化为用户能理解、能决策的内容</div>
+      <div class="card-meta">
+        <span>🎯 36个核心选题</span>
+        <span>📐 3层结构</span>
+      </div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
+      <div class="card-badge">🔊 家庭影院</div>
+      <div class="card-title">超红传媒 家庭影院全年内容框架</div>
+      <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
+      <div class="card-meta">
+        <span>🎯 72个核心选题</span>
+        <span>📐 3层结构</span>
+      </div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">
+  超红传媒知识库 &nbsp;·&nbsp; B站内容框架 &nbsp;·&nbsp; 2026
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('toggleIcon').textContent = isDark ? '🌙' : '☀️';
+    document.getElementById('toggleText').textContent = isDark ? '深色' : '浅色';
+    localStorage.setItem('theme-bilibili', isDark ? 'light' : 'dark');
+  }
+  const saved = localStorage.getItem('theme-bilibili');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('toggleIcon').textContent = '☀️';
+    document.getElementById('toggleText').textContent = '浅色';
+  }
+</script>
+</body>
+</html>
