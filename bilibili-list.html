@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -238,8 +238,8 @@
 
 <div class="header">
   <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
-    <span id="toggleIcon">🌙</span>
-    <span id="toggleText">深色</span>
+    <span id="toggleIcon">☀️</span>
+    <span id="toggleText">浅色</span>
   </button>
   <div class="header-inner">
     <h1>超红传媒 · B站内容框架</h1>
@@ -266,7 +266,10 @@
 
   <div class="cards-grid">
     <a class="card" href="content-framework-tv-2026.html" target="_blank">
-      <div class="card-badge">📺 电视机</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <div class="card-badge">📺 电视机</div>
+        <div class="card-badge" style="background:var(--accent)">年框框架</div>
+      </div>
       <div class="card-title">超红传媒 电视机全年内容框架</div>
       <div class="card-desc">围绕Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，覆盖年货节、618、818、双11等大促节点</div>
       <div class="card-meta">
@@ -277,7 +280,10 @@
     </a>
 
     <a class="card" href="content-framework-projector-2026.html" target="_blank">
-      <div class="card-badge">🎬 投影仪</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <div class="card-badge">🎬 投影仪</div>
+        <div class="card-badge" style="background:var(--accent)">年框框架</div>
+      </div>
       <div class="card-title">超红传媒 投影仪全年内容框架</div>
       <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景，将复杂参数转化为用户能理解、能决策的内容</div>
       <div class="card-meta">
@@ -288,7 +294,10 @@
     </a>
 
     <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
-      <div class="card-badge">🔊 家庭影院</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <div class="card-badge">🔊 家庭影院</div>
+        <div class="card-badge" style="background:var(--accent)">年框框架</div>
+      </div>
       <div class="card-title">超红传媒 家庭影院全年内容框架</div>
       <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
       <div class="card-meta">
@@ -315,10 +324,14 @@
     localStorage.setItem('theme-bilibili', isDark ? 'light' : 'dark');
   }
   const saved = localStorage.getItem('theme-bilibili');
-  if (saved === 'dark') {
+  if (!saved || saved === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
     document.getElementById('toggleIcon').textContent = '☀️';
     document.getElementById('toggleText').textContent = '浅色';
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.getElementById('toggleIcon').textContent = '🌙';
+    document.getElementById('toggleText').textContent = '深色';
   }
 </script>
 </body>
