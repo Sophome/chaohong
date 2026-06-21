@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>家庭影院全年内容框架优化方案</title>
+  <title>超红传媒 家庭影院全年内容框架</title>
   <style>
     :root{
       --bg:#0b1020;
+      --bg-soft:#101733;
       --panel:#111832;
       --panel2:#151f3d;
       --card:#172346;
       --line:rgba(255,255,255,.11);
+      --line-strong:rgba(255,255,255,.18);
       --text:#edf3ff;
+      --title:#ffffff;
       --muted:#aab7d6;
+      --muted2:#7f8daf;
       --blue:#6aa8ff;
       --cyan:#56d6ff;
       --purple:#b58cff;
@@ -20,8 +24,54 @@
       --green:#73e2a7;
       --red:#ff7b8a;
       --gold:#ffd36a;
+      --thead1:#21305d;
+      --thead2:#19264d;
       --shadow:0 20px 50px rgba(0,0,0,.35);
       --radius:22px;
+      --glass:rgba(255,255,255,.055);
+      --glass2:rgba(255,255,255,.075);
+      --hover:rgba(106,168,255,.09);
+      --table-even:rgba(255,255,255,.025);
+      --hero-gradient:linear-gradient(135deg,rgba(21,31,61,.96),rgba(12,18,36,.96));
+      --body-gradient:
+        radial-gradient(circle at 10% 0%,rgba(86,214,255,.18),transparent 32%),
+        radial-gradient(circle at 90% 8%,rgba(181,140,255,.18),transparent 34%),
+        radial-gradient(circle at 50% 100%,rgba(255,184,107,.12),transparent 38%),
+        var(--bg);
+    }
+
+    body.light{
+      --bg:#f4f7fb;
+      --bg-soft:#edf2f9;
+      --panel:#ffffff;
+      --panel2:#f8fbff;
+      --card:#ffffff;
+      --line:rgba(15,23,42,.12);
+      --line-strong:rgba(15,23,42,.2);
+      --text:#162033;
+      --title:#07111f;
+      --muted:#56657d;
+      --muted2:#728198;
+      --blue:#2563eb;
+      --cyan:#0891b2;
+      --purple:#7c3aed;
+      --orange:#ea580c;
+      --green:#059669;
+      --red:#e11d48;
+      --gold:#b7791f;
+      --thead1:#eaf1ff;
+      --thead2:#dfeaff;
+      --shadow:0 18px 42px rgba(15,23,42,.10);
+      --glass:rgba(15,23,42,.035);
+      --glass2:rgba(15,23,42,.052);
+      --hover:rgba(37,99,235,.075);
+      --table-even:rgba(15,23,42,.025);
+      --hero-gradient:linear-gradient(135deg,rgba(255,255,255,.98),rgba(240,246,255,.98));
+      --body-gradient:
+        radial-gradient(circle at 10% 0%,rgba(37,99,235,.10),transparent 32%),
+        radial-gradient(circle at 90% 8%,rgba(124,58,237,.10),transparent 34%),
+        radial-gradient(circle at 50% 100%,rgba(234,88,12,.075),transparent 38%),
+        var(--bg);
     }
 
     *{
@@ -30,21 +80,147 @@
       padding:0;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
-      background:
-        radial-gradient(circle at 10% 0%,rgba(86,214,255,.18),transparent 32%),
-        radial-gradient(circle at 90% 8%,rgba(181,140,255,.18),transparent 34%),
-        radial-gradient(circle at 50% 100%,rgba(255,184,107,.12),transparent 38%),
-        var(--bg);
+      background:var(--body-gradient);
       color:var(--text);
       line-height:1.65;
       padding:28px;
+      transition:background .35s ease,color .35s ease;
     }
 
     .page{
       max-width:1680px;
       margin:0 auto;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--red),var(--orange),var(--gold));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 14px 32px rgba(255,123,138,.22);
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+
+    .brand-text strong{
+      color:var(--title);
+      font-size:16px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand-text span{
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-switch{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--glass);
+      box-shadow:var(--shadow);
+      user-select:none;
+      flex:0 0 auto;
+    }
+
+    .theme-label{
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .switch{
+      position:relative;
+      display:inline-block;
+      width:58px;
+      height:30px;
+      flex:0 0 auto;
+    }
+
+    .switch input{
+      opacity:0;
+      width:0;
+      height:0;
+    }
+
+    .slider{
+      position:absolute;
+      cursor:pointer;
+      inset:0;
+      background:linear-gradient(135deg,#263452,#111827);
+      border:1px solid var(--line-strong);
+      border-radius:999px;
+      transition:.3s;
+      overflow:hidden;
+    }
+
+    .slider:before{
+      content:"☾";
+      position:absolute;
+      width:24px;
+      height:24px;
+      left:3px;
+      top:2px;
+      border-radius:50%;
+      background:#ffffff;
+      color:#111827;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:13px;
+      font-weight:900;
+      transition:.3s;
+      box-shadow:0 6px 14px rgba(0,0,0,.24);
+    }
+
+    input:checked + .slider{
+      background:linear-gradient(135deg,#bfdbfe,#fef3c7);
+    }
+
+    input:checked + .slider:before{
+      content:"☀";
+      transform:translateX(28px);
+      color:#b45309;
     }
 
     .hero{
@@ -55,10 +231,11 @@
       padding:34px;
       border:1px solid var(--line);
       border-radius:28px;
-      background:linear-gradient(135deg,rgba(21,31,61,.96),rgba(12,18,36,.96));
+      background:var(--hero-gradient);
       box-shadow:var(--shadow);
       overflow:hidden;
       position:relative;
+      transition:background .35s ease,border .35s ease,box-shadow .35s ease;
     }
 
     .hero:before{
@@ -71,6 +248,10 @@
       top:-160px;
       background:radial-gradient(circle,rgba(106,168,255,.28),transparent 68%);
       pointer-events:none;
+    }
+
+    body.light .hero:before{
+      background:radial-gradient(circle,rgba(37,99,235,.16),transparent 68%);
     }
 
     .hero-main{
@@ -86,13 +267,20 @@
       padding:7px 12px;
       border:1px solid rgba(106,168,255,.35);
       border-radius:999px;
-      color:#d9e8ff;
+      color:var(--text);
       background:rgba(106,168,255,.11);
       font-size:13px;
       margin-bottom:18px;
+      white-space:nowrap;
+    }
+
+    body.light .eyebrow{
+      border-color:rgba(37,99,235,.22);
+      background:rgba(37,99,235,.07);
     }
 
     h1{
+      color:var(--title);
       font-size:42px;
       line-height:1.16;
       letter-spacing:-.6px;
@@ -118,12 +306,14 @@
       padding:18px 20px;
       border:1px solid var(--line);
       border-radius:20px;
-      background:rgba(255,255,255,.055);
+      background:var(--glass);
       backdrop-filter:blur(10px);
+      transition:background .35s ease,border .35s ease;
     }
 
     .side-card strong{
       display:block;
+      color:var(--title);
       font-size:24px;
       margin-bottom:4px;
     }
@@ -140,6 +330,11 @@
       border-radius:var(--radius);
       background:rgba(17,24,50,.88);
       box-shadow:var(--shadow);
+      transition:background .35s ease,border .35s ease,box-shadow .35s ease;
+    }
+
+    body.light .section{
+      background:rgba(255,255,255,.92);
     }
 
     .section-head{
@@ -157,6 +352,7 @@
     }
 
     .section-title h2{
+      color:var(--title);
       font-size:26px;
       line-height:1.25;
     }
@@ -173,8 +369,8 @@
       padding:7px 11px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      color:#dce8ff;
+      background:var(--glass);
+      color:var(--text);
       font-size:12px;
       white-space:nowrap;
     }
@@ -191,9 +387,18 @@
       padding:22px;
       border-radius:22px;
       border:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+      background:linear-gradient(180deg,var(--glass2),rgba(255,255,255,.035));
       position:relative;
       overflow:hidden;
+      transition:background .35s ease,border .35s ease,transform .25s ease;
+    }
+
+    body.light .pillar-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,251,255,.88));
+    }
+
+    .pillar-card:hover{
+      transform:translateY(-3px);
     }
 
     .pillar-card:after{
@@ -217,9 +422,12 @@
       align-items:center;
       gap:12px;
       margin-bottom:14px;
+      position:relative;
+      z-index:2;
     }
 
     .pillar-name{
+      color:var(--title);
       font-size:20px;
       font-weight:800;
     }
@@ -238,20 +446,24 @@
       color:var(--muted);
       font-size:14px;
       margin-bottom:14px;
+      position:relative;
+      z-index:2;
     }
 
     .mini-list{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
+      position:relative;
+      z-index:2;
     }
 
     .mini-list span{
       padding:6px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(255,255,255,.08);
-      color:#dfe9ff;
+      background:var(--glass);
+      border:1px solid var(--line);
+      color:var(--text);
       font-size:12px;
       white-space:nowrap;
     }
@@ -267,13 +479,18 @@
       padding:18px;
       border:1px solid var(--line);
       border-radius:18px;
-      background:rgba(255,255,255,.052);
+      background:var(--glass);
+      transition:background .35s ease,border .35s ease,transform .25s ease;
+    }
+
+    .strategy-card:hover{
+      transform:translateY(-2px);
     }
 
     .strategy-card b{
       display:block;
       margin-bottom:6px;
-      color:#ffffff;
+      color:var(--title);
       font-size:15px;
     }
 
@@ -288,6 +505,11 @@
       border:1px solid var(--line);
       border-radius:18px;
       background:rgba(5,8,18,.35);
+      transition:background .35s ease,border .35s ease;
+    }
+
+    body.light .table-wrap{
+      background:rgba(255,255,255,.72);
     }
 
     table{
@@ -298,8 +520,8 @@
 
     th,td{
       padding:13px 14px;
-      border-bottom:1px solid rgba(255,255,255,.09);
-      border-right:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid var(--line);
+      border-right:1px solid var(--line);
       text-align:left;
       vertical-align:middle;
       white-space:nowrap;
@@ -314,22 +536,22 @@
       position:sticky;
       top:0;
       z-index:5;
-      background:linear-gradient(180deg,#21305d,#19264d);
-      color:#ffffff;
+      background:linear-gradient(180deg,var(--thead1),var(--thead2));
+      color:var(--title);
       font-weight:800;
       letter-spacing:.2px;
     }
 
     tbody tr:nth-child(even){
-      background:rgba(255,255,255,.025);
+      background:var(--table-even);
     }
 
     tbody tr:hover{
-      background:rgba(106,168,255,.09);
+      background:var(--hover);
     }
 
     .month{
-      color:#ffffff;
+      color:var(--title);
       font-weight:900;
     }
 
@@ -350,16 +572,34 @@
       border:1px solid rgba(181,140,255,.38);
     }
 
+    body.light .type.high{
+      color:#5b21b6;
+      background:rgba(124,58,237,.10);
+      border-color:rgba(124,58,237,.22);
+    }
+
     .type.mid{
       color:#e1fbff;
       background:rgba(86,214,255,.16);
       border:1px solid rgba(86,214,255,.36);
     }
 
+    body.light .type.mid{
+      color:#0e7490;
+      background:rgba(8,145,178,.10);
+      border-color:rgba(8,145,178,.22);
+    }
+
     .type.sale{
       color:#fff0dc;
       background:rgba(255,184,107,.16);
       border:1px solid rgba(255,184,107,.38);
+    }
+
+    body.light .type.sale{
+      color:#c2410c;
+      background:rgba(234,88,12,.10);
+      border-color:rgba(234,88,12,.24);
     }
 
     .score{
@@ -387,9 +627,9 @@
     }
 
     .p-b{
-      color:#e8eeff;
-      background:rgba(255,255,255,.09);
-      border-color:rgba(255,255,255,.14);
+      color:var(--text);
+      background:var(--glass);
+      border-color:var(--line);
     }
 
     .note-box{
@@ -403,12 +643,17 @@
       flex:1 1 260px;
       border:1px solid var(--line);
       border-radius:18px;
-      background:rgba(255,255,255,.05);
+      background:var(--glass);
       padding:16px;
+      transition:background .35s ease,border .35s ease,transform .25s ease;
+    }
+
+    .note:hover{
+      transform:translateY(-2px);
     }
 
     .note b{
-      color:#fff;
+      color:var(--title);
       display:block;
       margin-bottom:6px;
     }
@@ -429,14 +674,23 @@
       padding:18px;
       border-radius:20px;
       border:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));
+      background:linear-gradient(180deg,var(--glass2),rgba(255,255,255,.035));
+      transition:background .35s ease,border .35s ease,transform .25s ease;
+    }
+
+    body.light .kpi{
+      background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,251,255,.88));
+    }
+
+    .kpi:hover{
+      transform:translateY(-2px);
     }
 
     .kpi strong{
       display:block;
       font-size:26px;
       margin-bottom:4px;
-      color:#fff;
+      color:var(--title);
     }
 
     .kpi span{
@@ -445,7 +699,7 @@
     }
 
     .footer{
-      color:rgba(237,243,255,.62);
+      color:var(--muted2);
       text-align:center;
       padding:30px 0 8px;
       font-size:13px;
@@ -454,6 +708,26 @@
     @media(max-width:980px){
       body{
         padding:16px;
+      }
+
+      .topbar{
+        align-items:flex-start;
+      }
+
+      .brand-text strong{
+        max-width:210px;
+      }
+
+      .brand-text span{
+        max-width:210px;
+      }
+
+      .theme-switch{
+        padding:8px 10px;
+      }
+
+      .theme-label{
+        display:none;
       }
 
       .hero{
@@ -467,6 +741,10 @@
 
       h1{
         font-size:30px;
+      }
+
+      .eyebrow{
+        white-space:normal;
       }
 
       .section{
@@ -483,10 +761,28 @@
 
 <body>
   <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">超</div>
+        <div class="brand-text">
+          <strong>超红传媒</strong>
+          <span>家庭影院内容运营 · 年度选题规划 · 商业转化框架</span>
+        </div>
+      </div>
+
+      <div class="theme-switch" title="切换深浅主题">
+        <span class="theme-label" id="themeText">深色主题</span>
+        <label class="switch">
+          <input type="checkbox" id="themeToggle" aria-label="切换深浅主题" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
     <header class="hero">
       <div class="hero-main">
-        <div class="eyebrow">家庭影院内容运营 · 全年选题框架 · SEO/转化/品牌势能一体化</div>
-        <h1>家庭影院全年内容框架优化网页</h1>
+        <div class="eyebrow">超红传媒 · 家庭影院内容运营 · 全年选题框架 · SEO/转化/品牌势能一体化</div>
+        <h1>超红传媒 家庭影院全年内容框架</h1>
         <p class="hero-desc">
           本方案以“高端内容建立行业信任、中端内容承接搜索与粉丝增长、带货内容完成销售转化”为主线，将全年内容拆分为三层结构：第一层确定内容资源配比，第二层规划每月选题清单，第三层为每个选题配置立项打分与交付标准，适用于家庭影院品牌官网、内容频道、公众号、小红书、B站、视频号、抖音及电商详情页素材联动。
         </p>
@@ -769,8 +1065,32 @@
     </section>
 
     <footer class="footer">
-      家庭影院全年内容框架优化方案 · 适用于品牌官网内容中心、公众号、小红书、B站、抖音、视频号与电商大促内容排期
+      超红传媒 家庭影院全年内容框架 · 适用于品牌官网内容中心、公众号、小红书、B站、抖音、视频号与电商大促内容排期
     </footer>
   </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const themeText = document.getElementById("themeText");
+    const savedTheme = localStorage.getItem("ch_theme");
+
+    if(savedTheme === "light"){
+      document.body.classList.add("light");
+      themeToggle.checked = true;
+      themeText.textContent = "浅色主题";
+    }
+
+    themeToggle.addEventListener("change",function(){
+      if(this.checked){
+        document.body.classList.add("light");
+        themeText.textContent = "浅色主题";
+        localStorage.setItem("ch_theme","light");
+      }else{
+        document.body.classList.remove("light");
+        themeText.textContent = "深色主题";
+        localStorage.setItem("ch_theme","dark");
+      }
+    });
+  </script>
 </body>
 </html>
