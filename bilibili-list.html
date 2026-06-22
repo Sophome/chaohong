@@ -147,6 +147,38 @@
       line-height: 1.7;
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .section-dot {
+      width: 10px; height: 10px;
+      border-radius: 3px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .section-count {
+      font-size: 0.78rem;
+      color: var(--text3);
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 2px 10px;
+    }
+    .section-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      min-width: 40px;
+    }
+
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -259,16 +291,17 @@
     <a href="timeline.html">📅 更新时间线</a>
   </div>
 
-  <div class="intro">
-    <h2>📖 内容框架总览</h2>
-    <p>以下为超红传媒 B站长视频家电内容的全年框架方案，均采用"高端内容建立行业信任、中端内容承接搜索与粉丝增长、带货内容完成销售转化"的三层结构，覆盖从品牌认知、技术科普到大促转化的完整链路。</p>
+  <div class="section-header">
+    <div class="section-dot"></div>
+    <span class="section-title">哔哩哔哩</span>
+    <span class="section-count">3 篇</span>
+    <div class="section-divider"></div>
   </div>
 
   <div class="cards-grid">
     <a class="card" href="content-framework-tv-2026.html" target="_blank">
       <div style="display:flex;gap:6px;flex-wrap:wrap;">
         <div class="card-badge">📺 电视机</div>
-        <div class="card-badge" style="background:var(--accent)">哔哩哔哩</div>
       </div>
       <div class="card-title">超红传媒 电视机全年内容框架</div>
       <div class="card-desc">围绕Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，覆盖年货节、618、818、双11等大促节点</div>
@@ -282,7 +315,6 @@
     <a class="card" href="content-framework-projector-2026.html" target="_blank">
       <div style="display:flex;gap:6px;flex-wrap:wrap;">
         <div class="card-badge">🎬 投影仪</div>
-        <div class="card-badge" style="background:var(--accent)">哔哩哔哩</div>
       </div>
       <div class="card-title">超红传媒 投影仪全年内容框架</div>
       <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景，将复杂参数转化为用户能理解、能决策的内容</div>
@@ -296,7 +328,6 @@
     <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
       <div style="display:flex;gap:6px;flex-wrap:wrap;">
         <div class="card-badge">🔊 家庭影院</div>
-        <div class="card-badge" style="background:var(--accent)">哔哩哔哩</div>
       </div>
       <div class="card-title">超红传媒 家庭影院全年内容框架</div>
       <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
