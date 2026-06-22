@@ -122,8 +122,20 @@
 
     .main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 60px; }
 
-    .nav-links { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
-    .nav-links a { color:var(--accent); font-size:0.82rem; text-decoration:none; }
+    /* ---- 三向导航药丸 ---- */
+    .nav-links { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    .nav-pill {
+      display:inline-flex; align-items:center; gap:5px;
+      padding:6px 14px; border-radius:20px; font-size:0.82rem;
+      text-decoration:none; border:1.5px solid var(--border);
+      color:var(--text2); background:var(--surface2);
+      transition: all 0.2s;
+    }
+    .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); }
+    .nav-pill.active {
+      background:var(--accent); color:#fff; border-color:var(--accent);
+      pointer-events:none; font-weight:600;
+    }
 
     .section { margin-bottom: 36px; }
     .section-header {
@@ -270,8 +282,9 @@
 <div class="main">
 
   <div class="nav-links">
-    <a href="index.html">← 返回模块导航</a>
-    <a href="timeline.html">📅 更新时间线</a>
+    <a class="nav-pill" href="index.html">📁 知识库导航</a>
+    <a class="nav-pill" href="timeline.html">📅 更新时间线</a>
+    <span class="nav-pill active">📺 B站内容框架</span>
   </div>
 
   <!-- 家庭影院 -->

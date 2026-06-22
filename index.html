@@ -312,6 +312,21 @@
       .main { padding: 24px 14px 50px; }
       .toggle-btn { top: 16px; right: 16px; padding: 6px 12px; font-size: 0.78rem; }
     }
+
+    /* ---- 三向导航药丸 ---- */
+    .nav-links { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    .nav-pill {
+      display:inline-flex; align-items:center; gap:5px;
+      padding:6px 14px; border-radius:20px; font-size:0.82rem;
+      text-decoration:none; border:1.5px solid var(--border);
+      color:var(--text2); background:var(--surface2);
+      transition: all 0.2s;
+    }
+    .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); }
+    .nav-pill.active {
+      background:var(--accent); color:#fff; border-color:var(--accent);
+      pointer-events:none; font-weight:600;
+    }
   </style>
 </head>
 <body>
@@ -334,8 +349,10 @@
 
 <div class="main">
 
-    <div class="nav-links" style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
-      <a href="timeline.html" style="color:var(--accent);font-size:0.82rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">📅 查看更新时间线</a>
+    <div class="nav-links">
+      <span class="nav-pill active">📁 知识库导航</span>
+      <a class="nav-pill" href="timeline.html">📅 更新时间线</a>
+      <a class="nav-pill" href="bilibili-list.html">📺 B站内容框架</a>
     </div>
   <div class="stats-bar">
     <a class="stat-item" href="#dashboards">
