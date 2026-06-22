@@ -22,7 +22,6 @@
       --header-bg: linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);
       --header-text: #fff;
       --toggle-bg: rgba(255,255,255,0.2);
-      --card-accent: #ec4899;
     }
     [data-theme="dark"] {
       --bg: #0f1117;
@@ -41,7 +40,6 @@
       --header-bg: linear-gradient(135deg,#1e2a7a 0%,#4a1d96 100%);
       --header-text: #eef0ff;
       --toggle-bg: rgba(0,0,0,0.25);
-      --card-accent: #f472b6;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -127,26 +125,6 @@
     .nav-links { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
     .nav-links a { color:var(--accent); font-size:0.82rem; text-decoration:none; }
 
-    .intro {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 28px;
-      box-shadow: var(--shadow);
-    }
-    .intro h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .intro p {
-      font-size: 0.85rem;
-      color: var(--text2);
-      line-height: 1.7;
-    }
-
     .section-header {
       display: flex;
       align-items: center;
@@ -180,9 +158,14 @@
     }
 
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 16px;
+    }
+    .cards-grid .card {
+      flex: 1 1 300px;
+      min-width: 280px;
+      max-width: 100%;
     }
 
     .card {
@@ -204,6 +187,12 @@
       box-shadow: var(--shadow-hover);
       border-color: var(--accent);
     }
+    .card-badge-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
     .card-badge {
       display: inline-flex;
       align-items: center;
@@ -211,7 +200,6 @@
       font-size: 0.7rem;
       font-weight: 600;
       color: #fff;
-      background: var(--card-accent);
       border-radius: 6px;
       padding: 3px 10px;
       width: fit-content;
@@ -226,18 +214,6 @@
       font-size: 0.8rem;
       color: var(--text3);
       line-height: 1.6;
-    }
-    .card-meta {
-      display: flex;
-      gap: 14px;
-      margin-top: 4px;
-      font-size: 0.72rem;
-      color: var(--text3);
-    }
-    .card-meta span {
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
     .card-arrow {
       margin-top: auto;
@@ -262,7 +238,7 @@
       .header h1 { font-size: 1.4rem; }
       .main { padding: 24px 14px 50px; }
       .toggle-btn { top: 16px; right: 16px; padding: 6px 12px; font-size: 0.78rem; }
-      .cards-grid { grid-template-columns: 1fr; }
+      .cards-grid .card { flex: 1 1 100%; min-width: 0; }
     }
   </style>
 </head>
@@ -277,7 +253,7 @@
     <h1>超红传媒 · B站内容框架</h1>
     <p>家电品类全年内容框架导航 &nbsp;|&nbsp; 高端内容 + 中端内容 + 带货内容 三层结构</p>
     <div class="header-meta">
-      <span class="header-badge">📺 3 大品类</span>
+      <span class="header-badge">📺 8 大品类</span>
       <span class="header-badge">📋 内容策略</span>
       <span class="header-badge">📅 2026</span>
     </div>
@@ -294,47 +270,88 @@
   <div class="section-header">
     <div class="section-dot"></div>
     <span class="section-title">哔哩哔哩</span>
-    <span class="section-count">3 篇</span>
+    <span class="section-count">8 篇</span>
     <div class="section-divider"></div>
   </div>
 
   <div class="cards-grid">
+    <!-- 电视机 -->
     <a class="card" href="content-framework-tv-2026.html" target="_blank">
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <div class="card-badge">📺 电视机</div>
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#f97316">📺 电视机</div>
       </div>
       <div class="card-title">超红传媒 电视机全年内容框架</div>
       <div class="card-desc">围绕Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，覆盖年货节、618、818、双11等大促节点</div>
-      <div class="card-meta">
-        <span>🎯 36个核心选题</span>
-        <span>📐 3层结构</span>
-      </div>
       <div class="card-arrow">查看文档 →</div>
     </a>
 
+    <!-- 投影仪 -->
     <a class="card" href="content-framework-projector-2026.html" target="_blank">
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <div class="card-badge">🎬 投影仪</div>
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#8b5cf6">🎬 投影仪</div>
       </div>
       <div class="card-title">超红传媒 投影仪全年内容框架</div>
-      <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景，将复杂参数转化为用户能理解、能决策的内容</div>
-      <div class="card-meta">
-        <span>🎯 36个核心选题</span>
-        <span>📐 3层结构</span>
-      </div>
+      <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景</div>
       <div class="card-arrow">查看文档 →</div>
     </a>
 
+    <!-- 家庭影院 -->
     <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <div class="card-badge">🔊 家庭影院</div>
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#ec4899">🔊 家庭影院</div>
       </div>
       <div class="card-title">超红传媒 家庭影院全年内容框架</div>
       <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
-      <div class="card-meta">
-        <span>🎯 72个核心选题</span>
-        <span>📐 3层结构</span>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <!-- 扫地机 -->
+    <a class="card" href="content-framework-robot-vacuum-2026.html" target="_blank">
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#10b981">🧹 扫地机</div>
       </div>
+      <div class="card-title">超红传媒 扫地机全年内容框架</div>
+      <div class="card-desc">覆盖导航避障、清洁能力、基站功能、上下水等核心决策点，贯穿年货节到双11大促</div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <!-- 洗烘套装 -->
+    <a class="card" href="content-framework-washer-dryer-2026.html" target="_blank">
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#06b6d4">👕 洗烘套装</div>
+      </div>
+      <div class="card-title">超红传媒 洗烘套装全年内容框架</div>
+      <div class="card-desc">覆盖热泵烘干、正反转、护理程序、叠放安装等核心决策点，全年选题覆盖</div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <!-- 洗衣机 -->
+    <a class="card" href="content-framework-washing-machine-2026.html" target="_blank">
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#3b82f6">🧺 洗衣机</div>
+      </div>
+      <div class="card-title">超红传媒 洗衣机全年内容框架</div>
+      <div class="card-desc">覆盖电机类型、容量选择、智能投放、超薄嵌入等核心决策点，全年选题覆盖</div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <!-- 空调 -->
+    <a class="card" href="content-framework-ac-2026.html" target="_blank">
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#14b8a6">❄️ 空调</div>
+      </div>
+      <div class="card-title">超红传媒 空调全年内容框架</div>
+      <div class="card-desc">覆盖匹数选型、能效等级、变频定频、新风功能等核心决策点，全年选题覆盖</div>
+      <div class="card-arrow">查看文档 →</div>
+    </a>
+
+    <!-- 冰箱 -->
+    <a class="card" href="content-framework-fridge-2026.html" target="_blank">
+      <div class="card-badge-row">
+        <div class="card-badge" style="background:#6366f1">🧊 冰箱</div>
+      </div>
+      <div class="card-title">超红传媒 冰箱全年内容框架</div>
+      <div class="card-desc">覆盖风冷直冷、循环系统、变频定频、零嵌安装等核心决策点，全年选题覆盖</div>
       <div class="card-arrow">查看文档 →</div>
     </a>
   </div>
