@@ -158,14 +158,9 @@
     }
 
     .cards-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-    }
-    .cards-grid .card {
-      flex: 1 1 300px;
-      min-width: 280px;
-      max-width: 100%;
     }
 
     .card {
@@ -244,7 +239,7 @@
       .header h1 { font-size: 1.4rem; }
       .main { padding: 24px 14px 50px; }
       .toggle-btn { top: 16px; right: 16px; padding: 6px 12px; font-size: 0.78rem; }
-      .cards-grid .card { flex: 1 1 100%; min-width: 0; }
+      .cards-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
