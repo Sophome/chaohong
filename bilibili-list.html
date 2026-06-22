@@ -125,6 +125,7 @@
     .nav-links { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
     .nav-links a { color:var(--accent); font-size:0.82rem; text-decoration:none; }
 
+    .section { margin-bottom: 36px; }
     .section-header {
       display: flex;
       align-items: center;
@@ -135,7 +136,6 @@
     .section-dot {
       width: 10px; height: 10px;
       border-radius: 3px;
-      background: var(--accent);
       flex-shrink: 0;
     }
     .section-title {
@@ -224,6 +224,12 @@
     }
     .card:hover .card-arrow { opacity: 1; }
 
+    /* ── SECTION COLORS ── */
+    .b1 .section-dot { background: #f97316; }
+    .b2 .section-dot { background: #10b981; }
+    .b3 .section-dot { background: #6366f1; }
+    .b4 .section-dot { background: #14b8a6; }
+
     .footer {
       text-align: center;
       padding: 28px 24px;
@@ -253,8 +259,8 @@
     <h1>超红传媒 · B站内容框架</h1>
     <p>家电品类全年内容框架导航 &nbsp;|&nbsp; 高端内容 + 中端内容 + 带货内容 三层结构</p>
     <div class="header-meta">
+      <span class="header-badge">📦 4 大分类</span>
       <span class="header-badge">📺 8 大品类</span>
-      <span class="header-badge">📋 内容策略</span>
       <span class="header-badge">📅 2026</span>
     </div>
   </div>
@@ -267,93 +273,116 @@
     <a href="timeline.html">📅 更新时间线</a>
   </div>
 
-  <div class="section-header">
-    <div class="section-dot"></div>
-    <span class="section-title">哔哩哔哩</span>
-    <span class="section-count">8 篇</span>
-    <div class="section-divider"></div>
+  <!-- 家庭影院 -->
+  <div class="section b1">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">家庭影院</span>
+      <span class="section-count">3 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <a class="card" href="content-framework-tv-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#f97316">📺 电视机</div>
+        </div>
+        <div class="card-title">超红传媒 电视机全年内容框架</div>
+        <div class="card-desc">覆盖Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，贯穿年货节到双11大促节点</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+      <a class="card" href="content-framework-projector-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#8b5cf6">🎬 投影仪</div>
+        </div>
+        <div class="card-title">超红传媒 投影仪全年内容框架</div>
+        <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+      <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#ec4899">🔊 家庭影院</div>
+        </div>
+        <div class="card-title">超红传媒 家庭影院全年内容框架</div>
+        <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+    </div>
   </div>
 
-  <div class="cards-grid">
-    <!-- 电视机 -->
-    <a class="card" href="content-framework-tv-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#f97316">📺 电视机</div>
-      </div>
-      <div class="card-title">超红传媒 电视机全年内容框架</div>
-      <div class="card-desc">围绕Mini LED、OLED、刷新率、尺寸选择、游戏电视等高频搜索问题，覆盖年货节、618、818、双11等大促节点</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
+  <!-- 清洁电器 -->
+  <div class="section b2">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">清洁电器</span>
+      <span class="section-count">3 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <a class="card" href="content-framework-robot-vacuum-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#10b981">🧹 扫地机</div>
+        </div>
+        <div class="card-title">超红传媒 扫地机全年内容框架</div>
+        <div class="card-desc">覆盖导航避障、清洁能力、基站功能、上下水等核心决策点，贯穿年货节到双11大促</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+      <a class="card" href="content-framework-washer-dryer-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#06b6d4">👕 洗烘套装</div>
+        </div>
+        <div class="card-title">超红传媒 洗烘套装全年内容框架</div>
+        <div class="card-desc">覆盖热泵烘干、正反转、护理程序、叠放安装等核心决策点，全年选题覆盖</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+      <a class="card" href="content-framework-washing-machine-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#3b82f6">🧺 洗衣机</div>
+        </div>
+        <div class="card-title">超红传媒 洗衣机全年内容框架</div>
+        <div class="card-desc">覆盖电机类型、容量选择、智能投放、超薄嵌入等核心决策点，全年选题覆盖</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+    </div>
+  </div>
 
-    <!-- 投影仪 -->
-    <a class="card" href="content-framework-projector-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#8b5cf6">🎬 投影仪</div>
-      </div>
-      <div class="card-title">超红传媒 投影仪全年内容框架</div>
-      <div class="card-desc">覆盖亮度、分辨率、投射比、幕布、激光光源、卧室客厅露营场景</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
+  <!-- 厨卫电器 -->
+  <div class="section b3">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">厨卫电器</span>
+      <span class="section-count">1 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <a class="card" href="content-framework-fridge-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#6366f1">🧊 冰箱</div>
+        </div>
+        <div class="card-title">超红传媒 冰箱全年内容框架</div>
+        <div class="card-desc">覆盖风冷直冷、循环系统、变频定频、零嵌安装等核心决策点，全年选题覆盖</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+    </div>
+  </div>
 
-    <!-- 家庭影院 -->
-    <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#ec4899">🔊 家庭影院</div>
-      </div>
-      <div class="card-title">超红传媒 家庭影院全年内容框架</div>
-      <div class="card-desc">覆盖品牌分析、技术科普、教程方案、大促清单与场景转化，适用于B站、公众号、小红书、抖音等多平台联动</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
-
-    <!-- 扫地机 -->
-    <a class="card" href="content-framework-robot-vacuum-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#10b981">🧹 扫地机</div>
-      </div>
-      <div class="card-title">超红传媒 扫地机全年内容框架</div>
-      <div class="card-desc">覆盖导航避障、清洁能力、基站功能、上下水等核心决策点，贯穿年货节到双11大促</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
-
-    <!-- 洗烘套装 -->
-    <a class="card" href="content-framework-washer-dryer-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#06b6d4">👕 洗烘套装</div>
-      </div>
-      <div class="card-title">超红传媒 洗烘套装全年内容框架</div>
-      <div class="card-desc">覆盖热泵烘干、正反转、护理程序、叠放安装等核心决策点，全年选题覆盖</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
-
-    <!-- 洗衣机 -->
-    <a class="card" href="content-framework-washing-machine-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#3b82f6">🧺 洗衣机</div>
-      </div>
-      <div class="card-title">超红传媒 洗衣机全年内容框架</div>
-      <div class="card-desc">覆盖电机类型、容量选择、智能投放、超薄嵌入等核心决策点，全年选题覆盖</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
-
-    <!-- 空调 -->
-    <a class="card" href="content-framework-ac-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#14b8a6">❄️ 空调</div>
-      </div>
-      <div class="card-title">超红传媒 空调全年内容框架</div>
-      <div class="card-desc">覆盖匹数选型、能效等级、变频定频、新风功能等核心决策点，全年选题覆盖</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
-
-    <!-- 冰箱 -->
-    <a class="card" href="content-framework-fridge-2026.html" target="_blank">
-      <div class="card-badge-row">
-        <div class="card-badge" style="background:#6366f1">🧊 冰箱</div>
-      </div>
-      <div class="card-title">超红传媒 冰箱全年内容框架</div>
-      <div class="card-desc">覆盖风冷直冷、循环系统、变频定频、零嵌安装等核心决策点，全年选题覆盖</div>
-      <div class="card-arrow">查看文档 →</div>
-    </a>
+  <!-- 环境电器 -->
+  <div class="section b4">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">环境电器</span>
+      <span class="section-count">1 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <a class="card" href="content-framework-ac-2026.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="background:#14b8a6">❄️ 空调</div>
+        </div>
+        <div class="card-title">超红传媒 空调全年内容框架</div>
+        <div class="card-desc">覆盖匹数选型、能效等级、变频定频、新风功能等核心决策点，全年选题覆盖</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+    </div>
   </div>
 
 </div>
