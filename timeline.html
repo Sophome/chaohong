@@ -185,8 +185,8 @@
     <h1>超红传媒 · 更新时间线</h1>
     <p>按更新时间倒序查看所有知识库文档</p>
     <div class="header-meta">
-      <span class="header-badge">📁 69 篇文档</span>
-      <span class="header-badge">📅 7 个更新日</span>
+      <span class="header-badge">📁 74 篇文档</span>
+      <span class="header-badge">📅 8 个更新日</span>
       <span class="header-badge">📡 三平台同步</span>
     </div>
   </div>
@@ -228,7 +228,7 @@
     </a>
     <a class="stat-item">
       <span class="stat-icon">🧠</span>
-      <div><div class="stat-num">11</div><div class="stat-label">内容策略</div></div>
+      <div><div class="stat-num">16</div><div class="stat-label">内容策略</div></div>
     </a>
     <a class="stat-item">
       <span class="stat-icon">📈</span>
@@ -248,6 +248,62 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
   </div>
 
+
+    <!-- 2026-06-22 -->
+    <div class="date-group" data-date="2026-06-22" id="date-2026-06-22">
+      <div class="date-header">
+        <div class="date-dot"></div>
+        <span class="date-label">2026年6月22日</span>
+        <span class="date-count">5 篇更新</span>
+      </div>
+      <div class="tl-cards">
+        <a class="tl-card" href="content-framework-steam-oven-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 蒸烤箱全年内容框架</div>
+            <div class="tl-desc">覆盖蒸烤性能、内腔容量、智能菜单、安装方式等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-gas-stove-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 燃气灶全年内容框架</div>
+            <div class="tl-desc">覆盖火力热效、安全防护、面板材质、安装适配等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-range-hood-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 油烟机全年内容框架</div>
+            <div class="tl-desc">覆盖风量风压、拢烟结构、清洁方式、安装高度等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-dishwasher-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 洗碗机全年内容框架</div>
+            <div class="tl-desc">覆盖容量套数、洗净技术、烘干除菌、安装方式等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-smart-toilet-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 智能马桶全年内容框架</div>
+            <div class="tl-desc">覆盖冲洗技术、座圈舒适、除臭杀菌、安装条件等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+      </div>
+    </div>
 
     <!-- 2026-06-21 -->
     <div class="date-group" data-date="2026-06-21" id="date-2026-06-21">
@@ -1135,7 +1191,7 @@
 </div><!-- /main -->
 
 <div class="footer">
-  超红传媒知识库 &nbsp;·&nbsp; 共 69 篇文档 &nbsp;·&nbsp; 2026
+  超红传媒知识库 &nbsp;·&nbsp; 共 74 篇文档 &nbsp;·&nbsp; 2026
 </div>
 
 <script>
@@ -1154,40 +1210,6 @@
     document.getElementById('toggleText').textContent = '浅色';
   }
 
-  /* ── Sort by newest on page load ── */
-  function extractDate(group) {
-    const dt = group.getAttribute('data-date');
-    if (dt) return dt;
-    const id = group.id;
-    if (id) {
-      const match = id.match(/date-(\d{4}-\d{2}-\d{2})/);
-      if (match) return match[1];
-    }
-    const label = group.querySelector('.date-label');
-    if (label) {
-      const text = label.textContent;
-      const match = text.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
-      if (match) {
-        return match[1] + '-' + match[2].padStart(2, '0') + '-' + match[3].padStart(2, '0');
-      }
-    }
-    return '2000-01-01';
-  }
-
-  function sortByNewest() {
-    const timeView = document.getElementById('timeline-time-view');
-    const dateGroups = timeView.querySelectorAll('.date-group');
-    const groupsArray = Array.from(dateGroups);
-
-    groupsArray.sort((a, b) => {
-      return extractDate(b).localeCompare(extractDate(a));
-    });
-
-    groupsArray.forEach(g => timeView.appendChild(g));
-  }
-
-  // Sort by newest first on page load
-  sortByNewest();
 </script>
 </body>
 </html>
