@@ -92,7 +92,6 @@
     .toggle-btn:hover { background: rgba(255,255,255,0.25); }
     .main { max-width: 1200px; margin:0 auto; padding:40px 24px 80px; }
 
-    /* ── STATS BAR ── */
     .stats-bar { display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
     .stat-item {
       background:var(--surface); border:1px solid var(--border);
@@ -106,12 +105,10 @@
     .stat-num { font-size:1.15rem; font-weight:700; color:var(--accent); line-height:1; }
     .stat-label { font-size:0.7rem; color:var(--text3); margin-top:2px; white-space:nowrap; }
 
-    /* ── LEGEND ── */
     .legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
     .legend-item { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text2); }
     .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
-    /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:36px; }
     .timeline::before {
       content:''; position:absolute; left:13px; top:0; bottom:0;
@@ -156,7 +153,6 @@
     .tl-info { flex:1; min-width:0; }
     .tl-title { font-size:0.88rem; font-weight:600; color:var(--text); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .tl-desc { font-size:0.72rem; color:var(--text3); margin-top:2px; }
-    .tl-time { font-size:0.7rem; color:var(--text3); flex-shrink:0; white-space:nowrap; }
     .tl-arrow { font-size:0.72rem; color:var(--accent); opacity:0; transition:opacity 0.2s; flex-shrink:0; }
     .tl-card:hover .tl-arrow { opacity:1; }
 
@@ -185,7 +181,7 @@
     <h1>超红传媒 · 更新时间线</h1>
     <p>按更新时间倒序查看所有知识库文档</p>
     <div class="header-meta">
-      <span class="header-badge">📁 77 篇文档</span>
+      <span class="header-badge">📁 80 篇文档</span>
       <span class="header-badge">📅 9 个更新日</span>
       <span class="header-badge">📡 三平台同步</span>
     </div>
@@ -193,51 +189,48 @@
 </div>
 
 <div class="main">
-  <div class="nav-links" style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
-    <a class="back-link" href="index.html" style="margin-bottom:0;">← 返回模块导航</a>
-  </div>
+  <a class="back-link" href="index.html">← 返回模块导航</a>
 
   <div class="stats-bar">
     <a class="stat-item" href="#date-2026-06-17-dash">
       <span class="stat-icon">🚀</span>
-      <div><div class="stat-num">6</div><div class="stat-label">驾驶舱</div></div>
+      <div><div class="stat-num">7</div><div class="stat-label">驾驶舱</div></div>
     </a>
     <a class="stat-item" href="#date-2026-06-17-guide">
       <span class="stat-icon">🛒</span>
       <div><div class="stat-num">12</div><div class="stat-label">选购指南</div></div>
     </a>
     <a class="stat-item" href="#date-2026-06-18">
-      <span class="stat-icon">📋</span>
+      <span class="stat-icon">🧰</span>
       <div><div class="stat-num">1</div><div class="stat-label">商务工具</div></div>
     </a>
-    <a class="stat-item" href="#date-2026-06-18">
-      <span class="stat-icon">🏢</span>
+    <a class="stat-item" href="#date-2026-06-21">
+      <span class="stat-icon">🏛️</span>
       <div><div class="stat-num">4</div><div class="stat-label">组织架构</div></div>
     </a>
-    <a class="stat-item">
-      <span class="stat-icon">📖</span>
-      <div><div class="stat-num">12</div><div class="stat-label">SOP 指南</div></div>
+    <a class="stat-item" href="#date-2026-06-18">
+      <span class="stat-icon">📋</span>
+      <div><div class="stat-num">11</div><div class="stat-label">SOP 指南</div></div>
     </a>
-    <a class="stat-item">
+    <a class="stat-item" href="#date-2026-06-13">
       <span class="stat-icon">📊</span>
       <div><div class="stat-num">9</div><div class="stat-label">项目策划</div></div>
     </a>
-    <a class="stat-item">
+    <a class="stat-item" href="#date-2026-06-13-first">
       <span class="stat-icon">🏠</span>
       <div><div class="stat-num">8</div><div class="stat-label">品类策划</div></div>
     </a>
-    <a class="stat-item">
+    <a class="stat-item" href="#date-2026-06-22">
       <span class="stat-icon">🧠</span>
-      <div><div class="stat-num">19</div><div class="stat-label">内容策略</div></div>
+      <div><div class="stat-num">22</div><div class="stat-label">内容策略</div></div>
     </a>
-    <a class="stat-item">
+    <a class="stat-item" href="#date-2026-06-15">
       <span class="stat-icon">📈</span>
-      <div><div class="stat-num">7</div><div class="stat-label">达人商单</div></div>
+      <div><div class="stat-num">6</div><div class="stat-label">达人商单</div></div>
     </a>
   </div>
 
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:var(--badge-dashboard)"></div>驾驶舱</div>
+  <div class="legend">    <div class="legend-item"><div class="legend-dot" style="background:var(--badge-dashboard)"></div>驾驶舱</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-guide)"></div>选购指南</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-biz)"></div>商务工具</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-org)"></div>组织架构</div>
@@ -246,69 +239,32 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-category)"></div>品类策划</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-strategy)"></div>内容策略</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
+
   </div>
 
-
-    <!-- 2026-06-22 -->
+  <div class="timeline">
+    <!-- 2026年6月22日 -->
     <div class="date-group" data-date="2026-06-22" id="date-2026-06-22">
       <div class="date-header">
         <div class="date-dot"></div>
         <span class="date-label">2026年6月22日</span>
-        <span class="date-count">8 篇更新</span>
+        <span class="date-count">11 篇更新</span>
       </div>
       <div class="tl-cards">
-        <a class="tl-card" href="content-framework-vacuum-cleaner-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 吸尘器全年内容框架</div>
-            <div class="tl-desc">覆盖吸力续航、除螨宠物、过滤系统、吸头选择等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">12:10</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-floor-washer-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 洗地机全年内容框架</div>
-            <div class="tl-desc">覆盖吸拖洗一体、自清洁、烘干除菌、贴边清洁等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">12:10</span>
-          <span class="tl-arrow">→</span>
-        </a>
         <a class="tl-card" href="content-framework-air-purifier-2026.html" target="_blank">
           <span class="tl-badge strategy">策略</span>
           <div class="tl-info">
             <div class="tl-title">超红传媒 空气净化器全年内容框架</div>
             <div class="tl-desc">覆盖CADR/CCM、除醛除敏、母婴宠物、滤芯更换等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">12:10</span>
           <span class="tl-arrow">→</span>
         </a>
-        <a class="tl-card" href="content-framework-steam-oven-2026.html" target="_blank">
+        <a class="tl-card" href="content-framework-built-in-dispenser-2026.html" target="_blank">
           <span class="tl-badge strategy">策略</span>
           <div class="tl-info">
-            <div class="tl-title">超红传媒 蒸烤箱全年内容框架</div>
-            <div class="tl-desc">覆盖蒸烤性能、内腔容量、智能菜单、安装方式等核心决策点，全年选题覆盖</div>
+            <div class="tl-title">超红传媒 嵌入式饮水机全年内容框架</div>
+            <div class="tl-desc">覆盖高端净饮空间、橱柜预留、水电安装、净水联动等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">12:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-gas-stove-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 燃气灶全年内容框架</div>
-            <div class="tl-desc">覆盖火力热效、安全防护、面板材质、安装适配等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">12:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-range-hood-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 油烟机全年内容框架</div>
-            <div class="tl-desc">覆盖风量风压、拢烟结构、清洁方式、安装高度等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">12:02</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="content-framework-dishwasher-2026.html" target="_blank">
@@ -317,7 +273,38 @@
             <div class="tl-title">超红传媒 洗碗机全年内容框架</div>
             <div class="tl-desc">覆盖容量套数、洗净技术、烘干除菌、安装方式等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-floor-washer-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 洗地机全年内容框架</div>
+            <div class="tl-desc">覆盖吸拖洗一体、自清洁、烘干除菌、贴边清洁等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-gas-stove-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 燃气灶全年内容框架</div>
+            <div class="tl-desc">覆盖火力热效、安全防护、面板材质、安装适配等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-pipeline-dispenser-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 管线机全年内容框架</div>
+            <div class="tl-desc">覆盖即热温控、净水联动、安装预留、母婴冲奶等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-range-hood-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 油烟机全年内容框架</div>
+            <div class="tl-desc">覆盖风量风压、拢烟结构、清洁方式、安装高度等核心决策点，全年选题覆盖</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="content-framework-smart-toilet-2026.html" target="_blank">
@@ -326,13 +313,36 @@
             <div class="tl-title">超红传媒 智能马桶全年内容框架</div>
             <div class="tl-desc">覆盖冲洗技术、座圈舒适、除臭杀菌、安装条件等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">12:02</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-steam-oven-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 蒸烤箱全年内容框架</div>
+            <div class="tl-desc">覆盖蒸烤性能、内腔容量、智能菜单、安装方式等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-vacuum-cleaner-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 吸尘器全年内容框架</div>
+            <div class="tl-desc">覆盖吸力续航、除螨宠物、过滤系统、吸头选择等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-water-purifier-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 净水器全年内容框架</div>
+            <div class="tl-desc">覆盖RO反渗透、通量选择、滤芯成本、安装预留等核心决策点，全年选题覆盖</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
 
-    <!-- 2026-06-21 -->
+    <!-- 2026年6月21日 -->
     <div class="date-group" data-date="2026-06-21" id="date-2026-06-21">
       <div class="date-header">
         <div class="date-dot"></div>
@@ -340,76 +350,12 @@
         <span class="date-count">9 篇更新</span>
       </div>
       <div class="tl-cards">
-        <a class="tl-card" href="content-framework-tv-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 电视机全年内容框架</div>
-            <div class="tl-desc">三层内容结构 · 36个核心选题 · 全年大促节点覆盖</div>
-          </div>
-          <span class="tl-time">18:52</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-projector-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 投影仪全年内容框架</div>
-            <div class="tl-desc">三层内容结构 · 36个核心选题 · 搜索种草成交闭环</div>
-          </div>
-          <span class="tl-time">18:56</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-home-theater-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 家庭影院全年内容框架</div>
-            <div class="tl-desc">三层内容结构 · 72个核心选题 · 4维立项评分</div>
-          </div>
-          <span class="tl-time">18:36</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="org-long-video-competitiveness.html" target="_blank">
-          <span class="tl-badge org">组织架构</span>
-          <div class="tl-info">
-            <div class="tl-title">家电长视频账号独特竞争力建设方案</div>
-            <div class="tl-desc">家电长视频账号差异化竞争力建设路径与策略</div>
-          </div>
-          <span class="tl-time">10:17</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-robot-vacuum-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 扫地机全年内容框架</div>
-            <div class="tl-desc">覆盖导航避障、清洁能力、基站功能等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">19:05</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-washer-dryer-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 洗烘套装全年内容框架</div>
-            <div class="tl-desc">覆盖热泵烘干、正反转、护理程序等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">19:05</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="content-framework-washing-machine-2026.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">超红传媒 洗衣机全年内容框架</div>
-            <div class="tl-desc">覆盖电机类型、容量选择、智能投放等核心决策点，全年选题覆盖</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
         <a class="tl-card" href="content-framework-ac-2026.html" target="_blank">
           <span class="tl-badge strategy">策略</span>
           <div class="tl-info">
             <div class="tl-title">超红传媒 空调全年内容框架</div>
             <div class="tl-desc">覆盖匹数选型、能效等级、变频定频等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">19:06</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="content-framework-fridge-2026.html" target="_blank">
@@ -418,197 +364,68 @@
             <div class="tl-title">超红传媒 冰箱全年内容框架</div>
             <div class="tl-desc">覆盖风冷直冷、循环系统、零嵌安装等核心决策点，全年选题覆盖</div>
           </div>
-          <span class="tl-time">19:07</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-home-theater-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 家庭影院全年内容框架</div>
+            <div class="tl-desc">三层内容结构 · 72个核心选题 · 4维立项评分</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-projector-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 投影仪全年内容框架</div>
+            <div class="tl-desc">三层内容结构 · 36个核心选题 · 搜索种草成交闭环</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-robot-vacuum-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 扫地机全年内容框架</div>
+            <div class="tl-desc">覆盖导航避障、清洁能力、基站功能等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-tv-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 电视机全年内容框架</div>
+            <div class="tl-desc">三层内容结构 · 36个核心选题 · 全年大促节点覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-washer-dryer-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 洗烘套装全年内容框架</div>
+            <div class="tl-desc">覆盖热泵烘干、正反转、护理程序等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="content-framework-washing-machine-2026.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒 洗衣机全年内容框架</div>
+            <div class="tl-desc">覆盖电机类型、容量选择、智能投放等核心决策点，全年选题覆盖</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="org-long-video-competitiveness.html" target="_blank">
+          <span class="tl-badge org">组织架构</span>
+          <div class="tl-info">
+            <div class="tl-title">家电长视频账号独特竞争力建设方案</div>
+            <div class="tl-desc">家电长视频账号差异化竞争力建设路径与策略</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
 
-    <!-- 2026-06-17 选购指南 -->
-    <div class="date-group" id="date-2026-06-17-guide">
-      <div class="date-header">
-        <div class="date-dot"></div>
-        <span class="date-label">2026年6月17日</span>
-        <span class="date-count">选购指南·12 篇</span>
-      </div>
-      <div class="tl-cards">
-        <a class="tl-card" href="buying-guide-projector.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">中国市场投影仪科学选购指南｜2025-2026版</div>
-            <div class="tl-desc">投影仪亮度·分辨率·光源与场景适配全指南</div>
-          </div>
-          <span class="tl-time">17:32</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-tv-scientific.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">电视机科学选购指南｜Mini LED·OLED·大屏·HDR 与游戏电视</div>
-            <div class="tl-desc">电视机科学选购标准与配置优先级全指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-tv-picture-quality.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">电视选购指南｜画质与智能舒适配置优先级</div>
-            <div class="tl-desc">电视画质与智能舒适配置选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-robot-vacuum.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">扫地机器人选购指南｜清洁避障与智能基站配置优先级</div>
-            <div class="tl-desc">扫地机器人清洁能力与智能基站选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-dishwasher.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">洗碗机选购指南｜容量洗净与烘干除菌配置优先级</div>
-            <div class="tl-desc">洗碗机容量洗净力与烘干除菌选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-steam-oven.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">嵌入式蒸烤箱选购指南｜蒸烤性能与安装配置优先级</div>
-            <div class="tl-desc">嵌入式蒸烤箱蒸烤性能与安装选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-gas-stove.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">燃气灶选购指南｜火力热效与安全安装配置优先级</div>
-            <div class="tl-desc">燃气灶火力热效率与安全配置选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-range-hood.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">吸油烟机选购指南｜风量风压与拢烟排烟配置优先级</div>
-            <div class="tl-desc">吸油烟机风量风压与排烟效果选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-fridge.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">冰箱选购指南｜保鲜与智能化配置优先级</div>
-            <div class="tl-desc">冰箱保鲜技术与智能功能选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-aircon.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">空调选购指南｜制冷制热与智能舒适配置优先级</div>
-            <div class="tl-desc">空调制冷制热性能与智能舒适选购指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="buying-guide-smart-toilet.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">智能马桶选购指南｜智能化与舒适化选购标准</div>
-            <div class="tl-desc">智能马桶智能化功能与舒适度选购标准</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-
-        <a class="tl-card" href="buying-guide-tv-china-market.html" target="_blank">
-          <span class="tl-badge guide">选购</span>
-          <div class="tl-info">
-            <div class="tl-title">中国市场电视机科学选购指南｜Mini LED、OLED、RGB Mini LED</div>
-            <div class="tl-desc">中国市场电视选购核心配置优先级指南</div>
-          </div>
-          <span class="tl-time">17:25</span>
-          <span class="tl-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 2026-06-17 驾驶舱 -->
-    <div class="date-group" id="date-2026-06-17-dash">
-      <div class="date-header">
-        <div class="date-dot"></div>
-        <span class="date-label">2026年6月17日</span>
-        <span class="date-count">驾驶舱·6 篇</span>
-      </div>
-      <div class="tl-cards">
-        <a class="tl-card" href="ceo-strategic-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电内容公司总经理战略驾驶舱</div>
-            <div class="tl-desc">公司级战略视角全局经营仪表盘</div>
-          </div>
-          <span class="tl-time">17:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="commerce-team-operations-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电商务团队经营驾驶舱</div>
-            <div class="tl-desc">商务团队商单管理与收入追踪仪表盘</div>
-          </div>
-          <span class="tl-time">17:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="creative-team-combat-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电创作团队作战驾驶舱</div>
-            <div class="tl-desc">创作团队内容生产与质量管控仪表盘</div>
-          </div>
-          <span class="tl-time">17:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="operations-team-growth-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电运营团队增长驾驶舱</div>
-            <div class="tl-desc">运营团队粉丝增长与账号健康度仪表盘</div>
-          </div>
-          <span class="tl-time">17:02</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="bilibili-creator-growth-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电创作者增长驾驶舱</div>
-            <div class="tl-desc">B站家电创作者增长指标追踪与运营仪表盘</div>
-          </div>
-          <span class="tl-time">16:43</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="bilibili-hrbp-dashboard.html" target="_blank">
-          <span class="tl-badge dashboard">驾驶舱</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电博主独立HRBP驾驶舱</div>
-            <div class="tl-desc">B站家电博主人事运营与绩效管理仪表盘</div>
-          </div>
-          <span class="tl-time">13:16</span>
-          <span class="tl-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 2026-06-18 -->
+    <!-- 2026年6月18日 -->
     <div class="date-group" data-date="2026-06-18" id="date-2026-06-18">
       <div class="date-header">
         <div class="date-dot"></div>
@@ -616,22 +433,12 @@
         <span class="date-count">5 篇更新</span>
       </div>
       <div class="tl-cards">
-        <a class="tl-card" href="biztool-media-kit.html" target="_blank">
-          <span class="tl-badge biz">商务工具</span>
-          <div class="tl-info">
-            <div class="tl-title">B站长视频家电领域媒体包｜Media Kit</div>
-            <div class="tl-desc">B站家电内容媒体资源与商业化合作方案</div>
-          </div>
-          <span class="tl-time">18:00</span>
-          <span class="tl-arrow">→</span>
-        </a>
         <a class="tl-card" href="bizplan-digital-matrix.html" target="_blank">
           <span class="tl-badge org">组织架构</span>
           <div class="tl-info">
             <div class="tl-title">超红数码矩阵账号商业化方案</div>
             <div class="tl-desc">数码矩阵账号商业化运营方案</div>
           </div>
-          <span class="tl-time">17:45</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="bizplan-home-appliance-matrix.html" target="_blank">
@@ -640,16 +447,14 @@
             <div class="tl-title">超红家电矩阵账号商业化方案</div>
             <div class="tl-desc">家电矩阵账号商业化运营方案</div>
           </div>
-          <span class="tl-time">17:45</span>
           <span class="tl-arrow">→</span>
         </a>
-        <a class="tl-card" href="sop-feishu-delivery.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
+        <a class="tl-card" href="biztool-media-kit.html" target="_blank">
+          <span class="tl-badge biz">商务工具</span>
           <div class="tl-info">
-            <div class="tl-title">超红传媒飞书交付SOP 2.0</div>
-            <div class="tl-desc">飞书协同交付标准化流程与规范</div>
+            <div class="tl-title">B站长视频家电领域媒体包｜Media Kit</div>
+            <div class="tl-desc">B站家电内容媒体资源与商业化合作方案</div>
           </div>
-          <span class="tl-time">17:17</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="org-structure-plan.html" target="_blank">
@@ -658,12 +463,195 @@
             <div class="tl-title">超红传媒组织分工方案 2.0</div>
             <div class="tl-desc">团队岗位分工、协作流程与组织架构设计</div>
           </div>
-          <span class="tl-time">17:17</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-feishu-delivery.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">超红传媒飞书交付SOP 2.0</div>
+            <div class="tl-desc">飞书协同交付标准化流程与规范</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
-    <div class="date-group" data-date="2026-06-16">
+
+    <!-- 2026年6月17日 -->
+    <div class="date-group" data-date="2026-06-17" id="date-2026-06-17-guide">
+      <div class="date-header">
+        <div class="date-dot"></div>
+        <span class="date-label">2026年6月17日</span>
+        <span class="date-count">选购指南·12 篇</span>
+      </div>
+      <div class="tl-cards">
+        <a class="tl-card" href="buying-guide-aircon.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">空调选购指南｜制冷制热与智能舒适配置优先级</div>
+            <div class="tl-desc">空调制冷制热性能与智能舒适选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-dishwasher.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">洗碗机选购指南｜容量洗净与烘干除菌配置优先级</div>
+            <div class="tl-desc">洗碗机容量洗净力与烘干除菌选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-fridge.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">冰箱选购指南｜保鲜与智能化配置优先级</div>
+            <div class="tl-desc">冰箱保鲜技术与智能功能选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-gas-stove.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">燃气灶选购指南｜火力热效与安全安装配置优先级</div>
+            <div class="tl-desc">燃气灶火力热效率与安全配置选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-projector.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">中国市场投影仪科学选购指南｜2025-2026版</div>
+            <div class="tl-desc">投影仪亮度·分辨率·光源与场景适配全指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-range-hood.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">吸油烟机选购指南｜风量风压与拢烟排烟配置优先级</div>
+            <div class="tl-desc">吸油烟机风量风压与排烟效果选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-robot-vacuum.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">扫地机器人选购指南｜清洁避障与智能基站配置优先级</div>
+            <div class="tl-desc">扫地机器人清洁能力与智能基站选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-smart-toilet.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">智能马桶选购指南｜智能化与舒适化选购标准</div>
+            <div class="tl-desc">智能马桶智能化功能与舒适度选购标准</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-steam-oven.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">嵌入式蒸烤箱选购指南｜蒸烤性能与安装配置优先级</div>
+            <div class="tl-desc">嵌入式蒸烤箱蒸烤性能与安装选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-tv-china-market.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">中国市场电视机科学选购指南｜Mini LED、OLED、RGB Mini LED</div>
+            <div class="tl-desc">中国市场电视选购核心配置优先级指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-tv-picture-quality.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">电视选购指南｜画质与智能舒适配置优先级</div>
+            <div class="tl-desc">电视画质与智能舒适配置选购指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="buying-guide-tv-scientific.html" target="_blank">
+          <span class="tl-badge guide">选购</span>
+          <div class="tl-info">
+            <div class="tl-title">电视机科学选购指南｜Mini LED·OLED·大屏·HDR 与游戏电视</div>
+            <div class="tl-desc">电视机科学选购标准与配置优先级全指南</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2026年6月17日 -->
+    <div class="date-group" data-date="2026-06-17" id="date-2026-06-17-dash">
+      <div class="date-header">
+        <div class="date-dot"></div>
+        <span class="date-label">2026年6月17日</span>
+        <span class="date-count">驾驶舱·7 篇</span>
+      </div>
+      <div class="tl-cards">
+        <a class="tl-card" href="bilibili-creator-growth-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电创作者增长驾驶舱</div>
+            <div class="tl-desc">B站家电创作者增长指标追踪与运营仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="bilibili-hrbp-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电博主独立HRBP驾驶舱</div>
+            <div class="tl-desc">B站家电博主人事运营与绩效管理仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="bilibili-video-competitiveness-dashboard.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">B站视频竞争力 SOP 看板</div>
+            <div class="tl-desc">B站视频数据可视化看板与进度追踪</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="ceo-strategic-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电内容公司总经理战略驾驶舱</div>
+            <div class="tl-desc">公司级战略视角全局经营仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="commerce-team-operations-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电商务团队经营驾驶舱</div>
+            <div class="tl-desc">商务团队商单管理与收入追踪仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="creative-team-combat-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电创作团队作战驾驶舱</div>
+            <div class="tl-desc">创作团队内容生产与质量管控仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="operations-team-growth-dashboard.html" target="_blank">
+          <span class="tl-badge dashboard">驾驶舱</span>
+          <div class="tl-info">
+            <div class="tl-title">B站家电运营团队增长驾驶舱</div>
+            <div class="tl-desc">运营团队粉丝增长与账号健康度仪表盘</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2026年6月16日 -->
+    <div class="date-group" data-date="2026-06-16" id="date-2026-06-16">
       <div class="date-header">
         <div class="date-dot"></div>
         <span class="date-label">2026年6月16日</span>
@@ -676,16 +664,17 @@
             <div class="tl-title">结果导向带货与商单执行看板</div>
             <div class="tl-desc">带货商单执行进度追踪与数据看板</div>
           </div>
-          <span class="tl-time">10:47</span>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
-    <div class="date-group" data-date="2026-06-15">
+
+    <!-- 2026年6月15日 -->
+    <div class="date-group" data-date="2026-06-15" id="date-2026-06-15">
       <div class="date-header">
         <div class="date-dot"></div>
         <span class="date-label">2026年6月15日</span>
-        <span class="date-count">5 篇更新</span>
+        <span class="date-count">4 篇更新</span>
       </div>
       <div class="tl-cards">
         <a class="tl-card" href="bilibili-content-competitiveness-action-table.html" target="_blank">
@@ -694,25 +683,6 @@
             <div class="tl-title">B站内容竞争力提升行动总表</div>
             <div class="tl-desc">B站内容竞争力全面提升行动计划与任务追踪</div>
           </div>
-          <span class="tl-time">15:42</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="bilibili-video-competitiveness-dashboard.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">B站视频竞争力 SOP 看板</div>
-            <div class="tl-desc">B站视频数据可视化看板与进度追踪</div>
-          </div>
-          <span class="tl-time">15:15</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="bilibili-video-competitiveness-sop.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">B站视频竞争力提升 SOP 与周/月目标规划</div>
-            <div class="tl-desc">B站视频数据驱动竞争力优化操作规程</div>
-          </div>
-          <span class="tl-time">15:11</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="bilibili-content-strategy-2026.html" target="_blank">
@@ -721,7 +691,14 @@
             <div class="tl-title">B站数码家电内容竞争力优化白皮书 2026</div>
             <div class="tl-desc">B站平台家电内容策略深度分析报告</div>
           </div>
-          <span class="tl-time">12:26</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="bilibili-video-competitiveness-sop.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">B站视频竞争力提升 SOP 与周/月目标规划</div>
+            <div class="tl-desc">B站视频数据驱动竞争力优化操作规程</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="social-ecom-report-2025-2026.html" target="_blank">
@@ -730,25 +707,25 @@
             <div class="tl-title">家电行业社交电商数据报告 2025-2026</div>
             <div class="tl-desc">抖音·小红书·B站 全平台家电商单大数据</div>
           </div>
-          <span class="tl-time">11:58</span>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
-    <div class="date-group" data-date="2026-06-13">
+
+    <!-- 2026年6月13日 -->
+    <div class="date-group" data-date="2026-06-13" id="date-2026-06-13">
       <div class="date-header">
         <div class="date-dot"></div>
         <span class="date-label">2026年6月13日</span>
-        <span class="date-count">30 篇更新</span>
+        <span class="date-count">23 篇更新</span>
       </div>
       <div class="tl-cards">
-        <a class="tl-card" href="review-system-checklist.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
+        <a class="tl-card" href="bilibili-appliance-report.html" target="_blank">
+          <span class="tl-badge report">商单</span>
           <div class="tl-info">
-            <div class="tl-title">数码与家电产品测评体系清单 v1.0</div>
-            <div class="tl-desc">全品类测评标准体系总览</div>
+            <div class="tl-title">B站家电达人商单报告 2026 Q2</div>
+            <div class="tl-desc">B站平台家电达人商单数据</div>
           </div>
-          <span class="tl-time">19:06</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="bilibili-workflow-report.html" target="_blank">
@@ -757,187 +734,6 @@
             <div class="tl-title">B站数码家电博主标准执行流程报告</div>
             <div class="tl-desc">B站创作者完整工作流程规范</div>
           </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-longvideo-yt-bilibili.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">家电数码长视频 SOP</div>
-            <div class="tl-desc">YouTube·B站全流程标准操作规程</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-tv-report.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">电视机测评 SOP + 商务开发材料</div>
-            <div class="tl-desc">电视品类内容规范与合作清单</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-fridge-report.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">冰箱测评 SOP + 商务开发报告</div>
-            <div class="tl-desc">冰箱品类内容制作规范</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-aircon-report.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">空调测评 SOP + 商务开发报告</div>
-            <div class="tl-desc">空调品类内容制作规范</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-robot-report.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">扫地机器人测评 SOP + 商务开发报告</div>
-            <div class="tl-desc">扫地机品类内容制作规范</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="sop-hometheater-report.html" target="_blank">
-          <span class="tl-badge sop">SOP</span>
-          <div class="tl-info">
-            <div class="tl-title">家庭影院测评 SOP + 商务开发报告</div>
-            <div class="tl-desc">家庭影院品类内容制作规范</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-tv-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年电视长视频项目策划报告</div>
-            <div class="tl-desc">电视品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-tv-overall-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年电视长视频整体项目策划报告</div>
-            <div class="tl-desc">电视品类整体执行策划</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-fridge-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年冰箱长视频项目策划报告</div>
-            <div class="tl-desc">冰箱品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-aircon-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年空调长视频项目策划报告</div>
-            <div class="tl-desc">空调品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-oven-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年蒸烤箱长视频项目策划报告</div>
-            <div class="tl-desc">蒸烤箱品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-robot-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年扫地机器人长视频项目策划报告</div>
-            <div class="tl-desc">扫地机品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-robot-overall-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年扫地机器人整体项目策划报告</div>
-            <div class="tl-desc">扫地机整体策划执行方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-hometheater-2026h2.html" target="_blank">
-          <span class="tl-badge plan">策划</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 下半年家庭影院长视频项目策划报告</div>
-            <div class="tl-desc">家庭影院品类年度内容策划方案</div>
-          </div>
-          <span class="tl-time">19:06</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="douyin-appliance-2026Q2-enhanced.html" target="_blank">
-          <span class="tl-badge report">商单</span>
-          <div class="tl-info">
-            <div class="tl-title">抖音家电达人商单报告 2026 Q2 强化版</div>
-            <div class="tl-desc">2026年第二季度抖音家电商单深度分析</div>
-          </div>
-          <span class="tl-time">18:58</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="douyin-appliance-2025-2026.html" target="_blank">
-          <span class="tl-badge report">商单</span>
-          <div class="tl-info">
-            <div class="tl-title">抖音家电商单投放报告 2025-2026（网页版）</div>
-            <div class="tl-desc">抖音家电商单投放详细数据</div>
-          </div>
-          <span class="tl-time">18:56</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="bilibili-appliance-report.html" target="_blank">
-          <span class="tl-badge report">商单</span>
-          <div class="tl-info">
-            <div class="tl-title">B站家电达人商单报告 2026 Q2</div>
-            <div class="tl-desc">B站平台家电达人商单数据</div>
-          </div>
-          <span class="tl-time">18:46</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="xiaohongshu-appliance-report.html" target="_blank">
-          <span class="tl-badge report">商单</span>
-          <div class="tl-info">
-            <div class="tl-title">小红书家电达人商单报告 2026 Q2</div>
-            <div class="tl-desc">小红书平台家电达人商单数据</div>
-          </div>
-          <span class="tl-time">18:37</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="douyin-appliance-report.html" target="_blank">
-          <span class="tl-badge report">商单</span>
-          <div class="tl-info">
-            <div class="tl-title">抖音家电全品类达人商单报告 2025-2026</div>
-            <div class="tl-desc">抖音平台家电达人商单投放数据</div>
-          </div>
-          <span class="tl-time">18:07</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="topic-library.html" target="_blank">
-          <span class="tl-badge strategy">策略</span>
-          <div class="tl-info">
-            <div class="tl-title">家电内容创新选题组合库</div>
-            <div class="tl-desc">全品类爆款选题参考与创作灵感库</div>
-          </div>
-          <span class="tl-time">16:22</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="content-system.html" target="_blank">
@@ -946,34 +742,185 @@
             <div class="tl-title">三大品类专业壁垒内容系统</div>
             <div class="tl-desc">电视·影院·扫地机月度内容规划</div>
           </div>
-          <span class="tl-time">15:57</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="douyin-appliance-2025-2026.html" target="_blank">
+          <span class="tl-badge report">商单</span>
+          <div class="tl-info">
+            <div class="tl-title">抖音家电商单投放报告 2025-2026（网页版）</div>
+            <div class="tl-desc">抖音家电商单投放详细数据</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="douyin-appliance-2026Q2-enhanced.html" target="_blank">
+          <span class="tl-badge report">商单</span>
+          <div class="tl-info">
+            <div class="tl-title">抖音家电达人商单报告 2026 Q2 强化版</div>
+            <div class="tl-desc">2026年第二季度抖音家电商单深度分析</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="douyin-appliance-report.html" target="_blank">
+          <span class="tl-badge report">商单</span>
+          <div class="tl-info">
+            <div class="tl-title">抖音家电全品类达人商单报告 2025-2026</div>
+            <div class="tl-desc">抖音平台家电达人商单投放数据</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-aircon-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年空调长视频项目策划报告</div>
+            <div class="tl-desc">空调品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-fridge-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年冰箱长视频项目策划报告</div>
+            <div class="tl-desc">冰箱品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-hometheater-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年家庭影院长视频项目策划报告</div>
+            <div class="tl-desc">家庭影院品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-oven-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年蒸烤箱长视频项目策划报告</div>
+            <div class="tl-desc">蒸烤箱品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-robot-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年扫地机器人长视频项目策划报告</div>
+            <div class="tl-desc">扫地机品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-robot-overall-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年扫地机器人整体项目策划报告</div>
+            <div class="tl-desc">扫地机整体策划执行方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-tv-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年电视长视频项目策划报告</div>
+            <div class="tl-desc">电视品类年度内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-tv-overall-2026h2.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">2026 下半年电视长视频整体项目策划报告</div>
+            <div class="tl-desc">电视品类整体执行策划</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="review-system-checklist.html" target="_blank">
+          <span class="tl-badge plan">策划</span>
+          <div class="tl-info">
+            <div class="tl-title">数码与家电产品测评体系清单 v1.0</div>
+            <div class="tl-desc">全品类测评标准体系总览</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-aircon-report.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">空调测评 SOP + 商务开发报告</div>
+            <div class="tl-desc">空调品类内容制作规范</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-fridge-report.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">冰箱测评 SOP + 商务开发报告</div>
+            <div class="tl-desc">冰箱品类内容制作规范</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-hometheater-report.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">家庭影院测评 SOP + 商务开发报告</div>
+            <div class="tl-desc">家庭影院品类内容制作规范</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-longvideo-yt-bilibili.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">家电数码长视频 SOP</div>
+            <div class="tl-desc">YouTube·B站全流程标准操作规程</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-robot-report.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">扫地机器人测评 SOP + 商务开发报告</div>
+            <div class="tl-desc">扫地机品类内容制作规范</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="sop-tv-report.html" target="_blank">
+          <span class="tl-badge sop">SOP</span>
+          <div class="tl-info">
+            <div class="tl-title">电视机测评 SOP + 商务开发材料</div>
+            <div class="tl-desc">电视品类内容规范与合作清单</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="topic-library.html" target="_blank">
+          <span class="tl-badge strategy">策略</span>
+          <div class="tl-info">
+            <div class="tl-title">家电内容创新选题组合库</div>
+            <div class="tl-desc">全品类爆款选题参考与创作灵感库</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="xiaohongshu-appliance-report.html" target="_blank">
+          <span class="tl-badge report">商单</span>
+          <div class="tl-info">
+            <div class="tl-title">小红书家电达人商单报告 2026 Q2</div>
+            <div class="tl-desc">小红书平台家电达人商单数据</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
-    <div class="date-group" data-date="2026-06-13">
+
+    <!-- 2026年6月13日（首批） -->
+    <div class="date-group" data-date="2026-06-13" id="date-2026-06-13-first">
       <div class="date-header">
         <div class="date-dot"></div>
         <span class="date-label">2026年6月13日（首批）</span>
         <span class="date-count">8 篇更新</span>
       </div>
       <div class="tl-cards">
-        <a class="tl-card" href="plan-tv.html" target="_blank">
+        <a class="tl-card" href="plan-aircon.html" target="_blank">
           <span class="tl-badge category">品类</span>
           <div class="tl-info">
-            <div class="tl-title">电视策划</div>
-            <div class="tl-desc">电视品类内容策划方案</div>
+            <div class="tl-title">空调策划</div>
+            <div class="tl-desc">空调品类内容策划方案</div>
           </div>
-          <span class="tl-time">11:55</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-tv-overall.html" target="_blank">
-          <span class="tl-badge category">品类</span>
-          <div class="tl-info">
-            <div class="tl-title">电视策划总览</div>
-            <div class="tl-desc">电视品类整体策划总览</div>
-          </div>
-          <span class="tl-time">11:55</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="plan-fridge.html" target="_blank">
@@ -982,43 +929,6 @@
             <div class="tl-title">冰箱策划</div>
             <div class="tl-desc">冰箱品类内容策划方案</div>
           </div>
-          <span class="tl-time">11:55</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-aircon.html" target="_blank">
-          <span class="tl-badge category">品类</span>
-          <div class="tl-info">
-            <div class="tl-title">空调策划</div>
-            <div class="tl-desc">空调品类内容策划方案</div>
-          </div>
-          <span class="tl-time">11:55</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-oven.html" target="_blank">
-          <span class="tl-badge category">品类</span>
-          <div class="tl-info">
-            <div class="tl-title">烤箱策划</div>
-            <div class="tl-desc">烤箱品类内容策划方案</div>
-          </div>
-          <span class="tl-time">11:55</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-robot.html" target="_blank">
-          <span class="tl-badge category">品类</span>
-          <div class="tl-info">
-            <div class="tl-title">扫地机器人策划</div>
-            <div class="tl-desc">扫地机品类内容策划方案</div>
-          </div>
-          <span class="tl-time">11:55</span>
-          <span class="tl-arrow">→</span>
-        </a>
-        <a class="tl-card" href="plan-robot-overall.html" target="_blank">
-          <span class="tl-badge category">品类</span>
-          <div class="tl-info">
-            <div class="tl-title">扫地机器人策划总览</div>
-            <div class="tl-desc">扫地机品类整体策划总览</div>
-          </div>
-          <span class="tl-time">11:55</span>
           <span class="tl-arrow">→</span>
         </a>
         <a class="tl-card" href="plan-hometheater.html" target="_blank">
@@ -1027,18 +937,57 @@
             <div class="tl-title">家庭影院策划</div>
             <div class="tl-desc">家庭影院品类内容策划方案</div>
           </div>
-          <span class="tl-time">11:55</span>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-oven.html" target="_blank">
+          <span class="tl-badge category">品类</span>
+          <div class="tl-info">
+            <div class="tl-title">烤箱策划</div>
+            <div class="tl-desc">烤箱品类内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-robot-overall.html" target="_blank">
+          <span class="tl-badge category">品类</span>
+          <div class="tl-info">
+            <div class="tl-title">扫地机器人策划总览</div>
+            <div class="tl-desc">扫地机品类整体策划总览</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-robot.html" target="_blank">
+          <span class="tl-badge category">品类</span>
+          <div class="tl-info">
+            <div class="tl-title">扫地机器人策划</div>
+            <div class="tl-desc">扫地机品类内容策划方案</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-tv-overall.html" target="_blank">
+          <span class="tl-badge category">品类</span>
+          <div class="tl-info">
+            <div class="tl-title">电视策划总览</div>
+            <div class="tl-desc">电视品类整体策划总览</div>
+          </div>
+          <span class="tl-arrow">→</span>
+        </a>
+        <a class="tl-card" href="plan-tv.html" target="_blank">
+          <span class="tl-badge category">品类</span>
+          <div class="tl-info">
+            <div class="tl-title">电视策划</div>
+            <div class="tl-desc">电视品类内容策划方案</div>
+          </div>
           <span class="tl-arrow">→</span>
         </a>
       </div>
     </div>
 
-  </div><!-- /timeline (time view) -->
+  </div>
 
-</div><!-- /main -->
+</div>
 
 <div class="footer">
-  超红传媒知识库 &nbsp;·&nbsp; 共 77 篇文档 &nbsp;·&nbsp; 2026
+  超红传媒知识库 &nbsp;·&nbsp; 共 80 篇文档 &nbsp;·&nbsp; 2026
 </div>
 
 <script>
@@ -1056,7 +1005,6 @@
     document.getElementById('toggleIcon').textContent = '☀️';
     document.getElementById('toggleText').textContent = '浅色';
   }
-
 </script>
 </body>
 </html>
