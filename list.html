@@ -6,137 +6,127 @@
   <title>超红传媒 · 内容规划表</title>
   <style>
     :root {
-      --bg: #f5f6fa;
-      --surface: #ffffff;
-      --surface2: #f0f2f8;
-      --border: #e2e6ef;
-      --text: #1a1d2e;
-      --text2: #5a607a;
-      --text3: #8892aa;
-      --accent: #4f6ef7;
-      --accent-soft: #eef0ff;
-      --tag-bg: #eef0ff;
-      --tag-text: #4f6ef7;
-      --shadow: 0 2px 12px rgba(79,110,247,0.07);
-      --shadow-hover: 0 8px 28px rgba(79,110,247,0.15);
-      --header-bg: linear-gradient(135deg,#e05d3a 0%,#c0392b 100%);
-      --header-text: #fff;
-      --toggle-bg: rgba(255,255,255,0.2);
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
     }
-    [data-theme="dark"] {
-      --bg: #0f1117;
-      --surface: #1c1f2e;
-      --surface2: #252838;
-      --border: #2e3248;
-      --text: #eef0ff;
-      --text2: #a0a8c4;
-      --text3: #666e90;
-      --accent: #7c9fff;
-      --accent-soft: #1e2440;
-      --tag-bg: #1e2440;
-      --tag-text: #7c9fff;
-      --shadow: 0 2px 12px rgba(0,0,0,0.3);
-      --shadow-hover: 0 8px 28px rgba(0,0,0,0.5);
-      --header-bg: linear-gradient(135deg,#7a1e1e 0%,#5c1010 100%);
-      --header-text: #eef0ff;
-      --toggle-bg: rgba(0,0,0,0.25);
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+
     body {
-      font-family: -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
     }
 
-    /* ── HEADER ── */
-    .header {
-      background: var(--header-bg);
-      color: var(--header-text);
-      padding: 44px 0 36px;
-      position: relative;
-      overflow: hidden;
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
     }
-    .header::before {
-      content:'';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
+
+    /* ── TOPBAR ── */
+    .topbar {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 22px;
+      border-radius:20px;
     }
-    .header::after {
-      content:'';
-      position: absolute;
-      bottom: -80px; left: 30%;
-      width: 400px; height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
+    .brand { display:flex; align-items:center; gap:14px; }
+    .logo {
+      width:42px; height:42px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 auto; color:#fff; font-size:15px; font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
     }
-    .header-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index:1; padding: 0 24px; box-sizing: border-box; }
-    .header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3; font-weight:650;
+      white-space:nowrap;
     }
-    .header p {
-      font-size: 0.95rem;
-      opacity: 0.8;
-      font-weight: 400;
+    .brand-sub {
+      font-size:13px;
+      color:var(--muted);
+      margin-top:2px;
     }
-    .header-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
+    .topbar-right { display:flex; align-items:center; gap:12px; }
     .header-badge {
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 5px 15px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: inherit; text-decoration: none;
-      cursor: pointer; transition: background 0.2s;
-      white-space: nowrap;
+      background:rgba(56,189,248,.12);
+      border:1px solid rgba(56,189,248,.25);
+      border-radius:20px; padding:6px 15px;
+      font-size:0.8rem; font-weight:500;
+      color:var(--accent); text-decoration:none;
+      cursor:pointer; transition:background 0.2s;
+      white-space:nowrap;
     }
-    .header-badge:hover { background: rgba(255,255,255,0.32); }
-
-    /* ── THEME TOGGLE ── */
-    .toggle-btn {
-      position: absolute;
-      top: 24px; right: 32px;
-      z-index: 10;
-      background: var(--toggle-bg);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      border-radius: 40px;
-      padding: 7px 16px;
-      font-size: 0.82rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      transition: background 0.2s;
-      font-family: inherit;
+    .header-badge:hover { background:rgba(56,189,248,.22); }
+    html[data-theme="light"] .header-badge {
+      background:rgba(37,99,235,.08);
+      border-color:rgba(37,99,235,.2);
+      color:var(--accent);
     }
-    .toggle-btn:hover { background: rgba(255,255,255,0.28); }
+    html[data-theme="light"] .header-badge:hover { background:rgba(37,99,235,.15); }
+    .theme-toggle {
+      border:1px solid var(--line); background:var(--card-2);
+      color:var(--text); border-radius:999px;
+      padding:8px 16px; cursor:pointer; font-size:13px;
+      font-family:inherit; transition:background 0.2s;
+    }
+    .theme-toggle:hover { background:var(--head); }
 
-    /* ── MAIN ── */
-    .main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 60px; }
-
-    /* ── 三向导航药丸 ── */
-    .nav-links { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    /* ── NAV PILLS ── */
+    .nav-links {
+      display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px;
+    }
     .nav-pill {
       display:inline-flex; align-items:center; gap:5px;
-      padding:6px 14px; border-radius:20px; font-size:0.82rem;
-      text-decoration:none; border:1.5px solid var(--border);
-      color:var(--text2); background:var(--surface2);
-      transition: all 0.2s;
+      padding:6px 15px; border-radius:20px; font-size:0.82rem;
+      text-decoration:none; border:1.5px solid var(--line);
+      color:var(--muted); background:var(--card);
+      transition:all 0.2s; backdrop-filter:blur(8px);
     }
     .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); }
     .nav-pill.active {
@@ -145,157 +135,130 @@
     }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 40px; scroll-margin-top: 120px; }
+    .section {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      margin-bottom:22px;
+      border-radius:24px;
+      padding:22px 24px;
+    }
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      display:flex; align-items:center; gap:10px;
+      margin-bottom:20px; flex-wrap:wrap;
     }
     .section-dot {
-      width: 10px; height: 10px;
-      border-radius: 3px;
-      flex-shrink: 0;
+      width:10px; height:10px; border-radius:3px; flex-shrink:0;
     }
-    .section-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
+    .section-label {
+      font-size:1.05rem; font-weight:700; color:var(--text);
     }
     .section-count {
-      font-size: 0.78rem;
-      color: var(--text3);
-      background: var(--surface2);
-      border-radius: 10px;
-      padding: 2px 10px;
+      font-size:0.76rem; color:var(--muted);
+      background:var(--card-2); border:1px solid var(--line2);
+      border-radius:10px; padding:2px 10px;
     }
-    .section-divider {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      min-width: 40px;
+    .section-divider { flex:1; height:1px; background:var(--line2); min-width:40px; }
+
+    /* ── CARDS: 4-column grid ── */
+    .cards-grid {
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
     }
 
-    /* ── CARDS GRID ── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-    }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 24px 20px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      cursor: pointer;
+      border:1px solid var(--line);
+      background:var(--card-2);
+      border-radius:16px;
+      padding:20px 18px 16px;
+      text-decoration:none;
+      color:inherit;
+      display:flex; flex-direction:column; gap:10px;
+      box-shadow:0 4px 16px rgba(0,0,0,.18);
+      transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor:pointer;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--accent);
+      transform:translateY(-3px);
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
+      border-color:var(--accent);
     }
     .card-badge-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
     }
     .card-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: transparent;
-      border: 1.5px solid;
-      border-radius: 6px;
-      padding: 3px 10px;
-      width: fit-content;
-    }
-    .card-type-tag {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.68rem;
-      font-weight: 600;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border-radius: 6px;
-      padding: 3px 9px;
+      display:inline-flex; align-items:center; gap:4px;
+      font-size:0.7rem; font-weight:600;
+      background:transparent; border:1.5px solid;
+      border-radius:6px; padding:3px 9px;
     }
     .card-title {
-      font-size: 1.02rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.4;
+      font-size:0.96rem; font-weight:700;
+      color:var(--text); line-height:1.4;
     }
     .card-desc {
-      font-size: 0.8rem;
-      color: var(--text3);
-      line-height: 1.6;
+      font-size:0.78rem; color:var(--muted); line-height:1.6;
+      flex:1;
     }
     .card-arrow {
-      margin-top: auto;
-      font-size: 0.78rem;
-      color: var(--accent);
-      opacity: 0;
-      transition: opacity 0.2s;
+      margin-top:auto; font-size:0.76rem;
+      color:var(--accent); opacity:0; transition:opacity 0.2s;
     }
-    .card:hover .card-arrow { opacity: 1; }
+    .card:hover .card-arrow { opacity:1; }
 
-    /* ── SECTION COLORS ── */
-    .c1 .section-dot { background: #ef4444; }   /* 大家电 - 红 */
-    .c2 .section-dot { background: #10b981; }   /* 清洁电器 - 绿 */
-    .c3 .section-dot { background: #14b8a6; }   /* 净化家电 - 青 */
-    .c4 .section-dot { background: #f43f5e; }   /* 电脑数码 - 玫红 */
+    /* ── SECTION ACCENT DOTS ── */
+    .s-major .section-dot  { background:#ef4444; }
+    .s-clean .section-dot  { background:#10b981; }
+    .s-pure  .section-dot  { background:#14b8a6; }
+    .s-water .section-dot  { background:#3b82f6; }
+    .s-digit .section-dot  { background:#f43f5e; }
 
     /* ── FOOTER ── */
     .footer {
-      text-align: center;
-      padding: 28px 24px;
-      font-size: 0.78rem;
-      color: var(--text3);
-      border-top: 1px solid var(--border);
+      text-align:center; padding:20px 0;
+      font-size:0.76rem; color:var(--muted);
     }
 
-    @media (max-width: 640px) {
-      .header { padding: 32px 0 28px; }
-      .header-inner { padding: 0 14px; }
-      .header h1 { font-size: 1.4rem; }
-      .main { padding: 24px 14px 50px; }
-      .toggle-btn { top: 16px; right: 16px; padding: 6px 12px; font-size: 0.78rem; }
-      .cards-grid { grid-template-columns: 1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width:1100px) {
+      .cards-grid { grid-template-columns:repeat(3, minmax(0,1fr)); }
+    }
+    @media (max-width:760px) {
+      .cards-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .page { width:calc(100% - 24px); }
+    }
+    @media (max-width:480px) {
+      .cards-grid { grid-template-columns:1fr; }
+      .topbar { flex-wrap:wrap; }
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
-    <span id="toggleIcon">☀️</span>
-    <span id="toggleText">浅色</span>
-  </button>
-  <div class="header-inner">
-    <h1>超红传媒 · 内容规划表</h1>
-    <p>各品类全年内容规划总览</p>
-    <div class="header-meta">
-      <a class="header-badge" href="#sec-major-appliance">🏠 大家电</a>
-      <a class="header-badge" href="#sec-cleaning">🧹 清洁电器</a>
-      <a class="header-badge" href="#sec-purify">🌿 净化家电</a>
-      <a class="header-badge" href="#sec-digital">💻 电脑数码</a>
+<div class="page">
+
+  <!-- ── TOPBAR ── -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">超红</div>
+      <div>
+        <div class="brand-title">内容规划表</div>
+        <div class="brand-sub">各品类全年内容规划总览</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <a class="header-badge" href="#s-major">🏠 大家电</a>
+      <a class="header-badge" href="#s-clean">🧹 清洁电器</a>
+      <a class="header-badge" href="#s-pure">🌿 净化家电</a>
+      <a class="header-badge" href="#s-water">💧 水健康</a>
+      <a class="header-badge" href="#s-digit">💻 电脑数码</a>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
     </div>
   </div>
-</div>
 
-<div class="main">
-
+  <!-- ── NAV PILLS ── -->
   <div class="nav-links">
     <a class="nav-pill" href="index.html">📁 知识库导航</a>
     <a class="nav-pill" href="timeline.html">📅 更新时间线</a>
@@ -303,134 +266,159 @@
     <span class="nav-pill active">📋 内容规划表</span>
   </div>
 
-  <!-- 大家电 -->
-  <div class="section c1" id="sec-major-appliance">
+  <!-- ── 大家电 ── -->
+  <div class="section s-major" id="s-major" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
-      <span class="section-title">大家电</span>
+      <span class="section-label">大家电</span>
       <span class="section-count">4 篇</span>
       <div class="section-divider"></div>
     </div>
     <div class="cards-grid">
+
       <a class="card" href="content-plan-tv.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#ef4444;border-color:#ef4444">📺 智能电视</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 智能电视内容规划表</div>
-        <div class="card-desc">电视机全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
+        <div class="card-title">智能电视内容规划表</div>
+        <div class="card-desc">全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
       <a class="card" href="content-plan-fridge.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#f97316;border-color:#f97316">🧊 冰箱</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 冰箱内容规划表</div>
-        <div class="card-desc">冰箱全年内容发布规划，覆盖多开门、超薄、嵌入式等核心卖点场景</div>
+        <div class="card-title">冰箱内容规划表</div>
+        <div class="card-desc">全年内容发布规划，覆盖多开门、超薄、嵌入式等核心卖点场景</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
       <a class="card" href="content-plan-washer.html" target="_blank">
         <div class="card-badge-row">
-          <div class="card-badge" style="color:#6366f1;border-color:#6366f1">🫧 洗衣机 / 洗烘套装</div>
-          <span class="card-type-tag">规划表</span>
+          <div class="card-badge" style="color:#6366f1;border-color:#6366f1">🫧 洗衣机/洗烘套装</div>
         </div>
-        <div class="card-title">超红传媒 洗衣机洗烘套装内容规划表</div>
-        <div class="card-desc">洗衣机及洗烘套装全年内容规划，涵盖装修季、618、双11等大促节点</div>
+        <div class="card-title">洗衣机洗烘套装内容规划表</div>
+        <div class="card-desc">全年内容规划，涵盖装修季、618、双11等大促节点</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
       <a class="card" href="content-plan-ac.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#3b82f6;border-color:#3b82f6">❄️ 空调</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 空调内容规划表</div>
-        <div class="card-desc">空调全年内容发布规划，聚焦制冷季需求爆发、新风空调、睡眠模式等热点</div>
+        <div class="card-title">空调内容规划表</div>
+        <div class="card-desc">全年内容发布规划，聚焦制冷季需求爆发、新风空调、睡眠模式等热点</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
     </div>
   </div>
 
-  <!-- 清洁电器 -->
-  <div class="section c2" id="sec-cleaning">
+  <!-- ── 清洁电器 ── -->
+  <div class="section s-clean" id="s-clean" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
-      <span class="section-title">清洁电器</span>
+      <span class="section-label">清洁电器</span>
       <span class="section-count">1 篇</span>
       <div class="section-divider"></div>
     </div>
     <div class="cards-grid">
+
       <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#10b981;border-color:#10b981">🧹 扫地机器人</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 扫地机器人内容规划表</div>
-        <div class="card-desc">扫地机全年内容规划，覆盖避障技术、地图建模、宠物毛发、自清洁基站等差异化卖点</div>
+        <div class="card-title">扫地机器人内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发、自清洁基站等差异化卖点</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
     </div>
   </div>
 
-  <!-- 净化家电 -->
-  <div class="section c3" id="sec-purify">
+  <!-- ── 净化家电 ── -->
+  <div class="section s-pure" id="s-pure" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
-      <span class="section-title">净化家电</span>
+      <span class="section-label">净化家电</span>
       <span class="section-count">1 篇</span>
       <div class="section-divider"></div>
     </div>
     <div class="cards-grid">
+
       <a class="card" href="content-plan-air-purifier.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#14b8a6;border-color:#14b8a6">🌿 空气净化器</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 空气净化器内容规划表</div>
-        <div class="card-desc">空气净化器全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等高转化场景</div>
+        <div class="card-title">空气净化器内容规划表</div>
+        <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等高转化场景</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
     </div>
   </div>
 
-  <!-- 电脑数码 -->
-  <div class="section c4" id="sec-digital">
+  <!-- ── 水健康 ── -->
+  <div class="section s-water" id="s-water" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
-      <span class="section-title">电脑数码</span>
+      <span class="section-label">水健康</span>
+      <span class="section-count">1 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="content-plan-water-purifier.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="color:#3b82f6;border-color:#3b82f6">💧 净水器</div>
+        </div>
+        <div class="card-title">净水器内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖换滤芯周期、水质检测、家装净水方案等核心内容方向</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── 电脑数码 ── -->
+  <div class="section s-digit" id="s-digit" style="scroll-margin-top:100px">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-label">电脑数码</span>
       <span class="section-count">2 篇</span>
       <div class="section-divider"></div>
     </div>
     <div class="cards-grid">
+
       <a class="card" href="content-plan-laptop.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#f43f5e;border-color:#f43f5e">💻 笔记本电脑</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 笔记本电脑内容规划表</div>
-        <div class="card-desc">笔记本全年内容规划，覆盖开学季、双11、轻薄本/游戏本分层内容策略</div>
+        <div class="card-title">笔记本电脑内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖开学季、双11、轻薄本/游戏本分层内容策略</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
       <a class="card" href="content-plan-gaming-monitor.html" target="_blank">
         <div class="card-badge-row">
           <div class="card-badge" style="color:#8b5cf6;border-color:#8b5cf6">🖥️ 电竞显示器</div>
-          <span class="card-type-tag">规划表</span>
         </div>
-        <div class="card-title">超红传媒 电竞显示器内容规划表</div>
-        <div class="card-desc">电竞显示器全年内容规划，围绕刷新率、响应时间、HDR、电竞联名等核心内容方向</div>
+        <div class="card-title">电竞显示器内容规划表</div>
+        <div class="card-desc">全年内容规划，围绕刷新率、响应时间、HDR、电竞联名等核心内容方向</div>
         <div class="card-arrow">查看文档 →</div>
       </a>
+
     </div>
   </div>
 
-</div>
+  <div class="footer">
+    超红传媒知识库 &nbsp;·&nbsp; 内容规划表 &nbsp;·&nbsp; 2026
+  </div>
 
-<footer class="footer">
-  超红传媒知识库 &nbsp;·&nbsp; 内容规划表 &nbsp;·&nbsp; 2026
-</footer>
+</div><!-- /page -->
 
 <script>
-  // 初始化：默认暗色模式
   (function() {
     const saved = localStorage.getItem('chaohong-list-theme');
     const theme = saved || 'dark';
@@ -439,16 +427,9 @@
   })();
 
   function updateBtn(theme) {
-    const icon = document.getElementById('toggleIcon');
-    const text = document.getElementById('toggleText');
-    if (!icon || !text) return;
-    if (theme === 'dark') {
-      icon.textContent = '☀️';
-      text.textContent = '浅色';
-    } else {
-      icon.textContent = '🌙';
-      text.textContent = '深色';
-    }
+    const btn = document.getElementById('themeBtn');
+    if (!btn) return;
+    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
   }
 
   function toggleTheme() {
@@ -460,14 +441,13 @@
     updateBtn(next);
   }
 
-  // 平滑滚动带偏移
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
       const id = this.getAttribute('href').slice(1);
       const el = document.getElementById(id);
       if (el) {
         e.preventDefault();
-        const top = el.getBoundingClientRect().top + window.scrollY - 100;
+        const top = el.getBoundingClientRect().top + window.scrollY - 90;
         window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
