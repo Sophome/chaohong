@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜电竞显示器内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --bg: #0b0f17;
+      --bg-soft: #111827;
+      --card: rgba(18, 24, 37, 0.92);
+      --card-2: rgba(23, 31, 47, 0.92);
+      --table-head: #1f2937;
+      --table-hover: rgba(56, 189, 248, 0.06);
+
+      --text: #f8fafc;
+      --text-soft: #d7dee8;
+      --muted: #94a3b8;
+      --line: rgba(148, 163, 184, 0.18);
+      --line-soft: rgba(148, 163, 184, 0.12);
+
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --accent-3: #2dd4bf;
+
+      --type-business: #f59e0b;
+      --type-user: #38bdf8;
+      --type-ranking: #22c55e;
+
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+
+      --bg: #f4f7fb;
+      --bg-soft: #eef3f8;
+      --card: rgba(255, 255, 255, 0.9);
+      --card-2: rgba(248, 250, 252, 0.94);
+      --table-head: #e8eef6;
+      --table-hover: rgba(37, 99, 235, 0.055);
+
+      --text: #111827;
+      --text-soft: #334155;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.12);
+      --line-soft: rgba(15, 23, 42, 0.08);
+
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+      --accent-3: #0f766e;
+
+      --type-business: #d97706;
+      --type-user: #2563eb;
+      --type-ranking: #16a34a;
+
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+      font-weight: 400;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent-2) 15%, transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb, var(--accent-3) 12%, transparent), transparent 34%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 48%, var(--bg) 100%);
+    }
+
+    .page {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 15px;
+      font-weight: 650;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 26%, transparent);
+    }
+
+    .brand-title {
+      min-width: 0;
+      font-size: clamp(18px, 1.5vw, 21px);
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .theme-toggle {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: var(--card-2);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 500;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+      background: color-mix(in srgb, var(--card-2) 88%, var(--accent));
+    }
+
+    .card,
+    .section,
+    .bottom-panel {
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(17px, 1.2vw, 20px);
+      line-height: 1.38;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.72;
+      font-weight: 400;
+    }
+
+    .business-color {
+      color: var(--type-business);
+    }
+
+    .user-color {
+      color: var(--type-user);
+    }
+
+    .ranking-color {
+      color: var(--type-ranking);
+    }
+
+    .section {
+      margin-bottom: 18px;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(26px, 2.4vw, 38px);
+      line-height: 1.16;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+    }
+
+    .section-title span {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      text-align: right;
+      font-weight: 400;
+    }
+
+    .type-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 82px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      background: color-mix(in srgb, currentColor 8%, transparent);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .type-business {
+      color: var(--type-business);
+    }
+
+    .type-user {
+      color: var(--type-user);
+    }
+
+    .type-ranking {
+      color: var(--type-ranking);
+    }
+
+    .flex-table {
+      width: 100%;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card-2);
+    }
+
+    .flex-row {
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid var(--line-soft);
+      transition: background 0.18s ease;
+    }
+
+    .flex-row:last-child {
+      border-bottom: none;
+    }
+
+    .flex-row:not(.header):hover {
+      background: var(--table-hover);
+    }
+
+    .flex-row.header {
+      background: var(--table-head);
+    }
+
+    .cell {
+      min-width: 0;
+      padding: 14px 16px;
+      border-right: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.52;
+      font-weight: 400;
+    }
+
+    .cell:last-child {
+      border-right: none;
+    }
+
+    .flex-row.header .cell {
+      justify-content: center;
+      text-align: center;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .c-node {
+      flex: 0 0 116px;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    .c-type {
+      flex: 0 0 146px;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .c-category {
+      flex: 0 0 142px;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    .c-title {
+      flex: 1.65;
+      color: var(--text);
+    }
+
+    .c-value {
+      flex: 1.14;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .ellipsis {
+      display: block;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .bottom-panel {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .bottom-flex {
+      display: flex;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .bottom-item {
+      flex: 1;
+      min-width: 0;
+      padding: 4px 0;
+    }
+
+    .bottom-item + .bottom-item {
+      padding-left: 18px;
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .bottom-item h2 {
+      margin: 0 0 8px;
+      font-size: clamp(18px, 1.35vw, 22px);
+      line-height: 1.35;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .bottom-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.76;
+      font-weight: 400;
+    }
+
+    @media (max-width: 1100px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-flex {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .bottom-item + .bottom-item {
+        padding-left: 0;
+        padding-top: 14px;
+        border-left: none;
+        border-top: 1px solid var(--line-soft);
+      }
+    }
+
+    @media (max-width: 900px) {
+      html {
+        font-size: 15.5px;
+      }
+
+      .page {
+        width: min(100% - 24px, 760px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .brand-title {
+        white-space: normal;
+      }
+
+      .section {
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-title span {
+        text-align: left;
+      }
+
+      .flex-table {
+        border: none;
+        background: transparent;
+        display: grid;
+        gap: 12px;
+      }
+
+      .flex-row.header {
+        display: none;
+      }
+
+      .flex-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        border: 1px solid var(--line-soft);
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--card-2);
+      }
+
+      .cell {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--line-soft);
+        padding: 12px 14px;
+      }
+
+      .cell:last-child {
+        border-bottom: none;
+      }
+
+      .cell::before {
+        content: attr(data-label);
+        flex: 0 0 88px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .c-node,
+      .c-type,
+      .c-category,
+      .c-title,
+      .c-value {
+        flex: none;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .ellipsis {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        flex-direction: column;
+      }
+
+      .theme-toggle {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜电竞显示器内容规划表</div>
+      </div>
+
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括新品深度评测、真实游戏体验、显示参数测试、桌搭场景种草和横评内容。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在刷新率、分辨率、面板、响应时间、HDR、接口、尺寸和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="ranking-color">03 电竞显示器推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括 2K 电竞屏、4K 高刷屏、OLED 显示器、Mini LED、主机显示器和桌搭显示器榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕开学季、国庆、双十一、双十二和年货节，提前布局高搜索、高转化的内容选题。</span>
+      </div>
+
+      <div class="flex-table">
+        <div class="flex-row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-category">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>开学季主打学生党和宿舍桌搭，国庆主打游戏升级和桌面焕新，双十一主打横评、排行榜和转化，双十二主打补票，年货节主打送礼和年度榜单。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 9 期，覆盖榜单、决策、评测和节点转化内容。</span>
+      </div>
+
+      <div class="flex-table">
+        <div class="flex-row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-category">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>每月保持排行榜、用户决策、商单案例的稳定比例；大促月份提高榜单、横评和价格追踪内容占比。
+      </p>
+    </section>
+
+    <footer class="bottom-panel">
+      <div class="bottom-flex">
+        <div class="bottom-item">
+          <h2>电竞显示器账号内容规划</h2>
+          <p>围绕电竞玩家、主机玩家、桌搭用户、创作者和大促消费节点，沉淀推荐排行榜、用户决策内容与品牌商单案例。</p>
+        </div>
+
+        <div class="bottom-item">
+          <h2>内容资产沉淀方向</h2>
+          <p>通过节点选题承接购买需求，通过排行榜内容获取搜索流量，通过商单案例提升品牌合作说服力，并用参数科普、避坑指南和真实体验内容建立长期信任。</p>
+        </div>
+
+        <div class="bottom-item">
+          <h2>版权声明</h2>
+          <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["开学季", "用户决策", "2K电竞屏", "大学生第一台电竞显示器怎么选？宿舍桌面、显卡性能、预算一次讲清", "帮助学生党按空间、显卡和预算选择显示器"],
+      ["开学季", "商单案例", "高刷显示器", "宿舍桌搭一周体验：24寸、27寸、2K、高刷、护眼和支架适配实测", "适合品牌做学生宿舍场景种草"],
+      ["开学季", "用户决策", "入门电竞屏", "1000元左右电竞显示器值不值得买？刷新率、面板、响应时间怎么避坑", "解决低预算用户的购买焦虑"],
+      ["开学季", "商单案例", "桌搭显示器", "从笔记本外接到电竞桌搭：一台显示器能带来多大体验提升", "适合外接屏、桌搭场景和配件联动"],
+      ["开学季", "推荐排行榜", "学生显示器", "2025大学生电竞显示器推荐排行榜：千元、1500元、2000元怎么选", "承接开学季高搜索需求"],
+
+      ["国庆节", "用户决策", "主机显示器", "国庆在家打游戏，PS5、Xbox、Switch显示器怎么选？", "覆盖主机玩家和家庭娱乐升级"],
+      ["国庆节", "商单案例", "4K高刷屏", "4K高刷显示器真实游戏体验：3A大作、FPS、HDR、接口全测试", "适合高端电竞显示器品牌合作"],
+      ["国庆节", "用户决策", "桌搭升级", "国庆桌面焕新：显示器、支架、灯光、键鼠怎么搭更舒服", "将显示器转化为桌搭升级消费场景"],
+      ["国庆节", "推荐排行榜", "4K显示器", "国庆游戏娱乐显示器排行榜：4K、高刷、HDR、主机适配怎么排", "承接假期娱乐和桌搭升级搜索"],
+
+      ["双十一", "用户决策", "全品类", "双十一电竞显示器怎么买？24寸、27寸、32寸、2K、4K一次讲清", "帮助用户先确定尺寸、分辨率和刷新率"],
+      ["双十一", "商单案例", "横评", "双十一热门电竞显示器横评：1000、1500、2000、3000元谁更值得买", "最适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一买显示器最容易踩的坑：假HDR、拖影、漏光、接口缩水、支架难用", "提升用户购买安全感"],
+      ["双十一", "商单案例", "OLED显示器", "OLED电竞显示器到底强在哪？响应、色彩、黑位、烧屏风险真实体验", "适合高端 OLED 品类教育和种草"],
+      ["双十一", "推荐排行榜", "全价位", "双十一电竞显示器推荐排行榜：千元到万元各价位闭眼买清单", "大促期间强转化和搜索流量承接"],
+      ["双十一", "推荐排行榜", "2K电竞屏", "双十一2K高刷电竞显示器排行榜：180Hz、240Hz、OLED怎么选", "承接主流玩家高频需求"],
+      ["双十一", "推荐排行榜", "4K高刷屏", "双十一4K高刷显示器排行榜：主机、3A、设计兼顾怎么选", "覆盖高预算玩家和主机玩家"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买电竞显示器是不是冤种？哪些显示器现在入手更合适", "解决双十一错过后的购买焦虑"],
+      ["双十二", "商单案例", "办公电竞两用", "年末换一台办公电竞两用显示器：护眼、色彩、高刷、多接口全测试", "适合全能型显示器品牌合作"],
+      ["双十二", "用户决策", "外接屏", "笔记本外接显示器怎么选？办公、游戏、剪辑、双屏场景讲清", "覆盖笔记本用户和桌面升级需求"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二电竞显示器补票排行榜：错过双十一后还有哪些值得买", "承接延迟决策用户"],
+
+      ["年货节", "用户决策", "送礼显示器", "过年送电竞显示器怎么选？送男友、送孩子、送自己完全不一样", "将显示器转化为礼物消费场景"],
+      ["年货节", "商单案例", "家庭娱乐屏", "一台显示器能不能全家用？主机游戏、网课、办公、追剧全测试", "适合大众价位段显示器做全场景种草"],
+      ["年货节", "推荐排行榜", "送礼榜单", "年货节电竞显示器送礼排行榜：送玩家、送学生、送桌搭党怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买电竞显示器排行榜：2K、4K、OLED、Mini LED总结", "适合作为年度搜索流量和招商样板内容"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期游戏", "暑期电竞显示器推荐排行榜：1000、1500、2000、3000元怎么选", "承接暑期游戏和学生换新需求"],
+      ["7月", "用户决策", "参数科普", "第一次买电竞显示器，刷新率、分辨率、面板、响应时间到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "2K电竞屏", "热门2K高刷显示器真实体验：FPS、MOBA、3A、办公全测试", "沉淀主流电竞屏商单样板"],
+      ["7月", "推荐排行榜", "千元显示器", "千元电竞显示器排行榜：适合学生党和入门玩家的机型", "覆盖低预算高搜索人群"],
+      ["7月", "用户决策", "尺寸选择", "24寸、27寸、32寸电竞显示器怎么选？不同桌面和游戏完全不同", "帮助用户确定基础规格"],
+      ["7月", "商单案例", "桌搭显示器", "电竞显示器桌搭体验：支架、理线、灯光、键鼠联动后的真实变化", "适合桌搭场景种草"],
+      ["7月", "推荐排行榜", "高刷显示器", "180Hz、240Hz、360Hz电竞显示器排行榜：FPS玩家怎么选", "承接高刷关键词搜索"],
+      ["7月", "用户决策", "显卡适配", "你的显卡带得动2K高刷和4K高刷吗？买显示器前必须算清楚", "降低配置不匹配风险"],
+      ["7月", "商单案例", "横评", "同价位电竞显示器横评：谁的色彩、拖影、支架、接口更值得买", "展示横评能力"],
+
+      ["8月", "推荐排行榜", "开学季", "开学季电竞显示器推荐排行榜：宿舍党、游戏党、设计党怎么选", "承接开学季搜索和转化"],
+      ["8月", "用户决策", "宿舍桌搭", "大学宿舍能不能放27寸显示器？桌深、支架、插座、收纳全讲清", "解决学生实际使用问题"],
+      ["8月", "商单案例", "学生显示器", "大学生一周显示器使用记录：上课、写论文、打游戏、追剧全体验", "适合品牌做校园场景内容"],
+      ["8月", "推荐排行榜", "2K电竞屏", "1500元左右2K电竞显示器排行榜：学生党闭眼选清单", "覆盖主流预算需求"],
+      ["8月", "用户决策", "避坑", "买电竞显示器别只看刷新率：面板、响应、亮度、支架、接口都是坑", "提升用户信任"],
+      ["8月", "商单案例", "外接屏", "笔记本外接电竞显示器体验：游戏帧率、办公效率、双屏使用实测", "沉淀外接屏合作案例"],
+      ["8月", "推荐排行榜", "护眼显示器", "适合学习和游戏两用的护眼电竞显示器排行榜", "覆盖长时间使用人群"],
+      ["8月", "用户决策", "预算决策", "新生买显示器要不要一步到位？从千元到高端的预算分配建议", "减少预算浪费"],
+      ["8月", "商单案例", "横评", "热门开学电竞显示器横评：同价位谁的色彩、拖影、支架更稳", "沉淀大促前横评资产"],
+
+      ["9月", "推荐排行榜", "补购清单", "9月电竞显示器推荐排行榜：开学后补买哪些机型还值得入手", "承接开学后补购需求"],
+      ["9月", "用户决策", "问题解决", "显示器买回来不舒服怎么办？亮度、色温、支架、距离怎么调", "解决真实使用问题"],
+      ["9月", "商单案例", "高刷显示器", "高刷显示器使用一个月后体验：拖影、发热、护眼、稳定性复盘", "适合长周期体验内容"],
+      ["9月", "推荐排行榜", "办公电竞两用", "办公游戏两用显示器排行榜：高刷、护眼、色彩、多接口都要有", "覆盖复合需求用户"],
+      ["9月", "用户决策", "面板科普", "IPS、VA、OLED、Mini LED怎么选？优缺点一次讲清", "帮助新用户建立品类认知"],
+      ["9月", "商单案例", "办公电竞屏", "真实办公加游戏测试：表格、剪辑、FPS、追剧一台屏能不能兼顾", "适合全能显示器合作"],
+      ["9月", "推荐排行榜", "主机显示器", "适合PS5和Xbox的显示器排行榜：4K、HDMI2.1、HDR怎么选", "提前覆盖主机玩家需求"],
+      ["9月", "用户决策", "避坑复盘", "显示器用了一个月才发现的问题：漏光、坏点、支架、接口怎么判断", "提升账号实用价值"],
+      ["9月", "商单案例", "横评", "热门2K电竞屏对比：同样高刷，谁更适合FPS和日常办公", "展示细分场景横评能力"],
+
+      ["10月", "推荐排行榜", "国庆娱乐", "国庆游戏娱乐显示器排行榜：4K、高刷、HDR、主机适配怎么选", "承接假期娱乐升级需求"],
+      ["10月", "用户决策", "主机显示器", "PS5显示器怎么选？4K、120Hz、HDMI2.1、HDR到底哪个重要", "解决主机玩家选购问题"],
+      ["10月", "商单案例", "4K高刷屏", "4K高刷显示器7天体验：主机游戏、3A大作、影音娱乐全测试", "适合高端显示器品牌"],
+      ["10月", "推荐排行榜", "4K显示器", "适合3A游戏的4K显示器排行榜：画质、HDR、刷新率综合排序", "覆盖高画质玩家需求"],
+      ["10月", "用户决策", "桌搭升级", "国庆桌面焕新，显示器、支架、灯光、音箱怎么搭更有质感", "服务桌搭升级人群"],
+      ["10月", "商单案例", "桌搭屏", "电竞桌搭实测：显示器、灯光、支架、主机位完整体验", "适合桌搭种草和品牌联动"],
+      ["10月", "推荐排行榜", "OLED显示器", "10月OLED电竞显示器排行榜：响应、色彩、黑位、价格怎么排", "承接高端新品搜索"],
+      ["10月", "用户决策", "创作游戏两用", "游戏和剪辑都要用，电竞显示器要不要看色准和HDR？", "覆盖创作者和游戏玩家复合需求"],
+      ["10月", "商单案例", "高端对比", "高端电竞显示器和普通显示器差距实测：画质、拖影、HDR、做工", "适合高端品牌价值传播"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一电竞显示器推荐排行榜：千元到万元各价位闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买电竞显示器先看这篇：尺寸、分辨率、刷新率、面板怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门电竞显示器横评：1000、1500、2000、3000元谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "2K电竞屏", "双十一2K高刷电竞显示器排行榜：180Hz、240Hz、OLED怎么选", "承接主流玩家强转化需求"],
+      ["11月", "用户决策", "避坑", "双十一买显示器最容易踩的坑：假HDR、拖影、漏光、接口缩水", "提升购买安全感"],
+      ["11月", "商单案例", "OLED显示器", "OLED电竞显示器到底贵在哪？响应、黑位、色彩、烧屏风险完整体验", "适合高端 OLED 品牌合作"],
+      ["11月", "推荐排行榜", "4K高刷屏", "双十一4K高刷显示器排行榜：主机、3A、设计兼顾怎么选", "覆盖高预算玩家和主机玩家"],
+      ["11月", "用户决策", "购买指南", "双十一显示器保价、坏点、退换、支架、线材怎么检查", "减少售后和价格焦虑"],
+      ["11月", "商单案例", "Mini LED", "Mini LED显示器横评：HDR、亮度、控光、游戏体验谁更均衡", "适合高端显示技术传播"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二电竞显示器补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买电竞显示器是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "办公电竞两用", "年末换一台办公电竞两用显示器：护眼、色彩、高刷、多接口全测试", "适合全能型显示器合作"],
+      ["12月", "推荐排行榜", "办公电竞屏", "12月办公游戏两用显示器排行榜：年末换新怎么选", "覆盖职场换新需求"],
+      ["12月", "用户决策", "外接屏", "笔记本外接显示器怎么选？办公、游戏、剪辑、双屏场景讲清", "承接笔记本用户桌面升级"],
+      ["12月", "商单案例", "家庭娱乐屏", "一台显示器能不能全家用？主机游戏、网课、办公、追剧全测试", "适合大众价位段品牌"],
+      ["12月", "推荐排行榜", "送礼显示器", "年货节电竞显示器送礼排行榜：送玩家、送学生、送桌搭党怎么选", "提前布局春节送礼"],
+      ["12月", "用户决策", "送礼指南", "过年送电竞显示器怎么选？别只看刷新率，使用人群更重要", "转化送礼场景"],
+      ["12月", "商单案例", "年度总结", "年度最值得关注的电竞显示器总结：2K、4K、OLED、Mini LED", "沉淀年度招商和搜索资产"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-ranking";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [nodeOrMonth, type, category, title, value] = row;
+      const typeClass = getTypeClass(type);
+
+      return `
+        <div class="flex-row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${nodeOrMonth}</span>
+          </div>
+
+          <div class="cell c-type" data-label="类型">
+            <span class="type-tag ${typeClass}">${type}</span>
+          </div>
+
+          <div class="cell c-category" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-esports-monitor-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      const current = root.getAttribute("data-theme");
+      themeBtn.textContent = current === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

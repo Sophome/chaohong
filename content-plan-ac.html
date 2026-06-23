@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜空调内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:720px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 150px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜空调内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括挂机、柜机、中央空调、风管机、新风空调、无风感空调、母婴空调、一级能效、以旧换新、安装实拍和真实家庭制冷制热场景测试。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在匹数、能效、变频、循环风量、噪音、除湿、制冷速度、制热能力、安装位置、铜管费用、清洁维护和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 空调推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括 1.5 匹挂机、2 匹柜机、3 匹柜机、卧室空调、客厅空调、母婴空调、无风感空调、中央空调和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、国庆、双十一、双十二和年货节，布局空调高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打中央空调、风管机、挂机位置和插座预留；暑期主打制冷、省电、除湿和卧室睡眠；双十一主打榜单、横评和价格转化；年货节主打冬季制热、送父母和全屋换新。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期制冷、省电除湿、母婴睡眠、装修预留、国庆换新、双十一转化、双十二补票和冬季制热。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期制冷、省电、除湿和睡眠场景；9 月强化装修预留与中央空调；10 月强化以旧换新；11 月强化双十一榜单与横评；12 月强化制热、补票和年末换新。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>空调账号内容规划</h2>
+        <p>围绕挂机、柜机、中央空调、风管机、新风空调、无风感空调、母婴睡眠、省电制冷和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过匹数选择、能效对比、制冷制热实测、噪音测试、除湿能力、安装验收、清洁维护和电费复盘建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "空调预留", "新房装修空调怎么规划？挂机、柜机、风管机、中央空调位置一次讲清", "帮助装修用户提前规划全屋空气系统"],
+      ["装修季", "商单案例", "安装实拍", "空调安装实拍：打孔、铜管、排水、外机位、插座、检修口和验收全流程", "适合空调、家装和全屋定制品牌合作"],
+      ["装修季", "推荐排行榜", "中央空调", "装修季中央空调和风管机排行榜：客餐厅、卧室、全屋方案怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "品类选择", "中央空调、风管机、挂机、柜机到底怎么选？不同户型优缺点讲清", "解决装修阶段品类选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618空调推荐排行榜：1.5匹挂机、2匹柜机、3匹柜机、中央空调闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买空调先看这篇：匹数、能效、变频、风量、噪音、安装避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门空调横评：制冷速度、省电、噪音、风感、除湿和安装体验全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "卧室空调", "618卧室空调排行榜：静音、省电、无风感、睡眠模式怎么选", "覆盖卧室睡眠场景"],
+
+      ["暑期", "用户决策", "夏季制冷", "夏天空调怎么选才舒服？制冷速度、风感、除湿、省电和静音讲清", "解决暑期高频制冷痛点"],
+      ["暑期", "推荐排行榜", "省电空调", "暑期省电空调排行榜：一级能效、变频、新一级和真实电费怎么选", "承接夏季省电搜索需求"],
+      ["暑期", "商单案例", "制冷实测", "空调制冷实测：30㎡客厅降温速度、体感舒适度、噪音和耗电量测试", "适合制冷能力型产品合作"],
+      ["暑期", "用户决策", "除湿防潮", "梅雨季和回南天空调除湿有用吗？除湿模式、温度、耗电和体感讲清", "覆盖潮湿地区使用需求"],
+      ["暑期", "推荐排行榜", "母婴空调", "暑期母婴空调排行榜：无风感、恒温、静音、除菌和睡眠怎么选", "强化母婴家庭转化"],
+      ["暑期", "商单案例", "睡眠实测", "卧室空调睡眠实测：一整晚温度波动、噪音、风感、耗电和舒适度", "适合卧室空调品牌合作"],
+
+      ["国庆节", "用户决策", "以旧换新", "国庆家电换新，空调、冰箱、洗衣机、热水器先换哪个最值", "解决家庭家电升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆空调排行榜：一家三口、二胎家庭、老人家庭、大客厅怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房换空调实拍：拆旧、打孔、外机位、铜管加长、排水和安装验收", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买空调怎么选？操作简单、制热好、静音、省电和售后更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一空调推荐排行榜：挂机、柜机、中央空调、新风空调闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买空调先看这篇：匹数、能效、外机、噪音、安装、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门空调横评：谁制冷快、省电稳、噪音低、风感舒服", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一空调最容易踩的坑：匹数买小、安装加价、铜管收费、外机位不合适", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端空调", "双十一高端空调排行榜：无风感、新风、除菌、AI控温、全屋方案怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买空调是不是冤种？哪些挂机、柜机和新风空调还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二空调补票排行榜：刚需款、改善款、送父母、冬季制热怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "空调长期使用复盘：耗电、噪音、滤网清洁、制冷衰减和售后体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "空调买回家怎么验收？制冷、制热、排水、噪音、漏氟、安装收费检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "冬季制热", "冬天买空调要不要看制热？电辅热、低温启动、除霜和耗电讲清", "将空调转化为冬季家庭舒适刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭空调实测：客厅待客、卧室睡眠、老人房制热、除湿和空气循环", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节空调送礼排行榜：送父母、送新家、送改善型家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买空调排行榜：挂机、柜机、中央空调、新风空调总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期制冷", "暑期空调排行榜：1.5匹挂机、2匹柜机、3匹柜机、卧室空调怎么选", "承接暑期制冷高峰需求"],
+      ["7月", "用户决策", "参数科普", "第一次买空调，匹数、能效、变频、循环风量、APF到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "制冷实测", "热门空调一周体验：制冷速度、噪音、风感、除湿、耗电和安装全测试", "沉淀空调商单样板"],
+      ["7月", "推荐排行榜", "卧室空调", "卧室空调排行榜：静音、无风感、省电、睡眠模式怎么选", "覆盖卧室睡眠需求"],
+      ["7月", "用户决策", "匹数选择", "空调匹数怎么选？10㎡、15㎡、20㎡、30㎡房间对应几匹讲清", "帮助用户减少买小或买大的风险"],
+      ["7月", "商单案例", "省电实测", "空调开一晚到底花多少钱？26℃、睡眠模式、除湿模式耗电实测", "适合省电型产品合作"],
+      ["7月", "推荐排行榜", "母婴空调", "母婴家庭空调排行榜：无风感、静音、恒温、除菌和防直吹怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "安装避坑", "空调安装最容易被加钱的地方：铜管、支架、打孔、高空费、排水管讲清", "解决安装收费焦虑"],
+
+      ["8月", "推荐排行榜", "省电空调", "8月省电空调排行榜：新一级能效、变频、真实电费怎么选", "承接夏季省电搜索需求"],
+      ["8月", "用户决策", "风感体验", "无风感空调到底有没有必要？防直吹、舒适度、制冷速度和价格讲清", "解决舒适型功能选择问题"],
+      ["8月", "商单案例", "睡眠实测", "卧室空调睡眠体验：一整晚温度波动、噪音、风感和耗电表现", "适合卧室舒适型产品合作"],
+      ["8月", "推荐排行榜", "客厅柜机", "客厅柜机排行榜：2匹、3匹、大风量、远距离送风怎么选", "覆盖客厅大空间需求"],
+      ["8月", "用户决策", "除湿模式", "空调除湿模式怎么用？梅雨季、回南天、地下室和卧室使用指南", "服务南方潮湿地区用户"],
+      ["8月", "商单案例", "除湿实测", "空调除湿实测：房间湿度变化、体感温度、耗电量和噪音表现", "沉淀除湿功能合作案例"],
+      ["8月", "推荐排行榜", "新风空调", "新风空调排行榜：通风、除菌、净化、不开窗换气怎么选", "覆盖空气健康需求"],
+      ["8月", "用户决策", "清洁维护", "空调用久了有味道怎么办？滤网、蒸发器、自清洁和深度清洗讲清", "降低长期使用顾虑"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季空调排行榜：中央空调、风管机、挂机、柜机怎么选不后悔", "承接金九银十装修需求"],
+      ["9月", "用户决策", "中央空调", "中央空调装修前怎么规划？外机位、内机位置、吊顶、检修口和排水讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房空调安装实拍：中央空调方案、风管机定位、挂机预留和验收全记录", "适合空调和家装品牌合作"],
+      ["9月", "推荐排行榜", "风管机", "风管机排行榜：客厅隐藏安装、出风舒适、预算和维护怎么选", "承接装修隐藏式空调需求"],
+      ["9月", "用户决策", "外机位", "空调外机位怎么判断够不够？尺寸、散热、噪音、维修和物业限制讲清", "解决外机安装顾虑"],
+      ["9月", "商单案例", "全屋方案", "三室两厅空调方案实拍：中央空调、风管机和挂机组合怎么搭", "沉淀全屋空气方案合作案例"],
+      ["9月", "推荐排行榜", "高端空调", "高端空调排行榜：新风、无风感、除菌、AI控温和低噪音怎么选", "覆盖高预算用户"],
+      ["9月", "用户决策", "售后维护", "空调后期麻烦吗？漏水、漏氟、噪音、清洗、移机和维修费用讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆空调排行榜：老房换新、新房装修、送父母、大客厅怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧机换新", "旧空调换新怎么避坑？拆旧、移机、外机位、管线、墙孔和回收讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房换新", "老房空调换新全过程：拆旧、安装、试机、排水、噪音和验收", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "秋冬制热", "10月制热强的空调排行榜：南方冬天、老人房、卧室怎么选", "提前承接冬季制热需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买空调怎么选？遥控器、语音、制热、静音、省电和售后更重要", "覆盖适老化消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的空调体验：遥控是否简单、制热是否快、噪音是否低", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "1.5匹挂机", "1.5匹挂机排行榜：卧室、书房、小客厅怎么选更省心", "覆盖主流卧室用户"],
+      ["10月", "用户决策", "验收问题", "空调到家怎么验收？外观、安装水平、排水、制冷、制热、噪音和收费检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一空调推荐排行榜：挂机、柜机、中央空调、新风空调闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买空调先看这篇：匹数、能效、风量、噪音、安装、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门空调横评：制冷、制热、省电、噪音、风感谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "中高端款", "双十一中高端空调排行榜：无风感、新风、除菌、AI控温怎么选", "承接中高端消费需求"],
+      ["11月", "用户决策", "避坑", "双十一空调最容易踩的坑：匹数不足、安装加价、铜管收费、售后不清", "提升购买安全感"],
+      ["11月", "商单案例", "柜机横评", "2匹/3匹客厅柜机横评：大空间制冷、送风距离、噪音和耗电谁更稳", "适合客厅柜机场景合作"],
+      ["11月", "推荐排行榜", "性价比", "双十一2500元内空调排行榜：卧室刚需、出租房、老房换新怎么选", "覆盖主流预算用户"],
+      ["11月", "用户决策", "购买检查", "双十一空调保价、安装、退换、拆旧、支架、高空费怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二空调补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买空调是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末全屋舒适体验：空调如何提升制热、除湿、睡眠和家庭幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "冬季制热", "冬季制热空调排行榜：南方家庭、老人房、卧室和客厅怎么选", "提前布局冬季制热需求"],
+      ["12月", "用户决策", "送礼指南", "过年送空调怎么选？送父母、送新家、送改善型家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭空调实测：客厅待客、老人房制热、卧室睡眠和空气循环全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买空调排行榜：挂机、柜机、中央空调、新风空调总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年空调最值得关注的趋势：新一级能效、无风感、新风、除菌和AI控温", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-air-conditioner-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

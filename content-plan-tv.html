@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜智能电视内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:720px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 150px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜智能电视内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括 Mini LED 电视、OLED 电视、大屏电视、游戏电视、护眼电视、影音客厅、壁挂安装、电视柜搭配和真实家庭观影场景实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在尺寸、画质、峰值亮度、分区背光、刷新率、运动补偿、护眼、音响、系统广告、接口、安装和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 智能电视推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括 55 英寸、65 英寸、75 英寸、85 英寸、98 英寸、Mini LED、OLED、游戏电视、客厅大屏和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、国庆、双十一、双十二和年货节，布局智能电视高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打电视墙、壁挂、插座和观影距离；暑期主打家庭观影、游戏娱乐和护眼；双十一主打榜单、横评和价格转化；年货节主打春节观影、送父母和客厅换新。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期观影、Mini LED、大屏电视、游戏电视、装修预留、国庆换新、双十一转化和春节家庭娱乐。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期观影、游戏和护眼；9 月强化装修预留；10 月强化客厅换新；11 月强化双十一榜单和横评；12 月强化双十二补票、年末焕新和春节观影。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>智能电视账号内容规划</h2>
+        <p>围绕 Mini LED、OLED、大屏电视、游戏电视、护眼电视、客厅影院、春节观影和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过尺寸选择、画质横评、亮度分区、运动补偿、系统体验、接口配置和安装实测建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "电视墙预留", "新房装修电视怎么规划？尺寸、观影距离、插座、网线、壁挂和电视柜一次讲清", "帮助装修用户提前规划客厅娱乐中心"],
+      ["装修季", "商单案例", "安装实拍", "大屏电视壁挂安装实拍：电视墙承重、挂架高度、插座隐藏、走线和调试全流程", "适合电视、家装和电视柜品牌合作"],
+      ["装修季", "推荐排行榜", "客厅大屏", "装修季智能电视排行榜：65英寸、75英寸、85英寸、98英寸怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "尺寸选择", "客厅电视买多大不后悔？2米、3米、4米观影距离对应尺寸讲清", "解决大屏尺寸选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618智能电视推荐排行榜：Mini LED、OLED、大屏、游戏电视闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买电视先看这篇：尺寸、画质、亮度、分区、刷新率、接口和系统避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门电视横评：画质、亮度、暗场、运动补偿、音响、系统体验全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "游戏电视", "618游戏电视排行榜：高刷、HDMI 2.1、VRR、低延迟和主机适配怎么选", "覆盖主机游戏和年轻家庭需求"],
+
+      ["暑期", "用户决策", "家庭观影", "暑期在家看电影，电视画质、音响、护眼和会员系统到底哪些重要", "解决暑期家庭娱乐痛点"],
+      ["暑期", "推荐排行榜", "大屏电视", "暑期大屏电视排行榜：75英寸、85英寸、98英寸客厅观影怎么选", "承接暑期家庭观影搜索需求"],
+      ["暑期", "商单案例", "观影实测", "智能电视观影实测：电影、综艺、体育、动画、暗场和白天客厅表现", "适合画质型产品合作"],
+      ["暑期", "用户决策", "护眼电视", "孩子暑期看电视，护眼电视到底有没有用？低蓝光、无频闪、亮度和距离讲清", "覆盖家庭护眼需求"],
+      ["暑期", "推荐排行榜", "护眼电视", "暑期护眼电视排行榜：儿童家庭、老人家庭和长时间观影怎么选", "强化健康观影场景"],
+      ["暑期", "商单案例", "游戏体验", "游戏电视实测：PS5、Switch、Xbox、PC连接延迟、刷新率和画面表现", "适合游戏电视品牌合作"],
+
+      ["国庆节", "用户决策", "客厅换新", "国庆客厅焕新，电视、投影、音响、电视柜先换哪个最值", "解决家庭影音升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆智能电视排行榜：一家三口、二胎家庭、老人家庭、大客厅怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房换大屏电视实拍：尺寸复核、入户搬运、壁挂安装、调色和系统设置", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买电视怎么选？遥控器、开机广告、语音、音量、字体和售后更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一智能电视推荐排行榜：Mini LED、OLED、75英寸、85英寸闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买电视先看这篇：尺寸、画质、分区、峰值亮度、刷新率、接口、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门电视横评：谁画质稳、亮度高、暗场好、运动清晰、系统流畅", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一电视最容易踩的坑：尺寸买小、亮度虚标、分区太少、接口不够、广告多", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端电视", "双十一高端电视排行榜：Mini LED、OLED、百吋大屏、影院客厅怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买电视是不是冤种？哪些 Mini LED、大屏和游戏电视还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二智能电视补票排行榜：刚需款、改善款、送父母、大屏款怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "电视长期使用复盘：系统卡不卡、广告多不多、画质衰减、投屏和会员体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "电视买回家怎么验收？坏点、漏光、音响、接口、系统、遥控器和壁挂检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节观影", "过年前换电视值不值？春节看春晚、电影、体育、游戏该怎么选", "将智能电视转化为春节家庭娱乐刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭电视实测：春晚、电影、亲子动画、体育赛事、K歌和游戏全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节电视送礼排行榜：送父母、送新家、送改善型家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买智能电视排行榜：Mini LED、OLED、大屏、游戏电视总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期观影", "暑期智能电视排行榜：Mini LED、OLED、大屏、游戏电视怎么选", "承接暑期家庭娱乐需求"],
+      ["7月", "用户决策", "参数科普", "第一次买电视，尺寸、分辨率、亮度、分区、刷新率、MEMC到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "画质实测", "热门智能电视一周体验：电影、综艺、体育、动画、暗场和白天客厅全测试", "沉淀智能电视商单样板"],
+      ["7月", "推荐排行榜", "护眼电视", "暑期护眼电视排行榜：儿童家庭、老人家庭、长时间观影怎么选", "覆盖暑期护眼需求"],
+      ["7月", "用户决策", "品类选择", "电视、投影、激光电视到底买哪个？客厅影音方案一次讲清", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "游戏实测", "游戏电视体验：PS5、Switch、Xbox高刷、低延迟、VRR和画面表现", "适合游戏电视产品合作"],
+      ["7月", "推荐排行榜", "75英寸", "75英寸电视排行榜：客厅主流尺寸怎么选才不后悔", "覆盖主流大屏用户"],
+      ["7月", "用户决策", "安装预留", "电视装修前怎么预留？插座、网线、壁挂高度、电视柜和走线一次讲清", "解决装修前置焦虑"],
+
+      ["8月", "推荐排行榜", "Mini LED", "8月Mini LED电视排行榜：峰值亮度、分区数量、控光和画质怎么选", "承接画质升级搜索需求"],
+      ["8月", "用户决策", "画质参数", "Mini LED和OLED到底买哪个？亮度、暗场、寿命、价格和使用场景讲清", "解决高端品类选择问题"],
+      ["8月", "商单案例", "Mini LED实测", "Mini LED电视实测：暗场控光、白天亮度、HDR电影、体育赛事表现", "适合高画质电视品牌合作"],
+      ["8月", "推荐排行榜", "85英寸", "85英寸电视排行榜：大客厅、影音房、家庭观影怎么选", "覆盖大屏改善型需求"],
+      ["8月", "用户决策", "系统体验", "电视系统怎么选？开机广告、投屏、应用、语音助手和老人模式讲清", "降低长期使用顾虑"],
+      ["8月", "商单案例", "投屏体验", "智能电视投屏体验：手机、平板、电脑、NAS、网盘和会员播放全测试", "沉淀系统体验合作案例"],
+      ["8月", "推荐排行榜", "老人家庭", "适合父母家的电视排行榜：操作简单、声音清楚、字体大、广告少怎么选", "覆盖送父母需求"],
+      ["8月", "用户决策", "功能避坑", "电视哪些功能真有用？高刷、运动补偿、控光分区、HDMI 2.1、远场语音讲清", "服务理性购买用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季智能电视排行榜：新房客厅电视怎么选不后悔", "承接金九银十装修需求"],
+      ["9月", "用户决策", "电视墙预留", "电视墙怎么做才不翻车？插座隐藏、网线、壁挂高度、电视柜尺寸讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房客厅", "新房大屏电视安装实拍：入户、壁挂、走线、调色、投屏和音响联动全记录", "适合家电和家装品牌合作"],
+      ["9月", "推荐排行榜", "高端电视", "高端智能电视排行榜：Mini LED、OLED、百吋大屏、影院客厅怎么选", "承接高预算用户"],
+      ["9月", "用户决策", "观影距离", "电视买多大合适？55、65、75、85、98英寸对应客厅距离讲清", "解决尺寸选择顾虑"],
+      ["9月", "商单案例", "影音联动", "电视+回音壁+游戏主机体验：客厅影院到底怎么搭才舒服", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "98英寸", "98英寸电视排行榜：百吋大屏入户、安装、画质和预算怎么选", "覆盖超大屏家庭"],
+      ["9月", "用户决策", "售后维护", "电视后期麻烦吗？系统卡顿、遥控器、屏幕清洁、质保和维修讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆智能电视排行榜：老房换新、新房装修、送父母、大客厅怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧机换新", "旧电视换新怎么避坑？尺寸、入户、壁挂、旧机处理、接口和系统迁移讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房换新", "老房换大屏电视全过程：尺寸复核、入户搬运、壁挂安装、调试和验收", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "客厅影院", "10月客厅影院电视排行榜：大屏、画质、音响和系统体验怎么选", "承接秋冬家庭观影需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买电视怎么选？遥控器、语音、广告、字体、声音和售后更重要", "覆盖适老化消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的电视体验：不用复杂操作能不能看、语音好不好用、广告多不多", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "游戏电视", "游戏电视排行榜：高刷、HDMI 2.1、低延迟、VRR和主机适配怎么选", "覆盖游戏娱乐需求"],
+      ["10月", "用户决策", "验收问题", "电视到家怎么验收？坏点、漏光、亮度、音响、接口、系统和壁挂检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一智能电视推荐排行榜：Mini LED、OLED、75英寸、85英寸闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买电视先看这篇：尺寸、画质、亮度、分区、刷新率、接口、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门电视横评：画质、亮度、暗场、运动补偿、音响、系统谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "中高端款", "双十一中高端电视排行榜：Mini LED、OLED、大屏影院怎么选", "承接中高端消费需求"],
+      ["11月", "用户决策", "避坑", "双十一电视最容易踩的坑：尺寸买小、亮度虚标、接口不够、系统广告、安装加价", "提升购买安全感"],
+      ["11月", "商单案例", "大屏横评", "75/85英寸大屏电视横评：客厅观影、体育赛事、游戏和白天观看谁更稳", "适合大屏电视场景合作"],
+      ["11月", "推荐排行榜", "性价比", "双十一3000元内电视排行榜：刚需、卧室、父母房、老房换新怎么选", "覆盖主流预算用户"],
+      ["11月", "用户决策", "购买检查", "双十一电视保价、安装、退换、壁挂、会员、质保怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二智能电视补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买电视是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末客厅焕新体验：大屏电视如何提升观影、游戏和家庭娱乐幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前电视排行榜：看春晚、电影、体育、亲子动画和游戏怎么选", "提前布局春节家庭需求"],
+      ["12月", "用户决策", "送礼指南", "过年送电视怎么选？送父母、送新家、送改善型家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭电视实测：春晚、电影、动画、K歌、体育赛事和游戏全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买智能电视排行榜：Mini LED、OLED、大屏、游戏电视总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年电视最值得关注的趋势：Mini LED、大屏化、高刷游戏、护眼和低广告系统", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-smart-tv-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜扫地机器人内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:720px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 150px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong {
+      color:var(--text);
+    }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer {
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar {
+        align-items:flex-start;
+      }
+
+      .brand-title {
+        white-space:normal;
+      }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span {
+        text-align:left;
+      }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header {
+        display:none;
+      }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child {
+        border-bottom:none;
+      }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis {
+        white-space:normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜扫地机器人内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括扫拖一体、全能基站、自动集尘、自动洗拖布、自动上下水、热水洗拖布、机械臂贴边、宠物毛发和真实家庭场景实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在吸力、避障、导航、拖地能力、毛发防缠绕、地毯识别、基站维护、上下水安装、噪音、耗材和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 扫地机器人推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括全能基站、自动上下水、宠物家庭、母婴家庭、大户型、小户型、装修预留、春节大扫除和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>已删除不适合家电品类的「开学季」，改为「暑期」与「夏季清洁」节点，围绕装修、大促、家庭换新和春节大扫除做内容布局。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打基站位置、柜体和自动上下水预留；暑期主打高频拖地、宠物毛发、厨房油污和基站异味；双十一主打榜单、横评和价格转化；年货节主打春节大扫除和送父母。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期清洁、宠物家庭、装修预留、国庆换新、双十一转化、双十二补票和春节大扫除。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期清洁和宠物毛发；9 月强化装修预留；10 月强化家庭换新；11 月强化双十一榜单和横评；12 月强化补票、年末焕新和春节大扫除。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>扫地机器人账号内容规划</h2>
+        <p>围绕全能基站、自动上下水、宠物家庭、大户型清洁、母婴家庭、春节大扫除和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过吸拖避障、毛发防缠绕、边角清洁、基站维护、上下水安装和耗材成本实测建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "上下水预留", "新房装修扫地机器人怎么规划？基站位置、上下水、插座、柜体尺寸一次讲清", "帮助装修用户提前规划清洁家电位"],
+      ["装修季", "商单案例", "安装实拍", "扫地机器人自动上下水安装实拍：进水、排水、插座、柜体、检修空间怎么留", "适合扫地机、家装和定制柜品牌合作"],
+      ["装修季", "推荐排行榜", "全能基站", "装修季扫地机器人排行榜：自动上下水、全能基站、嵌入柜体怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "空间布局", "扫地机器人基站放哪里最好？卫生间、阳台、厨房、家政间优缺点讲清", "解决空间布局选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618扫地机器人推荐排行榜：全能基站、自动上下水、宠物款、大户型闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买扫地机器人先看这篇：吸力、避障、拖地、基站、毛发、耗材避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门扫地机器人横评：吸尘、拖地、避障、贴边、毛发、基站清洁全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "宠物家庭", "618养宠家庭扫地机器人排行榜：毛发防缠绕、自动集尘、除菌拖地怎么选", "覆盖宠物家庭需求"],
+
+      ["暑期", "用户决策", "夏季清洁", "夏天地面更容易脏，扫地机器人拖地、除尘、除菌到底哪些功能真有用", "解决暑期高频清洁痛点"],
+      ["暑期", "推荐排行榜", "拖地能力", "暑期拖地强的扫地机器人排行榜：热水洗拖布、加压拖地、机械臂贴边怎么选", "承接拖地清洁搜索需求"],
+      ["暑期", "商单案例", "拖地实测", "扫地机器人拖地实测：酱油、咖啡、灰尘、脚印、厨房油污能不能拖干净", "适合拖地技术型产品合作"],
+      ["暑期", "用户决策", "基站维护", "扫地机器人基站会不会臭？清水箱、污水箱、拖布、烘干和清洁维护讲清", "降低用户长期使用顾虑"],
+      ["暑期", "推荐排行榜", "宠物家庭", "暑期宠物家庭扫地机器人排行榜：猫毛、狗毛、猫砂、爪印怎么清洁", "覆盖暑期养宠高频清洁场景"],
+      ["暑期", "商单案例", "宠物实测", "宠物家庭扫拖实测：猫毛、狗毛、猫砂、爪印、饭粒和异味清洁记录", "适合宠物家庭场景合作"],
+
+      ["国庆节", "用户决策", "家庭换新", "国庆家务减负，扫地机器人、洗地机、吸尘器先买哪个最值", "解决家庭清洁电器选择优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆扫地机器人排行榜：一家三口、二胎家庭、宠物家庭、老人家庭怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房扫地机器人使用实拍：门槛、地毯、杂物、家具腿和基站摆放全流程", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买扫地机器人怎么选？操作简单、自动洗拖布、自动集尘更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一扫地机器人推荐排行榜：全能基站、自动上下水、宠物款、大户型闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买扫地机器人先看这篇：吸力、避障、拖地、基站、耗材、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门扫地机器人横评：扫得净、拖得干、避障稳、毛发少谁更强", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一扫地机器人最容易踩的坑：虚标吸力、避障差、拖布发臭、耗材贵、上下水装不了", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端款", "双十一高端扫地机器人排行榜：机械臂贴边、热水洗拖布、自动上下水怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买扫地机器人是不是冤种？哪些全能基站和宠物款还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二扫地机器人补票排行榜：刚需款、改善款、宠物款、送父母怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "扫地机器人长期使用复盘：拖布异味、毛发缠绕、地图稳定、耗材和维护成本", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "扫地机器人买回家怎么验收？建图、避障、拖地、回洗、集尘、上下水检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节大扫除", "过年前大扫除，扫地机器人、洗地机、吸尘器怎么搭配最省力", "将扫地机器人转化为春节家庭刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭扫拖实测：瓜子壳、饼干渣、宠物毛、厨房污渍、客厅灰尘全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节扫地机器人送礼排行榜：送父母、送新家、送养宠家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买扫地机器人排行榜：全能基站、自动上下水、宠物款总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期清洁", "暑期扫地机器人排行榜：全能基站、自动上下水、宠物款、小户型怎么选", "承接暑期高频清洁需求"],
+      ["7月", "用户决策", "参数科普", "第一次买扫地机器人，吸力、导航、避障、拖地、基站、耗材到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "全能基站", "热门全能基站扫地机器人一周体验：扫拖、回洗、烘干、集尘、噪音全测试", "沉淀扫地机器人商单样板"],
+      ["7月", "推荐排行榜", "小户型", "小户型扫地机器人排行榜：窄机身、低机身、避障好、基站小怎么选", "覆盖小户型用户"],
+      ["7月", "用户决策", "品类选择", "扫地机器人、洗地机、吸尘器到底买哪个？懒人家庭清洁方案讲清", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "避障实测", "扫地机器人避障体验：拖鞋、电线、玩具、宠物便便、桌椅腿全测试", "适合避障能力产品合作"],
+      ["7月", "推荐排行榜", "母婴家庭", "母婴家庭扫地机器人排行榜：除菌拖地、低噪音、避障和基站清洁怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "安装预留", "扫地机器人装修前怎么预留？上下水、插座、基站尺寸、柜体空间一次讲清", "解决装修前置焦虑"],
+
+      ["8月", "推荐排行榜", "宠物家庭", "8月养宠家庭扫地机器人排行榜：毛发防缠绕、自动集尘、除菌拖地怎么选", "承接宠物清洁搜索需求"],
+      ["8月", "用户决策", "毛发问题", "养宠家庭扫地机器人怎么选？滚刷、吸力、集尘、拖布清洁和除味讲清", "解决养宠家庭核心痛点"],
+      ["8月", "商单案例", "宠物实测", "宠物家庭扫拖实测：猫毛、狗毛、猫砂、爪印、饭粒和异味清洁记录", "适合宠物家庭场景合作"],
+      ["8月", "推荐排行榜", "自动上下水", "自动上下水扫地机器人排行榜：装修预留、免倒水、嵌入柜体怎么选", "覆盖高端省心需求"],
+      ["8月", "用户决策", "基站维护", "扫地机器人基站怎么维护？清水箱、污水箱、集尘袋、滤网、拖布多久换", "降低长期使用成本疑虑"],
+      ["8月", "商单案例", "热水洗拖布", "热水洗拖布实测：油污、泥印、酱汁、宠物爪印和拖布洁净度", "沉淀拖地技术合作案例"],
+      ["8月", "推荐排行榜", "老人家庭", "适合父母家的扫地机器人排行榜：操作简单、自动集尘、自动洗拖布怎么选", "覆盖送父母需求"],
+      ["8月", "用户决策", "功能避坑", "扫地机器人哪些功能真有用？热水洗拖布、机械臂贴边、自动上下水、AI避障讲清", "服务理性购买用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季扫地机器人排行榜：新房清洁家电怎么选不后悔", "承接金九银十装修需求"],
+      ["9月", "用户决策", "柜体预留", "扫地机器人嵌入家政柜怎么做？高度、宽度、深度、上下水和检修空间讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房清洁区", "新房扫地机器人安装实拍：基站、上下水、插座、柜体和首次建图全记录", "适合家电和家装品牌合作"],
+      ["9月", "推荐排行榜", "高端全能", "高端扫地机器人排行榜：自动上下水、机械臂、热水洗拖布、智能避障怎么选", "承接高预算用户"],
+      ["9月", "用户决策", "地面适配", "木地板、瓷砖、地毯都能用扫地机器人吗？拖地水量和地毯识别讲清", "解决地面适配顾虑"],
+      ["9月", "商单案例", "地图导航", "扫地机器人建图体验：多楼层、禁区、房间命名、断点续扫和路线规划", "沉淀智能导航合作案例"],
+      ["9月", "推荐排行榜", "大户型", "大户型扫地机器人排行榜：续航、补水、回洗、地图稳定和覆盖率怎么选", "覆盖大户型家庭"],
+      ["9月", "用户决策", "售后维护", "扫地机器人后期麻烦吗？耗材、清洁、维修、地图丢失、基站异味讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆扫地机器人排行榜：老房换新、新房装修、宠物家庭、送父母怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧房使用", "旧房用扫地机器人怎么避坑？门槛、地毯、杂物、电线、基站位置讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房实测", "老房扫地机器人全过程：首次建图、门槛通过、家具避障、基站摆放和维护", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "秋冬家务", "10月扫地机器人排行榜：秋冬灰尘、宠物掉毛、地面拖洗怎么选", "提前承接秋冬清洁需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买扫地机器人怎么选？按键操作、APP、语音、自动维护和售后更重要", "覆盖适老化消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的扫地机器人体验：不用APP能不能用、自动清洁是否省心", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "拖地强款", "拖地强的扫地机器人排行榜：旋转拖布、平板震动、加压拖地谁更适合家用", "覆盖拖地能力需求"],
+      ["10月", "用户决策", "验收问题", "扫地机器人到家怎么验收？建图、避障、吸力、拖地、回洗、烘干、集尘检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一扫地机器人推荐排行榜：全能基站、自动上下水、宠物款、大户型闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买扫地机器人先看这篇：吸力、避障、拖地、基站、耗材、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门扫地机器人横评：吸尘、拖地、避障、毛发、贴边谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "中高端款", "双十一中高端扫地机器人排行榜：热水洗拖布、机械臂贴边、自动上下水怎么选", "承接中高端消费需求"],
+      ["11月", "用户决策", "避坑", "双十一扫地机器人最容易踩的坑：避障虚标、拖布臭、毛发缠绕、耗材贵、售后不清", "提升购买安全感"],
+      ["11月", "商单案例", "宠物横评", "宠物家庭扫地机器人横评：毛发、猫砂、爪印、异味、集尘和滚刷谁更稳", "适合宠物家庭场景合作"],
+      ["11月", "推荐排行榜", "性价比", "双十一3000元内扫地机器人排行榜：刚需、小户型、家庭换新怎么选", "覆盖主流预算用户"],
+      ["11月", "用户决策", "购买检查", "双十一扫地机器人保价、安装、退换、上下水、耗材、质保怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二扫地机器人补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买扫地机器人是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末家务减负体验：扫地机器人如何提升地面清洁和家庭幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前扫地机器人排行榜：大扫除、亲戚来访、宠物掉毛家庭怎么选", "提前布局春节家庭需求"],
+      ["12月", "用户决策", "送礼指南", "过年送扫地机器人怎么选？送父母、送新家、送养宠家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭扫地机器人实测：年货碎屑、灰尘、厨房污渍、宠物毛全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买扫地机器人排行榜：全能基站、自动上下水、宠物款总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年扫地机器人最值得关注的趋势：机械臂贴边、热水洗拖布、AI避障、自动上下水", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-robot-vacuum-content-theme-v2";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

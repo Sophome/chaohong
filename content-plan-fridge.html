@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜冰箱内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:720px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 150px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜冰箱内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括嵌入式冰箱、零嵌冰箱、十字门、法式多门、对开门、母婴冰箱、保鲜科技、除菌净味、制冰饮水和真实家庭囤货场景实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在容量、门型、尺寸预留、散热方式、保鲜、冷冻、净味、能耗、噪音、分区、制冰、安装和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 冰箱推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括 400L、500L、600L、嵌入式、零嵌、法式多门、十字门、对开门、母婴家庭、囤货家庭和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、国庆、双十一、双十二和年货节，布局冰箱高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打冰箱位、零嵌、散热和柜体预留；暑期主打保鲜、制冰、冷饮、母婴食材和囤货；双十一主打榜单、横评和价格转化；年货节主打春节囤货、送父母和厨房换新。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期保鲜、嵌入式冰箱、母婴家庭、装修预留、国庆换新、双十一转化、双十二补票和春节囤货。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期保鲜、制冰和母婴囤货；9 月强化装修预留和零嵌；10 月强化厨房换新；11 月强化双十一榜单和横评；12 月强化补票、年末焕新和春节年货囤储。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>冰箱账号内容规划</h2>
+        <p>围绕嵌入式冰箱、零嵌冰箱、法式多门、十字门、母婴冰箱、大容量囤货、春节年货和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过尺寸预留、容量选择、保鲜横评、净味除菌、冷冻能力、能耗噪音、分区收纳和安装验收建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "冰箱位预留", "新房装修冰箱怎么规划？尺寸、散热、插座、柜体、开门角度一次讲清", "帮助装修用户提前规划厨房家电位"],
+      ["装修季", "商单案例", "零嵌安装", "零嵌冰箱安装实拍：柜体尺寸、两侧缝隙、底部散热、踢脚线和开门测试", "适合冰箱、家装和定制柜品牌合作"],
+      ["装修季", "推荐排行榜", "嵌入式冰箱", "装修季冰箱排行榜：零嵌、平嵌、法式多门、十字门怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "门型选择", "冰箱选十字门、法式多门还是对开门？不同厨房和家庭人数怎么选", "解决门型与户型适配问题"],
+
+      ["618", "推荐排行榜", "全品类", "618冰箱推荐排行榜：零嵌、法式多门、十字门、对开门、大容量闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买冰箱先看这篇：容量、保鲜、净味、能耗、噪音、散热和安装避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门冰箱横评：保鲜、冷冻、净味、噪音、能耗、收纳和制冰全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "母婴家庭", "618母婴家庭冰箱排行榜：分区存储、除菌净味、恒温保鲜怎么选", "覆盖母婴和精细化囤货需求"],
+
+      ["暑期", "用户决策", "夏季保鲜", "夏天食材更容易坏，冰箱保鲜、净味、冷冻和分区到底哪些功能真有用", "解决暑期高频保鲜痛点"],
+      ["暑期", "推荐排行榜", "保鲜冰箱", "暑期保鲜强的冰箱排行榜：果蔬、肉类、海鲜、熟食怎么存更久", "承接夏季保鲜搜索需求"],
+      ["暑期", "商单案例", "保鲜实测", "冰箱保鲜实测：草莓、绿叶菜、牛排、海鲜、熟食放 3 天表现如何", "适合保鲜技术型产品合作"],
+      ["暑期", "用户决策", "制冰冷饮", "带制冰和饮水功能的冰箱值不值？安装、清洁、滤芯和使用成本讲清", "覆盖暑期冷饮场景"],
+      ["暑期", "推荐排行榜", "制冰冰箱", "暑期制冰冰箱排行榜：自动制冰、净水饮水、冷饮家庭怎么选", "强化夏季场景转化"],
+      ["暑期", "商单案例", "囤货实测", "一家四口暑期囤货实测：水果、饮料、雪糕、肉类、辅食能装多少", "适合大容量冰箱合作"],
+
+      ["国庆节", "用户决策", "厨房换新", "国庆厨房焕新，冰箱、洗碗机、蒸烤箱、净水器先换哪个最值", "解决厨房家电升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆冰箱排行榜：一家三口、二胎家庭、老人家庭、大容量囤货怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房换冰箱实拍：尺寸复核、入户搬运、门洞通过、摆放散热和通电验收", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买冰箱怎么选？操作简单、分区清楚、噪音低、保鲜稳更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一冰箱推荐排行榜：零嵌、法式多门、十字门、大容量闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买冰箱先看这篇：尺寸、容量、保鲜、净味、能耗、安装、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门冰箱横评：谁保鲜稳、净味强、收纳好、噪音低、能耗省", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一冰箱最容易踩的坑：尺寸买错、散热没留、容量虚大、串味、噪音大", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端冰箱", "双十一高端冰箱排行榜：零嵌、多循环、真空保鲜、自动制冰怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买冰箱是不是冤种？哪些零嵌、大容量和母婴冰箱还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二冰箱补票排行榜：刚需款、改善款、送父母、年货囤货怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "冰箱长期使用复盘：串味、结霜、噪音、能耗、收纳和保鲜表现怎么样", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "冰箱买回家怎么验收？外观、制冷、噪音、门封、水平、散热和异味检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节囤货", "过年前囤年货，冰箱容量、冷冻、净味和分区怎么选最省心", "将冰箱转化为春节家庭刚需"],
+      ["年货节", "商单案例", "年货场景", "春节家庭冰箱囤货实测：肉类、海鲜、水果、饮料、熟食、年菜全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节冰箱送礼排行榜：送父母、送新家、送改善型家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买冰箱排行榜：零嵌、法式多门、十字门、大容量总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期保鲜", "暑期冰箱排行榜：零嵌、法式多门、十字门、大容量怎么选", "承接暑期食材保鲜需求"],
+      ["7月", "用户决策", "参数科普", "第一次买冰箱，容量、门型、循环、保鲜、净味、能耗到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "保鲜实测", "热门冰箱一周体验：果蔬、肉类、熟食、饮料、雪糕和噪音全测试", "沉淀冰箱商单样板"],
+      ["7月", "推荐排行榜", "母婴冰箱", "母婴家庭冰箱排行榜：辅食、母乳、除菌、分区和恒温怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "品类选择", "冰箱买十字门、法式多门、对开门还是零嵌？不同家庭怎么选", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "制冰实测", "制冰冰箱体验：出冰速度、冰块形态、饮水便利、清洁和滤芯成本", "适合制冰饮水产品合作"],
+      ["7月", "推荐排行榜", "500L冰箱", "500L冰箱排行榜：一家三口、二胎家庭、日常囤货怎么选", "覆盖主流家庭容量需求"],
+      ["7月", "用户决策", "安装预留", "冰箱装修前怎么预留？宽深高、插座、散热、柜体、开门角度一次讲清", "解决装修前置焦虑"],
+
+      ["8月", "推荐排行榜", "零嵌冰箱", "8月零嵌冰箱排行榜：两侧少留缝、底部散热、柜体齐平怎么选", "承接嵌入式装修搜索需求"],
+      ["8月", "用户决策", "保鲜技术", "冰箱保鲜技术怎么选？干湿分储、真空、微冻、恒温和多循环讲清", "解决高端功能选择问题"],
+      

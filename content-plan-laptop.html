@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜笔记本电脑内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --bg: #0b0f17;
+      --bg-soft: #111827;
+      --card: rgba(18, 24, 37, 0.92);
+      --card-2: rgba(23, 31, 47, 0.92);
+      --table-head: #1f2937;
+      --table-hover: rgba(56, 189, 248, 0.06);
+
+      --text: #f8fafc;
+      --text-soft: #d7dee8;
+      --muted: #94a3b8;
+      --line: rgba(148, 163, 184, 0.18);
+      --line-soft: rgba(148, 163, 184, 0.12);
+
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --accent-3: #2dd4bf;
+
+      --type-business: #f59e0b;
+      --type-user: #38bdf8;
+      --type-ranking: #22c55e;
+
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+
+      --bg: #f4f7fb;
+      --bg-soft: #eef3f8;
+      --card: rgba(255, 255, 255, 0.9);
+      --card-2: rgba(248, 250, 252, 0.94);
+      --table-head: #e8eef6;
+      --table-hover: rgba(37, 99, 235, 0.055);
+
+      --text: #111827;
+      --text-soft: #334155;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.12);
+      --line-soft: rgba(15, 23, 42, 0.08);
+
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+      --accent-3: #0f766e;
+
+      --type-business: #d97706;
+      --type-user: #2563eb;
+      --type-ranking: #16a34a;
+
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+      font-weight: 400;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent-2) 15%, transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb, var(--accent-3) 12%, transparent), transparent 34%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 48%, var(--bg) 100%);
+    }
+
+    .page {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 15px;
+      font-weight: 650;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 26%, transparent);
+    }
+
+    .brand-title {
+      min-width: 0;
+      font-size: clamp(18px, 1.5vw, 21px);
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .theme-toggle {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: var(--card-2);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 500;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+      background: color-mix(in srgb, var(--card-2) 88%, var(--accent));
+    }
+
+    .card,
+    .section,
+    .bottom-panel {
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(17px, 1.2vw, 20px);
+      line-height: 1.38;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.72;
+      font-weight: 400;
+    }
+
+    .business-color {
+      color: var(--type-business);
+    }
+
+    .user-color {
+      color: var(--type-user);
+    }
+
+    .ranking-color {
+      color: var(--type-ranking);
+    }
+
+    .section {
+      margin-bottom: 18px;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(26px, 2.4vw, 38px);
+      line-height: 1.16;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+    }
+
+    .section-title span {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      text-align: right;
+      font-weight: 400;
+    }
+
+    .type-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 82px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      background: color-mix(in srgb, currentColor 8%, transparent);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .type-business {
+      color: var(--type-business);
+    }
+
+    .type-user {
+      color: var(--type-user);
+    }
+
+    .type-ranking {
+      color: var(--type-ranking);
+    }
+
+    .flex-table {
+      width: 100%;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card-2);
+    }
+
+    .flex-row {
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid var(--line-soft);
+      transition: background 0.18s ease;
+    }
+
+    .flex-row:last-child {
+      border-bottom: none;
+    }
+
+    .flex-row:not(.header):hover {
+      background: var(--table-hover);
+    }
+
+    .flex-row.header {
+      background: var(--table-head);
+    }
+
+    .cell {
+      min-width: 0;
+      padding: 14px 16px;
+      border-right: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.52;
+      font-weight: 400;
+    }
+
+    .cell:last-child {
+      border-right: none;
+    }
+
+    .flex-row.header .cell {
+      justify-content: center;
+      text-align: center;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .c-node {
+      flex: 0 0 116px;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    .c-type {
+      flex: 0 0 146px;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .c-category {
+      flex: 0 0 142px;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    .c-title {
+      flex: 1.65;
+      color: var(--text);
+    }
+
+    .c-value {
+      flex: 1.14;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .ellipsis {
+      display: block;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .bottom-panel {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .bottom-flex {
+      display: flex;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .bottom-item {
+      flex: 1;
+      min-width: 0;
+      padding: 4px 0;
+    }
+
+    .bottom-item + .bottom-item {
+      padding-left: 18px;
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .bottom-item h2 {
+      margin: 0 0 8px;
+      font-size: clamp(18px, 1.35vw, 22px);
+      line-height: 1.35;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .bottom-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.76;
+      font-weight: 400;
+    }
+
+    @media (max-width: 1100px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-flex {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .bottom-item + .bottom-item {
+        padding-left: 0;
+        padding-top: 14px;
+        border-left: none;
+        border-top: 1px solid var(--line-soft);
+      }
+    }
+
+    @media (max-width: 900px) {
+      html {
+        font-size: 15.5px;
+      }
+
+      .page {
+        width: min(100% - 24px, 760px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .brand-title {
+        white-space: normal;
+      }
+
+      .section {
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-title span {
+        text-align: left;
+      }
+
+      .flex-table {
+        border: none;
+        background: transparent;
+        display: grid;
+        gap: 12px;
+      }
+
+      .flex-row.header {
+        display: none;
+      }
+
+      .flex-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        border: 1px solid var(--line-soft);
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--card-2);
+      }
+
+      .cell {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--line-soft);
+        padding: 12px 14px;
+      }
+
+      .cell:last-child {
+        border-bottom: none;
+      }
+
+      .cell::before {
+        content: attr(data-label);
+        flex: 0 0 88px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .c-node,
+      .c-type,
+      .c-category,
+      .c-title,
+      .c-value {
+        flex: none;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .ellipsis {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        flex-direction: column;
+      }
+
+      .theme-toggle {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜笔记本电脑内容规划表</div>
+      </div>
+
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括新品评测、真实性能测试、散热续航体验、办公创作场景和游戏性能横评。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在处理器、显卡、内存、硬盘、屏幕、重量、续航、接口和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="ranking-color">03 笔记本电脑推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括轻薄本、全能本、游戏本、AI PC、设计师本、学生本和商务本榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕开学季、国庆、双十一、双十二和年货节，提前布局笔记本电脑高搜索、高转化选题。</span>
+      </div>
+
+      <div class="flex-table">
+        <div class="flex-row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-category">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>开学季主打学生党和专业适配，国庆主打办公学习与游戏升级，双十一主打排行榜、横评和价格转化，双十二主打补票，年货节主打送礼和年度榜单。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 9 期，覆盖榜单、决策、评测、横评和节点转化内容。</span>
+      </div>
+
+      <div class="flex-table">
+        <div class="flex-row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-category">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>每月保持排行榜、用户决策、商单案例的稳定比例；大促月份提高榜单、横评、价格追踪和避坑内容占比。
+      </p>
+    </section>
+
+    <footer class="bottom-panel">
+      <div class="bottom-flex">
+        <div class="bottom-item">
+          <h2>笔记本电脑账号内容规划</h2>
+          <p>围绕学生党、职场人、游戏玩家、创作者、商务用户和大促消费节点，沉淀推荐排行榜、用户决策内容与品牌商单案例。</p>
+        </div>
+
+        <div class="bottom-item">
+          <h2>内容资产沉淀方向</h2>
+          <p>通过节点选题承接购买需求，通过排行榜内容获取搜索流量，通过商单案例提升品牌合作说服力，并用参数科普、避坑指南和真实体验内容建立长期信任。</p>
+        </div>
+
+        <div class="bottom-item">
+          <h2>版权声明</h2>
+          <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["开学季", "用户决策", "学生本", "大学生第一台笔记本电脑怎么选？专业、预算、性能、重量一次讲清", "帮助学生党按专业和预算选择电脑"],
+      ["开学季", "商单案例", "轻薄本", "轻薄本开学一周体验：上课、写论文、网课、社团、外出续航全测试", "适合品牌做校园场景种草"],
+      ["开学季", "用户决策", "游戏本", "大学生要不要买游戏本？性能、重量、噪音、续航和宿舍使用全分析", "解决学生党游戏本购买焦虑"],
+      ["开学季", "推荐排行榜", "学生电脑", "2025大学生笔记本电脑推荐排行榜：文科、理工、设计、游戏怎么选", "承接开学季高搜索需求"],
+      ["开学季", "商单案例", "全能本", "一台全能本能不能兼顾学习、剪辑、建模和游戏？真实使用体验", "适合全能本品牌合作"],
+
+      ["国庆节", "用户决策", "办公本", "国庆换电脑，职场人轻薄本怎么选？续航、屏幕、接口、便携全讲清", "覆盖职场换新需求"],
+      ["国庆节", "商单案例", "AI PC", "AI PC真实体验：会议纪要、文档处理、修图剪辑、办公效率提升多少", "适合AI PC新品教育和种草"],
+      ["国庆节", "推荐排行榜", "游戏本", "国庆游戏本推荐排行榜：RTX显卡、散热、屏幕、性能释放怎么排", "承接假期娱乐升级搜索"],
+      ["国庆节", "用户决策", "创作本", "剪辑、修图、建模买什么笔记本？CPU、显卡、内存、屏幕怎么选", "覆盖创作者选购需求"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一笔记本电脑推荐排行榜：3000到10000元各价位怎么选", "大促期间强转化和搜索流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买笔记本电脑先看这篇：处理器、显卡、内存、屏幕避坑指南", "帮助用户快速确定购买方向"],
+      ["双十一", "商单案例", "横评", "双十一热门笔记本电脑横评：轻薄本、全能本、游戏本谁更值得买", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一买笔记本最容易踩的坑：低色域屏、缩水接口、低功耗显卡、扩展性差", "提升用户购买安全感"],
+      ["双十一", "商单案例", "游戏本", "热门游戏本性能实测：帧率、温度、噪音、键盘、屏幕和续航全测", "适合游戏本品牌合作"],
+      ["双十一", "推荐排行榜", "轻薄本", "双十一轻薄本排行榜：办公、学习、出差、高续航怎么选", "承接轻薄办公人群"],
+      ["双十一", "推荐排行榜", "全能本", "双十一全能本排行榜：剪辑、办公、轻游戏、AI体验怎么选", "覆盖主流复合需求用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买笔记本是不是冤种？哪些电脑现在入手更合适", "解决双十一错过后的购买焦虑"],
+      ["双十二", "商单案例", "办公本", "年末换一台办公笔记本：续航、键盘、屏幕、会议、外接显示器全测试", "适合办公本品牌合作"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二笔记本电脑补票排行榜：错过双十一后还有哪些值得买", "承接延迟决策用户"],
+      ["双十二", "用户决策", "旧机换新", "旧电脑卡顿要不要换？内存、硬盘、系统、处理器瓶颈怎么判断", "覆盖年末换机需求"],
+
+      ["年货节", "用户决策", "送礼电脑", "过年送笔记本电脑怎么选？送学生、送父母、送对象、送自己完全不同", "将笔记本转化为礼物消费场景"],
+      ["年货节", "商单案例", "家庭电脑", "一台笔记本能不能全家用？办公、网课、追剧、修图、小游戏全测试", "适合大众价位段笔记本种草"],
+      ["年货节", "推荐排行榜", "送礼榜单", "年货节笔记本电脑送礼排行榜：学生、职场、游戏、商务怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买笔记本电脑排行榜：轻薄本、全能本、游戏本、AI PC总结", "适合作为年度搜索流量和招商样板内容"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期换新", "暑期笔记本电脑推荐排行榜：3000、5000、7000、10000元怎么选", "承接暑期换新和学生购机需求"],
+      ["7月", "用户决策", "参数科普", "第一次买笔记本，CPU、显卡、内存、硬盘、屏幕到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "轻薄本", "热门轻薄本真实体验：办公、网课、出差、续航、充电全测试", "沉淀轻薄本商单样板"],
+      ["7月", "推荐排行榜", "千元预算", "3000元到4000元笔记本排行榜：适合学生党和基础办公的机型", "覆盖低预算高搜索人群"],
+      ["7月", "用户决策", "专业适配", "不同大学专业怎么选笔记本？文科、理工、设计、编程、医学全讲清", "帮助学生确定配置方向"],
+      ["7月", "商单案例", "全能本", "全能本一周体验：办公、剪辑、轻游戏、外接屏和移动办公实测", "适合全能本场景种草"],
+      ["7月", "推荐排行榜", "游戏本", "暑期游戏本排行榜：RTX显卡、散热、屏幕、性能释放怎么选", "承接游戏玩家需求"],
+      ["7月", "用户决策", "避坑", "买笔记本别只看处理器：屏幕、散热、重量、接口、售后也很重要", "降低购买踩坑风险"],
+      ["7月", "商单案例", "横评", "同价位笔记本电脑横评：谁的性能、续航、屏幕、做工更值得买", "展示横评能力"],
+
+      ["8月", "推荐排行榜", "开学季", "开学季笔记本电脑推荐排行榜：学生党不同预算闭眼选清单", "承接开学季搜索和转化"],
+      ["8月", "用户决策", "学生本", "大学生买轻薄本还是游戏本？专业、宿舍、预算、便携怎么平衡", "解决学生核心选择难题"],
+      ["8月", "商单案例", "校园场景", "大学生一周电脑使用记录：上课、论文、网课、剪辑、游戏全体验", "适合品牌做校园场景内容"],
+      ["8月", "推荐排行榜", "轻薄本", "5000元左右轻薄本排行榜：适合大学生和职场新人的机型", "覆盖主流预算需求"],
+      ["8月", "用户决策", "专业配置", "设计、剪辑、编程、建模专业分别需要什么配置？", "帮助高需求学生精准选购"],
+      ["8月", "商单案例", "游戏本", "游戏本校园体验：宿舍噪音、温度、帧率、重量、续航真实反馈", "沉淀游戏本合作案例"],
+      ["8月", "推荐排行榜", "全能本", "开学季全能本排行榜：学习、创作、游戏兼顾怎么选", "覆盖复合需求用户"],
+      ["8月", "用户决策", "预算决策", "新生买电脑要不要一步到位？从3000到10000元预算分配建议", "减少预算浪费"],
+      ["8月", "商单案例", "横评", "热门开学笔记本横评：同价位谁的屏幕、续航、性能更稳", "沉淀大促前横评资产"],
+
+      ["9月", "推荐排行榜", "补购清单", "9月笔记本电脑推荐排行榜：开学后补买哪些机型还值得入手", "承接开学后补购需求"],
+      ["9月", "用户决策", "使用问题", "笔记本刚买回来要怎么设置？验机、分区、驱动、保修、软件一次讲清", "解决真实使用问题"],
+      ["9月", "商单案例", "轻薄本", "轻薄本使用一个月后体验：续航、发热、键盘、接口、稳定性复盘", "适合长周期体验内容"],
+      ["9月", "推荐排行榜", "办公本", "办公学习两用笔记本排行榜：高续航、好屏幕、轻便、多接口", "覆盖办公学习用户"],
+      ["9月", "用户决策", "屏幕科普", "笔记本屏幕怎么选？高色域、高刷、OLED、护眼、亮度一次讲清", "帮助用户建立屏幕认知"],
+      ["9月", "商单案例", "办公全能", "真实办公加创作测试：表格、会议、剪辑、修图一台电脑能不能兼顾", "适合全能笔记本合作"],
+      ["9月", "推荐排行榜", "商务本", "适合职场人的商务笔记本排行榜：便携、安全、续航、接口怎么选", "提前覆盖职场人需求"],
+      ["9月", "用户决策", "避坑复盘", "笔记本用了一个月才发现的问题：风扇、屏幕、接口、重量怎么判断", "提升账号实用价值"],
+      ["9月", "商单案例", "横评", "热门轻薄本对比：同样轻薄，谁更适合办公、学习和出差", "展示细分场景横评能力"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆笔记本电脑推荐排行榜：办公、游戏、创作、出差怎么选", "承接假期换新需求"],
+      ["10月", "用户决策", "办公换机", "职场人换笔记本怎么选？续航、键盘、屏幕、接口、重量哪个更重要", "解决办公人群选购问题"],
+      ["10月", "商单案例", "AI PC", "AI PC七天体验：会议纪要、文档生成、图片处理、剪辑效率全测试", "适合AI PC新品推广"],
+      ["10月", "推荐排行榜", "游戏本", "适合3A游戏的游戏本排行榜：显卡、屏幕、散热、性能释放综合排序", "覆盖高性能玩家需求"],
+      ["10月", "用户决策", "创作本", "剪辑和修图买笔记本要不要高色域和独显？创作者选购指南", "服务创作升级人群"],
+      ["10月", "商单案例", "创作本", "创作本实测：4K剪辑、RAW修图、AI降噪、外接显示器完整体验", "适合创作本品牌合作"],
+      ["10月", "推荐排行榜", "AI PC", "10月AI PC排行榜：办公效率、续航、轻薄和本地AI能力怎么排", "承接AI PC搜索需求"],
+      ["10月", "用户决策", "接口扩展", "笔记本接口不够用怎么办？雷电、Type-C、扩展坞、外接屏怎么选", "覆盖外设和桌面升级需求"],
+      ["10月", "商单案例", "高端对比", "高端笔记本和普通笔记本差距实测：性能、屏幕、做工、体验", "适合高端品牌价值传播"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一笔记本电脑推荐排行榜：3000到10000元各价位闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买笔记本先看这篇：CPU、显卡、内存、屏幕、售后怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门笔记本横评：轻薄本、全能本、游戏本谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "轻薄本", "双十一轻薄本排行榜：办公、学习、出差、高续航怎么选", "承接轻薄办公人群"],
+      ["11月", "用户决策", "避坑", "双十一买笔记本最容易踩的坑：低色域屏、低功耗显卡、内存不可扩展", "提升购买安全感"],
+      ["11月", "商单案例", "游戏本", "游戏本到底强在哪？帧率、温度、噪音、键盘、屏幕完整体验", "适合游戏本品牌合作"],
+      ["11月", "推荐排行榜", "全能本", "双十一全能本排行榜：剪辑、办公、轻游戏、AI体验怎么选", "覆盖主流复合需求用户"],
+      ["11月", "用户决策", "购买指南", "双十一笔记本保价、验机、坏点、退换、延保怎么检查", "减少售后和价格焦虑"],
+      ["11月", "商单案例", "高端本", "高端轻薄本横评：屏幕、续航、做工、性能释放、AI体验谁更均衡", "适合高端品牌传播"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二笔记本电脑补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买笔记本是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "办公本", "年末换一台办公笔记本：续航、会议、键盘、屏幕、外接屏全测试", "适合办公本品牌合作"],
+      ["12月", "推荐排行榜", "办公本", "12月办公笔记本排行榜：年末换新怎么选", "覆盖职场换新需求"],
+      ["12月", "用户决策", "旧机换新", "旧笔记本卡顿要不要换？内存、硬盘、系统、处理器瓶颈怎么判断", "承接换机需求"],
+      ["12月", "商单案例", "家庭电脑", "一台笔记本能不能全家用？办公、网课、追剧、修图、小游戏全测试", "适合大众价位段品牌"],
+      ["12月", "推荐排行榜", "送礼电脑", "年货节笔记本电脑送礼排行榜：学生、职场、父母、对象怎么选", "提前布局春节送礼"],
+      ["12月", "用户决策", "送礼指南", "过年送笔记本怎么选？别只看配置，使用人群和售后更重要", "转化送礼场景"],
+      ["12月", "商单案例", "年度总结", "年度最值得关注的笔记本电脑总结：轻薄本、游戏本、AI PC、全能本", "沉淀年度招商和搜索资产"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-ranking";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [nodeOrMonth, type, category, title, value] = row;
+      const typeClass = getTypeClass(type);
+
+      return `
+        <div class="flex-row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${nodeOrMonth}</span>
+          </div>
+
+          <div class="cell c-type" data-label="类型">
+            <span class="type-tag ${typeClass}">${type}</span>
+          </div>
+
+          <div class="cell c-category" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-laptop-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      const current = root.getAttribute("data-theme");
+      themeBtn.textContent = current === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

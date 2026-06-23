@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜洗衣机&洗烘套装内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:760px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 160px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜洗衣机&洗烘套装内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括滚筒洗衣机、洗烘一体机、洗烘套装、热泵烘干机、母婴洗衣机、分区洗、嵌入式安装、阳台家政柜和真实家庭洗烘场景实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在容量、洗净比、除菌除螨、烘干方式、热泵/冷凝、衣物护理、噪音震动、排水方式、安装预留、阳台尺寸和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 洗衣机&洗烘套装排行榜</h2>
+        <p>沉淀长期搜索流量，包括 10kg 滚筒、洗烘一体机、洗烘套装、热泵烘干机、母婴洗衣机、分区洗、嵌入式家政柜和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、梅雨季/暑期、国庆、双十一、双十二和年货节，布局洗衣机与洗烘套装高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打阳台预留、家政柜、上下水和洗烘套装叠放；梅雨季/暑期主打烘干、除菌、除螨和防潮；双十一主打榜单、横评和价格转化；年货节主打春节换洗、送父母和全屋家电焕新。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖夏季洗护、梅雨烘干、母婴除菌、装修预留、国庆换新、双十一转化、双十二补票和春节换洗需求。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化夏季除菌、烘干、防潮和母婴洗护；9 月强化装修预留与洗烘套装叠放；10 月强化阳台焕新和老房换新；11 月强化双十一榜单与横评；12 月强化补票、年末换新和春节洗护场景。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>洗衣机账号内容规划</h2>
+        <p>围绕滚筒洗衣机、洗烘一体机、洗烘套装、热泵烘干机、母婴洗护、分区洗、阳台家政柜和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过容量选择、洗净横评、烘干实测、除菌除螨、衣物护理、噪音震动、安装验收和长期使用复盘建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "阳台预留", "新房装修洗衣机怎么规划？上下水、地漏、插座、家政柜和叠放尺寸一次讲清", "帮助装修用户提前规划洗护空间"],
+      ["装修季", "商单案例", "洗烘套装安装", "洗烘套装叠放安装实拍：叠放架、承重、排水、插座、柜体和通风全流程", "适合洗衣机、家装和定制柜品牌合作"],
+      ["装修季", "推荐排行榜", "嵌入式洗烘", "装修季洗烘套装排行榜：嵌入式、叠放、并排、家政柜方案怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "品类选择", "洗烘一体机和洗烘套装到底怎么选？空间、预算、烘干效果和维护讲清", "解决装修阶段品类选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618洗衣机推荐排行榜：滚筒、洗烘一体、洗烘套装、热泵烘干机闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买洗衣机先看这篇：容量、洗净比、除菌、烘干、噪音、安装避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门洗衣机横评：洗净、脱水、噪音、除菌、烘干、护理全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "洗烘套装", "618洗烘套装排行榜：热泵烘干、衣物护理、毛屑收集和叠放怎么选", "覆盖改善型洗护需求"],
+
+      ["梅雨季", "用户决策", "烘干防潮", "梅雨季衣服晾不干，洗烘一体机、热泵烘干机、洗烘套装怎么选", "解决潮湿地区高频痛点"],
+      ["梅雨季", "推荐排行榜", "热泵烘干机", "梅雨季热泵烘干机排行榜：低温护衣、毛屑过滤、容量和噪音怎么选", "承接烘干机搜索需求"],
+      ["梅雨季", "商单案例", "烘干实测", "烘干机实测：衬衫、毛巾、床单、羽绒服、童装烘完缩水和褶皱如何", "适合烘干机和洗烘套装合作"],
+      ["梅雨季", "用户决策", "护理避坑", "烘干机会不会伤衣服？热泵、冷凝、温度、缩水、褶皱和绒毛讲清", "降低用户购买顾虑"],
+
+      ["暑期", "用户决策", "除菌除螨", "夏天衣服汗味重，洗衣机除菌、除螨、蒸汽洗和筒自洁到底有没有用", "解决夏季洗护和健康需求"],
+      ["暑期", "推荐排行榜", "母婴洗衣机", "暑期母婴洗衣机排行榜：童装、内衣、除菌、分区洗和柔护怎么选", "强化母婴家庭转化"],
+      ["暑期", "商单案例", "母婴实测", "母婴洗护实测：口水巾、童装、内衣、毛巾、床品洗净和除菌体验", "适合母婴洗护产品合作"],
+      ["暑期", "用户决策", "异味清洁", "洗衣机用久了有味道怎么办？筒自洁、胶圈、滤网、排水和清洁剂讲清", "覆盖长期维护需求"],
+
+      ["国庆节", "用户决策", "以旧换新", "国庆家电换新，洗衣机、冰箱、空调、热水器先换哪个最值", "解决家庭家电升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆洗衣机排行榜：一家三口、二胎家庭、老人家庭、阳台小户型怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房换洗烘套装实拍：尺寸复核、搬运入户、上下水改造、叠放和验收", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买洗衣机怎么选？操作简单、洗得干净、脱水稳、噪音低更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一洗衣机推荐排行榜：滚筒、洗烘一体、洗烘套装、热泵烘干机闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买洗衣机先看这篇：容量、洗净、烘干、除菌、噪音、安装、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门洗烘套装横评：谁洗得净、烘得透、护衣好、噪音低", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一洗衣机最容易踩的坑：容量虚标、烘不干、噪音大、叠放不稳、安装加价", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端洗烘", "双十一高端洗烘套装排行榜：热泵、自动投放、空气洗、分区洗怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买洗衣机是不是冤种？哪些滚筒、洗烘一体和洗烘套装还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二洗衣机补票排行榜：刚需款、改善款、送父母、洗烘套装怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "洗烘套装长期使用复盘：烘干效果、毛屑、噪音、耗电、清洁和维护", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "洗衣机买回家怎么验收？水平、排水、漏水、噪音、脱水、叠放稳定检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节洗护", "过年前换洗衣机值不值？床品、窗帘、羽绒服、童装和待客毛巾怎么洗", "将洗衣机转化为春节家庭刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭洗烘实测：床品、毛巾、童装、羽绒服、窗帘和待客换洗全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节洗衣机送礼排行榜：送父母、送新家、送二胎家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买洗衣机排行榜：滚筒、洗烘一体、洗烘套装、烘干机总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期洗护", "暑期洗衣机排行榜：滚筒、洗烘一体、洗烘套装、母婴洗护怎么选", "承接夏季高频换洗需求"],
+      ["7月", "用户决策", "参数科普", "第一次买洗衣机，容量、洗净比、转速、除菌、烘干、噪音到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "洗净实测", "热门洗衣机一周体验：汗渍、油渍、口红、泥渍、毛巾和床品全测试", "沉淀洗衣机商单样板"],
+      ["7月", "推荐排行榜", "母婴洗衣机", "母婴家庭洗衣机排行榜：童装、内衣、除菌、分区洗和柔护怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "品类选择", "洗烘一体机、洗烘套装、单独烘干机怎么选？空间和预算一次讲清", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "除菌实测", "除菌洗体验：袜子、内衣、童装、毛巾洗后异味和清洁表现如何", "适合健康洗护产品合作"],
+      ["7月", "推荐排行榜", "10kg滚筒", "10kg滚筒洗衣机排行榜：一家三口、二胎家庭、床品清洗怎么选", "覆盖主流容量需求"],
+      ["7月", "用户决策", "安装预留", "洗衣机装修前怎么预留？上下水、地漏、插座、台面高度、柜体尺寸讲清", "解决装修前置焦虑"],
+
+      ["8月", "推荐排行榜", "洗烘套装", "8月洗烘套装排行榜：热泵烘干、叠放安装、衣物护理怎么选", "承接改善型洗护搜索需求"],
+      ["8月", "用户决策", "烘干技术", "热泵烘干和冷凝烘干有什么区别？温度、耗电、护衣和毛屑讲清", "解决高端功能选择问题"],
+      ["8月", "商单案例", "烘干实测", "洗烘套装实测：床单、毛巾、衬衫、羽绒服、童装烘干效果如何", "适合洗烘套装品牌合作"],
+      ["8月", "推荐排行榜", "小户型洗烘", "小户型洗烘方案排行榜：洗烘一体、叠放套装、超薄机型怎么选", "覆盖小户型用户需求"],
+      ["8月", "用户决策", "噪音震动", "洗衣机脱水为什么震？电机、配重、地面、安装水平和减震讲清", "降低长期使用顾虑"],
+      ["8月", "商单案例", "静音实测", "洗衣机静音实测：夜洗、脱水、烘干、阳台和卫生间不同场景表现", "沉淀静音功能合作案例"],
+      ["8月", "推荐排行榜", "洗烘一体机", "洗烘一体机排行榜：预算有限、空间有限、不想晾衣怎么选", "覆盖刚需和小空间人群"],
+      ["8月", "用户决策", "清洁维护", "洗衣机怎么清洁不发臭？胶圈、料盒、滤网、排水泵、筒自洁讲清", "服务长期使用用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季洗衣机排行榜：阳台家政柜、嵌入式、洗烘套装怎么选", "承接金九银十装修需求"],
+      ["9月", "用户决策", "家政柜预留", "阳台家政柜怎么做不翻车？洗烘叠放、插座、上下水、通风和检修讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房洗烘套装安装实拍：柜体预留、叠放架、排水、试机和验收全记录", "适合家电和家装品牌合作"],
+      ["9月", "推荐排行榜", "嵌入式洗衣机", "嵌入式洗衣机排行榜：超薄、齐平、低噪、排水和柜体适配怎么选", "承接嵌入式家电需求"],
+      ["9月", "用户决策", "上下水排水", "洗衣机排水怎么选？上排水、下排水、地漏、存水弯和返水问题讲清", "解决安装和装修顾虑"],
+      ["9月", "商单案例", "阳台方案", "三口之家阳台洗护方案：洗烘套装、家政柜、清洁区、收纳区怎么搭", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "高端洗烘", "高端洗烘套装排行榜：自动投放、空气洗、热泵、分区洗怎么选", "覆盖高预算用户"],
+      ["9月", "用户决策", "售后维护", "洗烘套装后期麻烦吗？毛屑清理、滤网、冷凝器、移机和维修费用讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆洗衣机排行榜：老房换新、新房装修、送父母、洗烘升级怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧机换新", "旧洗衣机换新怎么避坑？拆旧、搬运、排水、尺寸、噪音和回收讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房换新", "老房换洗烘套装全过程：尺寸复核、搬运入户、安装试机、漏水和验收", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "父母家庭", "适合父母家的洗衣机排行榜：操作简单、洗得干净、脱水稳、噪音低", "覆盖适老化需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买洗衣机怎么选？按键、程序、容量、脱水稳定和售后更重要", "覆盖送父母消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的洗衣机体验：程序是否简单、脱水是否稳、声音是否吵", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "性价比滚筒", "性价比滚筒洗衣机排行榜：3000元内、刚需、出租房、老房换新怎么选", "覆盖主流预算用户"],
+      ["10月", "用户决策", "验收问题", "洗衣机到家怎么验收？外观、水平、进水、排水、脱水、漏水和噪音检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一洗衣机推荐排行榜：滚筒、洗烘一体、洗烘套装、烘干机闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买洗衣机先看这篇：容量、洗净、烘干、除菌、噪音、安装、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门洗衣机横评：洗净、脱水、噪音、除菌、烘干谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "洗烘套装", "双十一洗烘套装排行榜：热泵烘干、自动投放、护衣、毛屑过滤怎么选", "承接改善型消费需求"],
+      ["11月", "用户决策", "避坑", "双十一洗衣机最容易踩的坑：容量虚标、烘干鸡肋、噪音大、安装加价", "提升购买安全感"],
+      ["11月", "商单案例", "套装横评", "洗烘套装横评：床品、毛巾、衬衫、羽绒服烘干效果和耗电谁更稳", "适合洗烘套装场景合作"],
+      ["11月", "推荐排行榜", "母婴款", "双十一母婴洗衣机排行榜：除菌、分区洗、柔护、内衣童装怎么选", "覆盖母婴和健康需求"],
+      ["11月", "用户决策", "购买检查", "双十一洗衣机保价、安装、退换、叠放架、进排水、延保怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二洗衣机补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买洗烘套装是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末阳台焕新体验：洗烘套装如何提升换洗、烘干、收纳和家庭幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前洗衣机排行榜：床品、窗帘、羽绒服、毛巾和待客换洗怎么选", "提前布局春节洗护需求"],
+      ["12月", "用户决策", "送礼指南", "过年送洗衣机怎么选？送父母、送新家、送二胎家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭洗烘实测：床品、窗帘、羽绒服、童装、毛巾全场景记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买洗衣机排行榜：滚筒、洗烘一体、洗烘套装、烘干机总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年洗衣机最值得关注的趋势：洗烘套装、热泵烘干、分区洗、自动投放", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-washer-dryer-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>
