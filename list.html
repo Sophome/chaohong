@@ -209,11 +209,10 @@
     .card:hover .card-arrow { opacity:1; }
 
     /* ── SECTION ACCENT DOTS ── */
-    .s-major .section-dot  { background:#ef4444; }
-    .s-clean .section-dot  { background:#10b981; }
-    .s-pure  .section-dot  { background:#14b8a6; }
-    .s-water .section-dot  { background:#3b82f6; }
-    .s-digit .section-dot  { background:#f43f5e; }
+    .s-major .section-dot   { background:#ef4444; }
+    .s-kitchen .section-dot { background:#f97316; }
+    .s-clean .section-dot   { background:#10b981; }
+    .s-digit .section-dot   { background:#f43f5e; }
 
     /* ── FOOTER ── */
     .footer {
@@ -250,9 +249,8 @@
     </div>
     <div class="topbar-right">
       <a class="header-badge" href="#s-major">🏠 大家电</a>
+      <a class="header-badge" href="#s-kitchen">🍳 厨卫电器</a>
       <a class="header-badge" href="#s-clean">🧹 清洁电器</a>
-      <a class="header-badge" href="#s-pure">🌿 净化家电</a>
-      <a class="header-badge" href="#s-water">💧 水健康</a>
       <a class="header-badge" href="#s-digit">💻 电脑数码</a>
       <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
     </div>
@@ -266,7 +264,7 @@
     <span class="nav-pill active">📋 内容规划表</span>
   </div>
 
-  <!-- ── 大家电 ── -->
+  <!-- ── 大家电 · 4篇 ── -->
   <div class="section s-major" id="s-major" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
@@ -315,56 +313,12 @@
     </div>
   </div>
 
-  <!-- ── 清洁电器 ── -->
-  <div class="section s-clean" id="s-clean" style="scroll-margin-top:100px">
+  <!-- ── 厨卫电器 · 3篇 ── -->
+  <div class="section s-kitchen" id="s-kitchen" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
-      <span class="section-label">清洁电器</span>
-      <span class="section-count">1 篇</span>
-      <div class="section-divider"></div>
-    </div>
-    <div class="cards-grid">
-
-      <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
-        <div class="card-badge-row">
-          <div class="card-badge" style="color:#10b981;border-color:#10b981">🧹 扫地机器人</div>
-        </div>
-        <div class="card-title">扫地机器人内容规划表</div>
-        <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发、自清洁基站等差异化卖点</div>
-        <div class="card-arrow">查看文档 →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── 净化家电 ── -->
-  <div class="section s-pure" id="s-pure" style="scroll-margin-top:100px">
-    <div class="section-header">
-      <div class="section-dot"></div>
-      <span class="section-label">净化家电</span>
-      <span class="section-count">1 篇</span>
-      <div class="section-divider"></div>
-    </div>
-    <div class="cards-grid">
-
-      <a class="card" href="content-plan-air-purifier.html" target="_blank">
-        <div class="card-badge-row">
-          <div class="card-badge" style="color:#14b8a6;border-color:#14b8a6">🌿 空气净化器</div>
-        </div>
-        <div class="card-title">空气净化器内容规划表</div>
-        <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等高转化场景</div>
-        <div class="card-arrow">查看文档 →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── 水健康 ── -->
-  <div class="section s-water" id="s-water" style="scroll-margin-top:100px">
-    <div class="section-header">
-      <div class="section-dot"></div>
-      <span class="section-label">水健康</span>
-      <span class="section-count">1 篇</span>
+      <span class="section-label">厨卫电器</span>
+      <span class="section-count">3 篇</span>
       <div class="section-divider"></div>
     </div>
     <div class="cards-grid">
@@ -378,10 +332,59 @@
         <div class="card-arrow">查看文档 →</div>
       </a>
 
+      <a class="card" href="content-plan-steam-oven.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="color:#f97316;border-color:#f97316">🔥 蒸烤箱</div>
+        </div>
+        <div class="card-title">蒸烤箱内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖嵌入式/台式对比、烘焙食谱、蒸汽嫩烤等核心内容方向</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+
+      <a class="card" href="content-plan-dishwasher.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="color:#6366f1;border-color:#6366f1">🍽️ 洗碗机</div>
+        </div>
+        <div class="card-title">洗碗机内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖台式/嵌入式/水槽式对比、套数选择、除菌烘干等核心方向</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+
     </div>
   </div>
 
-  <!-- ── 电脑数码 ── -->
+  <!-- ── 清洁电器 · 2篇 ── -->
+  <div class="section s-clean" id="s-clean" style="scroll-margin-top:100px">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-label">清洁电器</span>
+      <span class="section-count">2 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="color:#10b981;border-color:#10b981">🧹 扫地机器人</div>
+        </div>
+        <div class="card-title">扫地机器人内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发、自清洁基站等差异化卖点</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+
+      <a class="card" href="content-plan-air-purifier.html" target="_blank">
+        <div class="card-badge-row">
+          <div class="card-badge" style="color:#14b8a6;border-color:#14b8a6">🌿 空气净化器</div>
+        </div>
+        <div class="card-title">空气净化器内容规划表</div>
+        <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等高转化场景</div>
+        <div class="card-arrow">查看文档 →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── 电脑数码 · 2篇 ── -->
   <div class="section s-digit" id="s-digit" style="scroll-margin-top:100px">
     <div class="section-header">
       <div class="section-dot"></div>
@@ -413,7 +416,7 @@
   </div>
 
   <div class="footer">
-    超红传媒知识库 &nbsp;·&nbsp; 内容规划表 &nbsp;·&nbsp; 2026
+    超红传媒知识库 &nbsp;·&nbsp; 内容规划表 &nbsp;·&nbsp; 11 篇 &nbsp;·&nbsp; 2026
   </div>
 
 </div><!-- /page -->

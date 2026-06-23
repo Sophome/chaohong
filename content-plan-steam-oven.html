@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜蒸烤箱内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:760px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 160px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜蒸烤箱内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括嵌入式蒸烤箱、台式蒸烤箱、蒸烤一体机、微蒸烤一体机、空气炸蒸烤箱、母婴辅食、年夜饭、烘焙、预制菜复热和真实厨房安装实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在容量、温控、蒸汽量、上下管、热风循环、水箱、内胆材质、清洁除垢、嵌入尺寸、散热预留、菜谱程序和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 蒸烤箱推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括嵌入式蒸烤箱、台式蒸烤箱、微蒸烤一体机、空气炸蒸烤箱、家用烘焙款、母婴辅食款、装修预留和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、开学季、国庆、双十一、双十二和年货节，布局蒸烤箱高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打橱柜预留、嵌入式尺寸、散热和水电规划；618、双十一主打榜单、横评和价格转化；暑期/开学季主打辅食、早餐、烘焙和空气炸；年货节主打年夜饭、宴客菜、厨房焕新和送父母。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期烘焙、母婴辅食、装修预留、国庆换新、双十一转化、双十二补票和春节年夜饭场景。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期早餐、亲子烘焙、母婴辅食和空气炸；9 月强化装修预留与嵌入式安装；10 月强化厨房焕新和老房改造；11 月强化双十一榜单与横评；12 月强化补票、年末换新和春节年夜饭。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>蒸烤箱账号内容规划</h2>
+        <p>围绕嵌入式蒸烤箱、台式蒸烤箱、微蒸烤一体机、空气炸蒸烤箱、母婴辅食、家庭烘焙、年夜饭和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过温控实测、蒸汽量测试、烘焙上色、复热口感、空气炸效果、容量装载、清洁除垢、安装验收和长期使用复盘建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "橱柜预留", "新房装修蒸烤箱怎么预留？尺寸、散热、插座、水箱、柜体高度和动线一次讲清", "帮助装修用户提前规划厨房电器"],
+      ["装修季", "商单案例", "安装实拍", "嵌入式蒸烤箱安装实拍：橱柜预留、散热空间、插座位置、试机和验收全流程", "适合蒸烤箱、橱柜和家装品牌合作"],
+      ["装修季", "推荐排行榜", "嵌入式蒸烤箱", "装修季蒸烤箱排行榜：嵌入式、台式、微蒸烤、空气炸一体机怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "品类选择", "蒸烤箱、微蒸烤、烤箱、空气炸锅到底怎么选？功能、空间和预算讲清", "解决装修阶段品类选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618蒸烤箱推荐排行榜：嵌入式、台式、微蒸烤、空气炸蒸烤箱闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买蒸烤箱先看这篇：容量、蒸汽、温控、热风、内胆、清洁和安装避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门蒸烤箱横评：蒸鱼、烤鸡翅、烘焙、空气炸、复热和清洁全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "嵌入式大容量", "618大容量嵌入式蒸烤箱排行榜：50L、60L、70L家庭怎么选", "覆盖改善型厨房和多人家庭"],
+
+      ["暑期", "用户决策", "亲子烘焙", "暑假在家做烘焙，蒸烤箱怎么选？温控、热风、发酵、容量和菜谱讲清", "解决暑期亲子烹饪需求"],
+      ["暑期", "推荐排行榜", "母婴辅食", "暑期母婴蒸烤箱排行榜：蒸辅食、消毒餐具、低温慢蒸和一键菜谱怎么选", "强化母婴家庭转化"],
+      ["暑期", "商单案例", "早餐实测", "蒸烤箱早餐实测：蒸包子、烤吐司、空气炸鸡块、热牛奶和复热饭菜", "适合蒸烤箱品牌场景合作"],
+      ["暑期", "用户决策", "清洁成本", "蒸烤箱用完麻烦吗？内胆清洁、水垢、蒸汽冷凝、异味和除垢一次讲清", "降低用户长期使用顾虑"],
+
+      ["开学季", "用户决策", "儿童早餐", "开学后早餐怎么快速做？蒸烤箱做包子、蛋挞、吐司、鸡翅和复热饭菜", "覆盖儿童家庭早餐需求"],
+      ["开学季", "推荐排行榜", "台式蒸烤箱", "开学季台式蒸烤箱排行榜：小厨房、租房、早餐、辅食和烘焙怎么选", "承接小户型和租房场景搜索"],
+      ["开学季", "商单案例", "母婴场景", "母婴家庭蒸烤箱体验：宝宝辅食、奶瓶消毒、儿童早餐和餐具烘干", "适合母婴和蒸烤箱产品合作"],
+      ["开学季", "用户决策", "空气炸功能", "蒸烤箱带空气炸有必要吗？和空气炸锅、烤箱、微波炉区别讲清", "解决功能重复和购买疑虑"],
+
+      ["国庆节", "用户决策", "以旧换新", "国庆厨房家电换新，蒸烤箱、洗碗机、净水器、集成灶先换哪个最值", "解决厨房家电升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆蒸烤箱排行榜：一家三口、二胎家庭、老人家庭、小厨房怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房换新", "老房加装蒸烤箱实拍：橱柜改造、尺寸复核、插座、散热和安装验收", "适合存量房换新内容合作"],
+      ["国庆节", "用户决策", "老人家庭", "给父母买蒸烤箱怎么选？操作简单、一键菜单、蒸菜方便、清洁省心更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一蒸烤箱推荐排行榜：嵌入式、台式、微蒸烤、空气炸蒸烤箱闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买蒸烤箱先看这篇：容量、温控、蒸汽、热风、清洁、安装、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门蒸烤箱横评：谁蒸得嫩、烤得匀、炸得脆、复热不干", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一蒸烤箱最容易踩的坑：只看容量、不看散热、温控不准、清洁麻烦", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端蒸烤箱", "双十一高端蒸烤箱排行榜：双热风、精准控温、纯蒸、自动菜单和自清洁怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买蒸烤箱是不是冤种？哪些嵌入式、台式和微蒸烤还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二蒸烤箱补票排行榜：刚需款、改善款、送父母、厨房焕新怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "蒸烤箱长期使用复盘：蒸汽、温控、清洁、水垢、菜谱、噪音和售后体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装验收", "蒸烤箱买回家怎么验收？尺寸、散热、插座、蒸汽、烘烤、噪音和清洁检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节年夜饭", "过年前换蒸烤箱值不值？年夜饭、蒸鱼、烤鸡、复热和宴客菜怎么做", "将蒸烤箱转化为春节家庭刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭蒸烤箱实测：蒸鱼、烤鸡、烤红薯、蛋挞、复热年夜饭全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节蒸烤箱送礼排行榜：送父母、送新家、送二胎家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买蒸烤箱排行榜：嵌入式、台式、微蒸烤、空气炸蒸烤箱总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期厨房", "暑期蒸烤箱排行榜：嵌入式、台式、微蒸烤、母婴辅食怎么选", "承接暑期家庭烹饪和烘焙需求"],
+      ["7月", "用户决策", "参数科普", "第一次买蒸烤箱，容量、蒸汽、温控、热风、内胆、清洁到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "蒸烤实测", "热门蒸烤箱一周体验：蒸鱼、烤鸡翅、蛋挞、空气炸和复热全测试", "沉淀蒸烤箱商单样板"],
+      ["7月", "推荐排行榜", "母婴辅食", "母婴家庭蒸烤箱排行榜：蒸辅食、消毒、早餐、低温烹饪怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "品类选择", "蒸烤箱、微蒸烤、空气炸锅、烤箱到底哪个更适合你", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "早餐实测", "蒸烤箱早餐体验：包子、吐司、鸡蛋羹、鸡翅、红薯和复热饭菜", "适合家庭早餐场景合作"],
+      ["7月", "推荐排行榜", "大容量", "大容量蒸烤箱排行榜：40L、50L、60L、70L多人家庭怎么选", "覆盖多人家庭和宴客需求"],
+      ["7月", "用户决策", "清洁维护", "蒸烤箱一年用下来麻烦吗？内胆、水垢、冷凝水、异味和除垢讲清", "解决长期使用顾虑"],
+
+      ["8月", "推荐排行榜", "台式蒸烤箱", "8月台式蒸烤箱排行榜：小厨房、租房、早餐、烘焙和空气炸怎么选", "承接小厨房和租房搜索需求"],
+      ["8月", "用户决策", "温控技术", "蒸烤箱温控怎么判断？上下管、背部热风、探针、预热和上色讲清", "解决核心功能选择问题"],
+      ["8月", "商单案例", "烘焙实测", "蒸烤箱烘焙实测：戚风、蛋挞、曲奇、吐司和烤鸡翅上色是否均匀", "适合高端蒸烤箱功能合作"],
+      ["8月", "推荐排行榜", "微蒸烤一体机", "微蒸烤一体机排行榜：复热、解冻、快手菜、小厨房一机多用怎么选", "覆盖复合功能需求"],
+      ["8月", "用户决策", "水箱蒸汽", "蒸烤箱蒸汽越大越好吗？直喷蒸汽、底盘蒸发、积水和蒸鱼效果讲清", "降低用户购买疑虑"],
+      ["8月", "商单案例", "厨房体验", "厨房晚高峰实测：蒸菜、烤肉、复热、空气炸和一锅出表现", "沉淀家庭场景合作案例"],
+      ["8月", "推荐排行榜", "空气炸蒸烤箱", "空气炸蒸烤箱排行榜：薯条、鸡翅、烤红薯、低油烹饪怎么选", "覆盖空气炸功能搜索需求"],
+      ["8月", "用户决策", "维护清洁", "蒸烤箱怎么维护不串味？除垢、擦水、内胆清洁、烤盘和蒸汽管路讲清", "服务长期使用用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季蒸烤箱排行榜：嵌入式、台式、微蒸烤、蒸烤套系怎么选", "承接金九银十装修需求"],
+      ["9月", "用户决策", "橱柜预留", "蒸烤箱装修前怎么预留？高度、深度、散热、插座、柜体和动线讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房蒸烤箱安装实拍：橱柜预留、散热空间、插座、试机和验收全记录", "适合家电和家装品牌合作"],
+      ["9月", "推荐排行榜", "嵌入式蒸烤箱", "嵌入式蒸烤箱排行榜：大容量、双热风、纯蒸、烘焙和自清洁怎么选", "承接嵌入式家电需求"],
+      ["9月", "用户决策", "散热安装", "嵌入式蒸烤箱散热怎么做不翻车？背板、侧边、插座和柜门缝隙讲清", "解决安装和装修顾虑"],
+      ["9月", "商单案例", "厨房方案", "三口之家厨房蒸烤方案：蒸烤箱、洗碗机、净水器和橱柜动线怎么搭", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "高端蒸烤箱", "高端蒸烤箱排行榜：双热风、精准控温、自动菜单、蒸汽清洁怎么选", "覆盖高预算用户"],
+      ["9月", "用户决策", "售后维护", "蒸烤箱后期麻烦吗？水垢、异味、清洁、移机、维修费用讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆蒸烤箱排行榜：老房换新、新房装修、送父母、厨房焕新怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧房加装", "旧厨房加装蒸烤箱怎么避坑？橱柜改造、插座、散热、尺寸和动线讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房换新", "老房加装蒸烤箱全过程：橱柜测量、安装改造、试机、清洁和验收", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "父母家庭", "适合父母家的蒸烤箱排行榜：操作简单、一键菜单、蒸菜方便、清洁省心", "覆盖适老化需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买蒸烤箱怎么选？按键简单、蒸菜好用、复热方便、售后省心更重要", "覆盖送父母消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的蒸烤箱体验：按键、菜单、蒸鱼、热饭和清洁是否好用", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "性价比蒸烤箱", "性价比蒸烤箱排行榜：3000元内、刚需、出租房、老房换新怎么选", "覆盖主流预算用户"],
+      ["10月", "用户决策", "验收问题", "蒸烤箱到家怎么验收？尺寸、散热、蒸汽、温控、噪音、烤盘和配件检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一蒸烤箱推荐排行榜：嵌入式、台式、微蒸烤、空气炸蒸烤箱闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买蒸烤箱先看这篇：容量、温控、蒸汽、热风、内胆、清洁、安装、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门蒸烤箱横评：蒸、烤、炸、复热、清洁和噪音谁更值得买", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "嵌入式", "双十一嵌入式蒸烤箱排行榜：大容量、双热风、精准控温、重油污怎么选", "承接主流消费需求"],
+      ["11月", "用户决策", "避坑", "双十一蒸烤箱最容易踩的坑：尺寸不合、散热不足、温控不准、清洁麻烦", "提升购买安全感"],
+      ["11月", "商单案例", "年夜饭预演", "蒸烤箱年夜饭预演横评：蒸鱼、烤鸡、烤虾、排骨和复热谁更稳", "适合高强度场景合作"],
+      ["11月", "推荐排行榜", "母婴款", "双十一母婴蒸烤箱排行榜：辅食、消毒、早餐、低温蒸和一键菜单怎么选", "覆盖母婴和健康需求"],
+      ["11月", "用户决策", "购买检查", "双十一蒸烤箱保价、安装、退换、配件、延保和售后怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二蒸烤箱补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买蒸烤箱是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末厨房焕新体验：蒸烤箱如何提升做饭、烘焙、复热和家庭幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前蒸烤箱排行榜：年夜饭、蒸鱼、烤鸡、宴客菜和复热怎么选", "提前布局春节年夜饭需求"],
+      ["12月", "用户决策", "送礼指南", "过年送蒸烤箱怎么选？送父母、送新家、送二胎家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭蒸烤箱实测：年夜饭、烤鸡、蒸鱼、蛋挞、复热和宴客菜全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买蒸烤箱排行榜：嵌入式、台式、微蒸烤、空气炸蒸烤箱总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年蒸烤箱最值得关注的趋势：大容量、双热风、微蒸烤、空气炸和自清洁", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-steam-oven-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>
