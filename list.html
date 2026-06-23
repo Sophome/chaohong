@@ -142,12 +142,64 @@
       border-top:1px solid var(--line); margin-top:8px;
     }
 
+    /* ── PASSWORD GATE ── */
+    .pw-gate {
+      position:fixed; inset:0; z-index:9999;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--bg);
+    }
+    .pw-box {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px; padding:36px 32px;
+      width:380px; max-width:92vw;
+      box-shadow:0 8px 40px rgba(0,0,0,.35);
+      text-align:center;
+    }
+    .pw-icon { font-size:2.4rem; margin-bottom:8px; }
+    .pw-title { font-size:1.15rem; font-weight:700; margin-bottom:6px; color:var(--text); }
+    .pw-sub { font-size:0.8rem; color:var(--muted); margin-bottom:22px; }
+    .pw-input {
+      width:100%; padding:10px 14px; border-radius:10px;
+      border:1.5px solid var(--line); background:var(--bg-soft);
+      color:var(--text); font-size:0.95rem; text-align:center;
+      outline:none; font-family:inherit; letter-spacing:2px;
+      transition:border-color 0.2s;
+    }
+    .pw-input:focus { border-color:var(--accent); }
+    .pw-err { color:#ef4444; font-size:0.78rem; margin-top:8px; display:none; }
+    .pw-err.show { display:block; }
+    .pw-btn {
+      margin-top:14px; width:100%; padding:10px;
+      border-radius:10px; border:none;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff; font-size:0.95rem; font-weight:600;
+      cursor:pointer; font-family:inherit;
+      transition:opacity 0.2s;
+    }
+    .pw-btn:hover { opacity:0.88; }
+
     /* ── RESPONSIVE ── */
     @media (max-width:820px) { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
     @media (max-width:480px) { .grid { grid-template-columns:1fr; } .page { padding:20px 16px 40px; } }
   </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div class="pw-gate" id="pwGate">
+  <div class="pw-box">
+    <div class="pw-icon">🔒</div>
+    <div class="pw-title">访问验证</div>
+    <div class="pw-sub">请输入访问密码</div>
+    <input type="password" class="pw-input" id="pwInput" placeholder="输入密码..." autofocus>
+    <div class="pw-err" id="pwErr">密码错误，请重试</div>
+    <button class="pw-btn" onclick="checkPw()">验证</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="pageContent" style="display:none">
 
 <div class="page">
 
@@ -302,7 +354,40 @@
 
 </div><!-- /page -->
 
+</div><!-- /pageContent -->
+
 <script>
+  /* ── PASSWORD CHECK ── */
+  var CORRECT_PW = 'ch2026';
+  var pwGate = document.getElementById('pwGate');
+  var pwContent = document.getElementById('pageContent');
+  var pwInput = document.getElementById('pwInput');
+  var pwErr = document.getElementById('pwErr');
+
+  function checkPw() {
+    if (pwInput.value === CORRECT_PW) {
+      localStorage.setItem('chaohong-list-auth', '1');
+      pwGate.style.display = 'none';
+      pwContent.style.display = 'block';
+    } else {
+      pwErr.classList.add('show');
+      pwInput.value = '';
+      pwInput.focus();
+      setTimeout(function(){ pwErr.classList.remove('show'); }, 2000);
+    }
+  }
+
+  pwInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPw();
+  });
+
+  // Auto-login if previously authenticated
+  if (localStorage.getItem('chaohong-list-auth') === '1') {
+    pwGate.style.display = 'none';
+    pwContent.style.display = 'block';
+  }
+
+  /* ── THEME ── */
   (function() {
     const saved = localStorage.getItem('chaohong-list-theme');
     const theme = saved || 'dark';
