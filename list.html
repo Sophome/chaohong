@@ -115,23 +115,25 @@
       background:var(--card-2);
       border-radius:14px; padding:16px;
       text-decoration:none; color:inherit;
-      display:flex; flex-direction:column; gap:7px;
+      display:flex; flex-direction:column; gap:8px;
       box-shadow:var(--shadow);
       transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       cursor:pointer;
     }
     .card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:0 8px 28px rgba(0,0,0,.24); }
-    .card-icon { font-size:1.1rem; }
+    .card-row { display:flex; align-items:center; gap:7px; }
+    .card-icon { font-size:1.05rem; flex-shrink:0; }
     .card-name { font-size:0.92rem; font-weight:700; line-height:1.35; }
     .card-desc { font-size:0.73rem; color:var(--muted); line-height:1.55; flex:1; }
     .card-arr { font-size:0.72rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
     .card:hover .card-arr { opacity:1; }
 
     /* ── DOT COLORS ── */
-    .d-kit   .sec-dot { background:#ef4444; }
-    .d-movie .sec-dot { background:#f97316; }
-    .d-clean .sec-dot { background:#10b981; }
-    .d-env  .sec-dot { background:#14b8a6; }
+    .d-kit    .sec-dot { background:#ef4444; }
+    .d-movie  .sec-dot { background:#f97316; }
+    .d-clean  .sec-dot { background:#10b981; }
+    .d-env    .sec-dot { background:#14b8a6; }
+    .d-digital .sec-dot { background:#f43f5e; }
 
     /* ── FOOTER ── */
     .foot {
@@ -164,6 +166,7 @@
       <a class="h-tag" href="#sec-movie">🎬 家庭影音</a>
       <a class="h-tag" href="#sec-clean">🧹 清洁电器</a>
       <a class="h-tag" href="#sec-env">🌿 环境电器</a>
+      <a class="h-tag" href="#sec-digital">💻 电脑数码</a>
       <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
     </div>
   </div>
@@ -185,26 +188,22 @@
     </div>
     <div class="grid">
       <a class="card" href="content-plan-fridge.html" target="_blank">
-        <div class="card-icon">🧊</div>
-        <div class="card-name">冰箱内容规划表</div>
+        <div class="card-row"><span class="card-icon">🧊</span><span class="card-name">冰箱内容规划表</span></div>
         <div class="card-desc">全年内容发布规划，覆盖多开门、超薄、嵌入式等核心场景</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-water-purifier.html" target="_blank">
-        <div class="card-icon">💧</div>
-        <div class="card-name">净水器内容规划表</div>
+        <div class="card-row"><span class="card-icon">💧</span><span class="card-name">净水器内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖换滤芯周期、水质检测、家装净水方案</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-dishwasher.html" target="_blank">
-        <div class="card-icon">🍽️</div>
-        <div class="card-name">洗碗机内容规划表</div>
+        <div class="card-row"><span class="card-icon">🍽️</span><span class="card-name">洗碗机内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖台式/嵌入式/水槽式对比、套数选择</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-steam-oven.html" target="_blank">
-        <div class="card-icon">🔥</div>
-        <div class="card-name">蒸烤箱内容规划表</div>
+        <div class="card-row"><span class="card-icon">🔥</span><span class="card-name">蒸烤箱内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖微蒸烤一体、烘焙入门、年夜饭等场景</div>
         <div class="card-arr">查看 →</div>
       </a>
@@ -220,20 +219,17 @@
     </div>
     <div class="grid">
       <a class="card" href="content-plan-tv.html" target="_blank">
-        <div class="card-icon">📺</div>
-        <div class="card-name">智能电视内容规划表</div>
+        <div class="card-row"><span class="card-icon">📺</span><span class="card-name">智能电视内容规划表</span></div>
         <div class="card-desc">全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-projector.html" target="_blank">
-        <div class="card-icon">🎥</div>
-        <div class="card-name">投影仪内容规划表</div>
+        <div class="card-row"><span class="card-icon">🎥</span><span class="card-name">投影仪内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖激光/LED、4K、超短焦等核心场景</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-home-theater.html" target="_blank">
-        <div class="card-icon">🔊</div>
-        <div class="card-name">家庭影院内容规划表</div>
+        <div class="card-row"><span class="card-icon">🔊</span><span class="card-name">家庭影院内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖5.1/7.1声道、回音壁、客厅影院方案</div>
         <div class="card-arr">查看 →</div>
       </a>
@@ -249,14 +245,12 @@
     </div>
     <div class="grid">
       <a class="card" href="content-plan-washer.html" target="_blank">
-        <div class="card-icon">🫧</div>
-        <div class="card-name">洗衣机洗烘套装内容规划表</div>
+        <div class="card-row"><span class="card-icon">🫧</span><span class="card-name">洗衣机洗烘套装内容规划表</span></div>
         <div class="card-desc">全年内容规划，涵盖装修季、618、双11等大促节点</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
-        <div class="card-icon">🧹</div>
-        <div class="card-name">扫地机器人内容规划表</div>
+        <div class="card-row"><span class="card-icon">🧹</span><span class="card-name">扫地机器人内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发等</div>
         <div class="card-arr">查看 →</div>
       </a>
@@ -272,22 +266,41 @@
     </div>
     <div class="grid">
       <a class="card" href="content-plan-ac.html" target="_blank">
-        <div class="card-icon">❄️</div>
-        <div class="card-name">空调内容规划表</div>
+        <div class="card-row"><span class="card-icon">❄️</span><span class="card-name">空调内容规划表</span></div>
         <div class="card-desc">全年内容发布规划，聚焦制冷季需求爆发、新风空调等</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-air-purifier.html" target="_blank">
-        <div class="card-icon">🌿</div>
-        <div class="card-name">空气净化器内容规划表</div>
+        <div class="card-row"><span class="card-icon">🌿</span><span class="card-name">空气净化器内容规划表</span></div>
         <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等场景</div>
         <div class="card-arr">查看 →</div>
       </a>
     </div>
   </div>
 
+  <!-- ═══════════════════════════════ 电脑数码 · 2篇 ═══════════════════════════════ -->
+  <div class="sec d-digital" id="sec-digital" style="scroll-margin-top:90px">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">电脑数码</span>
+      <span class="sec-count">2 篇</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="content-plan-laptop.html" target="_blank">
+        <div class="card-row"><span class="card-icon">💻</span><span class="card-name">笔记本电脑内容规划表</span></div>
+        <div class="card-desc">全年内容规划，覆盖轻薄本/游戏本/全能本对比、开学季等场景</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+      <a class="card" href="content-plan-gaming-monitor.html" target="_blank">
+        <div class="card-row"><span class="card-icon">🖥️</span><span class="card-name">电竞显示器内容规划表</span></div>
+        <div class="card-desc">全年内容规划，覆盖刷新率/响应时间/HDR/分辨率为核心决策点</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+    </div>
+  </div>
+
   <div class="foot">
-    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 11 篇 &nbsp;·&nbsp; 2026
+    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 13 篇 &nbsp;·&nbsp; 2026
   </div>
 
 </div><!-- /page -->
