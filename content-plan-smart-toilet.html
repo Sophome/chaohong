@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜智能马桶内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17; --bg-soft:#111827; --card:rgba(18,24,37,.92); --card-2:rgba(23,31,47,.92);
+      --head:#1f2937; --hover:rgba(56,189,248,.06); --text:#f8fafc; --soft:#d7dee8; --muted:#94a3b8;
+      --line:rgba(148,163,184,.18); --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8; --accent2:#818cf8; --accent3:#2dd4bf;
+      --business:#f59e0b; --user:#38bdf8; --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb; --bg-soft:#eef3f8; --card:rgba(255,255,255,.92); --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6; --hover:rgba(37,99,235,.055); --text:#111827; --soft:#334155; --muted:#64748b;
+      --line:rgba(15,23,42,.12); --line2:rgba(15,23,42,.08);
+      --accent:#2563eb; --accent2:#7c3aed; --accent3:#0f766e;
+      --business:#d97706; --user:#2563eb; --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,.card,.section,.footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,.footer p,.note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,.section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:760px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 170px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,.footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page { width:min(100% - 24px,760px); padding-top:18px; }
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+      .section-title { flex-direction:column; align-items:flex-start; }
+      .section-title span { text-align:left; }
+      .table { border:none; background:transparent; display:grid; gap:12px; }
+      .header { display:none; }
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+      .cell { border-right:none; border-bottom:1px solid var(--line2); }
+      .cell:last-child { border-bottom:none; }
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+      .c-node,.c-type,.c-cat,.c-title,.c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜智能马桶内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括智能马桶一体机、智能马桶盖、无水压限制款、即热式冲洗、泡沫盾、自动翻盖、座圈加热、烘干除臭、妇洗臀洗、抗菌喷嘴和真实卫生间安装实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在坑距、水压、排污方式、插座预留、停电冲水、即热/储热、喷嘴自洁、除臭、泡沫防溅、自动翻盖、遥控、夜灯、清洁维护和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 智能马桶推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括智能马桶一体机、智能马桶盖、无水压款、小户型卫生间、老人家庭、母婴家庭、装修预留、性价比款、高端款和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、开学季、国庆、双十一、双十二和年货节，布局智能马桶高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打坑距、水压、插座、排污和安装预留；618、双十一主打榜单、横评和价格转化；国庆、双十二主打老房换新、父母适老、卫生间升级；年货节主打春节前换新、送父母和家庭健康场景。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期卫生间焕新、开学租房/宿舍卫生、装修预留、国庆换新、双十一转化、双十二补票和春节送礼场景。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化清洁卫生、母婴、老人和小户型体验；9 月强化装修预留、坑距水压和安装避坑；10 月强化国庆换新和老房改造；11 月强化双十一榜单与横评；12 月强化补票、年末换新和春节送礼。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>智能马桶账号内容规划</h2>
+        <p>围绕智能马桶一体机、智能马桶盖、无水压限制、即热冲洗、泡沫盾、自动翻盖、座圈加热、除臭烘干、适老化和装修预留，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过水压实测、冲力测试、泡沫防溅、喷嘴自洁、除臭效果、座圈加热、烘干体验、噪音、停电冲水、安装验收和长期清洁维护复盘建立信任。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "安装预留", "新房装修智能马桶怎么预留？坑距、水压、插座、角阀、排污和空间尺寸一次讲清", "帮助装修用户提前规划卫生间"],
+      ["装修季", "商单案例", "安装实拍", "智能马桶安装实拍：坑距复核、水压测试、插座位置、排污对位、试冲和验收全流程", "适合智能马桶、卫浴和家装品牌合作"],
+      ["装修季", "推荐排行榜", "装修款", "装修季智能马桶排行榜：一体机、马桶盖、无水压、泡沫盾和高端款怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "坑距水压", "智能马桶最容易翻车的坑距和水压问题：305/400、无水压限制和移位器讲清", "解决安装翻车焦虑"],
+
+      ["618", "推荐排行榜", "全品类", "618智能马桶推荐排行榜：一体机、智能马桶盖、无水压、老人家庭闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买智能马桶先看这篇：即热、冲力、泡沫盾、除臭、烘干、停电冲水和安装避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门智能马桶横评：冲力、水压、泡沫防溅、清洗舒适度、烘干和除臭全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "无水压款", "618无水压智能马桶排行榜：老小区、高楼层、低水压家庭怎么选", "覆盖老房和低水压用户"],
+
+      ["暑期", "用户决策", "家庭卫生", "夏天卫生间异味重，智能马桶除臭、泡沫盾、喷嘴自洁和抗菌功能到底有没有用", "解决夏季卫生间痛点"],
+      ["暑期", "推荐排行榜", "母婴家庭", "暑期母婴智能马桶排行榜：妇洗、座圈加热、喷嘴抗菌、柔和清洗怎么选", "强化母婴家庭转化"],
+      ["暑期", "商单案例", "清洁实测", "智能马桶一周实测：冲力、防溅、除臭、喷嘴自洁、烘干、夜灯和清洁维护", "适合品牌场景合作"],
+      ["暑期", "用户决策", "清洁维护", "智能马桶后期麻烦吗？水垢、喷嘴、滤芯、泡沫液、釉面清洁和异味讲清", "降低长期使用顾虑"],
+
+      ["开学季", "用户决策", "租房改造", "租房能不能装智能马桶盖？尺寸、插座、拆装、卫生、预算和搬家复用讲清", "覆盖租房和年轻用户需求"],
+      ["开学季", "推荐排行榜", "智能马桶盖", "开学季智能马桶盖排行榜：租房、小预算、基础清洗、座圈加热怎么选", "承接入门用户搜索"],
+      ["开学季", "商单案例", "小户型", "小卫生间智能马桶体验：尺寸、开门距离、自动翻盖、遥控、收纳和清洁", "适合小户型卫浴产品合作"],
+      ["开学季", "用户决策", "小卫生间", "小卫生间怎么选智能马桶？长宽尺寸、前方距离、开盖空间和水箱位置讲清", "解决小空间安装疑虑"],
+
+      ["国庆节", "用户决策", "老房换新", "国庆卫生间换新，智能马桶、花洒、浴室柜、热水器先换哪个最值", "解决卫浴升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆智能马桶排行榜：一家三口、老人家庭、母婴家庭、老房低水压怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "老房改造", "老房智能马桶换新实拍：拆旧、坑距、水压、插座、安装、试冲和清洁验收", "适合存量房换新合作"],
+      ["国庆节", "用户决策", "父母家庭", "给父母买智能马桶怎么选？操作简单、遥控清楚、自动冲水、夜灯和停电冲水更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一智能马桶推荐排行榜：一体机、马桶盖、无水压、泡沫盾、老人家庭闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买智能马桶先看这篇：坑距、水压、即热、冲力、泡沫盾、除臭、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门智能马桶横评：谁冲得干净、洗得舒服、防溅好、除臭强、噪音低", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一智能马桶最容易踩的坑：坑距不合、水压不够、插座没留、烘干鸡肋、泡沫耗材贵", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端智能马桶", "双十一高端智能马桶排行榜：自动翻盖、泡沫盾、脚感冲水、UV杀菌和智能遥控怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买智能马桶是不是冤种？哪些一体机、马桶盖和无水压款还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二智能马桶补票排行榜：刚需款、改善款、送父母、老房换新怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "智能马桶长期使用复盘：冲力、喷嘴、除臭、泡沫耗材、清洁、水垢和售后体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "验收调试", "智能马桶买回家怎么验收？坑距、水压、漏水、冲力、清洗、烘干、遥控和配件检查清单", "解决购买后的安装验收焦虑"],
+
+      ["年货节", "用户决策", "春节换新", "过年前换智能马桶值不值？春节待客、老人使用、卫生间异味和家庭健康怎么提升", "将智能马桶转化为春节家庭刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭智能马桶实测：老人、孩子、亲友待客、夜间使用、除臭和清洁全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节智能马桶送礼排行榜：送父母、送新家、送老人、送母婴家庭怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买智能马桶排行榜：一体机、马桶盖、无水压、泡沫盾、高端款总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期卫生间", "暑期智能马桶排行榜：一体机、马桶盖、无水压、母婴家庭怎么选", "承接暑期卫生间焕新需求"],
+      ["7月", "用户决策", "参数科普", "第一次买智能马桶，坑距、水压、即热、冲力、泡沫盾、除臭到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "冲洗实测", "热门智能马桶一周体验：清洗、冲力、防溅、烘干、除臭、夜灯和遥控全测试", "沉淀智能马桶商单样板"],
+      ["7月", "推荐排行榜", "母婴家庭", "母婴家庭智能马桶排行榜：妇洗、喷嘴抗菌、柔和清洗、座圈加热怎么选", "覆盖母婴家庭需求"],
+      ["7月", "用户决策", "品类选择", "智能马桶一体机和智能马桶盖到底怎么选？预算、安装、功能和租房讲清", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "除臭实测", "智能马桶除臭和泡沫盾实测：异味、防溅、泡沫消耗、清洁和噪音表现", "适合功能卖点合作"],
+      ["7月", "推荐排行榜", "无水压款", "无水压限制智能马桶排行榜：高楼层、老小区、低水压家庭怎么选", "覆盖老房和低水压需求"],
+      ["7月", "用户决策", "清洁维护", "智能马桶用久了脏不脏？喷嘴、水垢、釉面、滤芯、泡沫液和清洁频率讲清", "解决长期使用顾虑"],
+
+      ["8月", "推荐排行榜", "智能马桶盖", "8月智能马桶盖排行榜：租房、预算有限、老马桶升级、座圈加热怎么选", "承接入门预算搜索需求"],
+      ["8月", "用户决策", "水压科普", "智能马桶水压怎么看？无水压限制、低水压、冲力、增压泵和老小区讲清", "解决核心安装疑虑"],
+      ["8月", "商单案例", "低水压实测", "低水压家庭智能马桶实测：冲净率、清洗力度、补水速度和噪音表现", "适合无水压产品合作"],
+      ["8月", "推荐排行榜", "小户型", "小卫生间智能马桶排行榜：短款机身、节省空间、自动翻盖和遥控怎么选", "覆盖小户型用户需求"],
+      ["8月", "用户决策", "功能取舍", "自动翻盖、脚感冲水、泡沫盾、烘干、UV杀菌哪些功能真有用", "降低功能选择成本"],
+      ["8月", "商单案例", "老人体验", "老人家庭智能马桶体验：遥控、自动冲水、夜灯、座圈加热和停电冲水是否好用", "沉淀适老化合作案例"],
+      ["8月", "推荐排行榜", "老人家庭", "适合老人用的智能马桶排行榜：操作简单、停电冲水、夜灯、遥控清晰怎么选", "覆盖适老化搜索需求"],
+      ["8月", "用户决策", "安全用电", "卫生间装智能马桶安全吗？防水插座、漏保、干湿分离、接地和安装位置讲清", "服务装修和安全顾虑用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季智能马桶排行榜：一体机、无水压、泡沫盾、智能马桶盖怎么选", "承接金九银十装修需求"],
+      ["9月", "用户决策", "插座预留", "智能马桶装修前怎么预留插座？高度、位置、防水盒、漏保和左右方向讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房智能马桶安装实拍：坑距、水压、插座、角阀、排污和验收全记录", "适合卫浴和家装品牌合作"],
+      ["9月", "推荐排行榜", "装修高端款", "装修买高端智能马桶排行榜：自动翻盖、泡沫盾、脚感冲水、杀菌和语音怎么选", "承接高预算用户"],
+      ["9月", "用户决策", "坑距安装", "305坑距和400坑距怎么选？智能马桶坑距测量、误差、移位器和贴砖厚度讲清", "解决装修安装顾虑"],
+      ["9月", "商单案例", "卫浴方案", "三口之家卫生间升级方案：智能马桶、花洒、浴室柜、镜柜和收纳怎么搭", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "性价比款", "性价比智能马桶排行榜：2000元内、3000元内、刚需家庭怎么选", "覆盖主流预算用户"],
+      ["9月", "用户决策", "售后维护", "智能马桶后期麻烦吗？滤芯、泡沫液、喷嘴、水垢、漏水、维修费用讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆智能马桶排行榜：老房换新、送父母、母婴家庭、小卫生间怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧房加装", "旧卫生间加装智能马桶怎么避坑？插座、水压、坑距、排污和拆旧讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "老房换新", "老房智能马桶换新全过程：拆旧、测量、安装、试冲、除臭和清洁验收", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "父母家庭", "适合父母家的智能马桶排行榜：操作简单、夜灯、自动冲水、停电冲水怎么选", "覆盖适老化需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买智能马桶怎么选？不复杂、遥控清楚、冲得干净、售后省心更重要", "覆盖送父母消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的智能马桶体验：按键、遥控、夜灯、座圈加热、自动冲水和清洁", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "一体机", "智能马桶一体机排行榜：无水压、泡沫盾、自动翻盖、脚感冲水怎么选", "覆盖主流换新用户"],
+      ["10月", "用户决策", "验收问题", "智能马桶到家怎么验收？外观、配件、漏水、冲力、清洗、烘干、除臭和噪音检查", "解决真实安装顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一智能马桶推荐排行榜：一体机、马桶盖、无水压、泡沫盾闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买智能马桶先看这篇：坑距、水压、即热、冲力、泡沫盾、除臭、安装、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门智能马桶横评：冲力、清洗、烘干、除臭、防溅、噪音和清洁谁更强", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "无水压", "双十一无水压智能马桶排行榜：老小区、高楼层、低水压、二卫怎么选", "承接核心功能需求"],
+      ["11月", "用户决策", "避坑", "双十一智能马桶最容易踩的坑：坑距不准、插座没留、水压不够、耗材贵、售后难", "提升购买安全感"],
+      ["11月", "商单案例", "防溅横评", "智能马桶泡沫盾横评：防溅、除臭、泡沫细腻度、耗材成本和清洁体验", "适合高强度卖点合作"],
+      ["11月", "推荐排行榜", "高端款", "双十一高端智能马桶排行榜：自动翻盖、脚感冲水、UV杀菌、语音和泡沫盾怎么选", "覆盖中高端用户"],
+      ["11月", "用户决策", "购买检查", "双十一智能马桶保价、安装、退换、延保、配件和售后怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二智能马桶补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买智能马桶是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末卫生间焕新体验：智能马桶如何提升清洁、舒适、除臭和家庭幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前智能马桶排行榜：老人使用、亲友待客、除臭防溅和卫生间换新怎么选", "提前布局春节家庭需求"],
+      ["12月", "用户决策", "送礼指南", "过年送智能马桶怎么选？送父母、送新家、送老人、送母婴家庭完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭智能马桶实测：待客、老人夜间使用、除臭、防溅、清洁和自动冲水全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买智能马桶排行榜：一体机、马桶盖、无水压、泡沫盾、高端款总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年智能马桶最值得关注的趋势：无水压、泡沫盾、自动翻盖、抗菌喷嘴和适老化", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-smart-toilet-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

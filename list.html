@@ -46,7 +46,7 @@
         linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
     }
 
-    .page { width:min(1480px,calc(100% - 40px)); margin:0 auto; padding:28px 0 56px; }
+    .page { max-width:1200px; margin:0 auto; padding:28px 24px 56px; }
 
     /* ── HEADER ── */
     .header {
@@ -144,7 +144,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width:1100px) { .grid { grid-template-columns:repeat(3, minmax(0,1fr)); } }
-    @media (max-width:760px)  { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } .page { width:calc(100% - 24px); } }
+    @media (max-width:760px)  { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } .page { padding:20px 16px 40px; } }
     @media (max-width:480px)  { .grid { grid-template-columns:1fr; } }
   </style>
 </head>
@@ -179,12 +179,12 @@
     <span class="nav-pill active">📋 分类地图</span>
   </div>
 
-  <!-- ═══════════════════════════════ 厨卫电器 · 4篇 ═══════════════════════════════ -->
+  <!-- ═══════════════════════════════ 厨卫电器 · 5篇 ═══════════════════════════════ -->
   <div class="sec d-kit" id="sec-kitchen" style="scroll-margin-top:90px">
     <div class="sec-head">
       <div class="sec-dot"></div>
       <span class="sec-title">厨卫电器</span>
-      <span class="sec-count">4 篇</span>
+      <span class="sec-count">5 篇</span>
     </div>
     <div class="grid">
       <a class="card" href="content-plan-fridge.html" target="_blank">
@@ -205,6 +205,11 @@
       <a class="card" href="content-plan-steam-oven.html" target="_blank">
         <div class="card-row"><span class="card-icon">🔥</span><span class="card-name">蒸烤箱内容规划表</span></div>
         <div class="card-desc">全年内容规划，覆盖微蒸烤一体、烘焙入门、年夜饭等场景</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+      <a class="card" href="content-plan-smart-toilet.html" target="_blank">
+        <div class="card-row"><span class="card-icon">🚽</span><span class="card-name">智能马桶内容规划表</span></div>
+        <div class="card-desc">全年内容规划，覆盖即热式/储热式、清洗功能、安装条件等核心场景</div>
         <div class="card-arr">查看 →</div>
       </a>
     </div>
@@ -300,7 +305,7 @@
   </div>
 
   <div class="foot">
-    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 13 篇 &nbsp;·&nbsp; 2026
+    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 14 篇 &nbsp;·&nbsp; 2026
   </div>
 
 </div><!-- /page -->
