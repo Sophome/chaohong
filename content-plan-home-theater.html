@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜家庭影院内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:760px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 170px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜家庭影院内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括AV功放、落地音箱、书架音箱、中置音箱、环绕音箱、天空声道、低音炮、回音壁、客厅影院、独立影音室和全屋影音方案。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在5.1、7.1、5.1.2、7.1.4、杜比全景声、DTS:X、功放声道数、推力、阻抗、HDMI 2.1、eARC、低音炮摆位、线材和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 家庭影院推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括家庭影院套装、AV功放、客厅音箱、全景声音箱、低音炮、回音壁、客厅影院、影音室方案、装修预埋和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、开学季、国庆、双十一、双十二和年货节，布局家庭影院、AV功放、音箱系统高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打预埋线、音箱点位、投影/电视联动和影音室规划；618、双十一主打AV功放、音箱套装、回音壁和低音炮榜单转化；暑期/国庆主打家庭观影、游戏大屏、客厅娱乐；年货节主打春节观影、家庭聚会和送礼升级。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期观影、开学租房音响、装修预埋、国庆换新、双十一转化、双十二补票和春节家庭影院场景。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期电影、游戏、回音壁和低音炮体验；9 月强化装修预埋、客厅影院和影音室方案；10 月强化国庆家庭娱乐与老房升级；11 月强化双十一AV功放/音箱榜单与横评；12 月强化补票、年末换新和春节观影聚会。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>家庭影院账号内容规划</h2>
+        <p>围绕AV功放、音箱套装、回音壁、低音炮、杜比全景声、客厅影院、独立影音室、投影/电视联动和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过声道对比、电影片段试听、低音炮测试、人声对白清晰度、环绕定位、游戏延迟、HDMI/eARC连接、布线预埋和长期使用复盘建立信任。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "影音预埋", "新房装修家庭影院怎么规划？音箱点位、预埋线、HDMI、网线、电源和沙发距离一次讲清", "帮助装修用户提前规划影音系统"],
+      ["装修季", "商单案例", "客厅影院", "客厅家庭影院安装实拍：AV功放、前置音箱、中置、环绕、低音炮和投影联动全流程", "适合音箱、功放、投影和家装品牌合作"],
+      ["装修季", "推荐排行榜", "AV功放", "装修季AV功放排行榜：5.1、7.1、全景声、HDMI 2.1和eARC怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "声道方案", "5.1、7.1、5.1.2、7.1.4家庭影院怎么选？客厅和影音室方案讲清", "解决声道配置选择问题"],
+
+      ["618", "推荐排行榜", "家庭影院套装", "618家庭影院推荐排行榜：AV功放、音箱套装、回音壁、低音炮闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买家庭影院先看这篇：功放声道、音箱阻抗、低音炮、全景声、连接和预算避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门AV功放和音箱横评：电影、人声、低频、环绕定位、游戏和连接稳定性全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "回音壁", "618回音壁排行榜：客厅免布线、杜比全景声、低音炮、电视搭配怎么选", "覆盖轻量化家庭影院需求"],
+
+      ["暑期", "用户决策", "家庭观影", "暑假在家看电影，家庭影院怎么搭？投影、电视、回音壁、AV功放和音箱方案讲清", "解决暑期家庭娱乐需求"],
+      ["暑期", "推荐排行榜", "低音炮", "暑期低音炮排行榜：电影爆炸、游戏震感、客厅不扰民、尺寸功率怎么选", "强化低频升级转化"],
+      ["暑期", "商单案例", "电影实测", "家庭影院真实观影实测：动作片、动画片、演唱会、球赛、游戏和K歌效果", "适合家庭影院品牌场景合作"],
+      ["暑期", "用户决策", "游戏影音", "PS5、Switch、Xbox接家庭影院怎么选？HDMI 2.1、延迟、全景声和低音炮讲清", "覆盖暑期游戏娱乐场景"],
+
+      ["开学季", "用户决策", "租房影音", "租房党想升级声音怎么选？回音壁、桌面音箱、书架箱和低音炮哪个更适合", "覆盖学生、租房和小空间需求"],
+      ["开学季", "推荐排行榜", "桌面音箱", "开学季桌面音箱排行榜：电脑、宿舍、游戏、电影和音乐怎么选", "承接学生和桌搭搜索"],
+      ["开学季", "商单案例", "小空间影音", "小房间影音体验：桌面音箱、回音壁、小低音炮、投影和游戏主机搭配", "适合入门影音产品合作"],
+      ["开学季", "用户决策", "免布线方案", "不想装修布线，家庭影院还能怎么做？回音壁、无线环绕、蓝牙音箱和低音炮方案", "解决小白用户安装顾虑"],
+
+      ["国庆节", "用户决策", "家庭娱乐", "国庆宅家观影，家庭影院、投影仪、电视和回音壁哪个最值得先升级", "解决家庭大屏声画升级优先级"],
+      ["国庆节", "推荐排行榜", "客厅影院", "国庆客厅家庭影院排行榜：一家三口、电影党、游戏党、老人家庭怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "客厅换新", "老房客厅影音升级实拍：电视/投影、AV功放、音箱、低音炮和线材整理", "适合存量客厅换新内容合作"],
+      ["国庆节", "用户决策", "父母家庭", "给父母买音响怎么选？操作简单、人声清楚、电视连接方便、低音不扰民更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一家庭影院推荐排行榜：AV功放、音箱套装、回音壁、低音炮闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买家庭影院先看这篇：功放、音箱、低音炮、回音壁、全景声、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门家庭影院横评：谁对白清楚、低频震撼、环绕准确、连接稳定", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一家庭影院最容易踩的坑：功放推不动、声道买错、布线失败、低音扰民、HDMI不兼容", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端影院", "双十一高端家庭影院排行榜：7.1.4全景声、独立影音室、低音炮双炮怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买家庭影院是不是冤种？哪些AV功放、音箱和回音壁还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二家庭影院补票排行榜：刚需款、改善款、影音室、客厅免布线怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "家庭影院长期使用复盘：音质、连接、调试、低音扰民、遥控、系统和售后体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装调试", "家庭影院买回家怎么调试？声道识别、距离、分频、低音炮相位、eARC和测试片检查清单", "解决购买后的安装调试焦虑"],
+
+      ["年货节", "用户决策", "春节观影", "过年前搭家庭影院值不值？春节电影、春晚、演唱会、游戏和家庭聚会怎么用", "将家庭影院转化为春节家庭娱乐刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭影院实测：看春晚、电影、演唱会、K歌、游戏和亲友聚会全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节影音设备送礼排行榜：送父母、送新家、送男友、送电影党怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买家庭影院排行榜：AV功放、音箱、回音壁、低音炮、全景声总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期影院", "暑期家庭影院排行榜：AV功放、音箱套装、回音壁、低音炮怎么选", "承接暑期家庭观影需求"],
+      ["7月", "用户决策", "参数科普", "第一次买家庭影院，声道、功率、阻抗、灵敏度、HDMI、eARC到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "电影实测", "热门家庭影院一周体验：电影、动画、综艺、球赛、游戏和音乐全测试", "沉淀家庭影院商单样板"],
+      ["7月", "推荐排行榜", "回音壁", "客厅回音壁排行榜：免布线、全景声、低音炮、电视搭配怎么选", "覆盖轻量化升级需求"],
+      ["7月", "用户决策", "方案选择", "回音壁、2.1音箱、5.1影院、7.1.4全景声到底哪个更适合你", "帮助用户确定购买品类"],
+      ["7月", "商单案例", "亲子观影", "暑期亲子家庭影院体验：动画、纪录片、儿童模式、人声清晰度和音量控制", "适合家庭观影场景合作"],
+      ["7月", "推荐排行榜", "低音炮", "家用低音炮排行榜：电影、游戏、音乐、客厅不扰民怎么选", "覆盖低频升级需求"],
+      ["7月", "用户决策", "邻里扰民", "低音炮会不会扰民？摆位、音量、隔振垫、分频和夜间模式讲清", "降低用户购买顾虑"],
+
+      ["8月", "推荐排行榜", "游戏影音", "8月游戏家庭影院排行榜：PS5、Switch、Xbox、低延迟和全景声怎么选", "承接游戏娱乐场景搜索"],
+      ["8月", "用户决策", "HDMI连接", "AV功放HDMI 2.1、eARC、ARC、CEC到底有什么区别？电视投影连接讲清", "解决核心连接疑虑"],
+      ["8月", "商单案例", "游戏实测", "家庭影院游戏实测：赛车、射击、动作、体育游戏的定位、低频和延迟表现", "适合游戏影音产品合作"],
+      ["8月", "推荐排行榜", "书架音箱", "书架音箱排行榜：客厅、小房间、桌面、电影和音乐兼顾怎么选", "覆盖小空间影音需求"],
+      ["8月", "用户决策", "音箱摆位", "家庭影院音箱怎么摆才有效？前置、中置、环绕、天空声道和低音炮讲清", "降低安装调试顾虑"],
+      ["8月", "商单案例", "小客厅方案", "小客厅家庭影院体验：回音壁、书架箱、小低音炮、投影和电视搭配", "沉淀小户型合作案例"],
+      ["8月", "推荐排行榜", "入门功放", "入门AV功放排行榜：5.1、7.2、HDMI 2.1、eARC和预算怎么选", "覆盖入门用户搜索"],
+      ["8月", "用户决策", "功放推力", "AV功放推不推得动音箱怎么看？功率、阻抗、灵敏度和房间面积讲清", "服务硬核决策用户"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季家庭影院排行榜：客厅影院、独立影音室、全景声怎么选", "承接金九银十装修需求"],
+      ["9月", "用户决策", "预埋布线", "家庭影院装修前怎么预埋？音箱线、HDMI、网线、电源、弱电箱和检修讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房家庭影院安装实拍：预埋线、功放柜、音箱点位、低音炮和调试全记录", "适合影音和家装品牌合作"],
+      ["9月", "推荐排行榜", "全景声", "杜比全景声家庭影院排行榜：5.1.2、5.1.4、7.1.4怎么选", "承接高端家用需求"],
+      ["9月", "用户决策", "客厅规划", "客厅做家庭影院怎么不翻车？电视墙、沙发墙、吊顶、幕布和声学处理讲清", "解决装修落地顾虑"],
+      ["9月", "商单案例", "影音方案", "三室两厅客厅影院方案：AV功放、音箱、投影、幕布、灯光和收纳怎么搭", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "影音室", "独立影音室设备排行榜：功放、音箱、低音炮、投影、声学材料怎么选", "覆盖高预算用户"],
+      ["9月", "用户决策", "售后维护", "家庭影院后期麻烦吗？线材、功放散热、系统更新、低音炮、遥控和售后讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆家庭影院排行榜：客厅换新、电影党、游戏党、送父母怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "老房升级", "老房客厅想做家庭影院怎么避坑？免布线、走明线、回音壁和无线环绕讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "客厅改造", "老房客厅影院改造全过程：电视、投影、回音壁、AV功放、线材整理和调试", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "父母家庭", "适合父母家的影音设备排行榜：人声清楚、操作简单、电视连接方便怎么选", "覆盖适老化需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买音响怎么选？对白增强、遥控简单、蓝牙投屏、低音不扰民更重要", "覆盖送父母消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的电视音响体验：开机、切换、音量、人声清晰度和遥控是否好用", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "性价比影院", "性价比家庭影院排行榜：3000元内、5000元内、万元内怎么搭", "覆盖主流预算用户"],
+      ["10月", "用户决策", "验收问题", "家庭影院到家怎么验收？声道、相位、低音炮、HDMI、噪声、电流声和配件检查", "解决真实到手顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一家庭影院推荐排行榜：AV功放、音箱套装、回音壁、低音炮闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买家庭影院先看这篇：声道、功放、音箱、低音炮、线材、安装、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门家庭影院横评：电影、人声、低频、环绕、游戏、连接稳定性谁更强", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "AV功放", "双十一AV功放排行榜：5.1、7.2、9.2、全景声、HDMI 2.1怎么选", "承接主流消费需求"],
+      ["11月", "用户决策", "避坑", "双十一家庭影院最容易踩的坑：功放不匹配、低音炮扰民、声道买错、布线失败", "提升购买安全感"],
+      ["11月", "商单案例", "低音横评", "热门低音炮横评：电影爆炸、鼓点、下潜、速度、房间适配和扰民控制", "适合高强度场景合作"],
+      ["11月", "推荐排行榜", "高端款", "双十一高端家庭影院排行榜：7.1.4全景声、双低音炮、独立影音室怎么选", "覆盖中高端和影音用户"],
+      ["11月", "用户决策", "购买检查", "双十一家庭影院保价、安装、退换、延保、线材、调试和售后怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二家庭影院补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买家庭影院是不是冤种？哪些AV功放、音箱、回音壁现在入手更合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末家庭娱乐焕新体验：家庭影院如何提升电影、游戏、音乐和聚会幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前家庭影院排行榜：看春晚、电影、演唱会、K歌和家庭聚会怎么选", "提前布局春节家庭娱乐需求"],
+      ["12月", "用户决策", "送礼指南", "过年送影音设备怎么选？送父母、送男友、送新家、送电影党完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭影院实测：春晚、电影、演唱会、K歌、游戏和亲友聚会全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买家庭影院排行榜：AV功放、音箱、回音壁、低音炮、全景声总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年家庭影院最值得关注的趋势：无线环绕、全景声、HDMI 2.1、eARC和客厅影院", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-home-theater-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>

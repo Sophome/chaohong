@@ -93,7 +93,7 @@
       pointer-events:none; font-weight:600;
     }
 
-    /* ── SECTION: lightweight ── */
+    /* ── SECTION ── */
     .sec { margin-bottom:32px; }
     .sec-head {
       display:flex; align-items:center; gap:10px;
@@ -115,27 +115,23 @@
       background:var(--card-2);
       border-radius:14px; padding:16px;
       text-decoration:none; color:inherit;
-      display:flex; flex-direction:column; gap:8px;
+      display:flex; flex-direction:column; gap:7px;
       box-shadow:var(--shadow);
       transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       cursor:pointer;
     }
     .card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:0 8px 28px rgba(0,0,0,.24); }
-    .card-row { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
-    .card-chip {
-      font-size:0.66rem; font-weight:600; border:1.5px solid;
-      border-radius:5px; padding:2px 7px; white-space:nowrap;
-    }
+    .card-icon { font-size:1.1rem; }
     .card-name { font-size:0.92rem; font-weight:700; line-height:1.35; }
     .card-desc { font-size:0.73rem; color:var(--muted); line-height:1.55; flex:1; }
     .card-arr { font-size:0.72rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
     .card:hover .card-arr { opacity:1; }
 
     /* ── DOT COLORS ── */
+    .d-kit   .sec-dot { background:#ef4444; }
     .d-movie .sec-dot { background:#f97316; }
     .d-clean .sec-dot { background:#10b981; }
     .d-env  .sec-dot { background:#14b8a6; }
-    .d-kit   .sec-dot { background:#ef4444; }
 
     /* ── FOOTER ── */
     .foot {
@@ -160,13 +156,13 @@
       <div class="logo">超红</div>
       <div class="brand-text">
         <h1>分类地图</h1>
-        <span>按使用场景浏览全部内容</span>
+        <span>按使用场景浏览内容规划表</span>
       </div>
     </div>
     <div class="header-tags">
       <a class="h-tag" href="#sec-kitchen">🍳 厨卫电器</a>
-      <a class="h-tag" href="#sec-clean">🧹 清洁电器</a>
       <a class="h-tag" href="#sec-movie">🎬 家庭影音</a>
+      <a class="h-tag" href="#sec-clean">🧹 清洁电器</a>
       <a class="h-tag" href="#sec-env">🌿 环境电器</a>
       <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
     </div>
@@ -180,290 +176,118 @@
     <span class="nav-pill active">📋 分类地图</span>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       厨卫电器 · 9篇
-       ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════ 厨卫电器 · 4篇 ═══════════════════════════════ -->
   <div class="sec d-kit" id="sec-kitchen" style="scroll-margin-top:90px">
     <div class="sec-head">
       <div class="sec-dot"></div>
       <span class="sec-title">厨卫电器</span>
-      <span class="sec-count">9 篇</span>
+      <span class="sec-count">4 篇</span>
     </div>
     <div class="grid">
-
-      <a class="card" href="content-framework-fridge-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧊 冰箱</span>
-        </div>
-        <div class="card-name">冰箱全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 全年选题覆盖 · 多门/超薄/嵌入式</div>
-        <div class="card-arr">查看 →</div>
-      </a>
       <a class="card" href="content-plan-fridge.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧊 冰箱</span>
-        </div>
+        <div class="card-icon">🧊</div>
         <div class="card-name">冰箱内容规划表</div>
         <div class="card-desc">全年内容发布规划，覆盖多开门、超薄、嵌入式等核心场景</div>
         <div class="card-arr">查看 →</div>
       </a>
-
-      <a class="card" href="content-framework-water-purifier-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">💧 净水器</span>
-        </div>
-        <div class="card-name">净水器全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 反渗透/超滤/台式 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
       <a class="card" href="content-plan-water-purifier.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">💧 净水器</span>
-        </div>
+        <div class="card-icon">💧</div>
         <div class="card-name">净水器内容规划表</div>
         <div class="card-desc">全年内容规划，覆盖换滤芯周期、水质检测、家装净水方案</div>
         <div class="card-arr">查看 →</div>
       </a>
-
-      <a class="card" href="content-framework-dishwasher-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🍽️ 洗碗机</span>
-        </div>
-        <div class="card-name">洗碗机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 台式/嵌入式/水槽式 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
       <a class="card" href="content-plan-dishwasher.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🍽️ 洗碗机</span>
-        </div>
+        <div class="card-icon">🍽️</div>
         <div class="card-name">洗碗机内容规划表</div>
         <div class="card-desc">全年内容规划，覆盖台式/嵌入式/水槽式对比、套数选择</div>
         <div class="card-arr">查看 →</div>
       </a>
-
-      <a class="card" href="content-framework-range-hood-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">💨 油烟机</span>
-        </div>
-        <div class="card-name">油烟机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 顶吸/侧吸/超薄 · 全年选题覆盖</div>
+      <a class="card" href="content-plan-steam-oven.html" target="_blank">
+        <div class="card-icon">🔥</div>
+        <div class="card-name">蒸烤箱内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖微蒸烤一体、烘焙入门、年夜饭等场景</div>
         <div class="card-arr">查看 →</div>
       </a>
-
-      <a class="card" href="content-framework-gas-stove-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🔥 燃气灶</span>
-        </div>
-        <div class="card-name">燃气灶全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 大火力/能效/安全 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-
-      <a class="card" href="content-framework-smart-toilet-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🚽 智能马桶</span>
-        </div>
-        <div class="card-name">智能马桶全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 即热/泡沫盾/烘干 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       清洁电器 · 7篇
-       ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════ 家庭影音 · 3篇 ═══════════════════════════════ -->
+  <div class="sec d-movie" id="sec-movie" style="scroll-margin-top:90px">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">家庭影音</span>
+      <span class="sec-count">3 篇</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="content-plan-tv.html" target="_blank">
+        <div class="card-icon">📺</div>
+        <div class="card-name">智能电视内容规划表</div>
+        <div class="card-desc">全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+      <a class="card" href="content-plan-projector.html" target="_blank">
+        <div class="card-icon">🎥</div>
+        <div class="card-name">投影仪内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖激光/LED、4K、超短焦等核心场景</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+      <a class="card" href="content-plan-home-theater.html" target="_blank">
+        <div class="card-icon">🔊</div>
+        <div class="card-name">家庭影院内容规划表</div>
+        <div class="card-desc">全年内容规划，覆盖5.1/7.1声道、回音壁、客厅影院方案</div>
+        <div class="card-arr">查看 →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ 清洁电器 · 2篇 ═══════════════════════════════ -->
   <div class="sec d-clean" id="sec-clean" style="scroll-margin-top:90px">
     <div class="sec-head">
       <div class="sec-dot"></div>
       <span class="sec-title">清洁电器</span>
-      <span class="sec-count">7 篇</span>
+      <span class="sec-count">2 篇</span>
     </div>
     <div class="grid">
-
-      <a class="card" href="content-framework-washing-machine-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🫧 洗衣机</span>
-        </div>
-        <div class="card-name">洗衣机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 波轮/滚筒/迷你 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-floor-washer-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧽 洗地机</span>
-        </div>
-        <div class="card-name">洗地机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 滚刷/自清洁/干湿分离 · 全年选题</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-washer-dryer-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧺 洗烘套装</span>
-        </div>
-        <div class="card-name">洗烘套装全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 热泵烘干/除皱/叠放 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-vacuum-cleaner-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🪥 吸尘器</span>
-        </div>
-        <div class="card-name">吸尘器全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 无线/除螨/车载 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-robot-vacuum-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧹 扫地机</span>
-        </div>
-        <div class="card-name">扫地机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 激光/视觉导航/基站 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-
       <a class="card" href="content-plan-washer.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🫧🧺 洗衣机/洗烘</span>
-        </div>
+        <div class="card-icon">🫧</div>
         <div class="card-name">洗衣机洗烘套装内容规划表</div>
         <div class="card-desc">全年内容规划，涵盖装修季、618、双11等大促节点</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🧹 扫地机</span>
-        </div>
+        <div class="card-icon">🧹</div>
         <div class="card-name">扫地机器人内容规划表</div>
         <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发等</div>
         <div class="card-arr">查看 →</div>
       </a>
-
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       家庭影音 · 4篇
-       ═══════════════════════════════════════════ -->
-  <div class="sec d-movie" id="sec-movie" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">家庭影音</span>
-      <span class="sec-count">4 篇</span>
-    </div>
-    <div class="grid">
-
-      <a class="card" href="content-framework-tv-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">📺 电视机</span>
-        </div>
-        <div class="card-name">电视机全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 36个核心选题 · 全年大促节点覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-projector-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🎥 投影仪</span>
-        </div>
-        <div class="card-name">投影仪全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 36个核心选题 · 搜索种草成交闭环</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-home-theater-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🔊 家庭影院</span>
-        </div>
-        <div class="card-name">家庭影院全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 72个核心选题 · 4维立项评分</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-tv.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">📺 智能电视</span>
-        </div>
-        <div class="card-name">智能电视内容规划表</div>
-        <div class="card-desc">全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════
-       环境电器 · 4篇
-       ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════ 环境电器 · 2篇 ═══════════════════════════════ -->
   <div class="sec d-env" id="sec-env" style="scroll-margin-top:90px">
     <div class="sec-head">
       <div class="sec-dot"></div>
       <span class="sec-title">环境电器</span>
-      <span class="sec-count">4 篇</span>
+      <span class="sec-count">2 篇</span>
     </div>
     <div class="grid">
-
-      <a class="card" href="content-framework-ac-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">❄️ 空调</span>
-        </div>
-        <div class="card-name">空调全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 全年选题覆盖 · 制冷季/新风/睡眠模式</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-framework-air-purifier-2026.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#f97316;border-color:#f97316">框架</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🌿 空气净化</span>
-        </div>
-        <div class="card-name">空气净化器全年内容框架</div>
-        <div class="card-desc">三层内容结构 · 过敏季/雾霾/宠物 · 全年选题覆盖</div>
-        <div class="card-arr">查看 →</div>
-      </a>
       <a class="card" href="content-plan-ac.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">❄️ 空调</span>
-        </div>
+        <div class="card-icon">❄️</div>
         <div class="card-name">空调内容规划表</div>
         <div class="card-desc">全年内容发布规划，聚焦制冷季需求爆发、新风空调等</div>
         <div class="card-arr">查看 →</div>
       </a>
       <a class="card" href="content-plan-air-purifier.html" target="_blank">
-        <div class="card-row">
-          <span class="card-chip" style="color:#14b8a6;border-color:#14b8a6">规划</span>
-          <span class="card-chip" style="color:var(--muted);border-color:var(--muted)">🌿 空气净化</span>
-        </div>
+        <div class="card-icon">🌿</div>
         <div class="card-name">空气净化器内容规划表</div>
         <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等场景</div>
         <div class="card-arr">查看 →</div>
       </a>
-
     </div>
   </div>
 
   <div class="foot">
-    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 24 篇 &nbsp;·&nbsp; 2026
+    超红传媒知识库 &nbsp;·&nbsp; 分类地图 &nbsp;·&nbsp; 11 篇 &nbsp;·&nbsp; 2026
   </div>
 
 </div><!-- /page -->

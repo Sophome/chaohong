@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超红传媒｜投影仪内容规划表</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.92);
+      --head:#1f2937;
+      --hover:rgba(56,189,248,.06);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.18);
+      --line2:rgba(148,163,184,.12);
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --accent3:#2dd4bf;
+      --business:#f59e0b;
+      --user:#38bdf8;
+      --rank:#22c55e;
+      --shadow:0 22px 60px rgba(0,0,0,.36);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --head:#e8eef6;
+      --hover:rgba(37,99,235,.055);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0f766e;
+      --business:#d97706;
+      --user:#2563eb;
+      --rank:#16a34a;
+      --shadow:0 22px 60px rgba(15,23,42,.08);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 78% 96%, color-mix(in srgb,var(--accent3) 12%,transparent), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page {
+      width:min(1480px,calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    .topbar,
+    .card,
+    .section,
+    .footer {
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      padding:16px 18px;
+      border-radius:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo {
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .brand-title {
+      font-size:clamp(18px,1.5vw,21px);
+      line-height:1.3;
+      font-weight:650;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .summary {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .card {
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .card h2 {
+      margin:0 0 10px;
+      font-size:clamp(17px,1.2vw,20px);
+    }
+
+    .card p,
+    .footer p,
+    .note {
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .business-color { color:var(--business); }
+    .user-color { color:var(--user); }
+    .rank-color { color:var(--rank); }
+
+    .section {
+      margin-bottom:18px;
+      border-radius:28px;
+      padding:22px;
+    }
+
+    .section-title {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px,2.4vw,38px);
+      line-height:1.16;
+      letter-spacing:-.04em;
+    }
+
+    .section-title span {
+      max-width:760px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      text-align:right;
+    }
+
+    .table {
+      border:1px solid var(--line2);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card-2);
+    }
+
+    .row {
+      display:flex;
+      border-bottom:1px solid var(--line2);
+    }
+
+    .row:last-child { border-bottom:none; }
+    .row:not(.header):hover { background:var(--hover); }
+    .header { background:var(--head); }
+
+    .cell {
+      min-width:0;
+      padding:14px 16px;
+      border-right:1px solid var(--line2);
+      display:flex;
+      align-items:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cell:last-child { border-right:none; }
+
+    .header .cell {
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .c-node { flex:0 0 116px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-type { flex:0 0 146px; justify-content:center; }
+    .c-cat { flex:0 0 160px; justify-content:center; text-align:center; color:var(--soft); }
+    .c-title { flex:1.65; }
+    .c-value { flex:1.12; color:var(--muted); font-size:14.5px; }
+
+    .tag {
+      min-width:82px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 11px;
+      border-radius:999px;
+      border:1px solid currentColor;
+      background:color-mix(in srgb,currentColor 8%,transparent);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .type-business { color:var(--business); }
+    .type-user { color:var(--user); }
+    .type-rank { color:var(--rank); }
+
+    .ellipsis {
+      display:block;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .note {
+      margin:14px 0 0;
+      font-size:14px;
+    }
+
+    .note strong { color:var(--text); }
+
+    .footer {
+      border-radius:28px;
+      padding:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .footer h2 {
+      margin:0 0 8px;
+      font-size:clamp(18px,1.35vw,22px);
+    }
+
+    .footer p { margin:0; }
+
+    @media (max-width:1100px) {
+      .summary,
+      .footer { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:900px) {
+      .page {
+        width:min(100% - 24px,760px);
+        padding-top:18px;
+      }
+
+      .topbar { align-items:flex-start; }
+      .brand-title { white-space:normal; }
+
+      .section-title {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-title span { text-align:left; }
+
+      .table {
+        border:none;
+        background:transparent;
+        display:grid;
+        gap:12px;
+      }
+
+      .header { display:none; }
+
+      .row {
+        display:grid;
+        grid-template-columns:1fr;
+        border:1px solid var(--line2);
+        border-radius:16px;
+        overflow:hidden;
+        background:var(--card-2);
+      }
+
+      .cell {
+        border-right:none;
+        border-bottom:1px solid var(--line2);
+      }
+
+      .cell:last-child { border-bottom:none; }
+
+      .cell::before {
+        content:attr(data-label);
+        flex:0 0 88px;
+        color:var(--muted);
+        font-size:13px;
+        font-weight:700;
+      }
+
+      .c-node,
+      .c-type,
+      .c-cat,
+      .c-title,
+      .c-value {
+        flex:none;
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .ellipsis { white-space:normal; }
+    }
+
+    @media (max-width:560px) {
+      .topbar { flex-direction:column; }
+      .theme-toggle { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">超红</div>
+        <div class="brand-title">超红传媒｜投影仪内容规划表</div>
+      </div>
+      <button class="theme-toggle" id="themeBtn" type="button">切换浅色</button>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <h2 class="business-color">01 商单案例型内容</h2>
+        <p>展示品牌合作能力，包括家用投影仪、智能投影、激光投影、4K投影、便携投影、卧室投影、客厅影院、露营投影、幕布搭配和真实家庭观影实测。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="user-color">02 用户决策型内容</h2>
+        <p>解决用户在亮度、分辨率、芯片尺寸、对比度、色彩、自动对焦、梯形校正、投射比、噪音、系统流畅度、幕布、白天观影和预算上的选购困惑。</p>
+      </div>
+
+      <div class="card">
+        <h2 class="rank-color">03 投影仪推荐排行榜</h2>
+        <p>沉淀长期搜索流量，包括家用投影仪、卧室投影、客厅投影、4K投影、激光投影、便携投影、千元投影、露营投影和大促榜单。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h1>消费节点内容规划表</h1>
+        <span>围绕装修季、618、暑期、开学季、国庆、双十一、双十二和年货节，布局投影仪高搜索、高转化内容。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">节点</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="nodeRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>节奏建议：</strong>装修季主打客厅影院、幕布预留、插座和投射距离；618、双十一主打榜单、横评和价格转化；暑期主打家庭观影、亲子动画、游戏大屏和露营投影；年货节主打春节观影、家庭娱乐和送礼场景。
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>月度内容规划表</h2>
+        <span>规划 7 月至 12 月，每月 8 期，覆盖暑期观影、开学宿舍、装修影院、国庆换新、双十一转化、双十二补票和春节家庭影院场景。</span>
+      </div>
+
+      <div class="table">
+        <div class="row header">
+          <div class="cell c-node">月份</div>
+          <div class="cell c-type">类型</div>
+          <div class="cell c-cat">品类</div>
+          <div class="cell c-title">选题方向</div>
+          <div class="cell c-value">价值定位</div>
+        </div>
+        <div id="monthRows"></div>
+      </div>
+
+      <p class="note">
+        <strong>月度结构：</strong>7-8 月强化暑期家庭观影、露营投影、游戏大屏和宿舍场景；9 月强化装修预留与客厅影院；10 月强化国庆观影和家电换新；11 月强化双十一榜单与横评；12 月强化补票、年末换新和春节家庭影院。
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h2>投影仪账号内容规划</h2>
+        <p>围绕家用投影仪、智能投影、4K投影、激光投影、卧室投影、客厅影院、便携露营投影和大促节点，沉淀推荐榜单、用户决策内容与品牌商单案例。</p>
+      </div>
+
+      <div>
+        <h2>内容资产沉淀方向</h2>
+        <p>通过亮度实测、白天观影、夜间画质、色彩对比、噪音测试、系统流畅度、游戏延迟、幕布搭配和长期使用复盘建立信任，通过榜单和横评承接搜索转化。</p>
+      </div>
+
+      <div>
+        <h2>版权声明</h2>
+        <p>本页面内容、结构与视觉方案归超红传媒所有。未经授权，不得复制、改编、传播或用于商业用途。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nodeRows = [
+      ["装修季", "用户决策", "客厅影院", "新房装修投影仪怎么规划？幕布、电源、网线、音响、投射距离和吊装一次讲清", "帮助装修用户提前规划家庭影院"],
+      ["装修季", "商单案例", "安装实拍", "客厅投影仪安装实拍：幕布预留、投射距离、吊装支架、插座和调试全流程", "适合投影、幕布、音响和家装品牌合作"],
+      ["装修季", "推荐排行榜", "客厅投影", "装修季客厅投影仪排行榜：4K、激光、长焦、超短焦和幕布怎么选", "承接装修前置搜索需求"],
+      ["装修季", "用户决策", "电视替代", "投影仪能不能替代电视？白天亮度、清晰度、护眼、音响和使用频率讲清", "解决装修阶段大屏选择问题"],
+
+      ["618", "推荐排行榜", "全品类", "618投影仪推荐排行榜：家用、卧室、客厅、4K、激光、便携投影闭眼买", "承接年中大促强转化需求"],
+      ["618", "用户决策", "大促选购", "618买投影仪先看这篇：亮度、分辨率、芯片、对焦、梯形校正、幕布避坑", "帮助用户快速确定购买方向"],
+      ["618", "商单案例", "横评", "618热门投影仪横评：白天亮度、夜间画质、色彩、噪音、系统和游戏延迟全测试", "沉淀横评招商样板"],
+      ["618", "推荐排行榜", "4K投影", "618 4K投影仪排行榜：真4K、抖4K、激光、LED和客厅影院怎么选", "覆盖高预算和改善型用户"],
+
+      ["暑期", "用户决策", "家庭观影", "暑假在家看电影，投影仪怎么选？亮度、音效、片源、护眼和儿童模式讲清", "解决暑期家庭娱乐需求"],
+      ["暑期", "推荐排行榜", "卧室投影", "暑期卧室投影仪排行榜：小空间、大画面、自动对焦、侧投和噪音怎么选", "强化卧室观影转化"],
+      ["暑期", "商单案例", "观影实测", "投影仪真实家庭观影实测：动画片、电影、综艺、球赛、游戏和白天观看", "适合投影仪品牌场景合作"],
+      ["暑期", "用户决策", "露营投影", "露营投影仪怎么选？亮度、续航、音响、便携、幕布和户外网络讲清", "覆盖暑期户外娱乐需求"],
+
+      ["开学季", "用户决策", "宿舍投影", "开学宿舍投影仪怎么选？千元预算、便携、侧投、噪音、系统和投墙效果", "覆盖学生宿舍场景需求"],
+      ["开学季", "推荐排行榜", "千元投影", "开学季千元投影仪排行榜：宿舍、租房、卧室和入门观影怎么选", "承接学生和租房用户搜索"],
+      ["开学季", "商单案例", "租房场景", "租房党投影仪体验：白墙投影、床头侧投、自动对焦、噪音和收纳", "适合便携和入门投影合作"],
+      ["开学季", "用户决策", "小空间投影", "小房间投影仪怎么摆？投射比、侧投、自动梯形、画面尺寸和床头距离讲清", "解决小空间安装摆放疑虑"],
+
+      ["国庆节", "用户决策", "家庭娱乐", "国庆宅家观影，投影仪、电视、平板、显示器哪个更适合家庭娱乐", "解决家庭大屏升级优先级"],
+      ["国庆节", "推荐排行榜", "家庭款", "国庆投影仪排行榜：一家三口、情侣租房、老人家庭、客厅影院怎么选", "承接假期家庭换新需求"],
+      ["国庆节", "商单案例", "客厅换新", "客厅投影替代电视实测：白天、晚上、球赛、电影、动画和家庭K歌表现", "适合存量客厅换新内容合作"],
+      ["国庆节", "用户决策", "父母家庭", "给父母买投影仪怎么选？操作简单、亮度够、声音大、遥控方便更重要", "覆盖适老化消费场景"],
+
+      ["双十一", "推荐排行榜", "全品类", "双十一投影仪推荐排行榜：家用、卧室、客厅、4K、激光、便携闭眼买", "全年最高转化节点流量承接"],
+      ["双十一", "用户决策", "大促选购", "双十一买投影仪先看这篇：亮度、分辨率、芯片、色彩、噪音、幕布、保价怎么选", "帮助用户快速定方向"],
+      ["双十一", "商单案例", "横评", "双十一热门投影仪横评：谁更亮、更清晰、色彩更准、系统更流畅", "适合沉淀品牌横评商单案例"],
+      ["双十一", "用户决策", "避坑", "双十一投影仪最容易踩的坑：只看流明、不看标准、假4K、白天看不清、噪音大", "提升用户购买安全感"],
+      ["双十一", "推荐排行榜", "高端投影", "双十一高端投影仪排行榜：4K、三色激光、高亮客厅、低延迟和护眼怎么选", "覆盖中高端用户"],
+
+      ["双十二", "用户决策", "补票清单", "双十二买投影仪是不是冤种？哪些家用、4K、卧室和便携投影还值得入手", "解决错过双十一后的购买焦虑"],
+      ["双十二", "推荐排行榜", "补票榜单", "双十二投影仪补票排行榜：刚需款、改善款、送礼款、客厅影院怎么选", "承接延迟决策用户"],
+      ["双十二", "商单案例", "长期体验", "投影仪长期使用复盘：亮度衰减、噪音、系统卡顿、画质、灰尘和售后体验", "适合品牌做长周期信任内容"],
+      ["双十二", "用户决策", "安装调试", "投影仪买回家怎么调试？对焦、梯形、画面尺寸、幕布、音响和网络检查清单", "解决购买后的安装调试焦虑"],
+
+      ["年货节", "用户决策", "春节观影", "过年前买投影仪值不值？春节电影、春晚、球赛、游戏和家庭聚会怎么用", "将投影仪转化为春节家庭娱乐刚需"],
+      ["年货节", "商单案例", "春节场景", "春节家庭投影实测：看春晚、电影、动画、K歌、游戏和亲友聚会全场景", "适合春节场景种草"],
+      ["年货节", "推荐排行榜", "送礼清单", "年货节投影仪送礼排行榜：送父母、送情侣、送新家、送学生怎么选", "强化春节送礼和家庭升级场景"],
+      ["年货节", "推荐排行榜", "年度榜单", "年度最值得买投影仪排行榜：家用、卧室、客厅、4K、激光、便携总结", "适合作为年度搜索流量和招商样板"]
+    ];
+
+    const monthRows = [
+      ["7月", "推荐排行榜", "暑期观影", "暑期投影仪排行榜：家用、卧室、客厅、便携、露营投影怎么选", "承接暑期家庭娱乐需求"],
+      ["7月", "用户决策", "参数科普", "第一次买投影仪，亮度、分辨率、芯片尺寸、对比度、色彩到底看什么", "建立账号专业度和用户信任"],
+      ["7月", "商单案例", "画质实测", "热门投影仪一周体验：电影、动画、综艺、球赛、游戏和白天观看全测试", "沉淀投影仪商单样板"],
+      ["7月", "推荐排行榜", "卧室投影", "卧室投影仪排行榜：床头侧投、自动对焦、低噪音、小空间怎么选", "覆盖卧室观影需求"],
+      ["7月", "用户决策", "品类选择", "投影仪、电视、激光电视、平板到底哪个更适合你", "帮助用户确定大屏方案"],
+      ["7月", "商单案例", "亲子场景", "暑期亲子投影体验：动画片、纪录片、护眼模式、儿童内容和观看距离", "适合家庭观影场景合作"],
+      ["7月", "推荐排行榜", "露营投影", "露营投影仪排行榜：便携、续航、亮度、音响、户外幕布怎么选", "覆盖户外娱乐场景"],
+      ["7月", "用户决策", "幕布选择", "投影仪一定要买幕布吗？白墙、抗光幕、菲涅尔幕和普通幕布区别讲清", "解决配件购买顾虑"],
+
+      ["8月", "推荐排行榜", "千元投影", "8月千元投影仪排行榜：宿舍、租房、卧室、入门观影怎么选", "承接入门预算搜索需求"],
+      ["8月", "用户决策", "亮度科普", "投影仪亮度怎么看才不被骗？ANSI、CVIA、ISO流明和白天观影讲清", "解决核心参数疑虑"],
+      ["8月", "商单案例", "白天实测", "投影仪白天观影实测：拉窗帘、不拉窗帘、客厅、卧室和幕布表现", "适合高亮投影功能合作"],
+      ["8月", "推荐排行榜", "便携投影", "便携投影仪排行榜：租房、宿舍、露营、床头观影怎么选", "覆盖移动观影需求"],
+      ["8月", "用户决策", "空间摆放", "小房间能不能用投影仪？投射比、画面尺寸、侧投和观看距离讲清", "降低小户型用户购买顾虑"],
+      ["8月", "商单案例", "游戏实测", "投影仪游戏体验：Switch、PS5、手游投屏、延迟、刷新率和音效表现", "沉淀游戏大屏场景合作"],
+      ["8月", "推荐排行榜", "游戏投影", "游戏投影仪排行榜：低延迟、大屏、HDMI、刷新率和主机适配怎么选", "覆盖游戏娱乐场景搜索"],
+      ["8月", "用户决策", "系统流畅", "投影仪系统卡不卡怎么看？芯片、内存、开机广告、APP和投屏稳定性讲清", "服务长期使用体验"],
+
+      ["9月", "推荐排行榜", "装修季", "9月装修季投影仪排行榜：客厅影院、4K、激光、幕布搭配怎么选", "承接金九银十装修需求"],
+      ["9月", "用户决策", "客厅预留", "投影仪装修前怎么预留？幕布槽、插座、网线、吊装、音响和灯光讲清", "帮助用户建立装修规划认知"],
+      ["9月", "商单案例", "新房安装", "新房客厅投影安装实拍：幕布、电源、吊架、调试、音响和观影全记录", "适合投影和家装品牌合作"],
+      ["9月", "推荐排行榜", "4K投影", "4K投影仪排行榜：真4K、三色激光、高亮客厅、电影党怎么选", "承接高端家用需求"],
+      ["9月", "用户决策", "电视对比", "装修买电视还是投影？白天效果、画质、尺寸、护眼、预算和使用习惯讲清", "解决装修大屏选择顾虑"],
+      ["9月", "商单案例", "影音方案", "三室两厅家庭影院方案：投影、幕布、回音壁、灯光和沙发距离怎么搭", "沉淀套系化合作案例"],
+      ["9月", "推荐排行榜", "激光投影", "激光投影仪排行榜：单色、双色、三色激光、散斑和色彩怎么选", "覆盖高预算用户"],
+      ["9月", "用户决策", "售后维护", "投影仪后期麻烦吗？灯泡寿命、亮度衰减、灰尘、系统卡顿和售后讲清", "提升用户信任"],
+
+      ["10月", "推荐排行榜", "国庆换新", "国庆投影仪排行榜：客厅换新、卧室观影、露营出行、送父母怎么选", "承接假期家庭换新需求"],
+      ["10月", "用户决策", "旧客厅换新", "客厅电视换投影怎么避坑？白天亮度、幕布、音响、片源和遥控体验讲清", "覆盖存量换新用户"],
+      ["10月", "商单案例", "客厅换新", "老房客厅投影改造全过程：白墙、幕布、插座、支架、调试和观影体验", "适合旧房换新合作"],
+      ["10月", "推荐排行榜", "父母家庭", "适合父母家的投影仪排行榜：操作简单、亮度够、声音大、投屏方便", "覆盖适老化需求"],
+      ["10月", "用户决策", "父母家庭", "给父母买投影仪怎么选？不用复杂设置、字体清楚、遥控好用更重要", "覆盖送父母消费场景"],
+      ["10月", "商单案例", "适老体验", "适合父母用的投影仪体验：开机、找片、投屏、遥控、音量和清晰度", "适合适老化产品合作"],
+      ["10月", "推荐排行榜", "性价比投影", "性价比投影仪排行榜：2000元内、3000元内、租房、卧室怎么选", "覆盖主流预算用户"],
+      ["10月", "用户决策", "验收问题", "投影仪到家怎么验收？亮点坏点、对焦、梯形、噪音、色偏、系统和配件检查", "解决真实到手顾虑"],
+
+      ["11月", "推荐排行榜", "双十一", "双十一投影仪推荐排行榜：家用、卧室、客厅、4K、激光、便携闭眼买", "承接全年最高转化节点"],
+      ["11月", "用户决策", "大促选购", "双十一买投影仪先看这篇：亮度、分辨率、芯片、色彩、噪音、幕布、保价怎么选", "帮助用户快速定方向"],
+      ["11月", "商单案例", "横评", "双十一热门投影仪横评：亮度、画质、色彩、噪音、系统、游戏延迟谁更强", "沉淀横评招商样板"],
+      ["11月", "推荐排行榜", "家用投影", "双十一家用投影仪排行榜：卧室、客厅、电影、游戏、亲子怎么选", "承接主流消费需求"],
+      ["11月", "用户决策", "避坑", "双十一投影仪最容易踩的坑：虚标亮度、假4K、对焦糊、白天看不清、噪音大", "提升购买安全感"],
+      ["11月", "商单案例", "高亮横评", "客厅高亮投影横评：白天、开灯、夜间、抗光幕和普通幕布谁更稳", "适合高强度场景合作"],
+      ["11月", "推荐排行榜", "高端款", "双十一高端投影仪排行榜：4K、三色激光、客厅影院、低延迟怎么选", "覆盖中高端和影音用户"],
+      ["11月", "用户决策", "购买检查", "双十一投影仪保价、安装、退换、幕布、延保和售后怎么检查", "减少售后和价格焦虑"],
+
+      ["12月", "推荐排行榜", "双十二", "双十二投影仪补票排行榜：错过双十一还有哪些值得买", "承接延迟决策用户"],
+      ["12月", "用户决策", "补票决策", "双十二买投影仪是不是冤种？哪些需求现在入手反而合适", "解决补票购买焦虑"],
+      ["12月", "商单案例", "年末焕新", "年末家庭娱乐焕新体验：投影仪如何提升电影、游戏、亲子和聚会幸福感", "适合品牌年末合作"],
+      ["12月", "推荐排行榜", "春节家用", "春节前投影仪排行榜：看春晚、电影、球赛、游戏和家庭聚会怎么选", "提前布局春节家庭娱乐需求"],
+      ["12月", "用户决策", "送礼指南", "过年送投影仪怎么选？送父母、送情侣、送学生、送新家完全不同", "转化送礼场景"],
+      ["12月", "商单案例", "春节场景", "春节家庭投影实测：春晚、电影、动画、K歌、游戏和亲友聚会全记录", "适合春节场景种草"],
+      ["12月", "推荐排行榜", "年度榜单", "年度最值得买投影仪排行榜：家用、卧室、客厅、4K、激光、便携总结", "沉淀年度搜索流量"],
+      ["12月", "用户决策", "年度复盘", "这一年投影仪最值得关注的趋势：三色激光、高亮、真4K、低延迟和智能校正", "建立行业观察和专业形象"]
+    ];
+
+    function getTypeClass(type) {
+      if (type === "商单案例") return "type-business";
+      if (type === "推荐排行榜") return "type-rank";
+      return "type-user";
+    }
+
+    function renderRow(row, firstLabel) {
+      const [node, type, category, title, value] = row;
+      return `
+        <div class="row">
+          <div class="cell c-node" data-label="${firstLabel}">
+            <span class="ellipsis">${node}</span>
+          </div>
+          <div class="cell c-type" data-label="类型">
+            <span class="tag ${getTypeClass(type)}">${type}</span>
+          </div>
+          <div class="cell c-cat" data-label="品类">
+            <span class="ellipsis">${category}</span>
+          </div>
+          <div class="cell c-title" data-label="选题方向">
+            <span class="ellipsis">${title}</span>
+          </div>
+          <div class="cell c-value" data-label="价值定位">
+            <span class="ellipsis">${value}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nodeRows").innerHTML = nodeRows
+      .map(row => renderRow(row, "节点"))
+      .join("");
+
+    document.getElementById("monthRows").innerHTML = monthRows
+      .map(row => renderRow(row, "月份"))
+      .join("");
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const storageKey = "chm-projector-content-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeButton() {
+      themeBtn.textContent = root.getAttribute("data-theme") === "dark" ? "切换浅色" : "切换深色";
+    }
+
+    updateThemeButton();
+
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(storageKey, next);
+      updateThemeButton();
+    });
+  </script>
+</body>
+</html>
