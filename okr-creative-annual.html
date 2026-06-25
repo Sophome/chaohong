@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超红传媒 · 创作团队 · 年度&月度OKR</title>
+    <style>
+        :root {
+            --bg: #f7f5f0;
+            --card: #ffffff;
+            --card-alt: #faf8f4;
+            --text: #2b2418;
+            --text-secondary: #6e6557;
+            --text-tertiary: #9b9183;
+            --line: #e5ded4;
+            --line-light: #f0ebe2;
+            /* 创作团队 - 琥珀/金色系 */
+            --amber: #d48c2c;
+            --amber-dark: #b07020;
+            --amber-light: #fef3e2;
+            --amber-glow: #fce8cc;
+            --teal: #1a6b5e;
+            --teal-light: #e2f0ea;
+            --accent: #5b6e7a;
+            --accent-light: #e8edf0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            --form-bg: #faf8f5;
+            --bar-bg: #e8e2d7;
+            --bar-fill: #d48c2c;
+            --radius-sm: 10px;
+            --radius: 18px;
+            --radius-lg: 24px;
+            --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+        body.theme-dark {
+            --bg: #1c1815;
+            --card: #28231f;
+            --card-alt: #221d1a;
+            --text: #e5ddd3;
+            --text-secondary: #b5aa9c;
+            --text-tertiary: #7d7366;
+            --line: #3a332c;
+            --line-light: #322c26;
+            --amber: #e0a84c;
+            --amber-dark: #f0c06a;
+            --amber-light: #352a1c;
+            --amber-glow: #2e2418;
+            --teal: #5aaa99;
+            --teal-light: #1f302c;
+            --accent: #8aa0b0;
+            --accent-light: #1f262b;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            --form-bg: #302a25;
+            --bar-bg: #3e3630;
+            --bar-fill: #e0a84c;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Inter", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            transition: background .3s, color .3s;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 16px 24px 40px;
+        }
+
+        /* 顶部菜单栏 */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 12px 20px;
+            margin-bottom: 14px;
+            position: sticky;
+            top: 10px;
+            z-index: 999;
+        }
+        .top-bar-brand {
+            font-weight: 800;
+            font-size: 14.5px;
+            color: var(--amber-dark);
+            letter-spacing: .3px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .top-bar-brand .dot-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--amber);
+            animation: pulse-amber 2s infinite;
+        }
+        @keyframes pulse-amber {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 var(--amber-light);
+            }
+            50% {
+                box-shadow: 0 0 0 8px transparent;
+            }
+        }
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 7px 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12.5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+            transition: all .2s;
+            letter-spacing: .2px;
+            white-space: nowrap;
+        }
+        .btn-save {
+            background: var(--amber);
+            color: #fff;
+            border-color: var(--amber);
+        }
+        .btn-save:hover {
+            background: var(--amber-dark);
+        }
+        .btn:hover {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+        .btn-theme {
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 7px 13px;
+            font-weight: 700;
+            font-size: 12.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text);
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .btn-theme:hover {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+        #saveStatus {
+            font-size: 11.5px;
+            color: var(--text-tertiary);
+            min-width: 48px;
+            text-align: right;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 22px 26px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--amber-light) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: var(--amber-light);
+            color: var(--amber-dark);
+            font-weight: 800;
+            font-size: 12px;
+            margin-bottom: 7px;
+            letter-spacing: .4px;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.3px;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            max-width: 780px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 9px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tags span {
+            padding: 4px 10px;
+            border-radius: 13px;
+            font-size: 11.5px;
+            font-weight: 700;
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            color: var(--text-secondary);
+        }
+        .hero-tags span.ht-amber {
+            border-left: 3px solid var(--amber);
+            color: var(--amber-dark);
+        }
+        .hero-tags span.ht-teal {
+            border-left: 3px solid var(--teal);
+            color: var(--teal);
+        }
+        .hero-tags span.ht-accent {
+            border-left: 3px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 20px 22px;
+            transition: background .3s, border .3s;
+        }
+        .span-12 {
+            grid-column: span 12;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -.2px;
+            margin-bottom: 2px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot.amber {
+            background: var(--amber);
+            box-shadow: 0 0 0 5px var(--amber-light);
+        }
+        .dot.teal {
+            background: var(--teal);
+            box-shadow: 0 0 0 5px var(--teal-light);
+        }
+        .dot.accent {
+            background: var(--accent);
+            box-shadow: 0 0 0 5px var(--accent-light);
+        }
+        .section-subtitle {
+            color: var(--text-tertiary);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* 概览卡片 */
+        .target-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .tcard {
+            background: var(--card-alt);
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius);
+            padding: 14px 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            transition: all .2s;
+        }
+        .tcard:hover {
+            border-color: var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+        .tcard-label {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            letter-spacing: .2px;
+        }
+        .tcard-role {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text);
+        }
+        .tcard-input {
+            font-size: 20px;
+            font-weight: 900;
+            background: transparent;
+            border: none;
+            border-bottom: 2px dashed var(--line);
+            outline: none;
+            color: inherit;
+            width: 100%;
+            font-family: var(--font-mono);
+            padding: 2px 0;
+            transition: border-color .2s;
+            letter-spacing: -.5px;
+        }
+        .tcard-input:focus {
+            border-bottom-color: var(--amber);
+        }
+        .tcard.amber .tcard-input {
+            color: var(--amber-dark);
+        }
+        .tcard.teal .tcard-input {
+            color: var(--teal);
+        }
+
+        /* 表格 */
+        .table-shell {
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 2px;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+            table-layout: fixed;
+            background: var(--card);
+        }
+        thead th {
+            background: var(--form-bg);
+            font-weight: 800;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            letter-spacing: .3px;
+            text-transform: uppercase;
+            padding: 10px 7px;
+            border-bottom: 2px solid var(--line);
+            text-align: left;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 9px 7px;
+            border-bottom: 1px solid var(--line-light);
+            vertical-align: top;
+            font-size: 12.5px;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .col-obj-wide {
+            width: 22%;
+        }
+        .col-kr-wide {
+            width: 23%;
+        }
+        .col-kr3-wide {
+            width: 19%;
+        }
+        .col-prog-wide {
+            width: 10%;
+        }
+        .col-dim {
+            width: 8%;
+        }
+        .col-obj {
+            width: 22%;
+        }
+        .col-kr {
+            width: 22%;
+        }
+        .col-kr3 {
+            width: 18%;
+        }
+        .col-prog {
+            width: 10%;
+        }
+
+        .editable-input {
+            border: 1px solid transparent;
+            background: var(--form-bg);
+            padding: 4px 6px;
+            border-radius: 5px;
+            width: 100%;
+            font-family: inherit;
+            font-size: 12px;
+            color: var(--text);
+            transition: all .2s;
+            resize: vertical;
+            line-height: 1.5;
+        }
+        .editable-input:focus {
+            outline: none;
+            border-color: var(--amber);
+            background: var(--card);
+            box-shadow: 0 0 0 3px var(--amber-light);
+        }
+        .editable-input.num {
+            width: 40px;
+            text-align: center;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            padding: 3px 2px;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        .prog-cell {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+        }
+        .mini-bar-wrap {
+            flex: 1;
+            min-width: 26px;
+            background: var(--bar-bg);
+            border-radius: 4px;
+            height: 5px;
+            overflow: hidden;
+        }
+        .mini-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--bar-fill);
+            width: 0%;
+            transition: width .3s;
+        }
+        .mini-bar-fill.amber-fill {
+            background: var(--amber);
+        }
+
+        /* 折叠面板 */
+        details {
+            margin-bottom: 8px;
+        }
+        details>summary {
+            background: var(--form-bg);
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius-sm);
+            padding: 10px 15px;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text);
+            transition: all .2s;
+            user-select: none;
+            gap: 8px;
+        }
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+        details>summary:hover {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+        details[open]>summary {
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            background: var(--amber-light);
+            border-color: var(--amber);
+            border-bottom-color: transparent;
+        }
+        details .month-body {
+            border: 1px solid var(--line-light);
+            border-top: none;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: 10px;
+            background: var(--card);
+        }
+        .month-pill {
+            font-size: 10.5px;
+            padding: 4px 8px;
+            border-radius: 11px;
+            background: var(--amber-light);
+            color: var(--amber-dark);
+            font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .role-icon {
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        /* 子折叠 */
+        details.sub-details {
+            margin-bottom: 5px;
+        }
+        details.sub-details>summary {
+            background: var(--card-alt);
+            border: 1px solid var(--line-light);
+            border-radius: 7px;
+            padding: 8px 12px;
+            font-weight: 700;
+            font-size: 12.5px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text);
+            transition: all .2s;
+            user-select: none;
+        }
+        details.sub-details>summary::-webkit-details-marker {
+            display: none;
+        }
+        details.sub-details>summary:hover {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+        details.sub-details[open]>summary {
+            border-radius: 7px 7px 0 0;
+            background: var(--amber-light);
+            border-color: var(--amber);
+            border-bottom-color: transparent;
+        }
+        details.sub-details .month-body {
+            padding: 8px;
+        }
+
+        /* 团队协作特殊标记 */
+        .collab-badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            background: var(--teal-light);
+            color: var(--teal);
+            margin-left: 4px;
+            white-space: nowrap;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 11.5px;
+            padding: 22px 0 6px;
+            letter-spacing: .2px;
+        }
+
+        @media (max-width: 1024px) {
+            .target-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .top-bar-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+        @media (max-width: 720px) {
+            .page {
+                padding: 8px 8px;
+            }
+            .hero {
+                padding: 14px 12px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .card {
+                padding: 12px 10px;
+            }
+            .target-cards {
+                grid-template-columns: 1fr;
+            }
+            .table-scroll {
+                overflow-x: auto;
+            }
+            table {
+                min-width: 540px;
+            }
+            .top-bar {
+                padding: 8px 12px;
+                top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 顶部菜单栏 ===== -->
+    <div class="top-bar">
+        <div class="top-bar-brand">
+            <span class="dot-indicator"></span> 超红传媒 · 创作团队 · 年度&月度OKR
+        </div>
+        <div class="top-bar-actions">
+            <button class="btn" onclick="resetData()">↺ 重置示例</button>
+            <button class="btn btn-save" onclick="saveData()">💾 保存本地</button>
+            <button class="btn-theme" id="themeToggle">
+                <span id="themeIcon">🌙</span> <span id="themeLabel">深色</span>
+            </button>
+            <span id="saveStatus"></span>
+        </div>
+    </div>
+
+    <main class="page">
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+            <div class="brand-tag">🎬 创作团队 · 从零到一 · 打造一流内容工厂</div>
+            <h1>创作团队 · 下半年OKR（7~12月）</h1>
+            <p>
+                创作团队<strong>从零起步</strong>，聚焦<strong>内容产量</strong> · <strong>质量打磨</strong> · <strong>创新突破</strong> · <strong>协作效率</strong>。
+                月度O：建立完善的内容生产体系，逐月提升创作能力，冲刺首个年度里程碑。
+            </p>
+            <div class="hero-tags">
+                <span class="ht-amber">🎥 月均产出12条视频</span>
+                <span class="ht-teal">⭐ 爆款率≥15%</span>
+                <span class="ht-accent">🤝 协作满意度≥85%</span>
+            </div>
+        </section>
+
+        <!-- ===== 创作团队核心指标卡片 ===== -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot amber"></span><h2>创作团队 · 核心指标（可编辑）</h2></div>
+                <div class="target-cards">
+                    <div class="tcard amber"><div class="tcard-label">🎥 月均视频产量（条）</div><input type="number" class="tcard-input" id="card-monthly-output" value="12" min="0"></div>
+                    <div class="tcard teal"><div class="tcard-label">⭐ 爆款率目标（%）</div><input type="number" class="tcard-input" id="card-hit-rate" value="15" min="0" max="100"></div>
+                    <div class="tcard amber"><div class="tcard-label">⏱️ 平均制作周期（天）</div><input type="number" class="tcard-input" id="card-cycle" value="3" min="0"></div>
+                    <div class="tcard teal"><div class="tcard-label">📊 内容互动率目标（%）</div><input type="number" class="tcard-input" id="card-interaction" value="8" min="0" max="100"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== 年度OKR表格 ===== -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot amber"></span><h2>年度O：建立一流的媒体账号 · 创作团队版</h2></div>
+                <div class="table-shell"><div class="table-scroll"><table>
+                    <thead><tr><th class="col-obj-wide">Objective</th><th class="col-kr-wide">KR1</th><th class="col-kr-wide">KR2</th><th class="col-kr3-wide">KR3</th><th class="col-prog-wide">完成度%</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o1-obj" value="O1：建立稳定高效的内容生产体系"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o1-kr1" value="月均产出视频≥12条，全年≥72条"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o1-kr2" value="内容准时发布率≥95%"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o1-kr3" value="建立标准化SOP≥8份（策划/拍摄/剪辑/发布）"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-y-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-y-o1-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o2-obj" value="O2：持续打磨内容质量与创新力"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o2-kr1" value="爆款率≥15%（播放≥30万）"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o2-kr2" value="平均完播率≥45%"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o2-kr3" value="每月尝试≥1种新内容形式或风格"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-y-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-y-o2-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o3-obj" value="O3：打造高效协作的创作流程"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o3-kr1" value="平均制作周期控制在3天以内"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o3-kr2" value="团队内部协作满意度≥85%"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o3-kr3" value="素材复用率提升至40%"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-y-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-y-o3-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o4-obj" value="O4：提升团队专业技能与创意能力"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o4-kr1" value="完成专业技能培训≥6次（拍摄/剪辑/文案）"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o4-kr2" value="团队成员掌握新工具/技能≥3项"></td>
+                            <td><input type="text" class="editable-input" data-key="ct-y-o4-kr3" value="建立创意素材库≥500条素材"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-y-o4-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-y-o4-bar"></div></div></div></td>
+                        </tr>
+                    </tbody>
+                </table></div></div>
+            </section>
+        </div>
+
+        <!-- ===== 月度OKR（7~12月） ===== -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot teal"></span><h2>月度O：建立完善的内容生产体系（7~12月分解）</h2></div>
+                <p class="section-subtitle">每月聚焦内容产量、质量打磨、创新尝试与协作优化，点击展开编辑。</p>
+
+                <!-- 7月 -->
+                <details>
+                    <summary><span>📅 7月 · 流程建立与首批产出</span><span class="month-pill" id="badge-ct-m7">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m7-o1-obj" value="建立内容生产流程并产出首批视频"></td><td><input type="text" class="editable-input" data-key="ct-m7-o1-kr1" value="发布视频12条，测试3种风格"></td><td><input type="text" class="editable-input" data-key="ct-m7-o1-kr2" value="完成策划-拍摄-剪辑SOP初稿"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m7-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m7-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m7-o2-obj" value="确保首批内容质量达标"></td><td><input type="text" class="editable-input" data-key="ct-m7-o2-kr1" value="平均播放量≥3000"></td><td><input type="text" class="editable-input" data-key="ct-m7-o2-kr2" value="完播率≥35%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m7-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m7-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m7-o3-obj" value="初步建立团队协作模式"></td><td><input type="text" class="editable-input" data-key="ct-m7-o3-kr1" value="完成角色分工与职责明确"></td><td><input type="text" class="editable-input" data-key="ct-m7-o3-kr2" value="建立日常沟通机制（日会/周会）"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m7-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m7-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 8月 -->
+                <details>
+                    <summary><span>📅 8月 · 质量提升与风格打磨</span><span class="month-pill" id="badge-ct-m8">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m8-o1-obj" value="稳定产出并优化流程"></td><td><input type="text" class="editable-input" data-key="ct-m8-o1-kr1" value="发布12条视频"></td><td><input type="text" class="editable-input" data-key="ct-m8-o1-kr2" value="准时发布率≥80%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m8-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m8-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m8-o2-obj" value="冲击首条爆款"></td><td><input type="text" class="editable-input" data-key="ct-m8-o2-kr1" value="产出1条爆款（≥30万播放）"></td><td><input type="text" class="editable-input" data-key="ct-m8-o2-kr2" value="平均完播率≥40%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m8-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m8-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m8-o3-obj" value="优化协作效率"></td><td><input type="text" class="editable-input" data-key="ct-m8-o3-kr1" value="平均制作周期≤4天"></td><td><input type="text" class="editable-input" data-key="ct-m8-o3-kr2" value="建立素材共享库初版"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m8-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m8-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 9月 -->
+                <details>
+                    <summary><span>📅 9月 · 内容创新与效率突破</span><span class="month-pill" id="badge-ct-m9">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m9-o1-obj" value="保持高产并尝试新形式"></td><td><input type="text" class="editable-input" data-key="ct-m9-o1-kr1" value="发布12条视频，含1种新形式"></td><td><input type="text" class="editable-input" data-key="ct-m9-o1-kr2" value="准时发布率≥90%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m9-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m9-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m9-o2-obj" value="稳定产出爆款"></td><td><input type="text" class="editable-input" data-key="ct-m9-o2-kr1" value="产出2条爆款"></td><td><input type="text" class="editable-input" data-key="ct-m9-o2-kr2" value="完播率≥43%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m9-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m9-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m9-o3-obj" value="提升制作效率"></td><td><input type="text" class="editable-input" data-key="ct-m9-o3-kr1" value="平均制作周期≤3.5天"></td><td><input type="text" class="editable-input" data-key="ct-m9-o3-kr2" value="素材复用率≥20%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m9-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m9-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 10月 -->
+                <details>
+                    <summary><span>📅 10月 · 系列化内容与流程固化</span><span class="month-pill" id="badge-ct-m10">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m10-o1-obj" value="启动系列化内容生产"></td><td><input type="text" class="editable-input" data-key="ct-m10-o1-kr1" value="发布12条视频，含1个系列（≥4期）"></td><td><input type="text" class="editable-input" data-key="ct-m10-o1-kr2" value="准时发布率≥95%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m10-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m10-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m10-o2-obj" value="提升爆款产出率"></td><td><input type="text" class="editable-input" data-key="ct-m10-o2-kr1" value="产出3条爆款"></td><td><input type="text" class="editable-input" data-key="ct-m10-o2-kr2" value="完播率≥45%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m10-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m10-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m10-o3-obj" value="固化高效协作流程"></td><td><input type="text" class="editable-input" data-key="ct-m10-o3-kr1" value="平均制作周期≤3天"></td><td><input type="text" class="editable-input" data-key="ct-m10-o3-kr2" value="SOP文档完善至5份"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m10-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m10-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 11月 -->
+                <details>
+                    <summary><span>📅 11月 · 爆款冲刺与技能深化</span><span class="month-pill" id="badge-ct-m11">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m11-o1-obj" value="高产冲刺超级爆款"></td><td><input type="text" class="editable-input" data-key="ct-m11-o1-kr1" value="发布12条视频"></td><td><input type="text" class="editable-input" data-key="ct-m11-o1-kr2" value="产出1条超级爆款（≥100万播放）"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m11-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m11-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m11-o2-obj" value="冲击更高爆款率"></td><td><input type="text" class="editable-input" data-key="ct-m11-o2-kr1" value="产出3条爆款"></td><td><input type="text" class="editable-input" data-key="ct-m11-o2-kr2" value="完播率≥47%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m11-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m11-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m11-o3-obj" value="深化技能与团队默契"></td><td><input type="text" class="editable-input" data-key="ct-m11-o3-kr1" value="完成培训2次"></td><td><input type="text" class="editable-input" data-key="ct-m11-o3-kr2" value="素材复用率≥35%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m11-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m11-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 12月 -->
+                <details>
+                    <summary><span>📅 12月 · 年度收官与作品集整理</span><span class="month-pill" id="badge-ct-m12">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>🎥 产量</strong></td><td><input type="text" class="editable-input" data-key="ct-m12-o1-obj" value="完成年度产量目标"></td><td><input type="text" class="editable-input" data-key="ct-m12-o1-kr1" value="发布12条视频，全年≥72条"></td><td><input type="text" class="editable-input" data-key="ct-m12-o1-kr2" value="准时发布率≥95%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m12-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m12-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>⭐ 质量</strong></td><td><input type="text" class="editable-input" data-key="ct-m12-o2-obj" value="年度质量总结"></td><td><input type="text" class="editable-input" data-key="ct-m12-o2-kr1" value="全年爆款累计≥12条"></td><td><input type="text" class="editable-input" data-key="ct-m12-o2-kr2" value="整理年度作品集与数据报告"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m12-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m12-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>🤝 协作</strong></td><td><input type="text" class="editable-input" data-key="ct-m12-o3-obj" value="团队复盘与来年规划"></td><td><input type="text" class="editable-input" data-key="ct-m12-o3-kr1" value="完成团队协作满意度调研≥85%"></td><td><input type="text" class="editable-input" data-key="ct-m12-o3-kr2" value="输出2026年创作规划初稿"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="ct-m12-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill amber-fill" id="ct-m12-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 团队协作满意度说明 -->
+                <div style="margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--teal-light);font-size:12px;color:var(--teal);text-align:center;">
+                    💡 <strong>团队协作提示：</strong>月度OKR复盘时请同步评估团队协作满意度，确保创作流程顺畅高效。
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            超红传媒 · 创作团队 · 从零到一 · 内容工厂OKR · 可编辑实时保存
+        </footer>
+    </main>
+
+    <script>
+        (function() {
+            const STORAGE_KEY = 'srm-creative-team-okr-v1';
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+
+            function setTheme(dark) {
+                if (dark) {
+                    document.body.classList.add('theme-dark');
+                    icon.textContent = '☀️';
+                    label.textContent = '浅色';
+                    localStorage.setItem('srm-ct-theme', 'dark');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    icon.textContent = '🌙';
+                    label.textContent = '深色';
+                    localStorage.setItem('srm-ct-theme', 'light');
+                }
+            }
+            const savedTheme = localStorage.getItem('srm-ct-theme');
+            if (savedTheme === 'dark') setTheme(true);
+            else if (savedTheme === 'light') setTheme(false);
+            else setTheme(window.matchMedia?.('(prefers-color-scheme:dark)').matches);
+            toggle.addEventListener('click', () => setTheme(!document.body.classList.contains('theme-dark')));
+
+            function getAllDataKeys() {
+                const keys = [];
+                document.querySelectorAll('[data-key]').forEach(el => keys.push(el.getAttribute('data-key')));
+                ['card-monthly-output', 'card-hit-rate', 'card-cycle', 'card-interaction'].forEach(id => keys.push(
+                    id));
+                return keys;
+            }
+
+            function saveData() {
+                const data = {};
+                getAllDataKeys().forEach(k => {
+                    const el = document.querySelector(`[data-key="${k}"]`) || document.getElementById(k);
+                    if (el) data[k] = el.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                document.getElementById('saveStatus').textContent = '✓ 已保存';
+                setTimeout(() => { document.getElementById('saveStatus').textContent = ''; }, 1800);
+            }
+
+            function loadData() {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) { updateAll();
+                    return; }
+                try {
+                    const data = JSON.parse(raw);
+                    getAllDataKeys().forEach(k => {
+                        const el = document.querySelector(`[data-key="${k}"]`) || document.getElementById(
+                            k);
+                        if (el && data.hasOwnProperty(k)) el.value = data[k];
+                    });
+                } catch (e) {}
+                updateAll();
+            }
+
+            function resetData() {
+                if (confirm('确定重置创作团队OKR为示例数据？所有修改将丢失。')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    location.reload();
+                }
+            }
+
+            function updateAllBars() {
+                document.querySelectorAll('[data-key$="-progress"]').forEach(input => {
+                    const key = input.getAttribute('data-key');
+                    const barId = key.replace('progress', 'bar');
+                    const bar = document.getElementById(barId);
+                    if (bar) bar.style.width = Math.min(100, Math.max(0, parseInt(input.value, 10) || 0)) +
+                        '%';
+                });
+            }
+
+            function updateBadges() {
+                // 创作团队月度徽章
+                for (let m = 7; m <= 12; m++) {
+                    let sum = 0,
+                        cnt = 0;
+                    document.querySelectorAll(`[data-key^="ct-m${m}-"][data-key$="-progress"]`).forEach(el => {
+                        sum += Math.min(100, Math.max(0, parseInt(el.value, 10) || 0));
+                        cnt++;
+                    });
+                    const badge = document.getElementById(`badge-ct-m${m}`);
+                    if (badge) badge.textContent = '完成度 ' + (cnt ? Math.round(sum / cnt) : 0) + '%';
+                }
+            }
+
+            function updateAll() { updateAllBars();
+                updateBadges(); }
+
+            let debounce;
+            document.addEventListener('input', e => {
+                const targetId = e.target.id;
+                const allKeys = ['card-monthly-output', 'card-hit-rate', 'card-cycle', 'card-interaction'];
+                if (e.target.hasAttribute('data-key') || allKeys.includes(targetId)) {
+                    clearTimeout(debounce);
+                    debounce = setTimeout(() => { saveData();
+                        updateAll(); }, 500);
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => { loadData();
+                updateAll(); });
+            window.saveData = saveData;
+            window.resetData = resetData;
+        })();
+    </script>
+</body>
+</html>

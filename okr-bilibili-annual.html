@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超红传媒 · B站事业部 · 年度&月度OKR</title>
+    <style>
+        :root {
+            --bg: #f7f5f0;
+            --card: #ffffff;
+            --card-alt: #faf8f4;
+            --text: #2b2418;
+            --text-secondary: #6e6557;
+            --text-tertiary: #9b9183;
+            --line: #e5ded4;
+            --line-light: #f0ebe2;
+            --primary: #fb7299;
+            --primary-dark: #e05a7f;
+            --primary-light: #ffe6ef;
+            --bilibili-blue: #00a1d6;
+            --bilibili-blue-light: #e0f4fa;
+            --teal: #1a6b5e;
+            --teal-light: #e2f0ea;
+            --gold: #c99a4a;
+            --gold-light: #fdf3e2;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            --form-bg: #faf8f5;
+            --bar-bg: #e8e2d7;
+            --bar-fill: #fb7299;
+            --radius-sm: 10px;
+            --radius: 18px;
+            --radius-lg: 24px;
+            --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+        body.theme-dark {
+            --bg: #1c1815;
+            --card: #28231f;
+            --card-alt: #221d1a;
+            --text: #e5ddd3;
+            --text-secondary: #b5aa9c;
+            --text-tertiary: #7d7366;
+            --line: #3a332c;
+            --line-light: #322c26;
+            --primary: #ff85a8;
+            --primary-dark: #ffa2be;
+            --primary-light: #3a252d;
+            --bilibili-blue: #00b4e5;
+            --bilibili-blue-light: #1a2e36;
+            --teal: #5aaa99;
+            --teal-light: #1f302c;
+            --gold: #e0b866;
+            --gold-light: #30281c;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            --form-bg: #302a25;
+            --bar-bg: #3e3630;
+            --bar-fill: #ff85a8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Inter", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            transition: background .3s, color .3s;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page { max-width: 1260px; margin: 0 auto; padding: 18px 28px 40px; }
+
+        /* 顶部菜单栏 */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+            background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow); padding: 12px 20px; margin-bottom: 16px;
+            position: sticky; top: 10px; z-index: 999;
+        }
+        .top-bar-brand {
+            font-weight: 800; font-size: 15px; color: var(--primary-dark);
+            letter-spacing: .3px; display: flex; align-items: center; gap: 6px;
+        }
+        .top-bar-brand .dot-indicator {
+            width: 8px; height: 8px; border-radius: 50%; background: var(--primary);
+        }
+        .top-bar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .btn {
+            padding: 8px 15px; border: none; border-radius: 9px; font-weight: 700; font-size: 12.8px;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+            background: var(--card-alt); border: 1px solid var(--line); color: var(--text);
+            box-shadow: var(--shadow-sm); transition: all .2s; letter-spacing: .2px; white-space: nowrap;
+        }
+        .btn-save { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .btn-save:hover { background: var(--primary-dark); }
+        .btn:hover { background: var(--primary-light); border-color: var(--primary); }
+        .btn-theme {
+            background: var(--card-alt); border: 1px solid var(--line); border-radius: 999px;
+            padding: 8px 14px; font-weight: 700; font-size: 12.8px; cursor: pointer;
+            display: flex; align-items: center; gap: 5px; color: var(--text); transition: all .2s;
+        }
+        .btn-theme:hover { background: var(--primary-light); border-color: var(--primary); }
+        #saveStatus { font-size: 12px; color: var(--text-tertiary); min-width: 50px; text-align: right; }
+
+        /* Hero */
+        .hero {
+            background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow); padding: 24px 28px; margin-bottom: 18px;
+            position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: ''; position: absolute; right: -50px; top: -50px; width: 200px; height: 200px;
+            border-radius: 50%; background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .brand-tag {
+            display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px;
+            border-radius: 999px; background: var(--primary-light); color: var(--primary-dark);
+            font-weight: 800; font-size: 12.5px; margin-bottom: 8px; letter-spacing: .4px;
+            position: relative; z-index: 1;
+        }
+        h1 { font-size: 26px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 6px; position: relative; z-index: 1; }
+        .hero p { color: var(--text-secondary); font-size: 13.8px; max-width: 780px; position: relative; z-index: 1; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; position: relative; z-index: 1; }
+        .hero-tags span {
+            padding: 4px 11px; border-radius: 14px; font-size: 12px; font-weight: 700;
+            background: var(--card-alt); border: 1px solid var(--line); color: var(--text-secondary);
+        }
+        .hero-tags span.ht-pink { border-left: 3px solid var(--primary); color: var(--primary-dark); }
+        .hero-tags span.ht-blue { border-left: 3px solid var(--bilibili-blue); color: var(--bilibili-blue); }
+        .hero-tags span.ht-gold { border-left: 3px solid var(--gold); color: var(--gold); }
+
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .card {
+            background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow); padding: 22px 24px; transition: background .3s, border .3s;
+        }
+        .span-12 { grid-column: span 12; }
+        h2 { font-size: 19px; font-weight: 800; letter-spacing: -.2px; margin-bottom: 3px; }
+        .section-title { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .dot {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .dot.pink { background: var(--primary); box-shadow: 0 0 0 5px var(--primary-light); }
+        .dot.blue { background: var(--bilibili-blue); box-shadow: 0 0 0 5px var(--bilibili-blue-light); }
+        .dot.gold { background: var(--gold); box-shadow: 0 0 0 5px var(--gold-light); }
+        .section-subtitle { color: var(--text-tertiary); font-size: 12.5px; margin-bottom: 10px; }
+
+        /* 概览卡片 */
+        .target-cards {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+        }
+        .tcard {
+            background: var(--card-alt); border: 1px solid var(--line-light); border-radius: var(--radius);
+            padding: 16px 14px; display: flex; flex-direction: column; gap: 4px; transition: all .2s;
+        }
+        .tcard:hover { border-color: var(--line); box-shadow: var(--shadow-sm); }
+        .tcard-label { font-size: 12px; font-weight: 700; color: var(--text-tertiary); letter-spacing: .2px; }
+        .tcard-role { font-size: 13.5px; font-weight: 800; color: var(--text); }
+        .tcard-input {
+            font-size: 22px; font-weight: 900; background: transparent; border: none;
+            border-bottom: 2px dashed var(--line); outline: none; color: inherit; width: 100%;
+            font-family: var(--font-mono); padding: 3px 0; transition: border-color .2s; letter-spacing: -.5px;
+        }
+        .tcard-input:focus { border-bottom-color: var(--primary); }
+        .tcard.pink .tcard-input { color: var(--primary-dark); }
+        .tcard.blue .tcard-input { color: var(--bilibili-blue); }
+
+        /* 表格 */
+        .table-shell { border: 1px solid var(--line-light); border-radius: var(--radius); overflow: hidden; margin-top: 2px; }
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; min-width: 680px; table-layout: fixed; background: var(--card); }
+        thead th {
+            background: var(--form-bg); font-weight: 800; font-size: 12px; color: var(--text-secondary);
+            letter-spacing: .3px; text-transform: uppercase; padding: 11px 8px; border-bottom: 2px solid var(--line);
+            text-align: left; white-space: nowrap;
+        }
+        tbody td { padding: 10px 8px; border-bottom: 1px solid var(--line-light); vertical-align: top; font-size: 13px; }
+        tbody tr:last-child td { border-bottom: none; }
+        .col-obj-wide { width: 22%; } .col-kr-wide { width: 23%; } .col-kr3-wide { width: 19%; } .col-prog-wide { width: 10%; }
+        .col-dim { width: 7%; } .col-obj { width: 20%; } .col-kr { width: 21%; } .col-kr3 { width: 17%; } .col-prog { width: 11%; }
+
+        .editable-input {
+            border: 1px solid transparent; background: var(--form-bg); padding: 5px 7px; border-radius: 6px;
+            width: 100%; font-family: inherit; font-size: 12.5px; color: var(--text); transition: all .2s;
+            resize: vertical; line-height: 1.5;
+        }
+        .editable-input:focus { outline: none; border-color: var(--primary); background: var(--card); box-shadow: 0 0 0 3px var(--primary-light); }
+        .editable-input.num { width: 42px; text-align: center; font-weight: 700; font-family: var(--font-mono); padding: 4px 3px; font-size: 12.5px; flex-shrink: 0; }
+        .prog-cell { display: flex; align-items: center; gap: 5px; flex-wrap: nowrap; }
+        .mini-bar-wrap { flex: 1; min-width: 28px; background: var(--bar-bg); border-radius: 5px; height: 5px; overflow: hidden; }
+        .mini-bar-fill { height: 100%; border-radius: 5px; background: var(--bar-fill); width: 0%; transition: width .3s; }
+
+        /* 折叠面板 */
+        details { margin-bottom: 10px; }
+        details>summary {
+            background: var(--form-bg); border: 1px solid var(--line-light); border-radius: var(--radius-sm);
+            padding: 11px 16px; font-weight: 700; font-size: 14px; cursor: pointer; list-style: none;
+            display: flex; justify-content: space-between; align-items: center; color: var(--text);
+            transition: all .2s; user-select: none; gap: 8px;
+        }
+        details>summary::-webkit-details-marker { display: none; }
+        details>summary:hover { background: var(--primary-light); border-color: var(--primary); }
+        details[open]>summary {
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--primary-light);
+            border-color: var(--primary); border-bottom-color: transparent;
+        }
+        details .month-body {
+            border: 1px solid var(--line-light); border-top: none; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: 12px; background: var(--card);
+        }
+        .month-pill {
+            font-size: 11px; padding: 4px 9px; border-radius: 12px; background: var(--primary-light);
+            color: var(--primary-dark); font-weight: 700; white-space: nowrap; flex-shrink: 0;
+        }
+        .footer { text-align: center; color: var(--text-tertiary); font-size: 12px; padding: 24px 0 6px; letter-spacing: .2px; }
+
+        @media (max-width: 1024px) {
+            .target-cards { grid-template-columns: repeat(2, 1fr); }
+            .top-bar { flex-direction: column; align-items: flex-start; }
+            .top-bar-actions { width: 100%; justify-content: flex-start; }
+        }
+        @media (max-width: 720px) {
+            .page { padding: 10px 10px; }
+            .hero { padding: 16px 14px; }
+            h1 { font-size: 20px; }
+            .card { padding: 14px 12px; }
+            .target-cards { grid-template-columns: 1fr; }
+            .table-scroll { overflow-x: auto; }
+            table { min-width: 580px; }
+            .top-bar { padding: 10px 14px; top: 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-brand">
+            <span class="dot-indicator"></span> 超红传媒 · B站事业部 · 年度&月度OKR
+        </div>
+        <div class="top-bar-actions">
+            <button class="btn" onclick="resetData()">↺ 重置示例</button>
+            <button class="btn btn-save" onclick="saveData()">💾 保存本地</button>
+            <button class="btn-theme" id="themeToggle">
+                <span id="themeIcon">🌙</span> <span id="themeLabel">深色</span>
+            </button>
+            <span id="saveStatus"></span>
+        </div>
+    </div>
+
+    <main class="page">
+        <section class="hero">
+            <div class="brand-tag">🎯 年度O：建立一流的媒体账号</div>
+            <h1>B站博主公司 · 下半年OKR（7~12月）</h1>
+            <p>
+                对标全球头部媒体公司标准，聚焦<strong>内容影响力</strong> · <strong>社区互动</strong> · <strong>商业变现</strong> · <strong>品牌声誉</strong>。
+                月度O：建立完善的媒体，逐月夯实账号基础，冲刺年度里程碑。
+            </p>
+            <div class="hero-tags">
+                <span class="ht-pink">📈 粉丝总量突破50万</span>
+                <span class="ht-blue">🎬 年播放量1亿+</span>
+                <span class="ht-gold">💰 花火+带货收入200万</span>
+            </div>
+        </section>
+
+        <!-- 年度核心指标卡片 -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot pink"></span><h2>年度核心指标（可编辑）</h2></div>
+                <div class="target-cards">
+                    <div class="tcard pink"><div class="tcard-label">📈 粉丝总量（万）</div><input type="number" class="tcard-input" id="card-fans" value="50" min="0"></div>
+                    <div class="tcard blue"><div class="tcard-label">🎬 年播放量（亿）</div><input type="number" class="tcard-input" id="card-views" value="1.0" step="0.01" min="0"></div>
+                    <div class="tcard pink"><div class="tcard-label">🔥 爆款视频数（≥50万播放）</div><input type="number" class="tcard-input" id="card-hot" value="36" min="0"></div>
+                    <div class="tcard blue"><div class="tcard-label">💰 商业收入（万元）</div><input type="number" class="tcard-input" id="card-revenue" value="200" min="0"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 年度OKR表格 -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot pink"></span><h2>年度O：建立一流的媒体账号</h2></div>
+                <div class="table-shell"><div class="table-scroll"><table>
+                    <thead><tr><th class="col-obj-wide">Objective</th><th class="col-kr-wide">KR1</th><th class="col-kr-wide">KR2</th><th class="col-kr3-wide">KR3</th><th class="col-prog-wide">完成度%</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="year-o1-obj" value="O1：打造头部内容影响力"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o1-kr1" value="年播放量突破1亿"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o1-kr2" value="爆款视频 ≥36条（播放≥50万）"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o1-kr3" value="B站热门/每周必看 ≥12次"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="year-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="year-o1-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="year-o2-obj" value="O2：构建高粘性社区生态"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o2-kr1" value="粉丝总量突破50万"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o2-kr2" value="平均互动率 ≥8%（点赞/投币/收藏）"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o2-kr3" value="核心粉丝群 ≥2000人"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="year-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="year-o2-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="year-o3-obj" value="O3：实现可持续商业变现"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o3-kr1" value="花火商单+带货总收入 ≥200万"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o3-kr2" value="合作品牌 ≥15个，复购率 ≥35%"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o3-kr3" value="商业内容观众满意度 ≥90%"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="year-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="year-o3-bar"></div></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="editable-input" data-key="year-o4-obj" value="O4：品牌声誉与行业地位"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o4-kr1" value="获得B站官方认证/奖项 ≥1次"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o4-kr2" value="媒体/行业报道 ≥3次"></td>
+                            <td><input type="text" class="editable-input" data-key="year-o4-kr3" value="NPS（净推荐值） ≥60"></td>
+                            <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="year-o4-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="year-o4-bar"></div></div></div></td>
+                        </tr>
+                    </tbody>
+                </table></div></div>
+            </section>
+        </div>
+
+        <!-- 月度OKR（7~12月） -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title"><span class="dot blue"></span><h2>月度O：建立完善的媒体（7~12月分解）</h2></div>
+                <p class="section-subtitle">每月聚焦内容建设、粉丝增长、商业探索与品牌沉淀，点击展开编辑。</p>
+
+                <!-- 7月 -->
+                <details>
+                    <summary><span>📅 7月 · 账号基建与冷启动</span><span class="month-pill" id="badge-m7">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m7-o1-obj" value="完成账号定位与内容规划"></td><td><input type="text" class="editable-input" data-key="m7-o1-kr1" value="发布视频12条，测试3种风格"></td><td><input type="text" class="editable-input" data-key="m7-o1-kr2" value="平均播放量 ≥5000"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m7-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m7-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m7-o2-obj" value="积累初期核心粉丝"></td><td><input type="text" class="editable-input" data-key="m7-o2-kr1" value="粉丝增长至1万"></td><td><input type="text" class="editable-input" data-key="m7-o2-kr2" value="互动率 ≥5%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m7-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m7-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m7-o3-obj" value="完成商业基础搭建"></td><td><input type="text" class="editable-input" data-key="m7-o3-kr1" value="开通花火、带货权限"></td><td><input type="text" class="editable-input" data-key="m7-o3-kr2" value="建立品牌联系10家"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m7-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m7-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 8月 -->
+                <details>
+                    <summary><span>📅 8月 · 内容优化与增长验证</span><span class="month-pill" id="badge-m8">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m8-o1-obj" value="提升内容质量与完播率"></td><td><input type="text" class="editable-input" data-key="m8-o1-kr1" value="产出1条爆款（≥50万播放）"></td><td><input type="text" class="editable-input" data-key="m8-o1-kr2" value="平均完播率 ≥45%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m8-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m8-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m8-o2-obj" value="加速粉丝增长"></td><td><input type="text" class="editable-input" data-key="m8-o2-kr1" value="粉丝突破3万"></td><td><input type="text" class="editable-input" data-key="m8-o2-kr2" value="互动率 ≥6%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m8-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m8-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m8-o3-obj" value="测试首次商业合作"></td><td><input type="text" class="editable-input" data-key="m8-o3-kr1" value="成交花火商单1单"></td><td><input type="text" class="editable-input" data-key="m8-o3-kr2" value="客户满意度100%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m8-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m8-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 9月 -->
+                <details>
+                    <summary><span>📅 9月 · 流量爆发与商业起步</span><span class="month-pill" id="badge-m9">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m9-o1-obj" value="冲击热门与每周必看"></td><td><input type="text" class="editable-input" data-key="m9-o1-kr1" value="产出2条爆款"></td><td><input type="text" class="editable-input" data-key="m9-o1-kr2" value="1条视频登上热门"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m9-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m9-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m9-o2-obj" value="粉丝量级突破"></td><td><input type="text" class="editable-input" data-key="m9-o2-kr1" value="粉丝突破8万"></td><td><input type="text" class="editable-input" data-key="m9-o2-kr2" value="核心粉丝群500人"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m9-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m9-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m9-o3-obj" value="商业变现规模化"></td><td><input type="text" class="editable-input" data-key="m9-o3-kr1" value="商单收入5万"></td><td><input type="text" class="editable-input" data-key="m9-o3-kr2" value="合作品牌3个"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m9-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m9-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 10月 -->
+                <details>
+                    <summary><span>📅 10月 · 品牌合作与社区深化</span><span class="month-pill" id="badge-m10">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m10-o1-obj" value="稳定输出爆款内容"></td><td><input type="text" class="editable-input" data-key="m10-o1-kr1" value="产出3条爆款"></td><td><input type="text" class="editable-input" data-key="m10-o1-kr2" value="系列化内容启动"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m10-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m10-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m10-o2-obj" value="提升粉丝粘性"></td><td><input type="text" class="editable-input" data-key="m10-o2-kr1" value="粉丝突破15万"></td><td><input type="text" class="editable-input" data-key="m10-o2-kr2" value="互动率 ≥8%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m10-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m10-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m10-o3-obj" value="打造标杆商单案例"></td><td><input type="text" class="editable-input" data-key="m10-o3-kr1" value="商单收入10万"></td><td><input type="text" class="editable-input" data-key="m10-o3-kr2" value="品牌复购1家"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m10-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m10-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 11月 -->
+                <details>
+                    <summary><span>📅 11月 · 商业突破与影响力扩散</span><span class="month-pill" id="badge-m11">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m11-o1-obj" value="冲击超级爆款"></td><td><input type="text" class="editable-input" data-key="m11-o1-kr1" value="产出4条爆款，1条破200万"></td><td><input type="text" class="editable-input" data-key="m11-o1-kr2" value="跨平台分发引流"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m11-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m11-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m11-o2-obj" value="粉丝量冲刺"></td><td><input type="text" class="editable-input" data-key="m11-o2-kr1" value="粉丝突破25万"></td><td><input type="text" class="editable-input" data-key="m11-o2-kr2" value="核心群突破1000人"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m11-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m11-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m11-o3-obj" value="商业收入高速增长"></td><td><input type="text" class="editable-input" data-key="m11-o3-kr1" value="月收入20万"></td><td><input type="text" class="editable-input" data-key="m11-o3-kr2" value="合作品牌5个"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m11-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m11-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+
+                <!-- 12月 -->
+                <details>
+                    <summary><span>📅 12月 · 年度冲刺与品牌收官</span><span class="month-pill" id="badge-m12">完成度 0%</span></summary>
+                    <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                        <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>📈 内容</strong></td><td><input type="text" class="editable-input" data-key="m12-o1-obj" value="年度内容收官"></td><td><input type="text" class="editable-input" data-key="m12-o1-kr1" value="产出4条爆款"></td><td><input type="text" class="editable-input" data-key="m12-o1-kr2" value="年度爆款累计≥36条"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m12-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m12-o1-bar"></div></div></div></td></tr>
+                            <tr><td><strong>👥 粉丝</strong></td><td><input type="text" class="editable-input" data-key="m12-o2-obj" value="粉丝规模达标"></td><td><input type="text" class="editable-input" data-key="m12-o2-kr1" value="粉丝突破50万"></td><td><input type="text" class="editable-input" data-key="m12-o2-kr2" value="NPS调研≥60"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m12-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m12-o2-bar"></div></div></div></td></tr>
+                            <tr><td><strong>💰 商业</strong></td><td><input type="text" class="editable-input" data-key="m12-o3-obj" value="商业收入冲刺"></td><td><input type="text" class="editable-input" data-key="m12-o3-kr1" value="月收入25万"></td><td><input type="text" class="editable-input" data-key="m12-o3-kr2" value="全年累计≥200万"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="m12-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="m12-o3-bar"></div></div></div></td></tr>
+                        </tbody>
+                    </table></div></div></div>
+                </details>
+            </section>
+        </div>
+
+        <footer class="footer">
+            超红传媒 · B站事业部 · 一流媒体账号OKR · 可编辑实时保存
+        </footer>
+    </main>
+
+    <script>
+        (function() {
+            const STORAGE_KEY = 'srm-bilibili-okr-v1';
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+
+            function setTheme(dark) {
+                if (dark) {
+                    document.body.classList.add('theme-dark');
+                    icon.textContent = '☀️'; label.textContent = '浅色';
+                    localStorage.setItem('srm-bili-theme', 'dark');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    icon.textContent = '🌙'; label.textContent = '深色';
+                    localStorage.setItem('srm-bili-theme', 'light');
+                }
+            }
+            const savedTheme = localStorage.getItem('srm-bili-theme');
+            if (savedTheme === 'dark') setTheme(true);
+            else if (savedTheme === 'light') setTheme(false);
+            else setTheme(window.matchMedia?.('(prefers-color-scheme:dark)').matches);
+            toggle.addEventListener('click', () => setTheme(!document.body.classList.contains('theme-dark')));
+
+            function saveData() {
+                const data = {};
+                document.querySelectorAll('[data-key]').forEach(el => data[el.getAttribute('data-key')] = el.value);
+                ['card-fans','card-views','card-hot','card-revenue'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if(el) data[id] = el.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                document.getElementById('saveStatus').textContent = '✓ 已保存';
+                setTimeout(() => { document.getElementById('saveStatus').textContent = ''; }, 1800);
+            }
+
+            function loadData() {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) { updateAll(); return; }
+                try {
+                    const data = JSON.parse(raw);
+                    document.querySelectorAll('[data-key]').forEach(el => {
+                        const k = el.getAttribute('data-key');
+                        if (data.hasOwnProperty(k)) el.value = data[k];
+                    });
+                    ['card-fans','card-views','card-hot','card-revenue'].forEach(id => {
+                        if (data.hasOwnProperty(id)) {
+                            const el = document.getElementById(id);
+                            if(el) el.value = data[id];
+                        }
+                    });
+                } catch(e) {}
+                updateAll();
+            }
+
+            function resetData() {
+                if (confirm('确定重置为示例数据？所有修改将丢失。')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    location.reload();
+                }
+            }
+
+            function updateAllBars() {
+                document.querySelectorAll('[data-key$="-progress"]').forEach(input => {
+                    const barId = input.getAttribute('data-key').replace('progress','bar');
+                    const bar = document.getElementById(barId);
+                    if(bar) bar.style.width = Math.min(100, Math.max(0, parseInt(input.value,10)||0)) + '%';
+                });
+            }
+
+            function updateBadges() {
+                for(let m=7; m<=12; m++) {
+                    let sum=0, cnt=0;
+                    document.querySelectorAll(`[data-key^="m${m}-"][data-key$="-progress"]`).forEach(el => {
+                        sum += Math.min(100, Math.max(0, parseInt(el.value,10)||0));
+                        cnt++;
+                    });
+                    const badge = document.getElementById(`badge-m${m}`);
+                    if(badge) badge.textContent = '完成度 ' + (cnt ? Math.round(sum/cnt) : 0) + '%';
+                }
+            }
+
+            function updateAll() { updateAllBars(); updateBadges(); }
+
+            let debounce;
+            document.addEventListener('input', e => {
+                if (e.target.hasAttribute('data-key') || ['card-fans','card-views','card-hot','card-revenue'].includes(e.target.id)) {
+                    clearTimeout(debounce);
+                    debounce = setTimeout(() => { saveData(); updateAll(); }, 500);
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => { loadData(); updateAll(); });
+            window.saveData = saveData;
+            window.resetData = resetData;
+        })();
+    </script>
+</body>
+</html>
