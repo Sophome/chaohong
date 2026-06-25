@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超红传媒 · HRBP 下半年 OKR | 业务伙伴驱动</title>
+    <style>
+        :root {
+            --bg: #f7f5f0;
+            --card: #ffffff;
+            --card-alt: #faf8f4;
+            --text: #2b2418;
+            --text-secondary: #6e6557;
+            --text-tertiary: #9b9183;
+            --line: #e5ded4;
+            --line-light: #f0ebe2;
+            --primary: #8b3a3a;
+            --primary-dark: #662929;
+            --primary-light: #f3e6e3;
+            --gold: #8c6a2e;
+            --gold-light: #f5eddb;
+            --teal: #1a6b5e;
+            --teal-light: #e2f0ea;
+            --accent: #5b6e7a;
+            --accent-light: #e8edf0;
+            --purple: #6b3a7d;
+            --purple-dark: #4f2b5e;
+            --purple-light: #f3e8f7;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            --form-bg: #faf8f5;
+            --bar-bg: #e8e2d7;
+            --bar-fill: #6b3a7d;
+            --radius-sm: 10px;
+            --radius: 18px;
+            --radius-lg: 24px;
+            --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+        body.theme-dark {
+            --bg: #1c1815;
+            --card: #28231f;
+            --card-alt: #221d1a;
+            --text: #e5ddd3;
+            --text-secondary: #b5aa9c;
+            --text-tertiary: #7d7366;
+            --line: #3a332c;
+            --line-light: #322c26;
+            --primary: #c0786a;
+            --primary-dark: #d48a7a;
+            --primary-light: #3a2824;
+            --gold: #c99a4a;
+            --gold-light: #352a1c;
+            --teal: #5aaa99;
+            --teal-light: #1f302c;
+            --accent: #8aa0b0;
+            --accent-light: #1f262b;
+            --purple: #b08cc4;
+            --purple-dark: #c9a0d8;
+            --purple-light: #2a1f30;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            --form-bg: #302a25;
+            --bar-bg: #3e3630;
+            --bar-fill: #b08cc4;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Inter", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            transition: background .3s, color .3s;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 18px 28px 40px;
+        }
+
+        /* 顶部菜单栏 */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 12px 20px;
+            margin-bottom: 16px;
+            position: sticky;
+            top: 10px;
+            z-index: 999;
+        }
+        .top-bar-brand {
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--purple-dark);
+            letter-spacing: .3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-bar-brand .dot-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--purple);
+        }
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 9px;
+            font-weight: 700;
+            font-size: 12.8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+            transition: all .2s;
+            letter-spacing: .2px;
+            white-space: nowrap;
+        }
+        .btn-save {
+            background: var(--purple);
+            color: #fff;
+            border-color: var(--purple);
+        }
+        .btn-save:hover {
+            background: var(--purple-dark);
+        }
+        .btn:hover {
+            background: var(--purple-light);
+            border-color: var(--purple);
+        }
+        .btn-theme {
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 700;
+            font-size: 12.8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text);
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .btn-theme:hover {
+            background: var(--purple-light);
+            border-color: var(--purple);
+        }
+        #saveStatus {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 24px 28px;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--purple-light) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: var(--purple-light);
+            color: var(--purple-dark);
+            font-weight: 800;
+            font-size: 12.5px;
+            margin-bottom: 8px;
+            letter-spacing: .4px;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -.3px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+            color: var(--text);
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 13.8px;
+            max-width: 780px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tags span {
+            padding: 4px 11px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--card-alt);
+            border: 1px solid var(--line);
+            color: var(--text-secondary);
+        }
+        .hero-tags span.ht-partner {
+            border-left: 3px solid var(--purple);
+            color: var(--purple-dark);
+        }
+        .hero-tags span.ht-talent {
+            border-left: 3px solid var(--teal);
+            color: var(--teal);
+        }
+        .hero-tags span.ht-efficiency {
+            border-left: 3px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 22px 24px;
+            transition: background .3s, border .3s;
+        }
+        .span-12 {
+            grid-column: span 12;
+        }
+        h2 {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -.2px;
+            margin-bottom: 3px;
+            color: var(--text);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot.purple {
+            background: var(--purple);
+            box-shadow: 0 0 0 5px var(--purple-light);
+        }
+        .dot.teal {
+            background: var(--teal);
+            box-shadow: 0 0 0 5px var(--teal-light);
+        }
+        .dot.accent {
+            background: var(--accent);
+            box-shadow: 0 0 0 5px var(--accent-light);
+        }
+        .section-subtitle {
+            color: var(--text-tertiary);
+            font-size: 12.5px;
+            margin-bottom: 10px;
+        }
+
+        /* 概览卡片 */
+        .target-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .tcard {
+            background: var(--card-alt);
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius);
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: all .2s;
+            cursor: default;
+        }
+        .tcard:hover {
+            border-color: var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+        .tcard-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            letter-spacing: .2px;
+            text-transform: uppercase;
+        }
+        .tcard-role {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -.1px;
+        }
+        .tcard-input {
+            font-size: 22px;
+            font-weight: 900;
+            background: transparent;
+            border: none;
+            border-bottom: 2px dashed var(--line);
+            outline: none;
+            color: inherit;
+            width: 100%;
+            font-family: var(--font-mono);
+            padding: 3px 0;
+            transition: border-color .2s;
+            letter-spacing: -.5px;
+        }
+        .tcard-input:focus {
+            border-bottom-color: var(--purple);
+        }
+        .tcard.purple .tcard-input {
+            color: var(--purple-dark);
+        }
+        .tcard.teal .tcard-input {
+            color: var(--teal);
+        }
+
+        /* 表格容器 */
+        .table-shell {
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 2px;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+            table-layout: fixed;
+            background: var(--card);
+        }
+        thead th {
+            background: var(--form-bg);
+            font-weight: 800;
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: .3px;
+            text-transform: uppercase;
+            padding: 11px 8px;
+            border-bottom: 2px solid var(--line);
+            text-align: left;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line-light);
+            vertical-align: top;
+            font-size: 13px;
+            word-break: break-word;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .col-dim {
+            width: 7%;
+        }
+        .col-obj {
+            width: 20%;
+        }
+        .col-kr {
+            width: 21%;
+        }
+        .col-kr3 {
+            width: 17%;
+        }
+        .col-prog {
+            width: 11%;
+        }
+        .col-obj-wide {
+            width: 22%;
+        }
+        .col-kr-wide {
+            width: 23%;
+        }
+        .col-kr3-wide {
+            width: 19%;
+        }
+        .col-prog-wide {
+            width: 10%;
+        }
+
+        .editable-input {
+            border: 1px solid transparent;
+            background: var(--form-bg);
+            padding: 5px 7px;
+            border-radius: 6px;
+            width: 100%;
+            font-family: inherit;
+            font-size: 12.5px;
+            color: var(--text);
+            transition: all .2s;
+            resize: vertical;
+            line-height: 1.5;
+        }
+        .editable-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: var(--card);
+            box-shadow: 0 0 0 3px var(--purple-light);
+        }
+        .editable-input.num {
+            width: 42px;
+            text-align: center;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            padding: 4px 3px;
+            font-size: 12.5px;
+            flex-shrink: 0;
+        }
+        .prog-cell {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+        }
+        .mini-bar-wrap {
+            flex: 1;
+            min-width: 28px;
+            background: var(--bar-bg);
+            border-radius: 5px;
+            height: 5px;
+            overflow: hidden;
+        }
+        .mini-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: var(--bar-fill);
+            width: 0%;
+            transition: width .3s;
+        }
+
+        /* 折叠面板 */
+        details {
+            margin-bottom: 10px;
+        }
+        details>summary {
+            background: var(--form-bg);
+            border: 1px solid var(--line-light);
+            border-radius: var(--radius-sm);
+            padding: 11px 16px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text);
+            transition: all .2s;
+            user-select: none;
+            gap: 8px;
+        }
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+        details>summary:hover {
+            background: var(--purple-light);
+            border-color: var(--purple);
+        }
+        details[open]>summary {
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            background: var(--purple-light);
+            border-color: var(--purple);
+            border-bottom-color: transparent;
+        }
+        details .month-body {
+            border: 1px solid var(--line-light);
+            border-top: none;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: 12px;
+            background: var(--card);
+        }
+        .month-pill {
+            font-size: 11px;
+            padding: 4px 9px;
+            border-radius: 12px;
+            background: var(--purple-light);
+            color: var(--purple-dark);
+            font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .role-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* 子折叠 */
+        details.sub-details {
+            margin-bottom: 6px;
+        }
+        details.sub-details>summary {
+            background: var(--card-alt);
+            border: 1px solid var(--line-light);
+            border-radius: 8px;
+            padding: 9px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text);
+            transition: all .2s;
+            user-select: none;
+        }
+        details.sub-details>summary::-webkit-details-marker {
+            display: none;
+        }
+        details.sub-details>summary:hover {
+            background: var(--purple-light);
+            border-color: var(--purple);
+        }
+        details.sub-details[open]>summary {
+            border-radius: 8px 8px 0 0;
+            background: var(--purple-light);
+            border-color: var(--purple);
+            border-bottom-color: transparent;
+        }
+        details.sub-details .month-body {
+            padding: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 12px;
+            padding: 24px 0 6px;
+            letter-spacing: .2px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .target-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .top-bar-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+        @media (max-width: 720px) {
+            .page {
+                padding: 10px 10px;
+            }
+            .hero {
+                padding: 16px 14px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .card {
+                padding: 14px 12px;
+            }
+            .target-cards {
+                grid-template-columns: 1fr;
+            }
+            .table-scroll {
+                overflow-x: auto;
+            }
+            table {
+                min-width: 580px;
+            }
+            .top-bar {
+                padding: 10px 14px;
+                top: 6px;
+            }
+            .btn,
+            .btn-theme {
+                padding: 7px 11px;
+                font-size: 11.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 顶部菜单栏 ===== -->
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-brand">
+            <span class="dot-indicator"></span> 超红传媒 · HRBP · 下半年 OKR
+        </div>
+        <div class="top-bar-actions">
+            <button class="btn" onclick="resetData()" title="恢复默认示例数据">↺ 重置示例</button>
+            <button class="btn btn-save" onclick="saveData()" title="保存到浏览器本地存储">💾 保存本地</button>
+            <button class="btn-theme" id="themeToggle" title="切换深色/浅色模式">
+                <span id="themeIcon">🌙</span> <span id="themeLabel">深色</span>
+            </button>
+            <span id="saveStatus"></span>
+        </div>
+    </div>
+
+    <main class="page">
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+            <div class="brand-tag">超红传媒 · HRBP · H2 战略 OKR</div>
+            <h1>下半年 HRBP 目标 & 月度分解（7~12 月）</h1>
+            <p>
+                业务伙伴深度嵌入，驱动人才战略落地：<strong>🤝 业务伙伴</strong> · <strong>🌱 人才发展</strong> · <strong>📊 组织效能</strong>。
+                从 7 月融入业务，逐月深化影响，冲刺年度目标。
+            </p>
+            <div class="hero-tags">
+                <span class="ht-partner">🤝 业务伙伴 · 深度嵌入</span>
+                <span class="ht-talent">🌱 人才梯队 · 继任计划</span>
+                <span class="ht-efficiency">📊 组织效能 · 人效提升</span>
+            </div>
+        </section>
+
+        <!-- ===== 概览卡片 ===== -->
+        <div class="grid">
+            <section class="card span-12">
+                <div class="section-title">
+                    <span class="dot purple"></span>
+                    <h2>HRBP 核心指标总览</h2>
+                </div>
+                <p class="section-subtitle">下方为HRBP下半年核心KPI，可直接编辑数字。</p>
+                <div class="target-cards">
+                    <div class="tcard purple">
+                        <div class="tcard-label">🤝 业务伙伴</div>
+                        <div class="tcard-role">业务满意度目标（%）</div>
+                        <input type="number" class="tcard-input" id="hrbp-card-satisfaction" value="90" min="0" max="100">
+                    </div>
+                    <div class="tcard teal">
+                        <div class="tcard-label">🌱 人才梯队</div>
+                        <div class="tcard-role">关键岗位继任覆盖率（%）</div>
+                        <input type="number" class="tcard-input" id="hrbp-card-succession" value="80" min="0" max="100">
+                    </div>
+                    <div class="tcard purple">
+                        <div class="tcard-label">⭐ 高潜人才</div>
+                        <div class="tcard-role">高潜人才识别数（人）</div>
+                        <input type="number" class="tcard-input" id="hrbp-card-hipo" value="10" min="0">
+                    </div>
+                    <div class="tcard teal">
+                        <div class="tcard-label">📊 敬业度</div>
+                        <div class="tcard-role">员工敬业度目标（%）</div>
+                        <input type="number" class="tcard-input" id="hrbp-card-engagement" value="85" min="0" max="100">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== HRBP 总OKR + 月度分解 ===== -->
+        <div class="grid">
+            <section class="card span-12">
+                <details open>
+                    <summary>
+                        <span class="role-icon">🤝</span>
+                        <span>HRBP · 业务伙伴与人才战略</span>
+                        <span class="month-pill" id="badge-hrbp">完成度 0%</span>
+                    </summary>
+                    <div class="month-body">
+                        <!-- H2 总目标 -->
+                        <div class="section-title"><span class="dot purple"></span><h2>H2 总目标 · HRBP</h2></div>
+                        <div class="table-shell"><div class="table-scroll"><table>
+                            <thead><tr><th class="col-obj-wide">Objective</th><th class="col-kr-wide">KR1</th><th class="col-kr-wide">KR2</th><th class="col-kr3-wide">KR3</th><th class="col-prog-wide">完成度%</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o1-obj" value="O1：业务伙伴深度嵌入"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o1-kr1" value="业务部门满意度 ≥90%"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o1-kr2" value="参与业务会议 ≥每周2次"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o1-kr3" value="输出人才洞察报告 ≥6份"></td>
+                                    <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-o1-bar"></div></div></div></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o2-obj" value="O2：人才梯队建设"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o2-kr1" value="关键岗位继任计划覆盖率 ≥80%"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o2-kr2" value="高潜人才识别 ≥10人"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o2-kr3" value="内部晋升率 ≥30%"></td>
+                                    <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-o2-bar"></div></div></div></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o3-obj" value="O3：组织效能提升"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o3-kr1" value="人效指标提升 15%"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o3-kr2" value="员工敬业度 ≥85%"></td>
+                                    <td><input type="text" class="editable-input" data-key="hrbp-o3-kr3" value="离职率控制在 ≤10%"></td>
+                                    <td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-o3-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-o3-bar"></div></div></div></td>
+                                </tr>
+                            </tbody>
+                        </table></div></div>
+
+                        <!-- 月度分解 -->
+                        <p style="margin:14px 0 8px;font-weight:700;font-size:13px;color:var(--text-secondary);">📅 月度分解（7~12月）· 点击展开编辑</p>
+
+                        <!-- 7月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 7月 · 业务融入期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o1-obj" value="深入了解业务模式"></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o1-kr1" value="参与业务会议≥8次"></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o1-kr2" value="完成业务痛点调研"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m7-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m7-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o2-obj" value="启动人才盘点"></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o2-kr1" value="识别关键岗位清单"></td><td><input type="text" class="editable-input" data-key="hrbp-m7-o2-kr2" value="建立人才档案≥20份"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m7-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m7-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+
+                        <!-- 8月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 8月 · 关系深化期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o1-obj" value="建立信任关系"></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o1-kr1" value="业务满意度≥80%"></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o1-kr2" value="输出首份洞察报告"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m8-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m8-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o2-obj" value="完成人才九宫格"></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o2-kr1" value="识别高潜≥3人"></td><td><input type="text" class="editable-input" data-key="hrbp-m8-o2-kr2" value="制定个人发展计划"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m8-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m8-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+
+                        <!-- 9月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 9月 · 方案设计期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o1-obj" value="参与战略规划"></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o1-kr1" value="输出人才策略建议"></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o1-kr2" value="业务会议≥10次"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m9-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m9-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o2-obj" value="继任计划启动"></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o2-kr1" value="关键岗位覆盖≥50%"></td><td><input type="text" class="editable-input" data-key="hrbp-m9-o2-kr2" value="培训项目设计完成"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m9-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m9-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+
+                        <!-- 10月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 10月 · 项目落地期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o1-obj" value="推动组织变革"></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o1-kr1" value="业务满意度≥85%"></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o1-kr2" value="解决业务痛点≥3个"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m10-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m10-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o2-obj" value="高潜人才发展项目"></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o2-kr1" value="导师制启动"></td><td><input type="text" class="editable-input" data-key="hrbp-m10-o2-kr2" value="内部晋升≥1人"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m10-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m10-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+
+                        <!-- 11月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 11月 · 效能冲刺期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o1-obj" value="人效深度分析"></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o1-kr1" value="优化人员配置方案"></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o1-kr2" value="业务满意度≥88%"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m11-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m11-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o2-obj" value="继任计划深化"></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o2-kr1" value="继任覆盖≥70%"></td><td><input type="text" class="editable-input" data-key="hrbp-m11-o2-kr2" value="高潜人才≥8人"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m11-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m11-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+
+                        <!-- 12月 -->
+                        <details class="sub-details">
+                            <summary><span>📅 12月 · 年度收官期</span><span class="month-pill">完成度 0%</span></summary>
+                            <div class="month-body"><div class="table-shell"><div class="table-scroll"><table>
+                                <thead><tr><th class="col-dim">维度</th><th class="col-obj">Objective</th><th class="col-kr">KR1</th><th class="col-kr">KR2</th><th class="col-prog">%</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>🤝 业务伙伴</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o1-obj" value="年度总结与规划"></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o1-kr1" value="业务满意度≥90%"></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o1-kr2" value="输出年度人才报告"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m12-o1-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m12-o1-bar"></div></div></div></td></tr>
+                                    <tr><td><strong>🌱 人才发展</strong></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o2-obj" value="人才盘点收官"></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o2-kr1" value="继任覆盖≥80%"></td><td><input type="text" class="editable-input" data-key="hrbp-m12-o2-kr2" value="晋升通道优化完成"></td><td><div class="prog-cell"><input type="number" class="editable-input num" data-key="hrbp-m12-o2-progress" value="0" min="0" max="100"><div class="mini-bar-wrap"><div class="mini-bar-fill" id="hrbp-m12-o2-bar"></div></div></div></td></tr>
+                                </tbody>
+                            </table></div></div></div>
+                        </details>
+                    </div>
+                </details>
+            </section>
+        </div>
+
+        <footer class="footer">
+            超红传媒 · HRBP OKR 系统 · 业务伙伴 × 人才梯队 × 组织效能 · 可编辑实时保存
+        </footer>
+    </main>
+
+    <script>
+        (function() {
+            const STORAGE_KEY = 'srm-hrbp-okr-v1';
+
+            // 深浅主题切换
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+
+            function setTheme(dark) {
+                if (dark) {
+                    document.body.classList.add('theme-dark');
+                    icon.textContent = '☀️';
+                    label.textContent = '浅色';
+                    localStorage.setItem('srm-hrbp-theme', 'dark');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    icon.textContent = '🌙';
+                    label.textContent = '深色';
+                    localStorage.setItem('srm-hrbp-theme', 'light');
+                }
+            }
+            const savedTheme = localStorage.getItem('srm-hrbp-theme');
+            if (savedTheme === 'dark') setTheme(true);
+            else if (savedTheme === 'light') setTheme(false);
+            else setTheme(window.matchMedia?.('(prefers-color-scheme:dark)').matches);
+            toggle.addEventListener('click', () => setTheme(!document.body.classList.contains('theme-dark')));
+
+            // 数据保存
+            function saveData() {
+                const data = {};
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    data[el.getAttribute('data-key')] = el.value;
+                });
+                ['hrbp-card-satisfaction', 'hrbp-card-succession', 'hrbp-card-hipo', 'hrbp-card-engagement']
+                .forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) data[id] = el.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                document.getElementById('saveStatus').textContent = '✓ 已保存';
+                setTimeout(() => { document.getElementById('saveStatus').textContent = ''; }, 1800);
+            }
+
+            function loadData() {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) { updateAllBars();
+                    updateAllBadges();
+                    return; }
+                try {
+                    const data = JSON.parse(raw);
+                    document.querySelectorAll('[data-key]').forEach(el => {
+                        const k = el.getAttribute('data-key');
+                        if (data.hasOwnProperty(k)) el.value = data[k];
+                    });
+                    ['hrbp-card-satisfaction', 'hrbp-card-succession', 'hrbp-card-hipo',
+                        'hrbp-card-engagement'
+                    ].forEach(id => {
+                        if (data.hasOwnProperty(id)) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = data[id];
+                        }
+                    });
+                } catch (e) {}
+                updateAllBars();
+                updateAllBadges();
+            }
+
+            function resetData() {
+                if (confirm('确定重置为示例数据？所有修改将丢失。')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    location.reload();
+                }
+            }
+
+            function updateAllBars() {
+                // 所有进度条
+                document.querySelectorAll('[data-key$="-progress"]').forEach(input => {
+                    const key = input.getAttribute('data-key');
+                    const barId = key.replace('progress', 'bar');
+                    const bar = document.getElementById(barId);
+                    if (bar) {
+                        const v = Math.min(100, Math.max(0, parseInt(input.value, 10) || 0));
+                        bar.style.width = v + '%';
+                    }
+                });
+            }
+
+            function updateAllBadges() {
+                // 主徽章：汇总所有hrbp-前缀的progress
+                let sum = 0,
+                    cnt = 0;
+                document.querySelectorAll('[data-key^="hrbp-"][data-key$="-progress"]').forEach(el => {
+                    const v = Math.min(100, Math.max(0, parseInt(el.value, 10) || 0));
+                    sum += v;
+                    cnt++;
+                });
+                const mainBadge = document.getElementById('badge-hrbp');
+                if (mainBadge) mainBadge.textContent = '完成度 ' + (cnt ? Math.round(sum / cnt) : 0) + '%';
+
+                // 月度子徽章
+                document.querySelectorAll('details.sub-details summary .month-pill').forEach(pill => {
+                    const parentDetails = pill.closest('details.sub-details');
+                    if (!parentDetails) return;
+                    let mSum = 0,
+                        mCnt = 0;
+                    parentDetails.querySelectorAll('[data-key$="-progress"]').forEach(el => {
+                        const v = Math.min(100, Math.max(0, parseInt(el.value, 10) || 0));
+                        mSum += v;
+                        mCnt++;
+                    });
+                    pill.textContent = '完成度 ' + (mCnt ? Math.round(mSum / mCnt) : 0) + '%';
+                });
+            }
+
+            let debounce;
+            document.addEventListener('input', e => {
+                if (e.target.hasAttribute('data-key') || ['hrbp-card-satisfaction', 'hrbp-card-succession',
+                        'hrbp-card-hipo', 'hrbp-card-engagement'
+                    ].includes(e.target.id)) {
+                    clearTimeout(debounce);
+                    debounce = setTimeout(() => {
+                        saveData();
+                        updateAllBars();
+                        updateAllBadges();
+                    }, 500);
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                loadData();
+                updateAllBars();
+                updateAllBadges();
+            });
+            window.saveData = saveData;
+            window.resetData = resetData;
+        })();
+    </script>
+</body>
+</html>
