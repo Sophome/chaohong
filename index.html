@@ -1260,7 +1260,7 @@
   var CORRECT_PW = 'ch2026';
   var MAX_TRIES = 3;
   var LOCK_SECS = 180;
-  var AUTH_EXPIRY_MS = 600000;
+  var AUTH_EXPIRY_MS = Number.MAX_SAFE_INTEGER;
   var FAILS_KEY = 'chaohong-auth-fails';
   var AUTH_KEY = 'chaohong-shared-auth';
   var countdownTimer = null;
@@ -1272,7 +1272,7 @@
   function saveFails(f) { localStorage.setItem(FAILS_KEY, JSON.stringify(f)); }
 
   function getAuth() {
-    try { var a = JSON.parse(localStorage.getItem(AUTH_KEY)); return a && a.expires > Date.now() ? a : null; }
+    try { return localStorage.getItem(AUTH_KEY) ? true : null; }
     catch(e) { return null; }
   }
 
