@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站长视频摄影剪辑核心能力画像</title>
+<style>
+  :root {
+    --blue:#00A1D6;
+    --pink:#fb7299;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00A1D6, #fb7299);
+    color: #fff;
+    padding: 44px 24px;
+  }
+
+  header .wrap,
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+  }
+
+  header p {
+    margin: 0;
+    max-width: 960px;
+    opacity: .95;
+    font-size: 16px;
+  }
+
+  main {
+    padding: 28px 20px 60px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  .muted {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  .pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    font-size: 12px;
+    color: #374151;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+  }
+
+  .big-number {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.15;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .bar-bg {
+    height: 11px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue), #7dd3fc);
+  }
+
+  .bar.green {
+    background: linear-gradient(90deg, var(--green), #86efac);
+  }
+
+  .bar.orange {
+    background: linear-gradient(90deg, var(--orange), #fcd34d);
+  }
+
+  .bar.purple {
+    background: linear-gradient(90deg, var(--purple), #c4b5fd);
+  }
+
+  .bar.red {
+    background: linear-gradient(90deg, var(--red), #fca5a5);
+  }
+
+  .bar.pink {
+    background: linear-gradient(90deg, var(--pink), #f9a8d4);
+  }
+
+  .score {
+    color: var(--gray);
+    text-align: right;
+    font-weight: 700;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .s1 { background:#f3f4f6; color:#6b7280; }
+  .s2 { background:#dbeafe; color:#1d4ed8; }
+  .s3 { background:#bfdbfe; color:#1e40af; }
+  .s4 { background:#7dd3fc; color:#075985; font-weight:700; }
+  .s5 { background:#00A1D6; color:#fff; font-weight:800; }
+
+  .kpi strong {
+    display: block;
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .ok {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .danger {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #9f1239;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .highlight {
+    background: #ecfeff;
+    border-left: 5px solid var(--blue);
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+
+  .level-name {
+    font-weight: 700;
+  }
+
+  .level-line {
+    background: #eef2f7;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #bae6fd, var(--blue));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4, .summary {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .bar-row {
+      grid-template-columns: 100px 1fr 34px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>B站长视频摄影剪辑核心能力画像</h1>
+    <p>
+      适用于以 B站长视频、爆款内容、高频产出、栏目化更新、家电测评、人物访谈、知识科普、商业合作内容为核心业务的传媒公司。
+      本画像用于摄影剪辑岗位招聘、面试评估、试用期考核、能力培养和晋升判断。
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 一、岗位定位 -->
+  <section>
+    <div class="section-title">
+      <h2>一、岗位定位</h2>
+      <span class="tag">影像执行与内容节奏负责人</span>
+    </div>
+
+    <div class="summary">
+      <div class="card">
+        <h3>摄影剪辑的核心使命</h3>
+        <p class="muted">
+          将编导策划、视频脚本、拍摄现场、素材内容和平台节奏，转化为具有观看吸引力、留存能力、审美质感和交付效率的B站长视频成片。
+        </p>
+
+        <div class="pill-wrap">
+          <span class="pill">画面质量把控者</span>
+          <span class="pill">现场拍摄执行者</span>
+          <span class="pill">剪辑节奏设计者</span>
+          <span class="pill">素材管理负责人</span>
+          <span class="pill">爆款包装参与者</span>
+          <span class="pill">高频交付执行者</span>
+          <span class="pill">后期效率优化者</span>
+        </div>
+
+        <ul>
+          <li>不是单纯“会拍会剪”，而是要理解内容目标、平台节奏和用户观看体验。</li>
+          <li>不是只追求画面好看，而是要服务点击、留存、完播、互动和账号调性。</li>
+          <li>不是只完成技术执行，而是要通过镜头、节奏、包装和声音强化内容表达。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>一句话画像</h3>
+        <div class="big-number">内容型摄影剪辑</div>
+        <p class="muted" style="margin-top:12px;">
+          既懂拍摄技术，又懂剪辑节奏；既能保障画面质感，也能适应高频交付；既有审美能力，也有爆款内容意识。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、核心能力总览 -->
+  <section>
+    <div class="section-title">
+      <h2>二、核心能力总览</h2>
+      <span class="tag">8大能力</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>能力评分模型</h3>
+        <p class="muted">
+          建议以 1-5 分评估。对于B站长视频摄影剪辑，拍摄执行、剪辑节奏、内容理解、包装审美和高频交付应至少达到 4 分。
+        </p>
+
+        <div class="bar-row">
+          <span>拍摄执行</span>
+          <div class="bar-bg"><div class="bar" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>剪辑节奏</span>
+          <div class="bar-bg"><div class="bar pink" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>内容理解</span>
+          <div class="bar-bg"><div class="bar orange" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>画面审美</span>
+          <div class="bar-bg"><div class="bar purple" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>后期包装</span>
+          <div class="bar-bg"><div class="bar green" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>声音处理</span>
+          <div class="bar-bg"><div class="bar" style="width:75%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>协作沟通</span>
+          <div class="bar-bg"><div class="bar orange" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>高频交付</span>
+          <div class="bar-bg"><div class="bar red" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>岗位能力重点</h3>
+        <p class="muted">
+          摄影剪辑岗位的价值不只体现在技术，而体现在“技术如何服务内容结果”。
+        </p>
+
+        <div class="highlight">
+          <strong>核心判断标准：</strong>
+          能否把普通素材剪出可看性，把复杂信息剪清楚，把长视频剪得不拖沓，把高频内容稳定交付。
+        </div>
+
+        <ul>
+          <li><strong>拍摄上：</strong>画面稳定、构图舒服、收音清晰、灯光合格、素材完整。</li>
+          <li><strong>剪辑上：</strong>节奏明确、重点突出、信息清楚、情绪递进、无明显拖沓。</li>
+          <li><strong>包装上：</strong>字幕、花字、音效、转场、动效服务内容，而不是炫技。</li>
+          <li><strong>交付上：</strong>能适应多条视频并行，减少返工，按节点完成。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、八大能力画像 -->
+  <section>
+    <div class="section-title">
+      <h2>三、八大能力画像</h2>
+      <span class="tag">能力拆解</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>1. 拍摄执行能力</h3>
+        <p class="muted">决定素材质量和现场可用率。</p>
+        <ul>
+          <li>熟悉相机、镜头、灯光、收音设备</li>
+          <li>能完成访谈、口播、测评、外景拍摄</li>
+          <li>保证画面稳定、曝光准确、声音清晰</li>
+          <li>具备现场补拍和应变能力</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. 剪辑节奏能力</h3>
+        <p class="muted">决定用户是否愿意持续看。</p>
+        <ul>
+          <li>能快速识别有效信息和废素材</li>
+          <li>控制开头、转折、高潮和收尾节奏</li>
+          <li>避免长视频拖沓、重复、平铺直叙</li>
+          <li>能根据留存目标调整剪辑结构</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. 内容理解能力</h3>
+        <p class="muted">决定剪辑是否服务选题和观点。</p>
+        <ul>
+          <li>理解编导脚本和视频核心卖点</li>
+          <li>知道哪些信息是重点，哪些可以删减</li>
+          <li>能通过剪辑强化冲突、悬念和观点</li>
+          <li>不只是按时间线拼接素材</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. 画面审美能力</h3>
+        <p class="muted">决定账号视觉质感。</p>
+        <ul>
+          <li>具备构图、色彩、光影和镜头语言基础</li>
+          <li>能保持账号视觉风格统一</li>
+          <li>画面干净、信息层级清晰</li>
+          <li>能根据内容类型调整视觉风格</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. 后期包装能力</h3>
+        <p class="muted">决定视频信息表达效率。</p>
+        <ul>
+          <li>熟练制作字幕、花字、信息图、转场</li>
+          <li>能用包装强化重点和笑点</li>
+          <li>掌握基础动效和版式设计</li>
+          <li>包装不过度，不影响观看舒适度</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6. 声音处理能力</h3>
+        <p class="muted">决定观看体验的基础质量。</p>
+        <ul>
+          <li>能处理人声、环境音、噪音和音乐</li>
+          <li>掌握音量平衡和基础降噪</li>
+          <li>能选择适合节奏的BGM和音效</li>
+          <li>避免声音忽大忽小、压迫感过强</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>7. 协作沟通能力</h3>
+        <p class="muted">决定团队返工率和交付效率。</p>
+        <ul>
+          <li>能理解编导、运营、设计的修改意见</li>
+          <li>能主动反馈素材缺口和剪辑问题</li>
+          <li>能和编导共同优化结构和节奏</li>
+          <li>修改有记录，沟通不情绪化</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>8. 高频交付能力</h3>
+        <p class="muted">决定是否适应传媒公司节奏。</p>
+        <ul>
+          <li>能适应每月多条长视频制作</li>
+          <li>能多项目素材并行管理</li>
+          <li>具备模板化和预设复用意识</li>
+          <li>能按期交付，减少无效返工</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、关键工作模块 -->
+  <section>
+    <div class="section-title">
+      <h2>四、摄影剪辑关键工作模块</h2>
+      <span class="tag">日常职责</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>工作模块</th>
+          <th>核心任务</th>
+          <th>关键产出</th>
+          <th>衡量指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>拍摄准备</td>
+          <td>确认设备、场景、灯光、收音、脚本、镜头需求</td>
+          <td>设备清单、拍摄方案、场景确认</td>
+          <td>准备完整度、现场问题率</td>
+        </tr>
+        <tr>
+          <td>现场拍摄</td>
+          <td>完成访谈、口播、产品、测评、外景等拍摄</td>
+          <td>原始素材、现场记录、补拍清单</td>
+          <td>素材可用率、收音合格率、补拍率</td>
+        </tr>
+        <tr>
+          <td>素材整理</td>
+          <td>素材备份、分类、命名、筛选、同步音频</td>
+          <td>素材工程、素材库、备份文件</td>
+          <td>素材丢失率、查找效率、工程规范度</td>
+        </tr>
+        <tr>
+          <td>粗剪结构</td>
+          <td>根据脚本和素材搭建视频主线和信息结构</td>
+          <td>粗剪版、结构问题反馈</td>
+          <td>粗剪通过率、结构清晰度</td>
+        </tr>
+        <tr>
+          <td>精剪包装</td>
+          <td>优化节奏、字幕、花字、音效、BGM、转场、动效</td>
+          <td>精剪版、包装版、成片</td>
+          <td>完播率、观看体验、返工次数</td>
+        </tr>
+        <tr>
+          <td>交付归档</td>
+          <td>导出成片、封装文件、整理工程、归档素材</td>
+          <td>成片文件、工程文件、素材归档</td>
+          <td>准时交付率、归档规范度</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 五、能力热力图 -->
+  <section>
+    <div class="section-title">
+      <h2>五、能力等级热力图</h2>
+      <span class="tag">1弱 - 5强</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>能力项</th>
+          <th class="center">要求等级</th>
+          <th>优秀表现</th>
+          <th>能力不足表现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>拍摄执行</td>
+          <td class="center s5">5</td>
+          <td>能独立完成多类型拍摄，画面、收音、灯光稳定可靠。</td>
+          <td>设备不熟、现场慌乱、素材缺失、需要频繁补拍。</td>
+        </tr>
+        <tr>
+          <td>剪辑节奏</td>
+          <td class="center s5">5</td>
+          <td>能把长视频剪得清楚、有节奏、有重点、不拖沓。</td>
+          <td>按时间线堆素材，节奏平，用户容易流失。</td>
+        </tr>
+        <tr>
+          <td>内容理解</td>
+          <td class="center s4">4</td>
+          <td>能理解选题核心和脚本意图，用镜头和剪辑强化表达。</td>
+          <td>只做技术执行，不理解视频到底要表达什么。</td>
+        </tr>
+        <tr>
+          <td>画面审美</td>
+          <td class="center s4">4</td>
+          <td>画面干净、有质感，构图、色彩、光线符合账号调性。</td>
+          <td>画面杂乱、色彩不统一、视觉廉价感明显。</td>
+        </tr>
+        <tr>
+          <td>后期包装</td>
+          <td class="center s4">4</td>
+          <td>字幕、花字、音效、动效能提升理解和观看体验。</td>
+          <td>包装粗糙或过度炫技，影响内容表达。</td>
+        </tr>
+        <tr>
+          <td>声音处理</td>
+          <td class="center s4">4</td>
+          <td>人声清晰、音乐合适、音效自然、音量平衡。</td>
+          <td>声音忽大忽小、噪音明显、BGM干扰人声。</td>
+        </tr>
+        <tr>
+          <td>协作沟通</td>
+          <td class="center s4">4</td>
+          <td>能理解修改意见，主动反馈问题，减少沟通成本。</td>
+          <td>不记录修改、沟通被动、容易情绪化。</td>
+        </tr>
+        <tr>
+          <td>高频交付</td>
+          <td class="center s5">5</td>
+          <td>能适应多条长视频并行制作，准时交付且返工率低。</td>
+          <td>剪辑周期过长、项目堆积、无法适应高产节奏。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 六、核心KPI -->
+  <section>
+    <div class="section-title">
+      <h2>六、摄影剪辑核心KPI</h2>
+      <span class="tag">交付结果</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card kpi">
+        <strong>准时交付率</strong>
+        <span class="muted">衡量是否按排期完成拍摄和剪辑。</span>
+      </div>
+      <div class="card kpi">
+        <strong>返工率</strong>
+        <span class="muted">衡量成片质量和沟通准确度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>素材可用率</strong>
+        <span class="muted">衡量拍摄质量和现场把控能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>补拍率</strong>
+        <span class="muted">衡量前期准备和现场完整度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>完播率贡献</strong>
+        <span class="muted">衡量剪辑节奏对留存的影响。</span>
+      </div>
+      <div class="card kpi">
+        <strong>画面合格率</strong>
+        <span class="muted">曝光、构图、稳定、色彩、清晰度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>声音合格率</strong>
+        <span class="muted">人声、降噪、BGM、音效、音量平衡。</span>
+      </div>
+      <div class="card kpi">
+        <strong>工程规范度</strong>
+        <span class="muted">素材命名、工程归档、版本管理。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、成熟度模型 -->
+  <section>
+    <div class="section-title">
+      <h2>七、摄影剪辑成熟度模型</h2>
+      <span class="tag">成长阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="level">
+        <div class="level-name">初级摄影剪辑</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:35%;">能完成基础拍剪</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">中级摄影剪辑</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:60%;">能独立交付成片</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">高级摄影剪辑</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:82%;">能把控风格和效率</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">专家型后期</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:100%;">能建立视听标准和制作流程</div>
+        </div>
+      </div>
+    </div>
+
+    <table style="margin-top:18px;">
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>能力特征</th>
+          <th>产出标准</th>
+          <th>适合岗位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>初级摄影剪辑</td>
+          <td>能完成基础拍摄、素材整理、简单剪辑、字幕和基础包装。</td>
+          <td>每月辅助3-6条内容。</td>
+          <td>摄影助理、剪辑助理</td>
+        </tr>
+        <tr>
+          <td>中级摄影剪辑</td>
+          <td>能独立完成单条长视频拍摄和剪辑，画面、声音、节奏基本稳定。</td>
+          <td>每月独立交付3-5条长视频。</td>
+          <td>摄影剪辑、后期剪辑</td>
+        </tr>
+        <tr>
+          <td>高级摄影剪辑</td>
+          <td>能负责重点栏目视听风格，提升剪辑节奏和团队制作效率。</td>
+          <td>每月交付5-8条内容，返工率低。</td>
+          <td>高级摄影剪辑、后期组长</td>
+        </tr>
+        <tr>
+          <td>专家型后期</td>
+          <td>能制定拍摄标准、剪辑规范、包装模板和素材管理流程。</td>
+          <td>建立团队制作SOP和视觉包装体系。</td>
+          <td>视觉负责人、后期负责人</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 八、优秀与风险特征 -->
+  <section>
+    <div class="section-title">
+      <h2>八、优秀特征与风险信号</h2>
+      <span class="tag">识别标准</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="ok">
+        <h3>优秀摄影剪辑的典型特征</h3>
+        <ul>
+          <li>拍摄前主动了解脚本、重点镜头和内容目标。</li>
+          <li>现场能发现问题并及时补拍，不把问题留给后期。</li>
+          <li>剪辑时会主动判断哪些内容该保留、哪些要删减。</li>
+          <li>能把长视频剪得节奏清楚，开头不拖，重点突出。</li>
+          <li>字幕、花字、音效和BGM服务内容表达。</li>
+          <li>素材命名、工程管理、版本管理规范。</li>
+          <li>能适应高频交付，且返工率较低。</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>能力不足的风险信号</h3>
+        <ul>
+          <li>只会按要求拍，不理解视频要表达什么。</li>
+          <li>拍摄现场缺少检查意识，导致素材缺失或声音不可用。</li>
+          <li>剪辑只是拼接素材，缺少节奏、重点和取舍。</li>
+          <li>过度依赖花字、特效、转场，反而影响观看。</li>
+          <li>工程文件混乱，素材经常找不到或版本不清。</li>
+          <li>修改意见反复遗漏，沟通成本高。</li>
+          <li>无法适应每月多条视频产出节奏。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、招聘评估建议 -->
+  <section>
+    <div class="section-title">
+      <h2>九、招聘评估建议</h2>
+      <span class="tag">面试使用</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>考察能力</th>
+          <th>面试问题</th>
+          <th>重点观察</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>作品能力</td>
+          <td>请展示3条你独立参与度最高的长视频作品，并说明你负责的部分。</td>
+          <td>是否真实参与拍摄、剪辑、包装、调色、声音处理。</td>
+        </tr>
+        <tr>
+          <td>剪辑判断</td>
+          <td>如果一条20分钟视频节奏拖沓，你会从哪些地方开始优化？</td>
+          <td>是否能从开头、信息重复、段落节奏、无效镜头、转场逻辑分析。</td>
+        </tr>
+        <tr>
+          <td>拍摄执行</td>
+          <td>一次访谈拍摄前，你会检查哪些设备和现场条件？</td>
+          <td>是否关注机位、灯光、收音、存储、电池、备份、环境噪声。</td>
+        </tr>
+        <tr>
+          <td>内容理解</td>
+          <td>当编导脚本和素材实际表现不一致时，你会怎么处理？</td>
+          <td>是否能主动反馈、重构节奏、保留核心观点，而不是机械执行。</td>
+        </tr>
+        <tr>
+          <td>协作沟通</td>
+          <td>如果编导连续提出多轮修改，你如何降低返工？</td>
+          <td>是否有版本管理、修改清单、确认机制和沟通闭环。</td>
+        </tr>
+        <tr>
+          <td>高频交付</td>
+          <td>如果一个月要剪5条长视频，你会如何安排工程、素材和时间？</td>
+          <td>是否具备项目排期、模板复用、素材归档和优先级管理能力。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>实操测试建议：</strong>
+      给候选人一段3-5分钟原始素材，要求在规定时间内剪出60-90秒成片，并完成基础字幕、音乐、音效、节奏处理和导出。
+      同时要求候选人说明剪辑思路：删掉了什么、保留了什么、如何设计节奏。
+    </div>
+  </section>
+
+  <!-- 十、试用期考核 -->
+  <section>
+    <div class="section-title">
+      <h2>十、试用期考核建议</h2>
+      <span class="tag">3个月验证</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>考核重点</th>
+          <th>核心指标</th>
+          <th>判断标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第1个月</td>
+          <td>熟悉账号风格、拍摄规范、剪辑模板和团队流程。</td>
+          <td>素材规范、执行态度、基础成片质量。</td>
+          <td>能独立完成基础拍摄或剪辑任务，返工可控。</td>
+        </tr>
+        <tr>
+          <td>第2个月</td>
+          <td>独立负责单条视频的拍摄或剪辑交付。</td>
+          <td>准时交付率、返工率、画面和声音合格率。</td>
+          <td>能独立完成2-4条内容，并符合账号基础质量标准。</td>
+        </tr>
+        <tr>
+          <td>第3个月</td>
+          <td>验证高频交付、节奏优化和协作能力。</td>
+          <td>交付数量、完播率贡献、协作反馈、工程规范度。</td>
+          <td>能稳定适应团队节奏，明显降低返工或提升制作效率。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="danger" style="margin-top:18px;">
+      <h3>试用期淘汰信号</h3>
+      <ul>
+        <li>拍摄素材频繁出现画面、声音、对焦、曝光等基础问题。</li>
+        <li>剪辑节奏长期拖沓，无法理解长视频观看体验。</li>
+        <li>工程文件混乱，素材命名和归档不规范。</li>
+        <li>修改意见经常遗漏，沟通效率低。</li>
+        <li>无法按期交付，影响栏目排期。</li>
+        <li>只强调技术或审美，不理解内容目标和账号调性。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 十一、画像总结 -->
+  <section>
+    <div class="section-title">
+      <h2>十一、画像总结</h2>
+      <span class="tag">一句话标准</span>
+    </div>
+
+    <div class="card">
+      <h3>适合B站长视频业务的摄影剪辑，应具备以下综合画像：</h3>
+      <p>
+        他/她不一定是最会炫技的人，但必须是最能把
+        <strong>内容表达、画面质量、剪辑节奏、后期包装、协作效率和高频交付</strong>
+        结合起来的人。
+      </p>
+
+      <ul>
+        <li><strong>对拍摄：</strong>能保障画面、声音、灯光和素材完整度。</li>
+        <li><strong>对剪辑：</strong>能把长视频剪得清楚、有节奏、有重点、不拖沓。</li>
+        <li><strong>对内容：</strong>能理解编导意图，强化选题爆点和观看体验。</li>
+        <li><strong>对团队：</strong>能高效沟通、减少返工、规范管理工程和素材。</li>
+        <li><strong>对结果：</strong>关注准时交付、完播表现、成片质量和账号风格统一。</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>最终画像：</strong>
+        懂拍摄、懂剪辑、懂节奏、懂B站长视频观看体验，能高频稳定交付的内容型摄影剪辑。
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
