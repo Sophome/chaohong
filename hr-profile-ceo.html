@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传媒公司总经理能力画像</title>
+<style>
+  :root {
+    --blue:#00A1D6;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00A1D6, #667eea);
+    color: #fff;
+    padding: 44px 24px;
+  }
+
+  header .wrap,
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+  }
+
+  header p {
+    margin: 0;
+    max-width: 900px;
+    opacity: .95;
+    font-size: 16px;
+  }
+
+  main {
+    padding: 28px 20px 60px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  .muted {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  .pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    font-size: 12px;
+    color: #374151;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+  }
+
+  .big-number {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .bar-bg {
+    height: 11px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue), #7dd3fc);
+  }
+
+  .bar.green {
+    background: linear-gradient(90deg, var(--green), #86efac);
+  }
+
+  .bar.orange {
+    background: linear-gradient(90deg, var(--orange), #fcd34d);
+  }
+
+  .bar.purple {
+    background: linear-gradient(90deg, var(--purple), #c4b5fd);
+  }
+
+  .bar.red {
+    background: linear-gradient(90deg, var(--red), #fca5a5);
+  }
+
+  .score {
+    color: var(--gray);
+    text-align: right;
+    font-weight: 700;
+  }
+
+  .radar {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radar svg {
+    max-width: 360px;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  th {
+    background: #f8fafc;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .s1 { background:#f3f4f6; color:#6b7280; }
+  .s2 { background:#dbeafe; color:#1d4ed8; }
+  .s3 { background:#bfdbfe; color:#1e40af; }
+  .s4 { background:#7dd3fc; color:#075985; font-weight:700; }
+  .s5 { background:#00A1D6; color:#fff; font-weight:800; }
+
+  .kpi strong {
+    display: block;
+    font-size: 24px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .ok {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+
+  .level-name {
+    font-weight: 700;
+  }
+
+  .level-line {
+    background: #eef2f7;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #bae6fd, var(--blue));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4, .summary {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .bar-row {
+      grid-template-columns: 90px 1fr 34px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>传媒公司总经理能力画像</h1>
+    <p>
+      适用于以 B站家电长视频、测评内容、品牌商业合作、账号矩阵运营为核心业务的传媒公司。
+      总经理不是单纯的“管理者”，而是公司战略、内容产品、商业收入、组织效率和风险控制的总负责人。
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 一、岗位定位 -->
+  <section>
+    <div class="section-title">
+      <h2>一、岗位定位</h2>
+      <span class="tag">总负责人</span>
+    </div>
+
+    <div class="summary">
+      <div class="card">
+        <h3>总经理的核心使命</h3>
+        <p class="muted">
+          带领公司从“做内容”升级为“经营内容资产”，实现账号影响力、商业收入、团队能力和公司利润的持续增长。
+        </p>
+
+        <div class="pill-wrap">
+          <span class="pill">战略方向制定者</span>
+          <span class="pill">商业增长负责人</span>
+          <span class="pill">内容品牌守门人</span>
+          <span class="pill">组织管理者</span>
+          <span class="pill">资源整合者</span>
+          <span class="pill">风险控制者</span>
+        </div>
+
+        <ul>
+          <li>决定公司做什么内容、服务什么客户、建立什么样的品牌壁垒。</li>
+          <li>平衡内容口碑、商业收入、团队效率和长期发展。</li>
+          <li>让创作团队、运营团队、商务团队围绕同一个增长目标协作。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>一句话画像</h3>
+        <div class="big-number">CEO型内容经营者</div>
+        <p class="muted" style="margin-top:12px;">
+          既懂内容，又懂商业；既能判断方向，也能搭建团队；既能对外拿资源，也能对内提效率。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、核心能力总览 -->
+  <section>
+    <div class="section-title">
+      <h2>二、核心能力总览</h2>
+      <span class="tag">8大能力</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>能力评分模型</h3>
+        <p class="muted">建议以 1-5 分评估，总经理应至少在战略、商业、组织三项达到 4 分以上。</p>
+
+        <div class="bar-row">
+          <span>战略判断</span>
+          <div class="bar-bg"><div class="bar" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>商业增长</span>
+          <div class="bar-bg"><div class="bar green" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>内容理解</span>
+          <div class="bar-bg"><div class="bar orange" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>组织管理</span>
+          <div class="bar-bg"><div class="bar purple" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>财务经营</span>
+          <div class="bar-bg"><div class="bar" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>客户资源</span>
+          <div class="bar-bg"><div class="bar green" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>数据决策</span>
+          <div class="bar-bg"><div class="bar orange" style="width:75%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>风险控制</span>
+          <div class="bar-bg"><div class="bar red" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>能力雷达图</h3>
+        <p class="muted">越靠外代表能力要求越高。</p>
+
+        <div class="radar">
+          <svg viewBox="0 0 400 400">
+            <!-- 网格 -->
+            <polygon points="200,50 306,94 350,200 306,306 200,350 94,306 50,200 94,94"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,88 279,121 312,200 279,279 200,312 121,279 88,200 121,121"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,126 253,147 274,200 253,253 200,274 147,253 126,200 147,147"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,164 226,174 236,200 226,226 200,236 174,226 164,200 174,174"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <!-- 轴线 -->
+            <line x1="200" y1="200" x2="200" y2="50" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="94" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="350" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="200" y2="350" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="50" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="94" stroke="#e5e7eb"/>
+            <!-- 能力区域，按大致 5/5/4/5/4/5/4/4 -->
+            <polygon points="200,50 306,94 320,200 306,306 200,320 94,306 80,200 115,115"
+              fill="rgba(0,161,214,.28)" stroke="#00A1D6" stroke-width="3"/>
+            <!-- 标签 -->
+            <text x="200" y="32" text-anchor="middle" font-size="13" fill="#374151">战略判断</text>
+            <text x="322" y="86" font-size="13" fill="#374151">商业增长</text>
+            <text x="360" y="204" font-size="13" fill="#374151">内容理解</text>
+            <text x="318" y="322" font-size="13" fill="#374151">组织管理</text>
+            <text x="200" y="374" text-anchor="middle" font-size="13" fill="#374151">财务经营</text>
+            <text x="45" y="322" font-size="13" fill="#374151">客户资源</text>
+            <text x="5" y="204" font-size="13" fill="#374151">数据决策</text>
+            <text x="42" y="86" font-size="13" fill="#374151">风险控制</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、八大能力画像 -->
+  <section>
+    <div class="section-title">
+      <h2>三、八大能力画像</h2>
+      <span class="tag">能力拆解</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>1. 战略判断能力</h3>
+        <p class="muted">决定公司长期做什么、不做什么。</p>
+        <ul>
+          <li>判断家电内容赛道机会</li>
+          <li>明确账号定位和公司定位</li>
+          <li>制定年度经营目标</li>
+          <li>判断平台趋势和商业趋势</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. 内容产品能力</h3>
+        <p class="muted">不是亲自剪片，而是能判断内容价值。</p>
+        <ul>
+          <li>判断选题是否有市场</li>
+          <li>识别栏目是否可持续</li>
+          <li>平衡专业性与可看性</li>
+          <li>把内容变成可复制产品</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. 商业增长能力</h3>
+        <p class="muted">把影响力变成收入和利润。</p>
+        <ul>
+          <li>设计商业化模式</li>
+          <li>开发品牌客户</li>
+          <li>制定报价体系</li>
+          <li>提升客户复购率</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. 组织管理能力</h3>
+        <p class="muted">让团队从“靠个人”变成“靠系统”。</p>
+        <ul>
+          <li>搭建岗位体系</li>
+          <li>制定绩效机制</li>
+          <li>培养核心负责人</li>
+          <li>处理团队冲突</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. 财务经营能力</h3>
+        <p class="muted">关注收入，更关注利润和现金流。</p>
+        <ul>
+          <li>预算管理</li>
+          <li>成本控制</li>
+          <li>毛利率管理</li>
+          <li>现金流安全</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6. 客户与资源能力</h3>
+        <p class="muted">为公司争取更优质的外部资源。</p>
+        <ul>
+          <li>品牌方高层沟通</li>
+          <li>平台关系维护</li>
+          <li>供应链和样机资源</li>
+          <li>行业合作资源</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>7. 数据决策能力</h3>
+        <p class="muted">用数据纠偏，而不是只凭感觉。</p>
+        <ul>
+          <li>看懂播放和留存</li>
+          <li>分析账号增长</li>
+          <li>评估商业项目ROI</li>
+          <li>建立经营仪表盘</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>8. 风险控制能力</h3>
+        <p class="muted">保护公司品牌和经营安全。</p>
+        <ul>
+          <li>内容合规风险</li>
+          <li>广告法风险</li>
+          <li>测评结论争议</li>
+          <li>客户合同和回款风险</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、关键工作模块 -->
+  <section>
+    <div class="section-title">
+      <h2>四、总经理关键工作模块</h2>
+      <span class="tag">日常职责</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>工作模块</th>
+          <th>核心任务</th>
+          <th>关键产出</th>
+          <th>衡量指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>战略规划</td>
+          <td>确定公司定位、赛道选择、年度目标、增长路径</td>
+          <td>年度经营计划、季度目标、业务优先级</td>
+          <td>目标达成率、战略聚焦度</td>
+        </tr>
+        <tr>
+          <td>内容经营</td>
+          <td>确定账号定位、栏目方向、内容质量标准</td>
+          <td>栏目矩阵、内容标准、爆款复盘机制</td>
+          <td>播放量、完播率、涨粉率、爆款率</td>
+        </tr>
+        <tr>
+          <td>商业变现</td>
+          <td>开发客户、制定报价、设计合作产品、提升复购</td>
+          <td>商业产品包、客户名单、报价体系</td>
+          <td>营收、毛利率、复购率、回款率</td>
+        </tr>
+        <tr>
+          <td>组织管理</td>
+          <td>搭建团队、明确岗位、制定绩效、培养负责人</td>
+          <td>组织架构、岗位说明、绩效体系</td>
+          <td>人效、离职率、准时交付率</td>
+        </tr>
+        <tr>
+          <td>财务管理</td>
+          <td>控制成本、管理预算、保障现金流</td>
+          <td>预算表、经营报表、利润分析</td>
+          <td>净利润率、现金流、成本偏差率</td>
+        </tr>
+        <tr>
+          <td>风险管理</td>
+          <td>把控内容合规、商务合同、舆论风险</td>
+          <td>审核机制、合同规范、危机预案</td>
+          <td>投诉率、负面事件数、坏账率</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 五、能力热力图 -->
+  <section>
+    <div class="section-title">
+      <h2>五、能力等级热力图</h2>
+      <span class="tag">1弱 - 5强</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>能力项</th>
+          <th class="center">要求等级</th>
+          <th>优秀表现</th>
+          <th>能力不足表现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>战略判断</td>
+          <td class="center s5">5</td>
+          <td>能判断赛道机会，明确公司阶段性重点。</td>
+          <td>什么都想做，资源分散，账号定位混乱。</td>
+        </tr>
+        <tr>
+          <td>商业增长</td>
+          <td class="center s5">5</td>
+          <td>能设计高毛利商业产品，并持续拿到客户复购。</td>
+          <td>只靠单次广告，报价混乱，客户不稳定。</td>
+        </tr>
+        <tr>
+          <td>内容理解</td>
+          <td class="center s4">4</td>
+          <td>能判断选题价值、内容质量和账号调性。</td>
+          <td>只看播放量，不懂内容长期资产。</td>
+        </tr>
+        <tr>
+          <td>组织管理</td>
+          <td class="center s5">5</td>
+          <td>能搭建稳定团队，让负责人各司其职。</td>
+          <td>凡事亲自盯，团队依赖个人，效率低。</td>
+        </tr>
+        <tr>
+          <td>财务经营</td>
+          <td class="center s4">4</td>
+          <td>清楚每个项目收入、成本、毛利和现金流。</td>
+          <td>有营收没利润，有订单没回款。</td>
+        </tr>
+        <tr>
+          <td>客户资源</td>
+          <td class="center s5">5</td>
+          <td>能链接品牌、平台、渠道和行业资源。</td>
+          <td>客户来源单一，商务长期被动。</td>
+        </tr>
+        <tr>
+          <td>数据决策</td>
+          <td class="center s4">4</td>
+          <td>用数据指导内容、运营、商务和团队效率。</td>
+          <td>凭感觉决策，复盘流于形式。</td>
+        </tr>
+        <tr>
+          <td>风险控制</td>
+          <td class="center s4">4</td>
+          <td>提前识别合规、合同、舆论和现金流风险。</td>
+          <td>出事后救火，缺少审核和预案。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 六、核心KPI -->
+  <section>
+    <div class="section-title">
+      <h2>六、总经理核心KPI</h2>
+      <span class="tag">经营结果</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card kpi">
+        <strong>营收增长率</strong>
+        <span class="muted">衡量公司商业增长能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>净利润率</strong>
+        <span class="muted">衡量经营质量，不只看收入。</span>
+      </div>
+      <div class="card kpi">
+        <strong>现金流安全</strong>
+        <span class="muted">关注回款周期和账上资金。</span>
+      </div>
+      <div class="card kpi">
+        <strong>客户复购率</strong>
+        <span class="muted">衡量品牌合作满意度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>账号增长</strong>
+        <span class="muted">播放、涨粉、互动、完播。</span>
+      </div>
+      <div class="card kpi">
+        <strong>爆款率</strong>
+        <span class="muted">衡量内容方向和平台适配度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>人效</strong>
+        <span class="muted">人均产值、人均利润、交付效率。</span>
+      </div>
+      <div class="card kpi">
+        <strong>组织稳定性</strong>
+        <span class="muted">核心人才留存和团队满意度。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、成熟度模型 -->
+  <section>
+    <div class="section-title">
+      <h2>七、总经理成熟度模型</h2>
+      <span class="tag">成长阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="level">
+        <div class="level-name">初级总经理</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:35%;">能管项目</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">合格总经理</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:60%;">能管团队和收入</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">优秀总经理</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:82%;">能建立业务系统</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">卓越总经理</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:100%;">能打造内容品牌和商业壁垒</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、优秀与风险特征 -->
+  <section>
+    <div class="section-title">
+      <h2>八、优秀特征与风险信号</h2>
+      <span class="tag">识别标准</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="ok">
+        <h3>优秀总经理的典型特征</h3>
+        <ul>
+          <li>能把内容、商务、运营、财务放在同一张经营表里看。</li>
+          <li>既尊重创作规律，也重视商业结果。</li>
+          <li>不依赖个人英雄主义，而是建立流程、标准和负责人机制。</li>
+          <li>能拿到关键客户、平台资源和行业资源。</li>
+          <li>敢于聚焦，知道哪些业务不能做、哪些客户不能接。</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>能力不足的风险信号</h3>
+        <ul>
+          <li>公司忙但不赚钱，项目多但利润低。</li>
+          <li>账号定位频繁摇摆，内容没有长期栏目资产。</li>
+          <li>商务为了签单过度干预内容，导致粉丝信任下降。</li>
+          <li>团队所有决策都等老板，负责人没有真正权责。</li>
+          <li>没有经营数据仪表盘，月底才知道亏不亏。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、建议画像总结 -->
+  <section>
+    <div class="section-title">
+      <h2>九、画像总结</h2>
+      <span class="tag">一句话标准</span>
+    </div>
+
+    <div class="card">
+      <h3>适合你们公司的总经理，应具备以下综合画像：</h3>
+      <p>
+        他/她不一定是最会拍视频、最会剪辑、最懂参数的人，但必须是最懂
+        <strong>方向选择、商业增长、组织效率、内容品牌和风险边界</strong> 的人。
+      </p>
+
+      <ul>
+        <li><strong>对上：</strong>能为老板或董事会负责经营结果。</li>
+        <li><strong>对内：</strong>能让内容、商务、运营、后期团队形成合力。</li>
+        <li><strong>对外：</strong>能代表公司链接品牌方、平台方和行业资源。</li>
+        <li><strong>对未来：</strong>能把单个账号、单个爆款，沉淀成长期内容资产和商业壁垒。</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

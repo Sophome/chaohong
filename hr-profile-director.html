@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站长视频编导核心能力画像</title>
+<style>
+  :root {
+    --blue:#00A1D6;
+    --pink:#fb7299;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00A1D6, #fb7299);
+    color: #fff;
+    padding: 44px 24px;
+  }
+
+  header .wrap,
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+  }
+
+  header p {
+    margin: 0;
+    max-width: 960px;
+    opacity: .95;
+    font-size: 16px;
+  }
+
+  main {
+    padding: 28px 20px 60px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  .muted {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  .pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    font-size: 12px;
+    color: #374151;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+  }
+
+  .big-number {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.15;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .bar-bg {
+    height: 11px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue), #7dd3fc);
+  }
+
+  .bar.green {
+    background: linear-gradient(90deg, var(--green), #86efac);
+  }
+
+  .bar.orange {
+    background: linear-gradient(90deg, var(--orange), #fcd34d);
+  }
+
+  .bar.purple {
+    background: linear-gradient(90deg, var(--purple), #c4b5fd);
+  }
+
+  .bar.red {
+    background: linear-gradient(90deg, var(--red), #fca5a5);
+  }
+
+  .bar.pink {
+    background: linear-gradient(90deg, var(--pink), #f9a8d4);
+  }
+
+  .score {
+    color: var(--gray);
+    text-align: right;
+    font-weight: 700;
+  }
+
+  .radar {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radar svg {
+    max-width: 380px;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .s1 { background:#f3f4f6; color:#6b7280; }
+  .s2 { background:#dbeafe; color:#1d4ed8; }
+  .s3 { background:#bfdbfe; color:#1e40af; }
+  .s4 { background:#7dd3fc; color:#075985; font-weight:700; }
+  .s5 { background:#00A1D6; color:#fff; font-weight:800; }
+
+  .kpi strong {
+    display: block;
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .ok {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .danger {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #9f1239;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+
+  .level-name {
+    font-weight: 700;
+  }
+
+  .level-line {
+    background: #eef2f7;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #bae6fd, var(--blue));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .highlight {
+    background: #ecfeff;
+    border-left: 5px solid var(--blue);
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4, .summary {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .bar-row {
+      grid-template-columns: 100px 1fr 34px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>B站长视频编导核心能力画像</h1>
+    <p>
+      适用于以 B站长视频、爆款内容、高频产出、栏目化更新、账号增长和商业化内容为核心业务的传媒公司。
+      本画像用于编导岗位招聘、面试评估、试用期考核、人才培养和晋升判断。
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 一、岗位定位 -->
+  <section>
+    <div class="section-title">
+      <h2>一、岗位定位</h2>
+      <span class="tag">爆款型编导</span>
+    </div>
+
+    <div class="summary">
+      <div class="card">
+        <h3>编导的核心使命</h3>
+        <p class="muted">
+          将选题洞察、B站用户理解、标题封面、脚本结构、拍摄执行、后期把控和数据复盘转化为可持续产出的长视频爆款。
+        </p>
+
+        <div class="pill-wrap">
+          <span class="pill">爆款选题发现者</span>
+          <span class="pill">长视频结构设计师</span>
+          <span class="pill">B站用户洞察者</span>
+          <span class="pill">内容项目推进者</span>
+          <span class="pill">标题封面共创者</span>
+          <span class="pill">数据复盘迭代者</span>
+          <span class="pill">高频交付执行者</span>
+        </div>
+
+        <ul>
+          <li>不是单纯写脚本，而是对一条视频从选题到上线结果负责。</li>
+          <li>不是只追求表达完整，而是要追求点击、留存、互动和涨粉。</li>
+          <li>不是靠灵感偶发创作，而是通过流程化和复盘机制提高爆款概率。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>一句话画像</h3>
+        <div class="big-number">增长型内容编导</div>
+        <p class="muted" style="margin-top:12px;">
+          既懂B站用户，又懂爆款逻辑；既能写出好脚本，也能推动高频交付；既有创作能力，也有数据复盘意识。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、核心能力总览 -->
+  <section>
+    <div class="section-title">
+      <h2>二、核心能力总览</h2>
+      <span class="tag">8大能力</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>能力评分模型</h3>
+        <p class="muted">
+          建议以 1-5 分评估。对于爆款高产型B站编导，选题、标题封面、前30秒钩子、长视频结构和高频交付应至少达到 4 分。
+        </p>
+
+        <div class="bar-row">
+          <span>爆款选题</span>
+          <div class="bar-bg"><div class="bar" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>标题封面</span>
+          <div class="bar-bg"><div class="bar pink" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>前30秒钩子</span>
+          <div class="bar-bg"><div class="bar orange" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>长视频结构</span>
+          <div class="bar-bg"><div class="bar purple" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>B站网感</span>
+          <div class="bar-bg"><div class="bar green" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>项目统筹</span>
+          <div class="bar-bg"><div class="bar" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>数据复盘</span>
+          <div class="bar-bg"><div class="bar orange" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>高频交付</span>
+          <div class="bar-bg"><div class="bar red" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>能力雷达图</h3>
+        <p class="muted">越靠外代表能力要求越高。</p>
+
+        <div class="radar">
+          <svg viewBox="0 0 400 400">
+            <!-- 网格 -->
+            <polygon points="200,50 306,94 350,200 306,306 200,350 94,306 50,200 94,94"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,88 279,121 312,200 279,279 200,312 121,279 88,200 121,121"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,126 253,147 274,200 253,253 200,274 147,253 126,200 147,147"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,164 226,174 236,200 226,226 200,236 174,226 164,200 174,174"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <!-- 轴线 -->
+            <line x1="200" y1="200" x2="200" y2="50" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="94" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="350" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="200" y2="350" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="50" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="94" stroke="#e5e7eb"/>
+            <!-- 能力区域：爆款选题5、标题封面5、前30秒5、结构5、网感4、项目4、复盘4、高产5 -->
+            <polygon points="200,50 306,94 350,200 306,306 200,320 110,290 80,200 94,94"
+              fill="rgba(0,161,214,.26)" stroke="#00A1D6" stroke-width="3"/>
+            <!-- 标签 -->
+            <text x="200" y="32" text-anchor="middle" font-size="13" fill="#374151">爆款选题</text>
+            <text x="318" y="86" font-size="13" fill="#374151">标题封面</text>
+            <text x="358" y="204" font-size="13" fill="#374151">前30秒</text>
+            <text x="314" y="322" font-size="13" fill="#374151">长视频结构</text>
+            <text x="200" y="374" text-anchor="middle" font-size="13" fill="#374151">B站网感</text>
+            <text x="38" y="322" font-size="13" fill="#374151">项目统筹</text>
+            <text x="3" y="204" font-size="13" fill="#374151">数据复盘</text>
+            <text x="44" y="86" font-size="13" fill="#374151">高频交付</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、八大能力画像 -->
+  <section>
+    <div class="section-title">
+      <h2>三、八大能力画像</h2>
+      <span class="tag">能力拆解</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>1. 爆款选题能力</h3>
+        <p class="muted">决定内容是否有爆发基础。</p>
+        <ul>
+          <li>能从热点、评论、弹幕、竞品中找选题</li>
+          <li>判断选题是否有冲突、反差、共鸣、信息差</li>
+          <li>能区分普通选题和高潜爆款选题</li>
+          <li>建立稳定选题池</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. 标题封面能力</h3>
+        <p class="muted">决定用户是否愿意点进来。</p>
+        <ul>
+          <li>能设计多个标题方向</li>
+          <li>理解封面视觉焦点和情绪表达</li>
+          <li>能控制标题预期和内容交付一致</li>
+          <li>具备点击率复盘意识</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. 前30秒钩子能力</h3>
+        <p class="muted">决定用户是否继续看。</p>
+        <ul>
+          <li>开头直接给出冲突、悬念或收益</li>
+          <li>减少寒暄和无效铺垫</li>
+          <li>建立明确观看承诺</li>
+          <li>关注前30秒流失率</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. 长视频结构能力</h3>
+        <p class="muted">决定完播和平均观看时长。</p>
+        <ul>
+          <li>设计清晰起承转合</li>
+          <li>控制信息密度和节奏</li>
+          <li>设置递进、转折、情绪峰值</li>
+          <li>能基于留存曲线优化脚本</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. B站网感能力</h3>
+        <p class="muted">决定内容是否融入社区。</p>
+        <ul>
+          <li>理解B站分区生态和用户语境</li>
+          <li>熟悉弹幕、评论、梗文化</li>
+          <li>能设计互动点和讨论点</li>
+          <li>维护账号人设和用户信任</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6. 项目统筹能力</h3>
+        <p class="muted">决定内容能否按时落地。</p>
+        <ul>
+          <li>拆解选题、脚本、拍摄、后期、上线节点</li>
+          <li>协调主持人、嘉宾、摄影、剪辑和运营</li>
+          <li>管理素材、时间、预算和风险</li>
+          <li>推动多项目并行</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>7. 数据复盘能力</h3>
+        <p class="muted">决定下一条能否变得更好。</p>
+        <ul>
+          <li>关注播放、完播、互动、转粉</li>
+          <li>分析标题封面、开头、节奏问题</li>
+          <li>从爆款和低表现内容中总结规律</li>
+          <li>形成周/月复盘机制</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>8. 高频交付能力</h3>
+        <p class="muted">决定团队能否保持稳定产能。</p>
+        <ul>
+          <li>适应每月多条长视频产出</li>
+          <li>能多项目并行推进</li>
+          <li>具备模板化和流程化意识</li>
+          <li>在质量和效率间找到平衡</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、关键工作模块 -->
+  <section>
+    <div class="section-title">
+      <h2>四、编导关键工作模块</h2>
+      <span class="tag">日常职责</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>工作模块</th>
+          <th>核心任务</th>
+          <th>关键产出</th>
+          <th>衡量指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>选题策划</td>
+          <td>洞察热点、拆解竞品、判断用户动机和爆点</td>
+          <td>选题卡、选题池、核心观点、爆点说明</td>
+          <td>选题通过率、爆款率、播放表现</td>
+        </tr>
+        <tr>
+          <td>标题封面共创</td>
+          <td>在策划阶段同步设计标题、封面、点击理由</td>
+          <td>标题备选、封面方向、点击逻辑</td>
+          <td>点击率、播放冷启动表现</td>
+        </tr>
+        <tr>
+          <td>脚本结构</td>
+          <td>设计开头钩子、段落节奏、转折、互动点</td>
+          <td>脚本大纲、分段脚本、拍摄脚本</td>
+          <td>完播率、平均观看时长、流失节点</td>
+        </tr>
+        <tr>
+          <td>拍摄执行</td>
+          <td>现场把控内容方向、表达质量、采访问题和补充素材</td>
+          <td>拍摄方案、采访提纲、素材清单</td>
+          <td>素材可用率、补拍率、执行效率</td>
+        </tr>
+        <tr>
+          <td>后期把控</td>
+          <td>推进剪辑、字幕、包装、音乐、节奏调整</td>
+          <td>粗剪意见、精剪版本、包装反馈</td>
+          <td>返工率、交付周期、成片质量</td>
+        </tr>
+        <tr>
+          <td>上线复盘</td>
+          <td>跟踪数据、分析评论弹幕、总结优化方案</td>
+          <td>复盘报告、优化清单、下一期建议</td>
+          <td>迭代速度、数据提升、方法沉淀</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 五、能力热力图 -->
+  <section>
+    <div class="section-title">
+      <h2>五、能力等级热力图</h2>
+      <span class="tag">1弱 - 5强</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>能力项</th>
+          <th class="center">要求等级</th>
+          <th>优秀表现</th>
+          <th>能力不足表现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>爆款选题</td>
+          <td class="center s5">5</td>
+          <td>能持续提出高潜选题，并准确说明用户为什么会点开、看完和互动。</td>
+          <td>选题平淡，缺少冲突、反差、情绪和信息差。</td>
+        </tr>
+        <tr>
+          <td>标题封面</td>
+          <td class="center s5">5</td>
+          <td>能为同一选题设计多套标题封面，并解释点击逻辑。</td>
+          <td>认为标题封面是运营或设计的事，不参与点击设计。</td>
+        </tr>
+        <tr>
+          <td>前30秒钩子</td>
+          <td class="center s5">5</td>
+          <td>开头快速进入主题，有悬念、有冲突、有观看承诺。</td>
+          <td>开头拖沓，背景铺垫过长，用户容易流失。</td>
+        </tr>
+        <tr>
+          <td>长视频结构</td>
+          <td class="center s5">5</td>
+          <td>能设计清晰结构和情绪曲线，提升完播和观看时长。</td>
+          <td>脚本像文章或报告，信息堆砌，缺少节奏。</td>
+        </tr>
+        <tr>
+          <td>B站网感</td>
+          <td class="center s4">4</td>
+          <td>理解B站社区文化，能设计弹幕点、评论点和共鸣点。</td>
+          <td>偏传统媒体表达，不理解B站用户语境。</td>
+        </tr>
+        <tr>
+          <td>项目统筹</td>
+          <td class="center s4">4</td>
+          <td>能协调多角色，按节点推进拍摄、剪辑和上线。</td>
+          <td>执行混乱，容易延期，依赖他人兜底。</td>
+        </tr>
+        <tr>
+          <td>数据复盘</td>
+          <td class="center s4">4</td>
+          <td>能基于数据定位问题，并快速应用到下一条内容。</td>
+          <td>不看数据，凭感觉判断，把失败归因于平台或运气。</td>
+        </tr>
+        <tr>
+          <td>高频交付</td>
+          <td class="center s5">5</td>
+          <td>能适应每月多条长视频并行产出，且保持稳定质量。</td>
+          <td>慢工低产，频繁拖延，无法适应内容节奏。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 六、核心KPI -->
+  <section>
+    <div class="section-title">
+      <h2>六、编导核心KPI</h2>
+      <span class="tag">内容结果</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card kpi">
+        <strong>爆款率</strong>
+        <span class="muted">衡量选题和内容放大能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>播放量</strong>
+        <span class="muted">衡量内容基础传播效果。</span>
+      </div>
+      <div class="card kpi">
+        <strong>点击率</strong>
+        <span class="muted">衡量标题封面和选题吸引力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>完播率</strong>
+        <span class="muted">衡量内容结构和观看体验。</span>
+      </div>
+      <div class="card kpi">
+        <strong>互动率</strong>
+        <span class="muted">评论、弹幕、点赞、投币、收藏。</span>
+      </div>
+      <div class="card kpi">
+        <strong>涨粉贡献</strong>
+        <span class="muted">衡量内容对账号增长的拉动。</span>
+      </div>
+      <div class="card kpi">
+        <strong>准时交付率</strong>
+        <span class="muted">衡量项目推进和高产能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>复盘迭代率</strong>
+        <span class="muted">衡量是否能从数据中持续优化。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、成熟度模型 -->
+  <section>
+    <div class="section-title">
+      <h2>七、编导成熟度模型</h2>
+      <span class="tag">成长阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="level">
+        <div class="level-name">初级编导</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:35%;">能辅助执行</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">中级编导</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:60%;">能独立交付单条内容</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">高级编导</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:82%;">能负责栏目和爆款内容</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">专家编导</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:100%;">能建立内容方法论和生产系统</div>
+        </div>
+      </div>
+    </div>
+
+    <table style="margin-top:18px;">
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>能力特征</th>
+          <th>产出标准</th>
+          <th>适合岗位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>初级编导</td>
+          <td>能完成资料搜集、竞品拆解、脚本初稿、拍摄辅助和素材整理。</td>
+          <td>每月辅助3-6条内容。</td>
+          <td>助理编导、执行编导</td>
+        </tr>
+        <tr>
+          <td>中级编导</td>
+          <td>能独立负责单条长视频，具备选题、脚本、拍摄、后期推进和复盘能力。</td>
+          <td>每月独立交付3-5条长视频。</td>
+          <td>独立编导、项目编导</td>
+        </tr>
+        <tr>
+          <td>高级编导</td>
+          <td>能负责栏目或重点项目，具备爆款判断、高产统筹和团队协同能力。</td>
+          <td>每月统筹5-8条内容，能产出阶段性爆款。</td>
+          <td>高级编导、栏目主编导</td>
+        </tr>
+        <tr>
+          <td>专家编导</td>
+          <td>能定义账号内容策略、栏目矩阵和爆款机制，带动团队稳定增长。</td>
+          <td>建立内容生产系统和爆款方法论。</td>
+          <td>总编导、内容负责人</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 八、优秀与风险特征 -->
+  <section>
+    <div class="section-title">
+      <h2>八、优秀特征与风险信号</h2>
+      <span class="tag">识别标准</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="ok">
+        <h3>优秀编导的典型特征</h3>
+        <ul>
+          <li>每天主动刷B站及其他内容平台，持续输入选题。</li>
+          <li>能快速判断一个选题为什么有机会爆。</li>
+          <li>每个选题都会提前思考标题、封面、开头钩子和传播点。</li>
+          <li>脚本有节奏、有转折、有情绪峰值，不是信息堆砌。</li>
+          <li>上线后主动看数据、评论和弹幕，并能快速复盘。</li>
+          <li>能适应多项目并行和高频内容交付。</li>
+          <li>愿意根据数据修正自己的创作判断。</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>能力不足的风险信号</h3>
+        <ul>
+          <li>只做自己觉得有意义的内容，不关心用户是否愿意点开。</li>
+          <li>选题没有冲突、反差、情绪和信息差。</li>
+          <li>标题封面意识弱，认为只是上线包装。</li>
+          <li>开头铺垫过长，前1分钟没有核心看点。</li>
+          <li>脚本像文章或汇报材料，缺少视频化表达。</li>
+          <li>每条内容都从零开始，不能沉淀模板和流程。</li>
+          <li>数据不好时习惯甩锅平台、算法或运气。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、招聘评估建议 -->
+  <section>
+    <div class="section-title">
+      <h2>九、招聘评估建议</h2>
+      <span class="tag">面试使用</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>考察能力</th>
+          <th>面试问题</th>
+          <th>重点观察</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>爆款判断</td>
+          <td>请你现场拆解一个最近适合B站做成长视频的爆款选题。</td>
+          <td>是否能讲清用户、情绪、冲突、标题、封面和传播点。</td>
+        </tr>
+        <tr>
+          <td>标题封面</td>
+          <td>同一个选题，请你给出5个标题方向和3个封面方向。</td>
+          <td>是否具备点击设计能力，而不是只会写普通标题。</td>
+        </tr>
+        <tr>
+          <td>前30秒钩子</td>
+          <td>如果这个视频只有前30秒决定用户是否留下，你会怎么开头？</td>
+          <td>是否能快速进入主题，建立观看承诺和悬念。</td>
+        </tr>
+        <tr>
+          <td>高频交付</td>
+          <td>如果你一个月要负责5条长视频，你会如何安排选题、脚本、拍摄和后期？</td>
+          <td>是否有项目拆解、并行推进和优先级管理能力。</td>
+        </tr>
+        <tr>
+          <td>数据复盘</td>
+          <td>一条视频播放量很低，你会从哪些维度分析原因？</td>
+          <td>是否能从选题、标题封面、开头、留存、发布时间和账号匹配度分析。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>实操测试建议：</strong>
+      让候选人在24小时内提交一份B站长视频爆款策划案，包含：选题爆点、5个标题、3个封面方向、前30秒脚本、完整结构大纲、互动点设计、执行方案和数据复盘指标。
+    </div>
+  </section>
+
+  <!-- 十、试用期考核 -->
+  <section>
+    <div class="section-title">
+      <h2>十、试用期考核建议</h2>
+      <span class="tag">3个月验证</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>考核重点</th>
+          <th>核心指标</th>
+          <th>判断标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第1个月</td>
+          <td>熟悉账号定位、B站语境和内容流程。</td>
+          <td>选题数量、策划质量、协作效率。</td>
+          <td>每周稳定提交选题，参与1-2条视频交付。</td>
+        </tr>
+        <tr>
+          <td>第2个月</td>
+          <td>独立负责内容，从策划到上线。</td>
+          <td>交付数量、完播率、互动率、返工率。</td>
+          <td>能独立完成2-4条内容，并形成清晰复盘。</td>
+        </tr>
+        <tr>
+          <td>第3个月</td>
+          <td>验证爆款潜力和高频交付能力。</td>
+          <td>播放表现、涨粉贡献、复盘迭代、准时交付。</td>
+          <td>至少产出1条明显高于账号均值的视频，或显著提升内容效率。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="danger" style="margin-top:18px;">
+      <h3>试用期淘汰信号</h3>
+      <ul>
+        <li>选题长期没有爆点。</li>
+        <li>无法独立推进项目。</li>
+        <li>频繁延期，影响团队排期。</li>
+        <li>标题封面和前30秒意识薄弱。</li>
+        <li>拒绝数据复盘，不愿调整创作判断。</li>
+        <li>无法适应每月多条内容产出节奏。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 十一、画像总结 -->
+  <section>
+    <div class="section-title">
+      <h2>十一、画像总结</h2>
+      <span class="tag">一句话标准</span>
+    </div>
+
+    <div class="card">
+      <h3>适合B站长视频业务的编导，应具备以下综合画像：</h3>
+      <p>
+        他/她不一定是最会拍摄或最会剪辑的人，但必须是最懂
+        <strong>选题爆点、用户点击、长视频留存、B站互动、高频交付和数据复盘</strong> 的人。
+      </p>
+
+      <ul>
+        <li><strong>对内容：</strong>能判断什么选题有爆款潜力，并做成高完成度长视频。</li>
+        <li><strong>对用户：</strong>理解B站用户为什么点开、为什么看完、为什么互动、为什么关注。</li>
+        <li><strong>对团队：</strong>能协调拍摄、剪辑、运营、设计等角色，高效推进项目。</li>
+        <li><strong>对结果：</strong>关注播放、完播、互动、涨粉和复盘迭代，而不是只完成制作任务。</li>
+        <li><strong>对长期：</strong>能把单条爆款经验沉淀为栏目模板、脚本模板和内容方法论。</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>最终画像：</strong>
+        懂B站、懂爆款、懂长视频结构、能高频交付、能数据复盘、能沉淀方法论的增长型内容编导。
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
