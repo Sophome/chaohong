@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站长视频主编核心能力画像</title>
+<style>
+  :root {
+    --blue:#00A1D6;
+    --pink:#fb7299;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00A1D6, #fb7299);
+    color: #fff;
+    padding: 44px 24px;
+  }
+
+  header .wrap,
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+  }
+
+  header p {
+    margin: 0;
+    max-width: 960px;
+    opacity: .95;
+    font-size: 16px;
+  }
+
+  main {
+    padding: 28px 20px 60px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  .muted {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  .pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    font-size: 12px;
+    color: #374151;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+  }
+
+  .big-number {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.15;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .bar-bg {
+    height: 11px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue), #7dd3fc);
+  }
+
+  .bar.green {
+    background: linear-gradient(90deg, var(--green), #86efac);
+  }
+
+  .bar.orange {
+    background: linear-gradient(90deg, var(--orange), #fcd34d);
+  }
+
+  .bar.purple {
+    background: linear-gradient(90deg, var(--purple), #c4b5fd);
+  }
+
+  .bar.red {
+    background: linear-gradient(90deg, var(--red), #fca5a5);
+  }
+
+  .bar.pink {
+    background: linear-gradient(90deg, var(--pink), #f9a8d4);
+  }
+
+  .score {
+    color: var(--gray);
+    text-align: right;
+    font-weight: 700;
+  }
+
+  .radar {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radar svg {
+    max-width: 380px;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .s1 { background:#f3f4f6; color:#6b7280; }
+  .s2 { background:#dbeafe; color:#1d4ed8; }
+  .s3 { background:#bfdbfe; color:#1e40af; }
+  .s4 { background:#7dd3fc; color:#075985; font-weight:700; }
+  .s5 { background:#00A1D6; color:#fff; font-weight:800; }
+
+  .kpi strong {
+    display: block;
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .ok {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .danger {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #9f1239;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .highlight {
+    background: #ecfeff;
+    border-left: 5px solid var(--blue);
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+
+  .level-name {
+    font-weight: 700;
+  }
+
+  .level-line {
+    background: #eef2f7;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #bae6fd, var(--blue));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .quote {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue);
+    margin: 10px 0;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4, .summary {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .bar-row {
+      grid-template-columns: 110px 1fr 34px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>B站长视频主编核心能力画像</h1>
+    <p>
+      适用于以 B站长视频、爆款内容、高频产出、账号增长、栏目化运营和商业化内容为核心业务的传媒公司。
+      本画像用于主编岗位招聘、面试评估、试用期考核、绩效管理、晋升判断和组织搭建。
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 一、岗位定位 -->
+  <section>
+    <div class="section-title">
+      <h2>一、岗位定位</h2>
+      <span class="tag">账号内容增长负责人</span>
+    </div>
+
+    <div class="summary">
+      <div class="card">
+        <h3>主编的核心使命</h3>
+        <p class="muted">
+          主编不是传统意义上的“审稿人”，也不是单条视频的执行编导，而是账号内容方向、视频质量、创作产能、爆款率和团队协同的第一负责人。
+        </p>
+
+        <div class="pill-wrap">
+          <span class="pill">账号增长负责人</span>
+          <span class="pill">内容方向制定者</span>
+          <span class="pill">爆款选题把关人</span>
+          <span class="pill">视频质量负责人</span>
+          <span class="pill">创作产能负责人</span>
+          <span class="pill">栏目体系搭建者</span>
+          <span class="pill">内容团队管理者</span>
+          <span class="pill">数据复盘推动者</span>
+        </div>
+
+        <ul>
+          <li>对账号成长负责：包括播放、涨粉、互动、完播、粉丝粘性和账号心智。</li>
+          <li>对视频质量负责：包括选题质量、脚本结构、标题封面、成片表达和内容口碑。</li>
+          <li>对创作量负责：包括月度内容产出、栏目更新节奏、项目准时交付和团队生产效率。</li>
+          <li>对内容方法论负责：把偶发爆款沉淀成可复制的栏目、流程、模板和标准。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>一句话画像</h3>
+        <div class="big-number">账号型内容主编</div>
+        <p class="muted" style="margin-top:12px;">
+          既懂爆款，又懂账号；既能管内容质量，也能管团队产能；既能做判断，也能搭系统。
+        </p>
+
+        <div class="highlight">
+          <strong>岗位本质：</strong>
+          从“单条视频创作者”升级为“账号内容经营者”。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、主编与编导的区别 -->
+  <section>
+    <div class="section-title">
+      <h2>二、主编与编导的关键区别</h2>
+      <span class="tag">岗位升级</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>编导</th>
+          <th>主编</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>责任对象</td>
+          <td>主要对单条视频负责。</td>
+          <td>对账号增长、内容质量、创作量和团队产能负责。</td>
+        </tr>
+        <tr>
+          <td>工作重心</td>
+          <td>选题、脚本、拍摄、后期跟进。</td>
+          <td>内容方向、选题机制、栏目体系、质量标准、排期管理和复盘机制。</td>
+        </tr>
+        <tr>
+          <td>能力要求</td>
+          <td>强执行、强脚本、强项目推进。</td>
+          <td>强判断、强把关、强组织、强增长、强方法论。</td>
+        </tr>
+        <tr>
+          <td>结果指标</td>
+          <td>单条视频数据、交付质量、协作效率。</td>
+          <td>账号月度增长、爆款率、内容稳定性、产能达成率、团队人效。</td>
+        </tr>
+        <tr>
+          <td>价值定位</td>
+          <td>内容执行核心。</td>
+          <td>内容经营核心。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 三、核心能力总览 -->
+  <section>
+    <div class="section-title">
+      <h2>三、核心能力总览</h2>
+      <span class="tag">8大能力</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>能力评分模型</h3>
+        <p class="muted">
+          建议以 1-5 分评估。主编岗位至少要求“账号增长、爆款判断、质量把关、产能管理、团队协同”达到 4 分以上。
+        </p>
+
+        <div class="bar-row">
+          <span>账号增长能力</span>
+          <div class="bar-bg"><div class="bar" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>爆款选题判断</span>
+          <div class="bar-bg"><div class="bar pink" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>内容质量把关</span>
+          <div class="bar-bg"><div class="bar orange" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>栏目体系搭建</span>
+          <div class="bar-bg"><div class="bar purple" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>创作产能管理</span>
+          <div class="bar-bg"><div class="bar green" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>团队协同管理</span>
+          <div class="bar-bg"><div class="bar" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>数据复盘能力</span>
+          <div class="bar-bg"><div class="bar orange" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>商业内容平衡</span>
+          <div class="bar-bg"><div class="bar red" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>能力雷达图</h3>
+        <p class="muted">越靠外代表能力要求越高。</p>
+
+        <div class="radar">
+          <svg viewBox="0 0 400 400">
+            <polygon points="200,50 306,94 350,200 306,306 200,350 94,306 50,200 94,94"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,88 279,121 312,200 279,279 200,312 121,279 88,200 121,121"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,126 253,147 274,200 253,253 200,274 147,253 126,200 147,147"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <polygon points="200,164 226,174 236,200 226,226 200,236 174,226 164,200 174,174"
+              fill="none" stroke="#d1d5db" stroke-width="1"/>
+            <line x1="200" y1="200" x2="200" y2="50" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="94" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="350" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="306" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="200" y2="350" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="306" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="50" y2="200" stroke="#e5e7eb"/>
+            <line x1="200" y1="200" x2="94" y2="94" stroke="#e5e7eb"/>
+            <polygon points="200,50 306,94 350,200 306,306 200,320 110,290 80,200 115,115"
+              fill="rgba(0,161,214,.26)" stroke="#00A1D6" stroke-width="3"/>
+            <text x="200" y="32" text-anchor="middle" font-size="13" fill="#374151">账号增长</text>
+            <text x="318" y="86" font-size="13" fill="#374151">爆款判断</text>
+            <text x="358" y="204" font-size="13" fill="#374151">质量把关</text>
+            <text x="314" y="322" font-size="13" fill="#374151">栏目体系</text>
+            <text x="200" y="374" text-anchor="middle" font-size="13" fill="#374151">产能管理</text>
+            <text x="38" y="322" font-size="13" fill="#374151">团队协同</text>
+            <text x="3" y="204" font-size="13" fill="#374151">数据复盘</text>
+            <text x="28" y="86" font-size="13" fill="#374151">商业平衡</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、八大能力画像 -->
+  <section>
+    <div class="section-title">
+      <h2>四、八大能力画像</h2>
+      <span class="tag">能力拆解</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>1. 账号增长能力</h3>
+        <p class="muted">决定账号是否持续变大。</p>
+        <ul>
+          <li>理解B站推荐逻辑和用户增长逻辑</li>
+          <li>能围绕账号定位制定内容增长策略</li>
+          <li>关注播放、涨粉、互动、完播、转粉率</li>
+          <li>能判断内容对账号长期心智的贡献</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. 爆款选题判断能力</h3>
+        <p class="muted">决定视频是否有爆发基础。</p>
+        <ul>
+          <li>能判断选题是否具备冲突、反差、共鸣、信息差</li>
+          <li>能建立热点、常青、系列、商业选题池</li>
+          <li>能快速筛掉低价值选题</li>
+          <li>能指导团队优化选题角度</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. 内容质量把关能力</h3>
+        <p class="muted">决定视频是否符合账号标准。</p>
+        <ul>
+          <li>把关标题、封面、开头、结构、节奏和成片</li>
+          <li>能发现脚本逻辑、信息密度、表达节奏问题</li>
+          <li>能保证内容质量稳定，而不是忽高忽低</li>
+          <li>能建立内容审核标准</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. 栏目体系搭建能力</h3>
+        <p class="muted">决定内容是否可持续。</p>
+        <ul>
+          <li>能把单个爆款拆成系列栏目</li>
+          <li>能规划不同栏目承担不同增长任务</li>
+          <li>能设计栏目定位、结构模板和更新节奏</li>
+          <li>能沉淀账号内容资产</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. 创作产能管理能力</h3>
+        <p class="muted">决定每月产出是否稳定。</p>
+        <ul>
+          <li>能制定月度选题和视频排期</li>
+          <li>能推动多条视频并行制作</li>
+          <li>能平衡质量、速度和团队负荷</li>
+          <li>能通过模板和流程提升产能</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6. 团队协同管理能力</h3>
+        <p class="muted">决定内容团队是否高效运转。</p>
+        <ul>
+          <li>协调编导、摄影、剪辑、运营、商务、设计</li>
+          <li>明确每条视频负责人、节点和交付标准</li>
+          <li>能处理创作分歧和返工问题</li>
+          <li>能培养编导和后期的内容判断力</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>7. 数据复盘能力</h3>
+        <p class="muted">决定内容系统能否进化。</p>
+        <ul>
+          <li>分析点击率、完播率、互动率、转粉率</li>
+          <li>能定位低表现视频的问题原因</li>
+          <li>能从爆款中提炼可复用规律</li>
+          <li>推动周复盘、月复盘和栏目复盘</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>8. 商业内容平衡能力</h3>
+        <p class="muted">决定商业化是否损伤账号。</p>
+        <ul>
+          <li>能判断商业内容是否符合账号调性</li>
+          <li>平衡品牌需求、用户体验和内容可信度</li>
+          <li>能把商业信息自然融入内容结构</li>
+          <li>守住口碑、合规和账号信任边界</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、关键工作模块 -->
+  <section>
+    <div class="section-title">
+      <h2>五、主编关键工作模块</h2>
+      <span class="tag">日常职责</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>工作模块</th>
+          <th>核心任务</th>
+          <th>关键产出</th>
+          <th>衡量指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>账号内容策略</td>
+          <td>明确账号定位、目标用户、内容方向和增长路径</td>
+          <td>账号内容策略、栏目规划、月度目标</td>
+          <td>涨粉率、播放增长、账号心智清晰度</td>
+        </tr>
+        <tr>
+          <td>选题管理</td>
+          <td>建立选题池、组织选题会、筛选高潜选题</td>
+          <td>选题池、选题排期、爆款选题清单</td>
+          <td>选题通过率、爆款率、选题命中率</td>
+        </tr>
+        <tr>
+          <td>质量把关</td>
+          <td>审核标题封面、脚本结构、前30秒、粗剪、精剪、上线包装</td>
+          <td>质量标准、审核意见、修改清单</td>
+          <td>完播率、互动率、返工率、内容口碑</td>
+        </tr>
+        <tr>
+          <td>产能管理</td>
+          <td>制定月度排期，推动多项目并行，控制延期和返工</td>
+          <td>月度排期表、项目看板、交付进度表</td>
+          <td>月度产出量、准时交付率、人效</td>
+        </tr>
+        <tr>
+          <td>团队协同</td>
+          <td>协调编导、摄影、剪辑、运营、设计、商务之间的配合</td>
+          <td>职责分工、会议机制、协作流程</td>
+          <td>协作满意度、沟通效率、问题闭环率</td>
+        </tr>
+        <tr>
+          <td>数据复盘</td>
+          <td>跟踪数据，分析问题，提炼规律，推动下一轮优化</td>
+          <td>周报、月报、栏目复盘、爆款拆解</td>
+          <td>数据改善率、复盘落地率、方法沉淀数</td>
+        </tr>
+        <tr>
+          <td>内容方法论沉淀</td>
+          <td>把经验转化为选题模板、脚本模板、拍摄模板、审核标准</td>
+          <td>SOP、模板库、案例库、培训材料</td>
+          <td>新人上手速度、返工降低率、产能提升率</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 六、能力热力图 -->
+  <section>
+    <div class="section-title">
+      <h2>六、能力等级热力图</h2>
+      <span class="tag">1弱 - 5强</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>能力项</th>
+          <th class="center">要求等级</th>
+          <th>优秀表现</th>
+          <th>能力不足表现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>账号增长能力</td>
+          <td class="center s5">5</td>
+          <td>能围绕账号定位制定增长策略，推动播放、涨粉、互动持续提升。</td>
+          <td>只盯单条视频，不知道账号长期要形成什么心智。</td>
+        </tr>
+        <tr>
+          <td>爆款选题判断</td>
+          <td class="center s5">5</td>
+          <td>能持续筛选高潜选题，并指导团队优化角度和标题封面。</td>
+          <td>选题平淡，无法判断什么内容有爆发潜力。</td>
+        </tr>
+        <tr>
+          <td>内容质量把关</td>
+          <td class="center s5">5</td>
+          <td>能精准指出脚本、开头、节奏、表达、包装中的关键问题。</td>
+          <td>只会泛泛说“感觉不够好”，给不出具体修改方向。</td>
+        </tr>
+        <tr>
+          <td>栏目体系搭建</td>
+          <td class="center s5">5</td>
+          <td>能将爆款经验沉淀为系列栏目和稳定内容资产。</td>
+          <td>每条视频都临时想，账号内容缺少结构和延续性。</td>
+        </tr>
+        <tr>
+          <td>创作产能管理</td>
+          <td class="center s5">5</td>
+          <td>能保障月度产出稳定，做到多项目并行且质量可控。</td>
+          <td>内容经常延期，团队忙乱但产出不稳定。</td>
+        </tr>
+        <tr>
+          <td>团队协同管理</td>
+          <td class="center s4">4</td>
+          <td>能让编导、摄影、剪辑、运营、商务围绕同一目标协作。</td>
+          <td>各部门各做各的，沟通成本高，返工多。</td>
+        </tr>
+        <tr>
+          <td>数据复盘能力</td>
+          <td class="center s5">5</td>
+          <td>能从数据中定位问题，并转化为下一轮选题和制作优化。</td>
+          <td>复盘停留在播放量高低，不知道为什么高或低。</td>
+        </tr>
+        <tr>
+          <td>商业内容平衡</td>
+          <td class="center s4">4</td>
+          <td>能在商业合作中守住账号调性、用户体验和内容可信度。</td>
+          <td>商业内容生硬，容易伤害粉丝信任和账号口碑。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 七、核心KPI -->
+  <section>
+    <div class="section-title">
+      <h2>七、主编核心KPI</h2>
+      <span class="tag">结果导向</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card kpi">
+        <strong>账号涨粉量</strong>
+        <span class="muted">衡量主编对账号成长的直接贡献。</span>
+      </div>
+      <div class="card kpi">
+        <strong>播放增长率</strong>
+        <span class="muted">衡量内容策略和选题命中率。</span>
+      </div>
+      <div class="card kpi">
+        <strong>爆款率</strong>
+        <span class="muted">衡量爆款选题和内容放大能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>完播率</strong>
+        <span class="muted">衡量视频结构和观看体验。</span>
+      </div>
+      <div class="card kpi">
+        <strong>互动率</strong>
+        <span class="muted">评论、弹幕、点赞、投币、收藏、分享。</span>
+      </div>
+      <div class="card kpi">
+        <strong>月度创作量</strong>
+        <span class="muted">衡量内容团队稳定产出能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>准时交付率</strong>
+        <span class="muted">衡量排期管理和项目推进能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>返工率</strong>
+        <span class="muted">衡量前置把关、沟通效率和质量标准。</span>
+      </div>
+      <div class="card kpi">
+        <strong>转粉率</strong>
+        <span class="muted">衡量视频对账号关注转化的能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>栏目稳定性</strong>
+        <span class="muted">衡量栏目更新节奏和内容资产沉淀。</span>
+      </div>
+      <div class="card kpi">
+        <strong>复盘落地率</strong>
+        <span class="muted">衡量复盘结论是否真正用于下一条内容。</span>
+      </div>
+      <div class="card kpi">
+        <strong>团队人效</strong>
+        <span class="muted">衡量单位人力产出的内容数量和质量。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、月度工作机制 -->
+  <section>
+    <div class="section-title">
+      <h2>八、主编月度工作机制</h2>
+      <span class="tag">高产与质量并重</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>主编动作</th>
+          <th>关键会议/机制</th>
+          <th>交付物</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>每月初</td>
+          <td>确定本月账号目标、栏目排期、重点选题和爆款方向。</td>
+          <td>月度内容规划会</td>
+          <td>月度选题表、栏目排期、增长目标</td>
+        </tr>
+        <tr>
+          <td>每周一</td>
+          <td>组织选题会，筛选本周重点选题，分配负责人。</td>
+          <td>周选题会</td>
+          <td>本周选题清单、视频负责人、时间节点</td>
+        </tr>
+        <tr>
+          <td>制作中</td>
+          <td>把关标题封面、脚本、前30秒、粗剪和精剪。</td>
+          <td>脚本会、粗剪会、上线前审核</td>
+          <td>修改意见、审核清单、上线确认</td>
+        </tr>
+        <tr>
+          <td>上线后24-72小时</td>
+          <td>追踪冷启动数据、评论弹幕、留存和转粉表现。</td>
+          <td>快速复盘</td>
+          <td>单条视频复盘记录</td>
+        </tr>
+        <tr>
+          <td>每周末</td>
+          <td>总结本周内容表现，调整下周选题和生产节奏。</td>
+          <td>周复盘会</td>
+          <td>周数据报告、优化动作</td>
+        </tr>
+        <tr>
+          <td>每月底</td>
+          <td>复盘账号增长、爆款率、栏目表现和团队产能。</td>
+          <td>月度复盘会</td>
+          <td>月度内容复盘、栏目调整建议、团队改进计划</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>机制重点：</strong>
+      主编不能只在上线前“审片”，而要从选题阶段就介入，提前决定视频有没有爆款潜力、值不值得做、怎么做更容易增长。
+    </div>
+  </section>
+
+  <!-- 九、成熟度模型 -->
+  <section>
+    <div class="section-title">
+      <h2>九、主编成熟度模型</h2>
+      <span class="tag">成长阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="level">
+        <div class="level-name">执行型主编</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:35%;">能审稿审片</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">项目型主编</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:60%;">能管选题和交付</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">账号型主编</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:82%;">能推动账号增长</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">增长型主编</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:100%;">能建立内容增长系统</div>
+        </div>
+      </div>
+    </div>
+
+    <table style="margin-top:18px;">
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>能力特征</th>
+          <th>产出标准</th>
+          <th>适合阶段</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>执行型主编</td>
+          <td>能审核脚本和成片，保证基本质量，但对账号增长和栏目体系参与较弱。</td>
+          <td>减少明显质量问题。</td>
+          <td>内容质量初步规范阶段</td>
+        </tr>
+        <tr>
+          <td>项目型主编</td>
+          <td>能管理选题、排期、脚本、制作和上线，保障内容稳定交付。</td>
+          <td>月度产出稳定，延期减少。</td>
+          <td>内容产能建设阶段</td>
+        </tr>
+        <tr>
+          <td>账号型主编</td>
+          <td>能围绕账号定位设计栏目矩阵，推动播放、涨粉和互动增长。</td>
+          <td>账号数据持续提升，爆款率提高。</td>
+          <td>账号增长阶段</td>
+        </tr>
+        <tr>
+          <td>增长型主编</td>
+          <td>能建立选题机制、栏目体系、质量标准、生产流程和复盘方法论。</td>
+          <td>团队可持续产出爆款和稳定内容。</td>
+          <td>内容公司化运营阶段</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 十、优秀与风险特征 -->
+  <section>
+    <div class="section-title">
+      <h2>十、优秀特征与风险信号</h2>
+      <span class="tag">识别标准</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="ok">
+        <h3>优秀主编的典型特征</h3>
+        <ul>
+          <li>能清晰说出账号现阶段的增长问题和内容机会。</li>
+          <li>能快速判断一个选题值不值得做，以及如何做得更容易爆。</li>
+          <li>重视标题、封面、前30秒、结构、完播和转粉，而不是只看内容完整度。</li>
+          <li>每周稳定组织选题会、复盘会和内容审核机制。</li>
+          <li>能把优秀案例拆解成团队可复用模板。</li>
+          <li>能管理多条视频并行制作，保障月度创作量。</li>
+          <li>既尊重创作，也有结果意识和截止日期意识。</li>
+          <li>能培养团队，让编导、剪辑、运营逐渐具备内容判断力。</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>能力不足的风险信号</h3>
+        <ul>
+          <li>只会审错别字、审逻辑，不会判断爆款潜力和账号增长价值。</li>
+          <li>没有选题池和栏目规划，内容长期靠临时想。</li>
+          <li>只关注单条视频播放，不关注账号长期定位和粉丝心智。</li>
+          <li>上线前才介入，导致返工大、效率低。</li>
+          <li>对标题封面、前30秒、完播率不敏感。</li>
+          <li>团队经常延期，但不知道问题出在选题、脚本、拍摄还是后期。</li>
+          <li>复盘流于形式，不能转化为下一条内容的改进。</li>
+          <li>无法在商业需求和用户体验之间做平衡。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 十一、招聘评估建议 -->
+  <section>
+    <div class="section-title">
+      <h2>十一、招聘评估建议</h2>
+      <span class="tag">面试使用</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>考察能力</th>
+          <th>面试问题</th>
+          <th>重点观察</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>账号诊断</td>
+          <td>请你现场诊断一个B站账号，指出它的增长机会和内容问题。</td>
+          <td>是否能从定位、选题、栏目、标题封面、完播、互动和粉丝心智分析。</td>
+        </tr>
+        <tr>
+          <td>爆款判断</td>
+          <td>请你给出3个适合该账号下个月重点做的爆款选题。</td>
+          <td>是否能讲清用户动机、选题爆点、标题方向和视频结构。</td>
+        </tr>
+        <tr>
+          <td>质量把关</td>
+          <td>如果一条视频粗剪看起来很平，你会从哪些方面提出修改？</td>
+          <td>是否能从开头、节奏、信息密度、观点表达、包装和情绪峰值分析。</td>
+        </tr>
+        <tr>
+          <td>产能管理</td>
+          <td>如果团队每月要稳定产出12条长视频，你会如何设计流程和排期？</td>
+          <td>是否具备选题池、项目看板、并行推进、节点审核和风险预案。</td>
+        </tr>
+        <tr>
+          <td>团队管理</td>
+          <td>编导觉得内容应该深度表达，运营觉得标题需要更刺激，你如何协调？</td>
+          <td>是否能以账号目标和用户体验为依据做判断，而不是简单妥协。</td>
+        </tr>
+        <tr>
+          <td>数据复盘</td>
+          <td>连续3条视频低于账号均值，你会如何复盘和调整？</td>
+          <td>是否能定位选题、标题封面、开头、留存、栏目定位和团队流程问题。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>实操测试建议：</strong>
+      给候选人一个真实B站账号和近10条视频数据，要求其在24小时内提交《账号内容增长诊断方案》，包括账号问题、栏目机会、下月选题规划、爆款标题封面方向、产能排期和复盘机制。
+    </div>
+  </section>
+
+  <!-- 十二、试用期考核 -->
+  <section>
+    <div class="section-title">
+      <h2>十二、试用期考核建议</h2>
+      <span class="tag">3个月验证</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>考核重点</th>
+          <th>核心指标</th>
+          <th>判断标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第1个月</td>
+          <td>完成账号诊断，建立选题池和基础审核机制。</td>
+          <td>账号诊断质量、选题数量、流程搭建、团队协作反馈。</td>
+          <td>能明确指出账号问题，并推动选题会、脚本会和上线前审核。</td>
+        </tr>
+        <tr>
+          <td>第2个月</td>
+          <td>推动月度内容产出和质量稳定。</td>
+          <td>月度产出量、准时交付率、返工率、视频质量评分。</td>
+          <td>能稳定推进多条视频并行制作，内容质量和交付效率改善。</td>
+        </tr>
+        <tr>
+          <td>第3个月</td>
+          <td>验证账号增长和内容方法论沉淀。</td>
+          <td>播放增长、涨粉贡献、爆款率、复盘落地率、模板沉淀数。</td>
+          <td>至少推动账号某项关键数据明显提升，或建立可持续内容生产机制。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="danger" style="margin-top:18px;">
+      <h3>试用期淘汰信号</h3>
+      <ul>
+        <li>无法说清账号定位和增长问题。</li>
+        <li>选题判断弱，长期产出低爆点选题。</li>
+        <li>只会提意见，不会推动落地。</li>
+        <li>介入过晚，导致大量返工和延期。</li>
+        <li>无法管理月度创作量，内容交付不稳定。</li>
+        <li>复盘没有结论，结论不能变成下一条视频的优化动作。</li>
+        <li>团队协同差，编导、后期、运营之间矛盾加剧。</li>
+        <li>商业内容过度损害账号口碑。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 十三、画像总结 -->
+  <section>
+    <div class="section-title">
+      <h2>十三、画像总结</h2>
+      <span class="tag">一句话标准</span>
+    </div>
+
+    <div class="card">
+      <h3>适合B站长视频业务的主编，应具备以下综合画像：</h3>
+      <p>
+        他/她不一定是最会写脚本、最会拍摄或最会剪辑的人，但必须是最懂
+        <strong>账号增长、爆款选题、内容质量、创作产能、团队协同和数据复盘</strong>
+        的人。
+      </p>
+
+      <ul>
+        <li><strong>对账号：</strong>能定义账号内容方向，推动播放、涨粉、互动和转粉增长。</li>
+        <li><strong>对内容：</strong>能把关选题、标题封面、脚本结构、前30秒、成片节奏和视频质量。</li>
+        <li><strong>对产能：</strong>能建立选题池、排期表、项目看板和审核机制，保障月度创作量。</li>
+        <li><strong>对团队：</strong>能协调编导、摄影、剪辑、运营、商务、设计，减少返工和内耗。</li>
+        <li><strong>对长期：</strong>能把爆款经验沉淀为栏目体系、SOP、模板库和内容方法论。</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>最终画像：</strong>
+        懂B站、懂账号增长、懂爆款、懂质量把关、懂产能管理、能带团队、能搭建内容生产系统的增长型主编。
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
