@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传媒公司HRBP核心能力画像</title>
+<style>
+  :root {
+    --blue:#00A1D6;
+    --pink:#fb7299;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00A1D6, #fb7299);
+    color: #fff;
+    padding: 44px 24px;
+  }
+
+  header .wrap,
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+  }
+
+  header p {
+    margin: 0;
+    max-width: 960px;
+    opacity: .95;
+    font-size: 16px;
+  }
+
+  main {
+    padding: 28px 20px 60px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  .muted {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  .pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    font-size: 12px;
+    color: #374151;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+  }
+
+  .big-number {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.15;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .bar-bg {
+    height: 11px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue), #7dd3fc);
+  }
+
+  .bar.green {
+    background: linear-gradient(90deg, var(--green), #86efac);
+  }
+
+  .bar.orange {
+    background: linear-gradient(90deg, var(--orange), #fcd34d);
+  }
+
+  .bar.purple {
+    background: linear-gradient(90deg, var(--purple), #c4b5fd);
+  }
+
+  .bar.red {
+    background: linear-gradient(90deg, var(--red), #fca5a5);
+  }
+
+  .bar.pink {
+    background: linear-gradient(90deg, var(--pink), #f9a8d4);
+  }
+
+  .score {
+    color: var(--gray);
+    text-align: right;
+    font-weight: 700;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15,23,42,.04);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .s1 { background:#f3f4f6; color:#6b7280; }
+  .s2 { background:#dbeafe; color:#1d4ed8; }
+  .s3 { background:#bfdbfe; color:#1e40af; }
+  .s4 { background:#7dd3fc; color:#075985; font-weight:700; }
+  .s5 { background:#00A1D6; color:#fff; font-weight:800; }
+
+  .kpi strong {
+    display: block;
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .ok {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .danger {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #9f1239;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .highlight {
+    background: #ecfeff;
+    border-left: 5px solid var(--blue);
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+
+  .level-name {
+    font-weight: 700;
+  }
+
+  .level-line {
+    background: #eef2f7;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #bae6fd, var(--blue));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4, .summary {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .bar-row {
+      grid-template-columns: 110px 1fr 34px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>传媒公司 HRBP 核心能力画像</h1>
+    <p>
+      适用于以 B站长视频、内容制作、账号运营、商务合作、摄影剪辑和创意团队为核心业务的传媒公司。
+      HRBP不是传统行政人事，而是深入业务一线，帮助公司解决招聘、组织效率、绩效机制、人才培养、员工关系和文化落地问题的业务型人力资源伙伴。
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 一、岗位定位 -->
+  <section>
+    <div class="section-title">
+      <h2>一、岗位定位</h2>
+      <span class="tag">业务型HR</span>
+    </div>
+
+    <div class="summary">
+      <div class="card">
+        <h3>HRBP的核心使命</h3>
+        <p class="muted">
+          围绕公司业务目标，帮助各业务负责人配置合适的人、建立有效的机制、提升团队效率、降低组织风险，并推动公司从“人治管理”走向“机制化管理”。
+        </p>
+
+        <div class="pill-wrap">
+          <span class="pill">业务伙伴</span>
+          <span class="pill">招聘负责人</span>
+          <span class="pill">组织诊断者</span>
+          <span class="pill">绩效推动者</span>
+          <span class="pill">人才发展者</span>
+          <span class="pill">员工关系处理者</span>
+          <span class="pill">文化落地者</span>
+          <span class="pill">用工风险控制者</span>
+        </div>
+
+        <ul>
+          <li>不是只负责发招聘、办入职、算考勤，而是要理解业务目标和团队问题。</li>
+          <li>不是站在人事角度“管员工”，而是站在公司经营角度“提升组织能力”。</li>
+          <li>不是被动响应需求，而是主动发现招聘、绩效、协作、激励和风险问题。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>一句话画像</h3>
+        <div class="big-number">懂业务的组织效率负责人</div>
+        <p class="muted" style="margin-top:12px;">
+          既懂招聘，又懂业务；既能处理员工关系，也能推动绩效结果；既能解决当下问题，也能建设长期组织能力。
+        </p>
+
+        <div class="highlight">
+          <strong>岗位本质：</strong>
+          HRBP的价值不是“完成HR流程”，而是“让业务团队更能打仗”。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、HRBP与传统HR区别 -->
+  <section>
+    <div class="section-title">
+      <h2>二、HRBP与传统HR的关键区别</h2>
+      <span class="tag">角色升级</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>传统HR/人事</th>
+          <th>HRBP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>工作定位</td>
+          <td>流程执行、招聘发布、入离调转、考勤薪酬基础事务。</td>
+          <td>深入业务，解决组织、人才、绩效、协作和人效问题。</td>
+        </tr>
+        <tr>
+          <td>关注重点</td>
+          <td>流程是否完成、制度是否执行。</td>
+          <td>业务目标是否达成、团队效率是否提升、人才是否匹配。</td>
+        </tr>
+        <tr>
+          <td>与业务关系</td>
+          <td>业务提出需求，人事被动响应。</td>
+          <td>与业务负责人共同诊断问题、设计方案、推动落地。</td>
+        </tr>
+        <tr>
+          <td>能力要求</td>
+          <td>人事基础操作、沟通协调、事务处理。</td>
+          <td>业务理解、招聘判断、组织诊断、绩效推动、员工关系、数据分析。</td>
+        </tr>
+        <tr>
+          <td>结果指标</td>
+          <td>招聘人数、入职手续、考勤准确率、员工档案完整度。</td>
+          <td>关键岗位到岗率、人效提升、绩效落地、核心人才留存、组织稳定性。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 三、核心能力总览 -->
+  <section>
+    <div class="section-title">
+      <h2>三、核心能力总览</h2>
+      <span class="tag">8大能力</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>能力评分模型</h3>
+        <p class="muted">
+          建议以 1-5 分评估。传媒公司HRBP至少应在招聘交付、业务理解、绩效推动、员工关系、组织诊断五项达到4分以上。
+        </p>
+
+        <div class="bar-row">
+          <span>业务理解能力</span>
+          <div class="bar-bg"><div class="bar" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>招聘交付能力</span>
+          <div class="bar-bg"><div class="bar pink" style="width:95%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>人才识别能力</span>
+          <div class="bar-bg"><div class="bar orange" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>绩效推动能力</span>
+          <div class="bar-bg"><div class="bar purple" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>组织诊断能力</span>
+          <div class="bar-bg"><div class="bar green" style="width:85%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>员工关系处理</span>
+          <div class="bar-bg"><div class="bar red" style="width:90%"></div></div>
+          <span class="score">5</span>
+        </div>
+
+        <div class="bar-row">
+          <span>数据分析能力</span>
+          <div class="bar-bg"><div class="bar" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+
+        <div class="bar-row">
+          <span>文化推动能力</span>
+          <div class="bar-bg"><div class="bar orange" style="width:80%"></div></div>
+          <span class="score">4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>HRBP能力重点</h3>
+        <p class="muted">
+          对传媒公司而言，HRBP必须同时理解“创意型团队”和“结果型组织”的矛盾。
+        </p>
+
+        <div class="highlight">
+          <strong>核心判断标准：</strong>
+          能否帮助公司招到合适的人、留住关键的人、淘汰不匹配的人、激活有潜力的人，并让团队围绕业务目标高效运转。
+        </div>
+
+        <ul>
+          <li><strong>对业务：</strong>理解B站长视频、账号运营、内容生产、商务变现和团队协作流程。</li>
+          <li><strong>对招聘：</strong>能识别主编、编导、摄影剪辑、运营、商务等岗位的真实能力。</li>
+          <li><strong>对组织：</strong>能发现职责不清、协作低效、绩效模糊、负责人缺位等问题。</li>
+          <li><strong>对员工：</strong>能处理沟通、激励、冲突、离职、淘汰和劳动风险。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、八大能力画像 -->
+  <section>
+    <div class="section-title">
+      <h2>四、八大能力画像</h2>
+      <span class="tag">能力拆解</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>1. 业务理解能力</h3>
+        <p class="muted">决定HRBP是否能真正成为业务伙伴。</p>
+        <ul>
+          <li>理解传媒公司业务模式和收入来源</li>
+          <li>理解内容生产流程和岗位协作关系</li>
+          <li>理解账号增长、视频质量、交付效率等业务指标</li>
+          <li>能把人员问题和业务结果联系起来分析</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. 招聘交付能力</h3>
+        <p class="muted">决定关键岗位是否能及时到位。</p>
+        <ul>
+          <li>能拆解岗位画像和招聘需求</li>
+          <li>能拓展招聘渠道和人才地图</li>
+          <li>能推动简历筛选、面试、offer和入职闭环</li>
+          <li>能提升关键岗位到岗率和招聘质量</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. 人才识别能力</h3>
+        <p class="muted">决定招进来的人是否合适。</p>
+        <ul>
+          <li>能识别候选人的真实能力和作品含金量</li>
+          <li>能判断文化匹配、动机匹配和岗位匹配</li>
+          <li>能设计面试问题和实操测试</li>
+          <li>能避免“会说但不会做”的候选人</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. 绩效推动能力</h3>
+        <p class="muted">决定团队是否真正对结果负责。</p>
+        <ul>
+          <li>协助业务负责人制定岗位KPI</li>
+          <li>推动月度/季度绩效评估</li>
+          <li>识别绩效问题和改进路径</li>
+          <li>推动奖惩、晋升、调岗和淘汰机制</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. 组织诊断能力</h3>
+        <p class="muted">决定公司是否能从混乱走向有序。</p>
+        <ul>
+          <li>诊断岗位职责、汇报关系和协作流程</li>
+          <li>发现团队效率低、内耗高、权责不清问题</li>
+          <li>提出组织架构和流程优化建议</li>
+          <li>推动负责人机制和会议机制落地</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6. 员工关系处理能力</h3>
+        <p class="muted">决定组织稳定和用工安全。</p>
+        <ul>
+          <li>处理员工沟通、冲突、投诉和离职</li>
+          <li>熟悉劳动合同、试用期、调岗、解除等法规边界</li>
+          <li>能降低劳动争议和用工风险</li>
+          <li>能在公司立场和员工体验之间取得平衡</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>7. HR数据分析能力</h3>
+        <p class="muted">决定HR工作是否可量化。</p>
+        <ul>
+          <li>分析招聘转化率、到岗周期、离职率</li>
+          <li>分析人效、绩效分布、人员成本</li>
+          <li>建立HR月报和人才仪表盘</li>
+          <li>用数据支持组织决策</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>8. 文化推动能力</h3>
+        <p class="muted">决定公司价值观能否落地。</p>
+        <ul>
+          <li>推动结果导向、复盘文化和协作文化</li>
+          <li>设计入职融入、团队活动和内部沟通机制</li>
+          <li>识别破坏文化和团队氛围的人</li>
+          <li>让文化体现在招聘、绩效和晋升中</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、关键工作模块 -->
+  <section>
+    <div class="section-title">
+      <h2>五、HRBP关键工作模块</h2>
+      <span class="tag">日常职责</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>工作模块</th>
+          <th>核心任务</th>
+          <th>关键产出</th>
+          <th>衡量指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>业务对接</td>
+          <td>定期与总经理、主编、运营、商务、后期负责人沟通业务目标和人员问题</td>
+          <td>业务访谈记录、组织问题清单、人员需求表</td>
+          <td>问题识别准确率、业务满意度</td>
+        </tr>
+        <tr>
+          <td>招聘配置</td>
+          <td>完成主编、编导、摄影剪辑、运营、商务等岗位招聘</td>
+          <td>岗位画像、招聘计划、面试题库、候选人池</td>
+          <td>到岗率、招聘周期、试用期通过率</td>
+        </tr>
+        <tr>
+          <td>绩效管理</td>
+          <td>协助各岗位建立KPI和月度考核机制</td>
+          <td>KPI表、绩效面谈记录、改进计划</td>
+          <td>绩效完成率、低绩效改善率、淘汰闭环率</td>
+        </tr>
+        <tr>
+          <td>人才发展</td>
+          <td>识别核心人才、高潜人才、低绩效人员，推动培养和调整</td>
+          <td>人才盘点表、培养计划、晋升建议</td>
+          <td>核心人才留存率、内部晋升率</td>
+        </tr>
+        <tr>
+          <td>员工关系</td>
+          <td>处理员工冲突、离职沟通、试用期管理、合同与合规问题</td>
+          <td>沟通记录、风险预案、离职分析</td>
+          <td>劳动争议数、离职风险可控率</td>
+        </tr>
+        <tr>
+          <td>组织优化</td>
+          <td>优化岗位职责、汇报关系、协作流程和会议机制</td>
+          <td>组织架构图、岗位说明书、流程SOP</td>
+          <td>协作效率、人效、返工率、管理满意度</td>
+        </tr>
+        <tr>
+          <td>文化建设</td>
+          <td>推动结果导向、复盘、协作、成长等文化落地</td>
+          <td>文化活动、价值观案例、内部沟通机制</td>
+          <td>员工满意度、文化认同度</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 六、能力热力图 -->
+  <section>
+    <div class="section-title">
+      <h2>六、能力等级热力图</h2>
+      <span class="tag">1弱 - 5强</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>能力项</th>
+          <th class="center">要求等级</th>
+          <th>优秀表现</th>
+          <th>能力不足表现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>业务理解能力</td>
+          <td class="center s5">5</td>
+          <td>能听懂业务负责人真实需求，并将业务问题转化为组织和人才方案。</td>
+          <td>只会按流程做HR，不理解内容、运营、商务团队的实际问题。</td>
+        </tr>
+        <tr>
+          <td>招聘交付能力</td>
+          <td class="center s5">5</td>
+          <td>能快速补齐关键岗位，建立稳定候选人池，保障招聘质量。</td>
+          <td>只会发JD等简历，招聘周期长，候选人质量不稳定。</td>
+        </tr>
+        <tr>
+          <td>人才识别能力</td>
+          <td class="center s5">5</td>
+          <td>能通过作品、经历、实操和行为面试识别真实能力。</td>
+          <td>容易被候选人口才迷惑，入职后发现能力不匹配。</td>
+        </tr>
+        <tr>
+          <td>绩效推动能力</td>
+          <td class="center s4">4</td>
+          <td>能协助业务制定清晰指标，推动绩效面谈、改进和奖惩闭环。</td>
+          <td>绩效流于形式，只打分不改进，奖惩不清晰。</td>
+        </tr>
+        <tr>
+          <td>组织诊断能力</td>
+          <td class="center s4">4</td>
+          <td>能识别组织结构、职责边界、协作流程中的低效问题。</td>
+          <td>只看个人表现，不会分析背后的组织机制问题。</td>
+        </tr>
+        <tr>
+          <td>员工关系处理</td>
+          <td class="center s5">5</td>
+          <td>能妥善处理冲突、离职、淘汰和用工风险，既有温度也有边界。</td>
+          <td>沟通方式粗糙，容易激化矛盾或留下劳动风险。</td>
+        </tr>
+        <tr>
+          <td>HR数据分析</td>
+          <td class="center s4">4</td>
+          <td>能通过数据发现招聘、人效、离职、绩效问题。</td>
+          <td>只凭感觉判断，没有HR数据看板和分析习惯。</td>
+        </tr>
+        <tr>
+          <td>文化推动能力</td>
+          <td class="center s4">4</td>
+          <td>能把价值观融入招聘、绩效、晋升和日常管理。</td>
+          <td>文化只停留在口号和团建，不能影响员工行为。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 七、核心KPI -->
+  <section>
+    <div class="section-title">
+      <h2>七、HRBP核心KPI</h2>
+      <span class="tag">组织结果</span>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card kpi">
+        <strong>关键岗位到岗率</strong>
+        <span class="muted">衡量招聘交付能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>招聘周期</strong>
+        <span class="muted">衡量从需求到入职的效率。</span>
+      </div>
+      <div class="card kpi">
+        <strong>试用期通过率</strong>
+        <span class="muted">衡量招聘质量和岗位匹配度。</span>
+      </div>
+      <div class="card kpi">
+        <strong>核心人才留存率</strong>
+        <span class="muted">衡量关键员工稳定性。</span>
+      </div>
+      <div class="card kpi">
+        <strong>人效提升</strong>
+        <span class="muted">人均产值、人均利润、人均内容产出。</span>
+      </div>
+      <div class="card kpi">
+        <strong>绩效落地率</strong>
+        <span class="muted">衡量绩效机制是否真正执行。</span>
+      </div>
+      <div class="card kpi">
+        <strong>低绩效处理闭环率</strong>
+        <span class="muted">衡量改进、调岗、淘汰是否闭环。</span>
+      </div>
+      <div class="card kpi">
+        <strong>员工满意度</strong>
+        <span class="muted">衡量组织氛围和管理体验。</span>
+      </div>
+      <div class="card kpi">
+        <strong>离职率</strong>
+        <span class="muted">尤其关注核心岗位异常流失。</span>
+      </div>
+      <div class="card kpi">
+        <strong>劳动风险事件数</strong>
+        <span class="muted">衡量员工关系和合规能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>组织问题解决率</strong>
+        <span class="muted">衡量BP对业务问题的推动能力。</span>
+      </div>
+      <div class="card kpi">
+        <strong>业务满意度</strong>
+        <span class="muted">衡量业务负责人对HRBP支持的认可。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、工作机制 -->
+  <section>
+    <div class="section-title">
+      <h2>八、HRBP月度工作机制</h2>
+      <span class="tag">固定动作</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>HRBP动作</th>
+          <th>关键会议/机制</th>
+          <th>交付物</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>每周</td>
+          <td>跟进招聘进度、面试反馈、在职人员状态和重点问题。</td>
+          <td>招聘周会、业务负责人沟通</td>
+          <td>招聘进度表、问题跟进表</td>
+        </tr>
+        <tr>
+          <td>每两周</td>
+          <td>与主编、运营、商务、后期负责人沟通团队问题。</td>
+          <td>业务BP沟通会</td>
+          <td>组织问题清单、人员风险清单</td>
+        </tr>
+        <tr>
+          <td>每月初</td>
+          <td>根据业务目标确认岗位需求、绩效目标和人员配置计划。</td>
+          <td>月度人力规划会</td>
+          <td>招聘计划、编制计划、绩效目标表</td>
+        </tr>
+        <tr>
+          <td>每月中</td>
+          <td>跟踪试用期员工、低绩效员工、核心人才状态。</td>
+          <td>人才盘点沟通</td>
+          <td>试用期跟进表、人才风险表</td>
+        </tr>
+        <tr>
+          <td>每月底</td>
+          <td>复盘招聘、人效、离职、绩效、员工关系问题。</td>
+          <td>HR月度复盘会</td>
+          <td>HR月报、组织优化建议</td>
+        </tr>
+        <tr>
+          <td>每季度</td>
+          <td>组织人才盘点、绩效复盘、晋升调薪建议和组织诊断。</td>
+          <td>季度人才盘点会</td>
+          <td>人才九宫格、晋升建议、组织诊断报告</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>机制重点：</strong>
+      HRBP不能只在“招人、离职、出问题”时出现，而要固定深入业务现场，持续跟踪团队状态、组织效率和人才质量。
+    </div>
+  </section>
+
+  <!-- 九、成熟度模型 -->
+  <section>
+    <div class="section-title">
+      <h2>九、HRBP成熟度模型</h2>
+      <span class="tag">成长阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="level">
+        <div class="level-name">事务型HR</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:35%;">能完成人事流程</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">招聘型HRBP</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:60%;">能交付关键岗位</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">业务型HRBP</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:82%;">能解决业务团队问题</div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-name">组织型HRBP</div>
+        <div class="level-line">
+          <div class="level-fill" style="width:100%;">能提升组织能力和人效</div>
+        </div>
+      </div>
+    </div>
+
+    <table style="margin-top:18px;">
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>能力特征</th>
+          <th>产出标准</th>
+          <th>适合阶段</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>事务型HR</td>
+          <td>能完成入离调转、考勤、合同、基础招聘等人事工作。</td>
+          <td>流程准确、基础事务无明显错误。</td>
+          <td>公司初创或人事基础建设阶段</td>
+        </tr>
+        <tr>
+          <td>招聘型HRBP</td>
+          <td>能理解岗位需求，快速完成关键岗位招聘。</td>
+          <td>关键岗位及时到岗，试用期通过率较高。</td>
+          <td>快速扩张和补团队阶段</td>
+        </tr>
+        <tr>
+          <td>业务型HRBP</td>
+          <td>能深入业务，推动绩效、人才盘点、团队协作和员工关系处理。</td>
+          <td>业务负责人认可，组织问题逐步闭环。</td>
+          <td>团队规模扩大、管理复杂度上升阶段</td>
+        </tr>
+        <tr>
+          <td>组织型HRBP</td>
+          <td>能从组织架构、机制、文化、人效角度系统提升公司能力。</td>
+          <td>人效提升，核心人才稳定，管理机制成熟。</td>
+          <td>公司化运营和管理升级阶段</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 十、优秀与风险特征 -->
+  <section>
+    <div class="section-title">
+      <h2>十、优秀特征与风险信号</h2>
+      <span class="tag">识别标准</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="ok">
+        <h3>优秀HRBP的典型特征</h3>
+        <ul>
+          <li>能听懂业务负责人说的“缺人、效率低、质量差、配合难”背后的真实组织问题。</li>
+          <li>能把岗位需求转化为清晰画像，而不是简单复制JD。</li>
+          <li>能设计实操测试，判断内容、运营、商务、后期岗位的真实能力。</li>
+          <li>能主动跟进试用期员工，及时发现不匹配风险。</li>
+          <li>能推动绩效机制落地，而不是只做表格。</li>
+          <li>处理员工关系有边界、有记录、有证据、有温度。</li>
+          <li>能用数据说话，定期输出招聘、人效、离职、绩效分析。</li>
+          <li>既能站在员工体验角度沟通，也能坚守公司管理底线。</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>能力不足的风险信号</h3>
+        <ul>
+          <li>只会发招聘信息，不会主动寻访和建立人才池。</li>
+          <li>不理解业务，面试时无法判断候选人真实水平。</li>
+          <li>业务负责人说什么就做什么，没有诊断和建议能力。</li>
+          <li>员工关系处理随意，没有沟通记录和证据意识。</li>
+          <li>绩效考核只停留在收表，不推动改进、奖惩和淘汰。</li>
+          <li>核心员工流失前没有预警，离职后才知道问题。</li>
+          <li>对劳动法规不熟，试用期、调岗、解除容易留下风险。</li>
+          <li>无法推动业务负责人改变管理习惯。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 十一、招聘评估建议 -->
+  <section>
+    <div class="section-title">
+      <h2>十一、招聘评估建议</h2>
+      <span class="tag">面试使用</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>考察能力</th>
+          <th>面试问题</th>
+          <th>重点观察</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>业务理解</td>
+          <td>如果你负责一家B站长视频公司的HRBP，你会先了解哪些业务信息？</td>
+          <td>是否关注业务模式、岗位结构、内容生产流程、增长目标和组织问题。</td>
+        </tr>
+        <tr>
+          <td>招聘交付</td>
+          <td>如果一个月内要招聘主编、摄影剪辑、商务各1人，你会怎么推进？</td>
+          <td>是否有岗位画像、渠道策略、面试流程、实操测试和offer推进方法。</td>
+        </tr>
+        <tr>
+          <td>人才识别</td>
+          <td>你如何判断一个编导候选人是真的有爆款能力，而不是只会讲概念？</td>
+          <td>是否能通过作品拆解、数据结果、实操策划、行为面试验证能力。</td>
+        </tr>
+        <tr>
+          <td>员工关系</td>
+          <td>试用期员工表现不达标，业务负责人想立即辞退，你会怎么处理？</td>
+          <td>是否懂试用期录用条件、绩效证据、沟通记录和合法解除边界。</td>
+        </tr>
+        <tr>
+          <td>绩效推动</td>
+          <td>业务团队认为绩效考核没用、不愿配合，你会如何推动？</td>
+          <td>是否能从业务结果、岗位职责、指标设计、面谈机制和奖惩闭环切入。</td>
+        </tr>
+        <tr>
+          <td>组织诊断</td>
+          <td>团队经常加班但产出不高，你会从哪些维度诊断？</td>
+          <td>是否能分析目标、排期、职责、流程、能力、管理、沟通和激励问题。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>实操测试建议：</strong>
+      给候选人一份公司组织架构和3个岗位需求，要求其在24小时内提交《HRBP业务支持方案》，包括岗位画像、招聘计划、面试题、试用期考核指标、组织问题判断和月度HR工作计划。
+    </div>
+  </section>
+
+  <!-- 十二、试用期考核 -->
+  <section>
+    <div class="section-title">
+      <h2>十二、试用期考核建议</h2>
+      <span class="tag">3个月验证</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>周期</th>
+          <th>考核重点</th>
+          <th>核心指标</th>
+          <th>判断标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第1个月</td>
+          <td>熟悉业务、梳理岗位、建立招聘和人事基础台账。</td>
+          <td>业务访谈、岗位画像、招聘计划、人员台账完整度。</td>
+          <td>能说清公司业务流程、岗位职责和当前组织问题。</td>
+        </tr>
+        <tr>
+          <td>第2个月</td>
+          <td>完成关键岗位招聘推进，参与试用期和绩效跟进。</td>
+          <td>面试数量、候选人质量、到岗进度、试用期跟进记录。</td>
+          <td>能独立推动招聘闭环，并发现人员匹配问题。</td>
+        </tr>
+        <tr>
+          <td>第3个月</td>
+          <td>建立HR月报、绩效跟进、员工关系和组织优化建议。</td>
+          <td>HR月报、绩效执行率、员工沟通记录、组织问题闭环。</td>
+          <td>能获得业务负责人认可，并推动至少1-2项组织改善。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="danger" style="margin-top:18px;">
+      <h3>试用期淘汰信号</h3>
+      <ul>
+        <li>无法理解业务和岗位，只停留在人事流程层面。</li>
+        <li>招聘长期无有效候选人，且没有渠道优化动作。</li>
+        <li>面试判断弱，推荐候选人与岗位明显不匹配。</li>
+        <li>员工关系处理无记录、无证据、无风险意识。</li>
+        <li>沟通被动，业务负责人不愿意找其讨论问题。</li>
+        <li>绩效和组织问题只会记录，不会推动解决。</li>
+        <li>缺少数据意识，无法输出招聘、人效、离职等分析。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 十三、画像总结 -->
+  <section>
+    <div class="section-title">
+      <h2>十三、画像总结</h2>
+      <span class="tag">一句话标准</span>
+    </div>
+
+    <div class="card">
+      <h3>适合传媒公司的HRBP，应具备以下综合画像：</h3>
+      <p>
+        他/她不一定是最懂内容创作的人，但必须是最懂
+        <strong>业务用人需求、人才识别、招聘交付、绩效推动、员工关系、组织效率和用工风险</strong>
+        的人。
+      </p>
+
+      <ul>
+        <li><strong>对业务：</strong>能理解内容团队、运营团队、商务团队和后期团队的目标与痛点。</li>
+        <li><strong>对招聘：</strong>能快速找到合适的人，并判断候选人是否真正匹配岗位。</li>
+        <li><strong>对组织：</strong>能发现职责不清、协作低效、绩效模糊、管理缺位等问题。</li>
+        <li><strong>对员工：</strong>能处理激励、冲突、离职、淘汰和劳动风险。</li>
+        <li><strong>对结果：</strong>关注关键岗位到岗率、试用期通过率、核心人才留存、人效和组织稳定。</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>最终画像：</strong>
+        懂业务、会招聘、能识人、推绩效、懂员工关系、能控风险、能提升组织效率的业务型HRBP。
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
