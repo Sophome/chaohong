@@ -171,7 +171,7 @@
         }
 
         .score-item {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .score-title {
@@ -236,8 +236,8 @@
         .grid-2 {
             grid-template-columns: repeat(2, 1fr);
         }
-        .grid-5 {
-            grid-template-columns: repeat(5, 1fr);
+        .grid-6 {
+            grid-template-columns: repeat(3, 1fr);
         }
 
         .card {
@@ -319,7 +319,7 @@
 
         .gold-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 16px;
         }
 
@@ -418,7 +418,12 @@
             background: #f2f8fa;
             border-left: 4px solid var(--accent);
             border-radius: 12px;
-            margin: 12px 0;
+            margin: 16px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.6;
         }
 
         .danger-rule {
@@ -428,6 +433,11 @@
             padding: 14px 16px;
             border-radius: 12px;
             margin: 12px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.6;
         }
 
         .success-rule {
@@ -437,6 +447,11 @@
             padding: 14px 16px;
             border-radius: 12px;
             margin: 12px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.6;
         }
 
         .warning-rule {
@@ -446,12 +461,18 @@
             padding: 14px 16px;
             border-radius: 12px;
             margin: 12px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.6;
         }
 
         .big-number {
-            font-size: 28px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+            white-space: nowrap;
         }
 
         .table-wrap {
@@ -540,33 +561,6 @@
             background: rgba(220, 38, 38, 0.1);
         }
 
-        .score-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 22px;
-            box-shadow: var(--shadow);
-        }
-
-        .score-card h3 {
-            margin-top: 0;
-            color: var(--primary-dark);
-            font-size: 18px;
-        }
-
-        .score-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .score {
-            display: inline-block;
-            font-size: 30px;
-            font-weight: 900;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
         .check-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -621,7 +615,7 @@
         }
 
         @media (max-width: 1060px) {
-            .grid-5,
+            .grid-6,
             .gold-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -672,7 +666,7 @@
                 padding: 54px 0;
             }
 
-            .grid-5,
+            .grid-6,
             .gold-grid {
                 grid-template-columns: 1fr;
             }
@@ -734,7 +728,7 @@
                     <h1>超红传媒<br><span>B站长视频评分系统</span></h1>
                     <p>
                         专为B站中长视频、深度内容、系列栏目设计的评审标准。以观众留存、内容深度、社区互动为核心，
-                        覆盖选题、文案、视听、剪辑、观众体验五大维度，每个模块独立按100分制评分。
+                        覆盖选题、文案、拍摄、剪辑、观众体验六大维度，每个模块独立按100分制评分。
                     </p>
                     <div class="hero-actions">
                         <a href="#sop" class="btn btn-primary">查看评分标准</a>
@@ -743,11 +737,10 @@
                 </div>
 
                 <div class="hero-card">
-                    <h3>五大模块｜单项 100 分制</h3>
-
+                    <h3>六大模块｜单项 100 分制</h3>
                     <div class="score-item">
                         <div class="score-title"><span>选题与内容设计</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width:92%;"></span></div>
+                        <div class="bar"><span style="width:94%;"></span></div>
                     </div>
                     <div class="score-item">
                         <div class="score-title"><span>封面标题与展示</span><strong>100 分</strong></div>
@@ -755,15 +748,19 @@
                     </div>
                     <div class="score-item">
                         <div class="score-title"><span>文案脚本与结构</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width:90%;"></span></div>
+                        <div class="bar"><span style="width:92%;"></span></div>
                     </div>
                     <div class="score-item">
-                        <div class="score-title"><span>视听制作质量</span><strong>100 分</strong></div>
+                        <div class="score-title"><span>拍摄质量</span><strong>100 分</strong></div>
                         <div class="bar"><span style="width:85%;"></span></div>
                     </div>
                     <div class="score-item">
-                        <div class="score-title"><span>观众体验与互动</span><strong>100 分</strong></div>
+                        <div class="score-title"><span>剪辑质量</span><strong>100 分</strong></div>
                         <div class="bar"><span style="width:80%;"></span></div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-title"><span>观众体验与互动</span><strong>100 分</strong></div>
+                        <div class="bar"><span style="width:78%;"></span></div>
                     </div>
                 </div>
             </div>
@@ -781,7 +778,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-5">
+                <div class="grid grid-6">
                     <div class="card">
                         <div class="card-icon">🎯</div>
                         <span class="score-big">100</span>
@@ -803,8 +800,14 @@
                     <div class="card">
                         <div class="card-icon">🎥</div>
                         <span class="score-big">100</span>
-                        <h3>视听制作质量</h3>
-                        <p>画面沉稳、声音舒适、BGM克制、信息可视化。</p>
+                        <h3>拍摄质量</h3>
+                        <p>画面、光线、声音、镜头语言和现场调度是否专业可用。</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎬</div>
+                        <span class="score-big">100</span>
+                        <h3>剪辑质量</h3>
+                        <p>节奏、逻辑、情绪、包装和完成度是否支撑观看体验。</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💬</div>
@@ -819,32 +822,17 @@
         <section>
             <div class="container">
                 <div class="gold-box">
-                    <h2>B站长视频五大评审原则</h2>
+                    <h2>B站长视频六大评审原则</h2>
                     <p>
                         评分不是主观"好不好看"，而是从观众体验和数据反馈出发，判断每个环节是否有效服务长视频的观看逻辑。
                     </p>
-
                     <div class="gold-grid">
-                        <div class="gold-item">
-                            <strong>选题看深度</strong>
-                            <span>有没有足够信息量和持久价值。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>封面看点击</strong>
-                            <span>能不能在推荐流中一眼吸引用户。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>脚本看留存</strong>
-                            <span>结构是否清晰，每段都有看下去的理由。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>视听看舒适</strong>
-                            <span>长时间观看是否舒适耐听不疲劳。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>体验看互动</strong>
-                            <span>观众是否愿意关注、追更、参与讨论。</span>
-                        </div>
+                        <div class="gold-item"><strong>选题看深度</strong><span>有没有足够信息量和持久价值。</span></div>
+                        <div class="gold-item"><strong>封面看点击</strong><span>能不能在推荐流中一眼吸引用户。</span></div>
+                        <div class="gold-item"><strong>脚本看留存</strong><span>结构是否清晰，每段都有看下去的理由。</span></div>
+                        <div class="gold-item"><strong>拍摄看质感</strong><span>画面、声音、光线和镜头是否专业可用。</span></div>
+                        <div class="gold-item"><strong>剪辑看节奏</strong><span>是否顺畅、有情绪、能看完、记得住。</span></div>
+                        <div class="gold-item"><strong>体验看互动</strong><span>观众是否愿意关注、追更、参与讨论。</span></div>
                     </div>
                 </div>
             </div>
@@ -854,7 +842,7 @@
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">Standard Scoring Modules</span>
-                    <h2>五大模块评分 SOP</h2>
+                    <h2>六大模块评分 SOP</h2>
                     <p>
                         每个模块独立 100 分。评审时建议先打单项分，再定位问题，最后给出修改建议。结合B站后台留存曲线进行辅助判断。
                     </p>
@@ -867,7 +855,6 @@
                         <div class="step-content">
                             <h3>选题与内容设计评分｜100 分</h3>
                             <p>长视频选题必须能支撑起对应时长。重点判断信息量是否充足、观点是否有深度、情绪是否递进、是否有系列化潜力。</p>
-
                             <div class="table-wrap">
                                 <table>
                                     <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
@@ -881,11 +868,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="tag-list">
                                 <span class="tag">90-100：内容深厚</span><span class="tag">80-89：值得执行</span><span class="tag">70-79：补充信息</span><span class="tag">60以下：重新策划</span>
                             </div>
-
                             <div class="rule">
                                 <span class="big-number">判断口诀：</span>
                                 长视频选题必须有"干货感"。观众愿意花10分钟以上，一定是因为他能带走什么。
@@ -898,7 +883,6 @@
                         <div class="step-content">
                             <h3>封面标题与展示评分｜100 分</h3>
                             <p>B站封面标题既要吸引点击，又要符合社区氛围和真实内容，不能过度标题党导致用户反感或举报。</p>
-
                             <div class="table-wrap">
                                 <table>
                                     <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
@@ -912,12 +896,11 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="tag-list">
                                 <span class="tag">一眼看懂</span><span class="tag">一秒吸引</span><span class="tag">真实可信</span><span class="tag">B站质感</span>
                             </div>
-
-                            <div class="rule warning-rule">
+                            <div class="warning-rule">
+                                <span class="big-number" style="color:#92400e;">判断口诀：</span>
                                 在B站，过度精美的营销感封面反而会降低点击。真实、有质感、有性格的封面往往更有效。
                             </div>
                         </div>
@@ -928,7 +911,6 @@
                         <div class="step-content">
                             <h3>文案脚本与结构评分｜100 分</h3>
                             <p>长视频脚本决定观众能看多久。重点判断开头能否留住人、中间是否有清晰的结构推进、结尾是否有满足感或期待感。</p>
-
                             <div class="table-wrap">
                                 <table>
                                     <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
@@ -942,11 +924,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="tag-list">
                                 <span class="tag">开头有钩子</span><span class="tag">章节清晰</span><span class="tag">逻辑递进</span><span class="tag">结尾有引导</span>
                             </div>
-
                             <div class="rule">
                                 <span class="big-number">判断口诀：</span>
                                 长视频脚本不是把5分钟内容拉长到20分钟，而是让20分钟每一段都值得看。
@@ -955,42 +935,68 @@
                     </div>
 
                     <div class="step">
-                        <div class="step-number"><strong>04</strong><span>视听</span></div>
+                        <div class="step-number"><strong>04</strong><span>拍摄</span></div>
                         <div class="step-content">
-                            <h3>视听制作质量评分｜100 分</h3>
-                            <p>B站长视频对画面和声音的稳定性要求更高。重点判断长时间观看是否舒适、信息是否可视化、声音是否耐听。</p>
-
+                            <h3>拍摄质量评分｜100 分</h3>
+                            <p>拍摄质量决定素材基础。重点判断画面是否专业、声音是否可用、现场调度是否服务内容表达。</p>
                             <div class="table-wrap">
                                 <table>
                                     <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
                                     <tbody>
-                                        <tr><td>画面稳定性与构图</td><td>15分</td><td><span class="level must">必</span>稳定构图讲究，长时看不累。</td><td>晃动，构图失衡。</td></tr>
-                                        <tr><td>光线与色彩质感</td><td>15分</td><td><span class="level must">必</span>曝光准确色彩自然。</td><td>过曝死黑，色彩脏乱。</td></tr>
-                                        <tr><td>声音质量与舒适度</td><td>20分</td><td><span class="level must">必</span>人声清晰无底噪，耐听。</td><td>爆音底噪忽大忽小。</td></tr>
-                                        <tr><td>信息可视化</td><td>15分</td><td><span class="level nice">加</span>图表字幕画中画清晰。</td><td>纯口播无辅助。</td></tr>
-                                        <tr><td>BGM与音效使用</td><td>15分</td><td><span class="level nice">加</span>选曲贴合，音量恰当。</td><td>音乐不搭，音量过大。</td></tr>
-                                        <tr><td>素材丰富度与版权</td><td>10分</td><td><span class="level nice">加</span>素材清晰标注来源。</td><td>模糊，无版权。</td></tr>
-                                        <tr><td>后期包装与字幕</td><td>10分</td><td><span class="level must">必</span>字幕准确花字适度调色统一。</td><td>错别字，包装廉价。</td></tr>
+                                        <tr><td>画面构图</td><td>15分</td><td><span class="level must">必</span>主体突出、构图稳定，景别服务表达。</td><td>主体不清，构图随意。</td></tr>
+                                        <tr><td>光线控制</td><td>15分</td><td><span class="level must">必</span>曝光准确、光比合理，质感良好。</td><td>过曝欠曝，光线脏乱。</td></tr>
+                                        <tr><td>镜头语言</td><td>20分</td><td><span class="level nice">加</span>景别、运动、特写有设计，服务叙事。</td><td>镜头重复，缺乏逻辑。</td></tr>
+                                        <tr><td>现场调度</td><td>15分</td><td><span class="level must">必</span>人物走位、动作、节奏调度自然有效。</td><td>人物僵硬，场面失控。</td></tr>
+                                        <tr><td>声音质量</td><td>15分</td><td><span class="level must">必</span>人声清晰，噪音可控，达到发布标准。</td><td>爆音杂音，人声不清。</td></tr>
+                                        <tr><td>美术场景</td><td>10分</td><td><span class="level nice">加</span>服化道、背景、色彩与内容调性统一。</td><td>场景廉价，风格混乱。</td></tr>
+                                        <tr><td>素材完整</td><td>10分</td><td><span class="level must">必</span>拍足主镜头、特写、空镜、反应镜头。</td><td>素材缺失，无法补救。</td></tr>
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="tag-list">
-                                <span class="tag">画面稳定</span><span class="tag">声音耐听</span><span class="tag">信息可视化</span><span class="tag">包装统一</span>
+                                <span class="tag">画面稳定</span><span class="tag">声音清晰</span><span class="tag">调度自然</span><span class="tag">素材足够</span>
                             </div>
-
-                            <div class="rule warning-rule">
-                                长视频的视听重点是"耐看"和"耐听"，不是每个镜头都要炫技，而是每一秒都让人舒服。
+                            <div class="rule">
+                                <span class="big-number">判断口诀：</span>
+                                拍摄重点是"素材基础"，画面干净、声音清晰、素材完整，后期才有发挥空间。
                             </div>
                         </div>
                     </div>
 
                     <div class="step">
-                        <div class="step-number"><strong>05</strong><span>互动</span></div>
+                        <div class="step-number"><strong>05</strong><span>剪辑</span></div>
+                        <div class="step-content">
+                            <h3>剪辑质量评分｜100 分</h3>
+                            <p>剪辑决定最终观看体验。判断节奏是否顺畅、逻辑是否清楚、情绪是否到位、包装是否统一。</p>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>叙事节奏</td><td>20分</td><td><span class="level must">必</span>信息推进顺畅，节奏符合平台和内容类型。</td><td>拖沓过快，留存差。</td></tr>
+                                        <tr><td>逻辑连贯</td><td>15分</td><td><span class="level must">必</span>镜头衔接合理，故事线和情绪线清晰。</td><td>跳跃断裂，看不懂。</td></tr>
+                                        <tr><td>情绪控制</td><td>15分</td><td><span class="level nice">加</span>通过停顿、音乐、转场推动情绪递进。</td><td>情绪平，爆点弱。</td></tr>
+                                        <tr><td>镜头选择</td><td>15分</td><td><span class="level must">必</span>选用最佳表演和最高效的信息镜头。</td><td>废镜头多，信息缺失。</td></tr>
+                                        <tr><td>声音音乐</td><td>10分</td><td><span class="level must">必</span>人声、BGM、音效平衡，贴合情绪。</td><td>音乐压人声，音量不稳。</td></tr>
+                                        <tr><td>包装字幕</td><td>15分</td><td><span class="level nice">加</span>字幕、花字、调色统一，服务理解。</td><td>错别字，包装廉价。</td></tr>
+                                        <tr><td>完成细节</td><td>10分</td><td><span class="level must">必</span>无卡顿、跳帧、穿帮、音画不同步。</td><td>技术瑕疵，影响品质。</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tag-list">
+                                <span class="tag">节奏清楚</span><span class="tag">逻辑顺畅</span><span class="tag">情绪到位</span><span class="tag">完成度高</span>
+                            </div>
+                            <div class="rule">
+                                <span class="big-number">判断口诀：</span>
+                                长视频的剪辑重点是"耐看"和"耐听"，不是每个镜头都要炫技，而是每一秒都让人舒服。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number"><strong>06</strong><span>互动</span></div>
                         <div class="step-content">
                             <h3>观众体验与互动评分｜100 分</h3>
                             <p>这是B站长视频独有的评分维度。重点判断观众的观看完成度、弹幕互动质量、社区氛围和关注转化意愿。</p>
-
                             <div class="table-wrap">
                                 <table>
                                     <thead><tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr></thead>
@@ -1004,11 +1010,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="tag-list">
                                 <span class="tag">留存健康</span><span class="tag">弹幕活跃</span><span class="tag">互动自然</span><span class="tag">追更意愿强</span>
                             </div>
-
                             <div class="rule">
                                 <span class="big-number">判断口诀：</span>
                                 B站长视频的终极目标不是播放量，而是"观众愿意为你花时间，并且期待下一次"。
@@ -1025,9 +1029,8 @@
                 <div class="section-head">
                     <span class="section-label">Rating Standard</span>
                     <h2>单项 100 分评级标准（B站长视频版）</h2>
-                    <p>以下评级适用于五大模块的任意单项评分。建议每个模块单独评级，再结合数据形成综合评审意见。</p>
+                    <p>以下评级适用于六大模块的任意单项评分。建议每个模块单独评级，再结合数据形成综合评审意见。</p>
                 </div>
-
                 <div class="table-wrap">
                     <table>
                         <thead><tr><th>分数段</th><th>等级</th><th>评价标准</th><th>处理建议</th></tr></thead>
@@ -1050,7 +1053,6 @@
                     <h2>超红传媒 B站长视频评分表</h2>
                     <p>每个模块均为 100 分制。可用于内部评审、项目复盘、编导考核和后期验收，结合后台数据交叉验证。</p>
                 </div>
-
                 <div class="table-wrap">
                     <table>
                         <thead><tr><th>评分模块</th><th>满分</th><th>核心判断</th><th>得分 / 评语</th></tr></thead>
@@ -1058,7 +1060,8 @@
                             <tr><td>选题与内容设计</td><td>100分</td><td>信息量、持久价值、用户需求、系列潜力。</td><td>得分：____ ｜ 评语：________</td></tr>
                             <tr><td>封面标题与展示</td><td>100分</td><td>点击率、准确度、B站社区感、品牌统一。</td><td>得分：____ ｜ 评语：________</td></tr>
                             <tr><td>文案脚本与结构</td><td>100分</td><td>开头留存、分章逻辑、结尾引导、语言表现。</td><td>得分：____ ｜ 评语：________</td></tr>
-                            <tr><td>视听制作质量</td><td>100分</td><td>画面稳定、声音耐听、可视化、包装统一。</td><td>得分：____ ｜ 评语：________</td></tr>
+                            <tr><td>拍摄质量</td><td>100分</td><td>画面、光线、声音、镜头和素材是否达标。</td><td>得分：____ ｜ 评语：________</td></tr>
+                            <tr><td>剪辑质量</td><td>100分</td><td>节奏、逻辑、情绪、包装和完成度是否达标。</td><td>得分：____ ｜ 评语：________</td></tr>
                             <tr><td>观众体验与互动</td><td>100分</td><td>留存曲线、弹幕评论、追更意愿、社区氛围。</td><td>得分：____ ｜ 评语：________</td></tr>
                         </tbody>
                     </table>
@@ -1071,7 +1074,6 @@
                 <div class="checklist-box">
                     <h2>发布前 12 项专业评审清单</h2>
                     <p>建议作品发布前逐项核对。若核心项缺失，应优先返修对应模块，而不是只依赖后期补救。</p>
-
                     <div class="check-grid">
                         <div class="check-item"><span>✓</span><div>选题有干货吗？够不够支撑目标时长？</div></div>
                         <div class="check-item"><span>✓</span><div>标题有B站感吗？符合社区氛围，不营销号。</div></div>
@@ -1086,9 +1088,8 @@
                         <div class="check-item"><span>✓</span><div>互动引导自然吗？不生硬，不打断观看。</div></div>
                         <div class="check-item"><span>✓</span><div>有追更动机吗？观众想关注你，想看下一期。</div></div>
                     </div>
-
                     <div class="danger-rule" style="margin-top: 28px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
-                        若'信息密度'或'开头留存'得分低于70，建议立即优化结构，这是长视频的命脉。
+                        <span class="big-number" style="color:#fecaca;">注意：</span>若'信息密度'或'开头留存'得分低于70，建议立即优化结构，这是长视频的命脉。
                     </div>
                 </div>
             </div>
@@ -1101,7 +1102,6 @@
                     <h2>B站长视频常见误区</h2>
                     <p>很多长视频的问题不是制作不精良，而是前期判断、脚本结构、信息密度和互动设计没有形成统一目标。</p>
                 </div>
-
                 <div class="grid grid-3">
                     <div class="card">
                         <div class="card-icon">⚠️</div>
@@ -1141,38 +1141,29 @@
                     <span class="section-label">Final Instruction</span>
                     <h2>最终评审指令</h2>
                 </div>
-
-                <div class="grid" style="grid-template-columns: 1fr; gap: 20px;">
-                    <div class="card">
-                        <div class="rule">
-                            <span class="big-number">通过标准：</span>
-                            五大模块均达到 80 分以上，内容可正常发布并投放推荐。
-                        </div>
+                <div class="card full" style="padding: 32px;">
+                    <div class="rule" style="margin: 0 0 12px 0;">
+                        <span class="big-number">通过标准：</span>
+                        六大模块均达到 80 分以上，内容可正常发布并投放推荐。
                     </div>
-                    <div class="card">
-                        <div class="rule">
-                            <span class="big-number">优化标准：</span>
-                            任一模块在 70-79 分，建议针对性优化后发布。
-                        </div>
+                    <div class="rule" style="margin: 0 0 12px 0;">
+                        <span class="big-number">优化标准：</span>
+                        任一模块在 70-79 分，建议针对性优化后发布。
                     </div>
-                    <div class="card">
-                        <div class="rule danger-rule">
-                            <span class="big-number" style="color:#dc2626;">返修标准：</span>
-                            选题、脚本或观众体验模块低于 70 分，必须返修。
-                        </div>
+                    <div class="danger-rule" style="margin: 0 0 12px 0; color: #991b1b; background: #fef2f2; border-left: 4px solid #dc2626;">
+                        <span class="big-number" style="color:#dc2626;">返修标准：</span>
+                        选题、脚本或观众体验模块低于 70 分，必须返修。
                     </div>
-                    <div class="card">
-                        <div class="rule danger-rule">
-                            <span class="big-number" style="color:#dc2626;">重做标准：</span>
-                            选题与内容设计低于 60 分，需重新策划选题和脚本。
-                        </div>
+                    <div class="danger-rule" style="margin: 0; color: #991b1b; background: #fef2f2; border-left: 4px solid #dc2626;">
+                        <span class="big-number" style="color:#dc2626;">重做标准：</span>
+                        选题与内容设计低于 60 分，需重新策划选题和脚本。
                     </div>
                 </div>
             </div>
         </section>
 
         <footer>
-            © 超红传媒 CHAO HONG MEDIA｜B站长视频专业评分系统｜选题·封面标题·文案脚本·视听制作·观众体验 五大模块 100 分制
+            © 超红传媒 CHAO HONG MEDIA｜B站长视频专业评分系统｜选题·封面标题·文案脚本·拍摄·剪辑·观众体验 六大模块 100 分制
         </footer>
 
     </div>
