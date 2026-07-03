@@ -1,1104 +1,965 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>超红传媒内容作品评分系统｜专业编导评审标准</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>超红传媒 B站长视频评分系统</title>
 
-    <style>
-        :root {
-            --primary: #0f172a;
-            --primary-dark: #020617;
-            --accent: #3b82f6;
-            --accent-warm: #f59e0b;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --muted: #64748b;
-            --line: #e2e8f0;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --radius: 20px;
-            --shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
-        }
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+            "Microsoft YaHei", Arial, sans-serif;
+        background: #0b0f19;
+        color: #e5e7eb;
+        line-height: 1.7;
+        padding: 32px;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
+    .header {
+        padding: 38px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #fb7299, #c94d6e 45%, #111827);
+        box-shadow: 0 24px 80px rgba(251, 114, 153, 0.25);
+        margin-bottom: 28px;
+    }
+
+    .header h1 {
+        font-size: 40px;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+        color: #ffffff;
+    }
+
+    .header p {
+        font-size: 18px;
+        color: #fee2e2;
+        max-width: 980px;
+    }
+
+    .tag-row {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tag {
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+        margin-bottom: 22px;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-bottom: 22px;
+    }
+
+    .card {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 22px;
+        padding: 26px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        margin-bottom: 22px;
+    }
+
+    .card.full {
+        grid-column: 1 / -1;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 18px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    h2::before {
+        content: "";
+        width: 8px;
+        height: 26px;
+        border-radius: 6px;
+        background: #fb7299;
+        flex-shrink: 0;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 18px 0 10px;
+        color: #fca5a5;
+    }
+
+    p {
+        color: #d1d5db;
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .rule {
+        padding: 14px 16px;
+        background: #020617;
+        border-left: 4px solid #fb7299;
+        border-radius: 12px;
+        margin: 12px 0;
+    }
+
+    .danger {
+        background: rgba(127, 29, 29, 0.45);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        color: #fecaca;
+    }
+
+    .success {
+        background: rgba(20, 83, 45, 0.4);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        color: #bbf7d0;
+    }
+
+    .warning {
+        background: rgba(113, 63, 18, 0.45);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fde68a;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 16px;
+        margin-top: 14px;
+        font-size: 15px;
+    }
+
+    th, td {
+        padding: 14px;
+        border-bottom: 1px solid #1f2937;
+        vertical-align: top;
+    }
+
+    th {
+        background: #020617;
+        color: #fca5a5;
+        text-align: left;
+        font-weight: 800;
+    }
+
+    td {
+        background: #111827;
+        color: #e5e7eb;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    .checklist {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 12px;
+    }
+
+    .check {
+        padding: 16px;
+        border-radius: 16px;
+        background: #020617;
+        border: 1px solid #1f2937;
+    }
+
+    .check strong {
+        display: block;
+        color: #ffffff;
+        margin-bottom: 6px;
+    }
+
+    .big-number {
+        font-size: 28px;
+        font-weight: 800;
+        color: #fb7299;
+    }
+
+    .score {
+        display: inline-block;
+        font-size: 30px;
+        font-weight: 900;
+        color: #fb7299;
+        margin-bottom: 8px;
+    }
+
+    .score-card {
+        background: #020617;
+        border: 1px solid #1f2937;
+        border-radius: 18px;
+        padding: 22px;
+    }
+
+    .score-card h3 {
+        margin-top: 0;
+        color: #ffffff;
+    }
+
+    .score-card p {
+        color: #9ca3af;
+        font-size: 15px;
+    }
+
+    .level {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        margin-right: 6px;
+    }
+
+    .must {
+        background: rgba(34, 197, 94, 0.15);
+        color: #86efac;
+    }
+
+    .nice {
+        background: rgba(251, 191, 36, 0.16);
+        color: #fde68a;
+    }
+
+    .avoid {
+        background: rgba(248, 113, 113, 0.15);
+        color: #fecaca;
+    }
+
+    .footer {
+        color: #9ca3af;
+        text-align: center;
+        margin-top: 28px;
+        font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            padding: 18px;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        .grid,
+        .grid-3,
+        .checklist {
+            grid-template-columns: 1fr;
         }
 
-        .page {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-        }
-
-        section {
-            padding: 72px 0;
-        }
-
-        /*  Hero  */
-        .hero {
-            position: relative;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 88px 24px;
-            color: #fff;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%),
-                radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.3), transparent 40%),
-                radial-gradient(circle at 15% 85%, rgba(245, 158, 11, 0.15), transparent 40%);
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, var(--bg));
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-            width: min(1180px, 100%);
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            margin-bottom: 20px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(12px);
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 5.5vw, 64px);
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 20px;
-            font-weight: 850;
-            color: #ffffff;
-        }
-
-        .hero h1 span {
-            color: var(--accent-warm);
-        }
-
-        .hero p {
-            max-width: 720px;
-            font-size: 17px;
-            color: rgba(255, 255, 255, 0.75);
-            margin-bottom: 32px;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 13px 24px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 700;
-            transition: 0.25s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent-warm);
-            color: #0f172a;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(245, 158, 11, 0.3);
-        }
-
-        .btn-ghost {
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .hero-card {
-            padding: 28px;
-            border-radius: 28px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-card h3 {
-            font-size: 20px;
-            margin-bottom: 18px;
-            color: #fff;
-        }
-
-        .score-item {
-            margin-bottom: 16px;
-        }
-
-        .score-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .score-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 13px;
-        }
-
-        .bar {
-            height: 8px;
-            border-radius: 999px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .bar span {
-            display: block;
-            height: 100%;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--accent-warm), #fde68a);
-        }
-
-        /*  Section Head  */
-        .section-head {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-label {
-            display: inline-block;
-            margin-bottom: 8px;
-            color: var(--accent);
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-        }
-
-        .section-head h2 {
-            font-size: clamp(28px, 4vw, 40px);
-            line-height: 1.25;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .section-head p {
-            max-width: 780px;
-            margin: 0 auto;
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        /*  Grid Card  */
-        .grid {
-            display: grid;
-            gap: 20px;
-        }
-
-        .grid-5 {
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 26px;
-            box-shadow: var(--shadow);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
-            border-radius: 14px;
-            background: #eff6ff;
-            color: var(--accent);
-            font-size: 23px;
-        }
-
-        .card h3 {
-            color: var(--primary);
-            font-size: 19px;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .card ul {
-            margin-top: 14px;
-            padding-left: 18px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .card li {
-            margin-bottom: 6px;
-        }
-
-        .score-big {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--accent);
-            font-size: 32px;
-            line-height: 1;
-            font-weight: 900;
-        }
-
-        /*  Gold Box  */
-        .gold-box {
-            background: linear-gradient(135deg, #0f172a, #1e293b),
-                radial-gradient(circle at top right, rgba(59, 130, 246, 0.3), transparent 40%);
-            border-radius: 28px;
-            padding: 40px;
-            color: #fff;
-            box-shadow: var(--shadow);
-        }
-
-        .gold-box h2 {
+        .header h1 {
             font-size: 30px;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .gold-box p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 26px;
-        }
-
-        .gold-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 14px;
-        }
-
-        .gold-item {
-            padding: 16px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .gold-item strong {
-            display: block;
-            color: var(--accent-warm);
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
-
-        .gold-item span {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
-        }
-
-        /*  SOP / Timeline  */
-        .timeline {
-            display: grid;
-            gap: 22px;
-        }
-
-        .step {
-            display: grid;
-            grid-template-columns: 85px 1fr;
-            gap: 22px;
-            align-items: stretch;
-        }
-
-        .step-number {
-            min-height: 120px;
-            border-radius: 20px;
-            background: linear-gradient(160deg, #1e293b, #0f172a);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-
-        .step-number strong {
-            font-size: 30px;
-            line-height: 1;
-        }
-
-        .step-number span {
-            margin-top: 4px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
-
-        .step-content {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 26px 28px;
-            box-shadow: var(--shadow);
-        }
-
-        .step-content h3 {
-            color: var(--primary);
-            font-size: 21px;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .step-content p {
-            color: var(--muted);
-            margin-bottom: 12px;
-        }
-
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: #eff6ff;
-            color: var(--accent);
-            font-size: 12px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        /*  Table  */
-        .table-wrap {
-            width: 100%;
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--line);
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-
-        th,
-        td {
-            padding: 14px 12px;
-            border-bottom: 1px solid var(--line);
-            text-align: left;
-            vertical-align: middle;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        th {
-            background: #0f172a;
-            color: #fff;
-            font-weight: 800;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        th:nth-child(1),
-        td:nth-child(1) {
-            width: 18%;
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        th:nth-child(2),
-        td:nth-child(2) {
-            width: 12%;
-            white-space: nowrap;
-            color: var(--accent-warm);
-            font-weight: 900;
-        }
-
-        th:nth-child(3),
-        td:nth-child(3) {
-            width: 44%;
-        }
-
-        th:nth-child(4),
-        td:nth-child(4) {
-            width: 26%;
-        }
-
-        .level {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3px 7px;
-            border-radius: 999px;
-            font-size: 10px;
-            font-weight: 800;
-            margin-right: 4px;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-
-        .must {
-            color: var(--success);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .nice {
-            color: var(--warning);
-            background: rgba(245, 158, 11, 0.12);
-        }
-
-        .avoid {
-            color: var(--danger);
-            background: rgba(239, 68, 68, 0.08);
-        }
-
-        /*  Checklist  */
-        .checklist {
-            background: linear-gradient(135deg, #0f172a, #1e293b),
-                radial-gradient(circle at top right, rgba(59, 130, 246, 0.25), transparent 40%);
-            border-radius: 28px;
-            color: #fff;
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .checklist h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .checklist p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 26px;
-        }
-
-        .check-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .check-item {
-            display: flex;
-            gap: 12px;
-            padding: 14px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .check-item span {
-            color: var(--accent-warm);
-            font-weight: 900;
-        }
-
-        .check-item div {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 14px;
-        }
-
-        .cta {
-            text-align: center;
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 28px;
-            padding: 50px 28px;
-            box-shadow: var(--shadow);
-        }
-
-        .cta h2 {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .cta p {
-            max-width: 780px;
-            margin: 0 auto 26px;
-            color: var(--muted);
-        }
-
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            color: var(--muted);
             font-size: 13px;
         }
 
-        @media (max-width: 1060px) {
-            .grid-5,
-            .gold-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        th, td {
+            padding: 10px;
         }
-
-        @media (max-width: 960px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .grid-3,
-            .grid-2,
-            .check-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .step {
-                grid-template-columns: 1fr;
-            }
-
-            .step-number {
-                min-height: auto;
-                padding: 16px;
-                flex-direction: row;
-                gap: 8px;
-            }
-
-            th,
-            td {
-                padding: 12px 8px;
-                font-size: 11px;
-            }
-
-            .level {
-                padding: 2px 5px;
-                font-size: 9px;
-                margin-right: 2px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: min(100% - 24px, 1180px);
-            }
-
-            .hero {
-                padding: 56px 20px;
-            }
-
-            section {
-                padding: 48px 0;
-            }
-
-            .grid-5,
-            .gold-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card,
-            .step-content,
-            .gold-box,
-            .checklist {
-                padding: 22px;
-            }
-
-            .gold-box h2,
-            .checklist h2,
-            .cta h2 {
-                font-size: 26px;
-            }
-
-            th,
-            td {
-                padding: 10px 5px;
-                font-size: 10px;
-                letter-spacing: -0.2px;
-            }
-
-            .level {
-                display: none;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
-    <div class="page">
+<div class="container">
 
-        <!--  Hero  -->
-        <header class="hero">
-            <div class="hero-inner">
-                <div>
-                    <div class="eyebrow">CHAO HONG MEDIA · 内容评审 SOP</div>
-                    <h1>超红传媒<br><span>内容作品评分系统</span></h1>
-                    <p>
-                        一套适用于短视频、品牌宣传片、人物故事、探店种草、直播切片和商业内容的专业编导评审标准。
-                        将内容生产拆分为选题、封面标题、文案脚本、拍摄、剪辑五大模块，每个模块独立按 100 分制评分。
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#score-system" class="btn btn-primary">查看评分标准</a>
-                        <a href="#checklist" class="btn btn-ghost">查看评审清单</a>
-                    </div>
-                </div>
+    <!-- Header -->
+    <section class="header">
+        <h1>超红传媒 B站长视频评分系统</h1>
+        <p>
+            专为B站中长视频、深度内容、系列栏目设计的评审标准。以观众留存、内容深度、社区互动为核心，
+            覆盖选题、文案、视听、剪辑、观众体验五大维度，每个模块独立按100分制评分。
+        </p>
 
-                <div class="hero-card">
-                    <h3>五大模块｜单项 100 分制</h3>
+        <div class="tag-row">
+            <div class="tag">B站中长视频专项</div>
+            <div class="tag">观众留存优先</div>
+            <div class="tag">内容深度与信息量</div>
+            <div class="tag">社区互动设计</div>
+            <div class="tag">系列化与IP建设</div>
+            <div class="tag">五大模块100分制</div>
+        </div>
+    </section>
 
-                    <div class="score-item">
-                        <div class="score-title"><span>选题质量</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width: 100%;"></span></div>
-                    </div>
-                    <div class="score-item">
-                        <div class="score-title"><span>封面标题质量</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width: 100%;"></span></div>
-                    </div>
-                    <div class="score-item">
-                        <div class="score-title"><span>文案脚本质量</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width: 100%;"></span></div>
-                    </div>
-                    <div class="score-item">
-                        <div class="score-title"><span>拍摄质量</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width: 100%;"></span></div>
-                    </div>
-                    <div class="score-item">
-                        <div class="score-title"><span>剪辑质量</span><strong>100 分</strong></div>
-                        <div class="bar"><span style="width: 100%;"></span></div>
-                    </div>
-                </div>
+    <!-- Highest Principle -->
+    <section class="card full danger">
+        <h2>最高原则</h2>
+        <div class="rule">
+            <strong>B站长视频的核心不是“短快爆”，而是“深度陪伴”。一条优质长视频必须同时满足：</strong>
+            <br />
+            1）选题有足够的信息量或情绪价值支撑对应时长；
+            2）每分钟都有观众留下来的理由；
+            3）结尾能激发互动、关注或系列追更的欲望。
+        </div>
+        <p>
+            本评分系统不鼓励注水时长的长视频，也不允许用短视频标准粗暴评判中长内容。
+            我们只判断：这条长视频是否在正确的时间，用正确的方式，给了观众正确的收获。
+        </p>
+    </section>
+
+    <!-- Overview -->
+    <section class="card full">
+        <h2>五大评分模块总览（B站特化版）</h2>
+
+        <div class="checklist">
+            <div class="score-card">
+                <span class="score">100</span>
+                <h3>选题与内容设计</h3>
+                <p>信息量、持久价值、系列潜力、用户真需求。</p>
             </div>
-        </header>
 
-        <!--  核心逻辑  -->
-        <section>
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Evaluation Logic</span>
-                    <h2>好内容不是某一环单独优秀，而是五个环节共同成立</h2>
-                    <p>
-                        超红传媒评分系统关注作品从选题到成片的完整生产链条，判断一条内容是否值得拍、能否被点开、
-                        有没有看进去、完成度高不高、是否具备传播价值。
-                    </p>
-                </div>
-
-                <div class="grid grid-5">
-                    <div class="card">
-                        <div class="card-icon">🎯</div>
-                        <span class="score-big">100</span>
-                        <h3>选题质量</h3>
-                        <p>判断内容方向是否成立，是否具备用户价值、传播潜力和落地可行性。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🧲</div>
-                        <span class="score-big">100</span>
-                        <h3>封面标题</h3>
-                        <p>判断用户是否会停下并点击，标题是否有钩子，封面是否具备吸引力。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">✍️</div>
-                        <span class="score-big">100</span>
-                        <h3>文案脚本</h3>
-                        <p>判断主题、结构、开头、情绪和可拍摄性是否支撑内容成片。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🎥</div>
-                        <span class="score-big">100</span>
-                        <h3>拍摄质量</h3>
-                        <p>判断画面、光线、声音、镜头语言和现场调度是否专业可用。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🎬</div>
-                        <span class="score-big">100</span>
-                        <h3>剪辑质量</h3>
-                        <p>判断节奏、逻辑、情绪、包装和完成度是否支撑观看体验。</p>
-                    </div>
-                </div>
+            <div class="score-card">
+                <span class="score">100</span>
+                <h3>封面标题与展示</h3>
+                <p>点击欲望、准确性、推荐流辨识度、B站社区感。</p>
             </div>
-        </section>
 
-        <!--  五大原则  -->
-        <section>
-            <div class="container">
-                <div class="gold-box">
-                    <h2>超红传媒五大内容评审原则</h2>
-                    <p>评分不是主观“好不好看”，而是从专业编导视角出发，判断每个环节是否有效服务传播目标。</p>
+            <div class="score-card">
+                <span class="score">100</span>
+                <h3>文案脚本与结构</h3>
+                <p>长视频节奏、分章节逻辑、开头留存、结尾引导。</p>
+            </div>
 
-                    <div class="gold-grid">
-                        <div class="gold-item">
-                            <strong>选题看价值</strong>
-                            <span>有没有用户需求、情绪共鸣和传播理由。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>封面看点击</strong>
-                            <span>能不能一眼看懂，用户愿不愿意点进来。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>脚本看结构</strong>
-                            <span>表达是否清晰，开头、高潮、结尾是否成立。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>拍摄看质感</strong>
-                            <span>画面、声音、光线和镜头是否专业可用。</span>
-                        </div>
-                        <div class="gold-item">
-                            <strong>剪辑看节奏</strong>
-                            <span>是否顺畅、有情绪、能看完、记得住。</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="score-card">
+                <span class="score">100</span>
+                <h3>视听制作质量</h3>
+                <p>画面沉稳、声音舒适、BGM克制、信息可视化。</p>
+            </div>
+
+            <div class="score-card">
+                <span class="score">100</span>
+                <h3>观众体验与互动</h3>
+                <p>留存曲线、章节过渡、社区引导、追更意愿。</p>
+            </div>
+
+            <div class="score-card">
+                <span class="score">SOP</span>
+                <h3>评审流程</h3>
+                <p>分项评分 → 逐条记录 → 留存分析 → 优化迭代。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Logic -->
+    <div class="grid">
+
+        <section class="card">
+            <h2>一、B站长视频评审定位</h2>
+            <ul>
+                <li><strong>适用内容：</strong>深度测评、解说、科普、人物故事、Vlog、纪录片、教学、分析、混剪等。</li>
+                <li><strong>评审重点：</strong>不只判断“好不好看”，更要判断“观众会不会看完、会不会互动、会不会关注”。</li>
+                <li><strong>评分方式：</strong>每个模块独立100分，不做加权平均，而是逐一诊断问题。</li>
+                <li><strong>核心数据：</strong>结合B站后台的留存曲线、弹幕密度、关注转化、收藏率进行辅助判断。</li>
+            </ul>
+
+            <div class="rule warning">
+                长视频的敌人不是时长，而是无聊。任何一分钟让观众走神，都是结构和节奏的失败。
             </div>
         </section>
 
-        <!--  评分 SOP  -->
-        <section id="score-system">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Standard Scoring Modules</span>
-                    <h2>五大模块评分 SOP</h2>
-                    <p>每个模块独立 100 分。评审时建议先打单项分，再定位问题，最后给出修改建议。</p>
-                </div>
-
-                <div class="timeline">
-
-                    <!--  01 选题  -->
-                    <div class="step">
-                        <div class="step-number"><strong>01</strong><span>选题</span></div>
-                        <div class="step-content">
-                            <h3>选题质量评分｜100 分</h3>
-                            <p>选题决定内容上限。重点判断这个内容是否值得拍、是否有受众、是否有差异化、是否有传播空间。</p>
-
-                            <div class="table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>选题价值</td><td>25 分</td><td><span class="level must">必</span>具备信息价值、情绪价值、审美价值或商业价值。</td><td>内容空泛、用户无获得感。</td></tr>
-                                        <tr><td>受众匹配</td><td>20 分</td><td><span class="level must">必</span>明确目标用户，符合兴趣、痛点和平台偏好。</td><td>人群模糊，表达自嗨。</td></tr>
-                                        <tr><td>差异化视角</td><td>20 分</td><td><span class="level nice">加</span>有独特人物、场景、冲突或表达角度。</td><td>同质化严重，缺少新意。</td></tr>
-                                        <tr><td>传播潜力</td><td>20 分</td><td><span class="level nice">加</span>具备话题性、讨论点、转发理由或收藏价值。</td><td>无互动点，无传播理由。</td></tr>
-                                        <tr><td>执行可行性</td><td>15 分</td><td><span class="level must">必</span>符合团队资源、预算、周期和拍摄条件。</td><td>成本过高，条件不足。</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="tag-list">
-                                <span class="tag">90-100：优质选题</span><span class="tag">80-89：可重点执行</span><span class="tag">70-79：优化切口</span><span class="tag">60以下：不建议立项</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--  02 封面标题  -->
-                    <div class="step">
-                        <div class="step-number"><strong>02</strong><span>封面</span></div>
-                        <div class="step-content">
-                            <h3>封面标题质量评分｜100 分</h3>
-                            <p>封面标题决定点击率。重点判断用户在信息流中是否会停下、看懂、产生好奇并点击进入。</p>
-
-                            <div class="table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>标题吸引力</td><td>25 分</td><td><span class="level must">必</span>具备悬念、冲突、利益点或情绪点。</td><td>标题平淡，无点击理由。</td></tr>
-                                        <tr><td>标题准确度</td><td>15 分</td><td><span class="level must">必</span>真实反映内容核心，不标题党、不误导。</td><td>夸张误导，用户反感。</td></tr>
-                                        <tr><td>封面视觉冲击</td><td>25 分</td><td><span class="level must">必</span>主体清晰、画面干净、对比强、可快速识别。</td><td>主体不明，画面杂乱。</td></tr>
-                                        <tr><td>图文匹配度</td><td>15 分</td><td><span class="level nice">加</span>封面与标题互相补充，共同放大卖点。</td><td>图文割裂，信息不一致。</td></tr>
-                                        <tr><td>平台适配度</td><td>10 分</td><td><span class="level nice">加</span>适配抖音、小红书、B站等信息流习惯。</td><td>比例不适配，字体过小。</td></tr>
-                                        <tr><td>品牌统一性</td><td>10 分</td><td><span class="level nice">加</span>字体、色彩、调性符合品牌规范。</td><td>视觉混乱，品牌识别弱。</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="tag-list">
-                                <span class="tag">一眼看懂</span><span class="tag">一秒吸引</span><span class="tag">真实可信</span><span class="tag">图文统一</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--  03 脚本  -->
-                    <div class="step">
-                        <div class="step-number"><strong>03</strong><span>脚本</span></div>
-                        <div class="step-content">
-                            <h3>文案脚本质量评分｜100 分</h3>
-                            <p>文案脚本决定内容骨架。判断表达是否清楚、结构是否完整、情绪是否递进、能否转化成镜头。</p>
-
-                            <div class="table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>主题清晰</td><td>15 分</td><td><span class="level must">必</span>核心观点、品牌信息或卖点表达明确。</td><td>主题发散，重点不明。</td></tr>
-                                        <tr><td>结构完整</td><td>20 分</td><td><span class="level must">必</span>具备清晰开头、发展、转折、高潮、结尾。</td><td>结构松散，结尾无力。</td></tr>
-                                        <tr><td>开头钩子</td><td>15 分</td><td><span class="level must">必</span>前3-5秒有痛点、悬念或视觉钩子。</td><td>开头拖沓，铺垫过长。</td></tr>
-                                        <tr><td>叙事逻辑</td><td>15 分</td><td><span class="level must">必</span>信息推进合理，因果关系清楚。</td><td>逻辑断裂，重复啰嗦。</td></tr>
-                                        <tr><td>语言表现</td><td>10 分</td><td><span class="level nice">加</span>语言生动、有画面感，符合人设和调性。</td><td>口水化、生硬、不匹配。</td></tr>
-                                        <tr><td>情绪记忆点</td><td>15 分</td><td><span class="level nice">加</span>有金句、反转、高光或可传播表达。</td><td>无亮点，看完记不住。</td></tr>
-                                        <tr><td>可拍摄性</td><td>10 分</td><td><span class="level must">必</span>能转化为具体场景、镜头和执行方案。</td><td>只有概念，现场难执行。</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="tag-list">
-                                <span class="tag">主题明确</span><span class="tag">结构完整</span><span class="tag">开头有钩子</span><span class="tag">结尾有记忆点</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--  04 拍摄  -->
-                    <div class="step">
-                        <div class="step-number"><strong>04</strong><span>拍摄</span></div>
-                        <div class="step-content">
-                            <h3>拍摄质量评分｜100 分</h3>
-                            <p>拍摄质量决定素材基础。判断画面是否专业、声音是否可用、现场调度是否服务内容表达。</p>
-
-                            <div class="table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>画面构图</td><td>15 分</td><td><span class="level must">必</span>主体突出、构图稳定，景别服务表达。</td><td>主体不清，构图随意。</td></tr>
-                                        <tr><td>光线控制</td><td>15 分</td><td><span class="level must">必</span>曝光准确、光比合理，质感良好。</td><td>过曝欠曝，光线脏乱。</td></tr>
-                                        <tr><td>镜头语言</td><td>20 分</td><td><span class="level nice">加</span>景别、运动、特写有设计，服务叙事。</td><td>镜头重复，缺乏逻辑。</td></tr>
-                                        <tr><td>现场调度</td><td>15 分</td><td><span class="level must">必</span>人物走位、动作、节奏调度自然有效。</td><td>人物僵硬，场面失控。</td></tr>
-                                        <tr><td>声音质量</td><td>15 分</td><td><span class="level must">必</span>人声清晰，噪音可控，达到发布标准。</td><td>爆音杂音，人声不清。</td></tr>
-                                        <tr><td>美术场景</td><td>10 分</td><td><span class="level nice">加</span>服化道、背景、色彩与内容调性统一。</td><td>场景廉价，风格混乱。</td></tr>
-                                        <tr><td>素材完整</td><td>10 分</td><td><span class="level must">必</span>拍足主镜头、特写、空镜、反应镜头。</td><td>素材缺失，无法补救。</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="tag-list">
-                                <span class="tag">画面稳定</span><span class="tag">声音清晰</span><span class="tag">调度自然</span><span class="tag">素材足够</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--  05 剪辑  -->
-                    <div class="step">
-                        <div class="step-number"><strong>05</strong><span>剪辑</span></div>
-                        <div class="step-content">
-                            <h3>剪辑质量评分｜100 分</h3>
-                            <p>剪辑决定最终观看体验。判断节奏是否顺畅、逻辑是否清楚、情绪是否到位、包装是否统一。</p>
-
-                            <div class="table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr><th>评分项</th><th>分值</th><th>评分标准</th><th>扣分方向</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>叙事节奏</td><td>20 分</td><td><span class="level must">必</span>信息推进顺畅，节奏符合平台和内容类型。</td><td>拖沓过快，留存差。</td></tr>
-                                        <tr><td>逻辑连贯</td><td>15 分</td><td><span class="level must">必</span>镜头衔接合理，故事线和情绪线清晰。</td><td>跳跃断裂，看不懂。</td></tr>
-                                        <tr><td>情绪控制</td><td>15 分</td><td><span class="level nice">加</span>通过停顿、音乐、转场推动情绪递进。</td><td>情绪平，爆点弱。</td></tr>
-                                        <tr><td>镜头选择</td><td>15 分</td><td><span class="level must">必</span>选用最佳表演和最高效的信息镜头。</td><td>废镜头多，信息缺失。</td></tr>
-                                        <tr><td>声音音乐</td><td>10 分</td><td><span class="level must">必</span>人声、BGM、音效平衡，贴合情绪。</td><td>音乐压人声，音量不稳。</td></tr>
-                                        <tr><td>包装字幕</td><td>15 分</td><td><span class="level nice">加</span>字幕、花字、调色统一，服务理解。</td><td>错别字，包装廉价。</td></tr>
-                                        <tr><td>完成细节</td><td>10 分</td><td><span class="level must">必</span>无卡顿、跳帧、穿帮、音画不同步。</td><td>技术瑕疵，影响品质。</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="tag-list">
-                                <span class="tag">节奏清楚</span><span class="tag">逻辑顺畅</span><span class="tag">情绪到位</span><span class="tag">完成度高</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <section class="card">
+            <h2>二、长视频评审使用流程</h2>
+            <ol>
+                <li>确认内容类型：测评/解说/故事/教学/栏目。</li>
+                <li>完整观看整条视频，记录走神点、快进冲动、厌倦节点。</li>
+                <li>逐项评分：选题、封面标题、脚本结构、视听制作、观众体验。</li>
+                <li>每一项必须写出至少1个优点和1个问题。</li>
+                <li>对照B站后台留存曲线，验证主观判断。</li>
+                <li>输出修改建议，标注优先修改顺序。</li>
+            </ol>
         </section>
-
-        <!--  评级标准  -->
-        <section>
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Rating Standard</span>
-                    <h2>单项 100 分评级标准</h2>
-                    <p>以下评级适用于五大模块的任意单项评分。建议每个模块单独评级，再形成综合评审意见。</p>
-                </div>
-
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr><th>分数段</th><th>等级</th><th>评价标准</th><th>处理建议</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>90-100</td><td>S 级</td><td><span class="level must">优</span>专业成熟，方向清晰，完成度高。</td><td>可重点发布，可沉淀为案例。</td></tr>
-                            <tr><td>80-89</td><td>A 级</td><td><span class="level must">良</span>整体优秀，少量细节可优化。</td><td>正常发布，细节微调。</td></tr>
-                            <tr><td>70-79</td><td>B 级</td><td><span class="level nice">中</span>内容成立，但亮点或完成度不足。</td><td>建议优化后发布。</td></tr>
-                            <tr><td>60-69</td><td>C 级</td><td><span class="level avoid">弱</span>存在明显短板，影响观看体验。</td><td>建议返修，不宜直接发布。</td></tr>
-                            <tr><td>60以下</td><td>D 级</td><td><span class="level avoid">差</span>核心环节不成立，难以支撑成片。</td><td>不建议发布，需重做对应环节。</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!--  评分表  -->
-        <section>
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Review Sheet</span>
-                    <h2>超红传媒内容评分表</h2>
-                    <p>每个项目均为 100 分制。可用于内部评审、项目复盘、编导考核、拍摄质检和后期验收。</p>
-                </div>
-
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr><th>评分模块</th><th>满分</th><th>核心判断</th><th>得分 / 评语</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>选题质量</td><td>100 分</td><td>是否值得拍、是否有受众、是否有传播价值。</td><td>得分：_____ ｜ 评语：________</td></tr>
-                            <tr><td>封面标题质量</td><td>100 分</td><td>是否能一眼吸引点击，封面是否清晰有冲击。</td><td>得分：_____ ｜ 评语：________</td></tr>
-                            <tr><td>文案脚本质量</td><td>100 分</td><td>主题是否清楚，结构是否完整，开头是否抓人。</td><td>得分：_____ ｜ 评语：________</td></tr>
-                            <tr><td>拍摄质量</td><td>100 分</td><td>画面、光线、声音、镜头和素材是否达标。</td><td>得分：_____ ｜ 评语：________</td></tr>
-                            <tr><td>剪辑质量</td><td>100 分</td><td>节奏、逻辑、情绪、包装和完成度是否达标。</td><td>得分：_____ ｜ 评语：________</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!--  清单  -->
-        <section id="checklist">
-            <div class="container">
-                <div class="checklist">
-                    <h2>发布前 20 项专业评审清单</h2>
-                    <p>建议作品发布前逐项核对。若核心项缺失，应优先返修对应模块，而不是只依赖后期补救。</p>
-
-                    <div class="check-grid">
-                        <div class="check-item"><span>✓</span><div>选题是否有明确用户价值，而不是团队自嗨。</div></div>
-                        <div class="check-item"><span>✓</span><div>选题是否具备情绪点、讨论点或转发理由。</div></div>
-                        <div class="check-item"><span>✓</span><div>封面是否能在信息流中一眼识别主体。</div></div>
-                        <div class="check-item"><span>✓</span><div>标题是否真实、准确，同时具备点击钩子。</div></div>
-                        <div class="check-item"><span>✓</span><div>脚本前3-5秒是否有足够吸引力。</div></div>
-                        <div class="check-item"><span>✓</span><div>脚本是否有清晰的起承转合或信息推进。</div></div>
-                        <div class="check-item"><span>✓</span><div>脚本是否能直接转化为镜头和场景执行。</div></div>
-                        <div class="check-item"><span>✓</span><div>拍摄画面是否稳定、干净、主体突出。</div></div>
-                        <div class="check-item"><span>✓</span><div>人物、产品或场景的光线质感是否达标。</div></div>
-                        <div class="check-item"><span>✓</span><div>现场收音是否清晰，是否无明显噪音和爆音。</div></div>
-                        <div class="check-item"><span>✓</span><div>是否拍足特写、空镜、转场和反应镜头。</div></div>
-                        <div class="check-item"><span>✓</span><div>剪辑节奏是否符合平台和内容类型。</div></div>
-                        <div class="check-item"><span>✓</span><div>镜头衔接是否自然，观众是否能看懂。</div></div>
-                        <div class="check-item"><span>✓</span><div>BGM、音效、人声音量是否平衡。</div></div>
-                        <div class="check-item"><span>✓</span><div>字幕是否准确，无错别字、无遮挡重点画面。</div></div>
-                        <div class="check-item"><span>✓</span><div>花字、动效、调色是否统一且服务内容。</div></div>
-                        <div class="check-item"><span>✓</span><div>成片是否有明确记忆点、金句或高光片段。</div></div>
-                        <div class="check-item"><span>✓</span><div>作品是否符合账号定位和客户品牌调性。</div></div>
-                        <div class="check-item"><span>✓</span><div>是否检查导出格式、码率、比例和清晰度。</div></div>
-                        <div class="check-item"><span>✓</span><div>最终是否达到“点得进、看得懂、留得住、记得牢”。</div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--  误区  -->
-        <section>
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Avoid Pitfalls</span>
-                    <h2>内容评审常见误区</h2>
-                    <p>很多作品的问题不是单一技术问题，而是前期判断、脚本设计、拍摄执行和剪辑节奏没有形成统一目标。</p>
-                </div>
-
-                <div class="grid grid-3">
-                    <div class="card">
-                        <div class="card-icon">⚠️</div>
-                        <h3>误区一：只看画面，不看选题</h3>
-                        <p>画面再精致，如果选题没有用户价值，也很难产生传播。选题是上限，画面是手段。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">⚠️</div>
-                        <h3>误区二：只追热点，不看匹配</h3>
-                        <p>热点不等于好选题。热点必须和账号定位、用户需求、品牌目标匹配才有执行价值。</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">⚠️</div>
-                        <h3>误区三：把剪辑当补救工具</h3>
-                        <p>剪辑可以提升节奏，但无法彻底弥补选题失误、脚本空洞、收音失败和素材缺失。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--  CTA  -->
-        <section>
-            <div class="container">
-                <div class="cta">
-                    <h2>一句话评审结论</h2>
-                    <p>
-                        选题决定上限，封面决定点击，脚本决定表达，拍摄决定素材，剪辑决定体验。
-                        每个环节都按100分独立评估，才能真正提升内容生产的稳定性和专业度。
-                    </p>
-                    <a href="#score-system" class="btn btn-primary">重新查看评分标准</a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            © 超红传媒 CHAO HONG MEDIA｜内容作品专业评分系统｜选题·封面标题·文案脚本·拍摄·剪辑 五大模块 100 分制
-        </footer>
 
     </div>
+
+    <!-- Rating Standard -->
+    <section class="card full">
+        <h2>三、通用评级标准（B站长视频版）</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>分数段</th>
+                    <th>等级</th>
+                    <th>评价标准</th>
+                    <th>处理建议</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>90 - 100分</td>
+                    <td>S级</td>
+                    <td><span class="level must">标杆</span>深度和观感俱佳，有明显追更价值，适合系列化。</td>
+                    <td>重点推广，可设为频道标杆。</td>
+                </tr>
+                <tr>
+                    <td>80 - 89分</td>
+                    <td>A级</td>
+                    <td><span class="level must">优质</span>整体流畅，少量细节可打磨，具备稳定发布价值。</td>
+                    <td>正常发布，优化细节。</td>
+                </tr>
+                <tr>
+                    <td>70 - 79分</td>
+                    <td>B级</td>
+                    <td><span class="level nice">合格</span>内容成立，但留存、节奏或信息密度有不足。</td>
+                    <td>建议调整节奏、增加信息点。</td>
+                </tr>
+                <tr>
+                    <td>60 - 69分</td>
+                    <td>C级</td>
+                    <td><span class="level avoid">偏弱</span>存在明显留存问题，观众容易中途退出。</td>
+                    <td>重视剪辑和结构优化。</td>
+                </tr>
+                <tr>
+                    <td>60分以下</td>
+                    <td>D级</td>
+                    <td><span class="level avoid">不合格</span>核心模块不成立，无法支撑长视频观看体验。</td>
+                    <td>不建议发布，重大修改或重做。</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 选题与内容设计 -->
+    <section class="card full">
+        <h2>四、选题与内容设计评分｜100分</h2>
+        <p>
+            长视频选题必须能支撑起对应时长。重点判断信息量是否充足、观点是否有深度、情绪是否递进、是否有系列化潜力。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分项</th>
+                    <th>分值</th>
+                    <th>评分标准</th>
+                    <th>扣分方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>信息量与深度</td>
+                    <td>20分</td>
+                    <td>信息密度足够，有层层深入的逻辑，不让观众觉得水时长。</td>
+                    <td>注水、车轱辘话、过程空洞。</td>
+                </tr>
+                <tr>
+                    <td>持久价值</td>
+                    <td>15分</td>
+                    <td>内容具有较长的时效性或收藏价值，不是看完就忘。</td>
+                    <td>纯时效性内容，缺乏沉淀价值。</td>
+                </tr>
+                <tr>
+                    <td>系列与IP潜力</td>
+                    <td>15分</td>
+                    <td>是否能形成系列、续集、番外或形成UP主人设塑造。</td>
+                    <td>单集孤立，与账号调性不搭。</td>
+                </tr>
+                <tr>
+                    <td>用户真实需求</td>
+                    <td>20分</td>
+                    <td>选题是否命中观众好奇、学习、陪伴、放松或情绪需求。</td>
+                    <td>选题自嗨，观众无感。</td>
+                </tr>
+                <tr>
+                    <td>差异化与独特视角</td>
+                    <td>15分</td>
+                    <td>是否有UP主独有的资料、观点、表达方式或制作手法。</td>
+                    <td>内容同质化，缺乏个人风格。</td>
+                </tr>
+                <tr>
+                    <td>执行可行性</td>
+                    <td>15分</td>
+                    <td>选题是否适合团队资源、周期、素材获取能力和制作成本。</td>
+                    <td>过度承诺，难以落地。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rule">
+            <span class="big-number">判断口诀：</span>
+            长视频选题必须有“干货感”。观众愿意花10分钟以上，一定是因为他能带走什么。
+        </div>
+    </section>
+
+    <!-- 封面标题与展示 -->
+    <section class="card full">
+        <h2>五、封面标题与展示评分｜100分</h2>
+        <p>
+            B站封面标题既要吸引点击，又要符合社区氛围和真实内容，不能过度标题党导致用户反感或举报。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分项</th>
+                    <th>分值</th>
+                    <th>评分标准</th>
+                    <th>扣分方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>标题吸引力</td>
+                    <td>20分</td>
+                    <td>具备悬念、反差、强烈观点、数字、痛点或好奇心钩子。</td>
+                    <td>平淡无奇、缺乏点击欲望。</td>
+                </tr>
+                <tr>
+                    <td>标题准确度</td>
+                    <td>15分</td>
+                    <td>准确反映内容核心，不夸大、不虚假、符合B站社区规范。</td>
+                    <td>标题党、误导、被弹幕喷。</td>
+                </tr>
+                <tr>
+                    <td>封面冲击力</td>
+                    <td>20分</td>
+                    <td>主体突出、色彩醒目、文字精简，能在推荐流中快速吸引注意。</td>
+                    <td>模糊、杂乱、文字过多、视觉廉价。</td>
+                </tr>
+                <tr>
+                    <td>B站社区感</td>
+                    <td>15分</td>
+                    <td>封面标题风格符合B站用户审美，不油腻、不土味，有UP主个性。</td>
+                    <td>风格过于营销号，丢失B站质感。</td>
+                </tr>
+                <tr>
+                    <td>图文匹配度</td>
+                    <td>15分</td>
+                    <td>封面视觉与标题文字互相补充，共同传递视频的核心卖点。</td>
+                    <td>封面讲A，标题讲B，信息割裂。</td>
+                </tr>
+                <tr>
+                    <td>品牌与系列统一</td>
+                    <td>15分</td>
+                    <td>字体、配色、版式与UP主整体视觉体系、系列风格保持一致。</td>
+                    <td>视觉混乱，难以建立品牌辨识度。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rule warning">
+            在B站，过度精美的营销感封面反而会降低点击。真实、有质感、有性格的封面往往更有效。
+        </div>
+    </section>
+
+    <!-- 文案脚本与结构 -->
+    <section class="card full">
+        <h2>六、文案脚本与结构评分｜100分</h2>
+        <p>
+            长视频脚本决定观众能看多久。重点判断开头能否留住人、中间是否有清晰的结构推进、结尾是否有满足感或期待感。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分项</th>
+                    <th>分值</th>
+                    <th>评分标准</th>
+                    <th>扣分方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>开头留存能力</td>
+                    <td>20分</td>
+                    <td>前30秒明确告知观众“为什么要看下去”，并快速进入正题。</td>
+                    <td>开头冗长、铺垫过多、不知所云。</td>
+                </tr>
+                <tr>
+                    <td>分章与结构清晰</td>
+                    <td>20分</td>
+                    <td>内容有明显的段落感、小标题或转场提示，方便观众跟随。</td>
+                    <td>结构混乱、内容堆砌、无节奏感。</td>
+                </tr>
+                <tr>
+                    <td>逻辑与信息递进</td>
+                    <td>15分</td>
+                    <td>信息由浅入深、因果关系明确，观点有逐步展开的过程。</td>
+                    <td>跳跃、杂乱、重复、逻辑断裂。</td>
+                </tr>
+                <tr>
+                    <td>语言表现力</td>
+                    <td>15分</td>
+                    <td>文案口语化、有画面感，符合UP主人设，信息传递高效不枯燥。</td>
+                    <td>书面语过重、枯燥、缺乏个性。</td>
+                </tr>
+                <tr>
+                    <td>情绪与节奏设计</td>
+                    <td>15分</td>
+                    <td>紧张、放松、幽默、感动等情绪切换自然，有高低起伏的设计。</td>
+                    <td>全程平铺直叙，无情绪变化。</td>
+                </tr>
+                <tr>
+                    <td>结尾引导与闭环</td>
+                    <td>15分</td>
+                    <td>结尾有满足感、总结感，并有效引导点赞、投币、关注、追更。</td>
+                    <td>突然结束、没有铺垫、无互动引导。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rule">
+            <span class="big-number">判断口诀：</span>
+            长视频的脚本不是把5分钟内容拉长到20分钟，而是让20分钟每一段都值得看。
+        </div>
+    </section>
+
+    <!-- 视听制作质量 -->
+    <section class="card full">
+        <h2>七、视听制作质量评分｜100分</h2>
+        <p>
+            B站长视频对画面和声音的稳定性要求更高。重点判断长时间观看是否舒适、信息是否可视化、声音是否耐听。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分项</th>
+                    <th>分值</th>
+                    <th>评分标准</th>
+                    <th>扣分方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>画面稳定性与构图</td>
+                    <td>15分</td>
+                    <td>画面稳定、构图讲究，长时观看不累，主体和辅助信息平衡。</td>
+                    <td>晃动、构图失衡、长时间单调画面。</td>
+                </tr>
+                <tr>
+                    <td>光线与色彩质感</td>
+                    <td>15分</td>
+                    <td>曝光准确、色彩自然或风格化，人物和产品质感良好。</td>
+                    <td>过曝、死黑、色彩脏乱。</td>
+                </tr>
+                <tr>
+                    <td>声音质量与舒适度</td>
+                    <td>20分</td>
+                    <td>人声清晰、无喷麦、无底噪，长时间听不疲劳，音量稳定。</td>
+                    <td>爆音、底噪、忽大忽小、齿音重。</td>
+                </tr>
+                <tr>
+                    <td>信息可视化</td>
+                    <td>15分</td>
+                    <td>图表、字幕标注、画中画、素材引用清晰，帮助理解复杂信息。</td>
+                    <td>纯口播无视觉辅助，观众容易走神。</td>
+                </tr>
+                <tr>
+                    <td>BGM与音效使用</td>
+                    <td>15分</td>
+                    <td>BGM选曲贴合情绪，音量恰到好处，不抢人声，不过度使用。</td>
+                    <td>音乐不搭、音量过大、频繁切换。</td>
+                </tr>
+                <tr>
+                    <td>素材丰富度与版权</td>
+                    <td>10分</td>
+                    <td>引用素材清晰、标注来源，无侵权风险，素材质量统一。</td>
+                    <td>素材模糊、无版权标注、画风割裂。</td>
+                </tr>
+                <tr>
+                    <td>后期包装与字幕</td>
+                    <td>10分</td>
+                    <td>字幕准确、花字适度、调色统一，整体风格符合账号定位。</td>
+                    <td>错别字、包装过度或廉价。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rule warning">
+            长视频的视听制作重点是“耐看”和“耐听”，不是每一个镜头都要炫技，而是每一秒都让人舒服。
+        </div>
+    </section>
+
+    <!-- 观众体验与互动 -->
+    <section class="card full">
+        <h2>八、观众体验与互动评分｜100分</h2>
+        <p>
+            这是B站长视频独有的评分维度。重点判断观众的观看完成度、弹幕互动质量、社区氛围和关注转化意愿。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分项</th>
+                    <th>分值</th>
+                    <th>评分标准</th>
+                    <th>扣分方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>留存曲线健康度</td>
+                    <td>20分</td>
+                    <td>前30秒留存高，中段无明显流失，结尾仍有较多观众。</td>
+                    <td>开头跳水、中段流失严重、结尾无人。</td>
+                </tr>
+                <tr>
+                    <td>弹幕与评论质量</td>
+                    <td>20分</td>
+                    <td>弹幕积极、有共鸣、有讨论、有梗，评论有真诚互动而非刷屏。</td>
+                    <td>弹幕少、负面弹幕多、评论区无互动。</td>
+                </tr>
+                <tr>
+                    <td>章节与进度条引导</td>
+                    <td>15分</td>
+                    <td>合理使用B站章节功能，进度条分段清晰，方便观众跳转和回溯。</td>
+                    <td>无章节、无分段，观众无法快速定位。</td>
+                </tr>
+                <tr>
+                    <td>互动引导自然度</td>
+                    <td>15分</td>
+                    <td>点赞、投币、收藏、关注的引导不生硬，融入内容或结尾彩蛋。</td>
+                    <td>频繁打断内容、硬要三连、令人反感。</td>
+                </tr>
+                <tr>
+                    <td>追更与关注意愿</td>
+                    <td>15分</td>
+                    <td>视频结束后，观众产生明显的“想关注”或“想看下一期”的冲动。</td>
+                    <td>看完即走，无任何关注动机。</td>
+                </tr>
+                <tr>
+                    <td>社区氛围与UP主人设</td>
+                    <td>15分</td>
+                    <td>视频强化了UP主的人设和与粉丝的关系，形成独特的社区文化。</td>
+                    <td>UP主存在感弱，内容与账号人格脱节。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rule">
+            <span class="big-number">判断口诀：</span>
+            B站长视频的终极目标不是播放量，而是“观众愿意为你花时间，并且期待下一次”。
+        </div>
+    </section>
+
+    <!-- Review Checklist -->
+    <section class="card full">
+        <h2>九、发布前检查清单（B站长视频专用）</h2>
+
+        <div class="checklist">
+            <div class="check">
+                <strong>1. 选题有干货吗？</strong>
+                够不够支撑目标时长？
+            </div>
+
+            <div class="check">
+                <strong>2. 标题有B站感吗？</strong>
+                符合社区氛围，不营销号。
+            </div>
+
+            <div class="check">
+                <strong>3. 封面清晰有辨识度？</strong>
+                能在推荐流中一眼识别。
+            </div>
+
+            <div class="check">
+                <strong>4. 前30秒有钩子吗？</strong>
+                明确告知价值，留人。
+            </div>
+
+            <div class="check">
+                <strong>5. 结构有章节感吗？</strong>
+                段落清晰，观众不会迷失。
+            </div>
+
+            <div class="check">
+                <strong>6. 信息密度够吗？</strong>
+                没有注水段落和废话。
+            </div>
+
+            <div class="check">
+                <strong>7. 声音是否耐听？</strong>
+                长时间听不累，无噪音。
+            </div>
+
+            <div class="check">
+                <strong>8. 画面是否舒适？</strong>
+                稳定、干净、信息清晰。
+            </div>
+
+            <div class="check">
+                <strong>9. 是否有信息可视化？</strong>
+                关键数据、观点有图表辅助。
+            </div>
+
+            <div class="check">
+                <strong>10. 结尾有满足感吗？</strong>
+                观众觉得“这时间花得值”。
+            </div>
+
+            <div class="check">
+                <strong>11. 互动引导自然吗？</strong>
+                不生硬，不打断观看。
+            </div>
+
+            <div class="check">
+                <strong>12. 有追更动机吗？</strong>
+                观众想关注你，想看下一期。
+            </div>
+        </div>
+
+        <div class="rule danger">
+            若'信息密度'或'开头留存'得分低于70，建议立即优化结构，这是长视频的命脉。
+        </div>
+    </section>
+
+    <!-- Review Sheet -->
+    <section class="card full">
+        <h2>十、超红传媒 B站长视频评分表</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>评分模块</th>
+                    <th>满分</th>
+                    <th>核心判断</th>
+                    <th>得分 / 评语</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>选题与内容设计</td>
+                    <td>100分</td>
+                    <td>信息量、持久价值、用户需求、系列潜力。</td>
+                    <td>得分：____ ｜ 评语：________</td>
+                </tr>
+                <tr>
+                    <td>封面标题与展示</td>
+                    <td>100分</td>
+                    <td>点击率、准确度、B站社区感、品牌统一。</td>
+                    <td>得分：____ ｜ 评语：________</td>
+                </tr>
+                <tr>
+                    <td>文案脚本与结构</td>
+                    <td>100分</td>
+                    <td>开头留存、分章逻辑、结尾引导、语言表现。</td>
+                    <td>得分：____ ｜ 评语：________</td>
+                </tr>
+                <tr>
+                    <td>视听制作质量</td>
+                    <td>100分</td>
+                    <td>画面稳定、声音耐听、可视化、包装统一。</td>
+                    <td>得分：____ ｜ 评语：________</td>
+                </tr>
+                <tr>
+                    <td>观众体验与互动</td>
+                    <td>100分</td>
+                    <td>留存曲线、弹幕评论、追更意愿、社区氛围。</td>
+                    <td>得分：____ ｜ 评语：________</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Common Mistakes -->
+    <div class="grid">
+
+        <section class="card">
+            <h2>十一、B站长视频常见问题</h2>
+
+            <h3>问题一：开头过长，人走光了</h3>
+            <p>
+                B站观众耐心有限，前30秒没能明确价值，就会划走。开场白、自我介绍、上期回顾请压缩到最短。
+            </p>
+
+            <h3>问题二：信息密度低，全靠水时长</h3>
+            <p>
+                长视频不是把语速放慢、加空镜、重复观点就能撑起来。每多一分钟，都必须多给观众一分钟的信息或情绪。
+            </p>
+
+            <h3>问题三：结尾没有钩子，看完就划走</h3>
+            <p>
+                没有引导关注、没有下期预告、没有互动问题，观众看完即走，账号增长全靠自然流量。
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>十二、执行纪律（B站版）</h2>
+            <ul>
+                <li>选题信息量不足，不立项。</li>
+                <li>脚本没有分章设计，不开拍。</li>
+                <li>声音质量不达标，不发布。</li>
+                <li>开头30秒无钩子，必须修改。</li>
+                <li>无章节进度条，不上传。</li>
+                <li>结尾无互动引导，不视为完成品。</li>
+                <li>留存数据异常，立即复盘结构问题。</li>
+            </ul>
+
+            <div class="rule success">
+                B站长视频的竞争，本质是“观众时间”的竞争。你要赢的不是算法，而是观众的耐心。
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Final -->
+    <section class="card full success">
+        <h2>十三、一句话执行版</h2>
+        <p>
+            选题有干货，开头有钩子，结构有章节，信息有密度，声音要耐听，画面要舒适，结尾有引导。
+            观众看完后觉得“这时间花得值”，并且愿意点关注、看下一期，这才是B站长视频的最高标准。
+        </p>
+    </section>
+
+    <section class="card full">
+        <h2>十四、最终评审指令</h2>
+
+        <div class="rule">
+            <span class="big-number">通过标准：</span>
+            五大模块均达到 80 分以上，内容可正常发布并投放推荐。
+        </div>
+
+        <div class="rule">
+            <span class="big-number">优化标准：</span>
+            任一模块在 70-79 分，建议针对性优化后发布。
+        </div>
+
+        <div class="rule danger">
+            <span class="big-number">返修标准：</span>
+            选题、脚本或观众体验模块低于 70 分，必须返修，不宜直接发布。
+        </div>
+
+        <div class="rule danger">
+            <span class="big-number">重做标准：</span>
+            选题与内容设计低于 60 分，或开头留存率数据异常，建议重新策划选题和脚本。
+        </div>
+    </section>
+
+    <div class="footer">
+        © 超红传媒 CHAO HONG MEDIA｜B站长视频专业评分系统｜选题、封面标题、文案脚本、视听制作、观众体验五大模块100分制
+    </div>
+
+</div>
 </body>
 </html>
