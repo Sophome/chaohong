@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>超红传媒 · 能力画像</title>
+  <title>超红传媒 · 视频分镜表</title>
   <style>
     :root {
       color-scheme: dark;
@@ -15,8 +15,8 @@
       --soft:#d7dee8;
       --muted:#94a3b8;
       --line:rgba(148,163,184,.16);
-      --accent:#38bdf8;
-      --accent2:#818cf8;
+      --accent:#f97316;
+      --accent2:#fb923c;
       --shadow:0 4px 20px rgba(0,0,0,.28);
     }
     html[data-theme="light"] {
@@ -29,8 +29,8 @@
       --soft:#334155;
       --muted:#64748b;
       --line:rgba(15,23,42,.1);
-      --accent:#2563eb;
-      --accent2:#7c3aed;
+      --accent:#ea580c;
+      --accent2:#f97316;
       --shadow:0 4px 20px rgba(15,23,42,.06);
     }
 
@@ -121,9 +121,7 @@
     .card:hover .card-arr { opacity:1; }
 
     /* ── DOT COLORS ── */
-    .d-content  .sec-dot { background:#fb7299; }
-    .d-mgmt     .sec-dot { background:#f97316; }
-    .d-okr      .sec-dot { background:#22c55e; }
+    .d-tv .sec-dot { background:#3b82f6; }
 
     /* ── FOOTER ── */
     .foot {
@@ -146,8 +144,8 @@
     <div class="brand">
       <div class="logo">超红</div>
       <div class="brand-text">
-        <h1>能力画像</h1>
-        <span>超红传媒 · HR 人才标准与岗位画像</span>
+        <h1>视频分镜表</h1>
+        <span>超红传媒 · 视频拍摄分镜脚本汇总</span>
       </div>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 浅色</button>
@@ -160,106 +158,35 @@
     <a class="nav-pill" href="list.html">📋 选题清单</a>
     <a class="nav-pill" href="framework.html">📊 全年框架</a>
     <a class="nav-pill" href="score-content-evaluation.html">⭐ 评分标准</a>
-    <a class="nav-pill" href="storyboard.html">🎬 分镜表</a>
-    <span class="nav-pill active">👤 能力画像</span>
+    <span class="nav-pill active">🎬 分镜表</span>
   </div>
 
-  <!-- 内容创作 -->
-  <div class="sec d-content">
+  <!-- 选购指南分镜 -->
+  <div class="sec d-tv">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">内容创作</span>
-      <span class="sec-count">3 篇</span>
+      <span class="sec-title">选购指南</span>
+      <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="hr-profile-chief-editor.html" target="_blank">
+      <a class="card" href="storyboard-tv-buying-guide-202607.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">📋</span>
-          <span class="card-name">B站长视频主编核心能力画像</span>
+          <span class="card-icon">📺</span>
+          <span class="card-name">电视机选购指南 2026.07</span>
         </div>
-        <div class="card-desc">B站长视频主编岗位核心能力维度与人才标准</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="hr-profile-director.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">🎬</span>
-          <span class="card-name">B站长视频编导核心能力画像</span>
-        </div>
-        <div class="card-desc">B站长视频编导岗位核心能力维度与人才标准</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="hr-profile-editor.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">🎞️</span>
-          <span class="card-name">B站长视频摄影剪辑核心能力画像</span>
-        </div>
-        <div class="card-desc">B站长视频摄影剪辑岗位核心能力维度与人才标准</div>
+        <div class="card-desc">电视机选购指南视频完整分镜表，含内容结构、校对重点、分镜脚本与口播金句</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
 
-  <!-- 管理层 -->
-  <div class="sec d-mgmt">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">管理层</span>
-      <span class="sec-count">2 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="hr-profile-ceo.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">🏢</span>
-          <span class="card-name">传媒公司总经理能力画像</span>
-        </div>
-        <div class="card-desc">传媒公司总经理岗位核心能力维度与领导力标准</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="hr-profile-hrbp.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">🤝</span>
-          <span class="card-name">传媒公司HRBP核心能力画像</span>
-        </div>
-        <div class="card-desc">传媒公司HRBP岗位核心能力维度与业务伙伴标准</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- OKR拆解 -->
-  <div class="sec d-okr">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">OKR拆解</span>
-      <span class="sec-count">2 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="hr-okr-jiadian-annual.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">🗓️</span>
-          <span class="card-name">家电百大 年度创业路径OKR方案</span>
-        </div>
-        <div class="card-desc">家电总动员·家电百大年度创业路径目标规划与关键结果</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="hr-okr-jiadian-detail.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">📊</span>
-          <span class="card-name">家电百大 OKR拆解明细版</span>
-        </div>
-        <div class="card-desc">家电总动员·家电百大OKR目标拆解明细与执行追踪</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="foot">超红传媒 &nbsp;·&nbsp; 能力画像 &nbsp;·&nbsp; 7 篇 &nbsp;·&nbsp; 2026</div>
+  <div class="foot">超红传媒 &nbsp;·&nbsp; 视频分镜表 &nbsp;·&nbsp; 1 篇 &nbsp;·&nbsp; 2026</div>
 
 </div><!-- /page -->
 
 <script>
   (function() {
-    const saved = localStorage.getItem('chaohong-hr-theme');
+    const saved = localStorage.getItem('chaohong-storyboard-theme');
     const theme = saved || 'dark';
     document.documentElement.setAttribute('data-theme', theme);
     updateBtn(theme);
@@ -276,7 +203,7 @@
     const cur = html.getAttribute('data-theme') || 'dark';
     const next = cur === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    localStorage.setItem('chaohong-hr-theme', next);
+    localStorage.setItem('chaohong-storyboard-theme', next);
     updateBtn(next);
   }
 </script>

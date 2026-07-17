@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>电视机选购指南2026.07 视频分镜表</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #0f172a;
+      --line: #e5e7eb;
+      --soft-blue: #eff6ff;
+      --soft-yellow: #fffbeb;
+      --soft-green: #ecfdf5;
+      --soft-red: #fef2f2;
+      --table-head: #f1f5f9;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 48%, #2563eb 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 56px 48px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      right: -80px;
+      top: -80px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.15;
+      margin: 0 0 18px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.86);
+      margin: 0;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .meta-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 16px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+      font-weight: 500;
+    }
+
+    .meta-card span {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 32px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    .section h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.3;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+
+    .section h3 {
+      margin: 28px 0 14px;
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .toc-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+
+    .toc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.12);
+      border-color: rgba(37, 99, 235, 0.36);
+    }
+
+    .toc-card .num {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--primary);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .toc-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .toc-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice {
+      border-left: 5px solid var(--primary);
+      background: var(--soft-blue);
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      color: #1e3a8a;
+    }
+
+    .warning {
+      border-left: 5px solid #f59e0b;
+      background: var(--soft-yellow);
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      color: #92400e;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      margin: 18px 0 32px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--table-head);
+      color: #334155;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .time {
+      font-weight: 700;
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--soft-blue);
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
+    .badge.green {
+      background: var(--soft-green);
+      color: #047857;
+    }
+
+    .badge.yellow {
+      background: var(--soft-yellow);
+      color: #b45309;
+    }
+
+    .badge.red {
+      background: var(--soft-red);
+      color: #b91c1c;
+    }
+
+    .correction-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .correction-item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .correction-item strong {
+      color: #b91c1c;
+    }
+
+    .correction-item span {
+      display: block;
+      color: #047857;
+      margin-top: 6px;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .info-card h3 {
+      margin-top: 0;
+    }
+
+    .info-card ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .summary {
+      background: #0f172a;
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary h2 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    .summary ol {
+      padding-left: 22px;
+      margin-bottom: 0;
+    }
+
+    .summary li {
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .meta-grid,
+      .toc,
+      .cards-3,
+      .correction-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding: 40px 28px;
+      }
+
+      .section {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 12px 60px;
+      }
+
+      .hero {
+        border-radius: 20px;
+        padding: 32px 22px;
+      }
+
+      .meta-grid,
+      .toc,
+      .cards-3,
+      .correction-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        border-radius: 16px;
+        padding: 20px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      table {
+        min-width: 860px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      .section,
+      .summary {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .toc-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="hero-tag">视频分镜表 · 网页版 · 2026.07</div>
+      <h1>电视机选购指南<br />视频分镜表</h1>
+      <p>
+        基于《电视机选购指南2026.07》材料整理，适用于横屏视频、网页端专题、B站/视频号长视频。内容围绕入门避坑、进阶硬件、高端体验和尺寸推荐四个部分展开。
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <strong>视频类型</strong>
+          <span>家电选购指南</span>
+        </div>
+        <div class="meta-card">
+          <strong>建议时长</strong>
+          <span>10—14分钟</span>
+        </div>
+        <div class="meta-card">
+          <strong>画幅比例</strong>
+          <span>16:9 横屏</span>
+        </div>
+        <div class="meta-card">
+          <strong>目标用户</strong>
+          <span>装修/换电视用户</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>内容结构</h2>
+      <p class="section-desc">
+        原材料建议采用“3+1”结构：三个选购层级，加一个具体推荐模块。
+      </p>
+
+      <div class="toc">
+        <a class="toc-card" href="#part1">
+          <div class="num">1</div>
+          <h3>入门要点</h3>
+          <p>无开机广告、系统流畅、操作简单、片源便利。</p>
+        </a>
+
+        <a class="toc-card" href="#part2">
+          <div class="num">2</div>
+          <h3>进阶要点</h3>
+          <p>面板技术、峰值亮度、分区控光、抗反射能力。</p>
+        </a>
+
+        <a class="toc-card" href="#part3">
+          <div class="num">3</div>
+          <h3>高端要点</h3>
+          <p>画质芯片、AI算法、游戏高刷、音质与解码扩展。</p>
+        </a>
+
+        <a class="toc-card" href="#part4">
+          <div class="num">4</div>
+          <h3>尺寸与推荐</h3>
+          <p>55—100寸尺寸选择逻辑及型号推荐结构。</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>校对修正重点</h2>
+      <p class="section-desc">
+        以下为对原文中表达、编号、品牌名和专业说法的校对建议，已在分镜中做相应调整。
+      </p>
+
+      <div class="correction-list">
+        <div class="correction-item">
+          <strong>原文：“下来我们还会出品更多深度内容”</strong>
+          <span>建议：“接下来我们还会推出更多深度内容”。</span>
+        </div>
+
+        <div class="correction-item">
+          <strong>原文：“A4”编号重复</strong>
+          <span>建议：第二个“A4、画质色调自定义”改为“A5”。</span>
+        </div>
+
+        <div class="correction-item">
+          <strong>原文：“许多次含片的介绍”</strong>
+          <span>建议：改为“许多产品介绍”或“参数页介绍”。</span>
+        </div>
+
+        <div class="correction-item">
+          <strong>原文：“绝大多数家电75-85寸”</strong>
+          <span>建议：改为“绝大多数家庭，75—85寸更合适”。</span>
+        </div>
+
+        <div class="correction-item">
+          <strong>Vidda / Vidaa前后不统一</strong>
+          <span>建议：以官方品牌名为准，全文统一。</span>
+        </div>
+
+        <div class="correction-item">
+          <strong>原文：“OLED亮度和寿命表现较差”</strong>
+          <span>建议：改为“OLED在峰值亮度、长期高亮和烧屏风险方面仍需关注”。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>完整视频分镜表</h2>
+      <p class="section-desc">
+        表格包含时间、画面、旁白、字幕包装、剪辑备注五个核心维度。可直接给导演、摄像、剪辑和后期包装使用。
+      </p>
+
+      <h3>片头：痛点引入</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">00:00—00:05</td>
+              <td>新家客厅空墙、沙发、电视柜，镜头缓慢推进。</td>
+              <td>搬了新家，是不是第一件事就想买台电视？</td>
+              <td><span class="badge">搬新家，电视怎么买？</span></td>
+              <td>轻快但带悬念的音乐起。</td>
+            </tr>
+            <tr>
+              <td class="time">00:05—00:12</td>
+              <td>网页购物平台快速滑动，75寸电视价格从3000到30000跳动。</td>
+              <td>但一搜电视你会发现，同样是75寸，有的三千，有的三万。</td>
+              <td>75寸：￥2999 / ￥8999 / ￥29999</td>
+              <td>价格数字弹跳动画。</td>
+            </tr>
+            <tr>
+              <td class="time">00:12—00:20</td>
+              <td>用户皱眉看参数：Mini LED、QD-Mini LED、刷新率、分区、HDR。</td>
+              <td>Mini LED、QD-Mini LED、抗反、分区、峰值亮度……越看越乱。</td>
+              <td>参数越多，越不会买？</td>
+              <td>快速切屏，制造信息压力。</td>
+            </tr>
+            <tr>
+              <td class="time">00:20—00:30</td>
+              <td>主持人出镜，站在电视前。</td>
+              <td>不急，这期我们用10分钟，把电视选购讲清楚。</td>
+              <td><span class="badge green">2026电视机选购指南</span></td>
+              <td>音乐转稳，进入科普节奏。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>总览：3+1内容框架</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">00:30—00:45</td>
+              <td>四象限信息图：入门、进阶、高端、推荐型号。</td>
+              <td>为了让大家更高效看完，我们把内容分成3+1四个部分。</td>
+              <td>3+1选购框架</td>
+              <td>信息图动画。</td>
+            </tr>
+            <tr>
+              <td class="time">00:45—01:05</td>
+              <td>四个模块依次点亮。</td>
+              <td>入门解决广告、系统、操作；进阶讲面板和抗反；高端讲画质、音质和扩展；最后讲尺寸和型号推荐。</td>
+              <td>入门 / 进阶 / 高端 / 推荐</td>
+              <td>模块点亮音效。</td>
+            </tr>
+            <tr>
+              <td class="time">01:05—01:15</td>
+              <td>主持人出镜。</td>
+              <td>如果你只想买一台不踩坑、好用的电视，看完第一部分就够了。</td>
+              <td><span class="badge yellow">懒人先看入门部分</span></td>
+              <td>轻提示音。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="part1">第一部分：电视选购的入门要点</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">01:15—01:28</td>
+              <td>电视开机广告、复杂首页、多个会员入口的模拟画面。</td>
+              <td>很多人现在不爱看电视，不是因为电视没用，而是因为广告多、操作麻烦、会员太复杂。</td>
+              <td>痛点：广告多 / 操作难 / 会员乱</td>
+              <td>模拟焦虑感。</td>
+            </tr>
+            <tr>
+              <td class="time">01:28—01:45</td>
+              <td>遥控器特写，一键开机、一键进入B站或应用。</td>
+              <td>所以入门电视，第一优先级不是参数，而是两点：无开机广告，操作简单。</td>
+              <td><span class="badge green">无广告 + 易操作</span></td>
+              <td>字幕重点放大。</td>
+            </tr>
+            <tr>
+              <td class="time">01:45—02:00</td>
+              <td>海信、TCL、创维、Vidda、雷鸟等品牌文字墙。</td>
+              <td>目前头部厂商和子品牌，很多机型已经能做到开机无广告或广告影响很低。</td>
+              <td>头部品牌基础体验更稳</td>
+              <td>Logo需授权，建议用文字替代。</td>
+            </tr>
+            <tr>
+              <td class="time">02:00—02:18</td>
+              <td>老人使用语音搜索，儿童一键打开动画片。</td>
+              <td>对家里有老人、小孩的用户来说，一键直达、AI语音、老人模式，比很多纸面参数更重要。</td>
+              <td>老人模式 / AI语音 / 一键直达</td>
+              <td>家庭化场景。</td>
+            </tr>
+            <tr>
+              <td class="time">02:18—02:30</td>
+              <td>电视首页显示主流视频APP、B站等应用入口。</td>
+              <td>电视好不好用，片源也很关键。现在很多电视可以直接安装主流视频APP。</td>
+              <td>片源便利性很重要</td>
+              <td>APP画面注意版权。</td>
+            </tr>
+            <tr>
+              <td class="time">02:30—02:45</td>
+              <td>外接电视盒子、NAS、U盘、第三方应用的示意图。</td>
+              <td>也可以外接电视盒子，或者通过NAS、U盘、局域网播放本地资源。</td>
+              <td>电视盒子 / NAS / 本地播放</td>
+              <td>用示意动画即可。</td>
+            </tr>
+            <tr>
+              <td class="time">02:45—03:00</td>
+              <td>主持人总结。</td>
+              <td>入门电视记住一句话：系统别烦人，操作别复杂，基础体验稳定，比堆参数更重要。</td>
+              <td><span class="badge">能用、好用、不烦人</span></td>
+              <td>小结卡片。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="part2">第二部分：电视选购的进阶要点</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">03:00—03:12</td>
+              <td>电视屏幕结构剖面动画：背光、液晶层、量子点膜。</td>
+              <td>接下来进入进阶部分。电视画质的基础，首先看面板和背光技术。</td>
+              <td>进阶关键词：面板技术</td>
+              <td>科技感动画。</td>
+            </tr>
+            <tr>
+              <td class="time">03:12—03:28</td>
+              <td>参数条显示：面板成本约占整机成本40%—60%。</td>
+              <td>面板大约占到电视制造成本的40%—60%，直接决定亮度、色彩和对比度基础。</td>
+              <td>面板决定画质底线</td>
+              <td>数据来源需确认。</td>
+            </tr>
+            <tr>
+              <td class="time">03:28—03:50</td>
+              <td>四类技术路线图：Mini LED → QD-Mini LED → SQD-Mini LED → RGB Mini LED。</td>
+              <td>现在主流路线包括Mini LED、QD-Mini LED、SQD-Mini LED和RGB Mini LED。</td>
+              <td>技术路线一图看懂</td>
+              <td>动画从低到高。</td>
+            </tr>
+            <tr>
+              <td class="time">03:50—04:10</td>
+              <td>普通LCD和Mini LED亮暗对比画面。</td>
+              <td>Mini LED相比传统LCD，峰值亮度更高、控光能力更强，是入门到中端的主流升级方向。</td>
+              <td>Mini LED：入门升级</td>
+              <td>需实拍或授权对比画面。</td>
+            </tr>
+            <tr>
+              <td class="time">04:10—04:28</td>
+              <td>量子点色彩增强示意。</td>
+              <td>QD-Mini LED通过量子点技术提升色彩表现，是中端性价比机型常见方案。</td>
+              <td>QD-Mini LED：中端主流</td>
+              <td>色彩渐变动画。</td>
+            </tr>
+            <tr>
+              <td class="time">04:28—04:45</td>
+              <td>高端电视展示，高亮、高饱和HDR画面。</td>
+              <td>SQD-Mini LED可以理解为在量子点技术上进一步强化，通常出现在高端机型上。</td>
+              <td>SQD-Mini LED：高端方向</td>
+              <td>表述需谨慎。</td>
+            </tr>
+            <tr>
+              <td class="time">04:45—05:05</td>
+              <td>RGB三色灯珠发光示意，去掉量子点膜。</td>
+              <td>RGB Mini LED则是另一条高端路线，采用红绿蓝三色灯珠发光，色彩和能耗表现更有潜力。</td>
+              <td>RGB Mini LED：旗舰路线</td>
+              <td>用三色光效动画。</td>
+            </tr>
+            <tr>
+              <td class="time">05:05—05:18</td>
+              <td>四档选择建议卡片。</td>
+              <td>简单记：Mini LED看入门，QD-Mini LED看中端，SQD-Mini LED看高端，RGB Mini LED看旗舰。</td>
+              <td><span class="badge">选购速记</span></td>
+              <td>卡片保留3秒。</td>
+            </tr>
+            <tr>
+              <td class="time">05:18—05:35</td>
+              <td>HDR高光画面：太阳、灯光、金属反光。</td>
+              <td>亮度也很重要。比如杜比视界内容，通常需要1000尼特峰值亮度打底。</td>
+              <td>峰值亮度：1000尼特起步更稳</td>
+              <td>数据图表。</td>
+            </tr>
+            <tr>
+              <td class="time">05:35—05:50</td>
+              <td>分区控光示意：少分区 vs 多分区。</td>
+              <td>分区越多，控光越细，但分区也有边际效应，不是越多就一定越值得。</td>
+              <td>分区不是越多越好</td>
+              <td>网格动画。</td>
+            </tr>
+            <tr>
+              <td class="time">05:50—06:05</td>
+              <td>主持人总结。</td>
+              <td>买电视不能只盯一个参数，要看亮度、分区、算法、面板方案的综合表现。</td>
+              <td>看综合，不看单一参数</td>
+              <td>小结卡片。</td>
+            </tr>
+            <tr>
+              <td class="time">06:05—06:20</td>
+              <td>白天客厅，落地窗光线打到电视上，屏幕反光严重。</td>
+              <td>电视画质再好，如果白天一开全是反光，也会极大影响观看体验。</td>
+              <td><span class="badge red">亮厅用户重点看抗反</span></td>
+              <td>真实场景拍摄。</td>
+            </tr>
+            <tr>
+              <td class="time">06:20—06:38</td>
+              <td>三类抗反技术卡片：AG、LR/AR、AGLR。</td>
+              <td>目前常见抗反方案主要有三类：AG防眩光、LR或AR低反镀膜，以及AG+LR复合方案。</td>
+              <td>AG / LR-AR / AGLR</td>
+              <td>专业图解。</td>
+            </tr>
+            <tr>
+              <td class="time">06:38—06:55</td>
+              <td>磨砂屏与低反屏对比：清晰度、通透度。</td>
+              <td>磨砂雾面可以减少镜面反射，但雾度过高会影响通透感和清晰度。</td>
+              <td>防眩光≠一定好画质</td>
+              <td>对比画面。</td>
+            </tr>
+            <tr>
+              <td class="time">06:55—07:15</td>
+              <td>显示“AG25+LR低反膜”示意，旁边标注“高端配置”。</td>
+              <td>更好的方案是防眩光和低反射结合，既压反光，又尽量保持画面通透。</td>
+              <td>高端抗反：AG25 + LR</td>
+              <td>数据需与实测对应。</td>
+            </tr>
+            <tr>
+              <td class="time">07:15—07:35</td>
+              <td>西晒客厅、落地窗、夜晚开灯三种场景。</td>
+              <td>如果你家是西晒客厅、落地窗正对电视，抗反能力要重点看；如果主要晚上看片，中高端低反方案通常已经够用。</td>
+              <td>极端采光才需要极致抗反</td>
+              <td>场景切换。</td>
+            </tr>
+            <tr>
+              <td class="time">07:35—07:45</td>
+              <td>主持人出镜。</td>
+              <td>真要解决亮厅问题，有时候一副好窗帘，比盲目上旗舰更划算。</td>
+              <td><span class="badge yellow">电视 + 窗帘一起考虑</span></td>
+              <td>轻松语气。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="part3">第三部分：电视选购的高端要点</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">07:45—08:00</td>
+              <td>高端电视画质芯片动画，AI算法界面。</td>
+              <td>到了高端电视，差异不只在面板，还在芯片和算法。</td>
+              <td>高端差异：芯片 + AI算法</td>
+              <td>科技包装。</td>
+            </tr>
+            <tr>
+              <td class="time">08:00—08:18</td>
+              <td>高对比画面：墙面纹理、暗部细节、亮部层次。</td>
+              <td>第一是更精细的控光能力。同样亮度和分区，不同算法会带来完全不同的层次感。</td>
+              <td>A1 精细控光</td>
+              <td>需补实拍对比。</td>
+            </tr>
+            <tr>
+              <td class="time">08:18—08:35</td>
+              <td>老片源修复前后：噪点、清晰度、人物面部细节。</td>
+              <td>第二是去噪、超分辨率解析和景深重构。老片源、低清片源会明显受益。</td>
+              <td>A2 去噪 / 超分 / 景深重构</td>
+              <td>前后对比。</td>
+            </tr>
+            <tr>
+              <td class="time">08:35—08:52</td>
+              <td>人物肤色对比：偏红、偏黄、自然肤色。</td>
+              <td>第三是色彩还原，尤其是肤色。肤色一旦偏红或偏灰，会非常影响观感。</td>
+              <td>A3 肤色校准很重要</td>
+              <td>人像画面。</td>
+            </tr>
+            <tr>
+              <td class="time">08:52—09:10</td>
+              <td>游戏画面、赛车、足球、动作片高速运动。</td>
+              <td>第四是刷新率和背光响应。高端电视通常支持4K 150Hz甚至更高刷新率。</td>
+              <td>A4 高刷新 + 快响应</td>
+              <td>需补游戏素材。</td>
+            </tr>
+            <tr>
+              <td class="time">09:10—09:25</td>
+              <td>小球残影测试：普通背光 vs 高速背光。</td>
+              <td>同样刷新率下，背光响应越快，运动残影越少，游戏和体育画面更清晰。</td>
+              <td>残影越少，运动越清晰</td>
+              <td>需补测试画面。</td>
+            </tr>
+            <tr>
+              <td class="time">09:25—09:35</td>
+              <td>色调自定义菜单画面。</td>
+              <td>第五是画质色调自定义，适合对电影、游戏、球赛有不同偏好的用户。</td>
+              <td>A5 色调自定义</td>
+              <td>原文A4重复，已修正。</td>
+            </tr>
+            <tr>
+              <td class="time">09:35—09:50</td>
+              <td>电视内置扬声器结构图：左右声道、低音炮、天空声道。</td>
+              <td>很多人买电视只看画质，但高端电视的音质差异也很明显。</td>
+              <td>高端电视也要听声音</td>
+              <td>音波动画。</td>
+            </tr>
+            <tr>
+              <td class="time">09:50—10:08</td>
+              <td>参数卡片：2.0、2.1、4.1.2、功率、低音单元。</td>
+              <td>入门电视通常是左右声道，高端电视可能做到4.1.2甚至更多声道，并支持杜比音效。</td>
+              <td>看声道、功率、低音配置</td>
+              <td>参数卡片。</td>
+            </tr>
+            <tr>
+              <td class="time">10:08—10:25</td>
+              <td>电影爆炸、演唱会、人声对白三类场景。</td>
+              <td>好的电视音响，在人声、低频和空间感上都会更完整。</td>
+              <td>人声清楚 / 低频有力 / 声场更宽</td>
+              <td>声音设计突出。</td>
+            </tr>
+            <tr>
+              <td class="time">10:25—10:40</td>
+              <td>声场校正动画：客厅反射、声波校准。</td>
+              <td>高端电视还会加入AI音效管理和声场校正，根据房间空间优化声音同步和定位。</td>
+              <td>声场校正：适配不同客厅</td>
+              <td>动画演示。</td>
+            </tr>
+            <tr>
+              <td class="time">10:40—10:58</td>
+              <td>NAS、U盘、路由器网盘、电视影视墙界面。</td>
+              <td>中高端电视通常具备更强的视频解码和资源管理能力，比如影视墙、NAS播放、AI搜索。</td>
+              <td>解码能力影响本地观影体验</td>
+              <td>需补界面。</td>
+            </tr>
+            <tr>
+              <td class="time">10:58—11:15</td>
+              <td>电视连接芝杜播放器、Apple TV、游戏主机。</td>
+              <td>但要注意，内置播放器适合偶尔看NAS电影，真发烧还是建议外接专业播放器。</td>
+              <td>发烧友建议：播放器外接</td>
+              <td>平衡表述。</td>
+            </tr>
+            <tr>
+              <td class="time">11:15—11:32</td>
+              <td>PS5/Xbox连接电视，HDMI 2.1接口特写。</td>
+              <td>游戏玩家要重点看HDMI 2.1接口、4K高刷、VRR、ALLM等功能。</td>
+              <td>HDMI 2.1 / 4K高刷 / VRR</td>
+              <td>接口特写。</td>
+            </tr>
+            <tr>
+              <td class="time">11:32—11:45</td>
+              <td>功放、回音壁、家庭影院连接图。</td>
+              <td>如果你要接回音壁、功放或家庭影院，还要看eARC音频回传。</td>
+              <td>影院扩展：eARC很重要</td>
+              <td>线路图动画。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="part4">第四部分：尺寸与型号推荐</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">11:45—12:00</td>
+              <td>客厅观看距离示意：2.5m、3m、3.5m、4m。</td>
+              <td>最后一个问题：电视买多大合适？网上有很多观看距离表，但实际选购要结合预算、户型和搬运条件。</td>
+              <td>尺寸选择：不只看距离</td>
+              <td>图表。</td>
+            </tr>
+            <tr>
+              <td class="time">12:00—12:18</td>
+              <td>55、65、75、85、100寸尺寸对比墙。</td>
+              <td>从目前市场来看，75寸和85寸是多数家庭最合适、价格优势也最大的尺寸。</td>
+              <td><span class="badge green">主流优选：75—85寸</span></td>
+              <td>尺寸对比。</td>
+            </tr>
+            <tr>
+              <td class="time">12:18—12:35</td>
+              <td>大客厅、别墅、一楼、电梯可进100寸电视。</td>
+              <td>如果预算、空间和搬运条件允许，100寸优先级也越来越高，尤其适合大客厅和影音需求强的用户。</td>
+              <td>大客厅可优先100寸</td>
+              <td>大屏震撼画面。</td>
+            </tr>
+            <tr>
+              <td class="time">12:35—12:48</td>
+              <td>大屏电视白天反光场景。</td>
+              <td>但100寸更要注意抗反射，因为屏幕面积越大，受到光源干扰的概率越高。</td>
+              <td><span class="badge red">100寸重点看抗反</span></td>
+              <td>强调提示。</td>
+            </tr>
+            <tr>
+              <td class="time">12:48—13:05</td>
+              <td>推荐清单表格模板：尺寸、预算、用途、推荐型号。</td>
+              <td>接下来我们会按照55到100寸，结合入门、中端、高端、游戏、观影等需求，整理具体型号。</td>
+              <td>尺寸 / 预算 / 用途</td>
+              <td>此处需补型号。</td>
+            </tr>
+            <tr>
+              <td class="time">13:05—13:20</td>
+              <td>表格占位：55寸、65寸、75寸、85寸、100寸。</td>
+              <td>因为电视价格波动较快，具体直达链接和实时价格，我们会整理在评论区或网页版本中。</td>
+              <td>实时价格看评论区/网页链接</td>
+              <td>引导互动。</td>
+            </tr>
+            <tr>
+              <td class="time">13:20—13:35</td>
+              <td>主持人出镜总结。</td>
+              <td>懒人记住：普通家庭优先75或85寸；亮厅重点看抗反；游戏看HDMI 2.1和高刷；观影看面板、控光和解码。</td>
+              <td><span class="badge">懒人总结</span></td>
+              <td>总结卡片。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>片尾总结与互动</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>画面内容</th>
+              <th>旁白/台词</th>
+              <th>字幕/包装</th>
+              <th>音效/剪辑备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time">13:35—13:50</td>
+              <td>四个结论卡片依次出现。</td>
+              <td>总结一下，入门看系统和广告，进阶看面板和抗反，高端看芯片、音质和扩展，最后再按尺寸和预算选型号。</td>
+              <td>入门 / 进阶 / 高端 / 推荐</td>
+              <td>结构回收。</td>
+            </tr>
+            <tr>
+              <td class="time">13:50—14:05</td>
+              <td>主持人出镜。</td>
+              <td>这期内容从制作到发布，我们至少准备了一个礼拜。如果你还有其他问题，欢迎在评论区留言。</td>
+              <td>有问题评论区见</td>
+              <td>语气诚恳。</td>
+            </tr>
+            <tr>
+              <td class="time">14:05—14:18</td>
+              <td>点赞、收藏、关注动画。</td>
+              <td>也希望大家点赞、收藏、关注，接下来我们还会推出更多家电深度选购内容。</td>
+              <td>点赞 / 收藏 / 关注</td>
+              <td>片尾音乐。</td>
+            </tr>
+            <tr>
+              <td class="time">14:18—14:25</td>
+              <td>频道Logo、下期预告。</td>
+              <td>我们下期见。</td>
+              <td>下期见</td>
+              <td>片尾收束。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>网页版本模块建议</h2>
+      <p class="section-desc">
+        如果将该内容做成网页专题，建议采用“首屏导流 + 目录导航 + 参数速查 + 型号推荐”的结构。
+      </p>
+
+      <div class="cards-3">
+        <div class="info-card">
+          <h3>首屏模块</h3>
+          <ul>
+            <li>标题：2026电视机选购指南</li>
+            <li>副标题：75寸三千到三万，到底差在哪？</li>
+            <li>按钮：直接看推荐型号 / 先看入门避坑</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>参数速查</h3>
+          <ul>
+            <li>Mini LED技术路线图</li>
+            <li>抗反射技术对比表</li>
+            <li>游戏电视参数表</li>
+            <li>电视尺寸选择表</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>型号推荐区</h3>
+          <ul>
+            <li>55寸：卧室/小客厅</li>
+            <li>65寸：普通客厅</li>
+            <li>75寸：主流家庭</li>
+            <li>85/100寸：大客厅/影音用户</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>注意：</strong>原文中未提供具体型号清单，因此网页中的“推荐型号”区域建议后续补充实时价格、具体型号、使用场景和推荐理由。
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>尺寸</th>
+              <th>预算</th>
+              <th>使用场景</th>
+              <th>推荐型号</th>
+              <th>推荐理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>55寸</td>
+              <td>入门</td>
+              <td>卧室/小客厅</td>
+              <td>待补充</td>
+              <td>待补充</td>
+            </tr>
+            <tr>
+              <td>65寸</td>
+              <td>中端</td>
+              <td>普通客厅</td>
+              <td>待补充</td>
+              <td>待补充</td>
+            </tr>
+            <tr>
+              <td>75寸</td>
+              <td>主流</td>
+              <td>大多数家庭</td>
+              <td>待补充</td>
+              <td>待补充</td>
+            </tr>
+            <tr>
+              <td>85寸</td>
+              <td>进阶</td>
+              <td>观影/游戏</td>
+              <td>待补充</td>
+              <td>待补充</td>
+            </tr>
+            <tr>
+              <td>100寸</td>
+              <td>高端</td>
+              <td>大客厅/别墅</td>
+              <td>待补充</td>
+              <td>待补充</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>专业编导执行建议</h2>
+
+      <div class="notice">
+        原材料信息量较大，如果严格控制在10分钟内，建议压缩音效管理、专业播放器对比、部分技术路线解释，把型号推荐部分放到网页或评论区补充。
+      </div>
+
+      <div class="cards-3">
+        <div class="info-card">
+          <h3>节奏建议</h3>
+          <ul>
+            <li>前1分钟：痛点引入</li>
+            <li>1—3分钟：入门避坑</li>
+            <li>3—7分钟：面板与抗反</li>
+            <li>7—11分钟：高端体验</li>
+            <li>11—14分钟：尺寸和总结</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>必须补充素材</h3>
+          <ul>
+            <li>电视开机、系统首页、遥控器操作</li>
+            <li>亮厅反光和抗反屏对比</li>
+            <li>分区控光和肤色还原对比</li>
+            <li>游戏高刷和残影测试</li>
+            <li>HDMI、eARC、NAS播放实拍</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>口播风格</h3>
+          <ul>
+            <li>少讲术语，多讲场景</li>
+            <li>少堆参数，多讲判断逻辑</li>
+            <li>避免绝对化表述</li>
+            <li>技术名词用一句话解释</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="summary">
+      <h2>精简版口播金句</h2>
+      <ol>
+        <li>入门电视先别看参数，先看有没有开机广告、系统卡不卡、老人会不会用。</li>
+        <li>中端电视重点看面板、亮度、分区和抗反，不要只盯一个参数。</li>
+        <li>高端电视的差距，不只在屏幕，更在芯片、算法、音质、游戏和扩展能力。</li>
+        <li>普通家庭优先75寸和85寸，大客厅有条件可以直接考虑100寸。</li>
+        <li>亮厅用户一定看抗反，游戏用户一定看HDMI 2.1和高刷，观影用户重点看控光、肤色和解码。</li>
+      </ol>
+    </section>
+
+    <footer class="footer">
+      <p>《电视机选购指南2026.07》视频分镜表 · HTML/CSS 网页版</p>
+    </footer>
+
+  </main>
+</body>
+</html>
