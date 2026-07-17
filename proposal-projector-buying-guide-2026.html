@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《2026家用投影仪选购指南》视频立项书</title>
+<style>
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #7c3aed;
+  --primary-dark: #6d28d9;
+  --accent: #0f172a;
+  --line: #e5e7eb;
+  --soft-purple: #f5f3ff;
+  --soft-yellow: #fffbeb;
+  --soft-green: #ecfdf5;
+  --soft-red: #fef2f2;
+  --soft-blue: #eff6ff;
+  --soft-orange: #fff7ed;
+  --soft-pink: #fdf2f8;
+  --table-head: #f1f5f9;
+  --shadow: 0 12px 30px rgba(15,23,42,0.08);
+  --radius: 18px;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.75;
+}
+.page { max-width:1280px; margin:0 auto; padding:32px 20px 80px; }
+
+/* Hero */
+.hero {
+  background:linear-gradient(135deg,#0f172a 0%,#4c1d95 48%,#7c3aed 100%);
+  color:#fff; border-radius:28px; padding:56px 48px;
+  box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.hero::after {
+  content:""; position:absolute; width:340px; height:340px;
+  border-radius:50%; right:-90px; top:-90px;
+  background:rgba(255,255,255,0.10);
+}
+.hero-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 14px; border-radius:999px;
+  background:rgba(255,255,255,0.14); font-size:14px; margin-bottom:20px;
+}
+.hero h1 { font-size:clamp(32px,5vw,52px); line-height:1.15; margin:0 0 18px; letter-spacing:-1px; }
+.hero p { max-width:760px; font-size:18px; color:rgba(255,255,255,0.86); margin:0; }
+.meta-grid {
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px; margin-top:24px;
+}
+.meta-card {
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18);
+  padding:16px; border-radius:16px; backdrop-filter:blur(8px);
+}
+.meta-card strong { display:block; font-size:14px; color:rgba(255,255,255,0.72); font-weight:500; }
+.meta-card span { display:block; margin-top:4px; font-size:18px; font-weight:700; }
+
+/* Section */
+.section {
+  margin-top:32px; background:var(--card); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:32px;
+}
+.section h2 {
+  margin:0 0 18px; font-size:28px; line-height:1.3; color:var(--accent);
+  display:flex; align-items:center; gap:10px;
+}
+.section h2::before {
+  content:""; display:inline-block; width:8px; height:28px;
+  border-radius:999px; background:var(--primary);
+}
+.section h3 { margin:28px 0 14px; font-size:22px; color:var(--accent); }
+.section-desc { color:var(--muted); margin-bottom:24px; }
+
+/* TOC */
+.toc { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.toc-card {
+  border:1px solid var(--line); border-radius:16px; padding:20px;
+  background:#fff; transition:0.2s ease; text-decoration:none; color:inherit; display:block;
+}
+.toc-card:hover {
+  transform:translateY(-3px); box-shadow:0 12px 24px rgba(124,58,237,0.12);
+  border-color:rgba(124,58,237,0.36);
+}
+.toc-card .num {
+  display:inline-flex; width:34px; height:34px; align-items:center;
+  justify-content:center; border-radius:50%; color:#fff;
+  background:var(--primary); font-weight:700; margin-bottom:12px;
+}
+.toc-card h3 { margin:0 0 8px; font-size:18px; }
+.toc-card p { margin:0; color:var(--muted); font-size:14px; }
+
+/* Notice / Warning */
+.notice {
+  border-left:5px solid var(--primary); background:var(--soft-purple);
+  padding:18px 20px; border-radius:12px; margin:20px 0; color:#4c1d95;
+}
+.warning {
+  border-left:5px solid #f59e0b; background:var(--soft-yellow);
+  padding:18px 20px; border-radius:12px; margin:20px 0; color:#92400e;
+}
+.info-box {
+  border-left:5px solid #0ea5e9; background:var(--soft-blue);
+  padding:18px 20px; border-radius:12px; margin:20px 0; color:#0369a1;
+}
+
+/* Cards */
+.cards-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.cards-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.cards-4 { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+
+.info-card {
+  border:1px solid var(--line); border-radius:16px; padding:20px; background:#fff;
+}
+.info-card h3 { margin-top:0; font-size:18px; }
+.info-card ul { padding-left:20px; margin-bottom:0; }
+.info-card li { margin-bottom:6px; color:var(--muted); font-size:14px; }
+
+/* Data cards */
+.data-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+.data-card {
+  background:var(--soft-purple); border-radius:14px; padding:20px; text-align:center;
+}
+.data-card .num { font-size:28px; font-weight:800; color:var(--primary-dark); }
+.data-card .label { font-size:13px; color:var(--muted); margin-top:6px; }
+
+/* Table */
+.table-wrap {
+  width:100%; overflow-x:auto; border:1px solid var(--line);
+  border-radius:14px; margin:18px 0 32px; background:#fff;
+}
+table { width:100%; border-collapse:collapse; min-width:900px; }
+th, td {
+  padding:14px 16px; border-bottom:1px solid var(--line);
+  vertical-align:top; text-align:left; font-size:14px;
+}
+th { background:var(--table-head); color:#334155; font-weight:700; white-space:nowrap; }
+tbody tr:hover { background:#f8fafc; }
+tbody tr:last-child td { border-bottom:none; }
+
+.badge {
+  display:inline-flex; align-items:center; padding:4px 10px;
+  border-radius:999px; font-size:12px; font-weight:700;
+  white-space:nowrap;
+}
+.badge.purple { background:var(--soft-purple); color:var(--primary-dark); }
+.badge.green { background:var(--soft-green); color:#047857; }
+.badge.yellow { background:var(--soft-yellow); color:#b45309; }
+.badge.red { background:var(--soft-red); color:#b91c1c; }
+.badge.blue { background:var(--soft-blue); color:#1d4ed8; }
+
+/* Timeline */
+.timeline { position:relative; padding-left:30px; }
+.timeline::before {
+  content:""; position:absolute; left:10px; top:0; bottom:0;
+  width:2px; background:var(--line);
+}
+.timeline-item { position:relative; margin-bottom:24px; }
+.timeline-item::before {
+  content:""; position:absolute; left:-24px; top:6px;
+  width:10px; height:10px; border-radius:50%; background:var(--primary);
+}
+.timeline-item strong { display:block; color:var(--primary-dark); margin-bottom:4px; }
+
+/* Flow chart */
+.flow-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:16px 0; }
+.flow-step {
+  background:var(--soft-purple); border:2px solid var(--primary);
+  border-radius:12px; padding:12px 18px; text-align:center;
+  font-weight:700; color:var(--primary-dark); font-size:14px;
+}
+.flow-arrow { font-size:20px; color:var(--primary); font-weight:700; }
+
+/* Summary */
+.summary {
+  background:#0f172a; color:#fff; border-radius:var(--radius);
+  padding:32px; margin-top:32px; box-shadow:var(--shadow);
+}
+.summary h2 { margin-top:0; font-size:28px; }
+.summary ol { padding-left:22px; margin-bottom:0; }
+.summary li { margin-bottom:10px; color:rgba(255,255,255,0.9); }
+
+/* Highlight text */
+.hl { background:linear-gradient(180deg,transparent 60%,rgba(124,58,237,0.2) 60%); }
+
+.scenario-icons { display:flex; gap:32px; flex-wrap:wrap; margin:20px 0; }
+.scenario-icon { text-align:center; }
+.scenario-icon .icon { font-size:36px; margin-bottom:8px; }
+.scenario-icon .label { font-size:14px; font-weight:600; color:var(--text); }
+
+.footer { margin-top:32px; text-align:center; color:var(--muted); font-size:14px; }
+
+@media(max-width:980px) {
+  .meta-grid, .toc, .cards-3, .cards-4, .data-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .hero { padding:40px 28px; }
+  .section { padding:24px; }
+}
+@media(max-width:640px) {
+  .page { padding:20px 12px 60px; }
+  .hero { border-radius:20px; padding:32px 22px; }
+  .meta-grid, .toc, .cards-3, .cards-4, .cards-2, .data-grid { grid-template-columns:1fr; }
+  .section { border-radius:16px; padding:20px; }
+  .section h2 { font-size:24px; }
+  table { min-width:860px; }
+}
+@media print {
+  body { background:#fff; }
+  .page { max-width:none; padding:0; }
+  .hero, .section, .summary { box-shadow:none; break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-tag">立项编号 PJ-2026-0717 ｜ 视频立项书 ｜ 2026.07</div>
+  <h1>《2026年家用投影仪选购指南》<br>视频立项书</h1>
+  <p>基于 RTINGS 中国版选购指南框架，结合洛图科技 2026 年市场数据，面向 B站/视频号 长视频用户，打造一档「先定场景、再选参数」的投影仪科学选购内容。</p>
+  <div class="meta-grid">
+    <div class="meta-card"><strong>视频类型</strong><span>家电选购指南</span></div>
+    <div class="meta-card"><strong>建议时长</strong><span>12—16分钟</span></div>
+    <div class="meta-card"><strong>画幅比例</strong><span>16:9 横屏</span></div>
+    <div class="meta-card"><strong>目标用户</strong><span>装修/租房/影音用户</span></div>
+  </div>
+</header>
+
+<!-- ============ 1. 立项背景 ============ -->
+<section class="section">
+  <h2>一、立项背景与市场环境</h2>
+  <div class="notice">
+    <strong>核心判断：</strong>2025-2026 年中国投影市场「规模下行、结构升级」，低价内卷仍在，但中高端激光/三色激光/4K 正在成为真正的升级方向。用户更需要的不再是「哪款最便宜」，而是「按我的场景怎么选」。
+  </div>
+
+  <h3>2025-2026 关键市场数据</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="num">520.3<small style="font-size:14px">万台</small></div><div class="label">2025年智能投影销量<br><small>(同比↓13.9%)</small></div></div>
+    <div class="data-card"><div class="num">83.6<small style="font-size:14px">亿元</small></div><div class="label">2025年智能投影销额<br><small>(同比↓16.5%)</small></div></div>
+    <div class="data-card"><div class="num">16.7<small style="font-size:14px">%</small></div><div class="label">2026 Q1激光渗透率<br><small>(三色激光占其中95%)</small></div></div>
+    <div class="data-card"><div class="num">12.9<small style="font-size:14px">%</small></div><div class="label">2026 Q1线上4K占比<br><small>(持续上升中)</small></div></div>
+  </div>
+
+  <h3>为什么现在做这期内容？</h3>
+  <div class="cards-3">
+    <div class="info-card">
+      <h3>市场窗口</h3>
+      <ul>
+        <li>2026年7月起新能效国标(GB 32028-2025)正式实施</li>
+        <li>三色激光占比飙升至95%，技术路线清晰化</li>
+        <li>4K渗透加速，价格逐步下探</li>
+        <li>行业洗牌期，用户更需要科学选购指导</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>用户痛点</h3>
+      <ul>
+        <li>投影仪参数比电视更复杂（光源/显示技术/投射比/幕布）</li>
+        <li>「兼容4K」和「真4K」难以分辨</li>
+        <li>买了才发现投不满、噪音大、白天看不了</li>
+        <li>低价杂牌参数看起来很香，实际翻车率高</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>频道策略</h3>
+      <ul>
+        <li>与已完成的《电视机选购指南》形成「家庭大屏」系列</li>
+        <li>电视 vs 投影的差异化定位互补内容</li>
+        <li>吸引装修季、租房党、影音发烧友三类核心观众</li>
+        <li>评论区可做投影型号推荐长尾流量</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 内容结构 ============ -->
+<section class="section">
+  <h2>二、内容结构：「先定场景，再选参数」</h2>
+  <p class="section-desc">
+    投影仪与电视最大的不同——<strong>参数不是第一优先级，场景才是</strong>。卧室、客厅、影院、游戏、便携，对亮度/噪音/分辨率/投射比的要求完全不同。本期内容采用 <strong>「场景驱动 + 技术拆解 + 参数避坑 + 清单推荐」</strong> 四段式结构。
+  </p>
+
+  <div class="toc">
+    <div class="toc-card">
+      <div class="num">1</div>
+      <h3>场景定生死</h3>
+      <p>卧室/客厅/影院/游戏/便携，不同场景的配置优先级完全不一样。</p>
+    </div>
+    <div class="toc-card">
+      <div class="num">2</div>
+      <h3>技术路线图</h3>
+      <p>1LCD / DLP / 3LCD / LED / 激光 / 三色激光，一图看懂怎么选。</p>
+    </div>
+    <div class="toc-card">
+      <div class="num">3</div>
+      <h3>参数避坑</h3>
+      <p>亮度虚标、假4K、投射比翻车、噪音陷阱、幕布误区。</p>
+    </div>
+    <div class="toc-card">
+      <div class="num">4</div>
+      <h3>选购清单</h3>
+      <p>分场景推荐 + 24项核对清单 + 型号速查表。</p>
+    </div>
+  </div>
+
+  <h3>内容结构详细设计</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:10%">段落</th><th style="width:12%">时长</th><th style="width:38%">核心内容</th><th style="width:40%">关键要点</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>片头</strong></td>
+          <td>0:00-0:40</td>
+          <td>投影仪选购的真实痛点：参数看不懂、买完发现白天看不了、投不满、噪音大。快速建立「投影比电视更挑环境」的核心认知。</td>
+          <td>制造共鸣，引出「场景优先」的核心主张</td>
+        </tr>
+        <tr>
+          <td><strong>总览</strong></td>
+          <td>0:40-1:10</td>
+          <td>四段式框架预览：场景→技术→参数→清单。一句话定调：「买投影先别问参数，先问你在哪用」。</td>
+          <td>建立内容预期，降低观看门槛</td>
+        </tr>
+        <tr style="background:#f5f3ff">
+          <td><strong>Part 1<br>场景定生死</strong></td>
+          <td>1:10-4:00<br><small>(2分50秒)</small></td>
+          <td>
+            ① 卧室夜间观影：最友好场景，1000-3000元足够<br>
+            ② 客厅白天使用：必须高亮激光+抗光幕<br>
+            ③ 家庭影院：黑位/色准/对比度比亮度重要<br>
+            ④ 游戏主机：延迟是关键<br>
+            ⑤ 露营便携：续航和便携性优先<br>
+            ⑥ 儿童家庭：漫反射护眼+内容管控
+          </td>
+          <td>每场景给出「优先」和「慎选」清单；穿插真实翻车案例</td>
+        </tr>
+        <tr style="background:#fff7ed">
+          <td><strong>Part 2<br>技术路线图</strong></td>
+          <td>4:00-7:30<br><small>(3分30秒)</small></td>
+          <td>
+            ① 1LCD：销量主力(68%)，入门卧室首选，注意亮度散热<br>
+            ② DLP：中高端常见路线，画面锐度好，注意DMD尺寸<br>
+            ③ 3LCD：色彩自然但家用智能份额小(1%)<br>
+            ④ LED光源：仍是主流(82.8%)，客厅非强项<br>
+            ⑤ 激光：渗透率16.7%，中高端升级方向<br>
+            ⑥ 三色激光：家用激光中占95%，色域广但注意散斑
+          </td>
+          <td>技术路线图动画；每项给出适合人群+一句话总结</td>
+        </tr>
+        <tr style="background:#fdf2f8">
+          <td><strong>Part 3<br>参数避坑</strong></td>
+          <td>7:30-10:30<br><small>(3分)</small></td>
+          <td>
+            ① 亮度：CVIA流明 vs ANSI流明 vs 虚标<br>
+            ② 分辨率：兼容4K ≠ 真4K<br>
+            ③ 投射比：先量距离再买！<br>
+            ④ 对比度：动态对比度数字没意义<br>
+            ⑤ 噪音：卧室用户必看<br>
+            ⑥ 系统：广告、投屏、智能化<br>
+            ⑦ 幕布：客厅不上幕布≈浪费一半画质
+          </td>
+          <td>每个参数配「翻车案例」+「正确判断方法」</td>
+        </tr>
+        <tr style="background:#f0fdfa">
+          <td><strong>Part 4<br>选购清单</strong></td>
+          <td>10:30-13:30<br><small>(3分)</small></td>
+          <td>
+            ① 分场景推荐矩阵（卧室/客厅/影院/游戏/便携）<br>
+            ② 24项购买前核对清单<br>
+            ③ 常见误区6条<br>
+            ④ 2026新能效国标提醒
+          </td>
+          <td>实用导向；型号推荐关注评论区/网页版</td>
+        </tr>
+        <tr>
+          <td><strong>片尾</strong></td>
+          <td>13:30-14:00</td>
+          <td>总结金句+评论区互动+下期预告（可与电视选购指南联动推荐）</td>
+          <td>引导三连+系列内容预告</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <strong>内容差异化策略：</strong>市面上绝大多数投影选购视频以「参数堆砌」为主，本期内容的核心差异在于「场景优先」——先帮用户判断属于哪种场景，再给出该场景下的合理配置。这与电视选购指南的「3+1」框架形成延续感和差异化。
+  </div>
+</section>
+
+<!-- ============ 3. 内容可视化 ============ -->
+<section class="section">
+  <h2>三、核心可视化设计</h2>
+
+  <h3>3.1 选购决策流程图（视频核心动画）</h3>
+  <p class="section-desc">这条流程是本期视频的「视觉主线」，贯穿四个部分，在总览阶段完整展示，每进入一个部分时高亮对应节点。</p>
+
+  <div class="flow-row">
+    <div class="flow-step">🛏 选场景</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">☀ 判光线</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📐 量距离</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">💡 定技术</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">🔍 避参数坑</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">🖼 选幕布</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">⚙ 查系统</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">✅ 下单</div>
+  </div>
+
+  <h3>3.2 技术路线对比图</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>技术路线</th><th>市场占比</th><th>适合场景</th><th>一句话总结</th><th>避坑重点</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge blue">1LCD</span></td>
+          <td>~68%</td>
+          <td>卧室/租房/入门</td>
+          <td>销量王者，入门首选，但别指望客厅高亮</td>
+          <td>亮度虚标、散热噪音、灰尘</td>
+        </tr>
+        <tr>
+          <td><span class="badge purple">DLP</span></td>
+          <td>~30%</td>
+          <td>客厅/游戏/中高端</td>
+          <td>画面锐度高，结构成熟，看DMD尺寸</td>
+          <td>彩虹效应、DMD尺寸影响分辨率</td>
+        </tr>
+        <tr>
+          <td><span class="badge green">3LCD</span></td>
+          <td>~1%</td>
+          <td>固定影院</td>
+          <td>色彩自然柔和，但智能配置少</td>
+          <td>体积大、价格高、智能系统弱</td>
+        </tr>
+        <tr>
+          <td><span class="badge yellow">激光</span></td>
+          <td>16.7%</td>
+          <td>客厅/影院</td>
+          <td>亮度高寿命长，中高端升级首选</td>
+          <td>散斑、偏色、价格溢价</td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#fce7f3;color:#9d174d;">三色激光</span></td>
+          <td>激光中95%</td>
+          <td>高端客厅/影院</td>
+          <td>色域天花板，家用激光主力</td>
+          <td>散斑控制、抗光幕搭配</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>3.3 六大使用场景速查卡</h3>
+  <div class="cards-3">
+    <div class="info-card">
+      <h3>🌙 卧室夜间</h3>
+      <ul>
+        <li>最友好场景</li>
+        <li>预算：1-3千元</li>
+        <li>优先：低噪音、1080P、自动校正</li>
+        <li>慎选：风扇吵、虚标亮度</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>☀️ 客厅大屏</h3>
+      <ul>
+        <li>最挑战场景</li>
+        <li>预算：3千-1万元+</li>
+        <li>优先：激光高亮、抗光幕</li>
+        <li>慎选：低亮度直接白墙</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🎬 家庭影院</h3>
+      <ul>
+        <li>最考究场景</li>
+        <li>预算：5千-2万元+</li>
+        <li>优先：色准、黑位、对比度</li>
+        <li>慎选：高亮但黑位差</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🎮 主机游戏</h3>
+      <ul>
+        <li>延迟最关键</li>
+        <li>优先：低延迟、HDMI、游戏模式</li>
+        <li>慎选：无线投屏玩游戏</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>👶 儿童家庭</h3>
+      <ul>
+        <li>漫反射护眼认知</li>
+        <li>优先：低噪、色彩自然、内容管理</li>
+        <li>慎选：过暗环境长时间看</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🏕️ 露营便携</h3>
+      <ul>
+        <li>便携性优先</li>
+        <li>优先：内置电池、重量轻、自动校正</li>
+        <li>慎选：续航虚标</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. 常见误区 ============ -->
+<section class="section">
+  <h2>四、六大常见误区（视频重点篇幅）</h2>
+  <p class="section-desc">以下误区是中国市场最普遍的翻车来源，每个误区都要在视频中配「翻车案例画面」+「正确判断方法」，形成强烈的视觉和教育冲击。</p>
+
+  <div class="cards-2">
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区一：只看流明数字</h3>
+      <p style="color:var(--muted);font-size:14px;">CVIA流明、ANSI流明、LED流明、光源流明——标准不同，数字差好几倍。低价机虚标是常态。视频中要用实测画面对比说明。</p>
+    </div>
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区二：兼容4K = 真4K</h3>
+      <p style="color:var(--muted);font-size:14px;">能播放4K片源 ≠ 投出来是4K分辨率。要看DMD芯片原生分辨率。视频中用放大对比图直观展示差异。</p>
+    </div>
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区三：客厅不用幕布</h3>
+      <p style="color:var(--muted);font-size:14px;">白墙在卧室夜间可以凑合，客厅环境光复杂时，不配抗光幕等于浪费一半画质。视频中用白墙vs幕布对比画面。</p>
+    </div>
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区四：大角度侧投不影响</h3>
+      <p style="color:var(--muted);font-size:14px;">梯形校正会裁剪有效像素、损失亮度和分辨率。能正投就正投。用网格测试图直观展示侧投画质损失。</p>
+    </div>
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区五：激光一定比LED好</h3>
+      <p style="color:var(--muted);font-size:14px;">激光有亮度优势，但低价激光可能偏色严重、散斑明显。要看具体型号调校水平，不是看光源类型。</p>
+    </div>
+    <div class="info-card" style="border-left:4px solid #ef4444;">
+      <h3>⚠️ 误区六：便宜杂牌参数更香</h3>
+      <p style="color:var(--muted);font-size:14px;">投影仪长期体验受光机、散热、防尘、系统、售后影响。杂牌虚标参数+售后缺失是常态。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. 制作计划 ============ -->
+<section class="section">
+  <h2>五、制作计划与资源需求</h2>
+
+  <h3>5.1 时间线</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>第一阶段：脚本与素材筹备（Day 1-5）</strong>
+      完成逐字脚本、信息图设计稿、素材需求清单；确认实拍场地与设备；联系厂家获取授权画面或借用样机
+    </div>
+    <div class="timeline-item">
+      <strong>第二阶段：素材拍摄与收集（Day 6-10）</strong>
+      主持人棚拍（多机位）、实景拍摄（卧室/客厅/影院场景）、录屏采集（电商页面/系统界面）、素材库采购（HDR演示片/测试图）
+    </div>
+    <div class="timeline-item">
+      <strong>第三阶段：后期制作（Day 11-16）</strong>
+      粗剪→信息图动画制作→调色→音效设计→字幕→审片修改
+    </div>
+    <div class="timeline-item">
+      <strong>第四阶段：发布与运营（Day 17-18）</strong>
+      封面图设计、标题A/B测试、评论区型号推荐清单准备、社群预热、发布
+    </div>
+  </div>
+
+  <h3>5.2 关键素材需求</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>类别</th><th>素材内容</th><th>获取方式</th><th>优先级</th></tr></thead>
+      <tbody>
+        <tr><td>实拍</td><td>主持人出镜（多机位棚拍）</td><td>棚拍</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>实拍</td><td>卧室/客厅/影院三种实景</td><td>实景拍摄</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>实拍</td><td>投影仪实际投射画面（白墙vs幕布）</td><td>实拍+多机型</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>实拍</td><td>白天vs夜晚环境光对比</td><td>实景拍摄</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>实拍</td><td>投影仪噪音测试（分贝仪）</td><td>实测</td><td><span class="badge yellow">重要</span></td></tr>
+        <tr><td>实拍</td><td>侧投画质损失对比（网格测试图）</td><td>实测+后期标注</td><td><span class="badge yellow">重要</span></td></tr>
+        <tr><td>动画</td><td>选购决策流程图（8步动线）</td><td>后期制作</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>动画</td><td>技术路线对比动画</td><td>后期制作</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>动画</td><td>1LCD/DLP/3LCD结构原理3D动画</td><td>外包3D</td><td><span class="badge yellow">重要</span></td></tr>
+        <tr><td>动画</td><td>投射比/梯形校正/画面损失示意</td><td>后期制作</td><td><span class="badge red">必须</span></td></tr>
+        <tr><td>素材</td><td>HDR演示片/4K测试图</td><td>素材库</td><td><span class="badge yellow">重要</span></td></tr>
+        <tr><td>素材</td><td>游戏/体育高速运动画面</td><td>素材库/录屏</td><td><span class="badge green">可选</span></td></tr>
+        <tr><td>界面</td><td>电商平台搜索+品牌官网参数页录屏</td><td>电脑录屏</td><td><span class="badge yellow">重要</span></td></tr>
+        <tr><td>界面</td><td>投影仪系统界面/投屏操作</td><td>实拍</td><td><span class="badge yellow">重要</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.3 口播指导</h3>
+  <div class="cards-3">
+    <div class="info-card">
+      <h3>核心原则</h3>
+      <ul>
+        <li><strong>场景先行：</strong>每个参数必须落到具体场景</li>
+        <li><strong>少讲术语：</strong>技术名词后面必须跟一句人话解释</li>
+        <li><strong>多讲判断：</strong>告诉用户「怎么看」而不仅是「看什么」</li>
+        <li><strong>避坑导向：</strong>每个知识点配翻车案例增加记忆点</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>语速与节奏</h3>
+      <ul>
+        <li>建议语速：190-210字/分钟</li>
+        <li>技术段落适当放慢，场景段落加快</li>
+        <li>翻车案例处用「停顿+音效」制造记忆点</li>
+        <li>结论处用「重复+大字幕」强化</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>避免的表述</h3>
+      <ul>
+        <li>❌ 「这个参数最重要」——改成「在你的场景下，这个参数优先级更高」</li>
+        <li>❌ 「千万别买XX」——改成「XX在以下场景不太适合」</li>
+        <li>❌ 「激光就是好」——改成「激光在亮度和色彩方面有优势，但也要看……」</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. 品牌授权 ============ -->
+<section class="section">
+  <h2>六、品牌授权与合作策略</h2>
+  <div class="warning">
+    <strong>重要：</strong>投影仪视频的品牌露出比电视更敏感——市场品牌多、竞争激烈、用户对「恰饭」容忍度更低。必须明确内容独立性原则。
+  </div>
+  <div class="cards-3">
+    <div class="info-card">
+      <h3>原则一：内容独立</h3>
+      <ul>
+        <li>不签约独家品牌合作</li>
+        <li>型号推荐基于客观数据</li>
+        <li>即使有品牌赞助，标注「赞助商提供样机，观点独立」</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>原则二：素材授权</h3>
+      <ul>
+        <li>品牌Logo和产品外观需单独授权</li>
+        <li>建议自行拍摄产品外观（避免使用品牌官方图）</li>
+        <li>实测数据不依赖品牌提供的宣传材料</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>原则三：免责声明</h3>
+      <ul>
+        <li>价格信息注明「截至拍摄日期」</li>
+        <li>型号推荐注明「根据公开发布参数整理」</li>
+        <li>实测结果注明测试环境和条件</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. 竞争分析 ============ -->
+<section class="section">
+  <h2>七、B站同类内容竞争分析</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>内容类型</th><th>代表风格</th><th>我们的差异化</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>纯参数横评</td>
+          <td>大段参数表格对比，信息密度极高但缺乏场景感</td>
+          <td>场景优先——先帮用户判断属于哪种场景，再看对应参数</td>
+        </tr>
+        <tr>
+          <td>单机型评测</td>
+          <td>一台机器的开箱+体验+优缺点</td>
+          <td>品类选购指南——覆盖全场景全价位，用户一次看完</td>
+        </tr>
+        <tr>
+          <td>低价推荐</td>
+          <td>「千元投影仪推荐」「百元投影仪能买吗」</td>
+          <td>科学选购——不只推荐型号，更教判断方法</td>
+        </tr>
+        <tr>
+          <td>技术科普</td>
+          <td>深入讲解DLP/激光技术原理</td>
+          <td>技术+选购结合——有技术深度但不脱离购买决策</td>
+        </tr>
+        <tr>
+          <td>品牌合作</td>
+          <td>明显商业推广，用户信任度下降</td>
+          <td>独立客观——内容独立+多品牌公平呈现</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 8. 预期效果 ============ -->
+<section class="section">
+  <h2>八、预期效果与运营策略</h2>
+  <div class="cards-3">
+    <div class="info-card">
+      <h3>播放量目标</h3>
+      <ul>
+        <li>首周目标：10-20万播放</li>
+        <li>长尾目标：50万+（选购类内容搜索流量持续）</li>
+        <li>对标：《电视机选购指南》同期数据</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>互动运营</h3>
+      <ul>
+        <li>评论区置顶：型号推荐清单+实时参考价</li>
+        <li>弹幕引导：关键知识点设置「弹幕知识点」提示</li>
+        <li>章节标记：B站章节功能设置7-8个章节节点</li>
+        <li>社群联动：粉丝群内提前预告+投票选下期选题</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>系列内容规划</h3>
+      <ul>
+        <li>本期：投影仪选购指南（品类总览）</li>
+        <li>下期：投影仪VS电视怎么选（对比向）</li>
+        <li>后续：千元投影仪实测 / 激光投影横评</li>
+        <li>联动：幕布选购指南（补充内容）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>长尾策略：</strong>选购指南类内容的核心价值在搜索长尾。标题和标签需覆盖「投影仪怎么选」「投影仪推荐」「投影仪选购」「2026投影仪」等核心搜索词。建议同步生成网页版选购指南（与电视选购指南网页版形成矩阵），持续获取搜索流量。
+  </div>
+</section>
+
+<!-- ============ 9. 总结 ============ -->
+<section class="summary">
+  <h2>立项总结</h2>
+  <ol>
+    <li><strong>时机正好：</strong>2026年新能效国标实施、三色激光占比95%、4K加速渗透，用户需要一个权威的选购参考。</li>
+    <li><strong>差异化明确：</strong>「先定场景，再选参数」的核心主张，与市面上参数堆砌式内容形成鲜明区分。</li>
+    <li><strong>系列联动：</strong>与已完成的电视选购指南形成「家庭大屏」系列，复用制作经验和受众积累。</li>
+    <li><strong>长尾价值：</strong>选购指南类内容搜索流量持续，配合网页版可长期获取精准用户。</li>
+    <li><strong>选题参考：</strong>基于RTINGS中国版选购指南科学框架，结合洛图科技2026最新市场数据，内容有据可依。</li>
+  </ol>
+</section>
+
+<footer class="footer">
+  <p>《2026年家用投影仪选购指南》视频立项书 · V1.0 · 2026年7月17日</p>
+  <p>参考来源：RTINGS中国版选购指南 | 洛图科技 2025-2026 市场数据</p>
+</footer>
+
+</main>
+</body>
+</html>
