@@ -25,6 +25,7 @@
       --badge-report: #ef4444;
       --badge-storyboard: #d946ef;
       --badge-proposal: #3b82f6;
+      --badge-tv: #f97316;
     }
     [data-theme="dark"] {
       --bg: #0f1117;
@@ -140,6 +141,7 @@
     .tl-badge.report { background:var(--badge-report); }
     .tl-badge.storyboard { background:var(--badge-storyboard); }
     .tl-badge.proposal { background:var(--badge-proposal); }
+    .tl-badge.tv { background:var(--badge-tv); }
     .tl-info { flex:1; min-width:0; }
     .tl-title { font-size:0.88rem; font-weight:600; color:var(--text); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .tl-desc { font-size:0.72rem; color:var(--text3); margin-top:2px; }
@@ -310,33 +312,41 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-report)"></div>达人商单</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-storyboard)"></div>分镜表</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--badge-proposal)"></div>立项书</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--badge-tv)"></div>电视品类</div>
 
   </div>
 
   <div class="timeline">
     <!-- 2026年7月17日 -->
     <div class="date-group" data-date="2026-07-17" id="date-2026-07-17">
-      <div class="date-header">
-        <div class="date-dot"></div>
-        <span class="date-label">2026年7月17日</span>
-        <span class="date-count">2 篇更新</span>
+      <div class="date-label">2026-07-17
+        <span class="date-count">5 篇更新</span>
       </div>
-      <div class="tl-cards">
-        <a class="tl-card" href="storyboard-tv-buying-guide-202607.html" target="_blank">
-          <span class="tl-badge storyboard">分镜表</span>
-          <div class="tl-info">
-            <div class="tl-title">电视机选购指南 2026.07 视频分镜表</div>
-            <div class="tl-desc">电视机选购指南视频完整分镜表，含内容结构、校对重点、分镜脚本与口播金句</div>
-          </div>
-          <span class="tl-arrow">→</span>
+      <div class="tl-items">
+        <a class="tl-item" href="tv.html">
+          <span class="tl-badge tv">电视品类</span>
+          <span class="tl-title">创建电视品类导航页</span>
+          <span class="tl-date">新建</span>
         </a>
-        <a class="tl-card" href="proposal-projector-buying-guide-2026.html" target="_blank">
+        <a class="tl-item" href="index.html">
+          <span class="tl-badge sop">SOP</span>
+          <span class="tl-title">清理导航页：移除已删除分类的全部内容卡片</span>
+          <span class="tl-date">更新</span>
+        </a>
+        <a class="tl-item" href="storyboard-tv-buying-guide-202607.html">
+          <span class="tl-badge storyboard">分镜表</span>
+          <span class="tl-title">电视机选购指南 2026.07 视频分镜表</span>
+          <span class="tl-date">上传</span>
+        </a>
+        <a class="tl-item" href="proposal-projector-buying-guide-2026.html">
           <span class="tl-badge proposal">立项书</span>
-          <div class="tl-info">
-            <div class="tl-title">2026 家用投影仪选购指南 · 视频立项书</div>
-            <div class="tl-desc">选题定位、内容结构、拍摄计划与交付标准</div>
-          </div>
-          <span class="tl-arrow">→</span>
+          <span class="tl-title">2026 家用投影仪选购指南 · 视频立项书</span>
+          <span class="tl-date">上传</span>
+        </a>
+        <a class="tl-item" href="timeline.html">
+          <span class="tl-badge tv">电视品类</span>
+          <span class="tl-title">时间线新增电视品类徽章与条目</span>
+          <span class="tl-date">更新</span>
         </a>
       </div>
     </div>
