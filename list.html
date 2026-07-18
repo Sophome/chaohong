@@ -18,7 +18,10 @@
       --accent:#38bdf8;
       --accent2:#818cf8;
       --shadow:0 4px 20px rgba(0,0,0,.28);
-    }
+    
+      --header-bg: linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);
+      --header-text: #fff;
+      --toggle-bg: rgba(255,255,255,0.2);}
     html[data-theme="light"] {
       color-scheme: light;
       --bg:#f4f7fb;
@@ -128,7 +131,81 @@
     .card-arr { font-size:0.82rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
     .card:hover .card-arr { opacity:1; }
 
-    /* ── DOT COLORS ── */
+    
+    /* ── HEADER (index style) ── */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 44px 0 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content:"";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header::after {
+      content:"";
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 400px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .header-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index:1; padding: 0 24px; box-sizing: border-box; }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 0.92rem;
+      opacity: 0.78;
+      line-height: 1.5;
+    }
+    .header-meta {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: var(--toggle-bg);
+      font-size: 0.78rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 14px; right: 24px;
+      z-index: 5;
+      border: none;
+      background: var(--toggle-bg);
+      color: var(--header-text);
+      padding: 7px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-family: inherit;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* ── DOT COLORS ── */
     .d-kit    .sec-dot { background:#ef4444; }
     .d-movie  .sec-dot { background:#f97316; }
     .d-clean  .sec-dot { background:#10b981; }
@@ -218,22 +295,28 @@
 <div class="page">
 
   <!-- HEADER -->
-  <div class="header">
-    <div class="brand">
-      <div class="logo">超红</div>
-      <div class="brand-text">
-        <h1>选题清单</h1>
-        <span>按使用场景浏览内容规划表</span>
-      </div>
+  <!-- HEADER -->
+<div class="header">
+  <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
+    <span id="toggleIcon">&#127769;</span>
+    <span id="toggleText">深色</span>
+  </button>
+  <div class="header-inner">
+    <h1>超红传媒 · 选题清单</h1>
+    <p>按使用场景浏览内容规划表</p>
+    <div class="header-meta">
+      <span class="header-badge">📋 20 篇文档</span>
+      <span class="header-badge">🏷️ 2 大类型</span>
+      <span class="header-badge">&#128225; 三平台同步</span>
     </div>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" style="margin-left:auto;">☀️ 浅色</button>
   </div>
+</div>
 
   <!-- NAV PILLS -->
     <div class="nav-links">
     <a class="nav-pill" href="index.html">📁 知识库导航</a>
     <a class="nav-pill" href="timeline.html">📅 时间线</a>
-    <span class="nav-pill active" href="list.html">📋 选题清单</span>
+    <span class="nav-pill active">📋 选题清单</span>
     <a class="nav-pill" href="framework.html">📊 全年框架</a>
     <a class="nav-pill" href="score-content-evaluation.html">⭐ 评分标准</a>
     <a class="nav-pill" href="tv.html">📺 电视品类</a>
@@ -473,17 +556,14 @@
 
   // Init — check shared auth first, then fails lock
   (function() {
-    var auth = getAuth();
-    if (auth) {
-      pwGate.style.display = 'none';
-      pwContent.style.display = 'block';
-      return;
-    }
-    var f = getFails();
-    if (f.lockUntil && f.lockUntil > Date.now()) {
-      showLocked(f.lockUntil);
-      pwInput.disabled = true;
-      pwBtn.disabled = true;
+    const saved = localStorage.getItem("chaohong-theme");
+    const theme = saved || "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    const icon = document.getElementById("toggleIcon");
+    const text = document.getElementById("toggleText");
+    if (icon && text) {
+      icon.textContent = theme === "dark" ? "🌙" : "☀️";
+      text.textContent = theme === "dark" ? "深色" : "浅色";
     }
   })();
 
@@ -501,13 +581,19 @@
     btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
   }
 
+  
   function toggleTheme() {
     const html = document.documentElement;
-    const cur = html.getAttribute('data-theme') || 'dark';
-    const next = cur === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('chaohong-list-theme', next);
-    updateBtn(next);
+    const cur = html.getAttribute("data-theme") || "light";
+    const next = cur === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("chaohong-theme", next);
+    const icon = document.getElementById("toggleIcon");
+    const text = document.getElementById("toggleText");
+    if (icon && text) {
+      icon.textContent = next === "dark" ? "🌙" : "☀️";
+      text.textContent = next === "dark" ? "深色" : "浅色";
+    }
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
