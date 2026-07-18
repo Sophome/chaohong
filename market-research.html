@@ -51,28 +51,6 @@
 
     .page { max-width:1200px; margin:0 auto; padding:28px 24px 56px; }
 
-    /* ── HEADER ── */
-    .header {
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; margin-bottom:18px; flex-wrap:wrap;
-    }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .logo {
-      width:38px; height:38px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#fff; font-size:14px; font-weight:700; flex-shrink:0;
-    }
-    .brand-text h1 { font-size:1.2rem; font-weight:700; line-height:1.3; }
-    .brand-text span { font-size:0.76rem; color:var(--muted); }
-    .theme-btn {
-      border:1.5px solid var(--line); background:var(--card-2);
-      color:var(--text); border-radius:16px; padding:6px 14px;
-      cursor:pointer; font-size:0.78rem; font-family:inherit;
-      transition:background 0.2s;
-    }
-    .theme-btn:hover { background:var(--card); }
-
     /* ── NAV PILLS ── */
     .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:28px; }
     .nav-pill {
@@ -220,10 +198,6 @@
 </head>
 <body>
 
-<div class="page">
-
-  <!-- HEADER -->
-  <!-- HEADER -->
 <div class="header">
   <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
     <span id="toggleIcon">&#127769;</span>
@@ -240,6 +214,7 @@
   </div>
 </div>
 
+<div class="page">
   <!-- NAV PILLS -->
       <div class="nav-links">
     <a class="nav-pill" href="index.html">📁 知识库导航</a>
