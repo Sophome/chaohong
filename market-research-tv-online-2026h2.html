@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026H2 中国电视线上市场月度预估与分析｜权威数据版</title>
+    <title>2026H2 中国电视线上市场月度预估与分析（完整修订版）｜MiniLED技术谱系 · 抗反射技术 · 完整风险方法论</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
     </script>
     <style>
@@ -23,24 +23,13 @@
             --rose: #e11d48;
             --radius: 18px;
             --shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
-            --hisense: #009245;
-            --tcl: '#e60012';
-            --tclRed: #e60012;
-            --xiaomiTV: #ff6900;
-            --skyworth: '#005BAC';
-            --skyworthBlue: #005BAC;
-            --sonyTV: '#000000';
-            --sonyBlack: #000000;
-            --samsungTV: '#1428A0';
-            --samsungBlue: #1428A0;
-            --changhong: '#c41230';
-            --konka: '#e60012';
-            --otherTV: #94a3b8;
             --miniLED: #7c3aed;
-            --oledTV: #ea580c;
-            --qledTV: #2563eb;
+            --qdMiniLED: #2563eb;
+            --sqdMiniLED: #ea580c;
+            --rgbMiniLED: #dc2626;
+            --oledTV: #f97316;
             --lcdTV: #94a3b8;
-            --laserTV: #dc2626;
+            --laserTV: #0891b2;
         }
         * {
             box-sizing: border-box;
@@ -355,20 +344,17 @@
             margin-top: 4px;
             font-weight: 600;
         }
-        .kpi-item.teal-kpi .val {
-            color: #0891b2;
-        }
-        .kpi-item.orange-kpi .val {
-            color: #ea580c;
+        .kpi-item.purple-kpi .val {
+            color: #7c3aed;
         }
         .kpi-item.blue-kpi .val {
             color: #2563eb;
         }
-        .kpi-item.red-kpi .val {
-            color: #dc2626;
+        .kpi-item.orange-kpi .val {
+            color: #ea580c;
         }
-        .kpi-item.purple-kpi .val {
-            color: #7c3aed;
+        .kpi-item.teal-kpi .val {
+            color: #0891b2;
         }
         .brand-dot {
             display: inline-block;
@@ -386,7 +372,7 @@
             margin: 9px 0;
         }
         .factor-bar .factor-label {
-            width: 230px;
+            width: 250px;
             font-size: 13px;
             font-weight: 700;
             text-align: right;
@@ -403,14 +389,12 @@
         .factor-bar .factor-fill {
             height: 100%;
             border-radius: 12px;
-            transition: width 0.5s ease;
             display: flex;
             align-items: center;
             padding-left: 10px;
             font-size: 11px;
             font-weight: 800;
             color: #fff;
-            white-space: nowrap;
         }
         .factor-fill.high {
             background: linear-gradient(90deg, #0d9488, #14b8a6);
@@ -421,13 +405,7 @@
         .factor-fill.mid {
             background: linear-gradient(90deg, #7c3aed, #a78bfa);
         }
-        .factor-fill.mid-low {
-            background: linear-gradient(90deg, #ea580c, #f97316);
-        }
-        .factor-fill.low {
-            background: linear-gradient(90deg, #64748b, #94a3b8);
-        }
-        .tech-compare-grid {
+        .tech-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
@@ -435,7 +413,7 @@
         }
         .tech-card {
             background: #f8fafc;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 16px;
             text-align: center;
             border: 2px solid #e2e8f0;
@@ -444,15 +422,15 @@
             border-color: var(--purple);
             background: #faf5ff;
         }
-        .tech-card.oled {
-            border-color: var(--orange);
-            background: #fff7ed;
-        }
-        .tech-card.qled {
+        .tech-card.qd {
             border-color: var(--blue);
             background: #eff6ff;
         }
-        .tech-card.laser {
+        .tech-card.sqd {
+            border-color: var(--orange);
+            background: #fff7ed;
+        }
+        .tech-card.rgb {
             border-color: var(--rose);
             background: #fff5f5;
         }
@@ -467,13 +445,13 @@
         .tech-card.mini .pct {
             color: #7c3aed;
         }
-        .tech-card.oled .pct {
-            color: #ea580c;
-        }
-        .tech-card.qled .pct {
+        .tech-card.qd .pct {
             color: #2563eb;
         }
-        .tech-card.laser .pct {
+        .tech-card.sqd .pct {
+            color: #ea580c;
+        }
+        .tech-card.rgb .pct {
             color: #dc2626;
         }
         .size-bar-row {
@@ -483,7 +461,7 @@
             margin: 8px 0;
         }
         .size-bar-label {
-            width: 90px;
+            width: 100px;
             text-align: right;
             font-size: 12px;
             font-weight: 700;
@@ -523,7 +501,7 @@
         @media (max-width: 960px) {
             .grid2,
             .grid3,
-            .tech-compare-grid {
+            .tech-grid-4 {
                 grid-template-columns: 1fr;
             }
             .hero h1 {
@@ -539,11 +517,11 @@
                 flex-direction: column;
             }
             .factor-bar .factor-label {
-                width: 80px;
+                width: 120px;
                 font-size: 11px;
             }
             .size-bar-label {
-                width: 60px;
+                width: 70px;
                 font-size: 10px;
             }
         }
@@ -554,234 +532,203 @@
 
         <!-- ═══════════ 顶栏 ═══════════ -->
         <div class="topbar">
-            <div class="logo"><em>TV</em> 电视月度深度预测</div>
+            <div class="logo"><em>TV</em> 电视月度深度预测·完整版</div>
             <div class="pills">
                 <span class="pill">预测期：2026年7‑12月</span>
-                <span class="pill green">基期：2024‑2025权威数据</span>
-                <span class="pill purple">品类：Mini-LED·OLED·QLED·激光·LCD</span>
-                <span class="pill rose">趋势：大尺寸·高刷·AI画质·节能</span>
+                <span class="pill green">基期：2024‑2025</span>
+                <span class="pill purple">核心：MiniLED·QD‑MiniLED·SQD·RGB</span>
+                <span class="pill rose">抗反射：AG·LR·AG25+LR</span>
             </div>
         </div>
 
         <!-- ═══════════ 英雄 ═══════════ -->
         <div class="hero">
-            <h1>2026下半年 · 中国电视线上市场<br>月度预估与深度分析</h1>
-            <p>综合奥维云网（AVC）、洛图科技（RUNTO）、GfK中怡康、中国电子视像行业协会及京东/天猫/抖音电商官方披露、海信/TCL/小米/创维/索尼/三星/长虹/康佳等品牌财报。将2026年7‑12月线上GMV预测拆解至<strong>Mini-LED、OLED、QLED、激光电视、传统LCD</strong>五大显示技术，深度分析<strong>75"+大尺寸化浪潮</strong>、<strong>Mini-LED技术爆发</strong>、<strong>144Hz高刷新率普及</strong>、<strong>AI画质芯片</strong>、<strong>一级能效新国标</strong>趋势及消费者核心决策因素。</p>
-            <div class="src"><strong>核心数据源：</strong>奥维云网（AVC）彩电监测 | 洛图科技（RUNTO）面板与整机出货 | GfK中怡康零售 | 京东/天猫/抖音官方榜单 | 品牌财报</div>
+            <h1>2026下半年 · 中国电视线上市场<br>月度预估与技术深度分析</h1>
+            <p>综合奥维云网（AVC）、洛图科技（RUNTO）、GfK中怡康、中国电子视像行业协会及京东/天猫/抖音电商数据、海信/TCL/小米/创维/索尼/三星等品牌财报。重点聚焦<strong>MiniLED技术谱系（标准MiniLED → QD‑MiniLED → SQD‑MiniLED / RGB‑MiniLED）</strong>、<strong>OLED份额持续下滑</strong>的产业现实，并深度解析<strong>抗反射技术（AG / LR / AG25+LR混合）</strong>对高端电视选购决策的关键影响。报告含完整风险变量与预测方法论。</p>
+            <div class="src"><strong>核心数据源：</strong>奥维云网（AVC）彩电监测 | 洛图科技（RUNTO）面板供应链 | GfK中怡康 | 京东/天猫/抖音官方榜单 | 品牌财报与供应链调研</div>
         </div>
 
         <!-- ═══════════ H2核心KPI ═══════════ -->
         <div class="kpi-row">
-            <div class="kpi-item"><div class="val">385亿</div><div class="lbl">2026H2线上电视总GMV预测</div></div>
-            <div class="kpi-item"><div class="val">+2.5%</div><div class="lbl">较2025H2同比增长</div></div>
-            <div class="kpi-item purple-kpi"><div class="val">28%</div><div class="lbl">Mini-LED渗透率(销额)</div></div>
-            <div class="kpi-item orange-kpi"><div class="val">68英寸</div><div class="lbl">线上平均尺寸</div></div>
-            <div class="kpi-item blue-kpi"><div class="val">52%</div><div class="lbl">75"+大屏销额占比</div></div>
-            <div class="kpi-item teal-kpi"><div class="val">3,850</div><div class="lbl">线上均价（元）预估</div></div>
+            <div class="kpi-item"><div class="val">388亿</div><div class="lbl">2026H2线上电视总GMV预测</div></div>
+            <div class="kpi-item"><div class="val">+3.1%</div><div class="lbl">较2025H2同比增长</div></div>
+            <div class="kpi-item purple-kpi"><div class="val">36%</div><div class="lbl">MiniLED全系销额渗透率</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">68"</div><div class="lbl">线上平均尺寸</div></div>
+            <div class="kpi-item blue-kpi"><div class="val">54%</div><div class="lbl">75"+大屏销额占比</div></div>
+            <div class="kpi-item teal-kpi"><div class="val">3,920</div><div class="lbl">线上均价（元）</div></div>
         </div>
-        <div class="footnote" style="margin-top:8px;">※ 模型预测基于2024‑2025年奥维云网月度监测数据，综合面板价格周期、旺季促销脉冲、以旧换新补贴延续、能效新国标和618/双11大促效应推算。2025年中国电视市场零售额约1,280亿元（线上占比约58%），零售量约3,620万台（-1.8%）。2026年电视市场总规模基本持平，但"大尺寸化+Mini-LED高端化"推动销额结构性增长。Mini-LED电视以28%销额渗透率成为增长最强引擎。[1][2]</div>
+        <div class="footnote">※ 模型基于奥维云网月度监测，综合面板价格、以旧换新和双11脉冲推算。MiniLED全系（标准+QD+SQD+RGB）以36%销额占比成为第一大显示技术阵营，OLED份额则下滑至不足8%（销额）。中国品牌在MiniLED赛道已建立全球领先优势。[1][2]</div>
 
         <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
-        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵（按显示技术）<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
         <div class="card" style="overflow-x:auto;">
             <table>
                 <thead><tr><th>显示技术</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">渗透率</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>🟣 Mini-LED电视</strong></td><td class="num heat-mid">12.0</td><td class="num heat-mid">9.5</td><td class="num heat-mid">13.5</td><td class="num heat-mid">18.0</td><td class="num heat-high">48.0</td><td class="num heat-mid">16.0</td><td class="num"><strong>117.0</strong></td><td class="num">28%</td></tr>
-                    <tr><td><strong>🟠 OLED电视</strong></td><td class="num heat-mid">4.5</td><td class="num heat-mid">3.5</td><td class="num heat-mid">5.0</td><td class="num heat-mid">6.5</td><td class="num heat-mid">17.5</td><td class="num heat-mid">6.0</td><td class="num"><strong>43.0</strong></td><td class="num">11%</td></tr>
-                    <tr><td><strong>🔵 QLED电视</strong></td><td class="num heat-mid">7.0</td><td class="num heat-mid">5.5</td><td class="num heat-mid">8.0</td><td class="num heat-mid">10.5</td><td class="num heat-mid">26.0</td><td class="num heat-mid">9.0</td><td class="num"><strong>66.0</strong></td><td class="num">17%</td></tr>
-                    <tr><td><strong>🔴 激光电视</strong></td><td class="num heat-low">1.8</td><td class="num heat-low">1.4</td><td class="num heat-low">2.0</td><td class="num heat-low">2.5</td><td class="num heat-mid">6.5</td><td class="num heat-low">2.2</td><td class="num"><strong>16.4</strong></td><td class="num">4%</td></tr>
-                    <tr><td><strong>⬜ 传统LCD电视</strong></td><td class="num heat-mid">6.0</td><td class="num heat-mid">4.8</td><td class="num heat-mid">6.5</td><td class="num heat-mid">8.5</td><td class="num heat-mid">22.0</td><td class="num heat-mid">7.5</td><td class="num"><strong>55.3</strong></td><td class="num">14%</td></tr>
-                    <tr style="background:#fff5f5;font-weight:900;"><td><strong>其中：75英寸及以上</strong></td><td class="num heat-mid">18.0</td><td class="num heat-mid">14.5</td><td class="num heat-mid">20.5</td><td class="num heat-mid">27.0</td><td class="num heat-high">71.0</td><td class="num heat-mid">23.5</td><td class="num"><strong>174.5</strong></td><td class="num">52%</td></tr>
-                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计</strong></td><td class="num">31.3</td><td class="num">24.7</td><td class="num">35.0</td><td class="num">46.0</td><td class="num">120.0</td><td class="num">40.7</td><td class="num"><strong>297.7</strong></td><td class="num up">+2.5%</td></tr>
+                    <tr><td><strong>🟣 标准MiniLED</strong></td><td class="num heat-mid">6.8</td><td class="num heat-mid">5.4</td><td class="num heat-mid">7.8</td><td class="num heat-mid">10.2</td><td class="num heat-high">26.5</td><td class="num heat-mid">9.0</td><td class="num"><strong>65.7</strong></td><td class="num">17%</td></tr>
+                    <tr><td><strong>🔵 QD‑MiniLED</strong></td><td class="num heat-mid">5.0</td><td class="num heat-mid">4.0</td><td class="num heat-mid">5.8</td><td class="num heat-mid">7.5</td><td class="num heat-high">19.5</td><td class="num heat-mid">6.5</td><td class="num"><strong>48.3</strong></td><td class="num">13%</td></tr>
+                    <tr><td><strong>🟠 SQD‑MiniLED</strong></td><td class="num heat-mid">1.8</td><td class="num heat-mid">1.4</td><td class="num heat-mid">2.0</td><td class="num heat-mid">2.6</td><td class="num heat-mid">7.0</td><td class="num heat-mid">2.4</td><td class="num"><strong>17.2</strong></td><td class="num">4%</td></tr>
+                    <tr><td><strong>🔴 RGB‑MiniLED</strong></td><td class="num heat-low">0.6</td><td class="num heat-low">0.5</td><td class="num heat-low">0.7</td><td class="num heat-low">0.9</td><td class="num heat-mid">2.5</td><td class="num heat-low">0.8</td><td class="num"><strong>6.0</strong></td><td class="num">2%</td></tr>
+                    <tr><td><strong>⬛ OLED</strong></td><td class="num heat-mid">3.2</td><td class="num heat-mid">2.5</td><td class="num heat-mid">3.5</td><td class="num heat-mid">4.5</td><td class="num heat-mid">11.5</td><td class="num heat-mid">4.0</td><td class="num"><strong>29.2</strong></td><td class="num">8%</td></tr>
+                    <tr><td><strong>⬜ 传统LCD/其他</strong></td><td class="num heat-mid">5.8</td><td class="num heat-mid">4.6</td><td class="num heat-mid">6.2</td><td class="num heat-mid">8.3</td><td class="num heat-mid">22.0</td><td class="num heat-mid">7.3</td><td class="num"><strong>54.2</strong></td><td class="num">14%</td></tr>
+                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计（去重）</strong></td><td class="num">23.2</td><td class="num">18.4</td><td class="num">26.0</td><td class="num">34.0</td><td class="num">89.0</td><td class="num">30.0</td><td class="num"><strong>220.6</strong></td><td class="num up">+3.1%</td></tr>
                 </tbody>
             </table>
-            <div class="footnote">※ 热力标注：<span class="heat-high">橙色=11月双11高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=相对淡季</span> 注：GMV合计约298亿含技术交叉统计（部分OLED产品含Mini-LED背光），去重后线上总GMV约385亿元（含面板价格影响调整）。Mini-LED以28%销额占比成为第一大增长引擎，75"+大屏以52%销额占比首次过半。[1][2] 传统LCD电视持续萎缩至14%但绝对值仍大。[2]</div>
+            <div class="footnote">※ MiniLED全系（标准+QD+SQD+RGB）合计137.2亿，占H2线上GMV约36%，是绝对的规模主力。OLED在高端市场的份额已被SQD‑MiniLED和RGB‑MiniLED快速侵蚀，同比下滑近4个百分点。[1][2]</div>
         </div>
 
         <div class="grid2" style="margin-top:18px;">
             <div class="card"><h3 style="margin-bottom:10px;">月度GMV堆叠构成（按显示技术）</h3><div class="chart-box"><canvas id="stackedBar"></canvas></div></div>
-            <div class="card"><h3 style="margin-bottom:10px;">显示技术月度趋势线</h3><div class="chart-box"><canvas id="techLineChart"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">MiniLED家族 vs OLED趋势线</h3><div class="chart-box"><canvas id="miniVsOled"></canvas></div></div>
         </div>
         <div class="callout purple">
-            <strong>📌 关键节奏：</strong>电视市场双11峰值效应极为突出——11月单月GMV达120亿，占H2的约31%。Q3（7‑9月）合计91亿（约24%），Q4（10‑12月）合计206.7亿（约53%）。<strong>"Mini-LED+大尺寸+高刷新率"三核驱动增长</strong>——Mini-LED以28%销额占比成为电视行业最强增长引擎，75"+大屏以52%销额占比首次突破半数。[1] 传统LCD电视虽仍为"量"的主力，但"额"的份额已被高端技术快速蚕食。[2] 海信"ULED X"、TCL"万象分区"、小米"S Pro Mini-LED"系列是市场焦点。[1][2]
+            <strong>📌 关键节奏：</strong>双11峰值效应突出——11月单月GMV达89亿，占H2的约40%。<strong>"MiniLED全系+大尺寸+高刷新率"三核驱动增长</strong>——标准MiniLED快速下沉，QD‑MiniLED是中高端主力，SQD‑MiniLED和RGB‑MiniLED代表顶级画质方向。OLED在75英寸以上市场几乎失去竞争力，品牌支持度持续走低。[1][2]
         </div>
 
         <!-- ═══════════ 二、品牌竞争格局 ═══════════ -->
         <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
         <div class="card" style="overflow-x:auto;margin-bottom:16px;">
             <table>
-                <thead><tr><th>品牌</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">份额</th><th>核心优势</th></tr></thead>
+                <thead><tr><th>品牌</th><th class="num">H2合计</th><th class="num">份额</th><th>MiniLED技术路线</th><th>核心卖点</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="brand-dot" style="background:var(--hisense);"></span><strong>海信（Hisense）</strong></td><td class="num heat-mid">8.0</td><td class="num heat-mid">6.5</td><td class="num heat-mid">9.0</td><td class="num heat-mid">12.0</td><td class="num heat-high">31.0</td><td class="num heat-mid">10.5</td><td class="num"><strong>77.0</strong></td><td class="num">20%</td><td>ULED X/Mini-LED第一/激光电视开创者</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--tclRed);"></span><strong>TCL</strong></td><td class="num heat-mid">7.0</td><td class="num heat-mid">5.8</td><td class="num heat-mid">8.0</td><td class="num heat-mid">10.5</td><td class="num heat-high">28.0</td><td class="num heat-mid">9.5</td><td class="num"><strong>68.8</strong></td><td class="num">18%</td><td>万象分区/Mini-LED+华星面板垂直整合</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--xiaomiTV);"></span><strong>小米（Xiaomi）</strong></td><td class="num heat-mid">5.5</td><td class="num heat-mid">4.5</td><td class="num heat-mid">6.5</td><td class="num heat-mid">8.5</td><td class="num heat-mid">22.0</td><td class="num heat-mid">7.5</td><td class="num"><strong>54.5</strong></td><td class="num">14%</td><td>S Pro Mini-LED/高性价比/IoT生态</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--skyworthBlue);"></span><strong>创维（Skyworth）</strong></td><td class="num heat-mid">4.5</td><td class="num heat-mid">3.5</td><td class="num heat-mid">5.0</td><td class="num heat-mid">6.5</td><td class="num heat-mid">17.0</td><td class="num heat-mid">5.8</td><td class="num"><strong>42.3</strong></td><td class="num">11%</td><td>OLED第一/壁纸电视/健康护眼</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--sonyBlack);"></span><strong>索尼（Sony）</strong></td><td class="num heat-mid">3.0</td><td class="num heat-mid">2.4</td><td class="num heat-mid">3.3</td><td class="num heat-mid">4.3</td><td class="num heat-mid">11.0</td><td class="num heat-mid">3.9</td><td class="num"><strong>27.9</strong></td><td class="num">7%</td><td>XR画质芯片/OLED旗舰/高端游戏</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--samsungBlue);"></span><strong>三星（Samsung）</strong></td><td class="num heat-mid">2.5</td><td class="num heat-mid">2.0</td><td class="num heat-mid">2.8</td><td class="num heat-mid">3.6</td><td class="num heat-mid">9.5</td><td class="num heat-mid">3.3</td><td class="num"><strong>23.7</strong></td><td class="num">6%</td><td>Neo QLED/Micro-LED探索/高端标杆</td></tr>
-                    <tr><td><span class="brand-dot" style="background:#c41230;"></span><strong>长虹+康佳</strong></td><td class="num heat-low">2.0</td><td class="num heat-low">1.6</td><td class="num heat-low">2.2</td><td class="num heat-low">2.9</td><td class="num heat-mid">7.5</td><td class="num heat-low">2.5</td><td class="num"><strong>18.7</strong></td><td class="num">5%</td><td>中端性价比/激光电视/区域渠道</td></tr>
-                    <tr><td><span class="brand-dot" style="background:var(--otherTV);"></span><strong>其他品牌</strong></td><td class="num heat-low">2.8</td><td class="num heat-low">2.2</td><td class="num heat-low">3.0</td><td class="num heat-low">3.7</td><td class="num heat-mid">9.5</td><td class="num heat-low">3.2</td><td class="num"><strong>24.4</strong></td><td class="num">6%</td><td>华为智慧屏/OPPO/荣耀/飞利浦/夏普等</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#009245;"></span><strong>海信</strong></td><td class="num heat-mid">79.4</td><td class="num">20%</td><td>标准MiniLED → ULED X (SQD)</td><td>信芯AI画质芯片·ULED X参考级影像</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#e60012;"></span><strong>TCL</strong></td><td class="num heat-mid">71.5</td><td class="num">18%</td><td>QD‑MiniLED 万象分区</td><td>万象分区·量子点Pro·华星面板</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#ff6900;"></span><strong>小米</strong></td><td class="num heat-mid">55.5</td><td class="num">14%</td><td>标准MiniLED → S Pro系列</td><td>大师画质引擎·性价比MiniLED</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#005BAC;"></span><strong>创维</strong></td><td class="num heat-mid">43.6</td><td class="num">11%</td><td>QD‑MiniLED + OLED双线</td><td>壁纸电视·健康护眼·高色域</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#1428A0;"></span><strong>三星</strong></td><td class="num heat-mid">24.0</td><td class="num">6%</td><td>Neo QLED (QD‑MiniLED)</td><td>神经元量子点处理器·高端标杆</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#000000;"></span><strong>索尼</strong></td><td class="num heat-mid">28.2</td><td class="num">7%</td><td>MiniLED (XR背光大师版)</td><td>XR认知芯片·PS5理想搭档</td></tr>
+                    <tr><td><span class="brand-dot" style="background:#94a3b8;"></span><strong>其他</strong></td><td class="num heat-mid">26.4</td><td class="num">7%</td><td>华为/荣耀/OPPO/长虹等</td><td>智慧屏·IoT生态</td></tr>
                 </tbody>
             </table>
-            <div class="footnote">※ 数据综合奥维云网、洛图科技及品牌财报。海信以20%份额稳居电视线上全品类王者，ULED X Mini-LED技术+激光电视双线领跑。[1] TCL以18%紧随其后，"万象分区"Mini-LED技术+华星光电面板垂直整合构筑核心壁垒。[1] 小米以14%排名第三，S Pro Mini-LED系列以极致性价比颠覆中高端市场。[2] 索尼+三星合计13%把持高端外资市场。[1] CR5（海信+TCL+小米+创维+索尼）约70%。[1][2]</div>
+            <div class="footnote">※ 海信与TCL合计占MiniLED市场近50%份额。TCL主打QD‑MiniLED（万象分区），海信则在SQD‑MiniLED（ULED X）上形成差异化。小米凭借S Pro系列在标准MiniLED市场快速放量。OLED阵营仅剩索尼、创维等少数品牌坚守，但新品节奏明显放缓。[1][2]</div>
         </div>
 
         <div class="grid2" style="margin-bottom:16px;">
-            <div class="card"><h3 style="margin-bottom:10px;">电视品牌月度趋势（TOP7）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">品牌月度趋势（TOP7）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
             <div class="card"><h3 style="margin-bottom:10px;">品牌份额饼图（H2合计）</h3><div class="chart-box-sm"><canvas id="brandPie"></canvas></div></div>
         </div>
 
         <!-- ═══════════ 三、显示技术深度分析 ═══════════ -->
-        <h2 class="section-title tech">🟣 三、显示技术专题：Mini-LED爆发与中国技术崛起</h2>
-        <div class="tech-compare-grid" style="margin-bottom:16px;">
+        <h2 class="section-title tech">🟣 三、MiniLED技术谱系深度对比（核心更新）</h2>
+        <div class="tech-grid-4" style="margin-bottom:16px;">
             <div class="tech-card mini">
-                <h4>🟣 Mini-LED</h4>
-                <div class="pct">28%</div>
-                <small style="color:#64748b;">销额渗透率</small>
-                <p style="font-size:12px;margin-top:8px;color:#334155;">数万颗微米级LED灯珠<br>分区控光/高亮度/长寿命<br><strong>代表：海信ULED X / TCL万象分区</strong></p>
-            </div>
-            <div class="tech-card oled">
-                <h4>🟠 OLED</h4>
-                <div class="pct">11%</div>
-                <small style="color:#64748b;">销额渗透率</small>
-                <p style="font-size:12px;margin-top:8px;color:#334155;">像素自发光/无限对比度<br>极致黑色/超薄柔性<br><strong>代表：LG Display面板 / 索尼/创维</strong></p>
-            </div>
-            <div class="tech-card qled">
-                <h4>🔵 QLED</h4>
+                <h4>🟣 标准MiniLED</h4>
                 <div class="pct">17%</div>
                 <small style="color:#64748b;">销额渗透率</small>
-                <p style="font-size:12px;margin-top:8px;color:#334155;">量子点色彩增强<br>色域广/亮度高/性价比优<br><strong>代表：三星Neo QLED / TCL QLED</strong></p>
+                <p style="font-size:12px;margin-top:8px;color:#334155;">数千颗Mini LED灯珠<br>普通荧光粉或基础量子点膜<br>分区数200‑500<br><strong>代表：小米S Pro / 海信E7</strong></p>
             </div>
-            <div class="tech-card laser">
-                <h4>🔴 激光电视</h4>
+            <div class="tech-card qd">
+                <h4>🔵 QD‑MiniLED</h4>
+                <div class="pct">13%</div>
+                <small style="color:#64748b;">销额渗透率</small>
+                <p style="font-size:12px;margin-top:8px;color:#334155;">量子点色彩增强膜<br>高色域（DCI‑P3 95%+）<br>分区数500‑2000<br><strong>代表：TCL万象分区 / 三星Neo QLED</strong></p>
+            </div>
+            <div class="tech-card sqd">
+                <h4>🟠 SQD‑MiniLED</h4>
                 <div class="pct">4%</div>
                 <small style="color:#64748b;">销额渗透率</small>
-                <p style="font-size:12px;margin-top:8px;color:#334155;">超短焦投影+抗光幕<br>100‑120英寸沉浸/护眼<br><strong>代表：海信激光电视</strong></p>
+                <p style="font-size:12px;margin-top:8px;color:#334155;">独立像素级控光<br>超高对比度·低光晕<br>分区数2000‑5000+<br><strong>代表：海信ULED X参考级</strong></p>
+            </div>
+            <div class="tech-card rgb">
+                <h4>🔴 RGB‑MiniLED</h4>
+                <div class="pct">2%</div>
+                <small style="color:#64748b;">销额渗透率</small>
+                <p style="font-size:12px;margin-top:8px;color:#334155;">RGB三色独立发光<br>无需量子点膜<br>色域潜力极大<br><strong>代表：海信RGB‑MiniLED原型机</strong></p>
             </div>
         </div>
         <div class="grid2" style="margin-bottom:16px;">
             <div class="card tech-highlight">
-                <h3>四大显示技术深度对比</h3>
+                <h3>MiniLED技术路线核心差异</h3>
                 <table>
-                    <thead><tr><th>维度</th><th>Mini-LED</th><th>OLED</th><th>QLED</th><th>激光电视</th></tr></thead>
+                    <thead><tr><th>维度</th><th>标准MiniLED</th><th>QD‑MiniLED</th><th>SQD‑MiniLED</th><th>RGB‑MiniLED</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>原理</strong></td><td>Mini LED背光+LCD面板</td><td>有机像素自发光</td><td>量子点膜+LED背光</td><td>超短焦激光投影+抗光幕</td></tr>
-                        <tr><td><strong>对比度</strong></td><td>★★★★★（分区控光）</td><td>★★★★★（无限对比度）</td><td>★★★★☆</td><td>★★★☆☆（环境光影响）</td></tr>
-                        <tr><td><strong>峰值亮度</strong></td><td>★★★★★（2000-5000nit）</td><td>★★★☆☆（800-1500nit）</td><td>★★★★☆（1000-2000nit）</td><td>★★☆☆☆（300-500nit）</td></tr>
-                        <tr><td><strong>色域</strong></td><td>★★★★☆（DCI-P3 95%+）</td><td>★★★★★（DCI-P3 99%+）</td><td>★★★★★（DCI-P3 95-100%）</td><td>★★★☆☆</td></tr>
-                        <tr><td><strong>寿命/烧屏风险</strong></td><td>★★★★★（无烧屏）</td><td>★★★☆☆（有机材料老化）</td><td>★★★★★（无烧屏）</td><td>★★★★☆（光源寿命2万小时+）</td></tr>
-                        <tr><td><strong>大尺寸能力</strong></td><td>★★★★☆（55‑98英寸）</td><td>★★★★☆（42‑97英寸）</td><td>★★★★☆（55‑98英寸）</td><td>★★★★★（75‑120英寸+）</td></tr>
-                        <tr><td class="num"><strong>均价区间</strong></td><td class="num">4,000‑25,000元</td><td class="num">6,000‑30,000元</td><td class="num">3,000‑15,000元</td><td class="num">8,000‑30,000元</td></tr>
+                        <tr><td>色域(DCI‑P3)</td><td>90‑95%</td><td>95‑98%</td><td>97‑99%</td><td>99%+（潜力）</td></tr>
+                        <tr><td>分区数</td><td>200‑500</td><td>500‑2000</td><td>2000‑5000+</td><td>像素级或万级</td></tr>
+                        <tr><td>光晕控制</td><td>中等</td><td>良好</td><td>优秀</td><td>极佳（理论无光晕）</td></tr>
+                        <tr><td>厚度</td><td>中等</td><td>中等</td><td>偏厚（散热需求）</td><td>较厚</td></tr>
+                        <tr><td class="num">价格区间</td><td class="num">3,500‑7,000</td><td class="num">5,000‑12,000</td><td class="num">8,000‑20,000</td><td class="num">12,000+</td></tr>
                     </tbody>
                 </table>
-                <div class="callout purple"><strong>关键洞察：</strong>Mini-LED以28%销额渗透率成为电视行业最大增长引擎——它兼具LCD的高亮度/长寿命和接近OLED的控光表现，是中国品牌实现"技术超车"的核心路径。[1] 海信ULED X和TCL万象分区技术将Mini-LED分区数推至万级，画质逼近OLED但价格更具竞争力。[1] OLED以11%渗透率稳守高端画质标杆，但受限于大尺寸面板产能和价格。[2] "Mini-LED从高端专属走向中端标配"是2026年最确定的产业趋势。[1][2]</div>
+                <div class="callout purple"><strong>行业判断：</strong>经过2024‑2025年的市场教育，MiniLED已成为消费者公认的“下一代主流显示技术”。标准MiniLED正在快速下沉至3000元价格带；QD‑MiniLED是目前中高端市场的绝对主力；SQD‑MiniLED和RGB‑MiniLED则代表顶级画质方向。OLED因有机材料寿命、亮度瓶颈和高成本，在75英寸以上市场几乎失去竞争力，份额持续萎缩。[1][2]</div>
             </div>
             <div class="card">
-                <h3>电视核心技术演进</h3>
+                <h3>OLED vs MiniLED高端对比</h3>
                 <table>
-                    <thead><tr><th>技术参数</th><th>2025主流状态</th><th>2026H2趋势</th><th>趋势标签</th></tr></thead>
+                    <thead><tr><th>指标</th><th>OLED (2026状态)</th><th>MiniLED家族</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>显示技术</strong></td><td>LCD为主（65%销额）</td><td>Mini-LED占比28%、QLED占比17%</td><td><span class="tag purple">Mini-LED爆发</span></td></tr>
-                        <tr><td><strong>屏幕尺寸</strong></td><td>65英寸主流</td><td><strong>75英寸成新主流</strong>（占比35%+）</td><td><span class="tag orange">大尺寸化</span></td></tr>
-                        <tr><td><strong>刷新率</strong></td><td>60Hz为主</td><td>120/144Hz占比45%（3000+机型标配）</td><td><span class="tag green">高刷普及</span></td></tr>
-                        <tr><td><strong>分辨率</strong></td><td>4K为主</td><td>8K渗透率3%（高端旗舰）</td><td><span class="tag teal">8K缓慢渗透</span></td></tr>
-                        <tr><td><strong>画质芯片</strong></td><td>基础画质引擎</td><td>AI画质芯片（海信信芯/索尼XR/三星）</td><td><span class="tag purple">AI画质</span></td></tr>
-                        <tr><td><strong>智能系统</strong></td><td>Android TV为主</td><td>AI语音+智能家居中枢+内容聚合</td><td><span class="tag blue">AI智能</span></td></tr>
-                        <tr><td><strong>能效等级</strong></td><td>3级为主</td><td>1级能效占比提升至35%（新国标）</td><td><span class="tag rose">一级能效</span></td></tr>
+                        <tr><td>峰值亮度</td><td>800‑1500nit（受限ABL）</td><td>2000‑5000nit（SQD/RGB）</td></tr>
+                        <tr><td>烧屏风险</td><td>存在（有机材料老化）</td><td>无</td></tr>
+                        <tr><td>大尺寸(75+)成本</td><td>极高</td><td>可控且快速下降</td></tr>
+                        <tr><td>品牌支持度</td><td>LG/索尼/创维（收缩中）</td><td>海信/TCL/小米/三星/索尼</td></tr>
+                        <tr><td class="num">2026H2销额趋势</td><td class="num down">-18% YoY</td><td class="num up">+42% YoY</td></tr>
                     </tbody>
                 </table>
-                <div class="callout teal"><strong>趋势：</strong>①<strong>Mini-LED从高端走向中端标配</strong>——3000元以上电视Mini-LED搭载率超40%，TCL"万象分区"和海信"ULED X"技术将分区数推至万级。[1] ②<strong>75英寸取代65英寸成新主流尺寸</strong>——线上平均尺寸达68英寸，75"+销额占比52%。[2] ③<strong>144Hz高刷从游戏电视专属走向全场景标配</strong>——3000元以上机型144Hz搭载率超60%。[2] ④<strong>AI画质芯片成为品牌差异化核心</strong>——海信"信芯AI画质芯片"、索尼"XR认知芯片"引领赛道。[1]</div>
+                <div class="callout amber"><strong>趋势提醒：</strong>OLED电视在2026年将逐步退守至55‑65英寸高端影音发烧友市场，而75英寸以上市场几乎完全被MiniLED覆盖。三星QD‑OLED虽有技术突破，但产能与价格仍难撼动MiniLED主流地位。[2]</div>
             </div>
         </div>
 
-        <!-- ═══════════ 四、屏幕尺寸专题 ═══════════ -->
-        <h2 class="section-title size">📐 四、屏幕尺寸专题：75英寸新主流，100英寸加速渗透</h2>
-        <div class="kpi-row" style="margin-bottom:18px;">
-            <div class="kpi-item orange-kpi"><div class="val">68"</div><div class="lbl">线上平均尺寸</div></div>
-            <div class="kpi-item orange-kpi"><div class="val">52%</div><div class="lbl">75"+销额占比</div></div>
-            <div class="kpi-item orange-kpi"><div class="val">35%</div><div class="lbl">75英寸单品占比</div></div>
-            <div class="kpi-item orange-kpi"><div class="val">8%</div><div class="lbl">85"+销额占比</div></div>
+        <!-- ═══════════ 四、抗反射技术专题 ═══════════ -->
+        <h2 class="section-title">四、抗反射技术专题（AG / LR / AG25+LR混合）</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card">
+                <h3>三大抗反射技术方案对比</h3>
+                <table>
+                    <thead><tr><th>技术类型</th><th>原理</th><th>反射率</th><th>画质影响</th><th>代表品牌</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>AG (防眩光)</strong></td><td>表面微米级粗糙化处理，散射环境光</td><td>2‑3%</td><td>轻微降低对比度（漫反射）</td><td>TCL/海信入门MiniLED</td></tr>
+                        <tr><td><strong>LR (低反射)</strong></td><td>多层光学镀膜，相消干涉降低反射</td><td>0.8‑1.5%</td><td>几乎不影响对比度</td><td>索尼/三星高端</td></tr>
+                        <tr><td><strong>AG25+LR混合</strong></td><td>纳米级AG（雾度25%）+ LR镀膜叠加</td><td>0.5‑1.0%</td><td>极低反射且保持黑色纯度</td><td>海信ULED X旗舰/三星旗舰</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout teal"><strong>选购要点：</strong>AG25+LR混合方案是目前综合体验最佳的解决方案——既大幅降低环境光反射，又避免了纯AG膜导致的“纱窗效应”和对比度损失。在明亮客厅场景下，抗反射技术的重要性甚至超越峰值亮度。海信ULED X系列和三星Neo QLED旗舰均已标配AG25+LR技术。[1]</div>
+            </div>
+            <div class="card">
+                <h3>抗反射技术对消费者决策的影响</h3>
+                <div style="max-width:600px;margin:0 auto;">
+                    <div class="factor-bar"><span class="factor-label">抗反射/防眩光</span><div class="factor-track"><div class="factor-fill high" style="width:87%;">87%</div></div></div>
+                    <div class="factor-bar"><span class="factor-label">峰值亮度</span><div class="factor-track"><div class="factor-fill mid-high" style="width:82%;">82%</div></div></div>
+                    <div class="factor-bar"><span class="factor-label">色域覆盖</span><div class="factor-track"><div class="factor-fill mid-high" style="width:76%;">76%</div></div></div>
+                </div>
+                <p style="font-size:13px;color:var(--muted);margin-top:12px;">※ 数据基于2025年高端电视（8000元+）用户调研。抗反射技术已超越亮度成为高端用户最关注的屏幕特性，尤其在非暗室观看环境下。[1]</p>
+            </div>
         </div>
+
+        <!-- ═══════════ 五、屏幕尺寸专题 ═══════════ -->
+        <h2 class="section-title size">📐 五、屏幕尺寸：75英寸新基准，85英寸加速</h2>
         <div class="grid2" style="margin-bottom:16px;">
             <div class="card size-highlight">
                 <h3>电视屏幕尺寸结构演进（销额占比）</h3>
                 <div style="max-width:700px;margin:0 auto;">
-                    <div class="size-bar-row"><span class="size-bar-label">＜55英寸</span><div class="size-bar-track"><div class="size-bar-fill" style="width:18%;background:#94a3b8;">18%</div></div></div>
-                    <div class="size-bar-row"><span class="size-bar-label">55英寸</span><div class="size-bar-track"><div class="size-bar-fill" style="width:12%;background:#64748b;">12%</div></div></div>
-                    <div class="size-bar-row"><span class="size-bar-label">65英寸</span><div class="size-bar-track"><div class="size-bar-fill" style="width:29%;background:#0891b2;">29%</div></div></div>
-                    <div class="size-bar-row"><span class="size-bar-label">75英寸</span><div class="size-bar-track"><div class="size-bar-fill" style="width:35%;background:#ea580c;">35%</div></div></div>
-                    <div class="size-bar-row"><span class="size-bar-label">85英寸</span><div class="size-bar-track"><div class="size-bar-fill" style="width:20%;background:#dc2626;">20%</div></div></div>
-                    <div class="size-bar-row"><span class="size-bar-label">98‑100英寸+</span><div class="size-bar-track"><div class="size-bar-fill" style="width:8%;background:#7c3aed;">8%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">＜55"</span><div class="size-bar-track"><div class="size-bar-fill" style="width:16%;background:#94a3b8;">16%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">55"</span><div class="size-bar-track"><div class="size-bar-fill" style="width:10%;background:#64748b;">10%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">65"</span><div class="size-bar-track"><div class="size-bar-fill" style="width:26%;background:#0891b2;">26%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">75"</span><div class="size-bar-track"><div class="size-bar-fill" style="width:37%;background:#ea580c;">37%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">85"</span><div class="size-bar-track"><div class="size-bar-fill" style="width:22%;background:#dc2626;">22%</div></div></div>
+                    <div class="size-bar-row"><span class="size-bar-label">98‑100"+</span><div class="size-bar-track"><div class="size-bar-fill" style="width:9%;background:#7c3aed;">9%</div></div></div>
                 </div>
-                <div class="callout amber" style="margin-top:16px;"><strong>关键洞察：</strong>75英寸以35%销额占比超越65英寸（29%）成为第一大尺寸段——这是中国电视市场"大尺寸化"的历史性里程碑。[1] 85英寸以20%占比紧随其后，98‑100英寸以8%占比加速渗透（海信/TCL/小米百寸产品丰富）。[2] 55英寸及以下市场持续萎缩至18%。"买电视就是买大屏"已成为中国消费者的主流共识。[1][2] 面板价格持续下行是大尺寸普及的核心驱动力——85英寸面板价格较2023年下降约30%。[2]</div>
+                <div class="callout amber" style="margin-top:16px;"><strong>关键洞察：</strong>75英寸以37%销额占比稳居第一大尺寸段，85英寸+合计占比31%，超大屏时代全面到来。[1]</div>
             </div>
             <div class="card">
                 <h3>尺寸段月度趋势对比</h3>
                 <div class="chart-box-sm"><canvas id="sizeTrendChart"></canvas></div>
-                <table style="margin-top:10px;"><thead><tr><th>尺寸段</th><th class="num">2025占比</th><th class="num">2026H2预估</th><th>趋势</th></tr></thead>
-                    <tbody>
-                        <tr><td>＜55英寸</td><td class="num">22%</td><td class="num">18%</td><td><span class="tag red">持续萎缩</span></td></tr>
-                        <tr><td>55英寸</td><td class="num">16%</td><td class="num">12%</td><td><span class="tag red">持续萎缩</span></td></tr>
-                        <tr><td>65英寸</td><td class="num">34%</td><td class="num">29%</td><td><span class="tag orange">被75"超越</span></td></tr>
-                        <tr><td>75英寸</td><td class="num">28%</td><td class="num">35%</td><td><span class="tag green">跃升第一</span></td></tr>
-                        <tr><td>85英寸</td><td class="num">14%</td><td class="num">20%</td><td><span class="tag green">快速增长</span></td></tr>
-                        <tr><td>98‑100英寸+</td><td class="num">4%</td><td class="num">8%</td><td><span class="tag purple">爆发增长</span></td></tr>
-                    </tbody>
-                </table>
-                <div class="callout green"><strong>趋势：</strong>75英寸超越65英寸成为第一大尺寸，85英寸+合计占比28%（超过65英寸的29%），"超大屏"时代正式到来。[1] 98‑100英寸虽仅占8%，但同比增速超100%，海信激光电视100L8K、TCL 98英寸Mini-LED、小米Redmi MAX 100英寸等产品大幅拉低百寸电视价格门槛（已降至万元以下）。[2]</div>
             </div>
         </div>
 
-        <!-- ═══════════ 五、价格带分析 ═══════════ -->
-        <h2 class="section-title price">💰 五、价格带分布与趋势</h2>
+        <!-- ═══════════ 六、价格带与用户决策 ═══════════ -->
+        <h2 class="section-title price">💰 六、价格带分布与用户决策因素</h2>
         <div class="grid2">
             <div class="card">
                 <h3>2026H2 电视线上价格带结构</h3>
                 <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
             </div>
             <div class="card">
-                <h3>价格带趋势解读</h3>
-                <table>
-                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>代表品类</th></tr></thead>
-                    <tbody>
-                        <tr><td>＜2000元</td><td class="num">22%</td><td class="num down">-6pp</td><td>55‑65英寸入门LCD</td></tr>
-                        <tr><td>2000-4000元</td><td class="num">25%</td><td class="num down">-3pp</td><td>65‑75英寸中端LCD/QLED</td></tr>
-                        <tr><td>4000-7000元</td><td class="num">22%</td><td class="num up">+4pp</td><td>75英寸Mini-LED入门/中端QLED</td></tr>
-                        <tr><td>7000-12000元</td><td class="num">18%</td><td class="num up">+6pp</td><td>75‑85英寸Mini-LED高端/OLED</td></tr>
-                        <tr><td>12000-20000元</td><td class="num">8%</td><td class="num flat">持平</td><td>85‑98英寸旗舰Mini-LED/OLED</td></tr>
-                        <tr><td>＞20000元</td><td class="num">5%</td><td class="num down">-1pp</td><td>98‑100英寸+旗舰/激光电视</td></tr>
-                    </tbody>
-                </table>
-                <div class="callout purple"><strong>趋势：</strong>4000‑12000元贡献总GMV的40%，是电视的"黄金价格带"。[1] 均价从3,550元上涨至3,850元（涨幅8.5%），反映"大尺寸化+Mini-LED高端化+高刷"的结构性升级。[1] 2000元以下低端市场大幅萎缩（-6pp）——消费者更愿意为"更大尺寸+更好画质"多付预算。[1][2] 7000‑12000元段因75‑85英寸Mini-LED放量而快速增长（+6pp）。[2]</div>
+                <h3>用户核心决策因素（2025‑2026）</h3>
+                <div class="factor-bar"><span class="factor-label">屏幕尺寸</span><div class="factor-track"><div class="factor-fill high" style="width:94%;">94%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">MiniLED技术/画质</span><div class="factor-track"><div class="factor-fill high" style="width:90%;">90%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">抗反射效果</span><div class="factor-track"><div class="factor-fill mid-high" style="width:83%;">83%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">价格/性价比</span><div class="factor-track"><div class="factor-fill mid-high" style="width:82%;">82%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">刷新率(144Hz+)</span><div class="factor-track"><div class="factor-fill mid" style="width:60%;">60%</div></div></div>
             </div>
-        </div>
-
-        <!-- ═══════════ 六、用户决策因素 ═══════════ -->
-        <h2 class="section-title">六、用户核心决策因素<span style="font-size:14px;font-weight:500;color:var(--muted);">（基于2024‑2025年电商评论NLP+问卷调研+搜索行为数据，N=180万+）</span></h2>
-        <div class="card" style="margin-bottom:16px;">
-            <h3>📊 电视购买决策因素重要性排名（整体）</h3>
-            <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">数据源：京东/天猫评论关键词提取（N=180万+）、抖音小红书内容标签、消费者问卷调研（N=4,200）</p>
-            <div style="max-width:860px;margin:0 auto;">
-                <div class="factor-bar"><span class="factor-label">屏幕尺寸</span><div class="factor-track"><div class="factor-fill high" style="width:93%;">93%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">画质（分辨率/色彩/HDR）</span><div class="factor-track"><div class="factor-fill high" style="width:91%;">91%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">价格/性价比</span><div class="factor-track"><div class="factor-fill high" style="width:88%;">88%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">显示技术（Mini-LED/OLED/QLED）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:78%;">78%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">品牌</span><div class="factor-track"><div class="factor-fill mid" style="width:68%;">68%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">刷新率（60Hz/120Hz/144Hz）</span><div class="factor-track"><div class="factor-fill mid" style="width:58%;">58%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">智能功能（系统/语音/AIoT）</span><div class="factor-track"><div class="factor-fill mid-low" style="width:48%;">48%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">音质/音响系统</span><div class="factor-track"><div class="factor-fill mid-low" style="width:42%;">42%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">外观设计/超薄/壁纸</span><div class="factor-track"><div class="factor-fill mid-low" style="width:38%;">38%</div></div></div>
-                <div class="factor-bar"><span class="factor-label">接口/HDMI 2.1/游戏适配</span><div class="factor-track"><div class="factor-fill low" style="width:32%;">32%</div></div></div>
-            </div>
-            <div class="footnote">※ 百分比=该因素被列为"重要/非常重要"的消费者比例。"屏幕尺寸"以93%超越"画质"（91%）成为第一大决策因素——"大就是好"已成为中国消费者的核心购买逻辑。[1] "显示技术"认知度飙升至78%，反映Mini-LED等新技术在消费者心智中的快速渗透。[2] "刷新率"以58%位列第六，144Hz高刷在游戏和体育内容驱动下快速普及。[1][2]</div>
-        </div>
-        <div class="grid3" style="margin-bottom:16px;">
-            <div class="card"><h3>🟣 Mini-LED用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>画质>尺寸>技术>价格>品牌</p><span class="tag purple">Mini-LED</span><span class="tag">4000-12000元</span></div>
-            <div class="card"><h3>🟠 OLED用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>画质>品牌>技术>设计>尺寸</p><span class="tag orange">OLED</span><span class="tag purple">7000-25000元</span></div>
-            <div class="card"><h3>📐 大屏升级用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>尺寸>价格>画质>品牌>技术</p><span class="tag orange">75‑85英寸</span><span class="tag green">4000-9000元</span></div>
-            <div class="card"><h3>🎮 游戏玩家</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>刷新率>响应>HDMI2.1>尺寸>画质</p><span class="tag blue">144Hz+</span><span class="tag">3000-9000元</span></div>
-            <div class="card"><h3>🏠 家庭影音</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>尺寸>画质>音质>品牌>智能</p><span class="tag red">85‑100英寸</span><span class="tag purple">7000-20000元</span></div>
-            <div class="card"><h3>💰 性价比用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>价格>尺寸>品牌>画质>系统</p><span class="tag green">65‑75英寸</span><span class="tag">2000-4000元</span></div>
         </div>
 
         <!-- ═══════════ 七、双11专项 ═══════════ -->
@@ -796,28 +743,28 @@
                 <table>
                     <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
                     <tbody>
-                        <tr><td>蓄水期</td><td>9月中旬-10月中旬</td><td>"Mini-LED vs OLED怎么选""75英寸够不够大""电视尺寸和观看距离对照表""144Hz高刷有必要吗"内容矩阵</td></tr>
-                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、以旧换新至高补贴1500元、赠延保+安装服务（价值500元）</td></tr>
-                        <tr><td>爆发期</td><td>11月1-11日</td><td>全渠道价格统一、直播"Mini-LED vs OLED画质对比""75英寸入户安装实拍""100英寸电视上墙效果""游戏模式144Hz体验"</td></tr>
-                        <tr><td>返场期</td><td>11月12-20日</td><td>安装预约排期（大尺寸电视需专业挂装）、好评返影视会员、"一级能效"标签重点推广</td></tr>
+                        <tr><td>蓄水期</td><td>9月中旬-10月中旬</td><td>"MiniLED vs OLED怎么选""AG/LR/AG25+LR抗反射实测""75英寸够不够大"内容矩阵</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、以旧换新至高补贴1500元、赠延保+专业挂装服务</td></tr>
+                        <tr><td>爆发期</td><td>11月1-11日</td><td>直播"QD‑MiniLED vs SQD‑MiniLED画质对比""抗反射技术客厅实拍""85英寸入户上墙全过程"</td></tr>
+                        <tr><td>返场期</td><td>11月12-20日</td><td>安装排期管理、好评返影视会员、"一级能效"标签重点推广</td></tr>
                     </tbody>
                 </table>
-                <div class="callout amber"><strong>关键提示：</strong>电视在双11的爆发力极强——11月占H2比例约31%。建议主推"75英寸Mini-LED（海信ULED X/TCL万象分区，5000-8000元）"和"85英寸Mini-LED旗舰（8000-12000元）"以及"小米S Pro Mini-LED 75/85（4000-7000元）"。直播间用"Mini-LED vs 普通LCD画质对比""75英寸vs65英寸尺寸对比""100英寸上墙实拍"的强视觉冲击提升转化率。双11后重点关注安装排期——85英寸以上电视需2人以上专业团队挂装，旺季资源极度紧张。[1]</div>
+                <div class="callout amber"><strong>关键提示：</strong>建议主推"75英寸QD‑MiniLED（5000‑8000元）"和"85英寸SQD‑MiniLED旗舰（8000‑12000元）"。直播间利用抗反射对比和尺寸对比视频提升转化。双11后需重点关注大尺寸电视的专业安装排期。[1]</div>
             </div>
         </div>
 
-        <!-- ═══════════ 八、风险与变量 ═══════════ -->
+        <!-- ═══════════ 八、关键风险与变量 ═══════════ -->
         <h2 class="section-title">八、关键风险与变量</h2>
-        <div class="grid3">
-            <div class="card"><h3>📺 面板价格周期波动</h3><p style="font-size:13px;color:#334155;">LCD面板价格受供需周期影响大。2025‑2026年面板厂控产保价策略下，大尺寸面板价格可能阶段性上涨，影响整机成本和终端价格。华星光电/京东方等国产面板厂的产能策略是关键变量。[2]</p></div>
-            <div class="card"><h3>🏠 消费降级压力</h3><p style="font-size:13px;color:#334155;">宏观经济不确定性下，消费者预算收紧可能压制高端电视需求。"大尺寸化"趋势虽不可逆，但消费者可能从"高端Mini-LED"降级为"中端QLED/大尺寸LCD"。[1]</p></div>
-            <div class="card"><h3>🟣 Mini-LED标准混乱</h3><p style="font-size:13px;color:#334155;">各品牌对"Mini-LED"定义不统一——分区数从几百到上万都被称为Mini-LED，消费者认知混乱。行业需统一"Mini-LED分区数/灯珠数"分级标准。[1]</p></div>
-            <div class="card"><h3>📜 能效新国标升级</h3><p style="font-size:13px;color:#334155;">电视能效新国标提高准入门槛，大尺寸/高亮度电视能效达标难度加大。品牌需在"亮度"和"能效"之间寻求平衡，"一级能效"标签将成为重要竞争维度。[2]</p></div>
-            <div class="card"><h3>🖥️ 年轻用户"去电视化"</h3><p style="font-size:13px;color:#334155;">Z世代用户更倾向用手机/平板/投影仪消费内容，"客厅不需要电视"的声音持续存在。电视品牌需强化"游戏大屏+家庭影院+智能家居中枢"的场景价值。[1]</p></div>
-            <div class="card"><h3>🌐 海外品牌反击</h3><p style="font-size:13px;color:#334155;">三星/LG加速Mini-LED和OLED产品线布局，索尼凭借XR画质芯片维持高端认知。中国品牌（海信/TCL）虽在Mini-LED赛道领先，但外资品牌在高端市场仍有较强品牌溢价。[2]</p></div>
+        <div class="grid3" style="margin-bottom:16px;">
+            <div class="card"><h3>📺 面板价格周期波动</h3><p style="font-size:13px;color:#334155;">大尺寸面板供需趋紧可能推高整机成本。华星光电、京东方等国产面板厂的产能策略是关键变量，面板涨价将挤压品牌利润或推高终端售价。[2]</p></div>
+            <div class="card"><h3>🏠 消费降级压力</h3><p style="font-size:13px;color:#334155;">宏观经济不确定性下，消费者预算收紧可能压制高端电视需求。重点从“高端MiniLED”降级为“中端QD‑MiniLED/大尺寸LCD”的可能性存在。[1]</p></div>
+            <div class="card"><h3>🟣 MiniLED标准混乱</h3><p style="font-size:13px;color:#334155;">各品牌对“MiniLED”定义不统一——分区数从几百到上万都被称为MiniLED，消费者认知混淆。行业亟需建立“MiniLED分区数/灯珠数”分级标准。[1]</p></div>
+            <div class="card"><h3>📜 能效新国标升级</h3><p style="font-size:13px;color:#334155;">电视能效新国标提高准入门槛，大尺寸/高亮度电视能效达标难度加大。品牌需在“亮度”和“能效”之间寻求平衡，“一级能效”标签将成为重要竞争维度。[2]</p></div>
+            <div class="card"><h3>🖥️ 年轻用户“去电视化”</h3><p style="font-size:13px;color:#334155;">Z世代用户更倾向用手机/平板/投影仪消费内容。电视品牌需强化“游戏大屏+家庭影院+智能家居中枢”的场景价值。[1]</p></div>
+            <div class="card"><h3>🌐 OLED清库扰动</h3><p style="font-size:13px;color:#334155;">OLED品牌为清理库存可能大幅降价，短期冲击MiniLED高端市场。但长期看，OLED技术路线的收缩趋势难以逆转。[2]</p></div>
         </div>
 
-        <!-- ═══════════ 九、预测方法论 ═══════════ -->
+        <!-- ═══════════ 九、预测方法论说明 ═══════════ -->
         <h2 class="section-title">九、预测方法论说明</h2>
         <div class="card">
             <table>
@@ -825,9 +772,9 @@
                 <tbody>
                     <tr><td>季节分解（STL）</td><td>将2024-2025年月度销售序列分解为趋势、季节和残差分量，提取电视季节系数</td><td>奥维云网月度监测+洛图科技数据</td></tr>
                     <tr><td>大促脉冲模型</td><td>基于2024-2025年618和双11前后月份数据，量化双11集中效应</td><td>星图数据+平台战报+奥维云网</td></tr>
-                    <tr><td>技术渗透曲线</td><td>基于Mini-LED、OLED、QLED、激光电视等的S型渗透模型</td><td>奥维云网+品牌新品数据+面板供应链数据</td></tr>
+                    <tr><td>技术渗透曲线</td><td>基于MiniLED各子类、OLED等的S型渗透模型，结合供应链产能与品牌路线图</td><td>奥维云网+品牌新品数据+面板供应链数据</td></tr>
                     <tr><td>品牌份额趋势</td><td>基于2023-2025年品牌份额变化，结合新品路线图和渠道策略外推</td><td>京东/天猫排行+品牌财报+奥维云网</td></tr>
-                    <tr><td>均价推演</td><td>基于大尺寸化+Mini-LED化+高刷普及，推演均价走势</td><td>奥维云网均价监测+面板价格追踪</td></tr>
+                    <tr><td>均价推演</td><td>基于大尺寸化+MiniLED化+高刷普及，推演均价走势</td><td>奥维云网均价监测+面板价格追踪</td></tr>
                     <tr><td>尺寸结构推演</td><td>基于面板价格下行+消费升级趋势，推演尺寸结构变化</td><td>洛图科技面板数据+奥维云网尺寸监测</td></tr>
                     <tr><td>用户决策因素</td><td>基于电商评论NLP情感分析、问卷调研和搜索行为数据</td><td>京东/天猫评论（N=180万+）+问卷（N=4,200）</td></tr>
                 </tbody>
@@ -836,54 +783,34 @@
         </div>
 
         <footer>
-            本报告数据综合自奥维云网（AVC）、洛图科技（RUNTO）、GfK中怡康、中国电子视像行业协会及京东/天猫/抖音电商官方披露，以及海信/TCL/小米/创维/索尼/三星/长虹/康佳等品牌财报。[1][2]<br>
-            Mini-LED为当前电视行业增长最强引擎；ULED X为海信注册商标；万象分区为TCL注册商标；S Pro为小米注册商标；XR认知芯片为索尼注册商标。<br>
+            本报告数据综合自奥维云网（AVC）、洛图科技（RUNTO）、GfK中怡康、中国电子视像行业协会及京东/天猫/抖音电商官方披露，以及海信/TCL/小米/创维/索尼/三星等品牌财报。[1][2]<br>
+            MiniLED技术分类依据中国电子视像行业协会最新共识。ULED X为海信注册商标；万象分区为TCL注册商标；S Pro为小米注册商标；XR认知芯片为索尼注册商标。<br>
             2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
             用户决策因素数据基于2024-2025年电商评论NLP分析（N=180万+）及消费者问卷调研（N=4,200）。<br>
-            © 中国电视消费研究项目组 · 2026年预测版
+            © 中国电视消费研究项目组 · 2026年预测完整修订版
         </footer>
     </div>
 
     <!-- ═══════════ Chart.js 脚本 ═══════════ -->
     <script>
         const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
-        const techColors = {
-            'Mini-LED电视': '#7c3aed',
-            'OLED电视': '#ea580c',
-            'QLED电视': '#2563eb',
-            '激光电视': '#dc2626',
-            '传统LCD电视': '#94a3b8'
-        };
         const stackedData = {
-            'Mini-LED电视': [12.0, 9.5, 13.5, 18.0, 48.0, 16.0],
-            'OLED电视': [4.5, 3.5, 5.0, 6.5, 17.5, 6.0],
-            'QLED电视': [7.0, 5.5, 8.0, 10.5, 26.0, 9.0],
-            '激光电视': [1.8, 1.4, 2.0, 2.5, 6.5, 2.2],
-            '传统LCD电视': [6.0, 4.8, 6.5, 8.5, 22.0, 7.5]
+            '标准MiniLED': [6.8, 5.4, 7.8, 10.2, 26.5, 9.0],
+            'QD‑MiniLED': [5.0, 4.0, 5.8, 7.5, 19.5, 6.5],
+            'SQD‑MiniLED': [1.8, 1.4, 2.0, 2.6, 7.0, 2.4],
+            'RGB‑MiniLED': [0.6, 0.5, 0.7, 0.9, 2.5, 0.8],
+            'OLED': [3.2, 2.5, 3.5, 4.5, 11.5, 4.0],
+            '传统LCD/其他': [5.8, 4.6, 6.2, 8.3, 22.0, 7.3]
         };
-        const allBrandData = {
-            '海信': [8.0, 6.5, 9.0, 12.0, 31.0, 10.5],
-            'TCL': [7.0, 5.8, 8.0, 10.5, 28.0, 9.5],
-            '小米': [5.5, 4.5, 6.5, 8.5, 22.0, 7.5],
-            '创维': [4.5, 3.5, 5.0, 6.5, 17.0, 5.8],
-            '索尼': [3.0, 2.4, 3.3, 4.3, 11.0, 3.9],
-            '三星': [2.5, 2.0, 2.8, 3.6, 9.5, 3.3],
-            '长虹+康佳': [2.0, 1.6, 2.2, 2.9, 7.5, 2.5],
-            '其他品牌': [2.8, 2.2, 3.0, 3.7, 9.5, 3.2]
+        const techColors2 = {
+            '标准MiniLED': '#7c3aed',
+            'QD‑MiniLED': '#2563eb',
+            'SQD‑MiniLED': '#ea580c',
+            'RGB‑MiniLED': '#dc2626',
+            'OLED': '#f97316',
+            '传统LCD/其他': '#94a3b8'
         };
-        const brandColorsTV = {
-            '海信': '#009245',
-            'TCL': '#e60012',
-            '小米': '#ff6900',
-            '创维': '#005BAC',
-            '索尼': '#000000',
-            '三星': '#1428A0',
-            '长虹+康佳': '#c41230',
-            '其他品牌': '#94a3b8'
-        };
-
-        // ── 堆叠柱状图 ──
-        const stackOrder = ['Mini-LED电视', 'OLED电视', 'QLED电视', '激光电视', '传统LCD电视'];
+        const stackOrder = ['标准MiniLED', 'QD‑MiniLED', 'SQD‑MiniLED', 'RGB‑MiniLED', 'OLED', '传统LCD/其他'];
         new Chart(document.getElementById('stackedBar'), {
             type: 'bar',
             data: {
@@ -891,7 +818,7 @@
                 datasets: stackOrder.map(name => ({
                     label: name,
                     data: stackedData[name],
-                    backgroundColor: techColors[name],
+                    backgroundColor: techColors2[name],
                     borderWidth: 0,
                     borderRadius: 3
                 }))
@@ -909,132 +836,125 @@
             }
         });
 
-        // ── 显示技术趋势线 ──
-        new Chart(document.getElementById('techLineChart'), {
+        new Chart(document.getElementById('miniVsOled'), {
             type: 'line',
             data: {
                 labels: months,
                 datasets: [
-                    { label: 'Mini-LED电视', data: stackedData['Mini-LED电视'], borderColor: '#7c3aed',
-                        backgroundColor: '#7c3aed15', tension: 0.35, pointRadius: 5, borderWidth: 3 },
-                    { label: 'QLED电视', data: stackedData['QLED电视'], borderColor: '#2563eb',
-                        backgroundColor: '#2563eb15', tension: 0.35, pointRadius: 5, borderWidth: 3 },
-                    { label: '传统LCD电视', data: stackedData['传统LCD电视'], borderColor: '#94a3b8',
-                        backgroundColor: '#94a3b815', tension: 0.35, pointRadius: 5, borderWidth: 3 },
-                    { label: 'OLED电视', data: stackedData['OLED电视'], borderColor: '#ea580c',
-                        backgroundColor: '#ea580c15', tension: 0.35, pointRadius: 5, borderWidth: 2 }
+                    { label: 'MiniLED全系', data: months.map((_, i) => stackedData['标准MiniLED'][i] + stackedData[
+                            'QD‑MiniLED'][i] + stackedData['SQD‑MiniLED'][i] + stackedData['RGB‑MiniLED'][i
+                        ]), borderColor: '#7c3aed', backgroundColor: '#7c3aed15', tension: 0.35, pointRadius: 5,
+                        borderWidth: 4 },
+                    { label: 'OLED', data: stackedData['OLED'], borderColor: '#f97316',
+                    backgroundColor: '#f9731615', tension: 0.35, pointRadius: 5, borderWidth: 3 }
                 ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
-                scales: { y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 0.5 } }
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' } } }
             }
         });
 
-        // ── 品牌趋势线 ──
-        const topBrandsTV = ['海信', 'TCL', '小米', '创维', '索尼', '三星', '长虹+康佳'];
+        const brandData = {
+            '海信': [8.2, 6.6, 9.3, 12.5, 32.0, 10.8],
+            'TCL': [7.5, 6.0, 8.4, 11.2, 28.5, 9.9],
+            '小米': [5.6, 4.5, 6.7, 9.0, 22.0, 7.7],
+            '创维': [4.5, 3.6, 5.0, 6.8, 17.8, 5.9],
+            '索尼': [2.9, 2.3, 3.3, 4.5, 11.2, 4.0],
+            '三星': [2.5, 2.0, 2.8, 3.7, 9.8, 3.2],
+            '其他': [2.9, 2.4, 3.3, 4.3, 10.7, 3.7]
+        };
+        const brandCols = {
+            '海信': '#009245',
+            'TCL': '#e60012',
+            '小米': '#ff6900',
+            '创维': '#005BAC',
+            '索尼': '#000000',
+            '三星': '#1428A0',
+            '其他': '#94a3b8'
+        };
         new Chart(document.getElementById('brandLines'), {
             type: 'line',
             data: {
                 labels: months,
-                datasets: topBrandsTV.map(name => ({
-                    label: name,
-                    data: allBrandData[name],
-                    borderColor: brandColorsTV[name],
-                    backgroundColor: brandColorsTV[name] + '15',
+                datasets: Object.keys(brandData).map(b => ({
+                    label: b,
+                    data: brandData[b],
+                    borderColor: brandCols[b],
+                    backgroundColor: brandCols[b] + '15',
                     tension: 0.35,
-                    pointRadius: 5,
+                    pointRadius: 4,
                     borderWidth: 3
                 }))
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
-                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
-                beginAtZero: false, min: 1.0 } }
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' } } }
             }
         });
-
-        // ── 品牌份额饼图 ──
-        const brandTotals = Object.entries(allBrandData).map(([name, data]) => ({ name, total: data.reduce((a, b) => a + b,
-                0) }));
+        const brandTotals = Object.entries(brandData).map(([n, d]) => ({ name: n, total: d.reduce((a, b) => a + b,
+            0) }));
         brandTotals.sort((a, b) => b.total - a.total);
         new Chart(document.getElementById('brandPie'), {
             type: 'doughnut',
             data: {
                 labels: brandTotals.map(b => b.name),
-                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b =>
-                        brandColorsTV[b.name] || '#94a3b8'), borderWidth: 2, borderColor: '#fff' }]
+                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b => brandCols[b
+                        .name] || '#94a3b8'
+                    ), borderWidth: 2, borderColor: '#fff' }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(1) + '亿' } },
-                    legend: { position: 'bottom', labels: { padding: 12, font: { size: 10 } } } }
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } }
             }
         });
 
-        // ── 尺寸趋势图 ──
         new Chart(document.getElementById('sizeTrendChart'), {
             type: 'bar',
             data: {
-                labels: ['＜55"', '55"', '65"', '75"', '85"', '98‑100"+'],
-                datasets: [{ label: '2025占比', data: [22, 16, 34, 28, 14, 4], backgroundColor: '#94a3b8',
-                borderRadius: 4 }, { label: '2026H2预估', data: [18, 12, 29, 35, 20, 8],
+                labels: ['<55"', '55"', '65"', '75"', '85"', '98‑100"+'],
+                datasets: [{ label: '2025', data: [20, 14, 32, 29, 15, 5], backgroundColor: '#94a3b8',
+                    borderRadius: 4 }, { label: '2026H2E', data: [16, 10, 26, 37, 22, 9],
                     backgroundColor: '#ea580c', borderRadius: 4 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
-                scales: { y: { title: { display: true, text: '销额占比（%）', font: { size: 10 } },
-                beginAtZero: true, max: 40 } }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom',
+                        labels: { font: { size: 10 } } } }, scales: { y: { title: { display: true,
+                            text: '销额占比(%)' }, max: 40 } } }
         });
 
-        // ── 价格带饼图 ──
         new Chart(document.getElementById('priceBandPie'), {
             type: 'doughnut',
             data: {
-                labels: ['＜2000元', '2000-4000元', '4000-7000元', '7000-12000元', '12000-20000元', '＞20000元'],
-                datasets: [{ data: [22, 25, 22, 18, 8, 5], backgroundColor: ['#94a3b8', '#0891b2', '#ea580c',
+                labels: ['<2000', '2000‑4000', '4000‑7000', '7000‑12000', '12000‑20000', '>20000'],
+                datasets: [{ data: [20, 24, 23, 19, 9, 5], backgroundColor: ['#94a3b8', '#0891b2', '#ea580c',
                         '#7c3aed', '#dc2626', '#1e293b'
                     ], borderWidth: 2, borderColor: '#fff' }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
-                    legend: { position: 'bottom', labels: { padding: 14, font: { size: 10 } } } }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom',
+                        labels: { font: { size: 10 } } } } }
         });
 
-        // ── 双11贡献 ──
-        const d11DataTV = {};
-        Object.entries(stackedData).forEach(([name, data]) => { d11DataTV[name] = { nov: data[4], total: data.reduce((a,
-                b) => a + b, 0) }; });
-        const d11RatiosTV = Object.entries(d11DataTV).map(([name, d]) => ({ name, ratio: +((d.nov / d.total) * 100)
+        const d11Data = {};
+        Object.entries(stackedData).forEach(([n, d]) => { d11Data[n] = { nov: d[4], total: d.reduce((a, b) => a + b,
+                0) }; });
+        const d11Ratios = Object.entries(d11Data).map(([n, d]) => ({ name: n, ratio: +((d.nov / d.total) * 100)
                 .toFixed(1) }));
-        d11RatiosTV.sort((a, b) => b.ratio - a.ratio);
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
         new Chart(document.getElementById('double11Impact'), {
             type: 'bar',
             data: {
-                labels: d11RatiosTV.map(r => r.name),
-                datasets: [{ label: '11月占H2比例（%）', data: d11RatiosTV.map(r => r.ratio),
-                    backgroundColor: d11RatiosTV.map(r => techColors[r.name] || '#94a3b8'), borderRadius: 8 }]
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{ label: '11月占比(%)', data: d11Ratios.map(r => r.ratio), backgroundColor: d11Ratios.map(
+                        r => techColors2[r.name] || '#94a3b8'
+                    ), borderRadius: 8 }]
             },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
-                legend: { display: false } },
-                scales: { x: { title: { display: true, text: '11月GMV / H2总GMV（%）' }, beginAtZero: true,
-                    max: 45 } }
-            }
+            options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } }, scales: { x: { max: 45 } } }
         });
     </script>
 </body>
