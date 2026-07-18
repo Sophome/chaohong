@@ -515,3 +515,110 @@
             <div class="tl-desc">B站平台家电达人商单数据</div>
           </div>
 </div><!-- /timeline -->
+
+  <div class="foot">超红传媒 &nbsp;·&nbsp; 时间线 &nbsp;·&nbsp; 123 篇 &nbsp;·&nbsp; 2026</div>
+
+</div><!-- /page -->
+
+<script>
+  const CORRECT_PW = '2026@qz';
+  const AUTH_KEY = 'chaohong_auth';
+  const FAILS_KEY = 'chaohong_fails';
+  const MAX_TRIES = 3;
+  const LOCK_SECS = 180;
+
+  var pwGate = document.getElementById('pwGate');
+  var pwContent = document.getElementById('pageContent');
+  var pwInput = document.getElementById('pwInput');
+  var pwErr = document.getElementById('pwErr');
+  var pwBtn = document.getElementById('pwBtn');
+  var pwLocked = document.getElementById('pwLocked');
+  var pwCountdown = document.getElementById('pwCountdown');
+  var pwAttempts = document.getElementById('pwAttempts');
+  var countdownTimer;
+
+  function getFails() {
+    try { return JSON.parse(localStorage.getItem(FAILS_KEY)) || {count:0}; }
+    catch(e) { return {count:0}; }
+  }
+  function saveFails(f) { localStorage.setItem(FAILS_KEY, JSON.stringify(f)); }
+  function getAuth() {
+    try { return localStorage.getItem(AUTH_KEY) ? true : null; }
+    catch(e) { return null; }
+  }
+
+  function showLocked(lockUntil) {
+    pwInput.style.display = 'none'; pwBtn.style.display = 'none';
+    pwErr.textContent = ''; pwAttempts.textContent = '';
+    pwLocked.style.display = 'block';
+    updateCountdown(lockUntil);
+  }
+  function updateCountdown(lockUntil) {
+    clearInterval(countdownTimer);
+    function tick() {
+      var remain = Math.max(0, Math.ceil((lockUntil - Date.now()) / 1000));
+      var m = Math.floor(remain / 60), s = remain % 60;
+      pwCountdown.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if (remain <= 0) { clearInterval(countdownTimer); unlockInput(); }
+    }
+    tick(); countdownTimer = setInterval(tick, 1000);
+  }
+  function unlockInput() {
+    pwLocked.style.display = 'none'; pwInput.style.display = ''; pwBtn.style.display = '';
+    pwInput.disabled = false; pwBtn.disabled = false;
+    localStorage.removeItem(FAILS_KEY);
+    pwInput.value = ''; pwInput.focus();
+  }
+
+  function checkPw() {
+    if (pwInput.value === CORRECT_PW) {
+      localStorage.setItem(AUTH_KEY, JSON.stringify({expires: Date.now() + 86400000}));
+      localStorage.removeItem(FAILS_KEY);
+      pwGate.style.display = 'none'; pwContent.style.display = 'block';
+      return;
+    }
+    var f = getFails();
+    f.count = (f.count || 0) + 1;
+    if (f.count >= MAX_TRIES) {
+      f.lockUntil = Date.now() + LOCK_SECS * 1000;
+      saveFails(f); showLocked(f.lockUntil);
+      pwInput.disabled = true; pwBtn.disabled = true;
+    } else {
+      saveFails(f);
+      pwErr.textContent = '密码错误，还剩 ' + (MAX_TRIES - f.count) + ' 次尝试机会';
+      pwAttempts.textContent = ''; pwInput.value = ''; pwInput.focus();
+    }
+  }
+
+  pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkPw(); });
+
+  (function() {
+    const saved = localStorage.getItem('chaohong-theme');
+    const theme = saved || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    const icon = document.getElementById('toggleIcon');
+    const text = document.getElementById('toggleText');
+    if (icon && text) {
+      icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+      text.textContent = theme === 'dark' ? '深色' : '浅色';
+    }
+    var auth = getAuth();
+    if (auth) { pwGate.style.display = 'none'; pwContent.style.display = 'block'; }
+  })();
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const cur = html.getAttribute('data-theme') || 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('chaohong-theme', next);
+    const icon = document.getElementById('toggleIcon');
+    const text = document.getElementById('toggleText');
+    if (icon && text) {
+      icon.textContent = next === 'dark' ? '🌙' : '☀️';
+      text.textContent = next === 'dark' ? '深色' : '浅色';
+    }
+  }
+</script>
+</body>
+</html>
