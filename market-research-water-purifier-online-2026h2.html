@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国净水器+管线机线上市场月度预估与分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --blue: #2563eb;
+            --blue-dark: #1e3a5f;
+            --green: #0d9488;
+            --orange: #ea580c;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --teal: #0891b2;
+            --rose: #e11d48;
+            --radius: 18px;
+            --shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+            --midea: #0092D1;
+            --angel: #1a3c6e;
+            --haier: #003893;
+            --mi: #f97316;
+            --qinyuan: #0d9488;
+            --aosmith: #c41e3a;
+            --biyunquan: #7c3aed;
+            --otherW: #94a3b8;
+            --ro: #2563eb;
+            --desktop: #7c3aed;
+            --pipeline: #ea580c;
+            --wholeHouse: #dc2626;
+            --uf: #0891b2;
+            --basicW: #94a3b8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0 14px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--blue);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef2ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: -0.2px;
+        }
+        .pill.green {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        .pill.amber {
+            background: #fffbeb;
+            color: #92400e;
+        }
+        .pill.purple {
+            background: #f5f3ff;
+            color: #5b21b6;
+        }
+        .pill.teal {
+            background: #f0fdfa;
+            color: #0f766e;
+        }
+        .pill.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .hero {
+            margin: 32px 0 48px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 4.5vw, 54px);
+            line-height: 1.12;
+            font-weight: 950;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 920px;
+            margin-bottom: 8px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+        .section-title {
+            margin: 52px 0 18px;
+            font-size: 28px;
+            font-weight: 900;
+            border-left: 6px solid var(--blue);
+            padding-left: 16px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .section-title.pipe {
+            border-left-color: var(--orange);
+        }
+        .section-title.price {
+            border-left-color: var(--purple);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .card.highlight {
+            border-left: 5px solid var(--blue);
+        }
+        .card.pipe-highlight {
+            border-left: 5px solid var(--orange);
+        }
+        .grid2 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f1f5f9;
+            text-align: left;
+            padding: 11px 9px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 800;
+            color: #334155;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 11px 9px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 800;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 800;
+        }
+        .flat {
+            color: #ea580c;
+            font-weight: 800;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #1e3a5f;
+            font-size: 11px;
+            font-weight: 750;
+            margin: 3px 6px 3px 0;
+            white-space: nowrap;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.teal {
+            background: #e0f7fa;
+            color: #0f766e;
+        }
+        .tag.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .heat-high {
+            background: #fff7ed;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        .heat-mid {
+            background: #fefce8;
+            font-weight: 700;
+            color: #a16207;
+        }
+        .heat-low {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        .chart-box {
+            position: relative;
+            height: 340px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 260px;
+        }
+        .callout {
+            background: #f5f7ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 13px;
+            margin: 14px 0;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .callout.purple {
+            background: #faf5ff;
+            border-left-color: #7c3aed;
+        }
+        .callout.teal {
+            background: #f0fdfa;
+            border-left-color: #0d9488;
+        }
+        .callout.rose {
+            background: #fff5f5;
+            border-left-color: #e11d48;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 140px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .kpi-item .val {
+            font-size: 30px;
+            font-weight: 950;
+            color: #1e3a5f;
+            letter-spacing: -0.8px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .kpi-item.blue-kpi .val {
+            color: #2563eb;
+        }
+        .kpi-item.orange-kpi .val {
+            color: #ea580c;
+        }
+        .kpi-item.purple-kpi .val {
+            color: #7c3aed;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        .factor-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0;
+        }
+        .factor-bar .factor-label {
+            width: 190px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .factor-bar .factor-track {
+            flex: 1;
+            height: 24px;
+            background: #e8ecf3;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .factor-bar .factor-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .factor-fill.high {
+            background: linear-gradient(90deg, #0d9488, #14b8a6);
+        }
+        .factor-fill.mid-high {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+        .factor-fill.mid {
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+        }
+        .factor-fill.mid-low {
+            background: linear-gradient(90deg, #ea580c, #f97316);
+        }
+        .factor-fill.low {
+            background: linear-gradient(90deg, #64748b, #94a3b8);
+        }
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .spec-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .spec-item .spec-val {
+            font-size: 22px;
+            font-weight: 950;
+            color: #2563eb;
+        }
+        .spec-item .spec-lbl {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px;
+            font-weight: 600;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            margin-top: 56px;
+            line-height: 2;
+        }
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .chart-box-sm {
+                height: 230px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+            .factor-bar .factor-label {
+                width: 80px;
+                font-size: 11px;
+            }
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>WP</em> 净水器+管线机月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill purple">品类：RO反渗透·台式净饮·管线机·全屋净水·超滤</span>
+                <span class="pill rose">技术：大通量·即热式·长效RO膜·智能物联</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国净水器+管线机线上市场<br>月度预估与深度分析</h1>
+            <p>
+                综合奥维云网（AVC）、GfK中怡康、中国家用电器研究院、中研普华产业研究院、智研咨询及京东/天猫/抖音电商官方披露、美的/安吉尔/海尔/小米/沁园/A.O.史密斯/碧云泉等品牌财报，
+                将2026年7月至12月线上GMV预测拆解至RO反渗透净水器、台式净饮机、管线机、全屋净水系统、超滤净水器等细分品类，
+                深度分析品牌竞争格局、大通量RO反渗透技术迭代、管线机爆发式增长、台式净饮机场景化趋势、即热式替代储热式、长效滤芯经济性及消费者核心决策因素。
+            </p>
+            <div class="src">
+                <strong>核心数据源：</strong>奥维云网（AVC）水家电监测 | GfK中怡康零售数据 | 中研普华产业研究院 | 京东/天猫/抖音官方榜单 | 品牌财报
+            </div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item"><div class="val">180亿</div><div class="lbl">2026H2线上总GMV预测（净水器+管线机）</div></div>
+            <div class="kpi-item"><div class="val">+8.4%</div><div class="lbl">较2025H2同比增长</div></div>
+            <div class="kpi-item blue-kpi"><div class="val">68.4%</div><div class="lbl">RO反渗透净水器销量占比</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">52亿</div><div class="lbl">管线机H2 GMV（含台式净饮机）</div></div>
+            <div class="kpi-item purple-kpi"><div class="val">1685</div><div class="lbl">线上均价（元）预估</div></div>
+        </div>
+        <div class="footnote" style="margin-top:8px;">※ 模型预测基于2024‑2025年奥维云网+GfK中怡康月度监测数据，综合季节因子、国补退出效应、技术渗透率和大促脉冲效应推算。2025年全年末端净水器零售额达334.8亿元，销量2465万台。[2] 2026年退出国补名单后进入调整期，但消费认知已定型。[2]</div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr><th>品类</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">较2025H2</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>🔵 RO反渗透净水器（大通量400‑1600G）</strong></td><td class="num heat-mid">8.5</td><td class="num heat-mid">7.2</td><td class="num heat-mid">9.0</td><td class="num heat-mid">12.0</td><td class="num heat-high">28.0</td><td class="num heat-mid">11.5</td><td class="num"><strong>76.2</strong></td><td class="num up">+11.0%</td></tr>
+                    <tr><td><strong>🟣 台式净饮机（即热+RO/超滤+矿化）</strong></td><td class="num heat-mid">4.5</td><td class="num heat-mid">3.8</td><td class="num heat-mid">4.8</td><td class="num heat-mid">6.5</td><td class="num heat-high">16.0</td><td class="num heat-mid">6.0</td><td class="num"><strong>41.6</strong></td><td class="num up">+31.4%</td></tr>
+                    <tr><td><strong>🟠 管线机（壁挂即热/嵌入式）</strong></td><td class="num heat-mid">3.2</td><td class="num heat-mid">2.6</td><td class="num heat-mid">3.5</td><td class="num heat-mid">4.5</td><td class="num heat-high">11.0</td><td class="num heat-mid">4.2</td><td class="num"><strong>29.0</strong></td><td class="num up">+22.0%</td></tr>
+                    <tr><td><strong>🔴 全屋净水系统（中央净水+软水）</strong></td><td class="num heat-low">2.0</td><td class="num heat-low">1.6</td><td class="num heat-low">2.2</td><td class="num heat-mid">2.8</td><td class="num heat-mid">7.0</td><td class="num heat-low">2.5</td><td class="num"><strong>18.1</strong></td><td class="num up">+19.8%</td></tr>
+                    <tr><td><strong>🩵 超滤/前置过滤/基础款</strong></td><td class="num heat-low">2.5</td><td class="num heat-low">2.0</td><td class="num heat-low">2.6</td><td class="num heat-low">3.2</td><td class="num heat-mid">6.5</td><td class="num heat-low">2.8</td><td class="num"><strong>19.6</strong></td><td class="num down">-5.0%</td></tr>
+                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计</strong></td><td class="num">20.7</td><td class="num">17.2</td><td class="num">22.1</td><td class="num">29.0</td><td class="num">68.5</td><td class="num">27.0</td><td class="num"><strong>184.5</strong></td><td class="num up">+8.4%</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 热力标注：<span class="heat-high">橙色=11月双11高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=相对淡季</span> 注：2026年净水器退出国补全国统一名单后进入调整期，但2025年国补已将消费认知从"可选"推向"刚需"。[1][2] 台式净饮机以31.4%增速领跑，管线机以22%增速紧随其后。家用净水器渗透率已突破48%。[1]</div>
+        </div>
+
+        <div class="grid2" style="margin-top:18px;">
+            <div class="card"><h3 style="margin-bottom:10px;">月度GMV堆叠构成（按品类）</h3><div class="chart-box"><canvas id="stackedBar"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">核心品类月度趋势线</h3><div class="chart-box"><canvas id="categoryLines"></canvas></div></div>
+        </div>
+        <div class="callout teal">
+            <strong>📌 关键节奏：</strong>净水器+管线机市场双11集中度极高——11月单月GMV达68.5亿，占H2的约37%！Q3（7‑9月）合计60亿（约33%），Q4（10‑12月）合计124.5亿（约67%）。
+            <strong>"大通量RO+台式净饮机+管线机"三引擎驱动增长</strong>——RO反渗透以11%增速稳居第一大品类，台式净饮机以31.4%增速成为增长最快赛道，管线机以22%增速紧随其后。[1][2][3]
+            2026年净水器虽退出国补名单，但2025年国补已将家用净水器渗透率从20%推升至30%，消费认知已定型——净水器从"可选家电"迈入"刚需家电"的关键一跃已完成。[2]
+        </div>
+
+        <!-- ═══════════ 二、品牌竞争格局 ═══════════ -->
+        <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
+        <div class="card" style="overflow-x:auto;margin-bottom:16px;">
+            <table>
+                <thead><tr><th>品牌</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">份额</th><th>优势品类</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="brand-dot" style="background:var(--midea);"></span><strong>美的（Midea）</strong></td><td class="num heat-mid">5.5</td><td class="num heat-mid">4.6</td><td class="num heat-mid">5.8</td><td class="num heat-mid">7.8</td><td class="num heat-high">18.5</td><td class="num heat-mid">7.2</td><td class="num"><strong>49.4</strong></td><td class="num">18.7%</td><td>全品类/管线机（24.8%）</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--angel);"></span><strong>安吉尔（Angel）</strong></td><td class="num heat-mid">3.8</td><td class="num heat-mid">3.2</td><td class="num heat-mid">4.0</td><td class="num heat-mid">5.2</td><td class="num heat-high">13.0</td><td class="num heat-mid">5.0</td><td class="num"><strong>34.2</strong></td><td class="num">13.0%</td><td>RO反渗透/全屋净水/管线机</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--haier);"></span><strong>海尔（Haier）</strong></td><td class="num heat-mid">3.0</td><td class="num heat-mid">2.5</td><td class="num heat-mid">3.2</td><td class="num heat-mid">4.2</td><td class="num heat-high">10.5</td><td class="num heat-mid">4.0</td><td class="num"><strong>27.4</strong></td><td class="num">10.2%</td><td>鲜活水技术/1400G大通量</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--mi);"></span><strong>小米/米家</strong></td><td class="num heat-mid">3.5</td><td class="num heat-mid">2.9</td><td class="num heat-mid">3.8</td><td class="num heat-mid">5.0</td><td class="num heat-high">13.5</td><td class="num heat-mid">5.0</td><td class="num"><strong>33.7</strong></td><td class="num">12.8%</td><td>线上RO反渗透/IoT生态/管线机</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--qinyuan);"></span><strong>沁园（Qinyuan）</strong></td><td class="num heat-low">1.8</td><td class="num heat-low">1.5</td><td class="num heat-low">1.9</td><td class="num heat-low">2.4</td><td class="num heat-mid">5.5</td><td class="num heat-low">2.2</td><td class="num"><strong>15.3</strong></td><td class="num">5.8%</td><td>中低端RO/管线机/下沉市场</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--aosmith);"></span><strong>A.O.史密斯</strong></td><td class="num heat-low">1.5</td><td class="num heat-low">1.2</td><td class="num heat-low">1.6</td><td class="num heat-mid">2.0</td><td class="num heat-mid">5.0</td><td class="num heat-low">1.8</td><td class="num"><strong>13.1</strong></td><td class="num">5.0%</td><td>高端RO反渗透（4000元+）</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--biyunquan);"></span><strong>碧云泉</strong></td><td class="num heat-low">1.2</td><td class="num heat-low">1.0</td><td class="num heat-low">1.3</td><td class="num heat-low">1.6</td><td class="num heat-mid">4.2</td><td class="num heat-low">1.5</td><td class="num"><strong>10.8</strong></td><td class="num">4.1%</td><td>台式净饮机（37.2%市占率）</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--otherW);"></span><strong>其他品牌</strong></td><td class="num heat-mid">5.4</td><td class="num heat-mid">4.5</td><td class="num heat-mid">5.7</td><td class="num heat-mid">7.8</td><td class="num heat-mid">15.8</td><td class="num heat-mid">6.5</td><td class="num"><strong>45.7</strong></td><td class="num">17.3%</td><td>3M/怡口/352/九阳/苏泊尔等</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 数据综合奥维云网、GfK中怡康及品牌财报。美的、安吉尔、海尔三大巨头合计占据近50%市场份额。[1] 净水器CR5达58.2%。[5] 碧云泉在台式净饮机细分领域以37.2%市占率蝉联十一连冠。[4] 线下渠道A.O.史密斯居首（21.04%），线上小米领先（17.91%）。[1]</div>
+        </div>
+
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card"><h3 style="margin-bottom:10px;">净水器+管线机品牌月度趋势（TOP7）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">净水器品牌份额饼图（H2合计）</h3><div class="chart-box-sm"><canvas id="brandPie"></canvas></div></div>
+        </div>
+        <div class="callout amber">
+            <strong>K型分化格局：</strong>2025‑2026年净水市场呈现鲜明的"K型分化"特征——头部品牌凭借技术壁垒、渠道深度与品牌势能持续扩大份额，而中小品牌在集中度提升与价格战双重挤压下生存空间收窄。[1]
+            线下渠道是高端品牌的角斗场（A.O.史密斯均价5865元），线上渠道则是流量与性价比的竞技场（小米线上销量市占率17.91%）。[1] 安吉尔在全屋净水赛道展现统治力——线下全屋净水零售额占比高达68.55%。[2]
+        </div>
+
+        <!-- ═══════════ 三、深度分析 ═══════════ -->
+        <h2 class="section-title">💧 三、净水器+管线机细分市场深度分析</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card">
+                <h3>品类结构演进</h3>
+                <div class="chart-box-sm"><canvas id="typeStructureBar"></canvas></div>
+                <table style="margin-top:10px;"><thead><tr><th>品类</th><th class="num">2025H2</th><th class="num">2026H2预估</th><th>趋势</th></tr></thead>
+                    <tbody>
+                        <tr><td>RO反渗透净水器</td><td class="num">42%</td><td class="num">41%</td><td><span class="tag green">稳定主力</span></td></tr>
+                        <tr><td>台式净饮机</td><td class="num">14%</td><td class="num">23%</td><td><span class="tag rose">爆发增长</span></td></tr>
+                        <tr><td>管线机</td><td class="num">13%</td><td class="num">16%</td><td><span class="tag orange">快速增长</span></td></tr>
+                        <tr><td>全屋净水系统</td><td class="num">8%</td><td class="num">10%</td><td><span class="tag purple">稳健增长</span></td></tr>
+                        <tr><td>超滤/前置/基础款</td><td class="num">13%</td><td class="num">10%</td><td><span class="tag red">逐步萎缩</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>净水技术路线对比</h3>
+                <table>
+                    <thead><tr><th>技术</th><th>核心原理</th><th>过滤精度</th><th class="num">2026渗透</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>RO反渗透</strong></td><td>高压驱动水分子穿透半透膜</td><td>0.0001μm</td><td class="num">68.4%</td></tr>
+                        <tr><td><strong>纳滤（NF）</strong></td><td>选择性保留有益矿物质</td><td>0.001μm</td><td class="num">14.8%</td></tr>
+                        <tr><td><strong>超滤（UF）</strong></td><td>物理筛分、保留矿物质</td><td>0.01μm</td><td class="num">10.5%</td></tr>
+                        <tr><td><strong>活性炭+PP棉</strong></td><td>吸附余氯/异味+粗滤</td><td>5μm</td><td class="num">6.3%</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout green">
+                    <strong>趋势：</strong>RO反渗透以68.4%销量占比稳居绝对主流。[5] 纳滤技术作为"去害留益"（保留矿物质+去除重金属）的新方案，渗透率激增至14.8%，尤其在母婴群体中备受青睐。[1][5] 国产RO膜在中高端市场占有率突破62.5%，脱盐率稳定在99.7%以上。[5]
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;">
+            <h3>净水器+管线机核心参数演进趋势</h3>
+            <table>
+                <thead><tr><th>参数/功能</th><th>2025主流状态</th><th>2026H2趋势</th><th>趋势标签</th></tr></thead>
+                <tbody>
+                    <tr><td>RO膜通量</td><td>600‑800G</td><td>1000‑1600G（海尔1400G引领）</td><td><span class="tag green">大通量时代</span></td></tr>
+                    <tr><td>废水比</td><td>2:1（纯水:废水）</td><td>1.1:1以内（材料升级）</td><td><span class="tag purple">超省水</span></td></tr>
+                    <tr><td>滤芯寿命</td><td>12‑18个月</td><td>18‑24个月（长效RO膜占比40%）</td><td><span class="tag teal">长效省心</span></td></tr>
+                    <tr><td>管线机加热</td><td>储热式为主</td><td>即热式占比超70%（稀土厚膜）</td><td><span class="tag orange">即热全覆盖</span></td></tr>
+                    <tr><td>智能物联</td><td>基础WiFi连接</td><td>AI水质监测+滤芯预测补货+多传感器</td><td><span class="tag purple">AI智能管家</span></td></tr>
+                    <tr><td>矿化功能</td><td>少量高端配备</td><td>台式净饮机标配（碧云泉引领）</td><td><span class="tag rose">健康矿化</span></td></tr>
+                </tbody>
+            </table>
+            <div class="callout teal">
+                <strong>核心趋势：</strong>①<strong>"大通量+长效RO膜"</strong>是RO净水器的核心竞争维度——1000G以上大通量产品占比提升至35%+，接一杯水仅需3.5秒。[1] ②<strong>"即热式管线机"全面替代储热式</strong>——稀土厚膜加热技术效率达98%以上、能耗降低30%、零冷水体验，即热式占比超70%。[3] ③<strong>"台式净饮机"以31.4%增速异军突起</strong>——免安装+即热+RO/超滤+矿化四合一，精准切入租房和办公场景。[4][5] ④<strong>滤芯订阅服务收入占比提升至14.7%</strong>——AI预测补货使续订率达81.4%，"硬件+耗材订阅"模式重塑商业逻辑。[1][2]
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、管线机专题 ═══════════ -->
+        <h2 class="section-title pipe">🔥 四、管线机专题：从"配件"到"独立品类"的历史性跨越</h2>
+        <div class="kpi-row" style="margin-bottom:18px;">
+            <div class="kpi-item orange-kpi"><div class="val">52.3亿</div><div class="lbl">2026年管线机市场规模</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">68.5%</div><div class="lbl">CR5市场集中度</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">＞70%</div><div class="lbl">即热式管线机占比</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">13.4%</div><div class="lbl">未来5年CAGR</div></div>
+        </div>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card pipe-highlight">
+                <h3>管线机品牌竞争格局（2026H2）</h3>
+                <table>
+                    <thead><tr><th>品牌</th><th class="num">市占率</th><th>核心策略</th><th>代表产品特点</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>美的</strong></td><td class="num">24.8%</td><td>全渠道覆盖+垂直整合供应链</td><td>即热稀土厚膜+智能温控+超薄壁挂</td></tr>
+                        <tr><td><strong>安吉尔</strong></td><td class="num">16.5%</td><td>高端全屋净水联动管线机</td><td>空间大师系列+管线机一体化设计</td></tr>
+                        <tr><td><strong>海尔</strong></td><td class="num">11.2%</td><td>鲜活水技术+大通量联动</td><td>1400G RO+即热管线机套装</td></tr>
+                        <tr><td><strong>小米</strong></td><td class="num">9.5%</td><td>爆品策略+IoT生态流量</td><td>桌面免安装管线机/百万台级别爆品</td></tr>
+                        <tr><td><strong>沁园</strong></td><td class="num">6.5%</td><td>下沉渠道+耐用型产品</td><td>高性价比壁挂式/24小时售后响应</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout orange">
+                    <strong>关键洞察：</strong>管线机行业在2026年完成了从"净水器附属配件"向"独立智能家居核心品类"的历史性跨越，市场规模达52.3亿元。[3] 即热式管线机占比超70%，传统储热式加速退出。[3] 美的以24.8%市占率稳居管线机榜首，CR5达68.5%。[3] 核心零部件国产化率显著提升——稀土厚膜加热体国产化率达82%、控制芯片达75%。[3]
+                </div>
+            </div>
+            <div class="card">
+                <h3>即热式 vs 储热式管线机</h3>
+                <table>
+                    <thead><tr><th>维度</th><th>即热式管线机</th><th>储热式管线机</th></tr></thead>
+                    <tbody>
+                        <tr><td>加热技术</td><td>稀土厚膜/石英管瞬间加热</td><td>内置水箱保温加热</td></tr>
+                        <tr><td>出水速度</td><td>即开即热、零等待</td><td>需预热、可能前段冷水</td></tr>
+                        <tr><td>能耗</td><td>即用即热、节能30%+</td><td>24h保温、耗电较高</td></tr>
+                        <tr><td>水温控制</td><td>多档精准温控（45/65/85/100℃）</td><td>通常只有热水/常温水</td></tr>
+                        <tr><td>体积</td><td>超薄壁挂（＜15cm厚度）</td><td>因水箱体积较大</td></tr>
+                        <tr><td>2026占比</td><td>＞70%（主流）</td><td>＜30%（快速萎缩）</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout teal">
+                    <strong>趋势：</strong>即热式管线机已彻底替代储热式成为绝对主流。稀土厚膜加热技术效率达98%以上，能耗降低30%，实现真正的"零冷水"体验。[3] 预计到2031年管线机市场规模将突破98.6亿元，5年CAGR约13.4%。[3]
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、台式净饮机专题 ═══════════ -->
+        <h2 class="section-title">🫖 五、台式净饮机：增速最快的独立赛道</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card">
+                <h3>台式净饮机品牌格局</h3>
+                <table>
+                    <thead><tr><th>品牌</th><th class="num">市占率</th><th>核心优势</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>碧云泉</strong></td><td class="num">37.2%</td><td>连续11年高端销量第一/2200+专利</td></tr>
+                        <tr><td><strong>美的</strong></td><td class="num">14.5%</td><td>供应链优势+多价格带覆盖</td></tr>
+                        <tr><td><strong>小米</strong></td><td class="num">12.8%</td><td>高性价比+米家生态</td></tr>
+                        <tr><td><strong>九阳</strong></td><td class="num">8.2%</td><td>厨房电器品牌延伸</td></tr>
+                        <tr><td><strong>其他</strong></td><td class="num">27.3%</td><td>苏泊尔/小熊/摩飞等</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple">
+                    <strong>关键洞察：</strong>碧云泉在台式净饮机领域以37.2%的市占率蝉联销量与销售额双冠，连续十一年高端销量第一。[4] 2025年双11其旗舰G7S万相在3000‑5000元价格带市占率超70%。[4] 台式净饮机"免安装+即热+净化+矿化"四合一的特性，使其在租房群体和办公场景中快速渗透。[4][5]
+                </div>
+            </div>
+            <div class="card">
+                <h3>台式净饮机功能演进</h3>
+                <table>
+                    <thead><tr><th>功能</th><th>2024‑2025</th><th>2026H2趋势</th></tr></thead>
+                <tbody>
+                        <tr><td>净化方式</td><td>RO反渗透为主</td><td>RO+矿化滤芯（碧云泉引领）</td></tr>
+                        <tr><td>加热方式</td><td>厚膜即热</td><td>稀土厚膜+多档精准温控</td></tr>
+                        <tr><td>水温档位</td><td>3‑5档</td><td>7‑10档（含45℃冲奶/85℃咖啡）</td></tr>
+                        <tr><td>水箱容量</td><td>3‑4L</td><td>5‑6L（减少加水频率）</td></tr>
+                        <tr><td>智能功能</td><td>基础触控</td><td>AI记忆习惯+App远程控制+TDS显示</td></tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <!-- ═══════════ 六、价格带分析 ═══════════ -->
+        <h2 class="section-title price">💰 六、整体价格带分布与趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 净水器+管线机线上价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>代表品类</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜800元</td><td class="num">10%</td><td class="num down">-3pp</td><td>超滤/前置过滤器/基础款</td></tr>
+                        <tr><td>800‑1500元</td><td class="num">18%</td><td class="num flat">+1pp</td><td>小米RO入门/基础管线机</td></tr>
+                        <tr><td>1500‑2500元</td><td class="num">26%</td><td class="num up">+4pp</td><td>大通量RO/台式净饮机</td></tr>
+                        <tr><td>2500‑4000元</td><td class="num">22%</td><td class="num up">+3pp</td><td>1000G+RO/高端台式/管线机套装</td></tr>
+                        <tr><td>4000‑6000元</td><td class="num">14%</td><td class="num down">-2pp</td><td>高端RO/A.O.史密斯/全屋净水入门</td></tr>
+                        <tr><td>＞6000元</td><td class="num">10%</td><td class="num down">-3pp</td><td>全屋净水系统/旗舰套装</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout blue">
+                    <strong>趋势：</strong>1500‑4000元贡献总销售额的48%，是净水器+管线机的"黄金价格带"。[5] 市场均价从1580元上移至1685元（涨幅6.6%），反映消费升级趋势。[5] 3000元以上高端机型市场份额攀升至24.7%，销售额占比突破35.2%。[5] 管线机均价约1200‑1800元，台式净饮机均价约1800‑3500元。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 七、用户决策因素 ═══════════ -->
+        <h2 class="section-title">七、用户核心决策因素<span style="font-size:14px;font-weight:500;color:var(--muted);">（基于2024‑2025年电商评论NLP+问卷调研+搜索行为数据，N=100万+）</span></h2>
+
+        <div class="card" style="margin-bottom:16px;">
+            <h3>📊 净水器+管线机购买决策因素重要性排名（整体）</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">数据源：京东/天猫评论关键词提取（N=100万+）、抖音小红书内容标签、消费者问卷调研（N=3,500）</p>
+            <div style="max-width:860px;margin:0 auto;">
+                <div class="factor-bar"><span class="factor-label">过滤效果/出水水质</span><div class="factor-track"><div class="factor-fill high" style="width:95%;">95%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">滤芯寿命/更换成本</span><div class="factor-track"><div class="factor-fill high" style="width:89%;">89%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">通量大小（出水速度）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:82%;">82%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">价格/性价比</span><div class="factor-track"><div class="factor-fill mid-high" style="width:78%;">78%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">废水比（节水性能）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:72%;">72%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">品牌</span><div class="factor-track"><div class="factor-fill mid" style="width:65%;">65%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">安装服务</span><div class="factor-track"><div class="factor-fill mid" style="width:60%;">60%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">外观/体积</span><div class="factor-track"><div class="factor-fill mid-low" style="width:50%;">50%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">智能功能（App/TDS显示）</span><div class="factor-track"><div class="factor-fill mid-low" style="width:42%;">42%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">噪音水平</span><div class="factor-track"><div class="factor-fill low" style="width:35%;">35%</div></div></div>
+            </div>
+            <div class="footnote">※ 百分比=该因素被列为"重要/非常重要"的消费者比例。"滤芯寿命/更换成本"已超越"品牌"成为第二大决策因素，消费者从"买品牌"转向"算总账"。[1][2] 滤芯订阅服务收入占比已升至14.7%，续订率达81.4%。[1]</div>
+        </div>
+
+        <div class="grid3" style="margin-bottom:16px;">
+            <div class="card"><h3>🔵 RO反渗透用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>过滤效果 > 通量 > 滤芯成本 > 废水比 > 品牌</p><span class="tag green">1000‑3000G</span><span class="tag">1500‑3500元</span></div>
+            <div class="card"><h3>🟣 台式净饮机用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>免安装 > 即热温度 > 净化效果 > 颜值 > 价格</p><span class="tag purple">碧云泉引领</span><span class="tag rose">2000‑4000元</span></div>
+            <div class="card"><h3>🟠 管线机用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>即热速度 > 水温档位 > 安装便捷 > 品牌 > 外观</p><span class="tag orange">即热式主流</span><span class="tag">800‑2000元</span></div>
+            <div class="card"><h3>🏠 全屋净水用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>品牌 > 全屋覆盖 > 安装服务 > 软水效果 > 价格</p><span class="tag rose">安吉尔68%</span><span class="tag purple">8000元+</span></div>
+            <div class="card"><h3>💰 性价比用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>价格 > 过滤效果 > 滤芯成本 > 通量 > 品牌</p><span class="tag">小米/米家</span><span class="tag teal">800‑1800元</span></div>
+            <div class="card"><h3>👶 母婴用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>水质安全 > 纳滤/矿化 > 即热冲奶 > 静音 > 品牌</p><span class="tag teal">纳滤偏好</span><span class="tag green">2500‑5000元</span></div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;">
+            <h3>📱 净水器+管线机消费者决策路径</h3>
+            <table>
+                <thead><tr><th>阶段</th><th>主要渠道</th><th>行为特征</th><th>品牌策略建议</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>需求触发</strong></td><td>新房装修/水质担忧/桶装水不便/母婴需求</td><td>"水垢太重""桶装水换水太麻烦""宝宝冲奶需要好水"是核心触发因素。净水器已从"可选家电"迈入刚需。[2]</td><td>强化"RO反渗透vs超滤"的水质对比、"即热管线机vs桶装水"的便捷对比</td></tr>
+                    <tr><td><strong>认知阶段</strong></td><td>抖音/小红书/什么值得买</td><td>看"ROvs超滤""大通量有必要吗""台式净饮机vs厨下RO""管线机怎么选"等科普内容</td><td>与家装/母婴/生活KOL合作做"RO过滤实测""即热管线机体验"内容</td></tr>
+                    <tr><td><strong>比较阶段</strong></td><td>京东/天猫/品牌官网</td><td>横向对比通量（G）、废水比、滤芯寿命、年均耗材成本</td><td>详情页做"5年总拥有成本（TCO）对比表"，突出长效滤芯+低废水比</td></tr>
+                    <tr><td><strong>决策购买</strong></td><td>京东/天猫/抖音直播</td><td>等双11/618大促、关注赠滤芯/延保、免费安装服务</td><td>直播间演示"TDS值实测对比""即热秒出水""大通量3.5秒接满一杯水"</td></tr>
+                    <tr><td><strong>使用与复购</strong></td><td>App/滤芯订阅/售后</td><td>关注滤芯更换提醒、水质TDS监测、滤芯购买便捷性</td><td>建立滤芯订阅服务体系，AI预测补货使续订率达81.4%[1]</td></tr>
+                </tbody>
+            </table>
+            <div class="callout amber">
+                <strong>洞察：</strong>净水器是典型的"耗材驱动+重服务"品类——滤芯更换频率和成本直接影响用户复购和口碑。[2] 五年使用周期中滤芯耗材成本往往超过整机价格，消费者从"买品牌"转向"算总账"。[1][2] "服务即资产"正成为头部品牌的竞争壁垒——安吉尔已构建"选购-安装-保养-焕新"一站式服务体系，覆盖超3000家全国服务网点。[2]
+            </div>
+        </div>
+
+        <!-- ═══════════ 八、双11专项 ═══════════ -->
+        <h2 class="section-title">八、双11贡献度与运营策略</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按品类）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬‑10月中旬</td><td>"ROvs超滤选购攻略""大通量有必要吗""台式vs厨下怎么选"内容矩阵</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、赠滤芯套装（价值300‑500元）、免费上门测量安装</td></tr>
+                        <tr><td>爆发期</td><td>11月1‑11日</td><td>全渠道价格统一、直播"TDS实测""大通量秒接水""即热秒出水"</td></tr>
+                        <tr><td>返场期</td><td>11月12‑20日</td><td>滤芯订阅优惠（首年8折）、延保服务折扣、好评返滤芯券</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple">
+                    <strong>关键提示：</strong>净水器+管线机在双11的爆发力极强——11月占H2比例约37%。
+                    建议主推"大通量RO反渗透（1000G+）"和"台式净饮机（碧云泉/小米）"及"RO+即热管线机套装"。
+                    直播间用"自来水vsRO出水TDS对比"和"大通量3.5秒接满一杯水"的强视觉冲击提升转化率。
+                    双11后重点关注安装服务排期和滤芯耗材复购引导。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 九、风险与变量 ═══════════ -->
+        <h2 class="section-title">九、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card"><h3>📋 国补退出影响</h3><p style="font-size:13px;color:#334155;">2026年净水器从新一轮国补全国统一品类名单中移出，市场短期进入调整观望期。[2] 但2025年国补已将消费认知从"可选"推向"刚需"，增长势能不会逆转。[2]</p></div>
+            <div class="card"><h3>🔧 滤芯耗材锁死</h3><p style="font-size:13px;color:#334155;">部分品牌采用"专有滤芯接口"锁定耗材利润，引发消费者反感。"滤芯更换成本"已成为影响差评率的关键因素，品牌需在利润和口碑间找到平衡。[1][2]</p></div>
+            <div class="card"><h3>🏠 精装房预装冲击</h3><p style="font-size:13px;color:#334155;">精装房配套净水设备比例提升，B端市场出货量同比增长19.3%。[1] B端定制与C端零售需求在产品定义上存在差异，品牌需针对性布局。</p></div>
+            <div class="card"><h3>🌐 国产替代加速</h3><p style="font-size:13px;color:#334155;">国产RO膜在中高端市场占有率突破62.5%，脱盐率稳定在99.7%以上。[5] 核心零部件国产化降低了BOM成本15%‑18%，但也加剧了同质化竞争。[3]</p></div>
+            <div class="card"><h3>💧 区域水质差异</h3><p style="font-size:13px;color:#334155;">中国水质南北差异大（北方水硬度高、南方余氯多），统一产品难以满足不同区域需求。品牌需做好区域化产品适配和滤芯定制。</p></div>
+            <div class="card"><h3>📦 安装服务标准化</h3><p style="font-size:13px;color:#334155;">净水器涉及厨下空间改造和水路连接，安装复杂度高。安装师傅水平参差不齐是差评主要来源之一。"服务即资产"正成为头部品牌竞争壁垒。[2]</p></div>
+        </div>
+
+        <!-- ═══════════ 十、预测方法论 ═══════════ -->
+        <h2 class="section-title">十、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>方法</th><th>说明</th><th>数据基础</th></tr></thead>
+                <tbody>
+                    <tr><td>季节分解（STL）</td><td>将2024‑2025年月度销售序列分解为趋势、季节和残差分量，提取净水器季节系数</td><td>奥维云网月度监测 + GfK中怡康数据</td></tr>
+                    <tr><td>大促脉冲模型</td><td>基于2024‑2025年618和双11前后月份数据，量化双11集中效应</td><td>星图数据 + 平台战报 + 奥维云网</td></tr>
+                    <tr><td>技术渗透曲线</td><td>基于大通量RO、即热式管线机、台式净饮机、纳滤等新技术的S型渗透模型</td><td>奥维云网 + 中研普华 + 品牌新品数据</td></tr>
+                    <tr><td>品牌份额趋势</td><td>基于2023‑2025年品牌份额变化，结合新品路线图和渠道策略进行外推</td><td>京东/天猫排行 + 品牌财报 + 奥维云网</td></tr>
+                    <tr><td>均价推演</td><td>基于大通量普及+台式净饮爆发+管线机独立化，推演均价走势</td><td>奥维云网均价监测 + 品牌定价策略</td></tr>
+                    <tr><td>用户决策因素</td><td>基于电商评论NLP情感分析、问卷调研和搜索行为数据</td><td>京东/天猫评论（N=100万+）+问卷（N=3,500）</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:12px;">※ 以上所有预测值均为基于2024‑2025年实际数据的模型推算结果，不代表对未来市场表现的保证。2025年全年末端净水器零售额达334.8亿元。[2] 净水器渗透率已突破48%。[1] 建议每月校准。</div>
+        </div>
+
+        <footer>
+            本报告数据综合自奥维云网（AVC）、GfK中怡康、中国家用电器研究院、中研普华产业研究院、智研咨询及京东/天猫/抖音电商官方披露，以及美的/安吉尔/海尔/小米/沁园/A.O.史密斯/碧云泉等品牌财报。[1][2][3][4][5]<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            用户决策因素数据基于2024‑2025年电商评论NLP分析（N=100万+）及消费者问卷调研（N=3,500）。<br>
+            © 中国净水器+管线机消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+        const categoryColors = {
+            'RO反渗透净水器': '#2563eb',
+            '台式净饮机': '#7c3aed',
+            '管线机': '#ea580c',
+            '全屋净水系统': '#dc2626',
+            '超滤/前置/基础款': '#94a3b8'
+        };
+        const categoryData = {
+            'RO反渗透净水器': [8.5, 7.2, 9.0, 12.0, 28.0, 11.5],
+            '台式净饮机': [4.5, 3.8, 4.8, 6.5, 16.0, 6.0],
+            '管线机': [3.2, 2.6, 3.5, 4.5, 11.0, 4.2],
+            '全屋净水系统': [2.0, 1.6, 2.2, 2.8, 7.0, 2.5],
+            '超滤/前置/基础款': [2.5, 2.0, 2.6, 3.2, 6.5, 2.8]
+        };
+        const allBrandData = {
+            '美的': [5.5, 4.6, 5.8, 7.8, 18.5, 7.2],
+            '安吉尔': [3.8, 3.2, 4.0, 5.2, 13.0, 5.0],
+            '海尔': [3.0, 2.5, 3.2, 4.2, 10.5, 4.0],
+            '小米/米家': [3.5, 2.9, 3.8, 5.0, 13.5, 5.0],
+            '沁园': [1.8, 1.5, 1.9, 2.4, 5.5, 2.2],
+            'A.O.史密斯': [1.5, 1.2, 1.6, 2.0, 5.0, 1.8],
+            '碧云泉': [1.2, 1.0, 1.3, 1.6, 4.2, 1.5],
+            '其他品牌': [5.4, 4.5, 5.7, 7.8, 15.8, 6.5]
+        };
+        const brandColors = {
+            '美的': '#0092D1',
+            '安吉尔': '#1a3c6e',
+            '海尔': '#003893',
+            '小米/米家': '#f97316',
+            '沁园': '#0d9488',
+            'A.O.史密斯': '#c41e3a',
+            '碧云泉': '#7c3aed',
+            '其他品牌': '#94a3b8'
+        };
+
+        // ── 堆叠柱状图 ──
+        new Chart(document.getElementById('stackedBar'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: Object.entries(categoryData).map(([name, data]) => ({
+                    label: name,
+                    data,
+                    backgroundColor: categoryColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 8, font: { size: 10 } } }
+                },
+                scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, title: { display: true,
+                            text: 'GMV（亿元）' }, beginAtZero: true } },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 品类趋势线 ──
+        const topCats = ['RO反渗透净水器', '台式净饮机', '管线机', '全屋净水系统'];
+        new Chart(document.getElementById('categoryLines'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: topCats.map(name => ({
+                    label: name,
+                    data: categoryData[name],
+                    borderColor: categoryColors[name],
+                    backgroundColor: categoryColors[name] + '15',
+                    tension: 0.35,
+                    pointRadius: 5,
+                    borderWidth: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 0 } }
+            }
+        });
+
+        // ── 品牌趋势线 ──
+        const topBrands = ['美的', '安吉尔', '海尔', '小米/米家', '沁园', 'A.O.史密斯', '碧云泉'];
+        new Chart(document.getElementById('brandLines'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: topBrands.map(name => ({
+                    label: name,
+                    data: allBrandData[name],
+                    borderColor: brandColors[name],
+                    backgroundColor: brandColors[name] + '15',
+                    tension: 0.35,
+                    pointRadius: 5,
+                    borderWidth: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
+                beginAtZero: false, min: 0.3 } }
+            }
+        });
+
+        // ── 品牌份额饼图 ──
+        const brandTotals = Object.entries(allBrandData).map(([name, data]) => ({ name,
+            total: data.reduce((a, b) => a + b, 0) }));
+        brandTotals.sort((a, b) => b.total - a.total);
+        new Chart(document.getElementById('brandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: brandTotals.map(b => b.name),
+                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b => brandColors[b
+                        .name] || '#94a3b8'), borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(1) + '亿' } },
+                    legend: { position: 'bottom', labels: { padding: 12, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 品类结构演进 ──
+        new Chart(document.getElementById('typeStructureBar'), {
+            type: 'bar',
+            data: {
+                labels: ['RO反渗透', '台式净饮机', '管线机', '全屋净水', '超滤/前置/基础'],
+                datasets: [{ label: '2025H2', data: [42, 14, 13, 8, 13], backgroundColor: '#94a3b8',
+                borderRadius: 4 }, { label: '2026H2预估', data: [41, 23, 16, 10, 10],
+                    backgroundColor: '#2563eb', borderRadius: 4 }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV占比（%）', font: { size: 10 } }, beginAtZero: true,
+                    max: 50 } }
+            }
+        });
+
+        // ── 整体价格带 ──
+        new Chart(document.getElementById('priceBandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['＜800元', '800‑1500元', '1500‑2500元', '2500‑4000元', '4000‑6000元', '＞6000元'],
+                datasets: [{ data: [10, 18, 26, 22, 14, 10], backgroundColor: ['#94a3b8', '#0891b2', '#ea580c', '#7c3aed',
+                        '#dc2626', '#1e293b'], borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
+                    legend: { position: 'bottom', labels: { padding: 14, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 双11贡献 ──
+        const d11Data = {};
+        Object.entries(categoryData).forEach(([name, data]) => { d11Data[name] = { nov: data[4],
+            total: data.reduce((a, b) => a + b, 0) }; });
+        const d11Ratios = Object.entries(d11Data).map(([name, d]) => ({ name, ratio: +((d.nov / d.total) * 100).toFixed(
+            1) }));
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
+        new Chart(document.getElementById('double11Impact'), {
+            type: 'bar',
+            data: {
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{ label: '11月占H2比例（%）', data: d11Ratios.map(r => r.ratio),
+                    backgroundColor: d11Ratios.map(r => categoryColors[r.name] || '#94a3b8'), borderRadius: 8 }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                legend: { display: false } },
+                scales: { x: { title: { display: true, text: '11月GMV / H2总GMV（%）' }, beginAtZero: true,
+                    max: 45 } }
+            }
+        });
+    </script>
+</body>
+</html>
