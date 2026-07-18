@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国笔记本线上市场月度预估与分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f6f8fc;
+            --card: #ffffff;
+            --text: #0c1a2e;
+            --muted: #5b6d85;
+            --line: #e2e8f2;
+            --blue: #1a5cf7;
+            --blue-dark: #0a30a0;
+            --cyan: #0097b2;
+            --green: #0d9488;
+            --orange: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --radius: 16px;
+            --shadow: 0 8px 28px rgba(12, 26, 46, 0.06);
+            --lenovo: #E2231A;
+            --huawei: #CF0A2C;
+            --hp: #0096D6;
+            --asus: #00AEEF;
+            --apple: #3a3a3a;
+            --dell: #007DB8;
+            --other: #8899aa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 22px 72px;
+        }
+
+        /* 顶栏 */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px 0 12px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 850;
+            font-size: 17px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--blue);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef3ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 4px 11px;
+            font-size: 11px;
+            font-weight: 650;
+            white-space: nowrap;
+        }
+        .pill.green {
+            background: #e3f7f0;
+            color: #107051;
+        }
+        .pill.amber {
+            background: #fff8ec;
+            color: #b45309;
+        }
+        .pill.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* 英雄区 */
+        .hero {
+            margin: 28px 0 40px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 4.2vw, 54px);
+            line-height: 1.14;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            margin-bottom: 10px;
+            max-width: 960px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 860px;
+            margin-bottom: 6px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+
+        /* 公用 */
+        .section-title {
+            margin: 48px 0 16px;
+            font-size: 26px;
+            font-weight: 850;
+            border-left: 5px solid var(--blue);
+            padding-left: 14px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+        }
+        .grid2 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .grid4 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f5f8fd;
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            font-weight: 750;
+            color: #344054;
+            white-space: nowrap;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 750;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 750;
+        }
+        .flat {
+            color: #d97706;
+            font-weight: 750;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #f0f4ff;
+            color: var(--blue-dark);
+            font-size: 11px;
+            font-weight: 700;
+            margin: 3px 5px 3px 0;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.cyan {
+            background: #e0f7fa;
+            color: #00838f;
+        }
+        .heat-high {
+            background: #dbeafe;
+            font-weight: 750;
+            color: #0a30a0;
+        }
+        .heat-mid {
+            background: #f0f7ff;
+            font-weight: 650;
+            color: #1a5cf7;
+        }
+        .heat-low {
+            background: #fafcfd;
+            color: #6b7d95;
+        }
+        .chart-box {
+            position: relative;
+            height: 380px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 260px;
+        }
+        .chart-box-xs {
+            position: relative;
+            height: 220px;
+        }
+        .callout {
+            background: #f5f9ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13px;
+            margin: 12px 0;
+            color: #334155;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 130px;
+            background: #f8fafd;
+            border-radius: 12px;
+            padding: 18px 16px;
+            text-align: center;
+        }
+        .kpi-item .val {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--blue-dark);
+            letter-spacing: -0.5px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            margin-top: 48px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3,
+            .grid4 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>NB</em> 笔记本月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill amber">模型：季节分解+换机周期+AI PC因子</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国笔记本线上市场<br>月度预估与深度分析</h1>
+            <p>
+                综合IDC、Canalys、Counterpoint Research、京东/天猫官方披露及商务部以旧换新政策数据，
+                将2026年7月至12月的线上GMV预测拆解至7大品牌组×6个月，并围绕AI PC渗透、换机周期、
+                品牌格局演变进行深度市场分析。
+            </p>
+            <div class="src">
+                <strong>核心数据源：</strong>IDC季度出货追踪 | Canalys PC市场分析 | Counterpoint中国线上监测 | 京东/天猫官方战报 | 商务部以旧换新数据
+            </div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item">
+                <div class="val">920亿</div>
+                <div class="lbl">2026H2线上GMV预测</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">+10.5%</div>
+                <div class="lbl">较2025H2同比增长</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">53%</div>
+                <div class="lbl">AI PC渗透率（H2均值）</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">11月</div>
+                <div class="lbl">全年最大单月（275亿）</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">1,680万</div>
+                <div class="lbl">H2线上销量预估（台）</div>
+            </div>
+        </div>
+        <div class="footnote" style="margin-top:6px;">
+            ※ 以上为基于2024‑2025年权威数据的模型预测值，仅供经营参考。线上渠道含京东、天猫/淘宝、抖音电商、拼多多、品牌官网等。
+        </div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>品牌组</th>
+                        <th class="num">7月</th>
+                        <th class="num">8月</th>
+                        <th class="num">9月</th>
+                        <th class="num">10月</th>
+                        <th class="num">11月</th>
+                        <th class="num">12月</th>
+                        <th class="num">H2合计</th>
+                        <th class="num">份额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--lenovo);"></span><strong>联想</strong></td>
+                        <td class="num heat-mid">33</td>
+                        <td class="num heat-mid">38</td>
+                        <td class="num heat-mid">36</td>
+                        <td class="num heat-mid">28</td>
+                        <td class="num heat-high">72</td>
+                        <td class="num heat-mid">37</td>
+                        <td class="num"><strong>244</strong></td>
+                        <td class="num">26.5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--huawei);"></span><strong>华为</strong></td>
+                        <td class="num heat-mid">26</td>
+                        <td class="num heat-mid">30</td>
+                        <td class="num heat-high">31</td>
+                        <td class="num heat-mid">22</td>
+                        <td class="num heat-high">57</td>
+                        <td class="num heat-mid">27</td>
+                        <td class="num"><strong>193</strong></td>
+                        <td class="num">21.0%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--hp);"></span><strong>惠普</strong></td>
+                        <td class="num heat-low">16</td>
+                        <td class="num heat-mid">18</td>
+                        <td class="num heat-low">15</td>
+                        <td class="num heat-low">13</td>
+                        <td class="num heat-mid">35</td>
+                        <td class="num heat-low">18</td>
+                        <td class="num"><strong>115</strong></td>
+                        <td class="num">12.5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--asus);"></span><strong>华硕</strong></td>
+                        <td class="num heat-mid">15</td>
+                        <td class="num heat-mid">17</td>
+                        <td class="num heat-low">13</td>
+                        <td class="num heat-low">11</td>
+                        <td class="num heat-mid">30</td>
+                        <td class="num heat-low">15</td>
+                        <td class="num"><strong>101</strong></td>
+                        <td class="num">11.0%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--apple);"></span><strong>苹果</strong></td>
+                        <td class="num heat-mid">14</td>
+                        <td class="num heat-mid">16</td>
+                        <td class="num heat-mid">15</td>
+                        <td class="num heat-low">11</td>
+                        <td class="num heat-mid">24</td>
+                        <td class="num heat-low">12</td>
+                        <td class="num"><strong>92</strong></td>
+                        <td class="num">10.0%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--dell);"></span><strong>戴尔</strong></td>
+                        <td class="num heat-low">9</td>
+                        <td class="num heat-low">10</td>
+                        <td class="num heat-low">9</td>
+                        <td class="num heat-low">8</td>
+                        <td class="num heat-low">22</td>
+                        <td class="num heat-low">11</td>
+                        <td class="num"><strong>69</strong></td>
+                        <td class="num">7.5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="brand-dot" style="background:var(--other);"></span><strong>其他品牌</strong></td>
+                        <td class="num heat-low">12</td>
+                        <td class="num heat-low">16</td>
+                        <td class="num heat-low">16</td>
+                        <td class="num heat-low">12</td>
+                        <td class="num heat-mid">35</td>
+                        <td class="num heat-low">15</td>
+                        <td class="num"><strong>106</strong></td>
+                        <td class="num">11.5%</td>
+                    </tr>
+                    <tr style="background:#f8faff;font-weight:800;">
+                        <td><strong>月度合计</strong></td>
+                        <td class="num">125</td>
+                        <td class="num">145</td>
+                        <td class="num">135</td>
+                        <td class="num">105</td>
+                        <td class="num">275</td>
+                        <td class="num">135</td>
+                        <td class="num"><strong>920</strong></td>
+                        <td class="num">100%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footnote">
+                ※ 热力标注：<span class="heat-high">深蓝=旺季高峰</span> <span class="heat-mid">浅蓝=中等</span> 
+                <span class="heat-low">灰色=相对淡季</span> 数据性质：基于2024‑2025年实际数据的模型预测值，不作为确定事实。
+            </div>
+        </div>
+
+        <!-- 月度堆叠 + 品牌趋势 -->
+        <div class="grid2" style="margin-top:16px;">
+            <div class="card">
+                <h3 style="margin-bottom:8px;">月度GMV堆叠构成（按品牌）</h3>
+                <div class="chart-box">
+                    <canvas id="stackedBar"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:8px;">各品牌月度趋势线</h3>
+                <div class="chart-box">
+                    <canvas id="brandLines"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>📌 关键节奏：</strong>11月（双11）是全品类绝对高峰，单月275亿占H2的29.9%；
+            Q3（7‑9月）合计405亿，Q4（10‑12月）合计515亿，Q4占比56.0%。
+            8‑9月开学季是全年第二大需求高峰，苹果教育优惠在此期间对Mac销售有明显拉动。
+        </div>
+
+        <!-- ═══════════ 二、品牌深度分析 ═══════════ -->
+        <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
+
+        <!-- 联想 -->
+        <div class="card" style="margin-bottom:14px;">
+            <div class="grid2">
+                <div>
+                    <h3><span class="brand-dot" style="background:var(--lenovo);"></span>联想 — H2合计244亿（份额26.5%）</h3>
+                    <table>
+                        <thead><tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr></thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num">33</td><td>暑期消费启动，小新/拯救者系列热销</td></tr>
+                            <tr><td>8月</td><td class="num">38</td><td>开学季前夕，ThinkBook/小新走量</td></tr>
+                            <tr><td>9月</td><td class="num">36</td><td>开学季，YOGA/ThinkPad商务需求</td></tr>
+                            <tr><td>10月</td><td class="num">28</td><td>平淡期，双11蓄水</td></tr>
+                            <tr><td>11月</td><td class="num">72</td><td>双11爆发，全产品线冲量</td></tr>
+                            <tr><td>12月</td><td class="num">37</td><td>年末采购+商用换机</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm"><canvas id="lenovoChart"></canvas></div>
+                </div>
+            </div>
+            <span class="tag green">AI PC先行者</span><span class="tag">产品线最全</span><span class="tag">京东份额第一</span><span class="tag purple">拯救者游戏本</span>
+            <p style="margin-top:8px;font-size:13px;color:#334155;">
+                <strong>分析：</strong>联想以最完整的产品线覆盖全价位段，在京东平台份额领先。
+                AI PC方面，联想在2025年已推出多款搭载NPU的机型（小新Pro AI、YOGA AI、ThinkPad X1 AI），
+                预计2026H2 AI PC在联想产品线中占比将超55%。游戏本（拯救者系列）在暑期和双11表现强劲。
+                商用换机周期叠加Windows 10停更（2025年10月），ThinkPad和ThinkBook系列将持续受益。
+            </p>
+        </div>
+
+        <!-- 华为 -->
+        <div class="card" style="margin-bottom:14px;">
+            <div class="grid2">
+                <div>
+                    <h3><span class="brand-dot" style="background:var(--huawei);"></span>华为 — H2合计193亿（份额21.0%）</h3>
+                    <table>
+                        <thead><tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr></thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num">26</td><td>暑期促销，MateBook D系列走量</td></tr>
+                            <tr><td>8月</td><td class="num">30</td><td>开学季，MateBook 14/16热销</td></tr>
+                            <tr><td>9月</td><td class="num">31</td><td>开学季高峰，MateBook X Pro高端</td></tr>
+                            <tr><td>10月</td><td class="num">22</td><td>平淡期，双11蓄水</td></tr>
+                            <tr><td>11月</td><td class="num">57</td><td>双11爆发，全系冲量</td></tr>
+                            <tr><td>12月</td><td class="num">27</td><td>年末+商用采购</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm"><canvas id="huaweiChart"></canvas></div>
+                </div>
+            </div>
+            <span class="tag green">份额快速增长</span><span class="tag purple">鸿蒙生态联动</span><span class="tag">多屏协同</span><span class="tag orange">线下体验拉动线上</span>
+            <p style="margin-top:8px;font-size:13px;color:#334155;">
+                <strong>分析：</strong>华为笔记本在中国市场保持快速增长，线上份额从2024年约18%提升至2026年预估21%。
+                鸿蒙生态联动（手机-平板-PC多屏协同）是核心差异化优势，对华为手机用户转化率高。
+                MateBook X Pro在高端市场（8000+元）与苹果MacBook正面竞争。
+                开学季（8‑9月）是华为笔记本全年最重要窗口，学生群体对华为品牌认知度极高。
+            </p>
+        </div>
+
+        <!-- 惠普 + 华硕 -->
+        <div class="grid2" style="margin-bottom:14px;">
+            <div class="card">
+                <h3><span class="brand-dot" style="background:var(--hp);"></span>惠普 — H2合计115亿（12.5%）</h3>
+                <div class="chart-box-xs"><canvas id="hpChart"></canvas></div>
+                <span class="tag">战66/星系列</span><span class="tag green">性价比路线</span><span class="tag orange">份额承压</span>
+                <p style="margin-top:6px;font-size:13px;color:#334155;">
+                    <strong>分析：</strong>惠普在中国市场面临国产品牌（联想、华为）的强力竞争，份额持续小幅下滑。
+                    战66和星系列是中低端走量主力，在3000‑5000元价格带有较高性价比。
+                    暗影精灵游戏本在暑期有一定号召力。2026H2需关注其AI PC产品线是否能及时跟进。
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="brand-dot" style="background:var(--asus);"></span>华硕 — H2合计101亿（11.0%）</h3>
+                <div class="chart-box-xs"><canvas id="asusChart"></canvas></div>
+                <span class="tag purple">ROG游戏本</span><span class="tag">天选系列</span><span class="tag green">OLED屏幕</span>
+                <p style="margin-top:6px;font-size:13px;color:#334155;">
+                    <strong>分析：</strong>华硕在游戏本市场有独特优势，ROG和天选系列在年轻玩家中品牌忠诚度高。
+                    OLED屏幕在华硕产品线中渗透率领先（无双/灵耀系列），形成显示效果差异化。
+                    7‑8月暑期和11月双11是游戏本的黄金销售期，华硕在这两个窗口表现突出。
+                </p>
+            </div>
+        </div>
+
+        <!-- 苹果 + 戴尔 -->
+        <div class="grid2" style="margin-bottom:14px;">
+            <div class="card">
+                <h3><span class="brand-dot" style="background:var(--apple);"></span>苹果 — H2合计92亿（10.0%）</h3>
+                <div class="chart-box-xs"><canvas id="appleChart"></canvas></div>
+                <span class="tag purple">M系列芯片</span><span class="tag">教育优惠</span><span class="tag green">高端市场</span>
+                <p style="margin-top:6px;font-size:13px;color:#334155;">
+                    <strong>分析：</strong>苹果MacBook在8000元以上高端市场占据领先地位。7‑9月教育优惠期间，
+                    MacBook Air是学生群体热门选择。M4/M5芯片的持续迭代巩固性能优势。
+                    双11期间平台补贴使MacBook价格下探，带动走量。macOS生态对创意设计人群粘性极高。
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="brand-dot" style="background:var(--dell);"></span>戴尔 — H2合计69亿（7.5%）</h3>
+                <div class="chart-box-xs"><canvas id="dellChart"></canvas></div>
+                <span class="tag">XPS高端</span><span class="tag orange">份额下滑</span><span class="tag">商用市场</span>
+                <p style="margin-top:6px;font-size:13px;color:#334155;">
+                    <strong>分析：</strong>戴尔在中国消费市场份额持续收窄，面临联想和华为的双重挤压。
+                    XPS系列在高端创意用户中有一定口碑，但价格竞争力不足。
+                    商用市场（Latitude/Precision）是企业采购的稳定盘。2026H2需关注其渠道策略调整。
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════ 三、价格带分析 ═══════════ -->
+        <h2 class="section-title">三、价格带分布与趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 线上价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2预估占比</th><th class="num">较2025变化</th><th>代表品牌/系列</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜3500元 入门</td><td class="num">22%</td><td class="num down">-3pp</td><td>联想小新Air、惠普战66、荣耀MagicBook</td></tr>
+                        <tr><td>3500‑5500元 主流</td><td class="num">38%</td><td class="num flat">持平</td><td>联想小新Pro、华为MateBook D、华硕无畏</td></tr>
+                        <tr><td>5500‑8000元 中高端</td><td class="num">25%</td><td class="num up">+2pp</td><td>华为MateBook 14/16、联想YOGA、华硕灵耀</td></tr>
+                        <tr><td>8000‑12000元 高端</td><td class="num">10%</td><td class="num up">+1pp</td><td>苹果MacBook Air、ThinkPad X1、华为X Pro</td></tr>
+                        <tr><td>＞12000元 旗舰</td><td class="num">5%</td><td class="num flat">持平</td><td>苹果MacBook Pro、ROG旗舰、XPS</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout green">
+                    <strong>趋势：</strong>中高端（5500‑8000元）是增长最快的价格带，AI PC和OLED屏幕等新特性推动消费者向上选择。
+                    以旧换新补贴（部分城市覆盖笔记本）进一步加速了消费升级。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、用途场景分析 ═══════════ -->
+        <h2 class="section-title">四、按用途场景分析</h2>
+        <div class="grid3">
+            <div class="card">
+                <h3>💼 轻薄办公本</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--blue-dark);">38%</div>
+                <p style="font-size:12px;color:var(--muted);">H2线上销量占比</p>
+                <span class="tag green">最大细分市场</span><span class="tag">联想小新/ThinkBook</span><span class="tag">华为MateBook</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    3500‑5500元是核心价格带，14英寸/16英寸为主流尺寸。AI PC功能（智能会议、文档总结）成为新卖点。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🎮 游戏本</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--red);">22%</div>
+                <p style="font-size:12px;color:var(--muted);">H2线上销量占比</p>
+                <span class="tag red">暑期+双11高峰</span><span class="tag purple">联想拯救者</span><span class="tag">华硕ROG/天选</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    7‑8月和11月是游戏本黄金窗口。RTX 5060/5070系列独显是2026年主流配置。16GB+显存成为标配。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🎓 学生/教育本</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--green);">25%</div>
+                <p style="font-size:12px;color:var(--muted);">H2线上销量占比</p>
+                <span class="tag green">8‑9月高峰</span><span class="tag">苹果教育优惠</span><span class="tag">华为 MateBook D</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    开学季（8‑9月）是学生本全年最大需求窗口。3000‑5000元价格带最受欢迎。
+                    苹果教育优惠（送AirPods）对MacBook Air有明显拉动。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🎨 创意设计本</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--purple);">9%</div>
+                <p style="font-size:12px;color:var(--muted);">H2线上销量占比</p>
+                <span class="tag purple">苹果MacBook Pro</span><span class="tag">华硕ProArt</span><span class="tag">联想YOGA Pro</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    8000元以上高端市场，用户对屏幕色准（ΔE＜2）、性能释放和扩展性要求高。用户粘性强。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🏢 商用/企业采购</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--orange);">6%</div>
+                <p style="font-size:12px;color:var(--muted);">H2线上销量占比（线上部分）</p>
+                <span class="tag orange">Q3+年末高峰</span><span class="tag">ThinkPad</span><span class="tag">Latitude</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    商用采购旺季在Q3和12月（年终结算）。Windows 10停更推动企业换机。
+                    线上商用主要走京东企业购和品牌官网。
+                </p>
+            </div>
+            <div class="card">
+                <h3>📱 二合一/平板PC</h3>
+                <div style="font-size:32px;font-weight:900;color:var(--cyan);">—</div>
+                <p style="font-size:12px;color:var(--muted);">新兴细分，增速快但基数小</p>
+                <span class="tag cyan">华为MateBook E</span><span class="tag">Surface</span><span class="tag purple">可拆卸形态</span>
+                <p style="margin-top:8px;font-size:13px;color:#334155;">
+                    二合一设备作为平板和笔记本的融合形态，在移动办公和轻创作场景有独特优势。
+                    华为和微软是主要玩家，该品类在内容电商渠道增速较快。
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、AI PC专题 ═══════════ -->
+        <h2 class="section-title">五、AI PC渗透率与影响分析</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 AI PC月度渗透率预估</h3>
+                <div class="chart-box-sm"><canvas id="aiPcChart"></canvas></div>
+                <div class="footnote">AI PC定义：搭载专用NPU（≥40 TOPS算力）的笔记本。数据源：Canalys AI PC预测 + 品牌产品路线图推算。</div>
+            </div>
+            <div class="card">
+                <h3>AI PC对市场的影响</h3>
+                <table>
+                    <thead><tr><th>影响维度</th><th>具体表现</th></tr></thead>
+                    <tbody>
+                        <tr><td>均价提升</td><td>AI PC均价较同配置非AI机型高8‑15%，拉动整体均价上行</td></tr>
+                        <tr><td>换机加速</td><td>AI功能（实时翻译、智能会议、文档总结）成为换机新动机</td></tr>
+                        <tr><td>品牌分化</td><td>AI PC布局快的品牌（联想、华为）获得先发优势</td></tr>
+                        <tr><td>商用需求</td><td>企业采购开始将AI PC纳入标准配置，推动商用换机</td></tr>
+                        <tr><td>生态竞争</td><td>Windows Copilot+ vs 鸿蒙AI vs macOS Intelligence</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber">
+                    <strong>关键判断：</strong>2026H2是AI PC从"尝鲜期"进入"主流期"的关键半年。
+                    预计到12月，AI PC在线上新品销量中占比将超过65%。品牌需在AI功能体验和用户教育上加大投入。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 六、双11专项 ═══════════ -->
+        <h2 class="section-title">六、双11对各品牌的贡献度</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按品牌）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬‑10月中旬</td><td>AI PC新品预热、达人评测、学生种草</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金膨胀、以旧换新加码、会员专属价</td></tr>
+                        <tr><td>爆发期</td><td>11月1‑11日</td><td>全渠道价格对齐、直播专场、限时赠品</td></tr>
+                        <tr><td>返场期</td><td>11月12‑20日</td><td>断码清仓、商用采购专场、好评返现</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout">
+                    <strong>关键提示：</strong>联想和华为在双11的爆发力最强（11月占H2约29‑30%），
+                    需提前2个月在京东和抖音进行内容蓄水。苹果MacBook在双11通过平台补贴走量明显。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 七、风险与变量 ═══════════ -->
+        <h2 class="section-title">七、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card">
+                <h3>💻 AI PC接受度</h3>
+                <p style="font-size:13px;color:#334155;">
+                    若消费者对AI PC功能感知不强，换机动力可能不及预期。
+                    品牌需强化AI功能的场景化展示和用户教育。
+                </p>
+            </div>
+            <div class="card">
+                <h3>📋 以旧换新政策</h3>
+                <p style="font-size:13px;color:#334155;">
+                    2026年以旧换新补贴是否延续并扩大至笔记本全国范围，将直接影响H2消费需求。
+                    若政策退坡，中端换新需求可能减弱。
+                </p>
+            </div>
+            <div class="card">
+                <h3>💰 价格竞争</h3>
+                <p style="font-size:13px;color:#334155;">
+                    3500‑5500元主流价格带竞争激烈，品牌间的价格战可能压缩毛利率。
+                    AI PC新品溢价能否维持是关键。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🔗 供应链</h3>
+                <p style="font-size:13px;color:#334155;">
+                    NPU芯片（高通骁龙X/Intel Lunar Lake/AMD Strix Point）供应稳定性影响AI PC出货。
+                    内存和面板价格波动也可能影响成本。
+                </p>
+            </div>
+            <div class="card">
+                <h3>📱 鸿蒙生态演进</h3>
+                <p style="font-size:13px;color:#334155;">
+                    华为鸿蒙PC若在2026年正式发布，可能重塑市场格局。
+                    生态兼容性和用户迁移成本是关键不确定因素。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🌐 宏观消费</h3>
+                <p style="font-size:13px;color:#334155;">
+                    消费信心和就业形势影响笔记本这类大件消费品的购买决策。
+                    经济不确定性可能导致消费者推迟换机。
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════ 八、预测方法论 ═══════════ -->
+        <h2 class="section-title">八、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>方法</th><th>说明</th><th>数据基础</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>季节分解（STL）</td>
+                        <td>将2024‑2025年月度销售序列分解为趋势、季节和残差分量，提取笔记本品类季节系数</td>
+                        <td>IDC季度出货 + Counterpoint月度线上监测</td>
+                    </tr>
+                    <tr>
+                        <td>换机周期模型</td>
+                        <td>基于历史出货数据和平均换机周期（3.5‑4.5年），估算2026年自然换机需求</td>
+                        <td>IDC历史出货 + Canalys换机周期研究</td>
+                    </tr>
+                    <tr>
+                        <td>AI PC渗透曲线</td>
+                        <td>参考智能手机5G渗透曲线和Canalys AI PC预测，建立S型渗透模型</td>
+                        <td>Canalys AI PC Forecast + 品牌产品路线图</td>
+                    </tr>
+                    <tr>
+                        <td>品牌份额趋势</td>
+                        <td>基于2023‑2025年品牌份额变化趋势，线性外推+专家判断调整</td>
+                        <td>Counterpoint品牌份额 + 京东/天猫排行</td>
+                    </tr>
+                    <tr>
+                        <td>政策乘数</td>
+                        <td>基于2025年以旧换新补贴对笔记本销售的拉动效果，估算2026年政策影响</td>
+                        <td>商务部补贴数据 + 平台订单匹配</td>
+                    </tr>
+                    <tr>
+                        <td>大促脉冲模型</td>
+                        <td>基于2024‑2025年618和双11的前后月份数据，量化大促的集中效应</td>
+                        <td>星图数据 + 平台战报</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:10px;">
+                ※ 以上所有预测值均为基于2024‑2025年实际数据的模型推算结果，不代表对未来市场表现的保证。
+                建议每月用最新实际数据对模型进行校准。数据采集截止至2025年公开信息。
+            </div>
+        </div>
+
+        <!-- ═══════════ 页脚 ═══════════ -->
+        <footer>
+            本报告数据综合自IDC、Canalys、Counterpoint Research、京东/天猫官方披露、商务部公开信息及各品牌财报。<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            © 中国笔记本消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+
+        const brandColors = {
+            '联想': '#E2231A',
+            '华为': '#CF0A2C',
+            '惠普': '#0096D6',
+            '华硕': '#00AEEF',
+            '苹果': '#3a3a3a',
+            '戴尔': '#007DB8',
+            '其他品牌': '#8899aa'
+        };
+
+        const brandData = {
+            '联想': [33, 38, 36, 28, 72, 37],
+            '华为': [26, 30, 31, 22, 57, 27],
+            '惠普': [16, 18, 15, 13, 35, 18],
+            '华硕': [15, 17, 13, 11, 30, 15],
+            '苹果': [14, 16, 15, 11, 24, 12],
+            '戴尔': [9, 10, 9, 8, 22, 11],
+            '其他品牌': [12, 16, 16, 12, 35, 15]
+        };
+
+        // ── 月度堆叠柱状图 ──
+        const stackedCtx = document.getElementById('stackedBar').getContext('2d');
+        new Chart(stackedCtx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: Object.entries(brandData).map(([name, data]) => ({
+                    label: name,
+                    data: data,
+                    backgroundColor: brandColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3,
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, title: { display: true, text: 'GMV（亿元）' }, beginAtZero: true }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 品牌趋势线 ──
+        const linesCtx = document.getElementById('brandLines').getContext('2d');
+        new Chart(linesCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: Object.entries(brandData).map(([name, data]) => ({
+                    label: name,
+                    data: data,
+                    borderColor: brandColors[name],
+                    backgroundColor: brandColors[name] + '20',
+                    tension: 0.35,
+                    pointRadius: 4,
+                    pointHoverRadius: 7,
+                    borderWidth: 2.2
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10 } } }
+                },
+                scales: {
+                    y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 5 }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 各品牌独立小图 ──
+        const smallCharts = {
+            lenovoChart: '联想',
+            huaweiChart: '华为',
+            hpChart: '惠普',
+            asusChart: '华硕',
+            appleChart: '苹果',
+            dellChart: '戴尔'
+        };
+
+        Object.entries(smallCharts).forEach(([canvasId, brandName]) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const data = brandData[brandName];
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: brandName + ' GMV（亿）',
+                        data: data,
+                        borderColor: brandColors[brandName],
+                        backgroundColor: brandColors[brandName] + '15',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: brandColors[brandName],
+                        borderWidth: 2.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw +
+                                '亿' } } },
+                    scales: {
+                        y: { beginAtZero: false, title: { display: true, text: '亿元', font: { size: 10 } },
+                            grid: { color: '#e8ecf3' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+
+        // ── 价格带饼图 ──
+        const priceCtx = document.getElementById('priceBandPie').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['＜3500元 入门', '3500‑5500元 主流', '5500‑8000元 中高端', '8000‑12000元 高端',
+                    '＞12000元 旗舰'
+                ],
+                datasets: [{
+                    data: [22, 38, 25, 10, 5],
+                    backgroundColor: ['#94a3b8', '#60a5fa', '#1a5cf7', '#7c3aed', '#1e293b'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
+                    legend: { position: 'bottom', labels: { padding: 16, font: { size: 11 } } }
+                }
+            }
+        });
+
+        // ── AI PC渗透率 ──
+        const aiPcCtx = document.getElementById('aiPcChart').getContext('2d');
+        new Chart(aiPcCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'AI PC渗透率（%）',
+                    data: [42, 46, 50, 54, 58, 62],
+                    borderColor: '#7c3aed',
+                    backgroundColor: 'rgba(124,58,237,0.08)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#7c3aed',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => 'AI PC占比: ' + ctx.raw + '%' } },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { min: 30, max: 70, title: { display: true, text: '%' },
+                    ticks: { callback: v => v + '%' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // ── 双11贡献度 ──
+        const d11Ctx = document.getElementById('double11Impact').getContext('2d');
+        const d11Ratios = Object.entries(brandData).map(([name, data]) => ({
+            name,
+            ratio: +(data[4] / data.reduce((a, b) => a + b, 0) * 100).toFixed(1)
+        }));
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
+
+        new Chart(d11Ctx, {
+            type: 'bar',
+            data: {
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{
+                    label: '11月占H2比例（%）',
+                    data: d11Ratios.map(r => r.ratio),
+                    backgroundColor: d11Ratios.map(r => brandColors[r.name] || '#8899aa'),
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: '11月GMV / H2总GMV（%）' },
+                        beginAtZero: true,
+                        max: 35
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

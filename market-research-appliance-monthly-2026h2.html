@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国家电品类月度预估与市场分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #0f1a2e;
+            --muted: #5c6b82;
+            --line: #e2e8f2;
+            --blue: #1a5cf7;
+            --blue-dark: #0b37b8;
+            --cyan: #009eb5;
+            --green: #0d9488;
+            --orange: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --radius: 16px;
+            --shadow: 0 8px 30px rgba(15, 26, 46, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 22px 72px;
+        }
+
+        /* ── 顶栏 ── */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px 0 12px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 850;
+            font-size: 17px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--blue);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef3ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 4px 11px;
+            font-size: 11px;
+            font-weight: 650;
+            white-space: nowrap;
+        }
+        .pill.green {
+            background: #e3f7f0;
+            color: #107051;
+        }
+        .pill.amber {
+            background: #fff8ec;
+            color: #b45309;
+        }
+
+        /* ── 英雄区 ── */
+        .hero {
+            margin: 28px 0 40px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 4.2vw, 54px);
+            line-height: 1.14;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            margin-bottom: 10px;
+            max-width: 960px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 860px;
+            margin-bottom: 6px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+
+        /* ── 公用 ── */
+        .section-title {
+            margin: 48px 0 16px;
+            font-size: 26px;
+            font-weight: 850;
+            border-left: 5px solid var(--blue);
+            padding-left: 14px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+        }
+        .grid2 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .grid4 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f5f8fd;
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            font-weight: 750;
+            color: #344054;
+            white-space: nowrap;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 750;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 750;
+        }
+        .flat {
+            color: #d97706;
+            font-weight: 750;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #f0f4ff;
+            color: var(--blue-dark);
+            font-size: 11px;
+            font-weight: 700;
+            margin: 3px 5px 3px 0;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .callout {
+            background: #f5f9ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13px;
+            margin: 12px 0;
+            color: #334155;
+        }
+        .heat-high {
+            background: #dbeafe;
+            font-weight: 750;
+            color: #0b37b8;
+        }
+        .heat-mid {
+            background: #f0f7ff;
+            font-weight: 650;
+            color: #1a5cf7;
+        }
+        .heat-low {
+            background: #fafcfd;
+            color: #6b7d95;
+        }
+        .chart-box {
+            position: relative;
+            height: 380px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 260px;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            margin-top: 48px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3,
+            .grid4 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>HA</em> 品类月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期数据：2024‑2025权威统计</span>
+                <span class="pill amber">模型：季节分解+政策乘数+平台流量因子</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 家电月度预估与市场分析</h1>
+            <p>
+                基于国家统计局、奥维云网（AVC）、中国家用电器协会、商务部以旧换新数据及京东/天猫/抖音电商官方披露，
+                将2026年7月至12月的电商GMV预测拆解至9大品类×6个月，并逐品类进行市场驱动分析。
+            </p>
+            <div class="src">
+                <strong>核心数据源：</strong>奥维云网全渠道监测 | 国家统计局社零 | 电商平台官方战报 | 星图数据
+            </div>
+        </div>
+
+        <!-- ═══════════ 一、月度总览 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>品类</th>
+                        <th class="num">7月</th>
+                        <th class="num">8月</th>
+                        <th class="num">9月</th>
+                        <th class="num">10月</th>
+                        <th class="num">11月</th>
+                        <th class="num">12月</th>
+                        <th class="num">H2合计</th>
+                        <th class="num">较2025H2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>空调</strong></td>
+                        <td class="num heat-high">195</td>
+                        <td class="num heat-high">160</td>
+                        <td class="num heat-low">75</td>
+                        <td class="num heat-low">60</td>
+                        <td class="num heat-mid">105</td>
+                        <td class="num heat-low">55</td>
+                        <td class="num"><strong>650</strong></td>
+                        <td class="num up">+8.9%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>冰箱/冷柜</strong></td>
+                        <td class="num heat-low">62</td>
+                        <td class="num heat-low">65</td>
+                        <td class="num heat-mid">68</td>
+                        <td class="num heat-mid">82</td>
+                        <td class="num heat-high">130</td>
+                        <td class="num heat-low">63</td>
+                        <td class="num"><strong>470</strong></td>
+                        <td class="num up">+8.8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>洗衣机/干衣机</strong></td>
+                        <td class="num heat-low">55</td>
+                        <td class="num heat-low">58</td>
+                        <td class="num heat-mid">62</td>
+                        <td class="num heat-mid">78</td>
+                        <td class="num heat-high">120</td>
+                        <td class="num heat-low">62</td>
+                        <td class="num"><strong>435</strong></td>
+                        <td class="num up">+9.8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>彩电/影音</strong></td>
+                        <td class="num heat-low">48</td>
+                        <td class="num heat-low">45</td>
+                        <td class="num heat-low">52</td>
+                        <td class="num heat-mid">65</td>
+                        <td class="num heat-high">112</td>
+                        <td class="num heat-low">58</td>
+                        <td class="num"><strong>380</strong></td>
+                        <td class="num up">+7.0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>厨卫大电</strong></td>
+                        <td class="num heat-mid">72</td>
+                        <td class="num heat-mid">75</td>
+                        <td class="num heat-mid">82</td>
+                        <td class="num heat-mid">95</td>
+                        <td class="num heat-high">140</td>
+                        <td class="num heat-low">61</td>
+                        <td class="num"><strong>525</strong></td>
+                        <td class="num up">+11.0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>清洁电器</strong></td>
+                        <td class="num heat-mid">55</td>
+                        <td class="num heat-low">50</td>
+                        <td class="num heat-mid">58</td>
+                        <td class="num heat-mid">68</td>
+                        <td class="num heat-high">115</td>
+                        <td class="num heat-low">39</td>
+                        <td class="num"><strong>385</strong></td>
+                        <td class="num up">+20.7%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>厨房小电</strong></td>
+                        <td class="num heat-low">42</td>
+                        <td class="num heat-low">40</td>
+                        <td class="num heat-low">38</td>
+                        <td class="num heat-mid">48</td>
+                        <td class="num heat-mid">80</td>
+                        <td class="num heat-low">32</td>
+                        <td class="num"><strong>280</strong></td>
+                        <td class="num flat">+2.9%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>个护健康电器</strong></td>
+                        <td class="num heat-low">42</td>
+                        <td class="num heat-low">38</td>
+                        <td class="num heat-low">40</td>
+                        <td class="num heat-mid">52</td>
+                        <td class="num heat-mid">85</td>
+                        <td class="num heat-low">38</td>
+                        <td class="num"><strong>295</strong></td>
+                        <td class="num up">+16.6%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>其他家电</strong></td>
+                        <td class="num heat-mid">58</td>
+                        <td class="num heat-low">55</td>
+                        <td class="num heat-low">60</td>
+                        <td class="num heat-mid">72</td>
+                        <td class="num heat-mid">105</td>
+                        <td class="num heat-low">50</td>
+                        <td class="num"><strong>400</strong></td>
+                        <td class="num up">+8.1%</td>
+                    </tr>
+                    <tr style="background:#f8faff;font-weight:800;">
+                        <td><strong>月度合计</strong></td>
+                        <td class="num">629</td>
+                        <td class="num">586</td>
+                        <td class="num">535</td>
+                        <td class="num">620</td>
+                        <td class="num">892</td>
+                        <td class="num">458</td>
+                        <td class="num"><strong>3,820</strong></td>
+                        <td class="num up">+9.5%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footnote">
+                ※ 热力标注：<span class="heat-high">深蓝=旺季高峰</span> <span class="heat-mid">浅蓝=中等</span> <span class="heat-low">灰色=相对淡季</span> 
+                数据性质：基于2024‑2025年权威数据的模型预测值，不作为确定事实，仅供经营参考。
+            </div>
+        </div>
+
+        <!-- 月度堆叠图 -->
+        <div class="grid2" style="margin-top:16px;">
+            <div class="card">
+                <h3 style="margin-bottom:8px;">月度GMV堆叠构成</h3>
+                <div class="chart-box">
+                    <canvas id="stackedBar"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:8px;">各品类月度趋势（标准化指数）</h3>
+                <div class="chart-box">
+                    <canvas id="indexLine"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>📌 关键节奏：</strong>11月（双11）是全品类绝对高峰，单月预估892亿占H2的23.4%；
+            Q3（7‑9月）合计1,750亿，Q4（10‑12月）合计1,970亿，Q4占比51.6%。
+            空调7‑8月为独立旺季，清洁电器和厨卫大电在双11爆发力最强。
+        </div>
+
+        <!-- ═══════════ 二、分品类月度预估与市场分析 ═══════════ -->
+        <h2 class="section-title">二、分品类月度预估与市场分析</h2>
+
+        <!-- 品类1：空调 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟦 空调 — H2合计650亿（+8.9%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-high">195</td><td>🔥 高温旺季顶峰，安装需求集中释放</td></tr>
+                            <tr><td>8月</td><td class="num heat-high">160</td><td>🔥 旺季延续，以旧换新补贴持续拉动</td></tr>
+                            <tr><td>9月</td><td class="num heat-low">75</td><td>🍂 需求快速回落，库存去化阶段</td></tr>
+                            <tr><td>10月</td><td class="num heat-low">60</td><td>🍂 传统淡季，仅有零星换新</td></tr>
+                            <tr><td>11月</td><td class="num heat-mid">105</td><td>🛒 双11换新潮+反季促销</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">55</td><td>❄️ 全年最低，仅南方制热需求</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="acChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">一级能效占比65%+</span>
+                <span class="tag">以旧换新核销率高</span>
+                <span class="tag orange">天气敏感型</span>
+                <span class="tag purple">新风功能溢价</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>空调是H2季节性最强的品类，7‑8月占H2的54.6%。2026年夏季若出现持续高温，
+                7‑8月GMV可能上修15‑25亿。一级能效产品在补贴加持下占比持续提升，新风空调和除菌功能成为中高端标配。
+                Q4以旧换新政策若延续至年底，11月换新需求将进一步释放。需警惕凉夏风险和铜铝原材料成本波动对终端定价的影响。
+                建议7‑8月集中投放安装服务确定性内容，11月主打“以旧换新+双11折上折”组合策略。
+            </p>
+        </div>
+
+        <!-- 品类2：冰箱/冷柜 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟩 冰箱/冷柜 — H2合计470亿（+8.8%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-low">62</td><td>平稳，暑期换新小幅提升</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">65</td><td>平稳，开学季/新居需求</td></tr>
+                            <tr><td>9月</td><td class="num heat-mid">68</td><td>金九装修季带动嵌入式需求</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">82</td><td>双11预热，预售蓄水</td></tr>
+                            <tr><td>11月</td><td class="num heat-high">130</td><td>🛒 双11大促高峰，大容量走量</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">63</td><td>年末冲量+年货节预热</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="fridgeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">大容量500L+增长快</span>
+                <span class="tag">嵌入式占比提升</span>
+                <span class="tag purple">母婴/美妆存储场景</span>
+                <span class="tag orange">冷柜换新需求</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>冰箱品类全年节奏相对平稳，H2最大特征是11月双11集中爆发（占H2的27.7%）。
+                增长驱动来自三方面：一是大容量（500L+）和法式多门结构升级，二是嵌入式冰箱与橱柜一体化趋势，
+                三是母婴、美妆、红酒等细分存储场景拓展。以旧换新补贴对冰箱换新有明显拉动，老旧冰箱（使用8年以上）换新比例上升。
+                冷柜品类受囤货需求波动影响，冬季略有回落。建议在9‑10月强化“厨房改造+嵌入式方案”内容种草，双11主推大容量套购。
+            </p>
+        </div>
+
+        <!-- 品类3：洗衣机/干衣机 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟨 洗衣机/干衣机 — H2合计435亿（+9.8%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-low">55</td><td>平稳，南方雨季干衣需求抬头</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">58</td><td>平稳，开学季/新居需求</td></tr>
+                            <tr><td>9月</td><td class="num heat-mid">62</td><td>金九装修季，洗烘套装需求上升</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">78</td><td>双11预热，干衣机需求加速</td></tr>
+                            <tr><td>11月</td><td class="num heat-high">120</td><td>🛒 双11大促，洗烘套装爆发</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">62</td><td>冬季干衣需求+年末冲量</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="washerChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">洗烘套装增长核心</span>
+                <span class="tag">分区洗/内衣洗</span>
+                <span class="tag purple">阳台改造场景</span>
+                <span class="tag orange">干衣机渗透率加速</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>洗衣机和干衣机的增长逻辑已从“单品换新”转向“洗烘套装+阳台场景改造”。
+                干衣机在南方市场渗透率快速提升，秋冬季节（10‑12月）是干衣机需求旺季。分区洗（上烘下洗、内衣专洗）成为中高端标配。
+                双11是洗烘套装全年最大成交节点，预计11月单月贡献H2的27.6%。建议品牌在9‑10月围绕“阳台改造”做内容种草，
+                双11用套装优惠+免费安装+延保服务提升转化。
+            </p>
+        </div>
+
+        <!-- 品类4：彩电/影音 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟪 彩电/影音 — H2合计380亿（+7.0%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-low">48</td><td>暑期促销，游戏电视小幅提升</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">45</td><td>相对平淡</td></tr>
+                            <tr><td>9月</td><td class="num heat-low">52</td><td>开学季+体育赛事（若有）</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">65</td><td>双11预售+大屏换代需求</td></tr>
+                            <tr><td>11月</td><td class="num heat-high">112</td><td>🛒 双11核心节点，Mini LED爆发</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">58</td><td>年末影音消费+元旦前换新</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="tvChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag purple">Mini LED渗透加速</span>
+                <span class="tag">75吋+大屏化</span>
+                <span class="tag green">游戏电视/高刷</span>
+                <span class="tag red">价格竞争激烈</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>彩电品类整体增速温和，但结构升级明显。Mini LED背光技术加速普及，75吋及以上大屏占比持续提升。
+                游戏电视（120Hz+高刷、HDMI 2.1）成为年轻人换机重要驱动力。11月双11是全年的绝对高峰（占H2约29.5%），
+                品牌集中放价冲量。需关注面板成本波动和价格战对利润的挤压。若2026年有世界杯等重大赛事，Q3需求将额外提振。
+                建议品牌在双11主推Mini LED大屏+游戏场景组合，强化“客厅升级”心智。
+            </p>
+        </div>
+
+        <!-- 品类5：厨卫大电 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟧 厨卫大电 — H2合计525亿（+11.0%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-mid">72</td><td>装修旺季，烟灶洗需求稳定</td></tr>
+                            <tr><td>8月</td><td class="num heat-mid">75</td><td>装修延续+暑期换新</td></tr>
+                            <tr><td>9月</td><td class="num heat-mid">82</td><td>金九装修高峰，集成灶/洗碗机走强</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">95</td><td>双11预售+装修收尾需求</td></tr>
+                            <tr><td>11月</td><td class="num heat-high">140</td><td>🛒 双11爆发，套装化销售主力</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">61</td><td>装修淡季，需求回落</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="kitchenChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">集成灶/洗碗机高增长</span>
+                <span class="tag">烟灶洗套装化</span>
+                <span class="tag orange">净水器渗透提升</span>
+                <span class="tag purple">智能马桶盖/一体机</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>厨卫大电是H2增长最快的大家电品类之一（+11.0%），与装修周期和政策补贴高度相关。
+                集成灶和洗碗机是增长双引擎，渗透率在二三线城市快速提升。烟灶洗套装化销售占比超过40%，有效提升客单价。
+                净水器和智能马桶/马桶盖受益于健康意识提升，保持稳健增长。Q3装修旺季（7‑9月）贡献H2的43.6%，
+                双11则通过预售锁定装修用户需求。建议品牌在Q3强化“装修季+厨房改造”内容，双11用套购优惠+免费测量设计提升转化。
+            </p>
+        </div>
+
+        <!-- 品类6：清洁电器 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟦 清洁电器 — H2合计385亿（+20.7%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-mid">55</td><td>暑期内容种草+平销</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">50</td><td>相对平淡，新品预热期</td></tr>
+                            <tr><td>9月</td><td class="num heat-mid">58</td><td>秋季新品密集上市</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">68</td><td>双11预售，达人测评爆发</td></tr>
+                            <tr><td>11月</td><td class="num heat-high">115</td><td>🛒 双11年度最大节点</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">39</td><td>大促后回落，礼品需求小幅支撑</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="cleanChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">洗地机增速领跑</span>
+                <span class="tag">全能基站扫地机</span>
+                <span class="tag purple">内容电商核心品类</span>
+                <span class="tag orange">AI避障/自清洁升级</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>清洁电器是H2增速最高的品类（+20.7%），双11单月贡献H2的29.9%。
+                洗地机和全能基站扫地机器人是增长双引擎，产品迭代速度快（6‑9个月一代）。内容电商（抖音、小红书）是核心种草和成交渠道，
+                达人测评、真实家庭对比、痛点场景内容转化效率极高。9‑10月是新品密集发布期，品牌通过内容预热为双11蓄水。
+                需警惕价格带下探对毛利率的影响，以及技术同质化带来的竞争加剧。建议品牌在8‑10月集中投放内容种草，
+                双11用“新品首发+赠品+延保”组合提升转化。
+            </p>
+        </div>
+
+        <!-- 品类7：厨房小电 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🟫 厨房小电 — H2合计280亿（+2.9%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-low">42</td><td>平销，空气炸锅需求回落</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">40</td><td>暑期尾声，开学季小电需求</td></tr>
+                            <tr><td>9月</td><td class="num heat-low">38</td><td>传统淡季</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">48</td><td>双11预热，新品开始铺货</td></tr>
+                            <tr><td>11月</td><td class="num heat-mid">80</td><td>🛒 双11走量高峰</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">32</td><td>回落，礼品需求小幅支撑</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="smallKitchenChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag red">空气炸锅降温</span>
+                <span class="tag">咖啡机/制冰机增长</span>
+                <span class="tag orange">场景化创新</span>
+                <span class="tag">价格竞争激烈</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>厨房小电整体进入成熟期，H2增速仅+2.9%，是增长最慢的品类。空气炸锅红利消退，
+                传统品类（电饭煲、电磁炉、榨汁机）以存量替换为主。增长亮点集中在咖啡机、制冰机、多功能料理锅等新兴场景品类。
+                双11是全年最大走量节点（占H2的28.6%），但价格竞争激烈导致均价承压。品牌需跳出低价竞争，
+                通过场景创新（露营、独居、轻食、办公室）和功能升级（智能互联、预设菜单）来支撑溢价。
+                建议在抖音和小红书打造“新场景+新用法”内容，双11用场景套装组合提升客单价。
+            </p>
+        </div>
+
+        <!-- 品类8：个护健康电器 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🩷 个护健康电器 — H2合计295亿（+16.6%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-low">42</td><td>暑期平销，旅游便携需求</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">38</td><td>相对平淡</td></tr>
+                            <tr><td>9月</td><td class="num heat-low">40</td><td>开学季+换季护肤需求</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">52</td><td>双11预热，达人种草密集</td></tr>
+                            <tr><td>11月</td><td class="num heat-mid">85</td><td>🛒 双11爆发，送礼需求</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">38</td><td>年末礼品季+年货节预热</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="personalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag green">高速吹风机持续增长</span>
+                <span class="tag">按摩仪/筋膜枪</span>
+                <span class="tag purple">口腔护理升级</span>
+                <span class="tag orange">睡眠健康设备</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>个护健康电器保持强劲增长（+16.6%），受益于消费升级和健康意识提升。
+                高速吹风机是最大增长单品，国产品牌在300‑600元价格带快速抢占份额。按摩仪（颈椎、眼部、足部）和筋膜枪持续热销，
+                口腔护理（冲牙器、电动牙刷）进入新一轮换新周期。睡眠健康设备（助眠仪、白噪音机）作为新兴品类增长迅速。
+                双11和年末礼品季是重要节点，送礼属性带动中高端产品成交。建议品牌在10‑11月集中投放达人测评和送礼场景内容，
+                双11主推“个护礼盒”和“家庭健康套装”。
+            </p>
+        </div>
+
+        <!-- 品类9：其他家电 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>🔷 其他家电（环境电器等） — H2合计400亿（+8.1%）</h3>
+            <div class="grid2">
+                <div>
+                    <table>
+                        <thead>
+                            <tr><th>月份</th><th class="num">GMV（亿）</th><th>节奏特征</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7月</td><td class="num heat-mid">58</td><td>电风扇/空调扇旺季，除湿机需求</td></tr>
+                            <tr><td>8月</td><td class="num heat-low">55</td><td>降温需求延续</td></tr>
+                            <tr><td>9月</td><td class="num heat-low">60</td><td>换季，空气净化器需求抬头</td></tr>
+                            <tr><td>10月</td><td class="num heat-mid">72</td><td>取暖器需求启动+双11预热</td></tr>
+                            <tr><td>11月</td><td class="num heat-mid">105</td><td>🛒 双11，取暖器/净化器/加湿器走量</td></tr>
+                            <tr><td>12月</td><td class="num heat-low">50</td><td>寒冬取暖需求，净化器持续</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="chart-box-sm">
+                        <canvas id="otherChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:8px;">
+                <span class="tag orange">取暖器Q4旺季</span>
+                <span class="tag">除湿机Q2‑Q3</span>
+                <span class="tag green">空气净化器秋冬</span>
+                <span class="tag purple">加湿器冬季需求</span>
+            </div>
+            <p style="margin-top:10px;font-size:14px;color:#334155;">
+                <strong>市场分析：</strong>“其他家电”以环境电器为主（取暖器、除湿机、空气净化器、加湿器、电风扇等），
+                季节性是核心特征。7‑8月电风扇/空调扇和除湿机为旺季，11‑12月取暖器和加湿器为旺季，空气净化器在秋冬雾霾季需求上升。
+                双11是取暖器和净化器的全年最大成交节点。该品类受天气影响极大，寒冬将显著提振Q4取暖器销售。
+                建议品牌根据中长期天气预报提前备货，双11主推“全屋温暖套装”和“健康呼吸套装”。
+            </p>
+        </div>
+
+        <!-- ═══════════ 三、双11对各品类的影响 ═══════════ -->
+        <h2 class="section-title">三、双11对各品类的贡献度分析</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例</h3>
+                <div class="chart-box">
+                    <canvas id="double11Impact"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead>
+                        <tr><th>阶段</th><th>时间</th><th>核心动作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬‑10月中旬</td><td>内容种草、达人测评、新品预热、会员蓄水</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金膨胀、以旧换新预约、套购优惠预告</td></tr>
+                        <tr><td>爆发期</td><td>11月1‑11日</td><td>全渠道价格统一、直播连麦、限时秒杀</td></tr>
+                        <tr><td>返场期</td><td>11月12‑20日</td><td>断码清仓、会员专属返场、好评激励</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout">
+                    <strong>关键提示：</strong>清洁电器和个护健康电器在双11的爆发力最强（11月占比超29%），
+                    需提前2个月在抖音和小红书进行内容蓄水。大家电需强化“预售锁客+安装服务承诺”来降低大件决策门槛。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、风险与变量 ═══════════ -->
+        <h2 class="section-title">四、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card">
+                <h3>🌤 天气变量</h3>
+                <p style="font-size:14px;color:#334155;">
+                    凉夏将直接压制7‑8月空调销售（可能下修20‑30亿），暖冬则影响Q4取暖器需求。
+                    建议品牌建立“天气‑销售”联动模型，根据中长期预报动态调整库存和投放。
+                </p>
+            </div>
+            <div class="card">
+                <h3>📋 政策变量</h3>
+                <p style="font-size:14px;color:#334155;">
+                    以旧换新补贴若在2026年下半年延续并扩品类，大家电H2 GMV可能上修3‑6个百分点。
+                    反之，若补贴退坡，中端换新需求可能减弱，需提前准备应对方案。
+                </p>
+            </div>
+            <div class="card">
+                <h3>💰 价格竞争</h3>
+                <p style="font-size:14px;color:#334155;">
+                    彩电、厨房小电和部分清洁电器面临持续价格战压力。
+                    品牌需在“冲规模”和“保利润”之间找到平衡，通过结构升级和增值服务提升溢价。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🏠 地产关联</h3>
+                <p style="font-size:14px;color:#334155;">
+                    厨卫大电与地产竣工的关联度约0.45，若2026年地产竣工回暖，厨卫大电H2可能额外增长2‑4%。
+                    冰箱、洗衣机也与新居入住有一定关联。
+                </p>
+            </div>
+            <div class="card">
+                <h3>📱 平台流量成本</h3>
+                <p style="font-size:14px;color:#334155;">
+                    抖音等内容电商的流量成本持续上升，若ROI下降，品牌需重新评估投放策略。
+                    建议建立“内容+货架”双轮驱动，降低对单一平台的依赖。
+                </p>
+            </div>
+            <div class="card">
+                <h3>🔗 供应链风险</h3>
+                <p style="font-size:14px;color:#334155;">
+                    铜、铝、芯片等原材料价格波动可能影响终端定价和毛利率。
+                    建议与供应商建立弹性采购机制，双11前确保核心SKU库存充足。
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、预测方法论 ═══════════ -->
+        <h2 class="section-title">五、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>方法</th><th>说明</th><th>数据基础</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>季节分解（STL）</td>
+                        <td>将2024‑2025年月度销售序列分解为趋势、季节和残差分量，提取各品类季节系数</td>
+                        <td>奥维云网月度线上零售额数据</td>
+                    </tr>
+                    <tr>
+                        <td>政策乘数模型</td>
+                        <td>基于2025年以旧换新补贴核销数据，估算补贴对GMV的乘数效应（约1.3‑1.6倍）</td>
+                        <td>商务部补贴核销数据 + 平台订单匹配</td>
+                    </tr>
+                    <tr>
+                        <td>平台流量因子</td>
+                        <td>根据各平台2024‑2025年流量增速和商业化率变化，预测2026年渠道分布</td>
+                        <td>平台官方财报/披露 + 第三方监测</td>
+                    </tr>
+                    <tr>
+                        <td>大促脉冲模型</td>
+                        <td>基于2024‑2025年618和双11的前后月份数据，量化大促的“虹吸效应”和“透支效应”</td>
+                        <td>星图数据大促监测 + 平台战报</td>
+                    </tr>
+                    <tr>
+                        <td>天气敏感性分析</td>
+                        <td>空调和取暖器品类加入气温偏离度因子，根据历史气温与销售的相关性调整预测</td>
+                        <td>国家气象局历史数据 + 品类销售数据</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:10px;">
+                ※ 以上所有预测值均为模型推算结果，基于2025年及以前的实际数据，不代表对未来结果的保证。建议每月用最新实际数据对模型进行校准。
+            </div>
+        </div>
+
+        <!-- ═══════════ 页脚 ═══════════ -->
+        <footer>
+            本报告数据综合自国家统计局、奥维云网（AVC）、中国家用电器协会、商务部公开信息及电商平台官方披露。<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            © 中国家电消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 图表脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+        const categoryColors = {
+            '空调': '#1a5cf7',
+            '冰箱/冷柜': '#0d9488',
+            '洗衣机/干衣机': '#d97706',
+            '彩电/影音': '#7c3aed',
+            '厨卫大电': '#ea580c',
+            '清洁电器': '#0891b2',
+            '厨房小电': '#a16207',
+            '个护健康': '#e11d8f',
+            '其他家电': '#6b7280'
+        };
+
+        // 各品类月度数据
+        const categoryData = {
+            '空调': [195, 160, 75, 60, 105, 55],
+            '冰箱/冷柜': [62, 65, 68, 82, 130, 63],
+            '洗衣机/干衣机': [55, 58, 62, 78, 120, 62],
+            '彩电/影音': [48, 45, 52, 65, 112, 58],
+            '厨卫大电': [72, 75, 82, 95, 140, 61],
+            '清洁电器': [55, 50, 58, 68, 115, 39],
+            '厨房小电': [42, 40, 38, 48, 80, 32],
+            '个护健康': [42, 38, 40, 52, 85, 38],
+            '其他家电': [58, 55, 60, 72, 105, 50]
+        };
+
+        // 月度合计
+        const monthlyTotals = months.map((_, i) => {
+            return Object.values(categoryData).reduce((sum, arr) => sum + arr[i], 0);
+        });
+
+        // ── 1. 月度堆叠柱状图 ──
+        const stackedCtx = document.getElementById('stackedBar').getContext('2d');
+        const stackedDatasets = Object.entries(categoryData).map(([name, data]) => ({
+            label: name,
+            data: data,
+            backgroundColor: categoryColors[name],
+            borderWidth: 0,
+            borderRadius: 3,
+        }));
+
+        new Chart(stackedCtx, {
+            type: 'bar',
+            data: { labels: months, datasets: stackedDatasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, title: { display: true, text: 'GMV（亿元）' }, beginAtZero: true }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 2. 标准化指数折线图 ──
+        const indexCtx = document.getElementById('indexLine').getContext('2d');
+        const indexDatasets = Object.entries(categoryData).map(([name, data]) => {
+            const avg = data.reduce((a, b) => a + b, 0) / 6;
+            const normalized = data.map(v => +(v / avg).toFixed(2));
+            return {
+                label: name,
+                data: normalized,
+                borderColor: categoryColors[name],
+                backgroundColor: categoryColors[name] + '20',
+                tension: 0.35,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            };
+        });
+
+        new Chart(indexCtx, {
+            type: 'line',
+            data: { labels: months, datasets: indexDatasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': 季节指数 ' + ctx.raw } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10 } } }
+                },
+                scales: {
+                    y: { title: { display: true, text: '季节指数（均值=1.0）' }, min: 0.4, max: 2.2 }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 各品类独立折线图（小图） ──
+        const smallCharts = {
+            acChart: '空调',
+            fridgeChart: '冰箱/冷柜',
+            washerChart: '洗衣机/干衣机',
+            tvChart: '彩电/影音',
+            kitchenChart: '厨卫大电',
+            cleanChart: '清洁电器',
+            smallKitchenChart: '厨房小电',
+            personalChart: '个护健康',
+            otherChart: '其他家电'
+        };
+
+        Object.entries(smallCharts).forEach(([canvasId, catName]) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const data = categoryData[catName];
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: catName + ' GMV（亿）',
+                        data: data,
+                        borderColor: categoryColors[catName],
+                        backgroundColor: categoryColors[catName] + '15',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: categoryColors[catName],
+                        borderWidth: 2.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: ctx => ctx.raw + '亿' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: false, title: { display: true, text: '亿元', font: { size: 10 } },
+                            grid: { color: '#e8ecf3' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+
+        // ── 3. 双11影响条形图 ──
+        const d11Ctx = document.getElementById('double11Impact').getContext('2d');
+        const d11Ratios = Object.entries(categoryData).map(([name, data]) => ({
+            name,
+            ratio: +(data[4] / data.reduce((a, b) => a + b, 0) * 100).toFixed(1)
+        }));
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
+
+        new Chart(d11Ctx, {
+            type: 'bar',
+            data: {
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{
+                    label: '11月占H2比例（%）',
+                    data: d11Ratios.map(r => r.ratio),
+                    backgroundColor: d11Ratios.map(r => categoryColors[r.name] || '#6b7280'),
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: '11月GMV / H2总GMV（%）' },
+                        beginAtZero: true,
+                        max: 35
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

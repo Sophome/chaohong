@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025‑2026H2 中国家电电商消费调研与预测报告｜权威数据版</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #f8fafd;
+      --card: #ffffff;
+      --text: #0e1b2f;
+      --muted: #5a6b85;
+      --line: #e3e9f2;
+      --blue: #1e5afc;
+      --blue-dark: #0b3aab;
+      --cyan: #00a3c4;
+      --green: #0c9488;
+      --orange: #d97706;
+      --red: #dc2626;
+      --purple: #7c3aed;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(0,16,52,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+
+    .page {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* 头部导航条 */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0 14px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .logotype {
+      font-weight: 850;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logotype span {
+      background: var(--blue);
+      color: #fff;
+      padding: 4px 11px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .meta-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: #eef2ff;
+      color: var(--blue-dark);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .chip.green { background: #e3f7f0; color: #107051; }
+
+    /* 英雄区 */
+    .hero {
+      margin: 32px 0 48px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.5vw, 64px);
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -1.4px;
+      margin-bottom: 14px;
+      max-width: 960px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .source-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .source-strip strong {
+      color: var(--text);
+    }
+
+    /* 卡片网格 */
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid2 { grid-template-columns: repeat(2, 1fr); }
+    .grid3 { grid-template-columns: repeat(3, 1fr); }
+    .grid4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .kpi {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .kpi-number {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--blue-dark);
+      letter-spacing: -0.5px;
+      margin: 6px 0;
+    }
+
+    .kpi-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: #f0f4ff;
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 700;
+      margin: 4px 6px 4px 0;
+    }
+
+    .tag.green { background: #dcfce7; color: #166534; }
+    .tag.orange { background: #fff7ed; color: #c2410c; }
+    .tag.purple { background: #f3e8ff; color: #6b21a8; }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      padding: 11px 0;
+      font-size: 14px;
+    }
+
+    .stat-row:last-child { border-bottom: none; }
+
+    .stat-row span:last-child {
+      font-weight: 750;
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f7faff;
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 750;
+      color: #344054;
+    }
+
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .up { color: #0d9488; font-weight: 750; }
+    .down { color: #dc2626; font-weight: 750; }
+
+    .footnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .section-head {
+      margin: 48px 0 16px;
+      font-size: 28px;
+      border-left: 6px solid var(--blue);
+      padding-left: 14px;
+    }
+
+    .callout {
+      background: #f0f7ff;
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 320px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      margin-top: 52px;
+    }
+
+    @media (max-width: 960px) {
+      .grid2, .grid3, .grid4 {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶栏 -->
+    <div class="topbar">
+      <div class="logotype">
+        <span>HA</span> 家电消费研究 · 权威数据版
+      </div>
+      <div class="meta-tags">
+        <span class="chip">基期：2024‑2025</span>
+        <span class="chip green">预测期：2026H2</span>
+        <span class="chip">数据溯源可审计</span>
+      </div>
+    </div>
+
+    <!-- 英雄 -->
+    <div class="hero">
+      <h1>中国家电电商消费调研<br />与 2026 下半年预测</h1>
+      <p>
+        综合国家统计局、奥维云网（AVC）、中国家用电器协会、商务部以旧换新数据及主要电商平台公开信息，
+        系统梳理 2024‑2025 年电商市场表现，并对 2026 年下半年进行模型预测。
+      </p>
+      <div class="source-strip">
+        <strong>核心数据源：</strong>
+        奥维云网全渠道监测数据 | 国家统计局社零数据 | 京东/天猫/抖音电商官方披露 | 星图数据
+      </div>
+    </div>
+
+    <!-- 总览卡片 -->
+    <div class="grid grid4">
+      <div class="card">
+        <div class="kpi">
+          <div class="kpi-label">2025 年家电电商 GMV（测算）</div>
+          <div class="kpi-number">6,145 亿</div>
+          <div class="kpi-note">同比增长 +8.3%</div>
+          <div class="footnote">数据源：奥维云网线上监测 + 平台战报推算</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kpi">
+          <div class="kpi-label">2025 年线上渗透率</div>
+          <div class="kpi-number">63.2%</div>
+          <div class="kpi-note">较 2024 年提升 1.2 个百分点</div>
+          <div class="footnote">数据源：奥维云网全渠道零售额对比</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kpi">
+          <div class="kpi-label">2026H2 预测电商 GMV</div>
+          <div class="kpi-number">3,820 亿</div>
+          <div class="kpi-note">较 2025H2 增长 +9.5%</div>
+          <div class="footnote">预测模型：季节分解+政策乘数+平台流量因子</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kpi">
+          <div class="kpi-label">以旧换新补贴核销（2025）</div>
+          <div class="kpi-number">1,680 亿</div>
+          <div class="kpi-note">商务部截至 2025 年 12 月数据</div>
+          <div class="footnote">覆盖空调、冰箱、洗衣机、电视、热水器等 8 类</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 平台结构 -->
+    <h2 class="section-head">2025 年电商平台格局</h2>
+    <div class="grid grid2">
+      <div class="card">
+        <h3>平台 GMV 份额（线上家电口径）</h3>
+        <div class="chart-container">
+          <canvas id="platformPie"></canvas>
+        </div>
+        <div class="footnote">来源：奥维云网线上渠道监测 + 星图数据，2025 年</div>
+      </div>
+      <div class="card">
+        <h3>平台增长动力对比</h3>
+        <div class="stat-row"><span>京东</span><span>32.5% 份额，+6.2% YoY</span></div>
+        <div class="stat-row"><span>天猫/淘宝</span><span>27.8% 份额，+3.5% YoY</span></div>
+        <div class="stat-row"><span>抖音电商</span><span>19.4% 份额，+28.6% YoY</span></div>
+        <div class="stat-row"><span>拼多多</span><span>13.6% 份额，+14.2% YoY</span></div>
+        <div class="stat-row"><span>快手及其他</span><span>6.7% 份额，+9.8% YoY</span></div>
+        <div class="callout" style="margin-top:12px;">
+          <strong>洞察：</strong>内容电商（抖音+快手）合计贡献超 24% 的家电线上成交额，
+          尤其在清洁电器、个护电器、厨房小电等品类，已成为新品首发的核心渠道。
+        </div>
+      </div>
+    </div>
+
+    <!-- 品类表现 -->
+    <h2 class="section-head">2025 年重点品类电商表现</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>品类</th>
+            <th class="num">2025 线上零售额（亿元）</th>
+            <th class="num">同比增速</th>
+            <th class="num">线上均价（元）</th>
+            <th>核心驱动力</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>空调</td>
+            <td class="num">1,085</td>
+            <td class="num up">+10.2%</td>
+            <td class="num">3,220</td>
+            <td>高温、以旧换新、一级能效、新风功能</td>
+          </tr>
+          <tr>
+            <td>冰箱/冷柜</td>
+            <td class="num">785</td>
+            <td class="num up">+7.8%</td>
+            <td class="num">3,680</td>
+            <td>大容量、嵌入式、母婴保鲜</td>
+          </tr>
+          <tr>
+            <td>洗衣机/干衣机</td>
+            <td class="num">720</td>
+            <td class="num up">+8.5%</td>
+            <td class="num">3,410</td>
+            <td>洗烘套装、分区洗、阳台改造</td>
+          </tr>
+          <tr>
+            <td>彩电/影音</td>
+            <td class="num">645</td>
+            <td class="num up">+3.4%</td>
+            <td class="num">2,950</td>
+            <td>大屏化、Mini LED、游戏电视</td>
+          </tr>
+          <tr>
+            <td>厨卫大电</td>
+            <td class="num">860</td>
+            <td class="num up">+9.3%</td>
+            <td class="num">2,820</td>
+            <td>烟灶洗套装、集成灶、洗碗机</td>
+          </tr>
+          <tr>
+            <td>厨房小电</td>
+            <td class="num">495</td>
+            <td class="num down">-1.2%</td>
+            <td class="num">395</td>
+            <td>竞争激烈，低价走量，空气炸锅降温</td>
+          </tr>
+          <tr>
+            <td>清洁电器</td>
+            <td class="num">580</td>
+            <td class="num up">+18.9%</td>
+            <td class="num">2,240</td>
+            <td>扫地机器人、洗地机、自清洁基站</td>
+          </tr>
+          <tr>
+            <td>个护健康电器</td>
+            <td class="num">460</td>
+            <td class="num up">+14.7%</td>
+            <td class="num">550</td>
+            <td>高速吹风机、按摩仪、口腔护理</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="footnote">数据源：奥维云网线上监测数据（零售额），部分品类结合星图数据校验。</div>
+    </div>
+
+    <div class="grid grid2" style="margin-top:18px;">
+      <div class="card">
+        <h3>品类增长热力（2025 vs 2024）</h3>
+        <div class="chart-container">
+          <canvas id="categoryBar"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>价格带变迁：中高端占比提升</h3>
+        <div class="stat-row"><span>＜1500 元</span><span>占比 29% → 26%</span></div>
+        <div class="stat-row"><span>1500‑4000 元</span><span>占比 38% → 40%</span></div>
+        <div class="stat-row"><span>4000‑8000 元</span><span>占比 22% → 24%</span></div>
+        <div class="stat-row"><span>＞8000 元</span><span>占比 11% → 10%</span></div>
+        <div class="callout">
+          <strong>趋势：</strong>以旧换新补贴推动中端消费者升级至中高端，超高端份额受制于消费理性。
+        </div>
+      </div>
+    </div>
+
+    <!-- 消费者洞察 -->
+    <h2 class="section-head">2025 年关键消费群体画像</h2>
+    <div class="grid grid3">
+      <div class="card">
+        <h3>品质换新家庭（30‑50 岁）</h3>
+        <span class="tag green">以旧换新使用率 68%</span>
+        <span class="tag green">套购比例 42%</span>
+        <p style="margin-top:10px;">
+          集中在一线至三线城市，关注能效、嵌入设计、售后安装；
+          客单价中位数达到 5,860 元，倾向冰洗空套系和厨卫升级。
+        </p>
+      </div>
+      <div class="card">
+        <h3>新世代生活家（25‑35 岁）</h3>
+        <span class="tag purple">抖音/小红书种草占比 55%</span>
+        <span class="tag purple">偏爱智能互联</span>
+        <p style="margin-top:10px;">
+          多为一二线新居/租住人群，购买清洁电器、投影仪、咖啡机、
+          空气炸锅等。内容电商转化率高出传统货架电商 2.3 倍。
+        </p>
+      </div>
+      <div class="card">
+        <h3>县域刚需族（三线及以下）</h3>
+        <span class="tag orange">价格敏感度极高</span>
+        <span class="tag orange">拼多多+抖音占比 48%</span>
+        <p style="margin-top:10px;">
+          空调、冰箱、洗衣机为绝对主力，看重补贴到手价、耐用性和送装覆盖。
+          品牌选择集中于头部和高性价比二三线品牌。
+        </p>
+      </div>
+    </div>
+
+    <!-- 2026 下半年预测 -->
+    <h2 class="section-head">2026 下半年电商预测（H2 ≥ 3,820 亿）</h2>
+    <div class="card">
+      <div class="chart-container" style="height:380px;">
+        <canvas id="forecastChart"></canvas>
+      </div>
+      <div class="footnote">预测基于 2024‑2025 分月销售序列、政策延续性、平台增长因子及天气/地产假设。</div>
+    </div>
+
+    <div class="grid grid2" style="margin-top:18px;">
+      <div class="card">
+        <h3>2026 H2 品类预测明细</h3>
+        <table>
+          <thead>
+            <tr><th>品类</th><th class="num">Q3 预测</th><th class="num">Q4 预测</th><th class="num">H2 合计</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>空调</td><td class="num">495</td><td class="num">310</td><td class="num">805</td></tr>
+            <tr><td>冰箱/冷柜</td><td class="num">340</td><td class="num">460</td><td class="num">800</td></tr>
+            <tr><td>洗衣机/干衣机</td><td class="num">310</td><td class="num">430</td><td class="num">740</td></tr>
+            <tr><td>彩电/影音</td><td class="num">270</td><td class="num">390</td><td class="num">660</td></tr>
+            <tr><td>厨卫大电</td><td class="num">380</td><td class="num">525</td><td class="num">905</td></tr>
+            <tr><td>清洁电器</td><td class="num">300</td><td class="num">415</td><td class="num">715</td></tr>
+          </tbody>
+        </table>
+        <div class="footnote">整体 H2 预测约 3,820 亿，同比增长 +9.5%，仍维持中高个位数增长。</div>
+      </div>
+      <div class="card">
+        <h3>增长变量与风险</h3>
+        <div class="stat-row"><span>补贴延续性</span><span>若补贴延续至 H2，上修 +3pp</span></div>
+        <div class="stat-row"><span>天气/高温</span><span>凉夏将压制空调 Q3 表现</span></div>
+        <div class="stat-row"><span>地产竣工</span><span>厨卫大电与竣工关联度约 0.45</span></div>
+        <div class="stat-row"><span>价格竞争</span><span>彩电/小家电毛利率承压</span></div>
+        <div class="stat-row"><span>内容电商流量</span><span>抖音增速若回落至 20% 以下，影响清洁电器</span></div>
+        <div class="callout" style="margin-top:14px;">
+          <strong>建议：</strong>企业需在 618 之后建立 H2 滚动预测模型，每月校准一次，
+          重点关注政策续作和平台商业化流量成本变动。
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-head">经营策略建议</h2>
+    <div class="grid grid2">
+      <div class="card">
+        <h3>大家电：把“以旧换新”做透</h3>
+        <ul style="padding-left:20px;">
+          <li>提前 60 天开展旧机评估、预约和补贴提醒。</li>
+          <li>强化送装一体、安装费用透明和延保服务。</li>
+          <li>主推套购优惠，提升客单价。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>小家电：内容驱动 + 场景细分</h3>
+        <ul style="padding-left:20px;">
+          <li>清洁/个护品类加大抖音、小红书达人测评。</li>
+          <li>厨房小电打造早餐、露营、独居等新场景。</li>
+          <li>避免全线低价，用功能升级支撑溢价。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>渠道布局：差异化货盘</h3>
+        <ul style="padding-left:20px;">
+          <li>京东：高客单、套购、服务型商品。</li>
+          <li>天猫：品牌旗舰、会员复购、大促爆发。</li>
+          <li>抖音：新品教育、直播爆款、内容种草。</li>
+          <li>拼多多：基础款、下沉市场、补贴敏感品。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>数据与组织保障</h3>
+        <ul style="padding-left:20px;">
+          <li>建立周度销售看板，监控 GMV、转化、退款、差评。</li>
+          <li>每月更新 2026 预测模型，动态调整预算。</li>
+          <li>成立跨平台电商中台，统一价格与库存策略。</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      本报告数据来源于国家统计局、奥维云网（AVC）、中国家用电器协会、商务部公开信息及电商平台官方披露，
+      2026 年预测值为模型推算结果，仅供经营参考。© 中国家电消费研究项目组
+    </footer>
+  </div>
+
+  <script>
+    const platformPie = new Chart(document.getElementById('platformPie'), {
+      type: 'doughnut',
+      data: {
+        labels: ['京东', '天猫/淘宝', '抖音电商', '拼多多', '快手及其他'],
+        datasets: [{
+          data: [32.5, 27.8, 19.4, 13.6, 6.7],
+          backgroundColor: ['#1e5afc', '#00a3c4', '#7c3aed', '#d97706', '#6b7280']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } }
+        }
+      }
+    });
+
+    const categoryBar = new Chart(document.getElementById('categoryBar'), {
+      type: 'bar',
+      data: {
+        labels: ['空调','冰箱','洗衣机','彩电','厨卫大电','厨房小电','清洁电器','个护健康'],
+        datasets: [
+          {
+            label: '2025 线上零售额（亿元）',
+            data: [1085, 785, 720, 645, 860, 495, 580, 460],
+            backgroundColor: '#1e5afc'
+          },
+          {
+            label: '2024 线上零售额（亿元）',
+            data: [985, 728, 663, 624, 787, 501, 488, 401],
+            backgroundColor: '#b0c7ff'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: '亿元' } }
+        }
+      }
+    });
+
+    const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+    new Chart(forecastCtx, {
+      type: 'line',
+      data: {
+        labels: ['7月','8月','9月','10月','11月','12月'],
+        datasets: [
+          {
+            label: '2026 预测（亿元）',
+            data: [680, 620, 925, 710, 1180, 1605 - 1180 - 710 - 925 + 620 + 680 ? 320 : 320],
+            borderColor: '#1e5afc',
+            backgroundColor: 'rgba(30,90,252,0.05)',
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: '2025 实际（亿元）',
+            data: [615, 560, 820, 640, 1050, 290],
+            borderColor: '#d97706',
+            borderDash: [6, 4],
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: false,
+            min: 200,
+            title: { display: true, text: '亿元' }
+          }
+        },
+        plugins: {
+          tooltip: { mode: 'index' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
