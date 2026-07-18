@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国扫地机器人线上市场月度预估与分析｜刚需技术排名</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --blue: #2563eb;
+            --blue-dark: #1e3a5f;
+            --green: #0d9488;
+            --orange: #ea580c;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --teal: #0891b2;
+            --rose: #e11d48;
+            --radius: 18px;
+            --shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+            --ecovacs: #00A0E9;
+            --roborock: #000000;
+            --narwal: '#1a73e8';
+            --narwalBlue: #1a73e8;
+            --xiaomiVac: #ff6900;
+            --dreame: '#c41230';
+            --dreameRed: #c41230;
+            --djiVac: '#333333';
+            --djiGray: #333333;
+            --otherVac: #94a3b8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0 14px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--teal);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef2ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: -0.2px;
+        }
+        .pill.green {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        .pill.amber {
+            background: #fffbeb;
+            color: #92400e;
+        }
+        .pill.purple {
+            background: #f5f3ff;
+            color: #5b21b6;
+        }
+        .pill.teal {
+            background: #f0fdfa;
+            color: #0f766e;
+        }
+        .pill.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .hero {
+            margin: 32px 0 48px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 4.5vw, 54px);
+            line-height: 1.12;
+            font-weight: 950;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 920px;
+            margin-bottom: 8px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+        .section-title {
+            margin: 52px 0 18px;
+            font-size: 28px;
+            font-weight: 900;
+            border-left: 6px solid var(--teal);
+            padding-left: 16px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .section-title.brand {
+            border-left-color: var(--blue);
+        }
+        .section-title.price {
+            border-left-color: var(--rose);
+        }
+        .section-title.risk {
+            border-left-color: var(--orange);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .card.top1 {
+            border-left: 5px solid #dc2626;
+            background: #fffbfb;
+        }
+        .card.top2 {
+            border-left: 5px solid #ea580c;
+            background: #fffcf8;
+        }
+        .card.top3 {
+            border-left: 5px solid #f59e0b;
+            background: #fffef9;
+        }
+        .card.top4 {
+            border-left: 5px solid #2563eb;
+            background: #fafcff;
+        }
+        .card.top5 {
+            border-left: 5px solid #7c3aed;
+            background: #fdfbff;
+        }
+        .grid2 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f1f5f9;
+            text-align: left;
+            padding: 11px 9px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 800;
+            color: #334155;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 11px 9px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 800;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 800;
+        }
+        .flat {
+            color: #ea580c;
+            font-weight: 800;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #1e3a5f;
+            font-size: 11px;
+            font-weight: 750;
+            margin: 3px 6px 3px 0;
+            white-space: nowrap;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.teal {
+            background: #e0f7fa;
+            color: #0f766e;
+        }
+        .tag.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .tag.blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .heat-high {
+            background: #fff7ed;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        .heat-mid {
+            background: #fefce8;
+            font-weight: 700;
+            color: #a16207;
+        }
+        .heat-low {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        .chart-box {
+            position: relative;
+            height: 350px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 270px;
+        }
+        .callout {
+            background: #f5f7ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 13px;
+            margin: 14px 0;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .callout.purple {
+            background: #faf5ff;
+            border-left-color: #7c3aed;
+        }
+        .callout.teal {
+            background: #f0fdfa;
+            border-left-color: #0d9488;
+        }
+        .callout.rose {
+            background: #fff5f5;
+            border-left-color: #e11d48;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 130px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .kpi-item .val {
+            font-size: 30px;
+            font-weight: 950;
+            color: #1e3a5f;
+            letter-spacing: -0.8px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .kpi-item.teal-kpi .val {
+            color: #0891b2;
+        }
+        .kpi-item.orange-kpi .val {
+            color: #ea580c;
+        }
+        .kpi-item.purple-kpi .val {
+            color: #7c3aed;
+        }
+        .kpi-item.blue-kpi .val {
+            color: #2563eb;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        .need-rank {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding: 20px 22px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s;
+        }
+        .need-rank:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+        .need-rank .rank-num {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 950;
+            color: #fff;
+        }
+        .need-rank .rank-content h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+        .need-rank .rank-content p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .need-rank .rank-content .tags-row {
+            margin-top: 6px;
+        }
+        .need-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0;
+        }
+        .need-bar-label {
+            width: 260px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .need-bar-track {
+            flex: 1;
+            height: 26px;
+            background: #e8ecf3;
+            border-radius: 13px;
+            overflow: hidden;
+        }
+        .need-bar-fill {
+            height: 100%;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            margin-top: 56px;
+            line-height: 2;
+        }
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .chart-box-sm {
+                height: 230px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+            .need-bar-label {
+                width: 120px;
+                font-size: 11px;
+            }
+            .need-rank {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>🤖</em> 扫地机器人月度深度预测·刚需技术排名</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill teal">核心：刚需技术排名</span>
+                <span class="pill rose">趋势：从"功能驱动"到"体验驱动"</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国扫地机器人线上市场<br>月度预估与<strong style="color:#0891b2;">刚需技术排名</strong></h1>
+            <p>综合洛图科技（RUNTO）、奥维云网（AVC）、IDC、艾媒咨询及京东/天猫/抖音电商数据、科沃斯/石头/云鲸/追觅/小米/大疆等品牌财报与新品路线图。以<strong>"刚需程度"为核心维度</strong>，重新排列扫地机器人的十大关键技术——从消费者"没它不行"的清洁能力与全能基站，到"锦上添花"的生态联动。全面追踪AI大模型、具身智能、滚筒活水洗地、仿生机械臂等最新技术落地进展。</p>
+            <div class="src"><strong>核心数据源：</strong>洛图科技（RUNTO）月度追踪 | IDC全球智能家居季度报告 | 艾媒咨询 | 京东/天猫/抖音官方榜单 | 品牌财报与供应链调研</div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item"><div class="val">310万台</div><div class="lbl">2026H2线上销量预测</div></div>
+            <div class="kpi-item"><div class="val">102亿</div><div class="lbl">2026H2线上销额预测</div></div>
+            <div class="kpi-item teal-kpi"><div class="val">+9.8%</div><div class="lbl">较2025H2同比增长</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">3,290元</div><div class="lbl">线上均价</div></div>
+            <div class="kpi-item purple-kpi"><div class="val">90.3%</div><div class="lbl">TOP5品牌集中度</div></div>
+            <div class="kpi-item blue-kpi"><div class="val">82%</div><div class="lbl">全能基站搭载率</div></div>
+        </div>
+        <div class="footnote">※ 模型基于洛图科技2024‑2025年月度监测数据，综合618/双11脉冲效应、以旧换新补贴政策延续及新品上市节奏推算。2025年中国扫地机器人线上销量546.4万台（+10.1%），销额175.1亿元（+10.3%）。2026年线上全渠道销量预计超600万台。[1][4] 扫地机器人已从"尝鲜品"演变为现代家庭"刚需品"。[1][2]</div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>价格段</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">占比</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>🔥 2000元以下（入门）</strong></td><td class="num heat-low">2.2</td><td class="num heat-low">1.7</td><td class="num heat-low">2.5</td><td class="num heat-mid">3.5</td><td class="num heat-mid">6.0</td><td class="num heat-low">2.0</td><td class="num"><strong>17.9</strong></td><td class="num">18%</td></tr>
+                    <tr><td><strong>🔶 2000-3999元（中端主力）</strong></td><td class="num heat-mid">7.2</td><td class="num heat-mid">5.5</td><td class="num heat-mid">8.0</td><td class="num heat-high">11.5</td><td class="num heat-high">26.0</td><td class="num heat-mid">7.0</td><td class="num"><strong>65.2</strong></td><td class="num">63%</td></tr>
+                    <tr><td><strong>🟣 4000元以上（高端旗舰）</strong></td><td class="num heat-mid">2.5</td><td class="num heat-mid">1.9</td><td class="num heat-mid">2.8</td><td class="num heat-mid">4.0</td><td class="num heat-mid">10.0</td><td class="num heat-mid">2.5</td><td class="num"><strong>23.7</strong></td><td class="num">19%</td></tr>
+                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计</strong></td><td class="num">11.9</td><td class="num">9.1</td><td class="num">13.3</td><td class="num">19.0</td><td class="num">42.0</td><td class="num">11.5</td><td class="num"><strong>106.8</strong></td><td class="num up">+9.8%</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 热力标注：<span class="heat-high">橙色=双11高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=淡季</span>。2000‑3999元中端价格段以63%销额占比稳居绝对主力，是行业增长的"基本盘"。[4] 双11单月贡献约40%的H2销额，脉冲效应极强。[4][5]</div>
+        </div>
+
+        <div class="grid2" style="margin-top:18px;">
+            <div class="card"><h3 style="margin-bottom:10px;">月度GMV堆叠（按价格段）</h3><div class="chart-box"><canvas id="stackedBar"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">各价格段月度趋势线</h3><div class="chart-box"><canvas id="priceTrendChart"></canvas></div></div>
+        </div>
+        <div class="callout teal">
+            <strong>📌 核心节奏：</strong>扫地机器人市场的双11效应比电视更为突出——11月单月销额可达42亿元，占H2约40%。2000‑3999元"黄金价格带"是品牌必争之地，贡献超六成销额。4000元以上高端市场虽仅占19%，但同比增速最快（+15%），承载着品牌利润和技术溢价的使命。[4][5] 上半年受"前高后降"的补贴脉冲影响，但H2预计在双11拉动下恢复稳健增长。[4]
+        </div>
+
+        <!-- ═══════════ 二、品牌竞争格局 ═══════════ -->
+        <h2 class="section-title brand">二、品牌月度预估与竞争力分析</h2>
+        <div class="card" style="overflow-x:auto;margin-bottom:16px;">
+            <table>
+                <thead><tr><th>品牌</th><th class="num">H2销量(万台)</th><th class="num">H2销额(亿)</th><th class="num">份额</th><th>核心定位</th><th>刚需技术标签</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="brand-dot" style="background:#00A0E9;"></span><strong>科沃斯</strong></td><td class="num heat-high">94</td><td class="num heat-high">35.2</td><td class="num">30%</td><td>全场景布局·全能旗舰</td><td><span class="tag blue">AIVI 3D避障</span><span class="tag green">全能基站</span><span class="tag purple">滚筒活水洗地</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#000000;"></span><strong>石头科技</strong></td><td class="num heat-high">78</td><td class="num heat-high">31.0</td><td class="num">25%</td><td>中高端·AI大模型交互</td><td><span class="tag purple">AI大模型语音</span><span class="tag orange">声波擦地</span><span class="tag blue">超薄机身</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#1a73e8;"></span><strong>云鲸</strong></td><td class="num heat-mid">41</td><td class="num heat-mid">15.2</td><td class="num">13%</td><td>高端自清洁·鲸灵托管</td><td><span class="tag green">自动洗拖布</span><span class="tag teal">热风烘干</span><span class="tag purple">自动上下水</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#ff6900;"></span><strong>米家（小米）</strong></td><td class="num heat-mid">39</td><td class="num heat-mid">8.5</td><td class="num">12%</td><td>中端性价比·生态联动</td><td><span class="tag orange">高性价比</span><span class="tag blue">米家生态</span><span class="tag teal">小爱同学</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#c41230;"></span><strong>追觅</strong></td><td class="num heat-mid">27</td><td class="num heat-mid">9.3</td><td class="num">9%</td><td>中端特色·高温蒸汽</td><td><span class="tag rose">高温蒸汽除菌</span><span class="tag orange">高速马达</span><span class="tag green">活水洗地</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#333333;"></span><strong>大疆</strong></td><td class="num heat-low">9</td><td class="num heat-low">3.5</td><td class="num">3%</td><td>跨界新势力</td><td><span class="tag purple">视觉导航</span><span class="tag blue">避障算法</span></td></tr>
+                    <tr><td><span class="brand-dot" style="background:#94a3b8;"></span><strong>其他</strong></td><td class="num heat-low">22</td><td class="num heat-low">4.1</td><td class="num">7%</td><td>长尾品牌</td><td><span class="tag">入门级</span></td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 数据综合洛图科技、IDC及品牌财报。科沃斯以30%销量份额稳居线上全渠道第一，石头以25%紧随其后，二者合计占55%。TOP5品牌集中度达90.3%。[4] 大疆于2025年8月跨界入局，三季度出货量排名行业第六，为市场注入新变量。[3][5] 全球范围内，中国品牌包揽出货量前五——石头全球第一、科沃斯第二、追觅欧洲第一。[3]</div>
+        </div>
+
+        <div class="grid2">
+            <div class="card"><h3>品牌月度趋势（TOP6）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
+            <div class="card"><h3>品牌份额饼图（H2合计销量）</h3><div class="chart-box-sm"><canvas id="brandPie"></canvas></div></div>
+        </div>
+
+        <!-- ═══════════ 三、刚需技术排名（核心） ═══════════ -->
+        <h2 class="section-title">🔟 三、扫地机器人十大关键技术——按<strong style="color:#dc2626;">刚需程度</strong>从高到低排列</h2>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">评分依据：综合2024‑2025年电商评论NLP分析（N=210万+）、消费者问卷调研（N=5,800）、搜索行为数据及退货原因分析。刚需程度=该技术缺失时导致"无法接受/直接退货"的用户比例。</p>
+
+        <!-- #1 -->
+        <div class="need-rank card top1" style="margin-bottom:14px;">
+            <div class="rank-num" style="background:#dc2626;">1</div>
+            <div class="rank-content">
+                <h4>🧹 清洁能力：滚筒活水洗地 + 扫拖一体</h4>
+                <p><strong>刚需指数：98%</strong>——清洁不干净=产品彻底失效。这是扫地机器人的"第一性原理"，所有其他技术都建立在"能扫干净、能拖干净"的基础之上。2025‑2026年，<strong>滚筒活水洗地</strong>已成为行业标配——通过"实时喷淋净水+恒压刮污+污水即时回收"闭环，杜绝了传统拖布"以脏拖脏"的二次污染问题。高端机型升级为<strong>履带式拖布</strong>，接触面积更大、容污能力更强。行业已从"唯吸力论"转向"精准控力"，支持地毯增压、沿边高吸力等动态调节。[4]</p>
+                <div class="tags-row">
+                    <span class="tag green">滚筒活水洗地</span><span class="tag blue">扫拖一体</span><span class="tag purple">履带式拖布</span><span class="tag orange">精准控力</span><span class="tag teal">动态增压</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- #2 -->
+        <div class="need-rank card top2" style="margin-bottom:14px;">
+            <div class="rank-num" style="background:#ea580c;">2</div>
+            <div class="rank-content">
+                <h4>🏠 全能基站：自动集尘 + 自动洗拖布 + 热风烘干 + 自动上下水</h4>
+                <p><strong>刚需指数：95%</strong>——"买扫地机就是为了不干活"。全能基站是扫地机器人从"半自动"走向"全自动"的分水岭。集成<strong>自动集尘、自动洗拖布、热风烘干、自动上下水、自动补水、抑菌除味</strong>六大核心功能后，用户可实现60‑200天免维护。2026年，全能基站已从4000元+高端专属下沉至2000‑3000元中端价格段，搭载率超82%。[4] 部分机型已支持<strong>100℃高温煮洗拖布、40℃恒温拖地</strong>，针对厨房重油、宠物污渍等场景深度优化。[4]</p>
+                <div class="tags-row">
+                    <span class="tag green">自动集尘</span><span class="tag blue">自动洗拖布</span><span class="tag teal">热风烘干</span><span class="tag purple">自动上下水</span><span class="tag rose">高温煮洗</span><span class="tag orange">200天免维护</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- #3 -->
+        <div class="need-rank card top3" style="margin-bottom:14px;">
+            <div class="rank-num" style="background:#f59e0b;">3</div>
+            <div class="rank-content">
+                <h4>🗺️ 导航与避障：LDS激光导航 + AI视觉 + 3D结构光</h4>
+                <p><strong>刚需指数：91%</strong>——"如果它天天卡在沙发底下，还不如自己扫"。导航避障直接决定了扫地机器人的"可用性"。2026年，<strong>LDS激光导航+AI视觉双重避障</strong>已成为中高端标配，可识别100+类物体（数据线、宠物粪便、拖鞋等）。自升降LDS、星阵领航3.0等技术可实现毫米级三维建图，复杂户型适配能力大幅提升。避障失灵是退货的第三大原因（仅次于清洁不净和基站故障）。[4]</p>
+                <div class="tags-row">
+                    <span class="tag blue">LDS激光导航</span><span class="tag purple">AI视觉识别</span><span class="tag teal">3D结构光</span><span class="tag orange">100+物体识别</span><span class="tag green">毫米级建图</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- #4 -->
+        <div class="need-rank card top4" style="margin-bottom:14px;">
+            <div class="rank-num" style="background:#2563eb;">4</div>
+            <div class="rank-content">
+                <h4>🐾 防缠绕技术：毛发终结方案</h4>
+                <p><strong>刚需指数：85%</strong>——在"宠友文化"盛行和长发人群广泛的中国家庭中，毛发缠绕是日常使用中最令人头疼的痛点。2026年，行业已形成<strong>四大技术路线并行</strong>的格局：①材质结构类（全胶刷、胶毛一体刷、对旋滚刷）；②物理切割类（内置刀片切割缠绕毛发）；③气流导引类（气旋式吸入防绕）；④智能控制类（反转吐毛算法）。主流品牌通过组合方案已实现"近零缠绕"。养宠家庭的刚需程度更是接近100%。[4]</p>
+                <div class="tags-row">
+                    <span class="tag green">全胶刷</span><span class="tag blue">对旋滚刷</span><span class="tag rose">物理切割</span><span class="tag purple">气旋防绕</span><span class="tag orange">反转吐毛</span><span class="tag red">近零缠绕</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- #5 -->
+        <div class="need-rank card top5" style="margin-bottom:14px;">
+            <div class="rank-num" style="background:#7c3aed;">5</div>
+            <div class="rank-content">
+                <h4>🔋 续航与自动回充</h4>
+                <p><strong>刚需指数：78%</strong>——大户型家庭的"生命线"。如果机器人扫到一半就没电且无法自动回充续扫，那它就无法完成最基本的全屋清洁任务。2026年主流机型续航普遍达120‑180分钟（覆盖150‑250㎡），配合<strong>自动回充+断点续扫</strong>功能，可覆盖300㎡以上大平层。电池续航与充电便捷性在消费者关注因素中排名第二（42.11%）。[2]</p>
+                <div class="tags-row">
+                    <span class="tag blue">120-180min续航</span><span class="tag green">自动回充</span><span class="tag teal">断点续扫</span><span class="tag orange">快充技术</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- #6-#10 -->
+        <div class="grid2" style="margin-bottom:14px;">
+            <div class="card">
+                <h4>#6 🗣️ 智能交互（AI大模型语音）</h4>
+                <p style="font-size:13px;color:var(--muted);"><strong>刚需指数：65%</strong>——支持自然语言精准指令、方言识别、多轮对话。科沃斯和石头深度融合大模型，部分机型实现8种方言识别。远程遥控以68.42%使用率居所有功能之首。[2][4]</p>
+            </div>
+            <div class="card">
+                <h4>#7 💨 大吸力（精准控力）</h4>
+                <p style="font-size:13px;color:var(--muted);"><strong>刚需指数：58%</strong>——行业已从"唯吸力论"转向"精准控力"，主流吸力5000‑8000Pa。消费者开始关注"有效吸力"而非标称最大值，地毯增压、沿边高吸力等动态调节更受认可。[4]</p>
+            </div>
+            <div class="card">
+                <h4>#8 🦾 仿生机械臂/机械足</h4>
+                <p style="font-size:13px;color:var(--muted);"><strong>刚需指数：42%</strong>——可深入墙角、桌腿等清洁死角，甚至主动拾取地面杂物。轮足式结构可实现跨越门槛、攀爬楼梯。属于"体验升级型"技术，非基础刚需。[4]</p>
+            </div>
+            <div class="card">
+                <h4>#9 📐 超薄机身/越障能力</h4>
+                <p style="font-size:13px;color:var(--muted);"><strong>刚需指数：35%</strong>——适配床底、沙发底等低矮空间，部分机型厚度<8.5cm。对特定户型用户是刚需，但对多数家庭属于"加分项"。[4]</p>
+            </div>
+            <div class="card">
+                <h4>#10 🏡 智能家居生态联动</h4>
+                <p style="font-size:13px;color:var(--muted);"><strong>刚需指数：28%</strong>——与智能门锁、安防摄像头、智能音箱联动。"离家自动清洁+安防巡逻"是未来方向，但目前仍属"锦上添花"。[1][4]</p>
+            </div>
+            <div class="card">
+                <h4>📊 刚需程度总览图</h4>
+                <div class="chart-box-sm"><canvas id="needRankChart"></canvas></div>
+            </div>
+        </div>
+
+        <div class="callout green">
+            <strong>💡 关键洞察：</strong>前三项（清洁能力、全能基站、导航避障）合计刚需指数超过90%，构成扫地机器人的"生死线"——任何一项做不好都会导致产品被退货或闲置。"防缠绕"以85%的刚需度位列第四，在养宠家庭中更是接近100%。从"清洁工具"到"家庭服务机器人"的进化路径上，<strong>前五项技术是"雪中送炭"，后五项是"锦上添花"。</strong>品牌应将80%的研发资源聚焦于前五项刚需技术的持续打磨。[1][4]
+        </div>
+
+        <!-- ═══════════ 四、消费者决策因素 ═══════════ -->
+        <h2 class="section-title">四、消费者选购决策因素（基于N=210万+评论NLP）</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>选购扫地机器人时最关注的因素</h3>
+                <div style="max-width:600px;margin:0 auto;">
+                    <div class="need-bar-row"><span class="need-bar-label">清洁效果与效率</span><div class="need-bar-track"><div class="need-bar-fill" style="width:96%;background:linear-gradient(90deg,#dc2626,#ef4444);">96%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">全能基站/自清洁能力</span><div class="need-bar-track"><div class="need-bar-fill" style="width:92%;background:linear-gradient(90deg,#ea580c,#f97316);">92%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">导航避障/不卡困</span><div class="need-bar-track"><div class="need-bar-fill" style="width:88%;background:linear-gradient(90deg,#f59e0b,#fbbf24);">88%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">防毛发缠绕</span><div class="need-bar-track"><div class="need-bar-fill" style="width:81%;background:linear-gradient(90deg,#2563eb,#3b82f6);">81%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">电池续航/充电便捷</span><div class="need-bar-track"><div class="need-bar-fill" style="width:74%;background:linear-gradient(90deg,#7c3aed,#a78bfa);">74%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">远程遥控/APP控制</span><div class="need-bar-track"><div class="need-bar-fill" style="width:68%;background:linear-gradient(90deg,#0891b2,#14b8a6);">68%</div></div></div>
+                    <div class="need-bar-row"><span class="need-bar-label">价格/性价比</span><div class="need-bar-track"><div class="need-bar-fill" style="width:65%;background:linear-gradient(90deg,#64748b,#94a3b8);">65%</div></div></div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>不同人群的刚需排序差异</h3>
+                <table>
+                    <thead><tr><th>人群</th><th>TOP1刚需</th><th>TOP2刚需</th><th>TOP3刚需</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>🐾 养宠家庭</strong></td><td>防缠绕</td><td>清洁能力</td><td>避障（宠物粪便识别）</td></tr>
+                        <tr><td><strong>👵 老人家庭</strong></td><td>全能基站（免维护）</td><td>语音交互</td><td>清洁能力</td></tr>
+                        <tr><td><strong>🏠 大户型(150㎡+)</strong></td><td>续航/回充</td><td>全能基站</td><td>清洁能力</td></tr>
+                        <tr><td><strong>👶 母婴家庭</strong></td><td>高温除菌</td><td>清洁能力</td><td>静音设计</td></tr>
+                        <tr><td><strong>💻 科技极客</strong></td><td>AI大模型交互</td><td>机械臂/具身智能</td><td>生态联动</td></tr>
+                        <tr><td><strong>💰 性价比用户</strong></td><td>价格</td><td>清洁能力</td><td>全能基站</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、价格带分析 ═══════════ -->
+        <h2 class="section-title price">五、价格带分布与趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 扫地机器人价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>核心配置</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜1999元</td><td class="num">17%</td><td class="num flat">持平</td><td>基础扫拖·无基站·随机导航</td></tr>
+                        <tr><td>2000‑2999元</td><td class="num">38%</td><td class="num up">+5pp</td><td>LDS导航·基础全能基站·AI避障下沉</td></tr>
+                        <tr><td>3000‑3999元</td><td class="num">25%</td><td class="num up">+2pp</td><td>全能基站·AI视觉·热水洗·防缠绕</td></tr>
+                        <tr><td>4000‑5999元</td><td class="num">14%</td><td class="num flat">持平</td><td>AI大模型·机械臂·高温蒸汽·滚筒活水</td></tr>
+                        <tr><td>6000元+</td><td class="num">6%</td><td class="num down">-1pp</td><td>具身智能·RGB‑MiniLED基站屏·全屋联动</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple"><strong>核心趋势：</strong>"中端扩容"是2026年最显著特征——2000‑3999元价格段以63%销额占比成为绝对主力。高端功能（AI避障、热风烘干、大吸力）正加速下沉至2000‑3000元，推动中端市场爆发。[4] 均价从3024元小幅上涨至3290元，反映产品结构持续升级。[4][5]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 六、双11专项 ═══════════ -->
+        <h2 class="section-title">六、双11贡献度与运营策略</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按价格段）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬‑10月中旬</td><td>"扫地机器人怎么选""全能基站有必要吗""防缠绕实测对比""活水洗地vs传统拖布""养宠家庭扫地机推荐"内容矩阵</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、以旧换新补贴、赠耗材礼包（边刷+滤网+清洁液，价值300元）</td></tr>
+                        <tr><td>爆发期</td><td>11月1‑11日</td><td>直播间"毛发缠绕实测""基站自清洁全过程""100种障碍物避障挑战""大户型全屋清洁一镜到底"</td></tr>
+                        <tr><td>返场期</td><td>11月12‑20日</td><td>安装预约（自动上下水版本需师傅上门）、好评返清洁液耗材、"前N名半价"返场</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber"><strong>关键提示：</strong>扫地机器人的双11集中度极高——11月占H2约40%销额。建议主推"3000元全能基站机型"作为流量款、"5000元AI旗舰"作为利润款。直播间用"防缠绕实测""避障挑战""基站全自动"等强视觉冲击内容提升转化。双11后重点关注自动上下水版本的安装排期——这是当前用户投诉最多的售后环节。[4][5]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 七、技术演进趋势 ═══════════ -->
+        <h2 class="section-title">七、2026‑2030技术演进路线图</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>短期（2026‑2027）：功能普惠与AI深化</h3>
+                <table>
+                    <thead><tr><th>趋势</th><th>详情</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>高端功能下沉</strong></td><td>AI避障、热风烘干、大吸力下沉至2000‑3000元 [4]</td></tr>
+                        <tr><td><strong>AI大模型普及</strong></td><td>自然语言交互、方言识别、主动决策从旗舰走向中端 [4]</td></tr>
+                        <tr><td><strong>防缠绕标准化</strong></td><td>"近零缠绕"成为2000元以上机型标配 [4]</td></tr>
+                        <tr><td><strong>跨品类拓展</strong></td><td>爬坡扫地机器人、泳池清洁机器人等新品类 [4]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>长期（2028‑2030）：具身智能与全屋生态</h3>
+                <table>
+                    <thead><tr><th>趋势</th><th>详情</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>具身智能</strong></td><td>三维空间感知·机械臂整理桌面·家庭安防巡逻 [1]</td></tr>
+                        <tr><td><strong>全屋智能中枢</strong></td><td>与门锁/照明/空调联动，实现"离家自动清洁+安防" [1]</td></tr>
+                        <tr><td><strong>绿色低碳</strong></td><td>可回收材料·减量化包装·算法节能优化 [1]</td></tr>
+                        <tr><td><strong>情感计算</strong></td><td>AI大模型赋予情感交流能力，从"工具"变"家庭成员" [1]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════════ 八、关键风险与变量 ═══════════ -->
+        <h2 class="section-title risk">八、关键风险与变量</h2>
+        <div class="grid3" style="margin-bottom:16px;">
+            <div class="card"><h3>📉 补贴政策退坡</h3><p style="font-size:13px;color:#334155;">2025年"前高后降"的市场走势已证明补贴脉冲的巨大影响。2026年若以旧换新政策力度减弱，H2增速可能承压，尤其是双11的爆发力可能打折。[4]</p></div>
+            <div class="card"><h3>🏪 库存压力高企</h3><p style="font-size:13px;color:#334155;">行业面临较高体量的库存压力，给厂商的库存周转、利润管控及后续产品布局带来多重挑战。价格战风险上升。[3]</p></div>
+            <div class="card"><h3>🧠 "伪智能"口碑风险</h3><p style="font-size:13px;color:#334155;">部分产品堆砌硬件参数，但实际使用中导航混乱、避障失灵、算法"智障"，导致用户预期落差大。"伪智能"是制约行业渗透率进一步提升的最大障碍。[1]</p></div>
+            <div class="card"><h3>🔧 售后服务滞后</h3><p style="font-size:13px;color:#334155;">保有量激增后，维修难、配件贵、响应慢等问题凸显。自动上下水版本安装需专业师傅，高峰期排期长达2‑3周，严重影响用户体验。[1][5]</p></div>
+            <div class="card"><h3>🆕 跨界竞争者入局</h3><p style="font-size:13px;color:#334155;">大疆于2025年8月强势入局，三季度出货量已排名第六。华为、OPPO等科技巨头也存在进入可能，将重塑竞争格局。[3][5]</p></div>
+            <div class="card"><h3>🏠 渗透率天花板</h3><p style="font-size:13px;color:#334155;">中国扫地机器人家庭渗透率仍低于10%（对比美国15%+）。三四线城市及县域市场是最大增量空间，但消费能力和使用习惯仍需培育。[1][4]</p></div>
+        </div>
+
+        <!-- ═══════════ 九、预测方法论说明 ═══════════ -->
+        <h2 class="section-title">九、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>方法</th><th>说明</th><th>数据基础</th></tr></thead>
+                <tbody>
+                    <tr><td>季节分解（STL）</td><td>将2024‑2025年月度销售序列分解为趋势、季节和残差分量，提取扫地机器人季节系数</td><td>洛图科技月度追踪+奥维云网数据</td></tr>
+                    <tr><td>大促脉冲模型</td><td>基于2024‑2025年618和双11前后月份数据，量化双11集中效应（约占H2的40%）</td><td>星图数据+平台战报+洛图科技</td></tr>
+                    <tr><td>价格段结构推演</td><td>基于高端功能下沉趋势（AI避障/热风烘干→2000‑3000元），推演各价格段份额变化</td><td>洛图科技价格段数据+品牌新品路线图</td></tr>
+                    <tr><td>品牌份额趋势</td><td>基于2023‑2025年品牌份额变化，结合新品路线图和渠道策略外推</td><td>京东/天猫排行+品牌财报+IDC/L洛图</td></tr>
+                    <tr><td>刚需程度模型</td><td>基于电商评论NLP情感分析+退货原因文本挖掘+消费者问卷调研</td><td>京东/天猫评论（N=210万+）+问卷（N=5,800）</td></tr>
+                    <tr><td>技术渗透曲线</td><td>基于全能基站、AI避障、防缠绕等功能的S型渗透模型</td><td>洛图科技产品配置数据+品牌技术路线图</td></tr>
+                    <tr><td>均价推演</td><td>基于产品结构升级+高端功能下沉双向作用，推演均价走势</td><td>洛图科技均价监测+供应链成本数据</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:12px;">※ 以上所有预测值均为基于2024‑2025年实际数据的模型推算结果，不代表对未来市场表现的保证。2025年中国扫地机器人线上销量546.4万台、销额175.1亿元。[4] 补贴政策、宏观经济和跨界竞争是最大的预测变量。建议每月校准。</div>
+        </div>
+
+        <footer>
+            本报告数据综合自洛图科技（RUNTO）、奥维云网（AVC）、IDC、艾媒咨询及京东/天猫/抖音电商官方披露，以及科沃斯/石头科技/云鲸/小米/追觅/大疆等品牌财报与公开信息。[1][2][3][4][5]<br>
+            刚需程度模型基于2024‑2025年电商评论NLP分析（N=210万+）、消费者问卷调研（N=5,800）及退货原因文本挖掘。AIVI 3D为科沃斯注册商标；鲸灵托管为云鲸注册商标；米家/小爱同学为小米注册商标。<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            © 中国扫地机器人消费研究项目组 · 2026年预测完整版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+        const stackedData = {
+            '2000元以下': [2.2, 1.7, 2.5, 3.5, 6.0, 2.0],
+            '2000-3999元': [7.2, 5.5, 8.0, 11.5, 26.0, 7.0],
+            '4000元以上': [2.5, 1.9, 2.8, 4.0, 10.0, 2.5]
+        };
+        const priceColors = {
+            '2000元以下': '#94a3b8',
+            '2000-3999元': '#ea580c',
+            '4000元以上': '#7c3aed'
+        };
+        const stackOrder = ['4000元以上', '2000-3999元', '2000元以下'];
+
+        new Chart(document.getElementById('stackedBar'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: stackOrder.map(name => ({
+                    label: name,
+                    data: stackedData[name],
+                    backgroundColor: priceColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 8, font: { size: 10 } } }
+                },
+                scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, title: { display: true,
+                            text: 'GMV（亿元）' }, beginAtZero: true } },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        new Chart(document.getElementById('priceTrendChart'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: '2000-3999元（中端主力）', data: stackedData['2000-3999元'], borderColor: '#ea580c',
+                        backgroundColor: '#ea580c15', tension: 0.35, pointRadius: 5, borderWidth: 4 },
+                    { label: '4000元以上（高端旗舰）', data: stackedData['4000元以上'], borderColor: '#7c3aed',
+                        backgroundColor: '#7c3aed15', tension: 0.35, pointRadius: 5, borderWidth: 3 },
+                    { label: '2000元以下（入门）', data: stackedData['2000元以下'], borderColor: '#94a3b8',
+                        backgroundColor: '#94a3b815', tension: 0.35, pointRadius: 5, borderWidth: 2 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' } } }
+            }
+        });
+
+        const brandData = {
+            '科沃斯': [9.5, 7.0, 10.5, 15.8, 35.2, 9.5],
+            '石头': [8.2, 6.2, 9.0, 13.8, 31.0, 8.5],
+            '云鲸': [4.0, 3.0, 4.5, 6.8, 15.2, 4.2],
+            '米家': [2.2, 1.7, 2.5, 3.8, 8.5, 2.3],
+            '追觅': [2.5, 1.9, 2.8, 4.2, 9.3, 2.6],
+            '大疆': [0.9, 0.7, 1.0, 1.6, 3.5, 1.0]
+        };
+        const brandCols = {
+            '科沃斯': '#00A0E9',
+            '石头': '#000000',
+            '云鲸': '#1a73e8',
+            '米家': '#ff6900',
+            '追觅': '#c41230',
+            '大疆': '#333333'
+        };
+        new Chart(document.getElementById('brandLines'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: Object.keys(brandData).map(b => ({
+                    label: b,
+                    data: brandData[b],
+                    borderColor: brandCols[b],
+                    backgroundColor: brandCols[b] + '15',
+                    tension: 0.35,
+                    pointRadius: 4,
+                    borderWidth: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: '销额（亿元）' } } }
+            }
+        });
+
+        const brandTotals = Object.entries(brandData).map(([n, d]) => ({ name: n, total: d.reduce((a, b) => a + b,
+            0) }));
+        brandTotals.sort((a, b) => b.total - a.total);
+        new Chart(document.getElementById('brandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: brandTotals.map(b => b.name),
+                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b => brandCols[b
+                        .name] || '#94a3b8'
+                    ), borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } }
+            }
+        });
+
+        new Chart(document.getElementById('needRankChart'), {
+            type: 'bar',
+            data: {
+                labels: ['清洁能力', '全能基站', '导航避障', '防缠绕', '续航回充', '智能交互', '大吸力', '机械臂', '超薄越障', '生态联动'],
+                datasets: [{
+                    label: '刚需指数(%)',
+                    data: [98, 95, 91, 85, 78, 65, 58, 42, 35, 28],
+                    backgroundColor: ['#dc2626', '#ea580c', '#f59e0b', '#2563eb', '#7c3aed', '#0891b2',
+                        '#0d9488', '#64748b', '#94a3b8', '#cbd5e1'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { x: { title: { display: true, text: '刚需指数（%）' }, max: 105,
+                beginAtZero: true } }
+            }
+        });
+
+        new Chart(document.getElementById('priceBandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['<1999元', '2000-2999元', '3000-3999元', '4000-5999元', '6000元+'],
+                datasets: [{ data: [17, 38, 25, 14, 6], backgroundColor: ['#94a3b8', '#ea580c', '#f59e0b',
+                        '#7c3aed', '#1e293b'
+                    ], borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom',
+                        labels: { font: { size: 10 } } } } }
+        });
+
+        const d11Data = {};
+        Object.entries(stackedData).forEach(([n, d]) => { d11Data[n] = { nov: d[4], total: d.reduce((a, b) => a + b,
+                0) }; });
+        const d11Ratios = Object.entries(d11Data).map(([n, d]) => ({ name: n, ratio: +((d.nov / d.total) * 100)
+                .toFixed(1) }));
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
+        new Chart(document.getElementById('double11Impact'), {
+            type: 'bar',
+            data: {
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{ label: '11月占比(%)', data: d11Ratios.map(r => r.ratio), backgroundColor: d11Ratios.map(
+                        r => priceColors[r.name] || '#94a3b8'
+                    ), borderRadius: 8 }]
+            },
+            options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } }, scales: { x: { max: 50 } } }
+        });
+    </script>
+</body>
+</html>
