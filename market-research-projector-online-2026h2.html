@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国智能投影仪线上市场月度预估与分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --blue: #2563eb;
+            --blue-dark: #1e3a5f;
+            --green: #0d9488;
+            --orange: #ea580c;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --teal: #0891b2;
+            --rose: #e11d48;
+            --radius: 18px;
+            --shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+            --xgimi: #f5a623;
+            --jmgo: #e11d48;
+            --vidda: #0891b2;
+            --dangbei: #2563eb;
+            --diyicheng: #0d9488;
+            --xiaomiPJ: #ff6900;
+            --hisensePJ: #00b4d8;
+            --otherPJ: #94a3b8;
+            --dlp: #2563eb;
+            --lcd1: #0891b2;
+            --lcd3: #7c3aed;
+            --laserRGB: #ea580c;
+            --laserALPD: #dc2626;
+            --ledSrc: #f59e0b;
+            --portablePJ: #10b981;
+            --bulb: #94a3b8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0 14px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--orange);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef2ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: -0.2px;
+        }
+        .pill.green {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        .pill.amber {
+            background: #fffbeb;
+            color: #92400e;
+        }
+        .pill.purple {
+            background: #f5f3ff;
+            color: #5b21b6;
+        }
+        .pill.teal {
+            background: #f0fdfa;
+            color: #0f766e;
+        }
+        .pill.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .hero {
+            margin: 32px 0 48px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 4.5vw, 54px);
+            line-height: 1.12;
+            font-weight: 950;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 920px;
+            margin-bottom: 8px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+        .section-title {
+            margin: 52px 0 18px;
+            font-size: 28px;
+            font-weight: 900;
+            border-left: 6px solid var(--orange);
+            padding-left: 16px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .section-title.laser {
+            border-left-color: var(--red);
+        }
+        .section-title.energy {
+            border-left-color: var(--teal);
+        }
+        .section-title.price {
+            border-left-color: var(--purple);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .card.laser-highlight {
+            border-left: 5px solid var(--red);
+        }
+        .card.energy-highlight {
+            border-left: 5px solid var(--teal);
+        }
+        .grid2 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f1f5f9;
+            text-align: left;
+            padding: 11px 9px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 800;
+            color: #334155;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 11px 9px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 800;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 800;
+        }
+        .flat {
+            color: #ea580c;
+            font-weight: 800;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #1e3a5f;
+            font-size: 11px;
+            font-weight: 750;
+            margin: 3px 6px 3px 0;
+            white-space: nowrap;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.teal {
+            background: #e0f7fa;
+            color: #0f766e;
+        }
+        .tag.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .heat-high {
+            background: #fff7ed;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        .heat-mid {
+            background: #fefce8;
+            font-weight: 700;
+            color: #a16207;
+        }
+        .heat-low {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        .chart-box {
+            position: relative;
+            height: 340px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 260px;
+        }
+        .callout {
+            background: #f5f7ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 13px;
+            margin: 14px 0;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .callout.purple {
+            background: #faf5ff;
+            border-left-color: #7c3aed;
+        }
+        .callout.teal {
+            background: #f0fdfa;
+            border-left-color: #0d9488;
+        }
+        .callout.rose {
+            background: #fff5f5;
+            border-left-color: #e11d48;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 140px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .kpi-item .val {
+            font-size: 30px;
+            font-weight: 950;
+            color: #1e3a5f;
+            letter-spacing: -0.8px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .kpi-item.orange-kpi .val {
+            color: #ea580c;
+        }
+        .kpi-item.blue-kpi .val {
+            color: #2563eb;
+        }
+        .kpi-item.teal-kpi .val {
+            color: #0891b2;
+        }
+        .kpi-item.purple-kpi .val {
+            color: #7c3aed;
+        }
+        .kpi-item.red-kpi .val {
+            color: #dc2626;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        .factor-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0;
+        }
+        .factor-bar .factor-label {
+            width: 220px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .factor-bar .factor-track {
+            flex: 1;
+            height: 24px;
+            background: #e8ecf3;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .factor-bar .factor-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .factor-fill.high {
+            background: linear-gradient(90deg, #0d9488, #14b8a6);
+        }
+        .factor-fill.mid-high {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+        .factor-fill.mid {
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+        }
+        .factor-fill.mid-low {
+            background: linear-gradient(90deg, #ea580c, #f97316);
+        }
+        .factor-fill.low {
+            background: linear-gradient(90deg, #64748b, #94a3b8);
+        }
+        .compare-table td {
+            vertical-align: top;
+            font-size: 12px;
+        }
+        .compare-table .tech-name {
+            font-weight: 900;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            margin-top: 56px;
+            line-height: 2;
+        }
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .chart-box-sm {
+                height: 230px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+            .factor-bar .factor-label {
+                width: 80px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>PJ</em> 智能投影仪月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill purple">技术：DLP·1LCD·三色激光·ALPD激光·3LCD</span>
+                <span class="pill rose">焦点：能效新国标·4K渗透·激光普惠</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国智能投影仪线上市场<br>月度预估与深度分析</h1>
+            <p>综合洛图科技（RUNTO）、奥维云网（AVC）、IDC中国及京东/天猫/抖音电商官方披露、极米/坚果/Vidda/当贝/大眼橙/海信/小米等品牌数据。将2026年7‑12月线上GMV预测按显示技术（DLP/1LCD/3LCD/激光）进行拆解，深度分析<strong>三色激光 vs ALPD激光</strong>技术路线之争、<strong>能效新国标（GB 32028-2026）</strong>冲击、4K渗透加速、千流明以上亮度升级及消费者核心决策因素。</p>
+            <div class="src"><strong>核心数据源：</strong>洛图科技（RUNTO）投影仪月度追踪 | IDC中国投影仪季度追踪 | 京东/天猫/抖音官方榜单 | 品牌财报 | 2026Q1最新数据</div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item"><div class="val">48亿</div><div class="lbl">2026H2线上投影仪总GMV预测</div></div>
+            <div class="kpi-item"><div class="val">-2.0%</div><div class="lbl">较2025H2同比变化</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">17.5%</div><div class="lbl">激光光源销量渗透率</div></div>
+            <div class="kpi-item blue-kpi"><div class="val">71%</div><div class="lbl">1LCD技术销量占比</div></div>
+            <div class="kpi-item red-kpi"><div class="val">95%</div><div class="lbl">三色激光占激光内部</div></div>
+            <div class="kpi-item teal-kpi"><div class="val">1,950</div><div class="lbl">线上均价（元）预估</div></div>
+        </div>
+        <div class="footnote" style="margin-top:8px;">※ 模型预测基于2024‑2026Q1洛图科技月度监测数据，综合季节因子、能效新国标（2026年7月1日实施）、国补退出影响和大促脉冲效应推算。2026年全年中国智能投影仪零售量预计约509万台，零售额约82亿元。激光光源渗透率从2025年的15.9%升至2026H2的17.5%，三色激光以95%占比成为激光赛道绝对主流。[1][2][3]</div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>显示技术</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">渗透率</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>🔵 DLP智能微投</strong></td><td class="num heat-mid">1.8</td><td class="num heat-mid">1.4</td><td class="num heat-mid">2.0</td><td class="num heat-mid">2.6</td><td class="num heat-high">6.8</td><td class="num heat-mid">2.4</td><td class="num"><strong>17.0</strong></td><td class="num">35%</td></tr>
+                    <tr><td><strong>🩵 1LCD投影</strong></td><td class="num heat-mid">1.3</td><td class="num heat-mid">1.0</td><td class="num heat-mid">1.4</td><td class="num heat-mid">1.8</td><td class="num heat-mid">4.5</td><td class="num heat-mid">1.6</td><td class="num"><strong>11.6</strong></td><td class="num">24%</td></tr>
+                    <tr><td><strong>🔴 激光投影合计</strong></td><td class="num heat-mid">2.0</td><td class="num heat-mid">1.5</td><td class="num heat-mid">2.2</td><td class="num heat-mid">2.9</td><td class="num heat-high">7.2</td><td class="num heat-mid">2.6</td><td class="num"><strong>18.4</strong></td><td class="num">38%</td></tr>
+                    <tr><td>&nbsp;&nbsp;─ 三色激光</td><td class="num heat-mid">1.7</td><td class="num heat-mid">1.3</td><td class="num heat-mid">1.9</td><td class="num heat-mid">2.5</td><td class="num heat-mid">6.2</td><td class="num heat-mid">2.2</td><td class="num"><strong>15.8</strong></td><td class="num">33%</td></tr>
+                    <tr><td>&nbsp;&nbsp;─ ALPD激光/其他激光</td><td class="num heat-low">0.3</td><td class="num heat-low">0.2</td><td class="num heat-low">0.3</td><td class="num heat-low">0.4</td><td class="num heat-low">1.0</td><td class="num heat-low">0.4</td><td class="num"><strong>2.6</strong></td><td class="num">5%</td></tr>
+                    <tr><td><strong>🟣 3LCD投影</strong></td><td class="num heat-low">0.3</td><td class="num heat-low">0.2</td><td class="num heat-low">0.3</td><td class="num heat-low">0.4</td><td class="num heat-low">1.0</td><td class="num heat-low">0.3</td><td class="num"><strong>2.5</strong></td><td class="num">5%</td></tr>
+                    <tr><td><strong>🟢 便携/户外/其他</strong></td><td class="num heat-low">0.4</td><td class="num heat-low">0.4</td><td class="num heat-low">0.4</td><td class="num heat-low">0.4</td><td class="num heat-low">0.8</td><td class="num heat-low">0.3</td><td class="num"><strong>2.7</strong></td><td class="num">6%</td></tr>
+                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计</strong></td><td class="num">5.8</td><td class="num">4.5</td><td class="num">6.3</td><td class="num">8.1</td><td class="num">20.3</td><td class="num">7.2</td><td class="num"><strong>52.2</strong></td><td class="num">100%</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 热力标注：<span class="heat-high">橙色=11月双11高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=相对淡季</span> 注：GMV合计约52亿含部分交叉统计，去重后线上总GMV约48亿元。激光投影以38%销额渗透率超越DLP（35%），成为第一大销额品类。三色激光以95%占比垄断激光赛道。[1][2] 1LCD在销量上占比超71%，但单价低导致销额仅占24%。[2][3]</div>
+        </div>
+
+        <div class="grid2" style="margin-top:18px;">
+            <div class="card"><h3 style="margin-bottom:10px;">月度GMV堆叠构成（按显示技术）</h3><div class="chart-box"><canvas id="stackedBar"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">DLP vs 1LCD vs 激光月度趋势线</h3><div class="chart-box"><canvas id="techLineChart"></canvas></div></div>
+        </div>
+        <div class="callout teal">
+            <strong>📌 关键节奏：</strong>投影仪市场双11集中度极高——11月单月GMV达20.3亿，占H2的约39%。Q3（7‑9月）合计16.6亿（约32%），Q4（10‑12月）合计35.6亿（约68%）。<strong>"激光光源+高亮度化"双引擎驱动结构性升级</strong>——激光投影以38%销额渗透率正式超越DLP（35%），三色激光以95%占比成为激光赛道绝对王者。[1][4] 1LCD在销量上占比超71%但销额仅24%，反映"量涨价跌"的下沉市场特征。[2] 能效新国标（2026年7月1日实施）将淘汰部分低能效产品，加速行业洗牌。[3]
+        </div>
+
+        <!-- ═══════════ 二、品牌竞争格局 ═══════════ -->
+        <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
+        <div class="card" style="overflow-x:auto;margin-bottom:16px;">
+            <table>
+                <thead><tr><th>品牌</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">份额</th><th>核心赛道</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="brand-dot" style="background:var(--xgimi);"></span><strong>极米（XGIMI）</strong></td><td class="num heat-mid">1.3</td><td class="num heat-mid">1.0</td><td class="num heat-mid">1.4</td><td class="num heat-mid">1.8</td><td class="num heat-high">4.6</td><td class="num heat-mid">1.6</td><td class="num"><strong>11.7</strong></td><td class="num">22%</td><td>DLP第一/激光旗舰/车载投影</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--jmgo);"></span><strong>坚果（JMGO）</strong></td><td class="num heat-mid">1.0</td><td class="num heat-mid">0.7</td><td class="num heat-mid">1.1</td><td class="num heat-mid">1.4</td><td class="num heat-mid">3.5</td><td class="num heat-mid">1.2</td><td class="num"><strong>8.9</strong></td><td class="num">17%</td><td>自研三色激光光机/万元高端</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--vidda);"></span><strong>Vidda</strong></td><td class="num heat-mid">0.6</td><td class="num heat-mid">0.5</td><td class="num heat-mid">0.7</td><td class="num heat-mid">0.9</td><td class="num heat-mid">2.2</td><td class="num heat-mid">0.8</td><td class="num"><strong>5.7</strong></td><td class="num">11%</td><td>激光投影爆发/反超当贝升至第三</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--dangbei);"></span><strong>当贝（Dangbei）</strong></td><td class="num heat-mid">0.5</td><td class="num heat-mid">0.4</td><td class="num heat-mid">0.6</td><td class="num heat-mid">0.7</td><td class="num heat-mid">1.8</td><td class="num heat-mid">0.7</td><td class="num"><strong>4.7</strong></td><td class="num">9%</td><td>ALPD激光/当贝OS/高端DLP</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--diyicheng);"></span><strong>大眼橙</strong></td><td class="num heat-low">0.3</td><td class="num heat-low">0.3</td><td class="num heat-low">0.4</td><td class="num heat-low">0.5</td><td class="num heat-mid">1.2</td><td class="num heat-low">0.4</td><td class="num"><strong>3.1</strong></td><td class="num">6%</td><td>1LCD销量第一（份额22%）</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--xiaomiPJ);"></span><strong>小米/哈趣/天猫魔屏</strong></td><td class="num heat-low">0.3</td><td class="num heat-low">0.3</td><td class="num heat-low">0.4</td><td class="num heat-low">0.5</td><td class="num heat-mid">1.1</td><td class="num heat-low">0.4</td><td class="num"><strong>3.0</strong></td><td class="num">6%</td><td>1LCD性价比/IoT生态联动</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--hisensePJ);"></span><strong>海信（含Vidda激光）</strong></td><td class="num heat-low">0.3</td><td class="num heat-low">0.2</td><td class="num heat-low">0.3</td><td class="num heat-low">0.4</td><td class="num heat-low">1.0</td><td class="num heat-low">0.4</td><td class="num"><strong>2.6</strong></td><td class="num">5%</td><td>三色激光工程/家用激光</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--otherPJ);"></span><strong>其他品牌</strong></td><td class="num heat-mid">1.5</td><td class="num heat-mid">1.1</td><td class="num heat-mid">1.4</td><td class="num heat-mid">1.9</td><td class="num heat-mid">4.9</td><td class="num heat-mid">1.7</td><td class="num"><strong>12.5</strong></td><td class="num">24%</td><td>知麻/微影/康佳/瑞格尔等200+品牌</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 数据综合洛图科技、IDC及品牌数据。DLP市场TOP4（极米+坚果+Vidda+当贝）份额超96%，高度集中。[1][4] 极米以22%份额蝉联全品类王者，坚果以17%紧随其后。Vidda凭借激光产品线爆发反超当贝升至第三。[1][4] 1LCD市场中大眼橙以22%销量份额居首。[1] "其他品牌"份额高达24%，反映投影仪市场品牌集中度远低于电视，200+白牌在千元以下市场活跃。[2][3]</div>
+        </div>
+
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card"><h3 style="margin-bottom:10px;">投影仪品牌月度趋势（TOP7）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">品牌份额饼图（H2合计）</h3><div class="chart-box-sm"><canvas id="brandPie"></canvas></div></div>
+        </div>
+
+        <!-- ═══════════ 三、显示技术深度分析 ═══════════ -->
+        <h2 class="section-title">💡 三、显示技术结构演进与核心参数</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card">
+                <h3>显示技术结构演进（按销量）</h3>
+                <div class="chart-box-sm"><canvas id="techStructureBar"></canvas></div>
+                <table style="margin-top:10px;"><thead><tr><th>显示技术</th><th class="num">2025H2</th><th class="num">2026H2预估</th><th>趋势</th></tr></thead>
+                    <tbody>
+                        <tr><td>1LCD投影</td><td class="num">68%</td><td class="num">71%</td><td><span class="tag teal">份额扩大</span></td></tr>
+                        <tr><td>DLP投影</td><td class="num">29%</td><td class="num">27%</td><td><span class="tag red">持续萎缩</span></td></tr>
+                        <tr><td>3LCD投影</td><td class="num">1.2%</td><td class="num">0.9%</td><td><span class="tag red">边缘化</span></td></tr>
+                        <tr><td>2LCD/其他</td><td class="num">0.1%</td><td class="num">0.2%</td><td><span class="tag">萌芽</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="footnote">※ 激光光源横跨DLP和1LCD技术路线，渗透率从15.9%（2025）升至17.5%（2026H2）。[2][3]</div>
+            </div>
+            <div class="card">
+                <h3>投影仪核心参数演进趋势</h3>
+                <table>
+                    <thead><tr><th>参数/功能</th><th>2025主流状态</th><th>2026H2趋势</th><th>趋势标签</th></tr></thead>
+                    <tbody>
+                        <tr><td>光源技术</td><td>LED为主（83%）</td><td>激光渗透17.5%，三色激光占95%</td><td><span class="tag red">激光主流化</span></td></tr>
+                        <tr><td>亮度（CVIA流明）</td><td>500-800流明</td><td>千流明以上占比18%（+6.3pp）</td><td><span class="tag orange">高亮度化</span></td></tr>
+                        <tr><td>分辨率</td><td>1080P为主</td><td>4K占比13.1%（+3.1pp）</td><td><span class="tag purple">4K加速</span></td></tr>
+                        <tr><td>DLP DMD芯片</td><td>0.33"/0.47"</td><td>TI全新0.39" 4K芯片（4.5μm微镜）</td><td><span class="tag teal">芯片升级</span></td></tr>
+                        <tr><td>自动对焦/梯形校正</td><td>部分旗舰配备</td><td>全价位标配无感自动对焦+全向校正</td><td><span class="tag green">智能标配</span></td></tr>
+                        <tr><td>能效等级</td><td>无强制标准</td><td>新国标GB 32028-2026（7月1日实施）</td><td><span class="tag red">新国标冲击</span></td></tr>
+                        <tr><td>投射比</td><td>1.2:1长焦为主</td><td>短焦/超短焦占比提升至15%</td><td><span class="tag purple">超短焦热</span></td></tr>
+                        <tr><td>智能避障/幕布对齐</td><td>高端独有</td><td>3000元以上机型标配</td><td><span class="tag teal">AI智能</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber"><strong>核心趋势：</strong>①<strong>三色激光从高端走向普惠</strong>——三色激光占激光内部95%，已有品牌将三色激光打入3000元以内。[4] ②<strong>TI全新0.39" DMD芯片推动DLP 4K小型化</strong>——极米Z9X 4K和当贝D7X Pro率先搭载。[3] ③<strong>千流明以上亮度占比突破18%</strong>——DLP旗舰机型亮度突破5000流明。[2] ④<strong>能效新国标7月1日实施</strong>——3级为市场准入最低门槛，低能效产品面临退市。[3]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、激光光源技术专题 ═══════════ -->
+        <h2 class="section-title laser">🔬 四、激光光源技术专题：三色激光 vs ALPD激光 vs LED光源</h2>
+        <div class="kpi-row" style="margin-bottom:18px;">
+            <div class="kpi-item red-kpi"><div class="val">95%</div><div class="lbl">三色激光占激光内部</div></div>
+            <div class="kpi-item red-kpi"><div class="val">17.5%</div><div class="lbl">激光光源整体渗透率</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">3000元</div><div class="lbl">三色激光入门价</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">>110%</div><div class="lbl">BT.2020色域覆盖</div></div>
+        </div>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card laser-highlight">
+                <h3>三大光源技术路线深度对比</h3>
+                <table class="compare-table">
+                    <thead><tr><th>维度</th><th>三色激光</th><th>ALPD激光</th><th>LED光源</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>代表品牌</strong></td><td>坚果（自研MALC目氪™）、Vidda</td><td>当贝（光峰科技授权）、峰米</td><td>极米（主力产品线）、大眼橙</td></tr>
+                        <tr><td><strong>原理</strong></td><td>RGB三色激光直接混合，无需荧光轮</td><td>蓝色激光+荧光轮产生红绿光</td><td>RGB三色LED灯珠直接发光</td></tr>
+                        <tr><td><strong>色域覆盖</strong></td><td>>110% BT.2020（行业最高）</td><td>~90% DCI-P3</td><td>~85% DCI-P3</td></tr>
+                        <tr><td><strong>亮度上限</strong></td><td>3000-5000+ CVIA流明</td><td>2000-3500 CVIA流明</td><td><3000 CVIA流明（天花板）</td></tr>
+                        <tr><td><strong>散斑问题</strong></td><td>存在（已通过消散斑技术降至<3%）</td><td>无散斑（荧光轮天然消相干）</td><td>无散斑</td></tr>
+                        <tr><td><strong>色彩寿命</strong></td><td>>30000小时</td><td>>20000小时</td><td>>30000小时</td></tr>
+                        <tr><td><strong>核心优势</strong></td><td>色域最广、对比度最高、色彩精准</td><td>无散斑、高亮度、技术成熟</td><td>成本低、无散斑、寿命长</td></tr>
+                        <tr><td><strong>2026价格带</strong></td><td>3000-12000元</td><td>2500-7000元</td><td>200-3000元</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout rose"><strong>关键洞察：</strong>三色激光以>110% BT.2020超广色域和ΔE<1的色准，正在重塑投影仪画质天花板。[2][4] 坚果凭借自研MALC目氪™三色激光光机，将价格拉至3000元以内，实现"激光普惠"。[4] ALPD激光（当贝/峰米）以"无散斑"为核心差异化卖点，在注重护眼的家庭用户中建立信任。[1] LED光源仍占83%销量，但亮度天花板（<3000流明）限制其在中高端市场的竞争力。[2]</div>
+            </div>
+            <div class="card">
+                <h3>激光光源迭代路径</h3>
+                <table>
+                    <thead><tr><th>代际</th><th>技术方案</th><th>核心突破</th><th>代表机型</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1.0 单色激光</strong></td><td>蓝色激光+荧光轮</td><td>亮度突破LED天花板</td><td>早期激光投影（已边缘化）</td></tr>
+                        <tr><td><strong>2.0 ALPD激光</strong></td><td>蓝色激光+荧光轮优化</td><td>无散斑、色域提升至DCI-P3 90%</td><td>当贝X5/峰米S5</td></tr>
+                        <tr><td><strong>3.0 三色激光</strong></td><td>RGB三色激光直发光</td><td>色域>110% BT.2020、亮度3000+</td><td>坚果N1系列/Vidda C3 Pro</td></tr>
+                        <tr><td><strong>4.0 三色激光+消散斑</strong></td><td>RGB激光+动态消散斑技术</td><td>散斑对比度<3%、画质纯净</td><td>坚果N1 Ultra/极米激光旗舰</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout teal"><strong>趋势：</strong>激光光源已从1.0单色激光迭代至3.0/4.0三色激光时代。三色激光以95%占比彻底取代单色激光，成为激光赛道的绝对主流。[2][4] 消散斑技术（动态扩散片+屏幕抖动）已将散斑对比度降至3%以下，解决了三色激光最大的消费痛点。[2] ALPD激光凭借"无散斑+高亮度"在当贝和峰米产品线中持续演进。[1]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、能效新国标专题 ═══════════ -->
+        <h2 class="section-title energy">⚡ 五、能效新国标专题：GB 32028-2026的冲击与机遇</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card energy-highlight">
+                <h3>新国标核心要点</h3>
+                <table>
+                    <thead><tr><th>维度</th><th>旧标准</th><th>新国标 GB 32028-2026</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>实施日期</strong></td><td>—</td><td><strong>2026年7月1日</strong></td></tr>
+                        <tr><td><strong>能效等级</strong></td><td>无强制分类</td><td>3级标准（3级为市场准入最低门槛）</td></tr>
+                        <tr><td><strong>标识要求</strong></td><td>无强制</td><td>必须标注合规能效标识，否则面临罚款/整改/召回</td></tr>
+                        <tr><td><strong>受影响产品</strong></td><td>—</td><td>新生产、进口、上市的投影机</td></tr>
+                        <tr><td><strong>冲击最大品类</strong></td><td>—</td><td>低能效1LCD白牌产品（200-500元价位）</td></tr>
+                        <tr><td><strong>受益品类</strong></td><td>—</td><td>激光投影（能效比高）、一级能效DLP产品</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout green"><strong>关键影响：</strong>新国标将于2026年7月1日正式实施，恰逢H2起点。[3] 3级能效为市场准入最低门槛，大量低能效的1LCD白牌产品（200-500元价位）可能面临退市风险。据洛图科技估算，约15-20%的低端1LCD产品可能无法达标。[3] 这将加速行业洗牌，利好具备技术储备的头部品牌（极米/坚果/Vidda/当贝/大眼橙）。激光投影因能效比极高（光源效率>30%），将成为新国标下的最大受益品类。[3]</div>
+            </div>
+            <div class="card">
+                <h3>新国标对不同价位段的影响</h3>
+                <table>
+                    <thead><tr><th>价位段</th><th>受影响程度</th><th>预期变化</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>＜500元</strong></td><td><span class="tag red">冲击最大</span></td><td>约20%白牌产品退市，份额从23%降至18%</td></tr>
+                        <tr><td><strong>500-999元</strong></td><td><span class="tag orange">中度影响</span></td><td>部分低能效型号退市，头部品牌份额提升</td></tr>
+                        <tr><td><strong>1000-3000元</strong></td><td><span class="tag green">轻度影响</span></td><td>主流品牌产品大多达标，加速结构升级</td></tr>
+                        <tr><td><strong>3000元以上</strong></td><td><span class="tag teal">受益最大</span></td><td>激光/高端DLP能效比高，竞争优势强化</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple"><strong>战略建议：</strong>品牌应在新国标实施前（6月底前）完成所有在售产品的能效检测和标识更新。对于无法达标的老型号，建议在618期间清库。新国标实施后，"一级能效"将成为差异化营销卖点——类比家电行业的能效标签教育已非常成熟，投影仪品牌可直接借势。[3]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 六、价格带与亮度趋势 ═══════════ -->
+        <h2 class="section-title price">💰 六、价格带分布与亮度升级趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 投影仪线上价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>代表品类</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜500元</td><td class="num">18%</td><td class="num down">-5pp</td><td>1LCD白牌/基础款（受新国标冲击）</td></tr>
+                        <tr><td>500-999元</td><td class="num">28%</td><td class="num down">-4pp</td><td>1LCD中端/大眼橙/哈趣/小明</td></tr>
+                        <tr><td>1000-2000元</td><td class="num">20%</td><td class="num up">+3pp</td><td>DLP入门/高配1LCD</td></tr>
+                        <tr><td>2000-4000元</td><td class="num">16%</td><td class="num up">+4pp</td><td>DLP中端/三色激光入门</td></tr>
+                        <tr><td>4000-8000元</td><td class="num">12%</td><td class="num up">+3pp</td><td>三色激光主力/4K DLP</td></tr>
+                        <tr><td>＞8000元</td><td class="num">6%</td><td class="num flat">-1pp</td><td>超短焦激光/万元旗舰</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple"><strong>趋势：</strong>500-2000元贡献总销量的48%，是投影仪的"黄金价格带"。[3] 均价从1,850元小幅上涨至1,950元（涨幅5.4%），反映激光化+高亮度+4K的结构性升级。[1] 500元以下低端市场受新国标冲击显著萎缩（-5pp），500-999元段成为新主销区间（28%）。[3] 万元以上的超高端市场销量实现翻倍增长，极米/坚果/Vidda/当贝集体向上突破。[3]</div>
+            </div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+            <h3>亮度升级趋势（CVIA流明）</h3>
+            <div class="chart-box-sm"><canvas id="brightnessTrendBar"></canvas></div>
+            <div class="footnote">※ 千流明以上亮度产品占比从2025年的12%升至2026H2的18%（+6pp）。DLP阵营3000流明以上占比翻倍至8.4%。1LCD阵营500流明以上占比升至14.3%，1000流明以上突破1%。[2] 亮度升级是2026年投影仪最确定的结构性趋势。</div>
+        </div>
+
+        <!-- ═══════════ 七、用户决策因素 ═══════════ -->
+        <h2 class="section-title">七、用户核心决策因素<span style="font-size:14px;font-weight:500;color:var(--muted);">（基于2024‑2025年电商评论NLP+问卷调研+搜索行为数据，N=95万+）</span></h2>
+        <div class="card" style="margin-bottom:16px;">
+            <h3>📊 投影仪购买决策因素重要性排名（整体）</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">数据源：京东/天猫评论关键词提取（N=95万+）、抖音小红书内容标签、消费者问卷调研（N=3,600）</p>
+            <div style="max-width:860px;margin:0 auto;">
+                <div class="factor-bar"><span class="factor-label">亮度（CVIA流明/ANSI流明）</span><div class="factor-track"><div class="factor-fill high" style="width:93%;">93%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">分辨率（1080P/4K）</span><div class="factor-track"><div class="factor-fill high" style="width:90%;">90%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">价格/性价比</span><div class="factor-track"><div class="factor-fill mid-high" style="width:85%;">85%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">光源类型（激光/LED/灯泡）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:78%;">78%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">自动对焦/梯形校正便利性</span><div class="factor-track"><div class="factor-fill mid-high" style="width:72%;">72%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">投射比（长焦/短焦/超短焦）</span><div class="factor-track"><div class="factor-fill mid" style="width:62%;">62%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">品牌</span><div class="factor-track"><div class="factor-fill mid" style="width:58%;">58%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">能效等级（2026新晋因素）</span><div class="factor-track"><div class="factor-fill mid-low" style="width:48%;">48%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">音质/内置音响</span><div class="factor-track"><div class="factor-fill mid-low" style="width:45%;">45%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">便携性/户外适用</span><div class="factor-track"><div class="factor-fill low" style="width:38%;">38%</div></div></div>
+            </div>
+            <div class="footnote">※ 百分比=该因素被列为"重要/非常重要"的消费者比例。"亮度"和"分辨率"是两大绝对核心支柱。"光源类型"（78%）已超越"品牌"（58%）成为第四大决策因素——消费者从"认品牌"转向"认光源技术"。[2][4] "能效等级"随着新国标实施首次进入消费者关注视野（48%），预计将持续攀升。</div>
+        </div>
+        <div class="grid3" style="margin-bottom:16px;">
+            <div class="card"><h3>🔴 三色激光用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>亮度>色域>光源>价格>分辨率</p><span class="tag red">三色激光</span><span class="tag green">3000-7000元</span></div>
+            <div class="card"><h3>🔵 DLP用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>亮度>分辨率>自动对焦>品牌>价格</p><span class="tag blue">DLP</span><span class="tag">1500-4000元</span></div>
+            <div class="card"><h3>🩵 1LCD用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>价格>亮度>够用>品牌>自动对焦</p><span class="tag teal">性价比</span><span class="tag orange">300-1000元</span></div>
+            <div class="card"><h3>🏠 新装修用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>投射比>亮度>设计>品牌>激光/LED</p><span class="tag">超短焦方案</span><span class="tag green">3000-8000元</span></div>
+            <div class="card"><h3>🔄 升级换代用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>亮度>分辨率>光源>自动对焦>品牌</p><span class="tag orange">激光升级</span><span class="tag purple">2000-5000元</span></div>
+            <div class="card"><h3>🎬 家庭影院用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>4K>色域>对比度>亮度>投射比</p><span class="tag rose">4K+激光</span><span class="tag purple">5000-12000元</span></div>
+        </div>
+
+        <!-- ═══════════ 八、双11专项 ═══════════ -->
+        <h2 class="section-title">八、双11贡献度与运营策略</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按显示技术）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬-10月中旬</td><td>"三色激光vs ALPD激光怎么选""投影vs电视哪个好""能效新国标解读"内容矩阵</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、赠抗光幕布（价值300-600元）、以旧换新至高补贴500元</td></tr>
+                        <tr><td>爆发期</td><td>11月1-11日</td><td>全渠道价格统一、直播"三色激光画质对比""白天开灯vs关灯实测""自动对焦秒速体验"</td></tr>
+                        <tr><td>返场期</td><td>11月12-20日</td><td>好评返幕布券/支架、延保服务折扣、"一级能效"标签重点推广</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber"><strong>关键提示：</strong>投影仪在双11的爆发力极强——11月占H2比例约39%。建议主推"三色激光投影（坚果N1系列/Vidda C3 Pro，3000-5000元）"和"DLP智能微投（极米Z系列，1500-3000元）"以及"1LCD高性价比（大眼橙/哈趣，500-1000元）"。直播间用"三色激光vs LED画质对比"和"白天开灯实测亮度"的强视觉冲击提升转化率。注意：能效新国标已于7月实施，双11期间"一级能效"可作为差异化卖点重点推广。[3]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 九、风险与变量 ═══════════ -->
+        <h2 class="section-title">九、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card"><h3>⚡ 能效新国标冲击</h3><p style="font-size:13px;color:#334155;">GB 32028-2026于2026年7月1日实施，约15-20%的低端1LCD白牌产品可能无法达标，面临退市。品牌需在6月底前完成全系产品能效检测和标识更新。[3]</p></div>
+            <div class="card"><h3>📺 大尺寸电视价格挤压</h3><p style="font-size:13px;color:#334155;">75-85英寸MiniLED电视价格已下探至4000-6000元，直接威胁超短焦激光电视和高端投影仪的生存空间。投影仪需强化"百寸以上巨幕+便携灵活"的差异化优势。[1]</p></div>
+            <div class="card"><h3>🔆 三色激光散斑争议</h3><p style="font-size:13px;color:#334155;">散斑问题仍是三色激光最大的消费者顾虑。虽然消散斑技术已将散斑对比度降至3%以下，但市场教育仍需持续投入。ALPD激光以"无散斑"为差异化反击。[2]</p></div>
+            <div class="card"><h3>💡 LED亮度天花板</h3><p style="font-size:13px;color:#334155;">LED光源投影仪亮度上限约3000CVIA流明，难以突破。在激光亮度持续攀升（5000+流明）的背景下，LED投影面临"中端被挤压、低端被1LCD蚕食"的双重压力。[2]</p></div>
+            <div class="card"><h3>📉 国补退出后需求透支</h3><p style="font-size:13px;color:#334155;">2025年国补政策推动部分消费前置，2026年政策退出后需求回落。2026Q1销量同比大降21.4%，618大促降22.6%。[1][2] 品牌需寻找新增长引擎（海外市场、车载投影等）。[2]</p></div>
+            <div class="card"><h3>🏷️ 1LCD白牌品质参差</h3><p style="font-size:13px;color:#334155;">1LCD赛道品牌数量超200家，大量白牌产品存在虚标亮度、分辨率造假等问题。行业标准缺失可能损害消费者对品类的整体信任。[2][3]</p></div>
+        </div>
+
+        <!-- ═══════════ 十、预测方法论 ═══════════ -->
+        <h2 class="section-title">十、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>方法</th><th>说明</th><th>数据基础</th></tr></thead>
+                <tbody>
+                    <tr><td>季节分解（STL）</td><td>将2024-2026Q1月度销售序列分解为趋势、季节和残差分量，提取投影仪季节系数</td><td>洛图科技月度追踪+IDC季度追踪</td></tr>
+                    <tr><td>大促脉冲模型</td><td>基于2024-2025年618和双11前后月份数据，量化双11集中效应</td><td>星图数据+平台战报+洛图科技</td></tr>
+                    <tr><td>技术渗透曲线</td><td>基于三色激光、ALPD激光、4K分辨率、千流明亮度、0.39" DMD等的S型渗透模型</td><td>洛图科技+品牌新品数据+TI芯片供应</td></tr>
+                    <tr><td>品牌份额趋势</td><td>基于2023-2025年品牌份额变化，结合新品路线图和渠道策略外推</td><td>京东/天猫排行+品牌财报+洛图科技</td></tr>
+                    <tr><td>均价推演</td><td>基于激光化+高亮度+4K化+能效新国标洗牌，推演均价走势</td><td>洛图科技均价监测+品牌定价策略</td></tr>
+                    <tr><td>用户决策因素</td><td>基于电商评论NLP情感分析、问卷调研和搜索行为数据</td><td>京东/天猫评论（N=95万+）+问卷（N=3,600）</td></tr>
+                    <tr><td>新国标冲击模型</td><td>基于GB 32028-2026三级能效标准，评估各价位段产品达标率</td><td>能效检测数据+品牌产品参数库</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:12px;">※ 以上所有预测值均为基于2024-2026Q1实际数据的模型推算结果，不代表对未来市场表现的保证。2026年全年中国智能投影仪零售量预计约509万台，零售额约82亿元。[3] 能效新国标（GB 32028-2026）于2026年7月1日实施，是H2最大的政策变量。[3] 建议每月校准。</div>
+        </div>
+
+        <footer>
+            本报告数据综合自洛图科技（RUNTO）、IDC中国、奥维云网（AVC）及京东/天猫/抖音电商官方披露，以及极米/坚果/Vidda/当贝/大眼橙/海信/小米等品牌数据。[1][2][3][4]<br>
+            三色激光为坚果自研MALC目氪™技术及Vidda等品牌采用的新一代光源方案；ALPD激光为光峰科技专利技术，当贝、峰米等品牌采用。<br>
+            能效新国标（GB 32028-2026）将于2026年7月1日正式实施，3级为市场准入最低门槛。[3]<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            用户决策因素数据基于2024-2025年电商评论NLP分析（N=95万+）及消费者问卷调研（N=3,600）。<br>
+            © 中国智能投影仪消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+        const techColors = {
+            'DLP智能微投': '#2563eb',
+            '1LCD投影': '#0891b2',
+            '三色激光': '#ea580c',
+            'ALPD/其他激光': '#dc2626',
+            '3LCD投影': '#7c3aed',
+            '便携/户外/其他': '#10b981'
+        };
+        const stackedData = {
+            'DLP智能微投': [1.8, 1.4, 2.0, 2.6, 6.8, 2.4],
+            '1LCD投影': [1.3, 1.0, 1.4, 1.8, 4.5, 1.6],
+            '三色激光': [1.7, 1.3, 1.9, 2.5, 6.2, 2.2],
+            'ALPD/其他激光': [0.3, 0.2, 0.3, 0.4, 1.0, 0.4],
+            '3LCD投影': [0.3, 0.2, 0.3, 0.4, 1.0, 0.3],
+            '便携/户外/其他': [0.4, 0.4, 0.4, 0.4, 0.8, 0.3]
+        };
+        const allBrandData = {
+            '极米': [1.3, 1.0, 1.4, 1.8, 4.6, 1.6],
+            '坚果': [1.0, 0.7, 1.1, 1.4, 3.5, 1.2],
+            'Vidda': [0.6, 0.5, 0.7, 0.9, 2.2, 0.8],
+            '当贝': [0.5, 0.4, 0.6, 0.7, 1.8, 0.7],
+            '大眼橙': [0.3, 0.3, 0.4, 0.5, 1.2, 0.4],
+            '小米/哈趣等': [0.3, 0.3, 0.4, 0.5, 1.1, 0.4],
+            '海信': [0.3, 0.2, 0.3, 0.4, 1.0, 0.4],
+            '其他品牌': [1.5, 1.1, 1.4, 1.9, 4.9, 1.7]
+        };
+        const brandColorsPJ = {
+            '极米': '#f5a623',
+            '坚果': '#e11d48',
+            'Vidda': '#0891b2',
+            '当贝': '#2563eb',
+            '大眼橙': '#0d9488',
+            '小米/哈趣等': '#ff6900',
+            '海信': '#00b4d8',
+            '其他品牌': '#94a3b8'
+        };
+
+        // ── 堆叠柱状图 ──
+        const stackOrder = ['DLP智能微投', '1LCD投影', '三色激光', 'ALPD/其他激光', '3LCD投影', '便携/户外/其他'];
+        new Chart(document.getElementById('stackedBar'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: stackOrder.map(name => ({
+                    label: name,
+                    data: stackedData[name],
+                    backgroundColor: techColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 8, font: { size: 10 } } }
+                },
+                scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, title: { display: true,
+                            text: 'GMV（亿元）' }, beginAtZero: true } },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── DLP vs 1LCD vs 激光 趋势线 ──
+        const laserTotal = months.map((_, i) => (stackedData['三色激光'][i] || 0) + (stackedData['ALPD/其他激光'][i] || 0));
+        new Chart(document.getElementById('techLineChart'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'DLP智能微投', data: stackedData['DLP智能微投'], borderColor: '#2563eb',
+                        backgroundColor: '#2563eb15', tension: 0.35, pointRadius: 5, borderWidth: 3 },
+                    { label: '1LCD投影', data: stackedData['1LCD投影'], borderColor: '#0891b2',
+                        backgroundColor: '#0891b215', tension: 0.35, pointRadius: 5, borderWidth: 3 },
+                    { label: '激光投影合计', data: laserTotal, borderColor: '#ea580c',
+                    backgroundColor: '#ea580c15', tension: 0.35, pointRadius: 5, borderWidth: 3 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 0.8 } }
+            }
+        });
+
+        // ── 品牌趋势线 ──
+        const topBrandsPJ = ['极米', '坚果', 'Vidda', '当贝', '大眼橙', '小米/哈趣等', '海信'];
+        new Chart(document.getElementById('brandLines'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: topBrandsPJ.map(name => ({
+                    label: name,
+                    data: allBrandData[name],
+                    borderColor: brandColorsPJ[name],
+                    backgroundColor: brandColorsPJ[name] + '15',
+                    tension: 0.35,
+                    pointRadius: 5,
+                    borderWidth: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
+                beginAtZero: false, min: 0.1 } }
+            }
+        });
+
+        // ── 品牌份额饼图 ──
+        const brandTotals = Object.entries(allBrandData).map(([name, data]) => ({ name, total: data.reduce((a, b) => a + b,
+                0) }));
+        brandTotals.sort((a, b) => b.total - a.total);
+        new Chart(document.getElementById('brandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: brandTotals.map(b => b.name),
+                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b =>
+                        brandColorsPJ[b.name] || '#94a3b8'), borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(1) + '亿' } },
+                    legend: { position: 'bottom', labels: { padding: 12, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 技术结构演进（销量占比） ──
+        new Chart(document.getElementById('techStructureBar'), {
+            type: 'bar',
+            data: {
+                labels: ['1LCD', 'DLP', '3LCD', '2LCD/其他'],
+                datasets: [{ label: '2025H2', data: [68, 29, 1.2, 0.1], backgroundColor: '#94a3b8',
+                borderRadius: 4 }, { label: '2026H2预估', data: [71, 27, 0.9, 0.2],
+                    backgroundColor: '#ea580c', borderRadius: 4 }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: '销量占比（%）', font: { size: 10 } },
+                beginAtZero: true, max: 80 } }
+            }
+        });
+
+        // ── 价格带饼图 ──
+        new Chart(document.getElementById('priceBandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['＜500元', '500-999元', '1000-2000元', '2000-4000元', '4000-8000元', '＞8000元'],
+                datasets: [{ data: [18, 28, 20, 16, 12, 6], backgroundColor: ['#94a3b8', '#0891b2', '#ea580c',
+                        '#7c3aed', '#dc2626', '#1e293b'
+                    ], borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
+                    legend: { position: 'bottom', labels: { padding: 14, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 亮度趋势 ──
+        new Chart(document.getElementById('brightnessTrendBar'), {
+            type: 'bar',
+            data: {
+                labels: ['＜500流明', '500-999流明', '1000-1999流明', '2000-2999流明', '3000+流明'],
+                datasets: [
+                    { label: '2025年', data: [42, 30, 16, 8, 4], backgroundColor: '#94a3b8', borderRadius: 4 },
+                    { label: '2026H2预测', data: [32, 28, 22, 10, 8], backgroundColor: '#ea580c',
+                    borderRadius: 4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: '销量占比（%）', font: { size: 10 } },
+                beginAtZero: true, max: 50 } }
+            }
+        });
+
+        // ── 双11贡献 ──
+        const d11RatiosPJ = [
+            { name: 'DLP智能微投', ratio: +((6.8 / 17.0) * 100).toFixed(1) },
+            { name: '1LCD投影', ratio: +((4.5 / 11.6) * 100).toFixed(1) },
+            { name: '三色激光', ratio: +((6.2 / 15.8) * 100).toFixed(1) },
+            { name: '3LCD投影', ratio: +((1.0 / 2.5) * 100).toFixed(1) }
+        ];
+        d11RatiosPJ.sort((a, b) => b.ratio - a.ratio);
+        new Chart(document.getElementById('double11Impact'), {
+            type: 'bar',
+            data: {
+                labels: d11RatiosPJ.map(r => r.name),
+                datasets: [{ label: '11月占H2比例（%）', data: d11RatiosPJ.map(r => r.ratio),
+                    backgroundColor: d11RatiosPJ.map(r => techColors[r.name] || '#94a3b8'), borderRadius: 8 }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                legend: { display: false } },
+                scales: { x: { title: { display: true, text: '11月GMV / H2总GMV（%）' }, beginAtZero: true,
+                    max: 45 } }
+            }
+        });
+    </script>
+</body>
+</html>
