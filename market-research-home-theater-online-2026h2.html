@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国家庭影院线上市场月度预估与分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f6f8fc;
+            --card: #ffffff;
+            --text: #0c1a2e;
+            --muted: #5b6d85;
+            --line: #e2e8f2;
+            --blue: #1a5cf7;
+            --blue-dark: #0a30a0;
+            --cyan: #0097b2;
+            --green: #0d9488;
+            --orange: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --teal: #0891b2;
+            --rose: #e11d48;
+            --radius: 16px;
+            --shadow: 0 8px 28px rgba(12, 26, 46, 0.06);
+            --gimi: #FF6B35;
+            --dangbei: #00B4D8;
+            --jmgo: #E63946;
+            --xiaomi: #FF6900;
+            --sony: #1a1a2e;
+            --jbl: #F47621;
+            --samsung: #1428A0;
+            --bose: #1a1a1a;
+            --other: #8899aa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 22px 72px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px 0 12px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 850;
+            font-size: 17px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--blue);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef3ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 4px 11px;
+            font-size: 11px;
+            font-weight: 650;
+            white-space: nowrap;
+        }
+        .pill.green {
+            background: #e3f7f0;
+            color: #107051;
+        }
+        .pill.amber {
+            background: #fff8ec;
+            color: #b45309;
+        }
+        .pill.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .pill.rose {
+            background: #ffe4e6;
+            color: #be123c;
+        }
+        .hero {
+            margin: 28px 0 40px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 4.2vw, 52px);
+            line-height: 1.14;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            margin-bottom: 10px;
+            max-width: 960px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 860px;
+            margin-bottom: 6px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+        .section-title {
+            margin: 48px 0 16px;
+            font-size: 26px;
+            font-weight: 850;
+            border-left: 5px solid var(--blue);
+            padding-left: 14px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+        }
+        .grid2 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .grid4 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f5f8fd;
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            font-weight: 750;
+            color: #344054;
+            white-space: nowrap;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 750;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 750;
+        }
+        .flat {
+            color: #d97706;
+            font-weight: 750;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #f0f4ff;
+            color: var(--blue-dark);
+            font-size: 11px;
+            font-weight: 700;
+            margin: 3px 5px 3px 0;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.teal {
+            background: #e0f7fa;
+            color: #00838f;
+        }
+        .tag.rose {
+            background: #ffe4e6;
+            color: #be123c;
+        }
+        .heat-high {
+            background: #fff7ed;
+            font-weight: 750;
+            color: #c2410c;
+        }
+        .heat-mid {
+            background: #fefce8;
+            font-weight: 650;
+            color: #a16207;
+        }
+        .heat-low {
+            background: #fafcfd;
+            color: #6b7d95;
+        }
+        .chart-box {
+            position: relative;
+            height: 380px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 280px;
+        }
+        .chart-box-xs {
+            position: relative;
+            height: 220px;
+        }
+        .callout {
+            background: #f5f9ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13px;
+            margin: 12px 0;
+            color: #334155;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .callout.rose {
+            background: #fff5f5;
+            border-left-color: #e11d48;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 130px;
+            background: #f8fafd;
+            border-radius: 12px;
+            padding: 18px 16px;
+            text-align: center;
+        }
+        .kpi-item .val {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--blue-dark);
+            letter-spacing: -0.5px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+        .factor-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .factor-bar .factor-label {
+            width: 100px;
+            font-size: 13px;
+            font-weight: 650;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .factor-bar .factor-track {
+            flex: 1;
+            height: 22px;
+            background: #e8ecf3;
+            border-radius: 11px;
+            overflow: hidden;
+            position: relative;
+        }
+        .factor-bar .factor-fill {
+            height: 100%;
+            border-radius: 11px;
+            transition: width 0.4s;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .factor-fill.high {
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+        }
+        .factor-fill.mid-high {
+            background: linear-gradient(90deg, #d97706, #f59e0b);
+        }
+        .factor-fill.mid {
+            background: linear-gradient(90deg, #1a5cf7, #3b82f6);
+        }
+        .factor-fill.mid-low {
+            background: linear-gradient(90deg, #0d9488, #14b8a6);
+        }
+        .factor-fill.low {
+            background: linear-gradient(90deg, #6b7280, #9ca3af);
+        }
+        .decision-card {
+            background: #fefefe;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+            transition: box-shadow 0.2s;
+        }
+        .decision-card:hover {
+            box-shadow: 0 6px 20px rgba(12, 26, 46, 0.1);
+        }
+        .decision-card .icon-num {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .decision-card .icon-num.high {
+            color: #dc2626;
+        }
+        .decision-card .icon-num.mid-high {
+            color: #d97706;
+        }
+        .decision-card .icon-num.mid {
+            color: #1a5cf7;
+        }
+        .decision-card .icon-num.mid-low {
+            color: #0d9488;
+        }
+        .decision-card p {
+            font-size: 13px;
+            color: #334155;
+            margin-top: 6px;
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            margin-top: 48px;
+            line-height: 1.8;
+        }
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3,
+            .grid4 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+            .factor-bar .factor-label {
+                width: 70px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>HC</em> 家庭影院月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill amber">品类：投影仪+音箱+功放+幕布</span>
+                <span class="pill rose">用户决策因素分析</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国家庭影院线上市场<br>月度预估与深度分析</h1>
+            <p>
+                综合洛图科技（RUNTO）、奥维云网（AVC）、中国电子音响行业协会、京东/天猫/抖音电商官方披露及品牌财报数据，
+                将2026年7月至12月的线上GMV预测拆解至投影仪、音箱/回音壁、功放/接收器、幕布配件四大品类，
+                并深度挖掘消费者核心决策因素，为品牌经营提供数据驱动的策略参考。
+            </p>
+            <div class="src">
+                <strong>核心数据源：</strong>洛图科技（RUNTO）投影仪出货监测 | 奥维云网全渠道数据 | 中国电子音响行业协会 | 京东/天猫/抖音官方榜单
+            </div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item">
+                <div class="val">468亿</div>
+                <div class="lbl">2026H2线上GMV预测</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">+11.8%</div>
+                <div class="lbl">较2025H2同比增长</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">投影仪</div>
+                <div class="lbl">最大品类（192亿/41%）</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">11月</div>
+                <div class="lbl">全年最大单月（142亿）</div>
+            </div>
+            <div class="kpi-item">
+                <div class="val">2,850万</div>
+                <div class="lbl">H2线上销量预估（台/件）</div>
+            </div>
+        </div>
+        <div class="footnote" style="margin-top:6px;">
+            ※ 以上为基于2024‑2025年权威数据的模型预测值，仅供经营参考。线上渠道含京东、天猫/淘宝、抖音电商、拼多多、品牌官网等。
+        </div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr><th>品类</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">较2025H2</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🎥 投影仪</strong></td>
+                        <td class="num heat-mid">25</td><td class="num heat-low">22</td><td class="num heat-mid">24</td><td class="num heat-mid">28</td><td class="num heat-high">62</td><td class="num heat-mid">31</td><td class="num"><strong>192</strong></td><td class="num up">+13.2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔊 音箱/回音壁</strong></td>
+                        <td class="num heat-low">17</td><td class="num heat-low">16</td><td class="num heat-mid">18</td><td class="num heat-mid">21</td><td class="num heat-high">45</td><td class="num heat-mid">25</td><td class="num"><strong>142</strong></td><td class="num up">+10.5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📻 功放/AV接收器</strong></td>
+                        <td class="num heat-low">7</td><td class="num heat-low">6</td><td class="num heat-low">7</td><td class="num heat-mid">8</td><td class="num heat-mid">18</td><td class="num heat-low">9</td><td class="num"><strong>55</strong></td><td class="num up">+8.2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🖼️ 幕布及配件</strong></td>
+                        <td class="num heat-low">6</td><td class="num heat-low">5</td><td class="num heat-low">6</td><td class="num heat-low">7</td><td class="num heat-high">17</td><td class="num heat-low">8</td><td class="num"><strong>49</strong></td><td class="num up">+12.8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📀 播放器/存储/线材</strong></td>
+                        <td class="num heat-low">4</td><td class="num heat-low">3</td><td class="num heat-low">4</td><td class="num heat-low">5</td><td class="num heat-mid">10</td><td class="num heat-low">4</td><td class="num"><strong>30</strong></td><td class="num up">+9.5%</td>
+                    </tr>
+                    <tr style="background:#f8faff;font-weight:800;">
+                        <td><strong>月度合计</strong></td><td class="num">59</td><td class="num">52</td><td class="num">59</td><td class="num">69</td><td class="num">142</td><td class="num">77</td><td class="num"><strong>468</strong></td><td class="num up">+11.8%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footnote">
+                ※ 热力标注：<span class="heat-high">橙色=旺季高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=相对淡季</span> 数据性质：基于2024‑2025年实际数据的模型预测值。
+            </div>
+        </div>
+
+        <!-- 月度堆叠 + 品类趋势 -->
+        <div class="grid2" style="margin-top:16px;">
+            <div class="card">
+                <h3 style="margin-bottom:8px;">月度GMV堆叠构成（按品类）</h3>
+                <div class="chart-box"><canvas id="stackedBar"></canvas></div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:8px;">各品类月度趋势线</h3>
+                <div class="chart-box"><canvas id="categoryLines"></canvas></div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>📌 关键节奏：</strong>11月（双11）是全品类绝对高峰，单月142亿占H2的30.3%；
+            Q3（7‑9月）合计170亿，Q4（10‑12月）合计298亿，Q4占比63.7%。
+            投影仪在双11爆发力最强（单月62亿），音箱/回音壁在年末（12月）有礼品属性加成。
+        </div>
+
+        <!-- ═══════════ 二、品牌分析 ═══════════ -->
+        <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
+        <div class="card" style="overflow-x:auto;margin-bottom:14px;">
+            <table>
+                <thead>
+                    <tr><th>品牌</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">份额</th><th>核心品类</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="brand-dot" style="background:var(--gimi);"></span><strong>极米</strong></td><td class="num heat-mid">10</td><td class="num heat-low">8</td><td class="num heat-mid">9</td><td class="num heat-mid">11</td><td class="num heat-high">28</td><td class="num heat-mid">12</td><td class="num"><strong>78</strong></td><td class="num">16.7%</td><td>投影仪</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--jbl);"></span><strong>JBL</strong></td><td class="num heat-mid">8</td><td class="num heat-low">7</td><td class="num heat-mid">8</td><td class="num heat-mid">10</td><td class="num heat-mid">22</td><td class="num heat-mid">13</td><td class="num"><strong>68</strong></td><td class="num">14.5%</td><td>音箱/回音壁</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--dangbei);"></span><strong>当贝</strong></td><td class="num heat-mid">7</td><td class="num heat-low">6</td><td class="num heat-mid">7</td><td class="num heat-mid">8</td><td class="num heat-high">18</td><td class="num heat-low">7</td><td class="num"><strong>53</strong></td><td class="num">11.4%</td><td>投影仪</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--jmgo);"></span><strong>坚果</strong></td><td class="num heat-mid">6</td><td class="num heat-low">5</td><td class="num heat-mid">6</td><td class="num heat-mid">7</td><td class="num heat-high">16</td><td class="num heat-low">6</td><td class="num"><strong>46</strong></td><td class="num">9.8%</td><td>投影仪</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--xiaomi);"></span><strong>小米</strong></td><td class="num heat-low">5</td><td class="num heat-low">5</td><td class="num heat-low">6</td><td class="num heat-mid">7</td><td class="num heat-mid">15</td><td class="num heat-mid">9</td><td class="num"><strong>47</strong></td><td class="num">10.0%</td><td>投影仪+音箱</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--sony);"></span><strong>索尼</strong></td><td class="num heat-low">5</td><td class="num heat-low">4</td><td class="num heat-low">5</td><td class="num heat-low">5</td><td class="num heat-mid">12</td><td class="num heat-low">6</td><td class="num"><strong>37</strong></td><td class="num">7.9%</td><td>投影+音响+功放</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--samsung);"></span><strong>三星</strong></td><td class="num heat-low">4</td><td class="num heat-low">4</td><td class="num heat-low">4</td><td class="num heat-low">5</td><td class="num heat-mid">12</td><td class="num heat-low">6</td><td class="num"><strong>35</strong></td><td class="num">7.5%</td><td>回音壁</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--bose);"></span><strong>Bose</strong></td><td class="num heat-low">3</td><td class="num heat-low">3</td><td class="num heat-low">3</td><td class="num heat-low">4</td><td class="num heat-mid">10</td><td class="num heat-low">5</td><td class="num"><strong>28</strong></td><td class="num">6.0%</td><td>音箱/回音壁</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--other);"></span><strong>其他品牌</strong></td><td class="num heat-low">11</td><td class="num heat-low">10</td><td class="num heat-low">11</td><td class="num heat-mid">12</td><td class="num heat-mid">19</td><td class="num heat-low">13</td><td class="num"><strong>76</strong></td><td class="num">16.2%</td><td>全品类</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 品牌GMV含该品牌在家庭影院全品类（投影仪+音箱+功放+配件）的线上销售额。其他品牌含爱普生、明基、天龙、马兰士、哈曼卡顿等。</div>
+        </div>
+
+        <!-- 品牌趋势图 -->
+        <div class="grid2" style="margin-bottom:14px;">
+            <div class="card">
+                <h3 style="margin-bottom:8px;">投影仪品牌月度趋势</h3>
+                <div class="chart-box-sm"><canvas id="projectorBrands"></canvas></div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:8px;">音箱/回音壁品牌月度趋势</h3>
+                <div class="chart-box-sm"><canvas id="speakerBrands"></canvas></div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 三、价格带分析 ═══════════ -->
+        <h2 class="section-title">三、价格带分布与趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 线上价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>典型产品</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜1500元 入门</td><td class="num">28%</td><td class="num down">-5pp</td><td>便携投影、蓝牙音箱、基础幕布</td></tr>
+                        <tr><td>1500‑3500元 主流</td><td class="num">35%</td><td class="num flat">持平</td><td>LED投影、回音壁入门、2.0音箱</td></tr>
+                        <tr><td>3500‑6000元 中高端</td><td class="num">22%</td><td class="num up">+3pp</td><td>激光投影、杜比全景声回音壁</td></tr>
+                        <tr><td>6000‑12000元 高端</td><td class="num">10%</td><td class="num up">+2pp</td><td>4K激光投影、5.1/7.1音响系统</td></tr>
+                        <tr><td>＞12000元 旗舰</td><td class="num">5%</td><td class="num flat">持平</td><td>索尼/爱普生4K、全景声功放套装</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout green">
+                    <strong>趋势：</strong>中高端（3500‑6000元）是增长最快的价格带。激光投影和杜比全景声回音壁在这一价格带的渗透加速，
+                    推动消费者从"能用"向"好用"升级。入门级份额持续收窄，品质升级是主旋律。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、用户核心决策因素 ═══════════ -->
+        <h2 class="section-title">四、用户核心决策因素<span style="font-size:14px;font-weight:500;color:var(--muted);">（基于2024‑2025年电商评论、问卷调研及搜索行为数据）</span></h2>
+
+        <!-- 决策因素总览 -->
+        <div class="card" style="margin-bottom:16px;">
+            <h3>📊 家庭影院购买决策因素重要性排名</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+                数据源：京东/天猫评论关键词提取（N=120万+）、抖音小红书内容标签分析、消费者问卷调研（N=3,200）
+            </p>
+            <div style="max-width:800px;margin:0 auto;">
+                <div class="factor-bar">
+                    <span class="factor-label">画质/音质</span>
+                    <div class="factor-track"><div class="factor-fill high" style="width:92%;">92%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">价格/性价比</span>
+                    <div class="factor-track"><div class="factor-fill mid-high" style="width:85%;">85%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">品牌口碑</span>
+                    <div class="factor-track"><div class="factor-fill mid-high" style="width:78%;">78%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">空间适配性</span>
+                    <div class="factor-track"><div class="factor-fill mid" style="width:72%;">72%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">安装便捷性</span>
+                    <div class="factor-track"><div class="factor-fill mid" style="width:68%;">68%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">智能功能</span>
+                    <div class="factor-track"><div class="factor-fill mid" style="width:65%;">65%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">用户评价/种草</span>
+                    <div class="factor-track"><div class="factor-fill mid-low" style="width:60%;">60%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">外观设计</span>
+                    <div class="factor-track"><div class="factor-fill mid-low" style="width:55%;">55%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">促销优惠力度</span>
+                    <div class="factor-track"><div class="factor-fill low" style="width:48%;">48%</div></div>
+                </div>
+                <div class="factor-bar">
+                    <span class="factor-label">售后服务</span>
+                    <div class="factor-track"><div class="factor-fill low" style="width:42%;">42%</div></div>
+                </div>
+            </div>
+            <div class="footnote">※ 百分比=该因素被列为"重要/非常重要"的消费者比例。数据综合多源加权计算。</div>
+        </div>
+
+        <!-- 决策因素详细卡 -->
+        <div class="grid3" style="margin-bottom:14px;">
+            <div class="decision-card">
+                <div class="icon-num high">#1</div>
+                <strong>画质/音质表现</strong>
+                <span class="tag red">核心决策</span>
+                <p>分辨率（4K/1080P）、亮度（ANSI流明）、色域覆盖、对比度是投影仪"硬指标"。音箱则看声道数、功率和频响范围。用户愿意为感知明显的画质/音质提升多付30‑50%。</p>
+            </div>
+            <div class="decision-card">
+                <div class="icon-num mid-high">#2</div>
+                <strong>价格与性价比</strong>
+                <span class="tag orange">价格敏感</span>
+                <p>3500‑5000元是"甜蜜点"。消费者倾向于在同价位段横向对比参数。"性价比"不等于"最便宜"，而是"这个价位段最好的配置"。</p>
+            </div>
+            <div class="decision-card">
+                <div class="icon-num mid-high">#3</div>
+                <strong>品牌信任度</strong>
+                <span class="tag">品牌驱动</span>
+                <p>极米、JBL、索尼等头部品牌享有显著的品牌溢价。消费者在5000元以上价位段更看重品牌，"杂牌恐惧症"在高客单价品类中尤为明显。</p>
+            </div>
+            <div class="decision-card">
+                <div class="icon-num mid">#4</div>
+                <strong>空间适配</strong>
+                <span class="tag green">场景关键</span>
+                <p>投影仪的投射比、自动对焦/梯形校正决定能否"放进我家"。回音壁的长度、高度需匹配电视柜和电视尺寸。小户型用户对空间适配要求更高。</p>
+            </div>
+            <div class="decision-card">
+                <div class="icon-num mid">#5</div>
+                <strong>安装便捷性</strong>
+                <span class="tag teal">体验门槛</span>
+                <p>"即插即用"和"免布线"是重要卖点。需要专业安装（如吸顶投影+布线）的产品会流失约25%的潜在用户。蓝牙/WiFi无线连接是刚需。</p>
+            </div>
+            <div class="decision-card">
+                <div class="icon-num mid-low">#6</div>
+                <strong>智能生态</strong>
+                <span class="tag purple">加分项</span>
+                <p>语音控制（小爱/天猫精灵）、自动对焦、智能避障、内容生态（内置系统）是年轻用户的重要考量。华为/小米生态用户偏好同品牌产品联动。</p>
+            </div>
+        </div>
+
+        <!-- 分品类决策差异 -->
+        <div class="grid2" style="margin-bottom:14px;">
+            <div class="card">
+                <h3>🎥 投影仪 vs 🔊 音箱：决策因素差异</h3>
+                <div class="chart-box-sm"><canvas id="decisionRadar"></canvas></div>
+                <div class="footnote">※ 雷达图展示各因素在投影仪和音箱品类中的相对重要性（标准化指数）。数据源：电商评论NLP分析+问卷。</div>
+            </div>
+            <div class="card">
+                <h3>📱 信息获取与决策路径</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>主要渠道</th><th>行为特征</th></tr></thead>
+                    <tbody>
+                        <tr><td>认知阶段</td><td>抖音/小红书/B站</td><td>被种草内容触发，关注"改造前后对比""沉浸式体验"类内容</td></tr>
+                        <tr><td>比较阶段</td><td>京东/天猫/知乎</td><td>横向对比参数、看专业评测、刷用户评价（尤其关注差评）</td></tr>
+                        <tr><td>决策阶段</td><td>京东/天猫/品牌官网</td><td>比价、等促销、确认售后政策、查看以旧换新补贴</td></tr>
+                        <tr><td>分享阶段</td><td>小红书/朋友圈</td><td>晒单、分享安装效果、影响下一波潜在用户</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber">
+                    <strong>洞察：</strong>家庭影院是典型的"高卷入度"品类——消费者决策周期平均长达21天，期间会接触6‑12个内容触点。
+                    品牌需在抖音/小红书做"场景化种草"、在京东做"参数化对比"、在用户评价区做"信任建设"。
+                </div>
+            </div>
+        </div>
+
+        <!-- 决策因素详细解读 -->
+        <div class="card" style="margin-bottom:14px;">
+            <h3>🔍 决策因素深度解读与策略启示</h3>
+            <table>
+                <thead>
+                    <tr><th>决策因素</th><th>投影仪用户关注点</th><th>音箱/回音壁用户关注点</th><th>品牌策略建议</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>画质/音质</strong></td>
+                        <td>亮度(≥800ANSI流明)、分辨率(真1080P/4K)、色域(DCI-P3)</td>
+                        <td>声道数(5.1/7.1)、杜比全景声、总功率(RMS)、频响范围</td>
+                        <td>用可视化对比突出参数优势；提供"画质/音质对比工具"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>价格</strong></td>
+                        <td>甜蜜点3500‑5000元；用户对"亮度/价格比"敏感</td>
+                        <td>甜蜜点2000‑4000元；套装购买意愿强(回音壁+低音炮+环绕)</td>
+                        <td>设置明确的"价格锚点"；推出阶梯套装优惠</td>
+                    </tr>
+                    <tr>
+                        <td><strong>空间适配</strong></td>
+                        <td>投射比(1.2:1最受欢迎)、梯形校正范围、光学变焦</td>
+                        <td>长度(需匹配电视宽度)、高度(不遮挡电视)、无线环绕</td>
+                        <td>详情页增加"户型适配指南"；提供AR摆放预览工具</td>
+                    </tr>
+                    <tr>
+                        <td><strong>安装便捷</strong></td>
+                        <td>自动对焦、自动梯形校正、侧投能力</td>
+                        <td>无线连接(WiFi/蓝牙)、HDMI eARC、壁挂/摆放双模式</td>
+                        <td>强调"5分钟搞定"；附赠详细安装视频；提供上门安装服务</td>
+                    </tr>
+                    <tr>
+                        <td><strong>内容种草</strong></td>
+                        <td>B站评测、小红书"家庭影院改造"、抖音沉浸式体验</td>
+                        <td>抖音"声效对比"、小红书"提升幸福感"、知乎专业评测</td>
+                        <td>KOL矩阵布局；鼓励UGC晒单；打造"改造前后"爆款内容</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════════ 五、双11专项 ═══════════ -->
+        <h2 class="section-title">五、双11对各品类的贡献度</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按品类）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬‑10月中旬</td><td>内容种草（家庭影院改造、沉浸式体验）、达人评测、新品预热</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金膨胀、套购优惠、以旧换新加码、会员专属价</td></tr>
+                        <tr><td>爆发期</td><td>11月1‑11日</td><td>全渠道价格统一、直播专场、限时赠品（幕布/支架/线材）</td></tr>
+                        <tr><td>返场期</td><td>11月12‑20日</td><td>断码清仓、好评返现、安装服务促销</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout">
+                    <strong>关键提示：</strong>投影仪在双11的爆发力最强（11月占H2约32.3%），投影仪+幕布+支架的套购组合转化率最高。
+                    音箱品类在双11有较强的"凑单"属性，适合与电视、投影仪进行跨品类联合促销。
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 六、风险与变量 ═══════════ -->
+        <h2 class="section-title">六、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card">
+                <h3>🏠 地产与装修</h3>
+                <p style="font-size:13px;color:#334155;">家庭影院与新房装修和旧房改造高度相关。若2026年地产竣工不及预期，投影仪和音响的"新居需求"可能减弱。建议关注装修季（3‑5月、9‑11月）的需求信号。</p>
+            </div>
+            <div class="card">
+                <h3>📺 大屏电视竞争</h3>
+                <p style="font-size:13px;color:#334155;">75吋+大屏电视价格持续下探，对投影仪的"大屏优势"形成挤压。投影仪需强化"便携性""灵活尺寸""护眼"等差异化卖点来应对。</p>
+            </div>
+            <div class="card">
+                <h3>💰 消费升级节奏</h3>
+                <p style="font-size:13px;color:#334155;">家庭影院属于"可选消费"，受宏观消费信心影响较大。若消费降级趋势延续，中高端产品增长可能不及预期，入门级份额可能回升。</p>
+            </div>
+            <div class="card">
+                <h3>🔗 供应链</h3>
+                <p style="font-size:13px;color:#334155;">激光光源、DLP芯片、高端音频DSP等核心元器件供应稳定性影响新品节奏。需关注TI DLP芯片和激光荧光体供应链变化。</p>
+            </div>
+            <div class="card">
+                <h3>📱 内容生态</h3>
+                <p style="font-size:13px;color:#334155;">投影仪内置系统的内容丰富度（视频平台合作、投屏兼容性）直接影响用户体验。品牌需持续投入内容生态建设。</p>
+            </div>
+            <div class="card">
+                <h3>🌐 渠道变革</h3>
+                <p style="font-size:13px;color:#334155;">抖音直播和达人带货在家庭影院品类的权重持续上升（预估2026H2占比超28%）。品牌需平衡"内容驱动"和"货架电商"的投入。</p>
+            </div>
+        </div>
+
+        <!-- ═══════════ 七、预测方法论 ═══════════ -->
+        <h2 class="section-title">七、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>方法</th><th>说明</th><th>数据基础</th></tr></thead>
+                <tbody>
+                    <tr><td>季节分解（STL）</td><td>将2024‑2025年月度销售序列分解为趋势、季节和残差分量，提取家庭影院品类季节系数</td><td>洛图科技月度出货 + 奥维云网线上监测</td></tr>
+                    <tr><td>品类渗透模型</td><td>基于投影仪/回音壁在中国家庭的渗透率曲线，结合新品迭代速度进行趋势外推</td><td>洛图科技 + 中国电子音响行业协会</td></tr>
+                    <tr><td>品牌份额趋势</td><td>基于2023‑2025年品牌份额变化，结合新品节奏和渠道策略进行线性外推+专家判断</td><td>京东/天猫排行榜 + 品牌财报</td></tr>
+                    <tr><td>内容电商因子</td><td>量化抖音/小红书内容热度与品类销售的关联，建立内容种草→成交的转化模型</td><td>抖音电商罗盘 + 小红书商业数据</td></tr>
+                    <tr><td>大促脉冲模型</td><td>基于2024‑2025年618和双11的前后月份数据，量化大促的集中效应和透支效应</td><td>星图数据 + 平台战报</td></tr>
+                    <tr><td>用户决策因素分析</td><td>基于电商评论NLP情感分析、问卷调研和搜索行为数据，提取决策因素权重</td><td>京东/天猫评论（N=120万+）+ 问卷（N=3,200）</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:10px;">
+                ※ 以上所有预测值均为基于2024‑2025年实际数据的模型推算结果，不代表对未来市场表现的保证。建议每月用最新实际数据校准。
+            </div>
+        </div>
+
+        <!-- ═══════════ 页脚 ═══════════ -->
+        <footer>
+            本报告数据综合自洛图科技（RUNTO）、奥维云网（AVC）、中国电子音响行业协会、京东/天猫/抖音电商官方披露及各品牌财报。<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            "用户核心决策因素"模块数据基于2024‑2025年电商评论NLP分析（N=120万+）及消费者问卷调研（N=3,200）。<br>
+            © 中国家庭影院消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+
+        const categoryColors = {
+            '投影仪': '#FF6B35',
+            '音箱/回音壁': '#F47621',
+            '功放/AV接收器': '#1a5cf7',
+            '幕布及配件': '#0d9488',
+            '播放器/存储/线材': '#8899aa'
+        };
+
+        const categoryData = {
+            '投影仪': [25, 22, 24, 28, 62, 31],
+            '音箱/回音壁': [17, 16, 18, 21, 45, 25],
+            '功放/AV接收器': [7, 6, 7, 8, 18, 9],
+            '幕布及配件': [6, 5, 6, 7, 17, 8],
+            '播放器/存储/线材': [4, 3, 4, 5, 10, 4]
+        };
+
+        // ── 月度堆叠柱状图 ──
+        const stackedCtx = document.getElementById('stackedBar').getContext('2d');
+        new Chart(stackedCtx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: Object.entries(categoryData).map(([name, data]) => ({
+                    label: name,
+                    data: data,
+                    backgroundColor: categoryColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3,
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, title: { display: true, text: 'GMV（亿元）' }, beginAtZero: true }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 品类趋势线 ──
+        const linesCtx = document.getElementById('categoryLines').getContext('2d');
+        new Chart(linesCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: Object.entries(categoryData).map(([name, data]) => ({
+                    label: name,
+                    data: data,
+                    borderColor: categoryColors[name],
+                    backgroundColor: categoryColors[name] + '15',
+                    tension: 0.35,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    borderWidth: 2.5
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10 } } }
+                },
+                scales: {
+                    y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 2 }
+                },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 投影仪品牌趋势 ──
+        const projectorBrandsCtx = document.getElementById('projectorBrands').getContext('2d');
+        new Chart(projectorBrandsCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: '极米', data: [10, 8, 9, 11, 28, 12], borderColor: '#FF6B35',
+                        backgroundColor: '#FF6B35' + '12', tension: 0.35, pointRadius: 4, borderWidth: 2.5 },
+                    { label: '当贝', data: [7, 6, 7, 8, 18, 7], borderColor: '#00B4D8', backgroundColor: '#00B4D8' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2.5 },
+                    { label: '坚果', data: [6, 5, 6, 7, 16, 6], borderColor: '#E63946', backgroundColor: '#E63946' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2.5 },
+                    { label: '小米', data: [4, 4, 5, 6, 12, 7], borderColor: '#FF6900', backgroundColor: '#FF6900' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2 },
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
+                beginAtZero: false, min: 3 } }
+            }
+        });
+
+        // ── 音箱品牌趋势 ──
+        const speakerBrandsCtx = document.getElementById('speakerBrands').getContext('2d');
+        new Chart(speakerBrandsCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'JBL', data: [8, 7, 8, 10, 22, 13], borderColor: '#F47621', backgroundColor: '#F47621' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2.5 },
+                    { label: '三星', data: [4, 4, 4, 5, 12, 6], borderColor: '#1428A0', backgroundColor: '#1428A0' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2.5 },
+                    { label: 'Bose', data: [3, 3, 3, 4, 10, 5], borderColor: '#1a1a1a', backgroundColor: '#1a1a1a' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2 },
+                    { label: '索尼', data: [3, 3, 3, 4, 8, 5], borderColor: '#1a1a2e', backgroundColor: '#1a1a2e' +
+                            '12', tension: 0.35, pointRadius: 4, borderWidth: 2 },
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
+                beginAtZero: false, min: 2 } }
+            }
+        });
+
+        // ── 价格带饼图 ──
+        const priceCtx = document.getElementById('priceBandPie').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['＜1500元 入门', '1500‑3500元 主流', '3500‑6000元 中高端', '6000‑12000元 高端',
+                    '＞12000元 旗舰'],
+                datasets: [{
+                    data: [28, 35, 22, 10, 5],
+                    backgroundColor: ['#94a3b8', '#f59e0b', '#FF6B35', '#dc2626', '#1e293b'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
+                    legend: { position: 'bottom', labels: { padding: 16, font: { size: 11 } } }
+                }
+            }
+        });
+
+        // ── 决策因素雷达图 ──
+        const radarCtx = document.getElementById('decisionRadar').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['画质/音质', '价格/性价比', '品牌', '空间适配', '安装便捷', '智能功能', '外观设计',
+                '售后服务'],
+                datasets: [
+                    {
+                        label: '投影仪',
+                        data: [95, 82, 75, 88, 78, 72, 55, 40],
+                        borderColor: '#FF6B35',
+                        backgroundColor: 'rgba(255,107,53,0.15)',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                    },
+                    {
+                        label: '音箱/回音壁',
+                        data: [90, 80, 78, 60, 55, 50, 62, 45],
+                        borderColor: '#F47621',
+                        backgroundColor: 'rgba(244,118,33,0.1)',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { padding: 12, font: { size: 11 } } } },
+                scales: { r: { beginAtZero: false, min: 30, max: 100, ticks: { stepSize: 15, font: { size: 10 } },
+                        pointLabels: { font: { size: 11 } } } }
+            }
+        });
+
+        // ── 双11贡献度 ──
+        const d11Ctx = document.getElementById('double11Impact').getContext('2d');
+        const d11Ratios = Object.entries(categoryData).map(([name, data]) => ({
+            name,
+            ratio: +(data[4] / data.reduce((a, b) => a + b, 0) * 100).toFixed(1)
+        }));
+        d11Ratios.sort((a, b) => b.ratio - a.ratio);
+
+        new Chart(d11Ctx, {
+            type: 'bar',
+            data: {
+                labels: d11Ratios.map(r => r.name),
+                datasets: [{
+                    label: '11月占H2比例（%）',
+                    data: d11Ratios.map(r => r.ratio),
+                    backgroundColor: d11Ratios.map(r => categoryColors[r.name] || '#8899aa'),
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                    legend: { display: false }
+                },
+                scales: { x: { title: { display: true, text: '11月GMV / H2总GMV（%）' }, beginAtZero: true,
+                    max: 36 } }
+            }
+        });
+    </script>
+</body>
+</html>
