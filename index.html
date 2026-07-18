@@ -310,74 +310,13 @@
       pointer-events:none; font-weight:600;
     }
   /* ── PASSWORD GATE ── */
-  .pw-gate {
-    position:fixed; inset:0; z-index:99999;
-    display:flex; align-items:center; justify-content:center;
-    background:#0b0f17;
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-  }
-  .pw-box {
-    background:rgba(18,24,37,.95);
-    border:1px solid rgba(148,163,184,.2);
-    border-radius:18px; padding:40px 36px;
-    width:400px; max-width:92vw;
-    box-shadow:0 8px 40px rgba(0,0,0,.4);
-    text-align:center;
-  }
-  .pw-icon { font-size:2.8rem; margin-bottom:10px; }
-  .pw-title { font-size:1.2rem; font-weight:700; color:#f8fafc; margin-bottom:6px; }
-  .pw-sub { font-size:0.8rem; color:#94a3b8; margin-bottom:24px; line-height:1.5; }
-  .pw-input {
-    width:100%; padding:11px 16px; border-radius:10px;
-    border:1.5px solid rgba(148,163,184,.25); background:rgba(15,23,42,.6);
-    color:#f8fafc; font-size:1rem; text-align:center;
-    outline:none; font-family:inherit; letter-spacing:3px;
-    transition:border-color 0.2s;
-  }
-  .pw-input:focus { border-color:#38bdf8; }
-  .pw-input:disabled { opacity:0.4; cursor:not-allowed; }
-  .pw-err { color:#ef4444; font-size:0.8rem; margin-top:10px; min-height:18px; }
-  .pw-attempts { font-size:0.78rem; color:#fbbf24; margin-top:8px; min-height:18px; }
-  .pw-locked { margin:8px 0; }
-  .pw-lock-icon { font-size:2rem; margin-bottom:4px; }
-  .pw-lock-title { font-size:1rem; font-weight:600; color:#f87171; margin-bottom:8px; }
-  .pw-countdown { font-size:2rem; font-weight:700; color:#38bdf8; font-variant-numeric:tabular-nums; margin-bottom:6px; }
-  .pw-lock-sub { font-size:0.78rem; color:#94a3b8; }
-  .pw-btn {
-    margin-top:16px; width:100%; padding:11px;
-    border-radius:10px; border:none;
-    background:linear-gradient(135deg,#38bdf8,#818cf8);
-    color:#fff; font-size:1rem; font-weight:600;
-    cursor:pointer; font-family:inherit;
-    transition:opacity 0.2s;
-  }
-  .pw-btn:hover { opacity:0.88; }
-  .pw-btn:disabled { opacity:0.4; cursor:not-allowed; }
 
   </style>
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
-<div class="pw-gate" id="pwGate">
-  <div class="pw-box">
-    <div class="pw-icon">🔒</div>
-    <div class="pw-title">访问验证</div>
-    <div class="pw-sub">请输入访问密码<br><span style="font-size:0.72rem;color:#64748b;">连续3次错误将锁定3分钟</span></div>
-    <input type="password" class="pw-input" id="pwInput" placeholder="输入密码..." autofocus>
-    <div class="pw-err" id="pwErr"></div>
-    <div class="pw-locked" id="pwLocked" style="display:none">
-      <div class="pw-lock-icon">⏳</div>
-      <div class="pw-lock-title">密码错误次数过多，已锁定</div>
-      <div class="pw-countdown" id="pwCountdown">03:00</div>
-      <div class="pw-lock-sub">请等待倒计时结束后重试</div>
-    </div>
-    <div class="pw-attempts" id="pwAttempts"></div>
-    <button class="pw-btn" id="pwBtn" onclick="checkPw()">验证</button>
-  </div>
-</div>
 <!-- MAIN CONTENT -->
-<div id="pageContent" style="display:none">
+<div id="pageContent">
 
 <div class="header">
   <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
@@ -421,8 +360,6 @@
     </a>
   </div>
 
-    
-    
 <!-- ② 选购指南 -->
   <div class="section s7" id="buying-guides">
     <div class="section-header">
@@ -685,89 +622,35 @@
 
 <script>
   /* ── SHARED PASSWORD CHECK ── */
-  var CORRECT_PW = '2026@qz';
-  var MAX_TRIES = 3;
-  var LOCK_SECS = 180;
-  var AUTH_EXPIRY_MS = Number.MAX_SAFE_INTEGER;
-  var FAILS_KEY = 'chaohong-auth-fails';
-  var AUTH_KEY = 'chaohong-shared-auth';
-  var countdownTimer = null;
 
-  function getFails() {
-    try { return JSON.parse(localStorage.getItem(FAILS_KEY)) || {count:0, lockUntil:0}; }
+  var AUTH_EXPIRY_MS = Number.MAX_SAFE_INTEGER;
+
+  ; }
     catch(e) { return {count:0, lockUntil:0}; }
   }
-  function saveFails(f) { localStorage.setItem(FAILS_KEY, JSON.stringify(f)); }
 
-  function getAuth() {
-    try { return localStorage.getItem(AUTH_KEY) ? true : null; }
     catch(e) { return null; }
   }
 
-  var pwGate = document.getElementById('pwGate');
-  var pwContent = document.getElementById('pageContent');
-  var pwInput = document.getElementById('pwInput');
-  var pwErr = document.getElementById('pwErr');
-  var pwBtn = document.getElementById('pwBtn');
-  var pwLocked = document.getElementById('pwLocked');
-  var pwCountdown = document.getElementById('pwCountdown');
-  var pwAttempts = document.getElementById('pwAttempts');
-
-  function showLocked(lockUntil) {
-    pwInput.style.display = 'none'; pwBtn.style.display = 'none';
-    pwErr.textContent = ''; pwAttempts.textContent = '';
-    pwLocked.style.display = 'block';
-    updateCountdown(lockUntil);
-  }
-
-  function updateCountdown(lockUntil) {
-    clearInterval(countdownTimer);
-    function tick() {
-      var remain = Math.max(0, Math.ceil((lockUntil - Date.now()) / 1000));
-      var m = Math.floor(remain / 60), s = remain % 60;
-      pwCountdown.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-      if (remain <= 0) { clearInterval(countdownTimer); unlockInput(); }
     }
-    tick(); countdownTimer = setInterval(tick, 200);
   }
 
-  function unlockInput() {
-    pwLocked.style.display = 'none'; pwInput.style.display = ''; pwBtn.style.display = '';
-    pwInput.disabled = false; pwBtn.disabled = false;
-    pwErr.textContent = ''; pwAttempts.textContent = '';
-    pwInput.value = ''; pwInput.focus();
-    saveFails({count:0, lockUntil:0});
+  );
   }
 
-  function checkPw() {
-    if (pwInput.value === CORRECT_PW) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify({expires: Date.now() + AUTH_EXPIRY_MS}));
-      localStorage.removeItem(FAILS_KEY);
-      pwGate.style.display = 'none'; pwContent.style.display = 'block';
+  ));
       return;
     }
-    var f = getFails();
     f.count = (f.count || 0) + 1;
-    if (f.count >= MAX_TRIES) {
-      f.lockUntil = Date.now() + LOCK_SECS * 1000;
-      saveFails(f); showLocked(f.lockUntil);
-      pwInput.disabled = true; pwBtn.disabled = true;
     } else {
-      saveFails(f);
-      pwErr.textContent = '密码错误，还剩 ' + (MAX_TRIES - f.count) + ' 次尝试机会';
-      pwAttempts.textContent = ''; pwInput.value = ''; pwInput.focus();
     }
   }
 
-  pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkPw(); });
+   });
 
   (function() {
-    var auth = getAuth();
-    if (auth) { pwGate.style.display = 'none'; pwContent.style.display = 'block'; return; }
-    var f = getFails();
+    
     if (f.lockUntil && f.lockUntil > Date.now()) {
-      showLocked(f.lockUntil);
-      pwInput.disabled = true; pwBtn.disabled = true;
     }
   })();
 

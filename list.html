@@ -131,7 +131,6 @@
     .card-arr { font-size:0.82rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
     .card:hover .card-arr { opacity:1; }
 
-    
     /* ── HEADER (index style) ── */
     .header {
       background: var(--header-bg);
@@ -220,338 +219,25 @@
     }
 
     /* ── PASSWORD GATE ── */
-    .pw-gate {
-      position:fixed; inset:0; z-index:9999;
-      display:flex; align-items:center; justify-content:center;
-      background:var(--bg);
-    }
-    .pw-box {
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:18px; padding:36px 32px;
-      width:380px; max-width:92vw;
-      box-shadow:0 8px 40px rgba(0,0,0,.35);
-      text-align:center;
-    }
-    .pw-icon { font-size:2.4rem; margin-bottom:8px; }
-    .pw-title { font-size:1.15rem; font-weight:700; margin-bottom:6px; color:var(--text); }
-    .pw-sub { font-size:0.8rem; color:var(--muted); margin-bottom:22px; }
-    .pw-input {
-      width:100%; padding:10px 14px; border-radius:10px;
-      border:1.5px solid var(--line); background:var(--bg-soft);
-      color:var(--text); font-size:0.95rem; text-align:center;
-      outline:none; font-family:inherit; letter-spacing:2px;
-      transition:border-color 0.2s;
-    }
-    .pw-input:focus { border-color:var(--accent); }
-    .pw-err { color:#ef4444; font-size:0.78rem; margin-top:8px; min-height:18px; }
-    .pw-btn {
-      margin-top:14px; width:100%; padding:10px;
-      border-radius:10px; border:none;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#fff; font-size:0.95rem; font-weight:600;
-      cursor:pointer; font-family:inherit;
-      transition:opacity 0.2s;
-    }
-    .pw-btn:hover { opacity:0.88; }
-    .pw-btn:disabled { opacity:0.4; cursor:not-allowed; }
-    .pw-input:disabled { opacity:0.4; cursor:not-allowed; }
-    .pw-attempts { font-size:0.78rem; color:#fbbf24; margin-top:8px; min-height:18px; }
-    .pw-locked { margin:8px 0; }
-    .pw-lock-icon { font-size:2rem; margin-bottom:4px; }
-    .pw-lock-title { font-size:1rem; font-weight:600; color:#f87171; margin-bottom:8px; }
-    .pw-countdown { font-size:2rem; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; margin-bottom:6px; }
-    .pw-lock-sub { font-size:0.78rem; color:var(--muted); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width:820px) { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
-    @media (max-width:480px) { .grid { grid-template-columns:1fr; } .page { padding:20px 16px 40px; } }
-  </style>
-</head>
-<body>
-
-<!-- PASSWORD GATE -->
-<div class="pw-gate" id="pwGate">
-  <div class="pw-box">
-    <div class="pw-icon">🔒</div>
-    <div class="pw-title">访问验证</div>
-    <div class="pw-sub">请输入访问密码</div>
-    <input type="password" class="pw-input" id="pwInput" placeholder="输入密码..." autofocus>
-    <div class="pw-err" id="pwErr"></div>
-    <div class="pw-locked" id="pwLocked" style="display:none">
-      <div class="pw-lock-icon">⏳</div>
-      <div class="pw-lock-title">密码错误次数过多，已锁定</div>
-      <div class="pw-countdown" id="pwCountdown">03:00</div>
-      <div class="pw-lock-sub">请等待倒计时结束后重试</div>
-    </div>
-    <div class="pw-attempts" id="pwAttempts"></div>
-    <button class="pw-btn" id="pwBtn" onclick="checkPw()">验证</button>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="pageContent" style="display:none">
-
-<div class="page">
-
-  <!-- HEADER -->
-  <!-- HEADER -->
-<div class="header">
-  <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
-    <span id="toggleIcon">&#127769;</span>
-    <span id="toggleText">深色</span>
-  </button>
-  <div class="header-inner">
-    <h1>超红传媒 · 选题清单</h1>
-    <p>按使用场景浏览内容规划表</p>
-    <div class="header-meta">
-      <span class="header-badge">📋 20 篇文档</span>
-      <span class="header-badge">🏷️ 2 大类型</span>
-      <span class="header-badge">&#128225; 三平台同步</span>
-    </div>
-  </div>
-</div>
-
-  <!-- NAV PILLS -->
-      <div class="nav-links">
-    <a class="nav-pill" href="index.html">📁 知识库导航</a>
-    <a class="nav-pill" href="timeline.html">📅 时间线</a>
-    <span class="nav-pill active">📋 选题清单</span>
-    <a class="nav-pill" href="framework.html">📊 全年框架</a>
-    <a class="nav-pill" href="tv.html">📺 电视品类</a>
-    <a class="nav-pill" href="market-research.html">📊 市场调研</a>
-    <a class="nav-pill" href="score-content-evaluation.html">⭐ 评分标准</a>
-  </div>
-
-  <!-- ═══════════════════════════════ 厨卫电器 · 5篇 ═══════════════════════════════ -->
-  <div class="sec d-kit" id="sec-kitchen" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">厨卫电器</span>
-      <span class="sec-count">5 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="content-plan-fridge.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🧊</span><span class="card-name">冰箱内容规划表</span></div>
-        <div class="card-desc">全年内容发布规划，覆盖多开门、超薄、嵌入式等核心场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-water-purifier.html" target="_blank">
-        <div class="card-row"><span class="card-icon">💧</span><span class="card-name">净水器内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖换滤芯周期、水质检测、家装净水方案</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-dishwasher.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🍽️</span><span class="card-name">洗碗机内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖台式/嵌入式/水槽式对比、套数选择</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-steam-oven.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🔥</span><span class="card-name">蒸烤箱内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖微蒸烤一体、烘焙入门、年夜饭等场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-smart-toilet.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🚽</span><span class="card-name">智能马桶内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖即热式/储热式、清洗功能、安装条件等核心场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ 家庭影音 · 3篇 ═══════════════════════════════ -->
-  <div class="sec d-movie" id="sec-movie" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">家庭影音</span>
-      <span class="sec-count">3 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="content-plan-tv.html" target="_blank">
-        <div class="card-row"><span class="card-icon">📺</span><span class="card-name">智能电视内容规划表</span></div>
-        <div class="card-desc">全年内容发布规划，涵盖视频、图文、直播等全格式排期</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-projector.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🎥</span><span class="card-name">投影仪内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖激光/LED、4K、超短焦等核心场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-home-theater.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🔊</span><span class="card-name">家庭影院内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖5.1/7.1声道、回音壁、客厅影院方案</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ 清洁电器 · 2篇 ═══════════════════════════════ -->
-  <div class="sec d-clean" id="sec-clean" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">清洁电器</span>
-      <span class="sec-count">2 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="content-plan-washer.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🫧</span><span class="card-name">洗衣机洗烘套装内容规划表</span></div>
-        <div class="card-desc">全年内容规划，涵盖装修季、618、双11等大促节点</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-robot-vacuum.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🧹</span><span class="card-name">扫地机器人内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖避障技术、地图建模、宠物毛发等</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ 环境电器 · 2篇 ═══════════════════════════════ -->
-  <div class="sec d-env" id="sec-env" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">环境电器</span>
-      <span class="sec-count">2 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="content-plan-ac.html" target="_blank">
-        <div class="card-row"><span class="card-icon">❄️</span><span class="card-name">空调内容规划表</span></div>
-        <div class="card-desc">全年内容发布规划，聚焦制冷季需求爆发、新风空调等</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-air-purifier.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🌿</span><span class="card-name">空气净化器内容规划表</span></div>
-        <div class="card-desc">全年内容规划，聚焦过敏季、雾霾天、宠物户、甲醛等场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ 电脑数码 · 2篇 ═══════════════════════════════ -->
-  <div class="sec d-digital" id="sec-digital" style="scroll-margin-top:90px">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">电脑数码</span>
-      <span class="sec-count">2 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="content-plan-laptop.html" target="_blank">
-        <div class="card-row"><span class="card-icon">💻</span><span class="card-name">笔记本电脑内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖轻薄本/游戏本/全能本对比、开学季等场景</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-      <a class="card" href="content-plan-gaming-monitor.html" target="_blank">
-        <div class="card-row"><span class="card-icon">🖥️</span><span class="card-name">电竞显示器内容规划表</span></div>
-        <div class="card-desc">全年内容规划，覆盖刷新率/响应时间/HDR/分辨率为核心决策点</div>
-        <div class="card-arr">查看 →</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="foot">
-    超红传媒知识库 &nbsp;·&nbsp; 选题清单 &nbsp;·&nbsp; 14 篇 &nbsp;·&nbsp; 2026
-  </div>
-
-</div><!-- /page -->
-
-</div><!-- /pageContent -->
-
-<script>
-  /* ── SHARED PASSWORD CHECK ── */
-  var CORRECT_PW = '2026@qz';
-  var MAX_TRIES = 3;
-  var LOCK_SECS = 180;
-  var AUTH_EXPIRY_MS = Number.MAX_SAFE_INTEGER;
-  var FAILS_KEY = 'chaohong-auth-fails';
-  var AUTH_KEY = 'chaohong-shared-auth';
-  var countdownTimer = null;
-
-  function getFails() {
-    try { return JSON.parse(localStorage.getItem(FAILS_KEY)) || {count:0, lockUntil:0}; }
-    catch(e) { return {count:0, lockUntil:0}; }
-  }
-  function saveFails(f) { localStorage.setItem(FAILS_KEY, JSON.stringify(f)); }
-
-  function getAuth() {
-    try { return localStorage.getItem(AUTH_KEY) ? true : null; }
     catch(e) { return null; }
   }
 
-  var pwGate = document.getElementById('pwGate');
-  var pwContent = document.getElementById('pageContent');
-  var pwInput = document.getElementById('pwInput');
-  var pwErr = document.getElementById('pwErr');
-  var pwBtn = document.getElementById('pwBtn');
-  var pwLocked = document.getElementById('pwLocked');
-  var pwCountdown = document.getElementById('pwCountdown');
-  var pwAttempts = document.getElementById('pwAttempts');
-
-  function showLocked(lockUntil) {
-    pwInput.style.display = 'none';
-    pwBtn.style.display = 'none';
-    pwErr.textContent = '';
-    pwAttempts.textContent = '';
-    pwLocked.style.display = 'block';
-    updateCountdown(lockUntil);
-  }
-
-  function updateCountdown(lockUntil) {
-    clearInterval(countdownTimer);
-    function tick() {
-      var remain = Math.max(0, Math.ceil((lockUntil - Date.now()) / 1000));
-      var m = Math.floor(remain / 60);
-      var s = remain % 60;
-      pwCountdown.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-      if (remain <= 0) {
-        clearInterval(countdownTimer);
-        unlockInput();
-      }
     }
     tick();
-    countdownTimer = setInterval(tick, 200);
   }
 
-  function unlockInput() {
-    pwLocked.style.display = 'none';
-    pwInput.style.display = '';
-    pwBtn.style.display = '';
-    pwInput.disabled = false;
-    pwBtn.disabled = false;
-    pwErr.textContent = '';
-    pwAttempts.textContent = '';
-    pwInput.value = '';
-    pwInput.focus();
-    saveFails({count:0, lockUntil:0});
+  );
   }
 
-  function checkPw() {
-    if (pwInput.value === CORRECT_PW) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify({expires: Date.now() + AUTH_EXPIRY_MS}));
-      localStorage.removeItem(FAILS_KEY);
-      pwGate.style.display = 'none';
-      pwContent.style.display = 'block';
+  ));
       return;
     }
-    var f = getFails();
     f.count = (f.count || 0) + 1;
-    if (f.count >= MAX_TRIES) {
-      f.lockUntil = Date.now() + LOCK_SECS * 1000;
-      saveFails(f);
-      showLocked(f.lockUntil);
-      pwInput.disabled = true;
-      pwBtn.disabled = true;
     } else {
-      saveFails(f);
-      var left = MAX_TRIES - f.count;
-      pwErr.textContent = '密码错误，还剩 ' + left + ' 次尝试机会';
-      pwAttempts.textContent = '';
-      pwInput.value = '';
-      pwInput.focus();
     }
   }
 
-  pwInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') checkPw();
   });
 
   // Init — check shared auth first, then fails lock
@@ -581,7 +267,6 @@
     btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
   }
 
-  
   function toggleTheme() {
     const html = document.documentElement;
     const cur = html.getAttribute("data-theme") || "light";
