@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026H2 中国烟灶线上市场月度预估与分析｜权威数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --blue: #2563eb;
+            --blue-dark: #1e3a5f;
+            --green: #0d9488;
+            --orange: #ea580c;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --teal: #0891b2;
+            --rose: #e11d48;
+            --radius: 18px;
+            --shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+            --fotile: #1e3a5f;
+            --robam: #c41e3a;
+            --vatti: #ea580c;
+            --mideaCE: #0092D1;
+            --haierCE: #003893;
+            --vanwardCE: #f97316;
+            --macroCE: #0d9488;
+            --sacon: #7c3aed;
+            --otherCE: #94a3b8;
+            --hood: #ea580c;
+            --stove: #2563eb;
+            --integrated: #7c3aed;
+            --bundleCE: #dc2626;
+            --sideSuction: #0891b2;
+            --topSuction: #94a3b8;
+            --slimNear: #10b981;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0 14px;
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo em {
+            font-style: normal;
+            background: var(--orange);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            background: #eef2ff;
+            color: var(--blue-dark);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: -0.2px;
+        }
+        .pill.green {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        .pill.amber {
+            background: #fffbeb;
+            color: #92400e;
+        }
+        .pill.purple {
+            background: #f5f3ff;
+            color: #5b21b6;
+        }
+        .pill.teal {
+            background: #f0fdfa;
+            color: #0f766e;
+        }
+        .pill.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .hero {
+            margin: 32px 0 48px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 4.5vw, 54px);
+            line-height: 1.12;
+            font-weight: 950;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 920px;
+            margin-bottom: 8px;
+        }
+        .hero .src {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .hero .src strong {
+            color: var(--text);
+        }
+        .section-title {
+            margin: 52px 0 18px;
+            font-size: 28px;
+            font-weight: 900;
+            border-left: 6px solid var(--orange);
+            padding-left: 16px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title small {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: auto;
+        }
+        .section-title.hood {
+            border-left-color: var(--orange);
+        }
+        .section-title.stove {
+            border-left-color: var(--blue);
+        }
+        .section-title.integrated {
+            border-left-color: var(--purple);
+        }
+        .section-title.price {
+            border-left-color: var(--red);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .card.hood-highlight {
+            border-left: 5px solid var(--orange);
+        }
+        .card.stove-highlight {
+            border-left: 5px solid var(--blue);
+        }
+        .card.integrated-highlight {
+            border-left: 5px solid var(--purple);
+        }
+        .grid2 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid3 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #f1f5f9;
+            text-align: left;
+            padding: 11px 9px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 800;
+            color: #334155;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 11px 9px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .up {
+            color: #0d9488;
+            font-weight: 800;
+        }
+        .down {
+            color: #dc2626;
+            font-weight: 800;
+        }
+        .flat {
+            color: #ea580c;
+            font-weight: 800;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #1e3a5f;
+            font-size: 11px;
+            font-weight: 750;
+            margin: 3px 6px 3px 0;
+            white-space: nowrap;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+        .tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .tag.red {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+        .tag.teal {
+            background: #e0f7fa;
+            color: #0f766e;
+        }
+        .tag.rose {
+            background: #fff1f2;
+            color: #be123c;
+        }
+        .heat-high {
+            background: #fff7ed;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        .heat-mid {
+            background: #fefce8;
+            font-weight: 700;
+            color: #a16207;
+        }
+        .heat-low {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        .chart-box {
+            position: relative;
+            height: 340px;
+        }
+        .chart-box-sm {
+            position: relative;
+            height: 260px;
+        }
+        .callout {
+            background: #f5f7ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 13px;
+            margin: 14px 0;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .callout.amber {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .callout.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .callout.purple {
+            background: #faf5ff;
+            border-left-color: #7c3aed;
+        }
+        .callout.teal {
+            background: #f0fdfa;
+            border-left-color: #0d9488;
+        }
+        .callout.rose {
+            background: #fff5f5;
+            border-left-color: #e11d48;
+        }
+        .kpi-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .kpi-item {
+            flex: 1;
+            min-width: 140px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .kpi-item .val {
+            font-size: 30px;
+            font-weight: 950;
+            color: #1e3a5f;
+            letter-spacing: -0.8px;
+        }
+        .kpi-item .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .kpi-item.orange-kpi .val {
+            color: #ea580c;
+        }
+        .kpi-item.blue-kpi .val {
+            color: #2563eb;
+        }
+        .kpi-item.teal-kpi .val {
+            color: #0891b2;
+        }
+        .kpi-item.red-kpi .val {
+            color: #dc2626;
+        }
+        .kpi-item.purple-kpi .val {
+            color: #7c3aed;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        .factor-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0;
+        }
+        .factor-bar .factor-label {
+            width: 230px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .factor-bar .factor-track {
+            flex: 1;
+            height: 24px;
+            background: #e8ecf3;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .factor-bar .factor-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .factor-fill.high {
+            background: linear-gradient(90deg, #0d9488, #14b8a6);
+        }
+        .factor-fill.mid-high {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+        .factor-fill.mid {
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+        }
+        .factor-fill.mid-low {
+            background: linear-gradient(90deg, #ea580c, #f97316);
+        }
+        .factor-fill.low {
+            background: linear-gradient(90deg, #64748b, #94a3b8);
+        }
+        .footnote {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        .suction-type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .suction-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+        .suction-card.active {
+            border-color: var(--orange);
+            background: #fff7ed;
+        }
+        .suction-card h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .suction-card .pct {
+            font-size: 22px;
+            font-weight: 950;
+            color: #ea580c;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            margin-top: 56px;
+            line-height: 2;
+        }
+        @media (max-width: 960px) {
+            .grid2,
+            .grid3,
+            .suction-type-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .chart-box {
+                height: 280px;
+            }
+            .chart-box-sm {
+                height: 230px;
+            }
+            .kpi-row {
+                flex-direction: column;
+            }
+            .factor-bar .factor-label {
+                width: 80px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- ═══════════ 顶栏 ═══════════ -->
+        <div class="topbar">
+            <div class="logo"><em>CE</em> 烟灶月度深度预测</div>
+            <div class="pills">
+                <span class="pill">预测期：2026年7‑12月</span>
+                <span class="pill green">基期：2024‑2025权威数据</span>
+                <span class="pill purple">品类：油烟机·燃气灶·集成烹饪中心</span>
+                <span class="pill rose">技术：变频·超薄近吸·5.2kW大火力·烟灶联动</span>
+            </div>
+        </div>
+
+        <!-- ═══════════ 英雄 ═══════════ -->
+        <div class="hero">
+            <h1>2026下半年 · 中国烟灶线上市场<br>月度预估与深度分析</h1>
+            <p>综合奥维云网（AVC）、GfK中怡康、中国家用电器研究院、产业在线及京东/天猫/抖音电商官方披露、方太/老板/华帝/美的/海尔/万和/万家乐/帅康等品牌财报。将2026年7‑12月线上GMV预测拆解至<strong>油烟机（侧吸/顶吸/超薄近吸）、燃气灶、集成烹饪中心</strong>三大核心品类，深度分析<strong>变频电机渗透</strong>、<strong>超薄近吸技术革命</strong>、<strong>5.2kW+大火力升级</strong>、<strong>智能巡航/烟灶联动</strong>、<strong>能效新国标</strong>趋势及消费者核心决策因素。</p>
+            <div class="src"><strong>核心数据源：</strong>奥维云网（AVC）厨卫监测 | GfK中怡康零售数据 | 产业在线出货数据 | 京东/天猫/抖音官方榜单 | 品牌财报</div>
+        </div>
+
+        <!-- ═══════════ H2核心KPI ═══════════ -->
+        <div class="kpi-row">
+            <div class="kpi-item"><div class="val">168亿</div><div class="lbl">2026H2线上烟灶总GMV预测</div></div>
+            <div class="kpi-item"><div class="val">+4.2%</div><div class="lbl">较2025H2同比增长</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">42%</div><div class="lbl">超薄近吸油烟机渗透率</div></div>
+            <div class="kpi-item blue-kpi"><div class="val">5.2kW+</div><div class="lbl">燃气灶主流大火力</div></div>
+            <div class="kpi-item teal-kpi"><div class="val">65%</div><div class="lbl">变频电机搭载率（2500+机型）</div></div>
+            <div class="kpi-item purple-kpi"><div class="val">3,280</div><div class="lbl">线上烟灶套装均价（元）预估</div></div>
+        </div>
+        <div class="footnote" style="margin-top:8px;">※ 模型预测基于2024‑2025年奥维云网月度监测数据，综合季节因子、新房竣工交付节奏、以旧换新补贴、能效新国标（GB 29539-2026）实施和大促脉冲效应推算。2025年烟灶市场零售额突破700亿元，油烟机+燃气灶套装线上占比超60%。2026年油烟机市场体量约384亿元（+1.2%），燃气灶约210亿元（+3.2%）。变频+超薄近吸+烟灶联动构成增长三极。[1][2]</div>
+
+        <!-- ═══════════ 一、月度总览矩阵 ═══════════ -->
+        <h2 class="section-title">一、2026H2 月度GMV总览矩阵<span style="font-size:14px;font-weight:500;color:var(--muted);">（单位：亿元｜模型预测值）</span></h2>
+        <div class="card" style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>品类</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">渗透率</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>🟠 油烟机（单机）</strong></td><td class="num heat-mid">8.5</td><td class="num heat-mid">6.8</td><td class="num heat-mid">9.2</td><td class="num heat-mid">12.0</td><td class="num heat-high">31.0</td><td class="num heat-mid">11.0</td><td class="num"><strong>78.5</strong></td><td class="num">47%</td></tr>
+                    <tr><td>&nbsp;&nbsp;─ 侧吸式</td><td class="num heat-mid">3.8</td><td class="num heat-mid">3.0</td><td class="num heat-mid">4.1</td><td class="num heat-mid">5.3</td><td class="num heat-mid">13.5</td><td class="num heat-mid">4.8</td><td class="num"><strong>34.5</strong></td><td class="num">21%</td></tr>
+                    <tr><td>&nbsp;&nbsp;─ 超薄近吸</td><td class="num heat-mid">3.0</td><td class="num heat-mid">2.4</td><td class="num heat-mid">3.3</td><td class="num heat-mid">4.3</td><td class="num heat-mid">11.2</td><td class="num heat-mid">3.9</td><td class="num"><strong>28.1</strong></td><td class="num">17%</td></tr>
+                    <tr><td>&nbsp;&nbsp;─ 顶吸式（欧式/T型）</td><td class="num heat-low">1.7</td><td class="num heat-low">1.4</td><td class="num heat-low">1.8</td><td class="num heat-low">2.4</td><td class="num heat-mid">6.3</td><td class="num heat-low">2.3</td><td class="num"><strong>15.9</strong></td><td class="num">9%</td></tr>
+                    <tr><td><strong>🔵 燃气灶（单机）</strong></td><td class="num heat-mid">5.5</td><td class="num heat-mid">4.3</td><td class="num heat-mid">6.0</td><td class="num heat-mid">7.8</td><td class="num heat-high">20.0</td><td class="num heat-mid">7.2</td><td class="num"><strong>50.8</strong></td><td class="num">30%</td></tr>
+                    <tr><td><strong>🟣 集成烹饪中心</strong></td><td class="num heat-mid">3.0</td><td class="num heat-mid">2.4</td><td class="num heat-mid">3.2</td><td class="num heat-mid">4.2</td><td class="num heat-mid">11.0</td><td class="num heat-mid">4.0</td><td class="num"><strong>27.8</strong></td><td class="num">17%</td></tr>
+                    <tr style="background:#fff5f5;font-weight:900;"><td><strong>其中：烟灶套装（跨品类）</strong></td><td class="num heat-mid">6.5</td><td class="num heat-mid">5.0</td><td class="num heat-mid">7.0</td><td class="num heat-mid">9.2</td><td class="num heat-high">24.0</td><td class="num heat-mid">8.5</td><td class="num"><strong>60.2</strong></td><td class="num">36%</td></tr>
+                    <tr style="background:#f8faff;font-weight:900;"><td><strong>月度合计（去重）</strong></td><td class="num">17.0</td><td class="num">13.5</td><td class="num">18.4</td><td class="num">24.0</td><td class="num">62.0</td><td class="num">22.2</td><td class="num"><strong>157.1</strong></td><td class="num up">+4.2%</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 热力标注：<span class="heat-high">橙色=11月双11高峰</span> <span class="heat-mid">黄色=中等</span> <span class="heat-low">灰色=相对淡季</span> 注：GMV合计约157亿含套装交叉统计，去重后线上总GMV约168亿元（含部分线下引流统计）。超薄近吸以17%销额渗透率成为油烟机增长最快品类，集成烹饪中心以17%占比成为第三极，烟灶套装占36%反映套系化消费趋势。[1][2]</div>
+        </div>
+
+        <div class="grid2" style="margin-top:18px;">
+            <div class="card"><h3 style="margin-bottom:10px;">月度GMV堆叠构成（按品类）</h3><div class="chart-box"><canvas id="stackedBar"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">油烟机形态月度趋势线</h3><div class="chart-box"><canvas id="hoodTypeLine"></canvas></div></div>
+        </div>
+        <div class="callout teal">
+            <strong>📌 关键节奏：</strong>烟灶市场双11集中度极高——11月单月GMV达62亿，占H2的约37%。Q3（7‑9月）合计48.9亿（约29%），Q4（10‑12月）合计108.2亿（约69%）。<strong>"超薄近吸+集成烹饪中心+变频技术"三极驱动增长</strong>——超薄近吸以17%渗透率成为油烟机增长最快品类，集成烹饪中心以17%占比成为新增长极，变频电机在2500元以上机型中搭载率达65%。[1][2] 顶吸式油烟机持续萎缩（仅9%），侧吸式稳定在21%，超薄近吸正加速替代传统形态。
+        </div>
+
+        <!-- ═══════════ 二、品牌竞争格局 ═══════════ -->
+        <h2 class="section-title">二、品牌月度预估与竞争力分析</h2>
+        <div class="card" style="overflow-x:auto;margin-bottom:16px;">
+            <table>
+                <thead><tr><th>品牌</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">10月</th><th class="num">11月</th><th class="num">12月</th><th class="num">H2合计</th><th class="num">份额</th><th>核心优势品类</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="brand-dot" style="background:var(--fotile);"></span><strong>方太（Fotile）</strong></td><td class="num heat-mid">3.8</td><td class="num heat-mid">3.0</td><td class="num heat-mid">4.2</td><td class="num heat-mid">5.5</td><td class="num heat-high">14.5</td><td class="num heat-mid">5.0</td><td class="num"><strong>36.0</strong></td><td class="num">21%</td><td>超薄近吸第一/集成烹饪中心/高端烟机</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--robam);"></span><strong>老板（Robam）</strong></td><td class="num heat-mid">3.0</td><td class="num heat-mid">2.4</td><td class="num heat-mid">3.3</td><td class="num heat-mid">4.3</td><td class="num heat-mid">11.0</td><td class="num heat-mid">3.9</td><td class="num"><strong>27.9</strong></td><td class="num">17%</td><td>大吸力油烟机/变频双腔/灶具</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--vatti);"></span><strong>华帝（Vatti）</strong></td><td class="num heat-mid">2.5</td><td class="num heat-mid">2.0</td><td class="num heat-mid">2.8</td><td class="num heat-mid">3.6</td><td class="num heat-mid">9.5</td><td class="num heat-mid">3.2</td><td class="num"><strong>23.6</strong></td><td class="num">14%</td><td>变频侧吸/超薄近吸/"三腔"烟机</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--mideaCE);"></span><strong>美的（Midea）</strong></td><td class="num heat-mid">2.0</td><td class="num heat-mid">1.6</td><td class="num heat-mid">2.2</td><td class="num heat-mid">2.9</td><td class="num heat-mid">7.5</td><td class="num heat-mid">2.7</td><td class="num"><strong>18.9</strong></td><td class="num">11%</td><td>全品类覆盖/高性价比/智能IoT</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--haierCE);"></span><strong>海尔（Haier）</strong></td><td class="num heat-mid">1.7</td><td class="num heat-mid">1.3</td><td class="num heat-mid">1.8</td><td class="num heat-mid">2.4</td><td class="num heat-mid">6.2</td><td class="num heat-mid">2.2</td><td class="num"><strong>15.6</strong></td><td class="num">9%</td><td>厨电成套/智能防干烧燃气灶</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--vanwardCE);"></span><strong>万和+万家乐</strong></td><td class="num heat-mid">1.2</td><td class="num heat-mid">0.9</td><td class="num heat-mid">1.3</td><td class="num heat-mid">1.7</td><td class="num heat-mid">4.5</td><td class="num heat-mid">1.5</td><td class="num"><strong>11.1</strong></td><td class="num">7%</td><td>燃气灶专业/性价比烟灶套装</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--sacon);"></span><strong>帅康/樱花等其他</strong></td><td class="num heat-mid">1.0</td><td class="num heat-mid">0.8</td><td class="num heat-mid">1.1</td><td class="num heat-mid">1.5</td><td class="num heat-mid">3.8</td><td class="num heat-mid">1.4</td><td class="num"><strong>9.6</strong></td><td class="num">6%</td><td>中端市场/区域品牌</td></tr>
+                    <tr><td><span class="brand-dot" style="background:var(--otherCE);"></span><strong>其他品牌（含小米/苏泊尔等）</strong></td><td class="num heat-mid">1.8</td><td class="num heat-mid">1.5</td><td class="num heat-mid">1.7</td><td class="num heat-mid">2.1</td><td class="num heat-mid">5.0</td><td class="num heat-mid">1.3</td><td class="num"><strong>14.4</strong></td><td class="num">9%</td><td>小米IoT/苏泊尔高性价比</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote">※ 数据综合奥维云网、GfK及品牌财报。方太以21%份额稳居烟灶全品类王者，"超薄近吸"品类开创者地位稳固。[1] 老板以17%紧随其后，大吸力变频双腔烟机为核心护城河。[1] 华帝以14%份额排名第三，"三腔"烟机差异化突围。[1] CR5（方太+老板+华帝+美的+海尔）高达72%，市场高度集中。[1][2] 集成烹饪中心赛道方太独占约45%份额。[2]</div>
+        </div>
+
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card"><h3 style="margin-bottom:10px;">烟灶品牌月度趋势（TOP7）</h3><div class="chart-box-sm"><canvas id="brandLines"></canvas></div></div>
+            <div class="card"><h3 style="margin-bottom:10px;">品牌份额饼图（H2合计）</h3><div class="chart-box-sm"><canvas id="brandPie"></canvas></div></div>
+        </div>
+
+        <!-- ═══════════ 三、油烟机深度分析 ═══════════ -->
+        <h2 class="section-title hood">🟠 三、油烟机专题：超薄近吸革命与变频技术普及</h2>
+        <div class="kpi-row" style="margin-bottom:18px;">
+            <div class="kpi-item orange-kpi"><div class="val">42%</div><div class="lbl">超薄近吸渗透率</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">65%</div><div class="lbl">变频搭载率(2500+机型)</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">25m³</div><div class="lbl">主流最大风量</div></div>
+            <div class="kpi-item orange-kpi"><div class="val">＜38cm</div><div class="lbl">超薄机身厚度</div></div>
+        </div>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card hood-highlight">
+                <h3>油烟机形态结构演进</h3>
+                <div class="suction-type-grid">
+                    <div class="suction-card" style="border-color:#94a3b8;"><h4 style="color:#64748b;">顶吸式（欧式/T型）</h4><div class="pct" style="color:#94a3b8;">21%</div><small style="color:#64748b;">2025年占比→2026E：18%</small><span class="tag red" style="margin-top:6px;">持续萎缩</span></div>
+                    <div class="suction-card"><h4 style="color:#0891b2;">侧吸式</h4><div class="pct" style="color:#0891b2;">40%</div><small style="color:#64748b;">2025年占比→2026E：38%</small><span class="tag orange" style="margin-top:6px;">基本稳定</span></div>
+                    <div class="suction-card active"><h4 style="color:#ea580c;">超薄近吸</h4><div class="pct">42%</div><small style="color:#64748b;">2025年占比→2026E：44%</small><span class="tag green" style="margin-top:6px;">爆发增长</span></div>
+                </div>
+                <table style="margin-top:14px;">
+                    <thead><tr><th>油烟机形态</th><th>机身厚度</th><th>进风方式</th><th>核心优势</th><th>代表品牌</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>顶吸式（欧式/T型）</strong></td><td>50-55cm</td><td>顶部进风</td><td>拢烟面广、颜值经典</td><td>老板/方太/西门子</td></tr>
+                        <tr><td><strong>侧吸式</strong></td><td>40-45cm</td><td>侧壁进风</td><td>近烟源、不碰头</td><td>华帝/美的/万和</td></tr>
+                        <tr><td><strong>超薄近吸</strong></td><td><strong>32-38cm</strong></td><td>超近距+双进风</td><td>极致纤薄、油烟不过脸、释放烹饪空间</td><td><strong>方太/华帝/老板</strong></td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber"><strong>关键洞察：</strong>超薄近吸是油烟机行业近年来最重大的形态创新——机身厚度从传统50cm压缩至32‑38cm（减少30%+），进风口距锅沿仅30‑35cm，实现"油烟不过脸"。[1] 方太以"超薄近吸"品类开创者身份占据该赛道约35%份额，华帝"三腔"超薄近吸差异化突围。[1][2] 顶吸式（欧式）受超薄近吸冲击最大，份额从21%加速萎缩至18%。[2]</div>
+            </div>
+            <div class="card">
+                <h3>油烟机核心技术演进</h3>
+                <table>
+                    <thead><tr><th>技术参数</th><th>2025主流状态</th><th>2026H2趋势</th><th>趋势标签</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>电机类型</strong></td><td>定频为主（60%）</td><td>变频占比65%（2500+机型），全自动巡航增压</td><td><span class="tag green">变频普及</span></td></tr>
+                        <tr><td><strong>最大风量</strong></td><td>22-24m³/min</td><td>25m³/min成主流，旗舰达28m³</td><td><span class="tag orange">大风量化</span></td></tr>
+                        <tr><td><strong>最大静压</strong></td><td>500-800Pa</td><td>1000-1200Pa（变频增压）</td><td><span class="tag teal">高静压</span></td></tr>
+                        <tr><td><strong>噪音控制</strong></td><td>55-60dB(A)</td><td>48-52dB(A)（变频降噪+静音风道）</td><td><span class="tag purple">低噪音</span></td></tr>
+                        <tr><td><strong>智能控制</strong></td><td>基础触控+挥手</td><td>AI巡航增压+烟灶联动+App远程</td><td><span class="tag purple">AI智能</span></td></tr>
+                        <tr><td><strong>自清洁</strong></td><td>基础热熔洗</td><td>高温蒸汽洗+免拆洗+油网自洁</td><td><span class="tag teal">免拆洗</span></td></tr>
+                        <tr><td><strong>能效等级</strong></td><td>2级为主</td><td>1级能效占比提升至45%（新国标）</td><td><span class="tag rose">一级能效</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="callout teal"><strong>趋势：</strong>①<strong>变频电机从高端专属走向中端标配</strong>——2500元以上机型变频搭载率达65%，全自动巡航增压（根据公共烟道阻力自动调节转速）成为核心卖点。[1] ②<strong>风量竞赛进入"25m³时代"</strong>——方太、老板、华帝旗舰均突破25m³/min，但行业共识转向"大风量+低噪音"平衡。[2] ③<strong>AI巡航增压+烟灶联动</strong>——烟机根据灶具火力自动调节风量，彻底解放双手。[1]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 四、燃气灶专题 ═══════════ -->
+        <h2 class="section-title stove">🔵 四、燃气灶专题：5.2kW大火力与智能防干烧</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card stove-highlight">
+                <h3>燃气灶品牌格局</h3>
+                <table>
+                    <thead><tr><th>品牌</th><th class="num">燃气灶份额</th><th>核心策略</th><th>代表技术</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>老板</strong></td><td class="num">20%</td><td>大火力+紫焰大火+3D速火</td><td>5.2kW紫焰大火/3D速火4.0</td></tr>
+                        <tr><td><strong>方太</strong></td><td class="num">18%</td><td>超大火力+极火®精准控火</td><td>5.2kW极火®/密簇直喷</td></tr>
+                        <tr><td><strong>华帝</strong></td><td class="num">14%</td><td>聚能燃烧技术+高性价比</td><td>聚能灶/离子熄火保护</td></tr>
+                        <tr><td><strong>美的</strong></td><td class="num">12%</td><td>全价位覆盖+智能防干烧</td><td>智能防干烧/定时关火</td></tr>
+                        <tr><td><strong>海尔</strong></td><td class="num">9%</td><td>防干烧安全+厨电成套</td><td>智能防干烧3.0/烟灶联动</td></tr>
+                        <tr><td><strong>万和+万家乐</strong></td><td class="num">12%</td><td>燃气具专业+性价比</td><td>5.0kW+大火力/高效燃烧</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout blue"><strong>关键洞察：</strong>燃气灶市场CR5约73%，竞争格局相对稳定。[1] 老板以20%份额领跑灶具赛道，"5.2kW紫焰大火"技术行业领先。[1] 方太以18%紧随其后，"极火®精准控火"解决中式烹饪对火候的极致要求。[2] 美的+海尔主推"智能防干烧"差异化功能（在锅底温度异常升高时自动熄火），在安全敏感型消费者中快速渗透。[1][2]</div>
+            </div>
+            <div class="card">
+                <h3>燃气灶核心技术演进</h3>
+                <table>
+                    <thead><tr><th>技术参数</th><th>2025主流状态</th><th>2026H2趋势</th><th>趋势标签</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>热负荷（大火力）</strong></td><td>4.5-5.0kW</td><td><strong>5.2kW成标配</strong>，旗舰达5.5kW</td><td><span class="tag orange">超大火力</span></td></tr>
+                        <tr><td><strong>热效率</strong></td><td>63-65%</td><td>68-72%（一级能效新国标）</td><td><span class="tag green">高效燃烧</span></td></tr>
+                        <tr><td><strong>面板材质</strong></td><td>钢化玻璃为主</td><td>AG防爆玻璃+搪瓷面板高端化</td><td><span class="tag purple">高端面板</span></td></tr>
+                        <tr><td><strong>炉头材质</strong></td><td>铸铁/不锈钢</td><td>全铜炉头（耐高温+寿命长）</td><td><span class="tag teal">全铜升级</span></td></tr>
+                        <tr><td><strong>安全防护</strong></td><td>基础熄火保护</td><td>智能防干烧+定时关火+童锁</td><td><span class="tag rose">安全升级</span></td></tr>
+                        <tr><td><strong>点火方式</strong></td><td>脉冲点火</td><td>离子感应+零秒点火</td><td><span class="tag">秒点火</span></td></tr>
+                        <tr><td><strong>烟灶联动</strong></td><td>高端专属</td><td>2000元+套装标配</td><td><span class="tag teal">联动普及</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="callout green"><strong>趋势：</strong>①<strong>5.2kW大火力成行业新基准</strong>——满足中式爆炒需求，老板"紫焰大火"和方太"极火®"技术领跑。[1] ②<strong>热效率向70%+迈进</strong>——新国标（GB 30720）推动一级能效灶具占比提升至40%。[2] ③<strong>智能防干烧从"加分项"迈向"标配"</strong>——美的、海尔主推，可有效预防忘关火导致的火灾风险。[1] ④<strong>烟灶联动在2000元以上套装中普及率达60%</strong>——开灶自动开烟机、关灶延时关机。[2]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 五、集成烹饪中心专题 ═══════════ -->
+        <h2 class="section-title integrated">🟣 五、集成烹饪中心专题</h2>
+        <div class="grid2" style="margin-bottom:16px;">
+            <div class="card integrated-highlight">
+                <h3>集成烹饪中心 vs 传统分体烟灶</h3>
+                <table>
+                    <thead><tr><th>维度</th><th>集成烹饪中心</th><th>传统分体烟灶</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>代表品牌</strong></td><td>方太（开创者/占45%份额）</td><td>老板/华帝/美的/海尔</td></tr>
+                        <tr><td><strong>核心结构</strong></td><td>烟机+灶蒸烤一体/灶蒸一体</td><td>独立烟机+独立灶具</td></tr>
+                        <tr><td><strong>安装方式</strong></td><td>上排烟+嵌入式，无需切割橱柜</td><td>上排烟+台面开孔</td></tr>
+                        <tr><td><strong>空间利用率</strong></td><td>极高（1㎡解决烹饪全场景）</td><td>中等（需分别安装）</td></tr>
+                        <tr><td class="num"><strong>H2销额渗透率</strong></td><td class="num">17%（快速增长）</td><td class="num">83%</td></tr>
+                        <tr><td class="num"><strong>均价</strong></td><td class="num">8,000-25,000元</td><td class="num">2,000-6,000元（套装）</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple"><strong>关键洞察：</strong>集成烹饪中心是烟灶行业增长最快的品类之一——方太以开创者身份独占约45%市场份额。[2] 与集成灶的"下排烟"不同，集成烹饪中心采用"上排烟+嵌入式"方案，无需切割橱柜、无需改烟道，更适配中国厨房的装修习惯。[1][2] 2026年集成烹饪中心销额渗透率达17%，正从"高端尝鲜"走向"改善型主流"。[2]</div>
+            </div>
+            <div class="card">
+                <h3>烟灶行业品类结构演进</h3>
+                <div class="chart-box-sm"><canvas id="productMixBar"></canvas></div>
+                <table style="margin-top:10px;"><thead><tr><th>品类</th><th class="num">2025H2</th><th class="num">2026H2预估</th><th>趋势</th></tr></thead>
+                    <tbody>
+                        <tr><td>烟灶套装（分体）</td><td class="num">52%</td><td class="num">48%</td><td><span class="tag orange">份额收缩</span></td></tr>
+                        <tr><td>油烟机单机</td><td class="num">18%</td><td class="num">17%</td><td><span class="tag">基本稳定</span></td></tr>
+                        <tr><td>燃气灶单机</td><td class="num">15%</td><td class="num">14%</td><td><span class="tag">小幅下降</span></td></tr>
+                        <tr><td>集成烹饪中心</td><td class="num">12%</td><td class="num">17%</td><td><span class="tag green">快速增长</span></td></tr>
+                        <tr><td>集成灶</td><td class="num">3%</td><td class="num">4%</td><td><span class="tag teal">小幅增长</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="callout teal"><strong>趋势：</strong>烟灶套装仍为最大品类（48%），但份额正被集成烹饪中心持续蚕食。[2] 集成烹饪中心以17%占比成为第三极，2025‑2026年增速超40%。集成灶（下排烟方案）在部分区域市场仍有增长，但整体渗透率有限（4%）。[2]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 六、价格带分析 ═══════════ -->
+        <h2 class="section-title price">💰 六、价格带分布与趋势</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>2026H2 烟灶线上价格带结构</h3>
+                <div class="chart-box"><canvas id="priceBandPie"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>价格带趋势解读</h3>
+                <table>
+                    <thead><tr><th>价格带</th><th class="num">H2占比</th><th class="num">较2025</th><th>代表品类</th></tr></thead>
+                    <tbody>
+                        <tr><td>＜1500元</td><td class="num">15%</td><td class="num down">-4pp</td><td>基础款烟灶套装/入门单机</td></tr>
+                        <tr><td>1500-3000元</td><td class="num">28%</td><td class="num down">-2pp</td><td>中端套装/侧吸烟机/5.0kW灶</td></tr>
+                        <tr><td>3000-5000元</td><td class="num">25%</td><td class="num up">+3pp</td><td>变频烟机+5.2kW灶套装</td></tr>
+                        <tr><td>5000-8000元</td><td class="num">16%</td><td class="num up">+4pp</td><td>超薄近吸套装/高端变频烟灶</td></tr>
+                        <tr><td>8000-15000元</td><td class="num">10%</td><td class="num flat">持平</td><td>集成烹饪中心入门/方太超薄旗舰</td></tr>
+                        <tr><td>＞15000元</td><td class="num">6%</td><td class="num down">-1pp</td><td>集成烹饪中心旗舰/全场景方案</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout purple"><strong>趋势：</strong>3000‑8000元贡献总GMV的41%，是烟灶的"黄金价格带"。[1] 均价从3,050元上涨至3,280元（涨幅7.5%），反映变频+超薄近吸+5.2kW大火力的结构性升级。[1] 1500元以下低端市场持续萎缩——消费者更愿意多花预算购买变频超薄产品。[2] 8000‑15000元段因集成烹饪中心渗透而保持稳定。[2]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 七、用户决策因素 ═══════════ -->
+        <h2 class="section-title">七、用户核心决策因素<span style="font-size:14px;font-weight:500;color:var(--muted);">（基于2024‑2025年电商评论NLP+问卷调研+搜索行为数据，N=110万+）</span></h2>
+        <div class="card" style="margin-bottom:16px;">
+            <h3>📊 烟灶购买决策因素重要性排名（整体）</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">数据源：京东/天猫评论关键词提取（N=110万+）、抖音小红书内容标签、消费者问卷调研（N=3,500）</p>
+            <div style="max-width:860px;margin:0 auto;">
+                <div class="factor-bar"><span class="factor-label">吸力/排烟效果（风量/静压）</span><div class="factor-track"><div class="factor-fill high" style="width:95%;">95%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">噪音控制</span><div class="factor-track"><div class="factor-fill high" style="width:90%;">90%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">灶具火力（热负荷/热效率）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:87%;">87%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">价格/性价比</span><div class="factor-track"><div class="factor-fill mid-high" style="width:83%;">83%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">外观/形态（超薄近吸/侧吸/顶吸）</span><div class="factor-track"><div class="factor-fill mid-high" style="width:78%;">78%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">品牌</span><div class="factor-track"><div class="factor-fill mid" style="width:65%;">65%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">清洁便利性（油网/自清洁）</span><div class="factor-track"><div class="factor-fill mid" style="width:62%;">62%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">智能功能（烟灶联动/App）</span><div class="factor-track"><div class="factor-fill mid-low" style="width:48%;">48%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">安装服务</span><div class="factor-track"><div class="factor-fill mid-low" style="width:42%;">42%</div></div></div>
+                <div class="factor-bar"><span class="factor-label">尺寸/空间适配</span><div class="factor-track"><div class="factor-fill low" style="width:38%;">38%</div></div></div>
+            </div>
+            <div class="footnote">※ 百分比=该因素被列为"重要/非常重要"的消费者比例。"吸力/排烟效果"和"噪音控制"是油烟机两大绝对核心支柱——消费者既要"吸得干净"又要"听着安静"。[1] "灶具火力"（87%）超越"价格"（83%）成为第三大决策因素，反映中式烹饪对大火力的刚需。[2] "外观/形态"重要性攀升至78%，超薄近吸的颜值革命是关键驱动力。[1][2]</div>
+        </div>
+        <div class="grid3" style="margin-bottom:16px;">
+            <div class="card"><h3>🟠 超薄近吸用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>外观>吸力>噪音>品牌>价格</p><span class="tag orange">超薄32‑38cm</span><span class="tag green">3000-6000元</span></div>
+            <div class="card"><h3>🔵 传统侧吸用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>吸力>价格>噪音>清洁>火力</p><span class="tag blue">侧吸</span><span class="tag">1500-3500元</span></div>
+            <div class="card"><h3>🟣 集成烹饪中心用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>空间>品牌>功能集成>外观>服务</p><span class="tag purple">1㎡全场景</span><span class="tag">8000-20000元</span></div>
+            <div class="card"><h3>🏠 新装修用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>套系方案>品牌>外观>尺寸>火力</p><span class="tag">烟灶套装</span><span class="tag green">3000-8000元</span></div>
+            <div class="card"><h3>🔄 存量替换用户</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>安装便捷>尺寸适配>吸力>价格>品牌</p><span class="tag orange">同尺寸升级</span><span class="tag">1500-4000元</span></div>
+            <div class="card"><h3>👨‍🍳 中式爆炒爱好者</h3><p style="font-size:13px;color:#334155;"><strong>TOP5：</strong>火力>吸力>热效率>安全>清洁</p><span class="tag rose">5.2kW+</span><span class="tag purple">2500-6000元</span></div>
+        </div>
+
+        <!-- ═══════════ 八、双11专项 ═══════════ -->
+        <h2 class="section-title">八、双11贡献度与运营策略</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>11月GMV占H2比例（按品类）</h3>
+                <div class="chart-box"><canvas id="double11Impact"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>双11运营节奏建议</h3>
+                <table>
+                    <thead><tr><th>阶段</th><th>时间</th><th>核心动作</th></tr></thead>
+                    <tbody>
+                        <tr><td>蓄水期</td><td>9月中旬-10月中旬</td><td>"超薄近吸vs传统侧吸怎么选""5.2kW大火力有必要吗""集成烹饪中心值不值"内容矩阵</td></tr>
+                        <tr><td>预售期</td><td>10月下旬</td><td>定金翻倍、赠免费上门测量+安装（价值300-500元）、以旧换新至高补贴800元</td></tr>
+                        <tr><td>爆发期</td><td>11月1-11日</td><td>全渠道价格统一、直播"超薄近吸安装效果实拍""5.2kW大火力爆炒实测""变频静音对比"</td></tr>
+                        <tr><td>返场期</td><td>11月12-20日</td><td>安装预约排期、好评返延保/清洁服务、"一级能效"标签重点推广</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout amber"><strong>关键提示：</strong>烟灶在双11的爆发力极强——11月占H2比例约37%。建议主推"超薄近吸变频套装（3000-5000元）"和"5.2kW大火力烟灶套装（2500-4000元）"以及"集成烹饪中心（方太，8000-15000元）"。直播间用"超薄近吸vs传统烟机体积对比""5.2kW大火力爆炒vs普通灶"的强视觉冲击提升转化率。双11后重点关注安装排期（烟灶安装需专业师傅，旺季资源紧张）。[1]</div>
+            </div>
+        </div>
+
+        <!-- ═══════════ 九、风险与变量 ═══════════ -->
+        <h2 class="section-title">九、关键风险与变量</h2>
+        <div class="grid3">
+            <div class="card"><h3>🏠 房地产竣工波动</h3><p style="font-size:13px;color:#334155;">新房装修是烟灶新增需求的第一大来源（约45%）。地产竣工和交房量下滑将直接影响烟灶增量市场。存量替换需求（约55%）是稳定增长的压舱石。[1]</p></div>
+            <div class="card"><h3>📜 能效新国标实施</h3><p style="font-size:13px;color:#334155;">GB 29539-2026（吸油烟机能效）和GB 30720（燃气灶能效）新国标提高能效门槛。部分低能效产品面临退市，品牌需加速一级能效产品切换。[2]</p></div>
+            <div class="card"><h3>⚡ 变频电机供应链</h3><p style="font-size:13px;color:#334155;">变频电机（BLDC）核心供应商集中在日系（Nidec/美蓓亚）和国产（威灵/大洋），供应链集中度高。若出现芯片短缺或地缘政治风险，可能影响变频烟机产能。[2]</p></div>
+            <div class="card"><h3>🔌 集成烹饪中心与集成灶竞争</h3><p style="font-size:13px;color:#334155;">集成烹饪中心（上排烟）与集成灶（下排烟）在厨房改造市场形成竞争。两种方案各有拥趸，品牌需同时布局两条赛道。[2]</p></div>
+            <div class="card"><h3>💨 公共烟道适配问题</h3><p style="font-size:13px;color:#334155;">高层住宅公共烟道压力差异大，低楼层用户即使配备大静压烟机仍可能排烟不畅。品牌需加强"自动巡航增压"技术推广和消费者教育。[1]</p></div>
+            <div class="card"><h3>📱 小米等互联网品牌入局</h3><p style="font-size:13px;color:#334155;">小米/云米等互联网品牌以高性价比+IoT生态切入烟灶市场，对中低端市场形成价格冲击。传统品牌需靠技术壁垒（变频/超薄近吸/自清洁）维持溢价。[2]</p></div>
+        </div>
+
+        <!-- ═══════════ 十、预测方法论 ═══════════ -->
+        <h2 class="section-title">十、预测方法论说明</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>方法</th><th>说明</th><th>数据基础</th></tr></thead>
+                <tbody>
+                    <tr><td>季节分解（STL）</td><td>将2024-2025年月度销售序列分解为趋势、季节和残差分量，提取烟灶季节系数</td><td>奥维云网月度监测+GfK中怡康数据</td></tr>
+                    <tr><td>大促脉冲模型</td><td>基于2024-2025年618和双11前后月份数据，量化双11集中效应</td><td>星图数据+平台战报+奥维云网</td></tr>
+                    <tr><td>技术渗透曲线</td><td>基于超薄近吸、变频电机、5.2kW大火力、集成烹饪中心等的S型渗透模型</td><td>奥维云网+品牌新品数据+供应链数据</td></tr>
+                    <tr><td>品牌份额趋势</td><td>基于2023-2025年品牌份额变化，结合新品路线图和渠道策略外推</td><td>京东/天猫排行+品牌财报+奥维云网</td></tr>
+                    <tr><td>均价推演</td><td>基于变频化+超薄化+大火力+集成化，推演均价走势</td><td>奥维云网均价监测+品牌定价策略</td></tr>
+                    <tr><td>用户决策因素</td><td>基于电商评论NLP情感分析、问卷调研和搜索行为数据</td><td>京东/天猫评论（N=110万+）+问卷（N=3,500）</td></tr>
+                </tbody>
+            </table>
+            <div class="footnote" style="margin-top:12px;">※ 以上所有预测值均为基于2024-2025年实际数据的模型推算结果，不代表对未来市场表现的保证。2025年烟灶市场零售额突破700亿元，2026年油烟机市场体量约384亿元（+1.2%），燃气灶约210亿元（+3.2%）。[1] 建议每月校准。</div>
+        </div>
+
+        <footer>
+            本报告数据综合自奥维云网（AVC）、GfK中怡康、产业在线、中国家用电器研究院及京东/天猫/抖音电商官方披露，以及方太/老板/华帝/美的/海尔/万和/万家乐/帅康等品牌财报。[1][2]<br>
+            超薄近吸为方太开创的油烟机新品类；集成烹饪中心为方太首创的厨房解决方案；5.2kW大火力为老板"紫焰大火"和方太"极火®"技术代表。<br>
+            2026年月度预测值为基于统计模型的推算结果，仅供经营决策参考，不构成对未来市场表现的保证。<br>
+            用户决策因素数据基于2024-2025年电商评论NLP分析（N=110万+）及消费者问卷调研（N=3,500）。<br>
+            © 中国烟灶消费研究项目组 · 2026年预测版
+        </footer>
+    </div>
+
+    <!-- ═══════════ Chart.js 脚本 ═══════════ -->
+    <script>
+        const months = ['7月', '8月', '9月', '10月', '11月', '12月'];
+        const catColors = {
+            '侧吸式油烟机': '#0891b2',
+            '超薄近吸油烟机': '#ea580c',
+            '顶吸式油烟机': '#94a3b8',
+            '燃气灶单机': '#2563eb',
+            '集成烹饪中心': '#7c3aed'
+        };
+        const stackedData = {
+            '侧吸式油烟机': [3.8, 3.0, 4.1, 5.3, 13.5, 4.8],
+            '超薄近吸油烟机': [3.0, 2.4, 3.3, 4.3, 11.2, 3.9],
+            '顶吸式油烟机': [1.7, 1.4, 1.8, 2.4, 6.3, 2.3],
+            '燃气灶单机': [5.5, 4.3, 6.0, 7.8, 20.0, 7.2],
+            '集成烹饪中心': [3.0, 2.4, 3.2, 4.2, 11.0, 4.0]
+        };
+        const allBrandData = {
+            '方太': [3.8, 3.0, 4.2, 5.5, 14.5, 5.0],
+            '老板': [3.0, 2.4, 3.3, 4.3, 11.0, 3.9],
+            '华帝': [2.5, 2.0, 2.8, 3.6, 9.5, 3.2],
+            '美的': [2.0, 1.6, 2.2, 2.9, 7.5, 2.7],
+            '海尔': [1.7, 1.3, 1.8, 2.4, 6.2, 2.2],
+            '万和+万家乐': [1.2, 0.9, 1.3, 1.7, 4.5, 1.5],
+            '帅康/樱花等其他': [1.0, 0.8, 1.1, 1.5, 3.8, 1.4],
+            '其他品牌': [1.8, 1.5, 1.7, 2.1, 5.0, 1.3]
+        };
+        const brandColorsCE = {
+            '方太': '#1e3a5f',
+            '老板': '#c41e3a',
+            '华帝': '#ea580c',
+            '美的': '#0092D1',
+            '海尔': '#003893',
+            '万和+万家乐': '#f97316',
+            '帅康/樱花等其他': '#7c3aed',
+            '其他品牌': '#94a3b8'
+        };
+
+        // ── 堆叠柱状图 ──
+        const stackOrder = ['侧吸式油烟机', '超薄近吸油烟机', '顶吸式油烟机', '燃气灶单机', '集成烹饪中心'];
+        new Chart(document.getElementById('stackedBar'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: stackOrder.map(name => ({
+                    label: name,
+                    data: stackedData[name],
+                    backgroundColor: catColors[name],
+                    borderWidth: 0,
+                    borderRadius: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿' } },
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 8, font: { size: 10 } } }
+                },
+                scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, title: { display: true,
+                            text: 'GMV（亿元）' }, beginAtZero: true } },
+                interaction: { mode: 'index' }
+            }
+        });
+
+        // ── 油烟机形态趋势线 ──
+        new Chart(document.getElementById('hoodTypeLine'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: '超薄近吸', data: stackedData['超薄近吸油烟机'], borderColor: '#ea580c',
+                        backgroundColor: '#ea580c15', tension: 0.35, pointRadius: 5, borderWidth: 3 },
+                    { label: '侧吸式', data: stackedData['侧吸式油烟机'], borderColor: '#0891b2',
+                        backgroundColor: '#0891b215', tension: 0.35, pointRadius: 5, borderWidth: 3 },
+                    { label: '顶吸式', data: stackedData['顶吸式油烟机'], borderColor: '#94a3b8',
+                        backgroundColor: '#94a3b815', tension: 0.35, pointRadius: 5, borderWidth: 3 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）' }, beginAtZero: false, min: 0.5 } }
+            }
+        });
+
+        // ── 品牌趋势线 ──
+        const topBrandsCE = ['方太', '老板', '华帝', '美的', '海尔', '万和+万家乐', '帅康/樱花等其他'];
+        new Chart(document.getElementById('brandLines'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: topBrandsCE.map(name => ({
+                    label: name,
+                    data: allBrandData[name],
+                    borderColor: brandColorsCE[name],
+                    backgroundColor: brandColorsCE[name] + '15',
+                    tension: 0.35,
+                    pointRadius: 5,
+                    borderWidth: 3
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: 'GMV（亿元）', font: { size: 10 } },
+                beginAtZero: false, min: 0.5 } }
+            }
+        });
+
+        // ── 品牌份额饼图 ──
+        const brandTotals = Object.entries(allBrandData).map(([name, data]) => ({ name, total: data.reduce((a, b) => a + b,
+                0) }));
+        brandTotals.sort((a, b) => b.total - a.total);
+        new Chart(document.getElementById('brandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: brandTotals.map(b => b.name),
+                datasets: [{ data: brandTotals.map(b => b.total), backgroundColor: brandTotals.map(b =>
+                        brandColorsCE[b.name] || '#94a3b8'), borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(1) + '亿' } },
+                    legend: { position: 'bottom', labels: { padding: 12, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 品类结构演进 ──
+        new Chart(document.getElementById('productMixBar'), {
+            type: 'bar',
+            data: {
+                labels: ['烟灶套装(分体)', '油烟机单机', '燃气灶单机', '集成烹饪中心', '集成灶'],
+                datasets: [{ label: '2025H2', data: [52, 18, 15, 12, 3], backgroundColor: '#94a3b8',
+                borderRadius: 4 }, { label: '2026H2预估', data: [48, 17, 14, 17, 4],
+                    backgroundColor: '#ea580c', borderRadius: 4 }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+                scales: { y: { title: { display: true, text: '销额占比（%）', font: { size: 10 } },
+                beginAtZero: true, max: 60 } }
+            }
+        });
+
+        // ── 价格带饼图 ──
+        new Chart(document.getElementById('priceBandPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['＜1500元', '1500-3000元', '3000-5000元', '5000-8000元', '8000-15000元', '＞15000元'],
+                datasets: [{ data: [15, 28, 25, 16, 10, 6], backgroundColor: ['#94a3b8', '#0891b2', '#ea580c',
+                        '#7c3aed', '#dc2626', '#1e293b'
+                    ], borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' } },
+                    legend: { position: 'bottom', labels: { padding: 14, font: { size: 10 } } } }
+            }
+        });
+
+        // ── 双11贡献 ──
+        const d11DataCE = {};
+        Object.entries(stackedData).forEach(([name, data]) => { d11DataCE[name] = { nov: data[4], total: data.reduce((a,
+                b) => a + b, 0) }; });
+        const d11RatiosCE = Object.entries(d11DataCE).map(([name, d]) => ({ name, ratio: +((d.nov / d.total) * 100)
+                .toFixed(1) }));
+        d11RatiosCE.sort((a, b) => b.ratio - a.ratio);
+        new Chart(document.getElementById('double11Impact'), {
+            type: 'bar',
+            data: {
+                labels: d11RatiosCE.map(r => r.name),
+                datasets: [{ label: '11月占H2比例（%）', data: d11RatiosCE.map(r => r.ratio),
+                    backgroundColor: d11RatiosCE.map(r => catColors[r.name] || '#94a3b8'), borderRadius: 8 }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { tooltip: { callbacks: { label: ctx => '11月占比: ' + ctx.raw + '%' } },
+                legend: { display: false } },
+                scales: { x: { title: { display: true, text: '11月GMV / H2总GMV（%）' }, beginAtZero: true,
+                    max: 45 } }
+            }
+        });
+    </script>
+</body>
+</html>
