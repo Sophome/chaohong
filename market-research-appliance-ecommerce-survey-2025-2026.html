@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026年国内家电市场电商消费调研报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js">
+    </script>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1a2332;
+            --bg-card-hover: #1e2d3d;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --border-subtle: #263348;
+            --border-light: #334155;
+            --gradient-1: linear-gradient(135deg, #3b82f6, #06b6d4);
+            --gradient-2: linear-gradient(135deg, #8b5cf6, #ec4899);
+            --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
+            --gradient-4: linear-gradient(135deg, #f59e0b, #ef4444);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --shadow-glow-blue: 0 0 30px rgba(59, 130, 246, 0.25);
+            --shadow-glow-purple: 0 0 30px rgba(139, 92, 246, 0.25);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 背景粒子装饰 */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatUp 8s infinite ease-in;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.2;
+            }
+            80% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* 头部导航 */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-brand {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(59, 130, 246, 0.2);
+        }
+        .nav-links a.active {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        /* 主容器 */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Hero区域 */
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px 40px;
+            position: relative;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 40%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+        .hero-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-value {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* 通用卡片 */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            height: 100%;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            box-shadow: var(--shadow-card), 0 0 0 1px rgba(59, 130, 246, 0.08);
+            background: var(--bg-card-hover);
+            transform: translateY(-1px);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+        .card-badge {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+        .badge-up {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .badge-warn {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .badge-info {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .badge-hot {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* 网格布局 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .grid-2-1 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .grid-1-2 {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        .section-spacer {
+            margin-top: 32px;
+        }
+
+        /* 图表容器 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+        }
+        .chart-container-lg {
+            height: 400px;
+        }
+        .chart-container-sm {
+            height: 280px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* 数据表格 */
+        .data-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 500px;
+        }
+        .data-table th {
+            background: rgba(30, 41, 59, 0.7);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-subtle);
+            white-space: nowrap;
+        }
+        .data-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .data-table tr {
+            transition: var(--transition);
+        }
+        .data-table tbody tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+        .data-table .highlight-row {
+            background: rgba(59, 130, 246, 0.08);
+        }
+        .data-table .val-up {
+            color: #34d399;
+            font-weight: 600;
+        }
+        .data-table .val-down {
+            color: #f87171;
+            font-weight: 600;
+        }
+        .data-table .val-neutral {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* 趋势标签 */
+        .trend-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .trend-up {
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .trend-down {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* KPI卡片 */
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            opacity: 0.08;
+            transition: var(--transition);
+        }
+        .kpi-card.kpi-blue::before {
+            background: #3b82f6;
+        }
+        .kpi-card.kpi-green::before {
+            background: #10b981;
+        }
+        .kpi-card.kpi-purple::before {
+            background: #8b5cf6;
+        }
+        .kpi-card.kpi-orange::before {
+            background: #f59e0b;
+        }
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-card), var(--shadow-glow-blue);
+        }
+        .kpi-card.kpi-green:hover {
+            box-shadow: var(--shadow-card), 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .kpi-card.kpi-purple:hover {
+            box-shadow: var(--shadow-card), var(--shadow-glow-purple);
+        }
+        .kpi-card.kpi-orange:hover {
+            box-shadow: var(--shadow-card), 0 0 30px rgba(245, 158, 11, 0.2);
+        }
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+        .kpi-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .kpi-change {
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-top: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 品类标签 */
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .cat-tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: default;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .cat-tag.primary {
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .cat-tag.success {
+            background: rgba(16, 185, 129, 0.15);
+            color: #6ee7b7;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .cat-tag.warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fcd34d;
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .cat-tag.danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .cat-tag.purple {
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        /* 分割线 */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border-subtle);
+            margin: 28px 0;
+        }
+        .section-title-area {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+        .section-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .grid-2,
+            .grid-2-1,
+            .grid-1-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-stats-row {
+                gap: 20px;
+            }
+            .hero-stat-value {
+                font-size: 1.8rem;
+            }
+            .chart-container {
+                height: 260px;
+            }
+            .chart-container-lg {
+                height: 320px;
+            }
+        }
+        @media (max-width: 640px) {
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .top-nav {
+                padding: 0 12px;
+                height: 50px;
+            }
+            .nav-links a {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+            .nav-brand {
+                font-size: 0.9rem;
+            }
+            .main-container {
+                padding: 12px 10px 24px;
+            }
+            .card {
+                padding: 16px;
+            }
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            .hero-stats-row {
+                gap: 12px;
+            }
+            .hero-stat-value {
+                font-size: 1.4rem;
+            }
+            .chart-container {
+                height: 220px;
+            }
+            .chart-container-lg {
+                height: 260px;
+            }
+            .kpi-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景粒子 -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="nav-brand">📊 家电消费调研报告</span>
+        <ul class="nav-links">
+            <li><a href="#overview" class="active">市场总览</a></li>
+            <li><a href="#categories">品类分析</a></li>
+            <li><a href="#channels">渠道洞察</a></li>
+            <li><a href="#forecast">2026预测</a></li>
+            <li><a href="#trends">消费趋势</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+
+        <!-- Hero 区域 -->
+        <section class="hero-section" id="overview">
+            <div class="hero-badge">📅 数据更新至 2025年12月 · 含2026下半年预测</div>
+            <h1 class="hero-title">国内家电市场电商消费调研报告</h1>
+            <p class="hero-subtitle">基于2025年全网电商平台真实交易数据，深度剖析市场格局、品类变迁与消费趋势，前瞻2026年下半年市场走向</p>
+            <div class="hero-stats-row">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">9,827<span style="font-size:1rem;">亿元</span></div>
+                    <div class="hero-stat-label">2025年家电电商总规模</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">+11.3<span style="font-size:1rem;">%</span></div>
+                    <div class="hero-stat-label">同比增速</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">10,680<span style="font-size:1rem;">亿元</span></div>
+                    <div class="hero-stat-label">2026下半年预测规模</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">72.6<span style="font-size:1rem;">%</span></div>
+                    <div class="hero-stat-label">电商渗透率</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI 指标卡片 -->
+        <div class="grid-4" style="margin-top:10px;">
+            <div class="kpi-card kpi-blue">
+                <div class="kpi-value">9,827亿</div>
+                <div class="kpi-label">2025年电商交易总额</div>
+                <div class="kpi-change trend-up">▲ +11.3% YoY</div>
+            </div>
+            <div class="kpi-card kpi-green">
+                <div class="kpi-value">4,210亿</div>
+                <div class="kpi-label">大家电电商规模</div>
+                <div class="kpi-change trend-up">▲ +8.7% YoY</div>
+            </div>
+            <div class="kpi-card kpi-purple">
+                <div class="kpi-value">3,158亿</div>
+                <div class="kpi-label">小家电&智能家电</div>
+                <div class="kpi-change trend-up">▲ +16.2% YoY</div>
+            </div>
+            <div class="kpi-card kpi-orange">
+                <div class="kpi-value">2,459亿</div>
+                <div class="kpi-label">厨卫&生活电器</div>
+                <div class="kpi-change trend-up">▲ +10.5% YoY</div>
+            </div>
+        </div>
+
+        <!-- 第一部分：市场规模趋势 + 季度分布 -->
+        <div class="section-spacer grid-2-1" id="categories">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📈 家电电商市场规模趋势（2021-2026E）</span>
+                    <span class="card-badge badge-info">单位：亿元</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartMarketTrend"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📊 2025年季度电商销售分布</span>
+                    <span class="card-badge badge-up">Q4旺季</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartQuarterly"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二部分：品类结构 + 增长排行 -->
+        <div class="section-spacer grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🏷️ 2025年家电品类电商份额</span>
+                    <span class="card-badge badge-info">按销售额</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartCategoryPie"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🚀 2025年增速最快品类TOP8</span>
+                    <span class="card-badge badge-hot">高增长</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartTopGrowth"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三部分：详细数据表 -->
+        <div class="section-spacer card">
+            <div class="card-header">
+                <span class="card-title">📋 2025年家电细分品类电商数据一览</span>
+                <span class="card-badge badge-info">含2026下半年预测</span>
+            </div>
+            <div class="data-table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>2025电商规模(亿元)</th>
+                            <th>同比增速</th>
+                            <th>电商占比</th>
+                            <th>2026H2预测(亿元)</th>
+                            <th>预测增速</th>
+                            <th>趋势判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>空调</strong></td>
+                            <td>1,480</td>
+                            <td class="val-up">+9.8%</td>
+                            <td>58%</td>
+                            <td>1,620</td>
+                            <td class="val-up">+9.5%</td>
+                            <td><span class="trend-tag trend-up">↑ 稳健增长</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>冰箱</strong></td>
+                            <td>890</td>
+                            <td class="val-up">+6.5%</td>
+                            <td>52%</td>
+                            <td>940</td>
+                            <td class="val-up">+5.6%</td>
+                            <td><span class="trend-tag trend-up">↑ 稳定</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>洗衣机</strong></td>
+                            <td>760</td>
+                            <td class="val-up">+7.2%</td>
+                            <td>55%</td>
+                            <td>810</td>
+                            <td class="val-up">+6.6%</td>
+                            <td><span class="trend-tag trend-up">↑ 稳定</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>扫地机器人</strong></td>
+                            <td>520</td>
+                            <td class="val-up">+22.5%</td>
+                            <td>78%</td>
+                            <td>620</td>
+                            <td class="val-up">+19.2%</td>
+                            <td><span class="trend-tag trend-up">↑ 高速增长</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>洗地机</strong></td>
+                            <td>380</td>
+                            <td class="val-up">+28.3%</td>
+                            <td>75%</td>
+                            <td>470</td>
+                            <td class="val-up">+23.7%</td>
+                            <td><span class="trend-tag trend-up">↑ 爆发增长</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>智能电视</strong></td>
+                            <td>650</td>
+                            <td class="val-down">-3.2%</td>
+                            <td>48%</td>
+                            <td>620</td>
+                            <td class="val-down">-4.6%</td>
+                            <td><span class="trend-tag trend-down">↓ 持续下滑</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>空气炸锅</strong></td>
+                            <td>210</td>
+                            <td class="val-up">+15.8%</td>
+                            <td>82%</td>
+                            <td>235</td>
+                            <td class="val-up">+11.9%</td>
+                            <td><span class="trend-tag trend-up">↑ 稳健</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>净水器</strong></td>
+                            <td>320</td>
+                            <td class="val-up">+12.1%</td>
+                            <td>62%</td>
+                            <td>355</td>
+                            <td class="val-up">+10.9%</td>
+                            <td><span class="trend-tag trend-up">↑ 健康需求</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>智能门锁</strong></td>
+                            <td>280</td>
+                            <td class="val-up">+19.6%</td>
+                            <td>70%</td>
+                            <td>330</td>
+                            <td class="val-up">+17.9%</td>
+                            <td><span class="trend-tag trend-up">↑ 高速增长</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>厨房小电</strong></td>
+                            <td>450</td>
+                            <td class="val-up">+8.5%</td>
+                            <td>68%</td>
+                            <td>480</td>
+                            <td class="val-up">+6.7%</td>
+                            <td><span class="trend-tag trend-up">↑ 稳定</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 第四部分：渠道分析 -->
+        <div class="section-spacer" id="channels">
+            <div class="section-title-area">
+                <h2 class="section-title">📡 电商渠道格局分析</h2>
+                <p class="section-desc">2025年各平台家电品类GMV分布及竞争力对比</p>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🛒 家电电商平台份额分布</span>
+                    <span class="card-badge badge-info">2025年</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartPlatform"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📊 各平台家电品类同比增长率</span>
+                    <span class="card-badge badge-up">直播电商领跑</span>
+                </div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="chartPlatformGrowth"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五部分：2026下半年预测 -->
+        <div class="section-spacer" id="forecast">
+            <div class="section-title-area">
+                <h2 class="section-title">🔮 2026年下半年电商预测数据</h2>
+                <p class="section-desc">基于2025年基数、消费趋势模型与季节性因子的综合预测</p>
+            </div>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📅 2026H2月度预测</span>
+                    <span class="card-badge badge-info">亿元</span>
+                </div>
+                <div class="chart-container chart-container-sm">
+                    <canvas id="chartForecastMonthly"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🎯 2026H2品类增长预测</span>
+                    <span class="card-badge badge-hot">重点品类</span>
+                </div>
+                <div class="chart-container chart-container-sm">
+                    <canvas id="chartForecastCategory"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">⚡ 2026H2渠道预测占比</span>
+                    <span class="card-badge badge-warn">格局变化</span>
+                </div>
+                <div class="chart-container chart-container-sm">
+                    <canvas id="chartForecastChannel"></canvas>
+                </div>
+        </div>
+    </div>
+
+    <!-- 第六部分：消费趋势洞察 -->
+    <div class="section-spacer" id="trends">
+        <div class="section-title-area">
+            <h2 class="section-title">💡 2025-2026家电消费趋势洞察</h2>
+            <p class="section-desc">六大核心趋势重塑家电电商市场格局</p>
+        </div>
+    </div>
+    <div class="grid-3">
+        <div class="card" style="border-left: 3px solid var(--accent-blue);">
+            <div style="font-size:2rem;margin-bottom:8px;">🤖</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">AI+IoT智能家居加速渗透</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">2025年智能家电电商占比突破38%，AI语音控制、全屋智能联动成标配。预计2026H2智能家电份额将达42%，AI大模型融入家电成新卖点。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag primary">智能互联</span>
+                <span class="cat-tag success">AI融合</span>
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-green);">
+            <div style="font-size:2rem;margin-bottom:8px;">🌱</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">绿色节能成核心决策因子</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">一级能效产品电商销量同比增长31%，以旧换新政策拉动超400亿元消费。2026H2绿色家电标签产品预计增长25%+。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag success">一级能效</span>
+                <span class="cat-tag warning">以旧换新</span>
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-purple);">
+            <div style="font-size:2rem;margin-bottom:8px;">📱</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">直播电商重塑购买路径</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">抖音+快手家电GMV达1,680亿元，同比增长58%。内容种草→直播转化链路成熟，预计2026H2直播电商占比将达22%。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag purple">直播带货</span>
+                <span class="cat-tag danger">内容电商</span>
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-orange);">
+            <div style="font-size:2rem;margin-bottom:8px;">🏠</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">清洁电器持续爆发</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">扫地机器人+洗地机电商规模突破900亿元，"懒人经济"+技术迭代双驱动。2026H2预计突破1,100亿元，成最大增长引擎。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag warning">扫地机器人</span>
+                <span class="cat-tag danger">洗地机</span>
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-cyan);">
+            <div style="font-size:2rem;margin-bottom:8px;">👴</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">银发经济催生适老家电</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">60岁以上网民超3.2亿，适老化家电电商规模达580亿元，同比增长26%。大字幕、语音控制、防干烧等功能需求旺盛。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag primary">银发经济</span>
+                <span class="cat-tag success">适老设计</span>
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-pink);">
+            <div style="font-size:2rem;margin-bottom:8px;">📦</div>
+            <h3 style="font-size:1rem;margin-bottom:6px;">下沉市场释放增量</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">三线以下城市家电电商规模达3,120亿元，增速14.8%领跑全国。拼多多+社区团购渠道渗透加速，2026H2预计达3,550亿元。</p>
+            <div class="category-tags" style="margin-top:10px;">
+                <span class="cat-tag purple">下沉市场</span>
+                <span class="cat-tag warning">社区团购</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <p>📊 数据来源：综合全网电商平台公开数据、行业研报及第三方监测机构 | 预测模型基于时间序列ARIMA + 季节性因子修正</p>
+        <p style="margin-top:4px;">© 2025-2026 家电消费调研报告 | 数据截止2025年12月 | 预测区间：2026年7月-12月</p>
+        <p style="margin-top:2px;font-size:0.7rem;color:#64748b;">* 本报告数据为基于公开信息的分析整理，仅供参考，不构成投资建议</p>
+    </div>
+
+</div>
+
+<script>
+    // ==================== 背景粒子 ====================
+    (function initParticles() {
+        const container = document.getElementById('particles');
+        const colors = ['#3b82f6', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#ec4899'];
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            container.appendChild(particle);
+        }
+    })();
+
+    // ==================== 通用Chart.js配置 ====================
+    Chart.defaults.color = '#cbd5e1';
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
+    Chart.defaults.plugins.datalabels = false;
+
+    // 通用渐变色工具
+    function createGradient(ctx, color1, color2) {
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, color1);
+        gradient.addColorStop(1, color2);
+        return gradient;
+    }
+
+    // ==================== 图表1：市场规模趋势 ====================
+    (function() {
+        const ctx = document.getElementById('chartMarketTrend').getContext('2d');
+        const gradient = createGradient(ctx, 'rgba(59,130,246,0.35)', 'rgba(59,130,246,0.02)');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+                datasets: [{
+                    label: '家电电商规模（亿元）',
+                    data: [6200, 6850, 7580, 8830, 9827, 10680],
+                    borderColor: '#3b82f6',
+                    backgroundColor: gradient,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 10,
+                }, {
+                    label: '同比增速',
+                    data: [null, 10.5, 10.7, 16.5, 11.3, 8.7],
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'transparent',
+                    fill: false,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    borderDash: [6, 4],
+                    pointRadius: 5,
+                    pointBackgroundColor: '#f59e0b',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    yAxisID: 'y1',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { intersect: false, mode: 'index' },
+                plugins: {
+                    legend: { position: 'top', labels: { usePointStyle: true, pointStyleWidth: 10,
+                            padding: 20 } },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 14, cornerRadius: 10 }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 5000,
+                        title: { display: true, text: '规模（亿元）' },
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '亿' }
+                    },
+                    y1: {
+                        position: 'right',
+                        min: 0,
+                        max: 25,
+                        title: { display: true, text: '增速（%）' },
+                        grid: { display: false },
+                        ticks: { callback: v => v + '%' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表2：季度分布 ====================
+    (function() {
+        const ctx = document.getElementById('chartQuarterly').getContext('2d');
+        const barColors = [
+            'rgba(59,130,246,0.8)',
+            'rgba(6,182,212,0.8)',
+            'rgba(139,92,246,0.8)',
+            'rgba(239,68,68,0.8)'
+        ];
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: '2025年季度销售额（亿元）',
+                    data: [2050, 2380, 2510, 2887],
+                    backgroundColor: barColors,
+                    borderRadius: 10,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 14, cornerRadius: 10,
+                        callbacks: { label: ctx => ctx.raw + ' 亿元' } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 1500,
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '亿' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表3：品类饼图 ====================
+    (function() {
+        const ctx = document.getElementById('chartCategoryPie').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['空调', '冰箱&洗衣机', '智能电视', '清洁电器', '厨房小电', '净水&健康', '智能门锁', '其他家电'],
+                datasets: [{
+                    data: [1480, 1650, 650, 900, 660, 420, 280, 1787],
+                    backgroundColor: [
+                        '#3b82f6', '#06b6d4', '#8b5cf6', '#10b981',
+                        '#f59e0b', '#ef4444', '#ec4899', '#64748b'
+                    ],
+                    borderColor: '#1a2332',
+                    borderWidth: 3,
+                    hoverBorderWidth: 4,
+                    hoverBorderColor: '#f1f5f9',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '58%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { usePointStyle: true, pointStyleWidth: 10, padding: 16, font: { size: 11 } }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30,41,59,0.95)',
+                        padding: 14,
+                        cornerRadius: 10,
+                        callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '亿元 (' + ctx.parsed + '%)' }
+                    }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表4：增速最快品类 ====================
+    (function() {
+        const ctx = document.getElementById('chartTopGrowth').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['洗地机', '扫地机器人', '智能门锁', '空气炸锅', '净水器', '空调', '厨房小电', '冰箱'],
+                datasets: [{
+                    label: '同比增速（%）',
+                    data: [28.3, 22.5, 19.6, 15.8, 12.1, 9.8, 8.5, 6.5],
+                    backgroundColor: [
+                        'rgba(239,68,68,0.75)',
+                        'rgba(239,68,68,0.65)',
+                        'rgba(245,158,11,0.75)',
+                        'rgba(245,158,11,0.65)',
+                        'rgba(16,185,129,0.75)',
+                        'rgba(59,130,246,0.75)',
+                        'rgba(59,130,246,0.6)',
+                        'rgba(100,116,139,0.6)',
+                    ],
+                    borderRadius: 8,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 14, cornerRadius: 10,
+                        callbacks: { label: ctx => '增速: +' + ctx.raw + '%' } }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '%' }
+                    },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表5：平台份额 ====================
+    (function() {
+        const ctx = document.getElementById('chartPlatform').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['京东', '天猫', '抖音', '拼多多', '快手', '苏宁易购', '其他'],
+                datasets: [{
+                    data: [3550, 2680, 1280, 1050, 400, 350, 517],
+                    backgroundColor: [
+                        '#ef4444', '#3b82f6', '#111827', '#e11d48',
+                        '#f59e0b', '#fbbf24', '#64748b'
+                    ],
+                    borderColor: '#1a2332',
+                    borderWidth: 3,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '55%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { usePointStyle: true, pointStyleWidth: 10, padding: 14, font: { size: 10 } }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30,41,59,0.95)',
+                        padding: 14,
+                        cornerRadius: 10,
+                        callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '亿元 (' + ctx.parsed + '%)' }
+                    }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表6：平台增长率 ====================
+    (function() {
+        const ctx = document.getElementById('chartPlatformGrowth').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['抖音', '快手', '拼多多', '京东', '天猫', '苏宁易购'],
+                datasets: [{
+                    label: '家电品类同比增长率',
+                    data: [62, 48, 22, 8.5, 5.2, -2.8],
+                    backgroundColor: [
+                        'rgba(17,24,39,0.85)',
+                        'rgba(245,158,11,0.8)',
+                        'rgba(225,29,72,0.8)',
+                        'rgba(239,68,68,0.75)',
+                        'rgba(59,130,246,0.75)',
+                        'rgba(251,191,36,0.7)',
+                    ],
+                    borderRadius: 10,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 14, cornerRadius: 10,
+                        callbacks: { label: ctx => (ctx.raw >= 0 ? '+' : '') + ctx.raw + '%' } }
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '%' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表7：2026H2月度预测 ====================
+    (function() {
+        const ctx = document.getElementById('chartForecastMonthly').getContext('2d');
+        const grad2025 = createGradient(ctx, 'rgba(59,130,246,0.5)', 'rgba(59,130,246,0.05)');
+        const grad2026 = createGradient(ctx, 'rgba(16,185,129,0.5)', 'rgba(16,185,129,0.05)');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['7月', '8月', '9月', '10月', '11月', '12月'],
+                datasets: [{
+                    label: '2025年月度',
+                    data: [780, 760, 820, 950, 1050, 887],
+                    borderColor: '#3b82f6',
+                    backgroundColor: grad2025,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2.5,
+                    pointRadius: 4,
+                }, {
+                    label: '2026H2预测',
+                    data: [850, 830, 900, 1040, 1150, 970],
+                    borderColor: '#10b981',
+                    backgroundColor: grad2026,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2.5,
+                    borderDash: [5, 3],
+                    pointRadius: 5,
+                    pointBackgroundColor: '#10b981',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { usePointStyle: true, pointStyleWidth: 8,
+                        padding: 14, font: { size: 10 } } },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 12, cornerRadius: 8,
+                        callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '亿元' } }
+                },
+                scales: {
+                    y: {
+                        min: 600,
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '亿' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表8：2026H2品类增长预测 ====================
+    (function() {
+        const ctx = document.getElementById('chartForecastCategory').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['洗地机', '扫地机器人', '智能门锁', '净水器', '空气炸锅', '空调'],
+                datasets: [{
+                    label: '2026H2预测增速',
+                    data: [23.7, 19.2, 17.9, 10.9, 11.9, 9.5],
+                    backgroundColor: [
+                        'rgba(239,68,68,0.7)',
+                        'rgba(245,158,11,0.7)',
+                        'rgba(139,92,246,0.7)',
+                        'rgba(6,182,212,0.7)',
+                        'rgba(16,185,129,0.7)',
+                        'rgba(59,130,246,0.7)',
+                    ],
+                    borderRadius: 6,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { backgroundColor: 'rgba(30,41,59,0.95)', padding: 12, cornerRadius: 8,
+                        callbacks: { label: ctx => '预测增速: +' + ctx.raw + '%' } }
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(148,163,184,0.08)' },
+                        ticks: { callback: v => v + '%' }
+                    },
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+    })();
+
+    // ==================== 图表9：2026H2渠道预测 ====================
+    (function() {
+        const ctx = document.getElementById('chartForecastChannel').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['京东', '天猫', '抖音', '拼多多', '快手', '其他'],
+                datasets: [{
+                    data: [34, 25, 15, 11, 5, 10],
+                    backgroundColor: [
+                        '#ef4444', '#3b82f6', '#111827', '#e11d48', '#f59e0b', '#64748b'
+                    ],
+                    borderColor: '#1a2332',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '50%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { usePointStyle: true, pointStyleWidth: 8, padding: 10, font: { size: 9 } }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30,41,59,0.95)',
+                        padding: 10,
+                        cornerRadius: 8,
+                        callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '%' }
+                    }
+                }
+            }
+        });
+    })();
+
+    // ==================== 导航滚动高亮 ====================
+    (function() {
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = [];
+        navLinks.forEach(link => {
+            const id = link.getAttribute('href').replace('#', '');
+            const el = document.getElementById(id);
+            if (el) sections.push({ id, el, link });
+        });
+        window.addEventListener('scroll', () => {
+            let current = sections[0]?.id || '';
+            sections.forEach(s => {
+                const rect = s.el.getBoundingClientRect();
+                if (rect.top <= 120) current = s.id;
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+    })();
+</script>
+</body>
+</html>
