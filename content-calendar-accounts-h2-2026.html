@@ -3,833 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年7-12月 · 家电总动员 & 家电百大 · 双账号内容规划日历</title>
+    <title>2026年8-12月 · 家电总动员 & 家电百大 · 轻制作选题规划(按热度&购买周期)</title>
     <style>
         :root {
-            --bg: #f6f8fb;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #64748b;
-            --line: #e2e8f0;
-            --red: #dc2626;
-            --orange: #ea580c;
-            --blue: #2563eb;
-            --purple: #7c3aed;
-            --teal: #0891b2;
-            --green: #0d9488;
-            --radius: 14px;
-            --shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
-            --jd-red: #e60012;
-            --bd-blue: #1a73e8;
+            --bg: #f7f9fc; --card: #fff; --text: #0f172a; --muted: #64748b; --line: #e2e8f0;
+            --red: #dc2626; --orange: #ea580c; --blue: #2563eb; --purple: #7c3aed; --teal: #0891b2;
+            --jd-red: #e60012; --bd-blue: #1a73e8;
         }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        .wrap {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
+        .wrap{max-width:1700px;margin:0 auto;padding:0 24px 60px}
+        .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+        .acct-tag{padding:6px 16px;border-radius:999px;font-weight:900;font-size:15px;color:#fff}
+        .acct-tag.zongdongyuan{background:var(--jd-red)}
+        .acct-tag.baida{background:var(--bd-blue)}
+        .pills{display:flex;gap:8px;flex-wrap:wrap}
+        .pill{background:#eef2ff;color:#1e3a5f;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+        .pill.green{background:#dcfce7;color:#166534}
+        .pill.amber{background:#fffbeb;color:#92400e}
+        .pill.red{background:#fef2f2;color:#b91c1c}
+        .hero{margin:28px 0 24px}
+        .hero h1{font-size:clamp(30px,5vw,48px);font-weight:950;letter-spacing:-1.2px;margin-bottom:10px}
+        .hero p{color:var(--muted);font-size:16px;max-width:980px}
 
-        /* 顶栏 */
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-            padding: 18px 0 12px;
-            border-bottom: 1px solid var(--line);
-            flex-wrap: wrap;
-        }
-        .topbar .logo-line {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .logo-line .acct-tag {
-            padding: 5px 14px;
-            border-radius: 999px;
-            font-weight: 900;
-            font-size: 13px;
-            letter-spacing: -0.3px;
-            color: #fff;
-        }
-        .acct-tag.zongdongyuan {
-            background: var(--jd-red);
-        }
-        .acct-tag.baida {
-            background: var(--bd-blue);
-        }
-        .pills {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .pill {
-            background: #eef2ff;
-            color: #1e3a5f;
-            border-radius: 999px;
-            padding: 4px 11px;
-            font-size: 10px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        .pill.green {
-            background: #dcfce7;
-            color: #166534;
-        }
-        .pill.amber {
-            background: #fffbeb;
-            color: #92400e;
-        }
-        .pill.red {
-            background: #fef2f2;
-            color: #b91c1c;
-        }
+        .cycle-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 24px}
+        .cycle-card{background:#fff;border-radius:12px;padding:16px 18px;border:1px solid var(--line);font-size:14px}
+        .cycle-card .cat-name{font-weight:900;font-size:15px;margin-bottom:6px}
+        .cycle-card .cycle-bar{height:8px;border-radius:4px;margin:8px 0;display:flex;overflow:hidden}
+        .cycle-seg{height:100%}
+        .seg-research{background:#0891b2}.seg-decide{background:#f59e0b}.seg-buy{background:#dc2626}.seg-off{background:#e2e8f0}
+        .cycle-card .legend{display:flex;gap:12px;font-size:11px;color:var(--muted)}
 
-        /* 英雄 */
-        .hero {
-            margin: 28px 0 36px;
-        }
-        .hero h1 {
-            font-size: clamp(28px, 4vw, 46px);
-            font-weight: 950;
-            letter-spacing: -1.2px;
-            margin-bottom: 8px;
-        }
-        .hero p {
-            color: var(--muted);
-            font-size: 15px;
-            max-width: 880px;
-        }
+        .kpi-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+        .kpi-item{flex:1;min-width:110px;background:#fff;border-radius:14px;padding:20px 18px;text-align:center;border:1px solid #e2e8f0}
+        .kpi-item .val{font-size:28px;font-weight:950;color:#1e3a5f}
+        .kpi-item .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+        .kpi-item.red .val{color:#dc2626}
+        .kpi-item.blue .val{color:#2563eb}
 
-        /* 总览KPI */
-        .kpi-row {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
-        }
-        .kpi-item {
-            flex: 1;
-            min-width: 110px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 18px 16px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        .kpi-item .val {
-            font-size: 26px;
-            font-weight: 950;
-            color: #1e3a5f;
-        }
-        .kpi-item .lbl {
-            font-size: 11px;
-            color: var(--muted);
-            margin-top: 2px;
-        }
-        .kpi-item.red .val {
-            color: #dc2626;
-        }
-        .kpi-item.blue .val {
-            color: #2563eb;
-        }
-        .kpi-item.teal .val {
-            color: #0891b2;
-        }
+        .section-title{margin:44px 0 16px;font-size:26px;font-weight:900;border-left:6px solid var(--orange);padding-left:16px;display:flex;align-items:center;gap:10px}
+        .section-title.s10{border-left-color:#ea580c}.section-title.s11{border-left-color:#dc2626}.section-title.s12{border-left-color:#7c3aed}
+        .section-title small{font-size:14px;font-weight:500;color:var(--muted)}
 
-        /* 区块标题 */
-        .section-title {
-            margin: 44px 0 14px;
-            font-size: 24px;
-            font-weight: 900;
-            border-left: 5px solid var(--orange);
-            padding-left: 14px;
-            letter-spacing: -0.4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title.month-11 {
-            border-left-color: #dc2626;
-        }
-        .section-title small {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--muted);
-            margin-left: auto;
-        }
+        .month-block{margin-bottom:32px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(15,23,42,0.03)}
+        .month-header{padding:18px 24px;font-weight:900;font-size:18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f1f5f9;flex-wrap:wrap}
+        .month-badge{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;font-size:18px;font-weight:950;color:#fff;flex-shrink:0}
+        .b-aug{background:#0d9488}.b-sep{background:#2563eb}.b-oct{background:#ea580c}.b-nov{background:#dc2626}.b-dec{background:#7c3aed}
+        .theme-tag{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#fef3c7;color:#92400e}
+        .theme-tag.d11{background:#fef2f2;color:#b91c1c}
 
-        /* 月份容器 */
-        .month-block {
-            margin-bottom: 32px;
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        .month-header {
-            padding: 16px 22px;
-            font-weight: 900;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid #f1f5f9;
-            flex-wrap: wrap;
-        }
-        .month-header .month-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 950;
-            color: #fff;
-            flex-shrink: 0;
-        }
-        .month-badge.jul {
-            background: #0891b2;
-        }
-        .month-badge.aug {
-            background: #0d9488;
-        }
-        .month-badge.sep {
-            background: #2563eb;
-        }
-        .month-badge.oct {
-            background: #ea580c;
-        }
-        .month-badge.nov {
-            background: #dc2626;
-        }
-        .month-badge.dec {
-            background: #7c3aed;
-        }
-        .month-header .theme-tag {
-            font-size: 12px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: #fef3c7;
-            color: #92400e;
-        }
-        .month-header .theme-tag.double11 {
-            background: #fef2f2;
-            color: #b91c1c;
-        }
+        .two-accounts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #f1f5f9}
+        @media(max-width:960px){.two-accounts{grid-template-columns:1fr}}
+        .account-col{padding:20px 22px 22px;border-right:1px solid #f1f5f9}
+        .account-col:last-child{border-right:none}
+        .col-title{font-weight:900;font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+        .dot{width:10px;height:10px;border-radius:50%}
+        .dot.z{background:var(--jd-red)}.dot.b{background:var(--bd-blue)}
+        .ep-card{background:#f9fafb;border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:4px solid #e2e8f0;font-size:14px}
+        .ep-card.z-card{border-left-color:#e60012}
+        .ep-card.b-card{border-left-color:#1a73e8}
+        .ep-num{font-weight:800;font-size:12px;color:#64748b;margin-bottom:3px}
+        .ep-title{font-weight:800;font-size:15px;margin-bottom:4px}
+        .ep-desc{font-size:13px;color:var(--muted);line-height:1.5}
+        .ep-tags{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+        .ep-tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#eef2ff;color:#1e3a5f}
+        .ep-tag.hot{background:#fef2f2;color:#b91c1c}
+        .ep-tag.d11{background:#fecaca;color:#7f1d1d}
+        .ep-tag.guide{background:#dcfce7;color:#166534}
+        .ep-tag.shop{background:#fff7ed;color:#c2410c}
+        .ep-tag.new{background:#f3e8ff;color:#6b21a8}
 
-        /* 两个账号并排 */
-        .two-accounts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-top: 1px solid #f1f5f9;
-        }
-        @media (max-width: 960px) {
-            .two-accounts {
-                grid-template-columns: 1fr;
-            }
-        }
-        .account-col {
-            padding: 16px 20px 20px;
-            border-right: 1px solid #f1f5f9;
-        }
-        .account-col:last-child {
-            border-right: none;
-        }
-        .account-col .col-title {
-            font-weight: 900;
-            font-size: 15px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .col-title .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .dot.zongdongyuan {
-            background: var(--jd-red);
-        }
-        .dot.baida {
-            background: var(--bd-blue);
-        }
+        .phase-strip{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;font-size:13px;align-items:center}
+        .phase-badge{padding:4px 10px;border-radius:999px;font-weight:700;font-size:12px}
+        .phase-badge.research{background:#dcfce7;color:#166534}
+        .phase-badge.decide{background:#fef3c7;color:#92400e}
+        .phase-badge.buy{background:#fef2f2;color:#b91c1c}
 
-        /* 每期内容卡片 */
-        .episode-card {
-            background: #f9fafb;
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-bottom: 9px;
-            border-left: 4px solid #e2e8f0;
-            transition: box-shadow 0.15s;
-            font-size: 13px;
-        }
-        .episode-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-        }
-        .episode-card.zongdongyuan-card {
-            border-left-color: #e60012;
-        }
-        .episode-card.baida-card {
-            border-left-color: #1a73e8;
-        }
-        .episode-card .ep-num {
-            font-weight: 800;
-            font-size: 11px;
-            color: #64748b;
-            margin-bottom: 2px;
-        }
-        .episode-card .ep-title {
-            font-weight: 800;
-            font-size: 14px;
-            margin-bottom: 3px;
-            letter-spacing: -0.2px;
-        }
-        .episode-card .ep-desc {
-            font-size: 11px;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-        .episode-card .ep-tags {
-            margin-top: 5px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .ep-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 10px;
-            font-weight: 700;
-            background: #eef2ff;
-            color: #1e3a5f;
-        }
-        .ep-tag.hot {
-            background: #fef2f2;
-            color: #b91c1c;
-        }
-        .ep-tag.guide {
-            background: #dcfce7;
-            color: #166534;
-        }
-        .ep-tag.tech {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
-
-        /* 品类色条 */
-        .category-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 8px 0 16px;
-        }
-        .cat-badge {
-            padding: 5px 12px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-        .cat-badge.tv {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
-        .cat-badge.ac {
-            background: #e0f7fa;
-            color: #0f766e;
-        }
-        .cat-badge.fridge {
-            background: #eef2ff;
-            color: #1e40af;
-        }
-        .cat-badge.washer {
-            background: #dcfce7;
-            color: #166534;
-        }
-        .cat-badge.clean {
-            background: #fff7ed;
-            color: #c2410c;
-        }
-        .cat-badge.kitchen {
-            background: #fef2f2;
-            color: #b91c1c;
-        }
-        .cat-badge.other {
-            background: #f8fafc;
-            color: #475569;
-        }
-
-        /* 双11特别标注 */
-        .double11-highlight {
-            background: linear-gradient(135deg, #fff5f5, #fffbfb);
-            border: 2px dashed #fca5a5;
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin: 10px 0 16px;
-            font-size: 13px;
-        }
-        .double11-highlight strong {
-            color: #dc2626;
-        }
-
-        .callout {
-            background: #f8faff;
-            border-left: 4px solid #2563eb;
-            border-radius: 10px;
-            padding: 14px 17px;
-            font-size: 13px;
-            color: #334155;
-            margin: 12px 0;
-        }
-        .callout.amber {
-            background: #fffbeb;
-            border-left-color: #f59e0b;
-        }
-        .callout.green {
-            background: #f0fdf4;
-            border-left-color: #10b981;
-        }
-        .callout.red {
-            background: #fff5f5;
-            border-left-color: #dc2626;
-        }
-
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            margin: 10px 0;
-        }
-        .summary-table th {
-            background: #f1f5f9;
-            text-align: left;
-            padding: 10px 12px;
-            font-weight: 800;
-            font-size: 11px;
-            color: #475569;
-            text-transform: uppercase;
-        }
-        .summary-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .summary-table .num {
-            text-align: right;
-            font-weight: 800;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 11px;
-            margin-top: 48px;
-            padding-top: 20px;
-            border-top: 1px solid var(--line);
-            line-height: 2;
-        }
+        .d11-highlight{background:linear-gradient(135deg,#fff5f5,#fffbfb);border:2px dashed #fca5a5;border-radius:14px;padding:16px 20px;margin:12px 0 18px;font-size:14px}
+        .d11-highlight strong{color:#dc2626}
+        .callout{background:#f8faff;border-left:4px solid #2563eb;border-radius:12px;padding:16px 20px;font-size:14px;color:#334155;margin:14px 0}
+        .callout.green{background:#f0fdf4;border-left-color:#10b981}
+        .summary-table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+        .summary-table th{background:#f1f5f9;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:#475569;text-transform:uppercase}
+        .summary-table td{padding:10px 12px;border-bottom:1px solid #f1f5f9}
+        .summary-table .num{text-align:right;font-weight:800}
+        footer{text-align:center;color:var(--muted);font-size:12px;margin-top:48px;padding-top:20px;border-top:1px solid var(--line);line-height:2}
     </style>
 </head>
 <body>
-    <div class="wrap">
+<div class="wrap">
 
-        <!-- ═══════ 顶栏 ═══════ -->
-        <div class="topbar">
-            <div class="logo-line">
-                <span class="acct-tag zongdongyuan">家电总动员</span>
-                <span style="font-weight:700;color:var(--muted);">+</span>
-                <span class="acct-tag baida">家电百大</span>
-                <span style="font-weight:900;font-size:14px;">2026年7-12月 · 双账号内容规划日历</span>
-            </div>
-            <div class="pills">
-                <span class="pill">选购指南优先</span>
-                <span class="pill green">覆盖6大品类</span>
-                <span class="pill amber">双11特辑</span>
-                <span class="pill red">总计94期</span>
-            </div>
-        </div>
-
-        <!-- ═══════ 英雄 ═══════ -->
-        <div class="hero">
-            <h1>📺 2026下半年 · 家电内容日历</h1>
-            <p>基于2025-2026年家电市场深度调研（奥维云网/洛图科技/GfK/品牌财报），覆盖<strong>四大家电（电视/空调/冰箱/洗衣机）、清洁家电（扫地机器人/洗地机/吸尘器）、厨卫家电（油烟机/燃气灶/洗碗机/蒸烤箱/净水器/热水器）</strong>等核心品类。两个账号差异化定位——<span style="color:#e60012;font-weight:700;">家电总动员</span>主打选购指南与避坑攻略，<span style="color:#1a73e8;font-weight:700;">家电百大</span>主打深度评测与技术榜单。7月2期/账号，8月5期/账号，9-12月每月10期/账号。双11营销从10月预热贯穿至11月爆发。</p>
-        </div>
-
-        <!-- ═══════ 核心KPI ═══════ -->
-        <div class="kpi-row">
-            <div class="kpi-item red"><div class="val">94期</div><div class="lbl">两账号总期数（7-12月）</div></div>
-            <div class="kpi-item"><div class="val">47期</div><div class="lbl">家电总动员 总期数</div></div>
-            <div class="kpi-item blue"><div class="val">47期</div><div class="lbl">家电百大 总期数</div></div>
-            <div class="kpi-item teal"><div class="val">10-11月</div><div class="lbl">双11核心营销窗口</div></div>
-            <div class="kpi-item"><div class="val">6大</div><div class="lbl">覆盖核心家电品类</div></div>
-            <div class="kpi-item blue"><div class="val">选购指南</div><div class="lbl">内容核心定位</div></div>
-        </div>
-
-        <!-- ═══════ 品类速览 ═══════ -->
-        <div class="category-strip">
-            <span class="cat-badge tv">📺 电视</span>
-            <span class="cat-badge ac">❄️ 空调</span>
-            <span class="cat-badge fridge">🧊 冰箱</span>
-            <span class="cat-badge washer">👕 洗衣机</span>
-            <span class="cat-badge clean">🤖 清洁家电</span>
-            <span class="cat-badge kitchen">🍳 厨卫家电</span>
-            <span class="cat-badge other">🔌 其他家电</span>
-        </div>
-
-        <!-- ═══════ 两个账号定位说明 ═══════ -->
-        <div class="callout">
-            <strong>🔴 家电总动员：</strong>面向大众消费者，主打<strong>"选购指南 + 避坑攻略 + 性价比推荐 + 使用技巧"</strong>。内容风格通俗易懂，强调"怎么选、怎么买、怎么用"。覆盖品类广泛，选题切入消费者日常痛点。<br>
-            <strong>🔵 家电百大：</strong>面向家电发烧友和品质用户，主打<strong>"深度评测 + 技术解析 + 榜单排名 + 行业趋势"</strong>。内容风格专业硬核，强调"为什么好、好在哪、技术原理"。侧重高端/旗舰产品横评。
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 7月 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">☀️ 七月 · 盛夏清凉季<span style="font-size:14px;font-weight:500;color:var(--muted);">（2期/账号 · 共4期）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge jul">7</span> 核心主题：空调选购 + 冰箱选购（夏季刚需爆发期）
-                <span class="theme-tag">🔥 空调旺季</span>
-                <span class="theme-tag">🧊 冰箱换新潮</span>
-            </div>
-            <div class="two-accounts">
-                <!-- 家电总动员 -->
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员 · 选购指南向</div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第1期 · 7月上旬</div>
-                        <div class="ep-title">🔥 2026空调怎么选？一级能效新国标避坑指南</div>
-                        <div class="ep-desc">能效新国标落地后，一级/二级/三级区别到底在哪？1.5匹和2匹怎么选？定频vs变频vs全直流变频怎么分辨？附2026年7月最新品牌价格带推荐。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">空调</span><span class="ep-tag guide">选购指南</span><span class="ep-tag">能效新国标</span></div>
-                    </div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第2期 · 7月下旬</div>
-                        <div class="ep-title">🧊 冰箱选购终极攻略：十字门vs法式vs日式多门，你家适合哪种？</div>
-                        <div class="ep-desc">冰箱门体结构全解析、容量怎么算（人均80L起）、风冷vs直冷vs混冷、零度保鲜/微冻/深冻技术哪家强？附3000/5000/8000元三档推荐清单。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">冰箱</span><span class="ep-tag guide">选购指南</span><span class="ep-tag">门体结构</span></div>
-                    </div>
-                </div>
-                <!-- 家电百大 -->
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大 · 深度评测向</div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第1期 · 7月上旬</div>
-                        <div class="ep-title">❄️ 2026旗舰空调横评：格力/美的/海尔/大金，谁才是制冷之王？</div>
-                        <div class="ep-desc">实测高温制冷衰减、噪音分贝、耗电量、温控精度。重点解析全直流变频+电子膨胀阀+双排冷凝器的技术差异。附实验室数据对比。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">深度横评</span><span class="ep-tag hot">空调</span><span class="ep-tag">旗舰对比</span></div>
-                    </div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第2期 · 7月下旬</div>
-                        <div class="ep-title">🧊 高端冰箱技术榜单：真空保鲜vs分子保鲜vs光动银除菌，谁是保鲜之王？</div>
-                        <div class="ep-desc">实测蔬果7天保鲜对比、肉类微冻/深冻效果、除菌除味技术原理拆解。海尔/美的/西门子/松下旗舰机型深度对比。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">技术榜单</span><span class="ep-tag hot">冰箱</span><span class="ep-tag">保鲜技术</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 8月 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">🏠 八月 · 装修季启动<span style="font-size:14px;font-weight:500;color:var(--muted);">（5期/账号 · 共10期）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge aug">8</span> 核心主题：电视+洗衣机+扫地机器人+厨卫（金九银十装修预热）
-                <span class="theme-tag">🏠 装修旺季</span>
-                <span class="theme-tag">📺 电视选购</span>
-                <span class="theme-tag">🤖 清洁家电</span>
-            </div>
-            <div class="two-accounts">
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员</div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第1期 · 8月上旬</div>
-                        <div class="ep-title">📺 2026电视选购避坑指南：MiniLED/OLED/LCD到底怎么选？</div>
-                        <div class="ep-desc">标准MiniLED vs QD-MiniLED vs SQD-MiniLED vs OLED，技术差异一篇讲清楚。客厅视距尺寸对照表+抗反射技术选购要点。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">电视</span><span class="ep-tag guide">选购指南</span><span class="ep-tag">MiniLED</span></div>
-                    </div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第2期 · 8月上旬</div>
-                        <div class="ep-title">👕 洗衣机选购攻略：洗烘一体vs洗烘套装、滚筒vs波轮怎么选？</div>
-                        <div class="ep-desc">热泵烘干vs冷凝烘干差别在哪？DD直驱vs皮带传动哪个耐用？10kg够不够一家三口用？附3000/5000/8000元推荐。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">洗衣机</span><span class="ep-tag guide">选购指南</span></div>
-                    </div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第3期 · 8月中旬</div>
-                        <div class="ep-title">🤖 扫地机器人选购避坑：全能基站真的全能吗？滚筒vs传统拖布实测对比</div>
-                        <div class="ep-desc">刚需技术排名：清洁能力>全能基站>导航避障>防缠绕>续航。2000-4000元黄金价格带怎么选？附养宠家庭/大户型/老人家庭专属推荐。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">扫地机器人</span><span class="ep-tag guide">选购指南</span></div>
-                    </div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第4期 · 8月下旬</div>
-                        <div class="ep-title">🍳 厨房家电套餐怎么配？油烟机+燃气灶+洗碗机一站式选购攻略</div>
-                        <div class="ep-desc">油烟机侧吸vs顶吸vs顶侧双吸、燃气灶火力怎么选（4.5kW起）、洗碗机8套vs13套vs16套容量对照。装修季套餐组合推荐。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">厨卫家电</span><span class="ep-tag guide">套餐选购</span></div>
-                    </div>
-                    <div class="episode-card zongdongyuan-card">
-                        <div class="ep-num">第5期 · 8月下旬</div>
-                        <div class="ep-title">💧 净水器+热水器选购指南：全屋净水方案一篇看懂</div>
-                        <div class="ep-desc">RO反渗透vs超滤vs纳滤区别、通量怎么选（600G/800G/1000G）、燃气热水器vs电热水器vs即热式对比。附全屋净水四件套方案。</div>
-                        <div class="ep-tags"><span class="ep-tag hot">净水器</span><span class="ep-tag guide">热水器</span></div>
-                    </div>
-                </div>
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大</div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第1期 · 8月上旬</div>
-                        <div class="ep-title">📺 MiniLED家族技术谱系深度对比：标准/QD/SQD/RGB-MiniLED谁才是未来？</div>
-                        <div class="ep-desc">海信ULED X(SQD) vs TCL万象分区(QD) vs 三星Neo QLED，实测亮度/色域/光晕/厚度/价格五维对比。抗反射AG/LR/AG25+LR混合技术实测。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">深度横评</span><span class="ep-tag hot">电视</span><span class="ep-tag">MiniLED技术谱系</span></div>
-                    </div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第2期 · 8月上旬</div>
-                        <div class="ep-title">👕 洗烘套装旗舰横评：海尔/小天鹅/西门子/LG，谁烘干最彻底？</div>
-                        <div class="ep-desc">热泵烘干温度曲线对比、除皱效果实测、噪音分贝对比、毛絮过滤系统拆解。洗烘一体vs独立烘干机技术路线之争。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">深度横评</span><span class="ep-tag hot">洗衣机</span></div>
-                    </div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第3期 · 8月中旬</div>
-                        <div class="ep-title">🤖 扫地机器人十大刚需技术排名：从清洁能力到生态联动</div>
-                        <div class="ep-desc">滚筒活水洗地(98%)>全能基站(95%)>AI视觉+自升降LDS(91%)>防缠绕(85%)>续航回充(78%)。科沃斯/石头/追觅/云鲸/大疆技术路线对比。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">技术榜单</span><span class="ep-tag hot">扫地机器人</span></div>
-                    </div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第4期 · 8月下旬</div>
-                        <div class="ep-title">🍳 洗碗机技术横评：热风烘干vs晶蕾烘干vs自动开门，哪种烘干方式最有效？</div>
-                        <div class="ep-desc">实测洗完后碗碟干燥度、除菌率、耗水耗电量。西门子/美的/方太/老板旗舰对比。中式餐具vs西式餐具清洁效果差异。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">深度横评</span><span class="ep-tag hot">洗碗机</span></div>
-                    </div>
-                    <div class="episode-card baida-card">
-                        <div class="ep-num">第5期 · 8月下旬</div>
-                        <div class="ep-title">💧 净水器RO膜技术深度解析：陶氏/东丽/时代沃顿/GE膜片到底差在哪？</div>
-                        <div class="ep-desc">TDS脱盐率实测对比、废水比优化技术、长效RO膜寿命测试。美的/沁园/安吉尔/小米旗舰净水器拆机对比。</div>
-                        <div class="ep-tags"><span class="ep-tag tech">技术深扒</span><span class="ep-tag hot">净水器</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 9月 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">🍂 九月 · 金九银十装修黄金季<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 品类全面铺开）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge sep">9</span> 核心主题：全品类选购指南 + 装修季套餐方案 + 洗地机/蒸烤箱等细分品类
-                <span class="theme-tag">🏠 装修黄金期</span>
-                <span class="theme-tag">📋 全品类覆盖</span>
-            </div>
-            <div class="two-accounts">
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员 · 选购指南 10期</div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第1期</div><div class="ep-title">📺 75英寸电视选购终极指南：客厅开间3.5m+必看</div><div class="ep-desc">2026年75英寸成第一大尺寸段（销额占比37%），MiniLED/QD-MiniLED/OLED怎么选？抗反射技术重要性超亮度。</div><div class="ep-tags"><span class="ep-tag hot">电视</span><span class="ep-tag guide">大屏选购</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第2期</div><div class="ep-title">❄️ 中央空调vs风管机vs挂机：装修前必须想清楚的选择</div><div class="ep-desc">不同户型空调方案对比、安装成本/使用成本/维护成本全分析。多联机vs单元机怎么选？</div><div class="ep-tags"><span class="ep-tag hot">空调</span><span class="ep-tag guide">装修必看</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第3期</div><div class="ep-title">🧊 嵌入式冰箱选购避坑：橱柜预留尺寸全攻略</div><div class="ep-desc">零嵌/平嵌/全嵌冰箱区别、散热方式对比、橱柜预留尺寸对照表。附主流品牌嵌入式冰箱推荐清单。</div><div class="ep-tags"><span class="ep-tag hot">冰箱</span><span class="ep-tag guide">嵌入式</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第4期</div><div class="ep-title">👕 洗烘套装vs洗烘一体：三年使用成本对比</div><div class="ep-desc">购机成本+电费+烘干效果+占地空间+使用寿命五维对比。附不同预算下的最佳方案推荐。</div><div class="ep-tags"><span class="ep-tag hot">洗衣机</span><span class="ep-tag guide">成本对比</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第5期</div><div class="ep-title">🤖 2000-4000元扫地机器人选购指南：黄金价格带怎么选？</div><div class="ep-desc">2026年中端市场占据63%销额，全能基站+AI避障+防缠绕三要素一个不能少。科沃斯/石头/追觅/云鲸同价位对比。</div><div class="ep-tags"><span class="ep-tag hot">扫地机器人</span><span class="ep-tag guide">价格段</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第6期</div><div class="ep-title">🧹 洗地机vs扫地机器人vs吸尘器：清洁家电"铁三角"怎么搭配？</div><div class="ep-desc">三种清洁工具的功能定位、适用场景、互补关系。附不同户型/不同预算的搭配方案推荐。</div><div class="ep-tags"><span class="ep-tag hot">清洁家电</span><span class="ep-tag guide">搭配方案</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第7期</div><div class="ep-title">🍳 油烟机选购终极指南：侧吸vs顶吸vs顶侧双吸实测对比</div><div class="ep-desc">风量/风压/油脂分离度核心指标解读、开放式厨房油烟机怎么选？附1000-5000元全价位推荐。</div><div class="ep-tags"><span class="ep-tag hot">油烟机</span><span class="ep-tag guide">选购指南</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第8期</div><div class="ep-title">🔥 蒸烤箱/微蒸烤一体机选购避坑：嵌入式vs台式怎么选？</div><div class="ep-desc">蒸汽方式（直喷式vs蒸腾式）、内腔材质（搪瓷vs不锈钢）、容量选择。附凯度/美的/方太/老板推荐。</div><div class="ep-tags"><span class="ep-tag hot">蒸烤箱</span><span class="ep-tag guide">选购指南</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第9期</div><div class="ep-title">💧 燃气热水器vs电热水器vs即热式：全家热水方案怎么选？</div><div class="ep-desc">升数选择（一厨一卫12L起步）、零冷水技术、恒温技术对比。附能率/林内/海尔/美的推荐。</div><div class="ep-tags"><span class="ep-tag hot">热水器</span><span class="ep-tag guide">选购指南</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第10期</div><div class="ep-title">🔌 装修季家电全屋套餐推荐：三室两厅全套家电预算方案</div><div class="ep-desc">3万/5万/8万三档预算的全屋家电配置方案（含电视/空调/冰箱/洗衣机/油烟机/热水器/净水器/扫地机）。</div><div class="ep-tags"><span class="ep-tag guide">全屋套餐</span><span class="ep-tag hot">装修方案</span></div></div>
-                </div>
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大 · 深度评测 10期</div>
-                    <div class="episode-card baida-card"><div class="ep-num">第1期</div><div class="ep-title">📺 2026 85英寸+巨幕电视横评：海信/TCL/三星/索尼旗舰对决</div><div class="ep-desc">85英寸+销额占比22%且加速增长，SQD-MiniLED vs QD-MiniLED vs Neo QLED实测对比。</div><div class="ep-tags"><span class="ep-tag tech">旗舰横评</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第2期</div><div class="ep-title">❄️ 中央空调品牌技术路线对决：大金/日立/三菱电机/格力/美的</div><div class="ep-desc">压缩机技术（涡旋式vs双转子）、冷媒分配技术、静音技术、智能控制四大维度深度对比。</div><div class="ep-tags"><span class="ep-tag tech">技术对决</span><span class="ep-tag hot">中央空调</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第3期</div><div class="ep-title">🧊 冰箱保鲜技术深度横评：7天蔬果保鲜实测</div><div class="ep-desc">海尔全空间保鲜/美的微晶一周鲜/西门子零度保鲜/松下-3℃微冻，7天菠菜/草莓/三文鱼保鲜效果实测对比。</div><div class="ep-tags"><span class="ep-tag tech">保鲜实测</span><span class="ep-tag hot">冰箱</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第4期</div><div class="ep-title">👕 高端洗衣机电机技术深度对比：DD直驱vsBLDC皮带vs双驱动</div><div class="ep-desc">噪音/震动/洗净比/脱水效果实测，海尔FPA直驱/小天鹅水魔方/LG AI DD/西门子iQ500技术拆解。</div><div class="ep-tags"><span class="ep-tag tech">电机技术</span><span class="ep-tag hot">洗衣机</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第5期</div><div class="ep-title">🤖 扫地机器人导航避障技术横评：LDS+dToF+AI视觉+3D结构光谁最强？</div><div class="ep-desc">100种障碍物识别率实测、复杂户型建图精度对比、低矮空间通过率。石头自升降LDS vs 追觅仿生机械臂。</div><div class="ep-tags"><span class="ep-tag tech">导航避障</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第6期</div><div class="ep-title">🧹 洗地机四大技术路线横评：滚刷式vs履带式vs蒸汽式vs无滚布</div><div class="ep-desc">添可/追觅/石头/必胜旗舰机型，清洁力/自清洁/续航/噪音四维实测。滚刷防缠绕技术对比。</div><div class="ep-tags"><span class="ep-tag tech">洗地机</span><span class="ep-tag hot">技术横评</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第7期</div><div class="ep-title">🍳 油烟机电机技术深度对比：直流变频vs交流变频vs定频</div><div class="ep-desc">风量/风压/噪音/功耗四维实测，方太/老板/华帝/西门子旗舰机型拆机对比。</div><div class="ep-tags"><span class="ep-tag tech">电机技术</span><span class="ep-tag hot">油烟机</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第8期</div><div class="ep-title">🔥 蒸烤箱蒸汽技术深度解析：直喷式vs蒸腾式vs双蒸汽</div><div class="ep-desc">蒸汽产生速度/均匀度/温控精度实测，凯度双热风/美的微蒸烤一体/方太蒸箱技术路线对比。</div><div class="ep-tags"><span class="ep-tag tech">蒸汽技术</span><span class="ep-tag hot">蒸烤箱</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第9期</div><div class="ep-title">💧 热水器恒温技术深度横评：水量伺服vs燃气比例阀vs记忆合金</div><div class="ep-desc">多点用水温度波动实测、零冷水循环技术对比、能效等级差异。能率/林内/海尔/万和旗舰对比。</div><div class="ep-tags"><span class="ep-tag tech">恒温技术</span><span class="ep-tag hot">热水器</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026年9月家电品牌技术实力榜：六大品类品牌排名</div><div class="ep-desc">电视/空调/冰箱/洗衣机/扫地机器人/油烟机六大品类品牌技术实力综合排名，含各品牌核心专利技术盘点。</div><div class="ep-tags"><span class="ep-tag tech">品牌榜单</span><span class="ep-tag hot">综合排名</span></div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 10月 · 双11预热 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">🎯 十月 · 双11预热月<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 双11选购攻略密集发布）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge oct">10</span> 核心主题：双11预售攻略 + 全品类好价预测 + 选购清单
-                <span class="theme-tag double11">🔥 双11预热</span>
-                <span class="theme-tag">🛒 预售攻略</span>
-            </div>
-            <div class="double11-highlight">
-                <strong>🔥 双11营销关键节点：</strong>10月中旬蓄水期启动 → 10月20日左右预售开启 → 10月31日晚8点首波爆发。10月内容需密集覆盖"选购决策"类话题，为11月转化蓄水。重点品类：电视（MiniLED）、扫地机器人（全能基站机型）、洗烘套装、洗碗机。
-            </div>
-            <div class="two-accounts">
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员 · 双11选购攻略</div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第1期 · 10月上旬</div><div class="ep-title">🛒 2026双11家电预售攻略：什么时候买最便宜？</div><div class="ep-desc">双11时间线解析、预售vs现货价差对比、平台比价技巧、以旧换新叠加优惠攻略。</div><div class="ep-tags"><span class="ep-tag hot">双11</span><span class="ep-tag guide">预售攻略</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11电视选购清单：75/85英寸MiniLED电视好价预测</div><div class="ep-desc">基于2025双11价格走势，预测2026年各品牌MiniLED电视双11好价区间。海信/TCL/小米/创维全覆盖。</div><div class="ep-tags"><span class="ep-tag hot">电视</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第3期</div><div class="ep-title">❄️ 双11空调反季买最划算？2026空调选购+好价预测</div><div class="ep-desc">反季买空调真的便宜吗？2025双11价格复盘+2026预测。挂机/柜机/中央空调全覆盖。</div><div class="ep-tags"><span class="ep-tag hot">空调</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第4期</div><div class="ep-title">🧊 双11冰箱选购清单：十字门/法式/日式多门好价预测</div><div class="ep-desc">500L+大容量冰箱双11好价区间预测，海尔/美的/容声/西门子主力机型全覆盖。</div><div class="ep-tags"><span class="ep-tag hot">冰箱</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第5期</div><div class="ep-title">👕 双11洗烘套装选购清单：热泵烘干机型好价预测</div><div class="ep-desc">洗烘套装vs洗烘一体双11价格对比，海尔/小天鹅/西门子/LG主力套装推荐。</div><div class="ep-tags"><span class="ep-tag hot">洗衣机</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第6期</div><div class="ep-title">🤖 双11扫地机器人选购清单：2000-4000元黄金价格带必看</div><div class="ep-desc">全能基站机型双11好价预测，科沃斯/石头/追觅/云鲸/小米主力机型价格走势分析。</div><div class="ep-tags"><span class="ep-tag hot">扫地机器人</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第7期</div><div class="ep-title">🧹 双11清洁家电全家桶：扫地机+洗地机+吸尘器搭配方案</div><div class="ep-desc">清洁家电"铁三角"双11组合购买攻略，不同预算/不同户型的最优搭配方案。</div><div class="ep-tags"><span class="ep-tag hot">清洁家电</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第8期</div><div class="ep-title">🍳 双11厨卫家电选购清单：油烟机+燃气灶+洗碗机套餐推荐</div><div class="ep-desc">方太/老板/华帝/美的厨卫套餐双11好价预测，装修季一站式购齐攻略。</div><div class="ep-tags"><span class="ep-tag hot">厨卫家电</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第9期</div><div class="ep-title">💧 双11净水器+热水器选购清单</div><div class="ep-desc">RO反渗透净水器+燃气热水器双11好价预测，美的/沁园/安吉尔/能率/林内全覆盖。</div><div class="ep-tags"><span class="ep-tag hot">净水器</span><span class="ep-tag">双11清单</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026双11家电终极选购清单：全品类TOP50好价预测</div><div class="ep-desc">六大品类TOP50款家电产品双11预测好价+历史低价对比+购买优先级排序。</div><div class="ep-tags"><span class="ep-tag hot">双11</span><span class="ep-tag guide">终极清单</span></div></div>
-                </div>
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大 · 双11技术指南</div>
-                    <div class="episode-card baida-card"><div class="ep-num">第1期 · 10月上旬</div><div class="ep-title">📊 2025双11家电数据复盘：哪些品类降价最猛？</div><div class="ep-desc">基于2025双11奥维云网+星图数据，分析电视/空调/冰箱/洗衣机/扫地机器人各品类降价幅度和成交规模。</div><div class="ep-tags"><span class="ep-tag tech">数据复盘</span><span class="ep-tag hot">双11</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11高端电视选购技术指南：MiniLED/OLED买哪款？</div><div class="ep-desc">海信ULED X vs TCL万象分区 vs 三星Neo QLED vs 索尼XR，高端电视双11选购技术决策树。</div><div class="ep-tags"><span class="ep-tag tech">选购决策树</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第3期</div><div class="ep-title">❄️ 双11空调技术选购指南：全直流变频+新一级能效怎么辨别？</div><div class="ep-desc">压缩机/电机/膨胀阀/冷凝器四大核心部件技术对比，教你看懂空调配置表。</div><div class="ep-tags"><span class="ep-tag tech">技术选购</span><span class="ep-tag hot">空调</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第4期</div><div class="ep-title">🧊 双11冰箱技术选购指南：保鲜技术哪家强？</div><div class="ep-desc">海尔全空间保鲜/美的微晶/西门子零度/松下-3℃微冻四大保鲜技术深度对比+双11好价机型推荐。</div><div class="ep-tags"><span class="ep-tag tech">保鲜技术</span><span class="ep-tag hot">冰箱</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第5期</div><div class="ep-title">👕 双11洗烘套装技术选购指南：热泵烘干技术深度对比</div><div class="ep-desc">双转子压缩机vs定频压缩机、双变频vs单变频、除皱/除菌/除味技术对比。</div><div class="ep-tags"><span class="ep-tag tech">热泵技术</span><span class="ep-tag hot">洗衣机</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第6期</div><div class="ep-title">🤖 双11扫地机器人技术选购指南：刚需技术排名+品牌路线图</div><div class="ep-desc">清洁能力>全能基站>导航避障>防缠绕>续航，十大技术刚需排名+科沃斯/石头/追觅/云鲸/大疆品牌路线图。</div><div class="ep-tags"><span class="ep-tag tech">刚需排名</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第7期</div><div class="ep-title">🧹 双11洗地机技术选购指南：四大技术路线横评</div><div class="ep-desc">滚刷式vs履带式vs蒸汽式vs无滚布，添可/追觅/石头/必胜技术路线对比+双11好价推荐。</div><div class="ep-tags"><span class="ep-tag tech">洗地机</span><span class="ep-tag hot">技术横评</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第8期</div><div class="ep-title">🍳 双11洗碗机技术选购指南：烘干方式+容量+安装方式</div><div class="ep-desc">热风烘干vs晶蕾烘干vs自动开门vs余热烘干，8套/13套/16套容量选择，嵌入式vs台式vs水槽式。</div><div class="ep-tags"><span class="ep-tag tech">洗碗机</span><span class="ep-tag hot">技术选购</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第9期</div><div class="ep-title">💧 双11净水器技术选购指南：RO膜+通量+废水比</div><div class="ep-desc">陶氏/东丽/时代沃顿膜片对比、600G/800G/1000G/1200G通量选择、1:1 vs 2:1 vs 3:1废水比。</div><div class="ep-tags"><span class="ep-tag tech">RO膜技术</span><span class="ep-tag hot">净水器</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026双11家电技术选购决策树：六大品类一图看懂</div><div class="ep-desc">电视/空调/冰箱/洗衣机/扫地机器人/洗碗机六大品类技术选购决策树，一图看懂"我的需求该买什么配置"。</div><div class="ep-tags"><span class="ep-tag tech">决策树</span><span class="ep-tag hot">双11</span></div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 11月 · 双11爆发 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title month-11">🔥 十一月 · 双11爆发月<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 实时榜单+好价追踪+开箱评测）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge nov" style="background:#dc2626;">11</span> 核心主题：实时榜单 + 好价速递 + 爆款开箱 + 安装避坑
-                <span class="theme-tag double11" style="background:#fef2f2;color:#b91c1c;">🔥 双11爆发</span>
-                <span class="theme-tag">📊 实时榜单</span>
-            </div>
-            <div class="double11-highlight">
-                <strong>🔥 11月是全年GMV巅峰：</strong>电视双11单月占H2约40%销额，扫地机器人双11同样占H2约40%。内容节奏：① 11月1-3日首波爆发期实时榜单+好价速递；② 11月4-10日中场补货攻略+开箱评测；③ 11月11日终极冲刺直播；④ 11月12-20日返场期安装攻略+好评征集。
-            </div>
-            <div class="two-accounts">
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员 · 双11实时追踪</div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第1期 · 11月1日</div><div class="ep-title">🔥 双11首波爆发！电视/空调/冰箱实时好价速递</div><div class="ep-desc">11月1日实时追踪四大家电最低价，对比预售价格，标注"秒杀价""前N名半价"等限时优惠。</div><div class="ep-tags"><span class="ep-tag hot">实时好价</span><span class="ep-tag">四大家电</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第2期</div><div class="ep-title">🤖 扫地机器人+洗地机+吸尘器双11实时好价速递</div><div class="ep-desc">清洁家电三件套双11实时价格追踪，标注历史低价对比。</div><div class="ep-tags"><span class="ep-tag hot">实时好价</span><span class="ep-tag">清洁家电</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第3期</div><div class="ep-title">🍳 厨卫家电双11实时好价速递：油烟机+洗碗机+蒸烤箱</div><div class="ep-desc">方太/老板/华帝/美的厨卫套餐双11实时价格，标注套装优惠力度。</div><div class="ep-tags"><span class="ep-tag hot">实时好价</span><span class="ep-tag">厨卫家电</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第4期</div><div class="ep-title">📊 双11中场盘点：哪些家电真的降价了？哪些是"假优惠"？</div><div class="ep-desc">基于前3天实际成交数据，对比日常价/618价/双11价，揭露"先涨后降"套路。</div><div class="ep-tags"><span class="ep-tag hot">防坑攻略</span><span class="ep-tag">价格对比</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第5期</div><div class="ep-title">📺 双11爆款电视开箱实测：75英寸MiniLED值不值得买？</div><div class="ep-desc">双11热销TOP3电视开箱+快速评测，安装上墙全过程记录+抗反射效果客厅实拍。</div><div class="ep-tags"><span class="ep-tag hot">开箱评测</span><span class="ep-tag">电视</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第6期</div><div class="ep-title">🤖 双11扫地机器人爆款开箱：全能基站安装+首次使用全流程</div><div class="ep-desc">自动上下水版本安装全过程、基站自清洁实测、首次全屋清洁效果展示。</div><div class="ep-tags"><span class="ep-tag hot">开箱评测</span><span class="ep-tag">扫地机器人</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第7期 · 11月10日</div><div class="ep-title">🔥 双11终极冲刺！11.11当天必蹲的家电神价预测</div><div class="ep-desc">基于前10天价格走势，预测11月11日当天可能出现的"神价"，标注必蹲时间点和平台。</div><div class="ep-tags"><span class="ep-tag hot">终极冲刺</span><span class="ep-tag">神价预测</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第8期 · 11月12日</div><div class="ep-title">📦 双11家电安装避坑指南：电视/空调/洗碗机安装注意事项</div><div class="ep-desc">大屏电视上墙、空调抽真空、洗碗机水电预留、扫地机自动上下水安装——四大品类安装避坑全攻略。</div><div class="ep-tags"><span class="ep-tag guide">安装避坑</span><span class="ep-tag hot">售后攻略</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第9期</div><div class="ep-title">🔄 双11退换货攻略：家电不满意怎么退？拆了包装还能退吗？</div><div class="ep-desc">七大品类退换货政策对比、拆箱验货注意事项、安装后发现问题的处理流程。</div><div class="ep-tags"><span class="ep-tag guide">售后攻略</span><span class="ep-tag">退换货</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第10期</div><div class="ep-title">🏆 2026双11家电战报：哪些品牌卖得最好？消费者用脚投票的结果</div><div class="ep-desc">基于星图数据+平台战报，分析双11各品类品牌排名、爆款机型、消费者选择趋势。</div><div class="ep-tags"><span class="ep-tag hot">双11战报</span><span class="ep-tag">品牌排名</span></div></div>
-                </div>
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大 · 双11深度追踪</div>
-                    <div class="episode-card baida-card"><div class="ep-num">第1期 · 11月1日</div><div class="ep-title">📊 双11首日数据速报：电视/扫地机器人/空调销售排行榜TOP10</div><div class="ep-desc">基于京东/天猫双11首日实时数据，六大品类品牌销量/销额排名+爆款机型分析。</div><div class="ep-tags"><span class="ep-tag tech">数据速报</span><span class="ep-tag">排行榜</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11电视热销机型技术分析：为什么这些型号卖爆了？</div><div class="ep-desc">双11热销TOP5电视技术拆解——分区数/亮度/色域/抗反射/价格五维对比，分析爆款背后的技术逻辑。</div><div class="ep-tags"><span class="ep-tag tech">爆款分析</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第3期</div><div class="ep-title">🤖 双11扫地机器人热销机型技术分析</div><div class="ep-desc">科沃斯/石头/追觅/云鲸双11主推机型技术拆解——清洁系统/基站功能/导航避障/防缠绕四维对比。</div><div class="ep-tags"><span class="ep-tag tech">爆款分析</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第4期</div><div class="ep-title">📊 双11中场数据洞察：价格战打到了什么程度？</div><div class="ep-desc">均价变化趋势分析——哪个品类降价最猛？哪个品牌最"硬气"？以价换量策略效果评估。</div><div class="ep-tags"><span class="ep-tag tech">数据洞察</span><span class="ep-tag">价格分析</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第5期</div><div class="ep-title">📺 双11旗舰电视深度开箱：海信ULED X vs TCL万象分区</div><div class="ep-desc">SQD-MiniLED vs QD-MiniLED旗舰机型深度对比开箱+画质实测+抗反射技术对比。</div><div class="ep-tags"><span class="ep-tag tech">旗舰开箱</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第6期</div><div class="ep-title">🤖 扫地机器人旗舰深度评测：石头G-Rover轮腿架构vs追觅仿生机械臂</div><div class="ep-desc">越障能力/贴边清洁/覆盖率实测对比，两大创新技术路线优劣分析。</div><div class="ep-tags"><span class="ep-tag tech">旗舰评测</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第7期 · 11月10日</div><div class="ep-title">🔥 双11终极技术选购指南：六大品类"闭眼入"机型推荐</div><div class="ep-desc">基于前10天数据+技术评测，推荐每个品类最值得买的高端/中端/性价比三档机型。</div><div class="ep-tags"><span class="ep-tag tech">终极推荐</span><span class="ep-tag hot">闭眼入</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第8期 · 11月12日</div><div class="ep-title">📐 大屏电视安装技术指南：75/85/98英寸上墙全攻略</div><div class="ep-desc">承重墙判断/挂架选择/高度计算/线缆隐藏/散热预留——大屏电视安装技术要点全解析。</div><div class="ep-tags"><span class="ep-tag tech">安装技术</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第9期</div><div class="ep-title">🔧 扫地机器人自动上下水安装技术指南</div><div class="ep-desc">水路改造方案/电源预留/排水管接法/不同户型适配方案——自动上下水安装技术要点。</div><div class="ep-tags"><span class="ep-tag tech">安装技术</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第10期</div><div class="ep-title">📊 2026双11家电消费趋势报告：从数据看行业未来</div><div class="ep-desc">MiniLED渗透率/扫地机中端扩容/高端功能下沉/品牌集中度变化——双11数据反映的行业趋势。</div><div class="ep-tags"><span class="ep-tag tech">行业趋势</span><span class="ep-tag hot">双11复盘</span></div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 12月 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">🎄 十二月 · 年度盘点 + 新年焕新<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 年度榜单+趋势展望）</span></h2>
-        <div class="month-block">
-            <div class="month-header">
-                <span class="month-badge dec">12</span> 核心主题：年度榜单 + 双12捡漏 + 2027趋势预测 + 新年焕新指南
-                <span class="theme-tag">🏆 年度榜单</span>
-                <span class="theme-tag">🔮 趋势预测</span>
-                <span class="theme-tag">🎁 新年焕新</span>
-            </div>
-            <div class="two-accounts">
-                <div class="account-col">
-                    <div class="col-title"><span class="dot zongdongyuan"></span> 家电总动员 · 年度盘点</div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第1期</div><div class="ep-title">🏆 2026年度电视选购红黑榜：买了不后悔vs买了就后悔</div><div class="ep-desc">基于全年评测+用户口碑+双11数据，评选年度推荐和不推荐电视型号。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span><span class="ep-tag">电视</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第2期</div><div class="ep-title">🏆 2026年度扫地机器人红黑榜</div><div class="ep-desc">科沃斯/石头/追觅/云鲸/小米/大疆年度机型评选，养宠家庭/大户型/老人家庭分类推荐。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span><span class="ep-tag">扫地机器人</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第3期</div><div class="ep-title">🏆 2026年度空调/冰箱/洗衣机红黑榜</div><div class="ep-desc">四大家电年度机型评选，附年度"最值得买"和"最不推荐"清单。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span><span class="ep-tag">白电</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第4期</div><div class="ep-title">🏆 2026年度厨卫家电红黑榜：油烟机/洗碗机/蒸烤箱/净水器</div><div class="ep-desc">厨卫四大品类年度机型评选，装修党必看。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span><span class="ep-tag">厨卫</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第5期</div><div class="ep-title">🛒 双12家电捡漏攻略：双11没买的，双12还有机会</div><div class="ep-desc">双12 vs 双11价格对比预测，哪些品类双12更便宜？附捡漏清单。</div><div class="ep-tags"><span class="ep-tag hot">双12</span><span class="ep-tag guide">捡漏攻略</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第6期</div><div class="ep-title">🎁 新年焕新家电推荐：过年回家给爸妈换什么家电？</div><div class="ep-desc">适合送父母/长辈的家电推荐——大屏电视/全自动洗衣机/扫地机器人/洗碗机/净水器。</div><div class="ep-tags"><span class="ep-tag guide">新年焕新</span><span class="ep-tag">送礼推荐</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第7期</div><div class="ep-title">📋 2027年家电选购趋势前瞻：哪些新技术值得等？</div><div class="ep-desc">RGB-MiniLED电视/扫地机器人具身智能/固态电池/全屋智能——2027年值得期待的新技术。</div><div class="ep-tags"><span class="ep-tag">趋势预测</span><span class="ep-tag">2027</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第8期</div><div class="ep-title">💰 年终家电预算规划：2027年装修/换新家电预算怎么做？</div><div class="ep-desc">3万/5万/8万/10万四档全屋家电预算规划，含各品类预算分配建议。</div><div class="ep-tags"><span class="ep-tag guide">预算规划</span><span class="ep-tag">装修</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第9期</div><div class="ep-title">🔌 年终家电使用技巧合集：让家电更耐用/更省电的小技巧</div><div class="ep-desc">空调清洗/冰箱除味/洗衣机清洁/扫地机维护/油烟机清洗——六大品类年终保养指南。</div><div class="ep-tags"><span class="ep-tag guide">使用技巧</span><span class="ep-tag">保养维护</span></div></div>
-                    <div class="episode-card zongdongyuan-card"><div class="ep-num">第10期</div><div class="ep-title">🎉 2026年度家电消费报告：这一年消费者都在买什么？</div><div class="ep-desc">全年家电消费趋势总结——MiniLED电视爆发/扫地机中端扩容/高端功能下沉/品牌格局变化。</div><div class="ep-tags"><span class="ep-tag hot">年度报告</span><span class="ep-tag">消费趋势</span></div></div>
-                </div>
-                <div class="account-col">
-                    <div class="col-title"><span class="dot baida"></span> 家电百大 · 年度技术盘点</div>
-                    <div class="episode-card baida-card"><div class="ep-num">第1期</div><div class="ep-title">🏆 2026年度电视技术大奖：MiniLED技术谱系年终盘点</div><div class="ep-desc">标准/QD/SQD/RGB-MiniLED四大技术路线年度进展总结+2027技术路线图预测。</div><div class="ep-tags"><span class="ep-tag tech">年度技术</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第2期</div><div class="ep-title">🏆 2026年度扫地机器人技术突破：轮腿架构+仿生机械臂+具身智能</div><div class="ep-desc">石头G-Rover/追觅仿生机械臂/科沃斯AIVI 3D——年度三大技术突破深度解析。</div><div class="ep-tags"><span class="ep-tag tech">年度技术</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第3期</div><div class="ep-title">🏆 2026年度白电技术突破：保鲜/洗净/节能三大赛道</div><div class="ep-desc">冰箱保鲜技术/洗衣机DD直驱+热泵/空调全直流变频——白电年度技术进展盘点。</div><div class="ep-tags"><span class="ep-tag tech">年度技术</span><span class="ep-tag hot">白电</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第4期</div><div class="ep-title">🏆 2026年度厨卫技术突破：洗碗机烘干+油烟机变频+蒸烤箱蒸汽</div><div class="ep-desc">厨卫家电年度技术进展——晶蕾烘干/直流变频电机/直喷蒸汽/RO膜长效化。</div><div class="ep-tags"><span class="ep-tag tech">年度技术</span><span class="ep-tag hot">厨卫</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第5期</div><div class="ep-title">📊 双12 vs 双11价格深度对比：哪些品类双12更值得入手？</div><div class="ep-desc">基于历史数据+当前市场分析，预测双12 vs 双11的价格差异和品类机会。</div><div class="ep-tags"><span class="ep-tag tech">价格分析</span><span class="ep-tag hot">双12</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第6期</div><div class="ep-title">🔮 2027年家电技术趋势预测：六大品类技术路线图</div><div class="ep-desc">RGB-MiniLED/具身智能扫地机/固态电池/全屋智能——2027年最值得期待的技术突破。</div><div class="ep-tags"><span class="ep-tag tech">趋势预测</span><span class="ep-tag">2027</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第7期</div><div class="ep-title">📐 2027年电视技术路线图：RGB-MiniLED商用化+OLED退守预测</div><div class="ep-desc">海信RGB-MiniLED原型机进展/TCL万象分区升级/三星QD-OLED前景/Micro-LED时间表。</div><div class="ep-tags"><span class="ep-tag tech">技术路线图</span><span class="ep-tag hot">电视</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第8期</div><div class="ep-title">🤖 2027年扫地机器人技术路线图：从清洁工具到家庭服务机器人</div><div class="ep-desc">具身智能/机械臂整理桌面/家庭安防巡逻/商业模式服务化——扫地机器人未来方向。</div><div class="ep-tags"><span class="ep-tag tech">技术路线图</span><span class="ep-tag hot">扫地机器人</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第9期</div><div class="ep-title">🏭 2026年家电供应链深度复盘：面板/芯片/压缩机/电机</div><div class="ep-desc">华星光电/京东方面板供应、空调压缩机产能、扫地机芯片方案——供应链视角看家电行业。</div><div class="ep-tags"><span class="ep-tag tech">供应链</span><span class="ep-tag">行业深度</span></div></div>
-                    <div class="episode-card baida-card"><div class="ep-num">第10期</div><div class="ep-title">📊 2026年度家电行业白皮书：数据+技术+趋势全景回顾</div><div class="ep-desc">全年家电市场规模/品牌格局/技术演进/消费者行为全景复盘，展望2027年发展方向。</div><div class="ep-tags"><span class="ep-tag tech">行业白皮书</span><span class="ep-tag hot">年度总结</span></div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════ -->
-        <!-- 总结 -->
-        <!-- ════════════════════════════════════════ -->
-        <h2 class="section-title">📊 内容规划总览</h2>
-        <div class="card" style="overflow-x:auto;">
-            <table class="summary-table">
-                <thead><tr><th>月份</th><th>主题</th><th class="num">家电总动员</th><th class="num">家电百大</th><th class="num">合计期数</th><th>核心品类</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>7月</strong></td><td>盛夏清凉季</td><td class="num">2期</td><td class="num">2期</td><td class="num">4期</td><td>空调、冰箱</td></tr>
-                    <tr><td><strong>8月</strong></td><td>装修季启动</td><td class="num">5期</td><td class="num">5期</td><td class="num">10期</td><td>电视、洗衣机、扫地机器人、厨卫、净水器</td></tr>
-                    <tr><td><strong>9月</strong></td><td>金九银十装修黄金季</td><td class="num">10期</td><td class="num">10期</td><td class="num">20期</td><td>全品类覆盖（六大品类）</td></tr>
-                    <tr><td><strong>10月</strong></td><td>双11预热月</td><td class="num">10期</td><td class="num">10期</td><td class="num">20期</td><td>全品类双11选购清单+好价预测</td></tr>
-                    <tr><td><strong>11月</strong></td><td>双11爆发月</td><td class="num">10期</td><td class="num">10期</td><td class="num">20期</td><td>实时榜单+好价速递+开箱+安装</td></tr>
-                    <tr><td><strong>12月</strong></td><td>年度盘点+新年焕新</td><td class="num">10期</td><td class="num">10期</td><td class="num">20期</td><td>年度榜单+趋势预测+双12</td></tr>
-                    <tr style="background:#f8faff;font-weight:900;"><td><strong>合计</strong></td><td></td><td class="num">47期</td><td class="num">47期</td><td class="num">94期</td><td>六大品类全覆盖</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="callout green">
-            <strong>✅ 内容策略核心原则：</strong><br>
-            ① <strong>选购指南优先：</strong>94期中约70%以"选购指南/避坑攻略/好价推荐"为核心，满足消费者最刚需的内容需求。<br>
-            ② <strong>双账号差异化：</strong>家电总动员=大众化选购指南（通俗易懂），家电百大=专业深度评测（硬核技术）。同品类不同视角，避免内容重复。<br>
-            ③ <strong>紧跟市场节奏：</strong>7-8月聚焦旺季品类（空调/冰箱/电视），9月装修季全品类铺开，10-11月双11密集输出，12月年度收官。<br>
-            ④ <strong>数据驱动选题：</strong>基于洛图科技/奥维云网最新月度数据（MiniLED渗透率36%、扫地机中端占比63%、75英寸电视37%等）指导内容方向。<br>
-            ⑤ <strong>双11全链路覆盖：</strong>10月蓄水（选购清单+好价预测）→ 11月爆发（实时榜单+开箱+安装）→ 12月复盘（年度榜单）。
-        </div>
-
-        <footer>
-            本内容规划基于2025-2026年家电市场深度调研数据，综合奥维云网（AVC）、洛图科技（RUNTO）、GfK中怡康、IDC、艾媒咨询及品牌财报。<br>
-            电视品类核心数据：MiniLED全系销额渗透率36%、75英寸销额占比37%、抗反射AG/LR/AG25+LR混合技术。<br>
-            扫地机器人核心数据：H1线上销量243.8万台/销额79.8亿元、中端2000-3999元占比74%、TOP4品牌集中度85.5%。<br>
-            © 家电总动员 & 家电百大 内容团队 · 2026年7-12月内容规划日历 · 选购指南优先 · 双11全链路覆盖
-        </footer>
+<div class="topbar">
+    <div class="logo-line">
+        <span class="acct-tag zongdongyuan">家电总动员</span>
+        <span style="font-weight:700;color:var(--muted);">+</span>
+        <span class="acct-tag baida">家电百大</span>
+        <span style="font-weight:900;font-size:16px;">2026年8-12月 · 轻制作选题(按热度&周期)</span>
     </div>
+    <div class="pills"><span class="pill green">参数选购</span><span class="pill amber">场景推荐</span><span class="pill">口碑汇总</span><span class="pill red">双11带货</span><span class="pill new">智能锁</span></div>
+</div>
+
+<div class="hero">
+    <h1>📊 2026下半年家电内容日历 · 轻制作选题规划</h1>
+    <p>基于2026年H1家电零售数据、品类搜索热度与购买决策周期规划。按照品类特征调整选题，<strong>避开硬核对比测试，以参数分析、场景化建议、用户口碑汇总、使用攻略等轻制作内容为主。</strong><br>
+    <strong>大家电（电视/冰箱/干衣机）：</strong>参数解读+价格带盘点+技术差异分析。<br>
+    <strong>清洁家电（扫地机/洗地机）：</strong>十大常见问题+场景推荐+长期使用体验汇总（基于用户评论）。<br>
+    <strong>厨房家电（油烟机/蒸烤箱）：</strong>食谱实测/使用技巧+厨房装修搭配。<br>
+    <strong>卫浴家电（智能马桶）：</strong>体验细节+健康功能解读+安装避坑。<br>
+    <strong>环境家电（净水/热水器）：</strong>滤芯成本计算+参数对比+技术原理。<br>
+    <strong>智能锁：</strong>安全技术解读+安装适配指南+口碑推荐。<br>
+    8月5期/账号，9-12月每月10期/账号，共90期。</p>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px 24px;margin:20px 0;border:1px solid var(--line);">
+    <div style="font-weight:900;font-size:17px;margin-bottom:14px;">📈 品类搜索热度 & 购买周期总览（八大品类）</div>
+    <div class="cycle-map">
+        <div class="cycle-card"><div class="cat-name">📺 电视</div><div class="cycle-bar"><span class="cycle-seg seg-off" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:18%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div><div class="legend"><span>🟢研究</span><span>🟡决策</span><span>🔴购买</span></div></div>
+        <div class="cycle-card"><div class="cat-name">🧊 冰箱</div><div class="cycle-bar"><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">👕 干衣机</div><div class="cycle-bar"><span class="cycle-seg seg-off" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:17%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">🤖 扫地机器人</div><div class="cycle-bar"><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">🍳 厨卫（油烟机/蒸烤箱）</div><div class="cycle-bar"><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">🔒 智能锁</div><div class="cycle-bar"><span class="cycle-seg seg-off" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:17%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">🚽 智能马桶</div><div class="cycle-bar"><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+        <div class="cycle-card"><div class="cat-name">💧 净水/热水器</div><div class="cycle-bar"><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-research" style="width:16%"></span><span class="cycle-seg seg-decide" style="width:17%"></span><span class="cycle-seg seg-buy" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span><span class="cycle-seg seg-off" style="width:17%"></span></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>8月</span><span>9月</span><span>10月上</span><span>10月下</span><span>11月</span><span>12月</span></div></div>
+    </div>
+</div>
+
+<div class="kpi-row">
+    <div class="kpi-item red"><div class="val">90期</div><div class="lbl">总期数</div></div>
+    <div class="kpi-item"><div class="val">45期</div><div class="lbl">家电总动员</div></div>
+    <div class="kpi-item blue"><div class="val">45期</div><div class="lbl">家电百大</div></div>
+    <div class="kpi-item"><div class="val">10-11月</div><div class="lbl">双11核心期</div></div>
+    <div class="kpi-item"><div class="val">轻制作</div><div class="lbl">零实测·强参数</div></div>
+    <div class="kpi-item blue"><div class="val">智能锁</div><div class="lbl">新增核心品类</div></div>
+</div>
+
+<div class="callout">
+    <strong>🟢 研究期（8-9月）：</strong>大家电参数解读+选购避坑 / 清洁家电场景化推荐 / 厨卫使用攻略<br>
+    <strong>🟡 决策期（10月）：</strong>双11好价预测+推荐清单+品类套餐搭配<br>
+    <strong>🔴 购买期（11月）：</strong>实时好价清单+爆款速递+安装避坑指南<br>
+    <strong>⚪ 回落期（12月）：</strong>年度口碑红黑榜+双12捡漏+新年送礼推荐
+</div>
+
+<!-- 8月 -->
+<h2 class="section-title">🏠 八月 · 研究启动期<span style="font-size:14px;font-weight:500;color:var(--muted);">（5期/账号 · 共10期 · 热度★★☆☆☆）</span></h2>
+<div class="phase-strip"><span class="phase-badge research">研究期</span> 冰箱、智能马桶、厨卫、智能锁是装修前置决策品类</div>
+<div class="month-block">
+    <div class="month-header"><span class="month-badge b-aug">8</span> 核心品类：冰箱🧊 + 智能马桶🚽 + 智能锁🔒 + 油烟机🍳 <span class="theme-tag">装修启动</span></div>
+    <div class="two-accounts">
+        <div class="account-col"><div class="col-title"><span class="dot z"></span> 家电总动员 · 选购指南+避坑攻略</div>
+            <div class="ep-card z-card"><div class="ep-num">第1期 · 8月上旬</div><div class="ep-title">🧊 2026冰箱选购避坑：门体/容量/保鲜技术一篇通</div><div class="ep-desc">十字门vs法式vs日式多门场景化推荐。3000-8000元参数对比及口碑汇总。</div><div class="ep-tags"><span class="ep-tag hot">冰箱</span><span class="ep-tag guide">选购指南</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第2期 · 8月中旬</div><div class="ep-title">🚽 智能马桶选购指南：即热vs储热、坑距/水压适配全攻略</div><div class="ep-desc">从体验细节出发，结合用户评论总结各品牌优势。安装预留要点。</div><div class="ep-tags"><span class="ep-tag hot">智能马桶</span><span class="ep-tag guide">选购指南</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第3期 · 8月中旬</div><div class="ep-title">🔒 智能锁怎么选？指纹/指静脉/3D人脸识别安全性解读</div><div class="ep-desc">开锁方式、锁体适配、安装条件，凯迪仕/德施曼/小米/鹿客参数对比。</div><div class="ep-tags"><span class="ep-tag hot">智能锁</span><span class="ep-tag guide">技术解读</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第4期 · 8月下旬</div><div class="ep-title">💧 全屋净水方案怎么配？RO净水器+前置+软水机选购清单</div><div class="ep-desc">滤芯成本计算、通量选择，美的/沁园/安吉尔性价比推荐。</div><div class="ep-tags"><span class="ep-tag hot">净水器</span><span class="ep-tag shop">选购清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第5期 · 8月下旬</div><div class="ep-title">🤖 扫地机器人“十大高频问题”解答：养宠/长发/大户型怎么选？</div><div class="ep-desc">基于用户反馈总结防缠绕、避障痛点，推荐对应机型。</div><div class="ep-tags"><span class="ep-tag hot">扫地机器人</span><span class="ep-tag guide">场景推荐</span></div></div>
+        </div>
+        <div class="account-col"><div class="col-title"><span class="dot b"></span> 家电百大 · 品质解读+技术分析</div>
+            <div class="ep-card b-card"><div class="ep-num">第1期 · 8月上旬</div><div class="ep-title">🧊 高端冰箱保鲜技术对比：真空/分子/零度/微冻差异解读</div><div class="ep-desc">技术原理图解+适用场景推荐，无需实测，基于官方数据对比。</div><div class="ep-tags"><span class="ep-tag">技术解读</span><span class="ep-tag hot">冰箱</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第2期 · 8月中旬</div><div class="ep-title">🚽 智能马桶健康功能解析：气泡洗/UV除菌/健康监测</div><div class="ep-desc">核心技术差异与体验提升分析，TOTO/科勒/九牧旗舰对比。</div><div class="ep-tags"><span class="ep-tag">技术对比</span><span class="ep-tag hot">智能马桶</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第3期 · 8月中旬</div><div class="ep-title">🔒 智能锁安全技术深度解读：结构光/指静脉/猫眼监控</div><div class="ep-desc">安全性对比与安装适配建议，凯迪仕/德施曼/萤石高端型号。</div><div class="ep-tags"><span class="ep-tag">技术解读</span><span class="ep-tag hot">智能锁</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第4期 · 8月下旬</div><div class="ep-title">💧 净水器RO膜技术与成本分析：陶氏/东丽/时代沃顿</div><div class="ep-desc">TDS脱盐率、长效RO膜寿命，换芯成本详细拆解。</div><div class="ep-tags"><span class="ep-tag">成本分析</span><span class="ep-tag hot">净水器</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第5期 · 8月下旬</div><div class="ep-title">🤖 扫地机十大刚需技术排名：从清洁能力到生态联动</div><div class="ep-desc">基于用户痛点与产品迭代总结，品牌技术路线对比。</div><div class="ep-tags"><span class="ep-tag">技术排名</span><span class="ep-tag hot">扫地机</span></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- 9月 -->
+<h2 class="section-title">🍂 九月 · 研究高峰期<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 热度★★★☆☆）</span></h2>
+<div class="phase-strip"><span class="phase-badge research">研究→决策过渡</span> 电视、干衣机、洗地机、蒸烤箱、智能锁研究密集</div>
+<div class="month-block">
+    <div class="month-header"><span class="month-badge b-sep">9</span> 核心品类：电视📺 + 干衣机👕 + 洗地机🧹 + 蒸烤箱🔥 <span class="theme-tag">装修黄金期</span></div>
+    <div class="two-accounts">
+        <div class="account-col"><div class="col-title"><span class="dot z"></span> 家电总动员 · 推荐清单+使用攻略</div>
+            <div class="ep-card z-card"><div class="ep-num">第1期</div><div class="ep-title">📺 75英寸电视选购清单：MiniLED参数解读+主流型号推荐</div><div class="ep-desc">亮度/分区/抗反射技术要点，海信/TCL/小米/创维口碑对比。</div><div class="ep-tags"><span class="ep-tag shop">推荐清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第2期</div><div class="ep-title">🧊 嵌入式冰箱选购避坑：零嵌/平嵌型号推荐及预留尺寸</div><div class="ep-desc">平嵌冰箱趋势解读，各大品牌平嵌型号参数库。</div><div class="ep-tags"><span class="ep-tag shop">推荐清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第3期</div><div class="ep-title">👕 干衣机选购终极指南：热泵/冷凝/直排参数对比</div><div class="ep-desc">容量/绒毛过滤/安装方式全攻略，基于用户评价的推荐。</div><div class="ep-tags"><span class="ep-tag guide">选购指南</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第4期</div><div class="ep-title">🤖 扫地机器人高性价比推荐：2000/3000/4000元三档口碑清单</div><div class="ep-desc">汇总京东/天猫好评率，推荐各价位口碑最佳机型。</div><div class="ep-tags"><span class="ep-tag shop">口碑清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第5期</div><div class="ep-title">🧹 洗地机选购指南：滚刷式/履带式/蒸汽式优缺点分析</div><div class="ep-desc">添可/追觅/石头/必胜用户长期使用反馈汇总。</div><div class="ep-tags"><span class="ep-tag shop">使用反馈</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第6期</div><div class="ep-title">🍳 油烟机参数解读：风量/风压/油脂分离度怎么看？</div><div class="ep-desc">开放式厨房推荐方案，方太/老板/华帝/美的畅销型号。</div><div class="ep-tags"><span class="ep-tag shop">推荐清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第7期</div><div class="ep-title">🔥 蒸烤箱/微蒸烤怎么用？新手食谱+选购指南</div><div class="ep-desc">嵌入式vs台式怎么选，凯度/美的/方太高性价比型号。</div><div class="ep-tags"><span class="ep-tag guide">食谱+选购</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第8期</div><div class="ep-title">🔒 智能锁选购清单：指纹/指静脉/人脸锁性价比推荐</div><div class="ep-desc">凯迪仕/德施曼/小米/鹿客主流型号参数与口碑对比。</div><div class="ep-tags"><span class="ep-tag shop">推荐清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第9期</div><div class="ep-title">💧 热水器选购清单：燃气/电热/即热式升数选择+推荐</div><div class="ep-desc">零冷水技术解读，能率/林内/海尔/万和性价比型号。</div><div class="ep-tags"><span class="ep-tag shop">推荐清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第10期</div><div class="ep-title">🔌 装修季家电全屋套餐：3万/5万/8万预算配置方案</div><div class="ep-desc">含电视/冰箱/干衣机/油烟机/热水器/净水器/扫地机/智能马桶/智能锁。</div><div class="ep-tags"><span class="ep-tag guide">全屋套餐</span></div></div>
+        </div>
+        <div class="account-col"><div class="col-title"><span class="dot b"></span> 家电百大 · 品质解读+技术分析</div>
+            <div class="ep-card b-card"><div class="ep-num">第1期</div><div class="ep-title">📺 85英寸+巨幕电视技术差异：SQD/QD/OLED选购指南</div><div class="ep-desc">海信ULED X/TCL万象分区/三星Neo QLED技术参数对比。</div><div class="ep-tags"><span class="ep-tag">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第2期</div><div class="ep-title">🧊 高端冰箱保鲜技术详解：7天保鲜效果背后的原理</div><div class="ep-desc">海尔/美的/西门子/松下旗舰技术解读。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第3期</div><div class="ep-title">👕 高端干衣机技术解读：双变频+双转子压缩机好在哪</div><div class="ep-desc">海尔纤合/小天鹅水魔方/西门子iQ500/LG分析。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第4期</div><div class="ep-title">🤖 旗舰扫地机创新技术解析：轮腿/仿生机械臂/滚筒活水</div><div class="ep-desc">石头G-Rover/追觅X50/科沃斯X5技术差异。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第5期</div><div class="ep-title">🧹 高端洗地机技术路线分析：滚刷/履带/蒸汽/无滚布</div><div class="ep-desc">添可芙万/追觅H/石头A系列高端款对比。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第6期</div><div class="ep-title">🍳 高端油烟机技术解读：直流变频电机如何提升体验</div><div class="ep-desc">方太/老板/华帝/西门子旗舰参数与噪音对比。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第7期</div><div class="ep-title">🔥 高端蒸烤箱直喷式蒸汽 vs 双蒸汽技术解析</div><div class="ep-desc">凯度/美的/方太旗舰配置对比。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第8期</div><div class="ep-title">🔒 高端智能锁安全技术：指静脉/3D人脸/猫眼视频对比</div><div class="ep-desc">凯迪仕/德施曼/小米/萤石旗舰解析。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第9期</div><div class="ep-title">💧 热水器恒温技术对比：水量伺服vs燃气比例阀vs记忆合金</div><div class="ep-desc">多点用水温度波动分析。</div><div class="ep-tags"><span class="ep-tag">技术解读</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026秋季家电品质榜：八大品类高端型号推荐</div><div class="ep-desc">基于品牌技术实力与用户口碑的季度榜单。</div><div class="ep-tags"><span class="ep-tag">品质榜单</span></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- 10月 -->
+<h2 class="section-title s10">🎯 十月 · 双11决策期<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 热度★★★★☆）</span></h2>
+<div class="phase-strip"><span class="phase-badge decide">决策期</span> 预售开启，好价预测+推荐清单引导加购</div>
+<div class="month-block">
+    <div class="month-header"><span class="month-badge b-oct">10</span> 核心：双11预售攻略 + 全品类好价预测 <span class="theme-tag d11">🔥 双11预热</span></div>
+    <div class="d11-highlight"><strong>🛒 双11蓄水期：</strong>10月中旬预售启动，以“好价预测”“预售攻略”“品类清单”为主。重点品类：电视(MiniLED)、扫地机、干衣机、智能锁。</div>
+    <div class="two-accounts">
+        <div class="account-col"><div class="col-title"><span class="dot z"></span> 家电总动员 · 双11选购攻略</div>
+            <div class="ep-card z-card"><div class="ep-num">第1期</div><div class="ep-title">🛒 2026双11家电预售攻略：什么时候买最便宜？</div><div class="ep-desc">时间线、预售vs现货、以旧换新叠加优惠。</div><div class="ep-tags"><span class="ep-tag d11">双11攻略</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11电视选购清单：75/85英寸MiniLED好价预测</div><div class="ep-desc">基于历史价格走势预测底价。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第3期</div><div class="ep-title">🧊 双11冰箱选购清单：500L+大容量好价预测</div><div class="ep-desc">海尔/美的/容声/西门子主力型号。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第4期</div><div class="ep-title">👕 双11干衣机选购清单：热泵烘干好价预测</div><div class="ep-desc">独立vs洗烘套装价格对比。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第5期</div><div class="ep-title">🤖 双11扫地机器人选购清单：2000-4000元好价预测</div><div class="ep-desc">科沃斯/石头/追觅/云鲸口碑机型。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第6期</div><div class="ep-title">🧹 双11清洁家电全家桶搭配方案</div><div class="ep-desc">扫地机+洗地机+吸尘器组合推荐。</div><div class="ep-tags"><span class="ep-tag d11">搭配清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第7期</div><div class="ep-title">🍳 双11厨卫+智能锁好价预测</div><div class="ep-desc">油烟机/蒸烤箱/智能锁套餐推荐。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第8期</div><div class="ep-title">🚽 双11智能马桶选购清单：即热式好价预测</div><div class="ep-desc">TOTO/九牧/恒洁/科勒主流型号。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第9期</div><div class="ep-title">💧 双11净水器+热水器选购清单</div><div class="ep-desc">滤芯成本+燃气热水器好价。</div><div class="ep-tags"><span class="ep-tag d11">好价预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026双11家电终极选购清单：八大品类TOP50好价</div><div class="ep-desc">历史低价对比+购买优先级。</div><div class="ep-tags"><span class="ep-tag d11">终极清单</span></div></div>
+        </div>
+        <div class="account-col"><div class="col-title"><span class="dot b"></span> 家电百大 · 双11品质选购</div>
+            <div class="ep-card b-card"><div class="ep-num">第1期</div><div class="ep-title">📊 去年双11家电数据复盘：哪些品类降价最猛？</div><div class="ep-desc">预判今年价格策略。</div><div class="ep-tags"><span class="ep-tag">数据复盘</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11高端电视技术选购：MiniLED/OLED决策树</div><div class="ep-desc">海信/TCL/三星好价预测。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第3期</div><div class="ep-title">🧊 双11冰箱技术选购：保鲜技术哪家强？</div><div class="ep-desc">四大保鲜技术+高端机型清单。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第4期</div><div class="ep-title">👕 双11干衣机技术选购：热泵烘干高端推荐</div><div class="ep-desc">双转子/双变频配置+好价。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第5期</div><div class="ep-title">🤖 双11扫地机技术选购：刚需技术排名+品牌路线</div><div class="ep-desc">十大技术解读，主推机型分析。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第6期</div><div class="ep-title">🧹 双11洗地机技术选购：四大路线高端款</div><div class="ep-desc">添可/追觅/石头/必胜对比。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第7期</div><div class="ep-title">🔒 双11智能锁技术选购：指静脉/3D人脸好价</div><div class="ep-desc">凯迪仕/德施曼/小米高端推荐。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第8期</div><div class="ep-title">🚽 双11智能马桶技术选购：即热/除菌高端款</div><div class="ep-desc">TOTO/科勒/九牧旗舰解析。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第9期</div><div class="ep-title">💧 双11净水器技术选购：RO膜+通量高端型号</div><div class="ep-desc">换芯成本与通量对比。</div><div class="ep-tags"><span class="ep-tag d11">技术选购</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第10期</div><div class="ep-title">📋 2026双11技术选购决策树：一图看懂</div><div class="ep-desc">包含智能锁，高端指引。</div><div class="ep-tags"><span class="ep-tag d11">决策树</span></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- 11月 -->
+<h2 class="section-title s11">🔥 十一月 · 双11爆发期<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 热度★★★★★）</span></h2>
+<div class="phase-strip"><span class="phase-badge buy">购买期</span> 实时好价清单+爆款速递+安装避坑</div>
+<div class="month-block">
+    <div class="month-header"><span class="month-badge b-nov">11</span> 核心：实时好价清单 + 爆款速递 + 安装指南 <span class="theme-tag d11">🔥 双11爆发</span></div>
+    <div class="d11-highlight"><strong>🛒 冲刺节奏：</strong>1-3日首波，4-10日中场，10-11日冲刺，12-20日返场安装攻略。电视/扫地机/智能锁为核心带货品类。</div>
+    <div class="two-accounts">
+        <div class="account-col"><div class="col-title"><span class="dot z"></span> 家电总动员 · 实时好价清单</div>
+            <div class="ep-card z-card"><div class="ep-num">第1期·11.1</div><div class="ep-title">🔥 双11首波！电视/冰箱/干衣机实时好价清单</div><div class="ep-desc">秒杀/前N名半价标注。</div><div class="ep-tags"><span class="ep-tag d11">实时清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第2期</div><div class="ep-title">🤖 扫地机+洗地机双11实时好价清单</div><div class="ep-desc">历史低价对比提醒。</div><div class="ep-tags"><span class="ep-tag d11">实时清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第3期</div><div class="ep-title">🍳 厨卫+智能锁+智能马桶实时好价速递</div><div class="ep-desc">套装优惠标注。</div><div class="ep-tags"><span class="ep-tag d11">实时清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第4期</div><div class="ep-title">📊 中场盘点：哪些家电真的降价？避坑假优惠</div><div class="ep-desc">对比日常/618价。</div><div class="ep-tags"><span class="ep-tag guide">防坑攻略</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第5期</div><div class="ep-title">📺 双11爆款电视实时销量TOP5</div><div class="ep-desc">基于实时数据推荐。</div><div class="ep-tags"><span class="ep-tag d11">爆款清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第6期</div><div class="ep-title">🤖 双11扫地机器人爆款实时TOP5</div><div class="ep-desc">科沃斯/石头/追觅/云鲸。</div><div class="ep-tags"><span class="ep-tag d11">爆款清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第7期·11.10</div><div class="ep-title">🔥 11.11当天必蹲家电神价清单</div><div class="ep-desc">八大品类精选含智能锁。</div><div class="ep-tags"><span class="ep-tag d11">终极清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第8期</div><div class="ep-title">📦 双11安装避坑：智能锁/电视/干衣机/智能马桶</div><div class="ep-desc">智能锁门体适配及孔位要求。</div><div class="ep-tags"><span class="ep-tag guide">安装避坑</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第9期</div><div class="ep-title">🔄 双11退换货攻略：拆箱验货要点</div><div class="ep-desc">不满意怎么退全攻略。</div><div class="ep-tags"><span class="ep-tag guide">售后攻略</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第10期</div><div class="ep-title">🏆 2026双11家电战报：品牌榜单</div><div class="ep-desc">含智能锁品牌排名。</div><div class="ep-tags"><span class="ep-tag">战报盘点</span></div></div>
+        </div>
+        <div class="account-col"><div class="col-title"><span class="dot b"></span> 家电百大 · 高端好价速递</div>
+            <div class="ep-card b-card"><div class="ep-num">第1期</div><div class="ep-title">📊 双11首日高端家电销售排行榜TOP5</div><div class="ep-desc">含智能锁高端排名。</div><div class="ep-tags"><span class="ep-tag d11">高端榜单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第2期</div><div class="ep-title">📺 双11高端电视好价清单</div><div class="ep-desc">海信/TCL/三星/索尼旗舰。</div><div class="ep-tags"><span class="ep-tag d11">高端清单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第3期</div><div class="ep-title">🤖+🔒 旗舰扫地机+高端智能锁好价</div><div class="ep-desc">石头G-Rover/追觅X50/凯迪仕K70。</div><div class="ep-tags"><span class="ep-tag d11">高端清单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第4期</div><div class="ep-title">📊 中场洞察：高端家电价格战程度</div><div class="ep-desc">入手时机分析。</div><div class="ep-tags"><span class="ep-tag">价格分析</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第5期</div><div class="ep-title">👕 双11高端干衣机+冰箱好价清单</div><div class="ep-desc">海尔/小天鹅/西门子/LG旗舰。</div><div class="ep-tags"><span class="ep-tag d11">高端清单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第6期</div><div class="ep-title">🍳 双11高端厨卫+智能锁好价清单</div><div class="ep-desc">方太/老板/凯迪仕旗舰。</div><div class="ep-tags"><span class="ep-tag d11">高端清单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第7期·11.10</div><div class="ep-title">🔥 终极高端推荐：八大品类“闭眼入”</div><div class="ep-desc">每品类精选旗舰。</div><div class="ep-tags"><span class="ep-tag d11">终极推荐</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第8期</div><div class="ep-title">📐 大屏电视/智能锁安装技术指南</div><div class="ep-desc">智能锁门体要求详解。</div><div class="ep-tags"><span class="ep-tag">安装指南</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第9期</div><div class="ep-title">🔧 扫地机自动上下水/智能马桶预留</div><div class="ep-desc">装修水电要点。</div><div class="ep-tags"><span class="ep-tag">安装指南</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第10期</div><div class="ep-title">📊 2026双11高端家电消费趋势报告</div><div class="ep-desc">含智能锁趋势。</div><div class="ep-tags"><span class="ep-tag">趋势报告</span></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- 12月 -->
+<h2 class="section-title s12">🎄 十二月 · 复盘焕新期<span style="font-size:14px;font-weight:500;color:var(--muted);">（10期/账号 · 共20期 · 热度★☆☆☆☆）</span></h2>
+<div class="phase-strip"><span class="phase-badge buy">回落期</span> 年度口碑红黑榜+双12捡漏+新年送礼</div>
+<div class="month-block">
+    <div class="month-header"><span class="month-badge b-dec">12</span> 核心：年度榜单 + 双12捡漏 + 新年送礼 <span class="theme-tag">🏆 年度榜单</span></div>
+    <div class="two-accounts">
+        <div class="account-col"><div class="col-title"><span class="dot z"></span> 家电总动员 · 年度盘点</div>
+            <div class="ep-card z-card"><div class="ep-num">第1期</div><div class="ep-title">🏆 2026年度电视口碑红黑榜</div><div class="ep-desc">全年用户评价+销量数据。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第2期</div><div class="ep-title">🏆 2026年度扫地机器人/洗地机红黑榜</div><div class="ep-desc">分场景推荐。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第3期</div><div class="ep-title">🏆 2026年度冰箱/干衣机红黑榜</div><div class="ep-desc">附双12捡漏价。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第4期</div><div class="ep-title">🏆 年度厨卫+智能锁+智能马桶红黑榜</div><div class="ep-desc">装修党必看。</div><div class="ep-tags"><span class="ep-tag hot">年度榜单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第5期</div><div class="ep-title">🛒 双12家电捡漏攻略</div><div class="ep-desc">双11没买的还有机会。</div><div class="ep-tags"><span class="ep-tag shop">双12清单</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第6期</div><div class="ep-title">🎁 新年焕新：给爸妈换什么家电？</div><div class="ep-desc">大屏电视/智能锁/智能马桶推荐。</div><div class="ep-tags"><span class="ep-tag guide">送礼推荐</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第7期</div><div class="ep-title">📋 2027年家电选购趋势前瞻</div><div class="ep-desc">RGB-MiniLED/具身智能等。</div><div class="ep-tags"><span class="ep-tag">趋势预测</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第8期</div><div class="ep-title">💰 2027年装修家电预算规划方案</div><div class="ep-desc">含智能锁预算。</div><div class="ep-tags"><span class="ep-tag guide">预算规划</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第9期</div><div class="ep-title">🔌 年终家电维护指南</div><div class="ep-desc">智能锁指纹头清洁等。</div><div class="ep-tags"><span class="ep-tag guide">使用技巧</span></div></div>
+            <div class="ep-card z-card"><div class="ep-num">第10期</div><div class="ep-title">🎉 2026年度家电消费报告</div><div class="ep-desc">热门品类含智能锁。</div><div class="ep-tags"><span class="ep-tag">年度报告</span></div></div>
+        </div>
+        <div class="account-col"><div class="col-title"><span class="dot b"></span> 家电百大 · 年度技术盘点</div>
+            <div class="ep-card b-card"><div class="ep-num">第1期</div><div class="ep-title">🏆 2026年度电视技术大奖：MiniLED谱系</div><div class="ep-desc">RGB-MiniLED前瞻。</div><div class="ep-tags"><span class="ep-tag">年度技术</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第2期</div><div class="ep-title">🏆 年度扫地机技术突破：轮腿/机械臂/具身智能</div><div class="ep-desc">创新技术回顾。</div><div class="ep-tags"><span class="ep-tag">年度技术</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第3期</div><div class="ep-title">🏆 年度冰箱&干衣机技术突破</div><div class="ep-desc">保鲜/热泵/双变频总结。</div><div class="ep-tags"><span class="ep-tag">年度技术</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第4期</div><div class="ep-title">🏆 年度厨卫+智能锁+智能马桶技术突破</div><div class="ep-desc">指静脉/3D人脸/健康监测马桶。</div><div class="ep-tags"><span class="ep-tag">年度技术</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第5期</div><div class="ep-title">📊 双12高端家电捡漏趋势</div><div class="ep-desc">双12 vs双11价格对比。</div><div class="ep-tags"><span class="ep-tag shop">双12清单</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第6期</div><div class="ep-title">🔮 2027年家电技术趋势预测</div><div class="ep-desc">具身智能/AI健康/全屋智能。</div><div class="ep-tags"><span class="ep-tag">趋势预测</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第7期</div><div class="ep-title">📐 2027年电视技术路线图：RGB-MiniLED商用化</div><div class="ep-desc">海信/TCL/三星前景。</div><div class="ep-tags"><span class="ep-tag">技术路线</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第8期</div><div class="ep-title">🤖 2027年扫地机器人技术路线图</div><div class="ep-desc">从清洁工具到家庭服务。</div><div class="ep-tags"><span class="ep-tag">技术路线</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第9期</div><div class="ep-title">🏭 2026年家电供应链深度复盘</div><div class="ep-desc">面板/芯片/压缩机。</div><div class="ep-tags"><span class="ep-tag">供应链</span></div></div>
+            <div class="ep-card b-card"><div class="ep-num">第10期</div><div class="ep-title">📊 2026年度家电行业白皮书</div><div class="ep-desc">全年数据+技术演进含智能锁。</div><div class="ep-tags"><span class="ep-tag">行业白皮书</span></div></div>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-title">📊 规划总览</h2>
+<table class="summary-table">
+    <thead><tr><th>月份</th><th>购买阶段</th><th>热度</th><th class="num">总动员</th><th class="num">百大</th><th class="num">合计</th><th>核心品类优先级</th><th>内容特色</th></tr></thead>
+    <tbody>
+        <tr><td><strong>8月</strong></td><td>🟢研究期</td><td>★★☆☆☆</td><td class="num">5</td><td class="num">5</td><td class="num">10</td><td>冰箱＞智能马桶＞智能锁＞净水＞扫地机</td><td>选购指南、避坑攻略、技术解读</td></tr>
+        <tr><td><strong>9月</strong></td><td>🟢→🟡过渡</td><td>★★★☆☆</td><td class="num">10</td><td class="num">10</td><td class="num">20</td><td>电视＞干衣机＞洗地机＞蒸烤箱＞智能锁</td><td>推荐清单、食谱攻略、口碑汇总</td></tr>
+        <tr><td><strong>10月</strong></td><td>🟡决策期</td><td>★★★★☆</td><td class="num">10</td><td class="num">10</td><td class="num">20</td><td>电视＞扫地机＞冰箱＞干衣机＞智能锁</td><td>好价预测、预售攻略、技术选购</td></tr>
+        <tr><td><strong>11月</strong></td><td>🔴购买期</td><td>★★★★★</td><td class="num">10</td><td class="num">10</td><td class="num">20</td><td>电视＞扫地机＞干衣机＞智能锁＞厨卫</td><td>实时好价、爆款速递、安装避坑</td></tr>
+        <tr><td><strong>12月</strong></td><td>⚪回落期</td><td>★☆☆☆☆</td><td class="num">10</td><td class="num">10</td><td class="num">20</td><td>全品类复盘</td><td>年度红黑榜、双12捡漏、趋势预测</td></tr>
+        <tr style="background:#f8faff;font-weight:900"><td><strong>合计</strong></td><td></td><td></td><td class="num">45</td><td class="num">45</td><td class="num">90</td><td></td><td>选购指南/清单≈85% 零实测</td></tr>
+    </tbody>
+</table>
+<div class="callout green">
+    <strong>✅ 轻制作选题策略：</strong>全部内容基于参数对比、技术解读、用户口碑汇总、场景化推荐，不涉及硬核实测或横评对比。大家电以参数解读+价格带盘点为主，清洁家电以用户反馈和场景推荐代替暴力测试，厨房家电融入食谱和使用技巧，卫浴家电强调健康叙事与安装避坑，环境家电通过成本拆解建立信任。
+</div>
+<footer>
+    规划基于2026年H1家电市场数据，品类热度与购买周期分析，全面轻制作策略。<br>
+    © 家电总动员 & 家电百大 · 2026年8-12月内容规划 · 按热度&购买周期规划 · 轻制作·强选题
+</footer>
+</div>
 </body>
 </html>
