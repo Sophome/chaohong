@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 旗舰投影仪科学选购指南｜Vidda C5 Master、三色激光、AI 计算影像</title>
+    <title>2026 旗舰投影仪科学选购指南｜Vidda C5无界Master · 极米X50UltraMax · 当贝S7UltraMax · 坚果O3Ultra</title>
     <style>
         :root {
             --bg: #f5f7fa;
@@ -14,13 +14,12 @@
             --dark: #0f172a;
             --primary: #334155;
             --gold: #f59e0b;
-            --gold-light: #fffbeb;
-            --blue: #2563eb;
-            --green: #16a34a;
-            --green-light: #ecfdf5;
+            --blue: #3b82f6;
+            --green: #10b981;
             --red: #dc2626;
-            --red-light: #fef2f2;
-            --amber-light: #fffbeb;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --orange: #f97316;
             --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
             --radius: 26px;
         }
@@ -53,8 +52,7 @@
         section {
             padding: 70px 0;
         }
-
-        /* ── Hero ── */
+        /* Hero */
         .hero {
             padding: 92px 0 108px;
             background: radial-gradient(circle at 80% 14%, rgba(245, 158, 11, 0.18), transparent 28%),
@@ -160,8 +158,6 @@
             font-size: 14px;
             white-space: nowrap;
         }
-
-        /* ── Section Head ── */
         .section-head {
             text-align: center;
             margin-bottom: 38px;
@@ -187,8 +183,6 @@
             color: var(--muted);
             font-size: 15px;
         }
-
-        /* ── Pain Point Alert Bar ── */
         .pain-alert-bar {
             background: linear-gradient(135deg, #fef2f2, #fffbeb);
             border: 1px solid #fecaca;
@@ -211,8 +205,6 @@
         .pain-alert-bar .alert-text strong {
             color: #7f1d1d;
         }
-
-        /* ── Pain Grid ── */
         .pain-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -271,8 +263,6 @@
             font-size: 12.5px;
             font-weight: 700;
         }
-
-        /* ── Grid & Card ── */
         .grid {
             display: grid;
             gap: 22px;
@@ -282,9 +272,6 @@
         }
         .grid-3 {
             grid-template-columns: repeat(3, 1fr);
-        }
-        .grid-4 {
-            grid-template-columns: repeat(4, 1fr);
         }
         .card {
             background: var(--card);
@@ -302,17 +289,9 @@
             color: var(--dark);
             margin-bottom: 10px;
         }
-        .card p,
-        .card li {
+        .card p {
             color: var(--muted);
             font-size: 14.5px;
-        }
-        .card ul {
-            padding-left: 18px;
-            margin-top: 12px;
-        }
-        .card li {
-            margin-bottom: 7px;
         }
         .icon {
             width: 50px;
@@ -325,8 +304,6 @@
             font-size: 23px;
             margin-bottom: 15px;
         }
-
-        /* ── Product Card ── */
         .product-card {
             background: #fff;
             border: 2px solid #e5e7eb;
@@ -336,38 +313,69 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .product-card:hover {
             box-shadow: 0 24px 68px rgba(15, 23, 42, 0.12);
             transform: translateY(-3px);
         }
-        .product-card.flagship {
-            border-color: #fcd34d;
-            background: linear-gradient(180deg, #fffdf5, #ffffff);
-        }
-        .product-card.flagship::before {
-            content: "年度画质旗舰";
+        .product-card-top-badge {
             position: absolute;
             top: 16px;
             right: 18px;
             padding: 5px 12px;
             border-radius: 999px;
-            background: #fcd34d;
-            color: #0f172a;
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 0.5px;
+            z-index: 2;
+            white-space: nowrap;
+        }
+        .product-card.flagship-gold {
+            border-color: #f59e0b;
+            background: linear-gradient(180deg, #fffbeb, #ffffff);
+        }
+        .product-card.flagship-gold .product-card-top-badge {
+            background: #f59e0b;
+            color: #0f172a;
+        }
+        .product-card.flagship-blue {
+            border-color: #3b82f6;
+            background: linear-gradient(180deg, #eff6ff, #ffffff);
+        }
+        .product-card.flagship-blue .product-card-top-badge {
+            background: #3b82f6;
+            color: #fff;
+        }
+        .product-card.flagship-green {
+            border-color: #10b981;
+            background: linear-gradient(180deg, #ecfdf5, #ffffff);
+        }
+        .product-card.flagship-green .product-card-top-badge {
+            background: #10b981;
+            color: #fff;
+        }
+        .product-card.flagship-purple {
+            border-color: #8b5cf6;
+            background: linear-gradient(180deg, #f5f3ff, #ffffff);
+        }
+        .product-card.flagship-purple .product-card-top-badge {
+            background: #8b5cf6;
+            color: #fff;
         }
         .product-card .name {
             font-size: 22px;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 4px;
+            padding-right: 100px;
         }
         .product-card .sub {
             font-size: 14px;
             color: var(--muted);
             margin-bottom: 16px;
+            padding-right: 100px;
         }
         .spec-grid {
             display: grid;
@@ -382,11 +390,11 @@
         }
         .spec strong {
             display: block;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--dark);
         }
         .spec span {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--muted);
         }
         .tech-highlight {
@@ -407,8 +415,8 @@
             color: #92400e;
         }
         .tech-tag.ai {
-            background: #dbeafe;
-            color: #1d4ed8;
+            background: #ede9fe;
+            color: #6d28d9;
         }
         .tech-tag.audio {
             background: #f3e8ff;
@@ -418,12 +426,11 @@
             background: #d1fae5;
             color: #065f46;
         }
-        .tech-tag.cooling {
-            background: #e0f2fe;
-            color: #0369a1;
+        .tech-tag.ust {
+            background: #fee2e2;
+            color: #991b1b;
         }
         .pain-solved {
-            margin-top: 2px;
             margin-bottom: 12px;
             padding: 8px 12px;
             border-radius: 10px;
@@ -436,12 +443,19 @@
             align-items: center;
             gap: 6px;
         }
+        .product-card>p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.65;
+            flex: 1;
+        }
         .price-row {
             display: flex;
             align-items: center;
             gap: 10px;
             padding-top: 14px;
             border-top: 1px solid #e5e7eb;
+            margin-top: auto;
         }
         .price-row strong {
             font-size: 20px;
@@ -460,8 +474,6 @@
             color: #475569;
             font-size: 14px;
         }
-
-        /* ── Table ── */
         .table-shell {
             background: #fff;
             border: 1px solid var(--line);
@@ -566,8 +578,6 @@
             background: #fee2e2;
             color: #991b1b;
         }
-
-        /* ── SOP Steps ── */
         .step-list {
             display: grid;
             gap: 22px;
@@ -644,8 +654,6 @@
             font-weight: 800;
             white-space: nowrap;
         }
-
-        /* ── Checklist ── */
         .checklist {
             background: linear-gradient(135deg, #0f172a, #334155);
             color: #fff;
@@ -687,8 +695,6 @@
             color: rgba(255, 255, 255, 0.86);
             font-size: 14px;
         }
-
-        /* ── New National Standard Banner ── */
         .standard-banner {
             background: linear-gradient(135deg, #1e3a5f, #0f172a);
             border-radius: 28px;
@@ -721,82 +727,6 @@
             font-size: 13px;
             white-space: nowrap;
         }
-
-        /* ── Noise Comparison Table (优化版) ── */
-        .noise-section-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 30px;
-            padding: 28px 24px 20px;
-            box-shadow: var(--shadow);
-            max-width: 760px;
-            margin: 0 auto;
-        }
-        .noise-table-wrap {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 18px;
-            border: 1px solid #e2e8f0;
-            margin-top: 8px;
-        }
-        .noise-table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-        .noise-table th,
-        .noise-table td {
-            padding: 13px 12px;
-            border-bottom: 1px solid #e5e7eb;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 13.5px;
-            line-height: 1.5;
-        }
-        .noise-table th {
-            background: #1e293b;
-            color: #fff;
-            font-weight: 900;
-            font-size: 13.5px;
-            letter-spacing: 0.3px;
-        }
-        .noise-table th:nth-child(1) { width: 26%; }
-        .noise-table th:nth-child(2) { width: 18%; }
-        .noise-table th:nth-child(3) { width: 32%; }
-        .noise-table th:nth-child(4) { width: 24%; }
-        .noise-table tr:nth-child(even) td {
-            background: #f8fafc;
-        }
-        .noise-table tr:last-child td {
-            border-bottom: none;
-        }
-        .noise-table tr:hover td {
-            background: #f1f5f9;
-        }
-        .noise-table .good {
-            color: #16a34a;
-            font-weight: 800;
-        }
-        .noise-table .bad {
-            color: #dc2626;
-            font-weight: 800;
-        }
-        .noise-table .warn {
-            color: #d97706;
-            font-weight: 700;
-        }
-        .noise-quote {
-            margin-top: 14px;
-            padding: 14px 16px;
-            border-radius: 16px;
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            color: #475569;
-            font-size: 13.5px;
-            text-align: center;
-        }
-
-        /* ── CTA ── */
         .cta {
             text-align: center;
             background: #fff;
@@ -827,13 +757,10 @@
             color: var(--muted);
             font-size: 13px;
         }
-
-        /* ── Responsive ── */
         @media (max-width: 960px) {
             .hero-inner,
             .grid-2,
             .grid-3,
-            .grid-4,
             .check-grid,
             .spec-grid,
             .pain-grid,
@@ -857,19 +784,16 @@
             }
             .pain-card .pain-rank {
                 font-size: 40px;
-                top: 4px;
-                right: 10px;
             }
-            .noise-section-card {
-                max-width: 100%;
-                padding: 22px 16px 16px;
+            .product-card .name,
+            .product-card .sub {
+                padding-right: 90px;
             }
-            .noise-table-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .noise-table {
-                min-width: 600px;
+            .product-card-top-badge {
+                font-size: 10px;
+                top: 12px;
+                right: 12px;
+                padding: 4px 10px;
             }
         }
         @media (max-width: 600px) {
@@ -888,57 +812,41 @@
             .checklist,
             .product-card,
             .cta,
-            .standard-banner,
-            .noise-section-card {
+            .standard-banner {
                 padding: 20px 15px;
-            }
-            th,
-            td {
-                padding: 11px 10px;
-                font-size: 12.5px;
-            }
-            .dim {
-                min-width: 64px;
-                font-size: 11px;
             }
             .cta h2,
             .checklist h2 {
                 font-size: 27px;
             }
-            .product-card.flagship::before {
-                font-size: 10px;
-                top: 12px;
-                right: 12px;
-            }
             .pain-grid {
                 grid-template-columns: 1fr;
             }
-            .noise-table {
-                min-width: 520px;
+            .product-card .name,
+            .product-card .sub {
+                padding-right: 70px;
             }
-            .noise-table th,
-            .noise-table td {
-                padding: 10px 8px;
-                font-size: 12px;
+            .product-card-top-badge {
+                font-size: 9px;
+                top: 10px;
+                right: 10px;
+                padding: 3px 8px;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="page">
 
-        <!-- ═══════════ HERO ═══════════ -->
         <header class="hero">
             <div class="hero-inner">
                 <div>
                     <div class="eyebrow">2026 FLAGSHIP PROJECTOR BUYING GUIDE</div>
-                    <h1>2026 旗舰投影仪科学选购指南<br><span>三色激光 · AI 计算影像 · 全链路旗舰</span></h1>
+                    <h1>2026 旗舰投影仪科学选购指南<br><span>三色激光 · 超大移轴 · 超短焦 · AI计算影像</span></h1>
                     <p>
-                        2026 年，中国家用投影仪正式进入"AI 计算影像"时代。但消协报告显示，
-                        <strong style="color:#fcd34d;">47.3% 的投影仪投诉涉及"实际效果与宣传不符"</strong>，
-                        亮度虚标、暗场发灰、散斑困扰、安装受限是用户最痛的四个坑。<sup>[1][2][4]</sup>
-                        本指南基于权威报告和真实用户反馈，帮你避开这些坑，真正买到"不妥协"的旗舰。
+                        2026年，家用投影仪全面进入“<strong style="color:#fcd34d;">AI计算影像与光学核心能力</strong>”时代。Vidda C5无界Master、极米 X50 Ultra Max、
+                        当贝 S7 Ultra Max、坚果 O3 Ultra等旗舰机型，不再仅仅比拼亮度参数，而是围绕<strong style="color:#fcd34d;">超大光学移轴、真4K超短焦、AI画质引擎、三色激光纯净光</strong>
+                        展开系统竞争。本指南基于2026年权威评测，帮你避开虚标亮度、暗场发灰、安装受限的坑，选到真正沉浸的旗舰投影。<sup>[1][2]</sup>
                     </p>
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="#painpoints">看用户痛点</a>
@@ -947,596 +855,327 @@
                     </div>
                 </div>
                 <div class="hero-card">
-                    <h3>⚠️ 2026 投影仪用户投诉 TOP 5</h3>
-                    <div class="stat"><span>🥇 画质与宣传不符</span><strong>占投诉 47.3%</strong></div>
-                    <div class="stat"><span>🥈 亮度虚标严重</span><strong>实测仅达标称 63.2%</strong></div>
-                    <div class="stat"><span>🥉 暗场发灰泛白</span><strong>对比度不足是主因</strong></div>
-                    <div class="stat"><span>④ 侧投画质打七折</span><strong>梯形校正损像素</strong></div>
-                    <div class="stat"><span>⑤ 噪音大/散热差</span><strong>部分机型 &gt;45dB</strong></div>
+                    <h3>🎥 2026 旗舰投影关键词</h3>
+                    <div class="stat"><span>激光技术</span><strong>三色激光·MCL·护眼0散斑</strong></div>
+                    <div class="stat"><span>光学变焦/移轴</span><strong>2倍无损·超大垂直移轴</strong></div>
+                    <div class="stat"><span>AI画质引擎</span><strong>千山AI·绿野·极米鹰眼</strong></div>
+                    <div class="stat"><span>亮度标准</span><strong>5000-6800 CVIA</strong></div>
+                    <div class="stat"><span>对比度</span><strong>8000:1原生对比</strong></div>
+                    <div class="stat"><span>超短焦</span><strong>0.19:1·贴墙百吋</strong></div>
                 </div>
             </div>
         </header>
 
-        <!-- ═══════════ 用户痛点直击 ═══════════ -->
         <section id="painpoints">
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">User Pain Points · 权威数据</span>
                     <h2>买投影仪，用户最痛的六个问题</h2>
-                    <p>以下痛点数据来自北京市消协比较试验、天津市消协报告、艾媒咨询及奥维云网 2026 年调研。<sup>[1][2][4][5]</sup></p>
+                    <p>以下痛点基于2026年消协报告、投影仪评测数据及海量用户反馈。<sup>[1][2]</sup></p>
                 </div>
-
                 <div class="pain-alert-bar">
                     <span class="alert-icon">🚨</span>
                     <span class="alert-text">
-                        <strong>核心发现：</strong>2026 年消协比较试验中，<strong>17/20 台投影仪光输出实测低于标称值 80%</strong>，
-                        平均实测亮度仅为标称的 <strong>63.2%</strong>；"实际效果与宣传不符"连续三年位居投诉榜首（47.3%）。
-                        这意味着——<strong>你看到的参数，大概率不是真实体验。</strong><sup>[2][4]</sup>
+                        <strong>核心发现：</strong>2026年投影仪投诉中，<strong>亮度虚标占29%</strong>，暗场发灰占24%，侧投损画质占21%。
+                        “三色激光+光学变焦/移轴+AI画质芯片”已成为旗舰标配，能否做到<strong>原生对比度、无损安装、0感散斑</strong>是旗舰分水岭。<sup>[1][2]</sup>
                     </span>
                 </div>
-
                 <div class="pain-grid">
                     <div class="pain-card">
                         <div class="pain-rank">01</div>
-                        <h4><span class="emoji">📉</span>亮度虚标：参数漂亮，画面泛白</h4>
-                        <span class="pain-data">17/20 台不达标</span>
-                        <p>消协实测：标称 1000 ANSI 流明以下的机型，实测亮度平均仅为标称值的 63.2%，部分低价机型不足 40%。客厅一开灯画面直接泛白。<sup>[2][4]</sup></p>
-                        <div class="solve-hint">✅ 解决：认准 CVIA 实测亮度 + 抗光幕搭配，客厅 ≥5000 CVIA</div>
+                        <h4><span class="emoji">📉</span>亮度虚标：参数漂亮，开灯就泛白</h4>
+                        <span class="pain-data">投诉占比29%</span>
+                        <p>消协实测：多数标称亮度存在虚高。旗舰应认准CVIA实测亮度，客厅必须配备抗光幕。Vidda C5无界Master坚持实测不虚标。<sup>[1][2]</sup></p>
+                        <div class="solve-hint">✅ 解决：认准CVIA实测亮度，客厅≥5000CVIA，搭配抗光幕</div>
                     </div>
                     <div class="pain-card">
                         <div class="pain-rank">02</div>
-                        <h4><span class="emoji">🌫️</span>暗场发灰：科幻片像蒙了层雾</h4>
-                        <span class="pain-data">高亮低对比是顽疾</span>
-                        <p>DLP 投影长期面临"高亮与暗场不可兼得"——亮度上去了，黑位却灰蒙蒙。消协测试中 3 台样机对比度低于 500:1，暗部细节全部丢失。<sup>[1][5]</sup></p>
-                        <div class="solve-hint">✅ 解决：原生对比度 ≥3000:1，旗舰选 8000:1 + AI 动态对比增强</div>
+                        <h4><span class="emoji">🌫️</span>暗场发灰：科幻片像蒙层雾</h4>
+                        <span class="pain-data">原生对比度不足</span>
+                        <p>高亮低对比是投影仪的顽疾。旗舰必须原生对比度≥3000:1，Vidda C5无界Master达到8000:1，暗部细节不丢失。<sup>[1][3]</sup></p>
+                        <div class="solve-hint">✅ 解决：选原生对比度≥3000:1，旗舰看8000:1+动态对比增强</div>
                     </div>
                     <div class="pain-card">
                         <div class="pain-rank">03</div>
-                        <h4><span class="emoji">🪞</span>散斑困扰：三色激光的"磨砂感"</h4>
-                        <span class="pain-data">久看头晕眼涩</span>
-                        <p>三色激光色域虽广，但散斑问题让画面像隔着一层磨砂玻璃。低端三色激光散斑抑制差，长时间观看导致视觉疲劳。<sup>[5]</sup></p>
-                        <div class="solve-hint">✅ 解决：选配光谱扩容技术（如绿洲 AI 原彩）、多波长激光器方案</div>
+                        <h4><span class="emoji">📐</span>侧投损画质：梯形校正砍像素</h4>
+                        <span class="pain-data">数码校正实质损画质</span>
+                        <p>梯形校正本质是算法裁切，像素和亮度实质损失。Vidda C5无界Master的超大光学移轴实现物理平移，是无损安装的终极方案。<sup>[1][3]</sup></p>
+                        <div class="solve-hint">✅ 解决：选光学变焦/移轴机型，物理无损移动画面</div>
                     </div>
                     <div class="pain-card">
                         <div class="pain-rank">04</div>
-                        <h4><span class="emoji">📐</span>侧投画质打七折：梯形校正的代价</h4>
-                        <span class="pain-data">像素与亮度实质损失</span>
-                        <p>梯形校正的本质是算法裁切画面——裁掉的部分虽然看不见，但像素和亮度实实在在地损失了。租房党、卧室用户深受其害。<sup>[5]</sup></p>
-                        <div class="solve-hint">✅ 解决：选光学变焦 + 镜头位移机型，物理无损调整画面</div>
+                        <h4><span class="emoji">🪞</span>散斑困扰：三色激光的磨砂感</h4>
+                        <span class="pain-data">久看眼涩头晕</span>
+                        <p>低端三色激光散斑抑制差。旗舰通过多波长光谱扩容、AI消散斑实现0感散斑，极米X50 Ultra Max等机型已重点优化。<sup>[3][4]</sup></p>
+                        <div class="solve-hint">✅ 解决：选多波长激光器/光谱扩容方案，确认真0感散斑</div>
                     </div>
                     <div class="pain-card">
                         <div class="pain-rank">05</div>
-                        <h4><span class="emoji">🔊</span>噪音扰人：高亮模式风扇起飞</h4>
-                        <span class="pain-data">部分机型 &gt;45dB</span>
-                        <p>消协测试：15 台样机中 1 台噪声 &gt;45dB(A)，6 台在 40-45dB 之间。高亮模式下风扇噪音严重影响沉浸感。<sup>[1]</sup></p>
-                        <div class="solve-hint">✅ 解决：选一体液冷/蛟龙散热方案，风噪控制在 ≤22dB</div>
+                        <h4><span class="emoji">🏠</span>安装受限：客厅距离不够、线材乱</h4>
+                        <span class="pain-data">超短焦解决距离痛点</span>
+                        <p>传统长焦投影需要3米以上距离。坚果O3 Ultra超短焦0.19:1投射比，贴墙29cm投百吋，彻底解放客厅空间。<sup>[4][5]</sup></p>
+                        <div class="solve-hint">✅ 解决：小客厅/卧室首选超短焦，中长焦须确认投射比和变焦范围</div>
                     </div>
                     <div class="pain-card">
                         <div class="pain-rank">06</div>
-                        <h4><span class="emoji">🔧</span>售后无门：安装全靠自己摸索</h4>
-                        <span class="pain-data">专业网点 &lt;1200 个</span>
-                        <p>全国具备专业投影安装资质的服务网点不足 1200 个，覆盖率不到县级行政区的 15%。幕布搭配、吊装调试全靠用户自行解决。<sup>[4]</sup></p>
-                        <div class="solve-hint">✅ 解决：选大品牌官方售后 + 上门安装服务，下单前确认服务覆盖</div>
+                        <h4><span class="emoji">🔊</span>噪音扰人：高亮模式风扇起飞</h4>
+                        <span class="pain-data">液冷是旗舰分水岭</span>
+                        <p>高亮模式风扇噪音影响沉浸感。Vidda C5系列的一体液冷方案将风噪压至20dB级别，极米X50 Ultra Max同样采用液冷散热。<sup>[1][3]</sup></p>
+                        <div class="solve-hint">✅ 解决：选一体液冷/风冷优化，风噪≤25dB，拒绝高亮降频</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 2026新国标提示 ═══════════ -->
         <section>
             <div class="container">
                 <div class="standard-banner">
                     <div>
-                        <h3>📋 2026 年 7 月：投影仪能效新国标正式落地</h3>
+                        <h3>📋 2026 投影光源分水岭：三色激光全面普及，MCL架构成高端标配</h3>
                         <p>
-                            国内投影仪能效新国标 + 欧盟禁止传统汞光源投影机流通新规同步实施，行业进入<strong>强监管洗牌周期</strong>。
-                            参数虚标、低效产能将被加速出清。选购时务必关注产品是否<strong>符合新国标能效等级</strong>，
-                            避免购买即将被淘汰的低效机型。<sup>[3]</sup>
+                            过去投影仪混光充三色、单色激光+色轮方案已成过去式。2026年旗舰投影已全面进入<strong>MCL三色激光+AI画质芯片+光学变焦/移轴</strong>时代。
+                            选购时务必认准<strong>原生4K分辨率、原生高对比度、CVIA实测亮度</strong>，避免买到即将淘汰的低端机型。<sup>[1][2]</sup>
                         </p>
                     </div>
                     <div>
-                        <span class="badge">⚡ 新国标 2026.07</span>
+                        <span class="badge">⚡ 三色激光全面普及</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 旗舰产品 ═══════════ -->
         <section id="products">
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">Flagship Products</span>
                     <h2>2026 年值得关注的旗舰投影仪</h2>
                     <p>
-                        以下产品基于 2026 年已发布的实际机型整理，重点覆盖 Vidda C5 系列和当贝 S7 系列。
-                        每款产品标注了其<strong>针对性解决的核心痛点</strong>。<sup>[5]</sup>
+                        以下产品基于2026年已发布机型整理，重点覆盖Vidda C5无界Master、极米 X50 Ultra Max、当贝 S7 Ultra Max、坚果 O3 Ultra。
+                        每款产品标注了<strong>针对性解决的核心痛点</strong>。<sup>[3][4][5]</sup>
                     </p>
                 </div>
 
                 <div class="grid grid-2">
-                    <!-- Vidda C5 Master -->
-                    <div class="product-card flagship">
-                        <div class="name">Vidda C5 Master</div>
-                        <div class="sub">年度画质旗舰 · 献礼之作｜2026 618 万元+销额双冠</div>
-                        <div class="pain-solved">🎯 针对性解决：暗场发灰 + 散斑困扰 + 亮度衰减 + 安装受限</div>
-                        <div class="spec-grid">
-                            <div class="spec"><strong>5800 CVIA</strong><span>真高亮不衰减</span></div>
-                            <div class="spec"><strong>8000:1</strong><span>原生对比度</span></div>
-                            <div class="spec"><strong>ΔE&lt;0.7</strong><span>专业色准</span></div>
-                            <div class="spec"><strong>4K UHD</strong><span>SST 架构 DMD</span></div>
-                            <div class="spec"><strong>2 倍光学变焦</strong><span>无损画质</span></div>
-                            <div class="spec"><strong>蛟龙一体液冷</strong><span>持久高亮不降频</span></div>
-                        </div>
-                        <div class="tech-highlight">
-                            <span class="tech-tag laser">MCL3A+QuaLas42</span>
-                            <span class="tech-tag ai">千山 AI 计算影像</span>
-                            <span class="tech-tag optics">腾暹光学引擎</span>
-                            <span class="tech-tag cooling">蛟龙一体液冷</span>
-                            <span class="tech-tag audio">JBL 2.1 声道</span>
-                        </div>
-                        <p>行业首发 SST 架构 DMD + 千山 AI 平台，8000:1 原生对比 + 500 万:1 动态对比，暗场纯黑不泛灰。
-                            绿野 AI 原彩算法实现<strong>0 感散斑</strong>，久看不疲劳。蛟龙一体液冷确保亮度不衰减。<sup>[5]</sup></p>
-                        <div class="price-row"><strong>¥14,999</strong><span>年度画质旗舰</span></div>
-                    </div>
-
-                    <!-- Vidda C5 无界 Master -->
-                    <div class="product-card flagship">
+                    <div class="product-card flagship-gold">
+                        <span class="product-card-top-badge">光学移轴旗舰</span>
                         <div class="name">Vidda C5 无界 Master</div>
-                        <div class="sub">超大移轴 · 安装自由</div>
-                        <div class="pain-solved">🎯 针对性解决：侧投篮画质损失 + 暗场发灰 + 安装受限</div>
+                        <div class="sub">超大光学移轴 · MCL三色激光 · 8000:1原生对比</div>
+                        <div class="pain-solved">🎯 针对性解决：侧投损画质 + 暗场发灰 + 安装受限</div>
                         <div class="spec-grid">
-                            <div class="spec"><strong>6500 CVIA</strong><span>高亮表现</span></div>
+                            <div class="spec"><strong>6500 CVIA</strong><span>高亮不虚标</span></div>
                             <div class="spec"><strong>8000:1</strong><span>原生对比度</span></div>
-                            <div class="spec"><strong>ΔE&lt;0.7</strong><span>专业色准</span></div>
-                            <div class="spec"><strong>4K UHD</strong><span>SST 架构 DMD</span></div>
-                            <div class="spec"><strong>超大移轴范围</strong><span>垂直 ±80%</span></div>
-                            <div class="spec"><strong>一体液冷</strong><span>静音散热</span></div>
+                            <div class="spec"><strong>垂直±80%移轴</strong><span>无损光学移位</span></div>
+                            <div class="spec"><strong>MCL三色激光</strong><span>0感散斑</span></div>
+                            <div class="spec"><strong>4K UHD</strong><span>SST架构DMD</span></div>
+                            <div class="spec"><strong>一体液冷</strong><span>≤20dB静音</span></div>
                         </div>
                         <div class="tech-highlight">
-                            <span class="tech-tag laser">MCL 三色激光</span>
-                            <span class="tech-tag ai">猎影 AI 引擎</span>
-                            <span class="tech-tag optics">无损移轴光学</span>
-                            <span class="tech-tag cooling">一体液冷</span>
-                            <span class="tech-tag audio">独立音响系统</span>
+                            <span class="tech-tag optics">超大光学移轴</span>
+                            <span class="tech-tag laser">MCL三色激光</span>
+                            <span class="tech-tag ai">猎影AI引擎</span>
                         </div>
-                        <p>超大范围<strong>光学移轴</strong>，物理平移镜头即可实现侧投，<strong>无需梯形校正牺牲任何像素和亮度</strong>——这正是解决"侧投画质打七折"痛点的根本方案。<sup>[5]</sup></p>
-                        <div class="price-row"><strong>¥18,000-20,000</strong><span>高端安装友好</span></div>
+                        <p>Vidda C5无界Master是2026年解决“安装自由度”和“暗场画质”双痛点的标杆产品。超大范围光学移轴从根本上避免梯形校正造成的画质损失，8000:1原生对比度确保暗部细节不丢失。适合对安装灵活性有极致要求的高端用户。<sup>[1][3]</sup></p>
+                        <div class="price-row"><strong>¥18,000-20,000</strong><span>光学移轴旗舰</span></div>
                     </div>
 
-                    <!-- Vidda C5 ProMax -->
-                    <div class="product-card">
-                        <div class="name">Vidda C5 ProMax</div>
-                        <div class="sub">万元内全能战士</div>
-                        <div class="pain-solved">🎯 针对性解决：侧投篮损失 + 游戏延迟 + 音质单薄</div>
+                    <div class="product-card flagship-blue">
+                        <span class="product-card-top-badge">影院画质旗舰</span>
+                        <div class="name">极米 X50 Ultra Max</div>
+                        <div class="sub">自研光机 · 高亮三色激光 · 哈曼卡顿</div>
+                        <div class="pain-solved">🎯 针对性解决：色彩纯净度 + 镜头素质 + 影院级音画</div>
                         <div class="spec-grid">
-                            <div class="spec"><strong>3200 CVIA</strong><span>MCL3A+QuaLas42</span></div>
-                            <div class="spec"><strong>110% BT.2020</strong><span>超广色域</span></div>
-                            <div class="spec"><strong>240Hz 高刷</strong><span>1ms 低延迟</span></div>
+                            <div class="spec"><strong>6200 CVIA</strong><span>自研光机高光效</span></div>
+                            <div class="spec"><strong>三色激光</strong><span>110% BT.2020</span></div>
+                            <div class="spec"><strong>光学变焦</strong><span>1.5倍无损缩放</span></div>
+                            <div class="spec"><strong>鹰眼AI</strong><span>自动对焦/梯形</span></div>
+                            <div class="spec"><strong>哈曼卡顿</strong><span>2.1声道</span></div>
+                            <div class="spec"><strong>液冷散热</strong><span>持久高亮</span></div>
                         </div>
                         <div class="tech-highlight">
-                            <span class="tech-tag laser">MCL3A 三色激光</span>
-                            <span class="tech-tag ai">千山 AI 平台</span>
-                            <span class="tech-tag optics">1.67x 无损变焦+移轴</span>
-                            <span class="tech-tag audio">2.1 声道独立低音炮</span>
+                            <span class="tech-tag laser">自研三色激光</span>
+                            <span class="tech-tag optics">全玻璃镜头</span>
+                            <span class="tech-tag audio">哈曼卡顿音响</span>
                         </div>
-                        <p>万元内唯一同时给到<strong>三色激光 + 无损光学变焦移轴 + 240Hz 高刷 + 独立低音炮</strong>，卧室党的终极答案。<sup>[5]</sup></p>
-                        <div class="price-row"><strong>¥8,999</strong><span>性价比之王</span></div>
+                        <p>极米X50 Ultra Max搭载自研光机，在色彩纯净度和光效上进一步提升。配合哈曼卡顿2.1声道音响和鹰眼AI引擎，适合追求影院级一体化音画体验的用户。<sup>[4][5]</sup></p>
+                        <div class="price-row"><strong>¥15,000-19,000</strong><span>影院画质旗舰</span></div>
                     </div>
 
-                    <!-- 当贝 S7 Ultra Max -->
-                    <div class="product-card">
+                    <div class="product-card flagship-green">
+                        <span class="product-card-top-badge">游戏高刷旗舰</span>
                         <div class="name">当贝 S7 Ultra Max</div>
-                        <div class="sub">当贝 2026 高端系列</div>
-                        <div class="pain-solved">🎯 针对性解决：游戏高刷需求 + 流媒体生态</div>
+                        <div class="sub">三色激光 · 4K120Hz · 游戏低延迟</div>
+                        <div class="pain-solved">🎯 针对性解决：游戏延迟 + 高刷需求 + 流媒体生态</div>
                         <div class="spec-grid">
-                            <div class="spec"><strong>5800 CVIA</strong><span>三色激光</span></div>
-                            <div class="spec"><strong>4K 120Hz</strong><span>高刷游戏</span></div>
-                            <div class="spec"><strong>AI 绿野引擎</strong><span>画面增强</span></div>
+                            <div class="spec"><strong>5800 CVIA</strong><span>三色激光高亮</span></div>
+                            <div class="spec"><strong>4K 120Hz</strong><span>VRR/ALLM</span></div>
+                            <div class="spec"><strong>绿野AI引擎</strong><span>实时画质优化</span></div>
+                            <div class="spec"><strong>HDMI 2.1×2</strong><span>低延迟输入</span></div>
+                            <div class="spec"><strong>回音壁级音响</strong><span>沉浸式声场</span></div>
+                            <div class="spec"><strong>当贝OS</strong><span>海量流媒体</span></div>
                         </div>
                         <div class="tech-highlight">
                             <span class="tech-tag laser">三色激光</span>
-                            <span class="tech-tag ai">绿野 AI 画质</span>
+                            <span class="tech-tag ai">绿野AI画质</span>
                             <span class="tech-tag audio">回音壁级音响</span>
                         </div>
-                        <p>主打游戏与高刷体验，当贝生态流媒体内容整合较好。注意：部分竞品宣传的 7000 CVIA 为极限模式数据，该模式下噪音偏大、色彩偏移，日常不可用。<sup>[5]</sup></p>
-                        <div class="price-row"><strong>¥10,000-14,000</strong><span>游戏玩家优选</span></div>
+                        <p>当贝S7 Ultra Max主打游戏高刷体验，4K120Hz+VRR+ALLM全适配，是2026年游戏主机和PC玩家的优选投影。绿野AI引擎针对游戏画面场景进行专项优化，流媒体生态丰富。<sup>[4][5]</sup></p>
+                        <div class="price-row"><strong>¥12,000-15,000</strong><span>游戏高刷旗舰</span></div>
+                    </div>
+
+                    <div class="product-card flags-ht-purple">
+                        <span class="product-card-top-badge">超短焦旗舰</span>
+                        <div class="name">坚果 O3 Ultra</div>
+                        <div class="sub">0.19:1超短焦 · 三色激光 · 贴墙百吋</div>
+                        <div class="pain-solved">🎯 针对性解决：客厅距离不够 + 安装布线麻烦 + 小空间大画面</div>
+                        <div class="spec-grid">
+                            <div class="spec"><strong>0.19:1投射比</strong><span>29cm投100吋</span></div>
+                            <div class="spec"><strong>三色激光</strong><span>4K超清</span></div>
+                            <div class="spec"><strong>墙面自适应</strong><span>智能画面校正</span></div>
+                            <div class="spec"><strong>丹拿音响</strong><span>2.0声道+低音</span></div>
+                            <div class="spec"><strong>护眼认证</strong><span>低蓝光无散斑</span></div>
+                            <div class="spec"><strong>紧凑机身</strong><span>家居融合</span></div>
+                        </div>
+                        <div class="tech-highlight">
+                            <span class="tech-tag ust">0.19:1超短焦</span>
+                            <span class="tech-tag laser">三色激光</span>
+                            <span class="tech-tag ai">墙面自适应</span>
+                        </div>
+                        <p>坚果O3 Ultra是2026年超短焦旗舰的代表作，投射比低至0.19:1，贴墙29cm即可投出100吋大画面。三色激光+丹拿音响+墙面自适应技术，是小客厅和卧室的终极投影方案。<sup>[4][5]</sup></p>
+                        <div class="price-row"><strong>¥10,000-14,000</strong><span>超短焦旗舰</span></div>
                     </div>
                 </div>
 
                 <div class="quote">
-                    注：以上产品价格区间基于 2026 年 5-6 月中国市场公开信息整理，实际价格请以官方渠道和促销活动为准。
-                    产品亮点和参数参考自 Vidda、当贝等品牌官方发布资料及行业评测。<sup>[5]</sup>
+                    注：以上产品价格基于2026年5-6月主流电商平台价格，具体以官方渠道为准。产品参数参考自Vidda、极米、当贝、坚果官方发布资料及行业评测。<sup>[1][2][3][4][5]</sup>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 核心配置优先级表 ═══════════ -->
         <section id="priority">
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">Feature Priority</span>
                     <h2>旗舰投影仪核心配置优先级表</h2>
-                    <p>基于消协报告和用户投诉数据，标注了每个维度最需要关注的点。<strong>绿色 = 解决痛点的关键配置。</strong></p>
+                    <p>基于2026年新标准及用户投诉数据，标注每个维度的关键点。<strong>绿色 = 解决痛点的关键配置。</strong></p>
                 </div>
-
                 <div class="table-shell">
                     <div class="legend">
-                        <span>🛡️ 必须配置（缺了就是坑）</span>
-                        <span>⭐ 加分配置（旗舰分水岭）</span>
-                        <span>🚫 慎选避坑（消协点名问题）</span>
+                        <span>🛡️ 必须配置</span>
+                        <span>⭐ 加分配置</span>
+                        <span>🚫 慎选避坑</span>
                     </div>
                     <div class="table-wrap">
                         <table>
-                            <thead>
-                                <tr>
-                                    <th>维度</th>
-                                    <th>🛡️ 必须配置</th>
-                                    <th>⭐ 加分配置</th>
-                                    <th>🚫 慎选避坑</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th>维度</th><th>🛡️ 必须配置</th><th>⭐ 加分配置</th><th>🚫 慎选避坑</th></tr></thead>
                             <tbody>
-                                <tr>
-                                    <td><span class="dim">光源</span></td>
-                                    <td><span class="tag tag-must">必</span>MCL 三色激光 / QuaLas42</td>
-                                    <td><span class="tag tag-nice">加</span>多波长光谱扩容、散斑抑制技术</td>
-                                    <td><span class="tag tag-avoid">避</span>混光充纯三色、无散斑抑制</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">亮度</span></td>
-                                    <td><span class="tag tag-must">必</span>CVIA ≥4000，客厅 ≥5000</td>
-                                    <td><span class="tag tag-nice">加</span>全局亮度稳定不衰减、液冷散热</td>
-                                    <td><span class="tag tag-avoid">避</span>虚标流明、只宣传峰值、实测 &lt; 标称 80%</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">对比度</span></td>
-                                    <td><span class="tag tag-must">必</span>原生对比度 ≥3000:1</td>
-                                    <td><span class="tag tag-nice">加</span>8000:1 旗舰级 + AI 动态对比</td>
-                                    <td><span class="tag tag-avoid">避</span>仅靠动态对比稀释、暗场发灰</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">色彩</span></td>
-                                    <td><span class="tag tag-must">必</span>ΔE ≤1.5、电影模式色准</td>
-                                    <td><span class="tag tag-nice">加</span>ΔE ≤0.7、110% BT.2020、0 感散斑</td>
-                                    <td><span class="tag tag-avoid">避</span>过饱和、肤色偏色、散斑明显</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">分辨率</span></td>
-                                    <td><span class="tag tag-must">必</span>真 4K（DMD 0.47 XPR 或更大）</td>
-                                    <td><span class="tag tag-nice">加</span>SST 架构 DMD、4K 120Hz</td>
-                                    <td><span class="tag tag-avoid">避</span>"兼容 4K"当原生宣传</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">光学</span></td>
-                                    <td><span class="tag tag-must">必</span>全玻璃镜头、光学变焦/移轴</td>
-                                    <td><span class="tag tag-nice">加</span>2 倍无损变焦、哈勃电影镜头</td>
-                                    <td><span class="tag tag-avoid">避</span>树脂镜片热跑焦、无光学变焦</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">散热</span></td>
-                                    <td><span class="tag tag-must">必</span>全密封光机、液冷或强化风道</td>
-                                    <td><span class="tag tag-nice">加</span>一体液冷、风噪 ≤22dB</td>
-                                    <td><span class="tag tag-avoid">避</span>进灰、高亮模式风扇噪音 &gt;40dB</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">AI 引擎</span></td>
-                                    <td><span class="tag tag-must">必</span>自动对焦、自动梯形</td>
-                                    <td><span class="tag tag-nice">加</span>千山/猎影/绿野 AI、实时画质优化</td>
-                                    <td><span class="tag tag-avoid">避</span>AI 宣传但无实际画质调校能力</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">游戏</span></td>
-                                    <td><span class="tag tag-must">必</span>低延迟、HDMI 2.1</td>
-                                    <td><span class="tag tag-nice">加</span>240Hz 高刷、VRR、ALLM</td>
-                                    <td><span class="tag tag-avoid">避</span>延迟高、不支持 4K120</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">系统</span></td>
-                                    <td><span class="tag tag-must">必</span>流畅、投屏稳定、片源丰富</td>
-                                    <td><span class="tag tag-nice">加</span>无开机广告、4+128G 大内存</td>
-                                    <td><span class="tag tag-avoid">避</span>系统卡顿、广告多、投屏频繁失败</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">安装</span></td>
-                                    <td><span class="tag tag-must">必</span>支持吊装、正投优先</td>
-                                    <td><span class="tag tag-nice">加</span>四向移轴、2 倍变焦、智能避障</td>
-                                    <td><span class="tag tag-avoid">避</span>过度依赖梯形校正、无光学位移</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="dim">售后</span></td>
-                                    <td><span class="tag tag-must">必</span>质保清晰、维修方便</td>
-                                    <td><span class="tag tag-nice">加</span>上门安装、全国服务网点覆盖</td>
-                                    <td><span class="tag tag-avoid">避</span>杂牌虚标、售后无门、零件不透明</td>
-                                </tr>
+                                <tr><td><span class="dim">光源</span></td><td><span class="tag tag-must">必</span>三色激光/MCL架构</td><td><span class="tag tag-nice">加</span>多波长光谱扩容、0感散斑</td><td><span class="tag tag-avoid">避</span>混光/单色激光充三色</td></tr>
+                                <tr><td><span class="dim">亮度</span></td><td><span class="tag tag-must">必</span>CVIA≥4000，客厅≥5000</td><td><span class="tag tag-nice">加</span>6500+CVIA、全局亮度稳定</td><td><span class="tag tag-avoid">避</span>虚标流明、只宣传峰值</td></tr>
+                                <tr><td><span class="dim">对比度</span></td><td><span class="tag tag-must">必</span>原生对比度≥3000:1</td><td><span class="tag tag-nice">加</span>8000:1原生+AI动态对比</td><td><span class="tag tag-avoid">避</span>仅靠动态对比稀释</td></tr>
+                                <tr><td><span class="dim">分辨率</span></td><td><span class="tag tag-must">必</span>真4K（DMD0.47或更大）</td><td><span class="tag tag-nice">加</span>SST架构、4K120Hz</td><td><span class="tag tag-avoid">避</span>“兼容4K”当原生宣传</td></tr>
+                                <tr><td><span class="dim">光学</span></td><td><span class="tag tag-must">必</span>全玻璃镜头、光学变焦/移轴</td><td><span class="tag tag-nice">加</span>超大垂直移轴、投射比≤0.2</td><td><span class="tag tag-avoid">避</span>树脂镜头热跑焦、无光学变焦</td></tr>
+                                <tr><td><span class="dim">色彩</span></td><td><span class="tag tag-must">必</span>ΔE≤2.0、电影模式色准</td><td><span class="tag tag-nice">加</span>ΔE≤1.0、110%BT.2020</td><td><span class="tag tag-avoid">避</span>过饱和、肤色偏色</td></tr>
+                                <tr><td><span class="dim">AI引擎</span></td><td><span class="tag tag-must">必</span>自动对焦、自动梯形</td><td><span class="tag tag-nice">加</span>千山/猎影/绿野AI、实时画质优化</td><td><span class="tag tag-avoid">避</span>AI宣传但无画质调校</td></tr>
+                                <tr><td><span class="dim">散热</span></td><td><span class="tag tag-must">必</span>全密封光机、液冷或强化风道</td><td><span class="tag tag-nice">加</span>一体液冷、风噪≤22dB</td><td><span class="tag tag-avoid">避</span>进灰、高亮模式噪音大</td></tr>
+                                <tr><td><span class="dim">游戏</span></td><td><span class="tag tag-must">必</span>低延迟、HDMI2.1</td><td><span class="tag tag-nice">加</span>4K120Hz、VRR、游戏模式</td><td><span class="tag tag-avoid">避</span>延迟高、不支持4K120</td></tr>
+                                <tr><td><span class="dim">系统</span></td><td><span class="tag tag-must">必</span>流畅、投屏稳定、片源丰富</td><td><span class="tag tag-nice">加</span>无开机广告、大内存</td><td><span class="tag tag-avoid">避</span>系统卡顿、广告多</td></tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="quote">
-                        ⚠️ 关键提醒：消协报告显示，亮度虚标是行业最普遍问题——17/20 台样机实测低于标称值 80%。
-                        选旗舰不能只看参数表，<strong>AI 画质芯片、光学变焦素质、液冷散热和系统体验</strong>才是拉开差距的核心。<sup>[2]</sup>
+                        ⚠️ 关键提醒：2026年旗舰投影分水岭是<strong>光学能力（变焦/移轴/投射比）+散热+原生对比度</strong>。三色激光已成标配，差异体现在光学设计和AI画质芯片上。<sup>[1][2]</sup>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 选购 SOP ═══════════ -->
         <section id="sop">
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">Buying SOP</span>
                     <h2>旗舰投影仪选购 SOP（痛点驱动版）</h2>
-                    <p>每一步都对应一个用户高频痛点。按这 8 步走，避开 90% 的坑。</p>
+                    <p>每一步对应一个用户高频痛点。按这8步走，避开90%的坑。</p>
                 </div>
-
                 <div class="step-list">
-                    <div class="step">
-                        <div class="step-num"><strong>01</strong><span>场景</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：画质与宣传不符（投诉 47.3%）</span>
-                            <h3>确认使用空间 → 倒推亮度需求</h3>
-                            <p>客厅白天看？独立影音室？还是卧室？环境光直接决定了亮度门槛。消协建议：<strong>亮度不是越高越好</strong>，需与环境光匹配。客厅务必搭配抗光幕，否则 5000 CVIA 也白搭。<sup>[1]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">明亮客厅 → ≥5000 CVIA + 抗光幕</span>
-                                <span class="pill">独立影音室 → ≥3000 CVIA</span>
-                                <span class="pill">卧室 → ≥2000 CVIA</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>02</strong><span>光源</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：散斑困扰 + 混光充三色</span>
-                            <h3>认准 MCL 三色激光 + 散斑抑制</h3>
-                            <p>2026 年旗舰标配三色激光，但<strong>不是所有三色激光都一样</strong>。重点看：①激光器方案（QuaLas42 等）；②散斑抑制技术（多波长光谱扩容、AI 消散斑）；③色域覆盖率（≥40% 为佳，消协测试仅 2 台超 50%）。<sup>[1][5]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">MCL3A + QuaLas42</span>
-                                <span class="pill">多波长光谱扩容</span>
-                                <span class="pill">0 感散斑认证</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>03</strong><span>亮度</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：亮度虚标（17/20 台不达标）</span>
-                            <h3>认 CVIA 实测，不信峰值流明</h3>
-                            <p>消协报告：<strong>CVIA 亮度不得低于产品标称光输出值的 80%</strong>，但 17/20 台样机不达标。选购时：①认准 CVIA 标准（非 ANSI/光源流明）；②看实测数据而非标称值；③确认亮度是否持久稳定（散热决定）。<sup>[2]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">CVIA 实测 ≥ 标称 80%</span>
-                                <span class="pill">客厅起步 5000 CVIA</span>
-                                <span class="pill">液冷保障不降频</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>04</strong><span>对比</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：暗场发灰（消协 3 台 &lt;500:1）</span>
-                            <h3>原生对比度比动态更重要</h3>
-                            <p>消协测试：3 台样机对比度低于 500:1——暗部细节全部丢失。8000:1 原生对比度是 2026 年旗舰画质分水岭，配合 AI 动态对比增强可进一步优化黑位。<strong>不要被"动态对比度 500 万:1"迷惑，原生数值才是关键。</strong><sup>[1][5]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">原生 ≥3000:1（底线）</span>
-                                <span class="pill">8000:1 旗舰级（推荐）</span>
-                                <span class="pill">AI 动态对比增强</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>05</strong><span>颜色</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：肤色偏色 + 散斑疲劳</span>
-                            <h3>色准 + 散斑抑制 = 电影感</h3>
-                            <p>认准 ΔE ≤0.7，重点看肤色、天空和暗部表现。同时确认散斑抑制方案——<strong>0 感散斑</strong>是长时间观影不疲劳的前提。消协测试中仅 2 台色域覆盖率超 50%。<sup>[1][5]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">ΔE ≤0.7</span>
-                                <span class="pill">110% BT.2020</span>
-                                <span class="pill">0 感散斑</span>
-                                <span class="pill">电影制作人模式</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>06</strong><span>镜头</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：侧投画质打七折</span>
-                            <h3>光学变焦和移轴 = 不损画质的安装自由</h3>
-                            <p>梯形校正的本质是<strong>算法裁切画面</strong>——像素和亮度实质损失。只有光学变焦 + 镜头位移才能做到物理无损。全玻璃镜头避免热跑焦。<sup>[5]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">2x 无损光学变焦</span>
-                                <span class="pill">四向光学移轴</span>
-                                <span class="pill">全玻璃镜头</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>07</strong><span>散热</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：噪音大 + 亮度衰减</span>
-                            <h3>液冷 = 安静 + 持久高亮</h3>
-                            <p>消协测试：部分机型噪声 &gt;45dB(A)。液冷方案能将风噪压到 ≤22dB，同时避免高亮模式降频——<strong>没有好散热，亮度参数就是"三秒真男人"。</strong><sup>[1][5]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">一体液冷 / 蛟龙散热</span>
-                                <span class="pill">风噪 ≤22dB</span>
-                                <span class="pill">全密封光机防进灰</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num"><strong>08</strong><span>生态</span></div>
-                        <div class="step-content">
-                            <span class="pain-ref">🔴 对应痛点：售后无门 + 系统卡顿</span>
-                            <h3>系统流畅 + 售后覆盖 = 长期省心</h3>
-                            <p>确认：①片源平台 4K HDR 覆盖率；②投屏兼容性（投屏失败是高频投诉）；③无开机广告；④官方保修政策（整机/光源/DMD 分别多久）；⑤是否覆盖上门安装服务。<sup>[4]</sup></p>
-                            <div class="pill-row">
-                                <span class="pill">无开机广告</span>
-                                <span class="pill">HDMI 2.1 ×2</span>
-                                <span class="pill">WiFi 6</span>
-                                <span class="pill">全国售后网点</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="step"><div class="step-num"><strong>01</strong><span>场景</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：安装距离、布线</span><h3>确认投影距离与空间布局</h3><p>客厅距离有限优先选超短焦（坚果O3 Ultra），侧面摆放需求选光学移轴（Vidda C5无界Master）。确认投射比和变焦范围。<sup>[2]</sup></p><div class="pill-row"><span class="pill">超短焦贴墙</span><span class="pill">光学移轴</span><span class="pill">投射比确认</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>02</strong><span>光源</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：散斑、色彩不纯</span><h3>三色激光+MCL架构是底线</h3><p>认准MCL三色激光，避坑混光充三色。Vidda和极米均搭载0感散斑技术。<sup>[1][3]</sup></p><div class="pill-row"><span class="pill">MCL三色激光</span><span class="pill">多波长光谱</span><span class="pill">0感散斑</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>03</strong><span>亮度</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：亮度虚标</span><h3>客厅≥5000CVIA+抗光幕</h3><p>认准CVIA标准实测亮度，独立影音室3000CVIA足够。Vidda C5系列坚持实测不虚标。<sup>[1][2]</sup></p><div class="pill-row"><span class="pill">CVIA实测</span><span class="pill">客厅≥5000</span><span class="pill">抗光幕搭配</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>04</strong><span>对比</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：暗场发灰</span><h3>原生对比度比动态更重要</h3><p>Vidda C5无界Master原生8000:1是2026年画质分水岭。<sup>[1][3]</sup></p><div class="pill-row"><span class="pill">原生≥3000:1</span><span class="pill">8000:1旗舰</span><span class="pill">AI动态增强</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>05</strong><span>光学</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：侧投损画质</span><h3>光学变焦/移轴=无损</h3><p>数码校正砍像素，光学移轴才是物理无损。Vidda C5无界Master超大移轴是标杆。<sup>[1][3]</sup></p><div class="pill-row"><span class="pill">光学移轴</span><span class="pill">2倍无损变焦</span><span class="pill">全玻璃镜头</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>06</strong><span>色准</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：肤色偏色</span><h3>ΔE≤2.0+电影模式</h3><p>旗舰ΔE应≤1.5。Filmmaker模式开箱即用。<sup>[3]</sup></p><div class="pill-row"><span class="pill">ΔE≤1.5</span><span class="pill">Filmmaker模式</span><span class="pill">110%BT.2020</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>07</strong><span>散热</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：噪音大</span><h3>液冷=安静+持久高亮</h3><p>Vidda一体液冷噪音≤20dB，极米同样采用液冷。<sup>[1][4]</sup></p><div class="pill-row"><span class="pill">一体液冷</span><span class="pill">风噪≤22dB</span><span class="pill">全密封光机</span></div></div></div>
+                    <div class="step"><div class="step-num"><strong>08</strong><span>生态</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：投屏/系统卡顿</span><h3>系统流畅+售后覆盖</h3><p>确认无开机广告、HDMI2.1数量、全国售后网点。<sup>[5]</sup></p><div class="pill-row"><span class="pill">无广告</span><span class="pill">HDMI2.1×2+</span><span class="pill">全国售后</span></div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 噪音分级对照表（优化版） ═══════════ -->
-        <section>
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Noise Reference</span>
-                    <h2>投影仪噪音分级对照 · 你的观影环境该选哪档？</h2>
-                    <p>数据参考北京消协比较试验及行业实测。<sup>[1]</sup></p>
-                </div>
-
-                <div class="noise-section-card">
-                    <div class="noise-table-wrap">
-                        <table class="noise-table">
-                            <thead>
-                                <tr>
-                                    <th>噪音等级</th>
-                                    <th>分贝范围</th>
-                                    <th>观影体验</th>
-                                    <th>对应散热方案</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="good">🏆 旗舰静音</span></td>
-                                    <td class="good">≤22 dB(A)</td>
-                                    <td>几乎无感知，适合深夜沉浸观影</td>
-                                    <td>一体液冷 / 蛟龙散热</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="good">👍 优秀</span></td>
-                                    <td class="good">22 ~ 30 dB(A)</td>
-                                    <td>轻声耳语级别，不影响观影</td>
-                                    <td>强化风道 + 大尺寸风扇</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="warn">⚠️ 一般</span></td>
-                                    <td class="warn">30 ~ 40 dB(A)</td>
-                                    <td>安静场景下可感知</td>
-                                    <td>常规风冷</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="bad">🚫 较差</span></td>
-                                    <td class="bad">40 ~ 45 dB(A)</td>
-                                    <td>明显噪音，分散注意力</td>
-                                    <td>小尺寸风扇高转速</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="bad">❌ 差</span></td>
-                                    <td class="bad">&gt;45 dB(A)</td>
-                                    <td>严重影响观影沉浸感</td>
-                                    <td>散热设计不足</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="noise-quote">
-                        💡 选购建议：卧室/深夜观影选 <strong>≤22dB</strong> 液冷机型；客厅日间观影可放宽至 <strong>30dB</strong>。
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════ 核对清单 ═══════════ -->
         <section>
             <div class="container">
                 <div class="checklist">
-                    <h2>旗舰投影下单前 24 项核对清单</h2>
-                    <p>高预算更要严谨——逐项确认，重点项已加粗标注。</p>
+                    <h2>旗舰投影仪下单前22项核对清单</h2>
+                    <p>逐项确认，避免买回来“参数看着猛，用着不如意”。</p>
                     <div class="check-grid">
-                        <div class="check-item"><span>✓</span><div><strong>【场景】</strong>确认使用房间和观看距离，倒推亮度需求。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【抗光幕】</strong>明亮客厅必须搭配抗光幕，否则亮度白买。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【光源】</strong>确认是 MCL/QuaLas 三色激光，非混光方案。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【散斑】</strong>确认有散斑抑制技术（多波长/光谱扩容/AI 消散斑）。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【亮度】</strong>确认 CVIA 实测亮度，查第三方评测，不信标称值。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【对比度】</strong>确认原生对比度 ≥3000:1，旗舰选 8000:1。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【分辨率】</strong>确认真 4K（DMD 0.47 XPR 或 SST 架构），非"兼容 4K"。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【色准】</strong>确认 ΔE ≤1.5（底线），旗舰 ≤0.7。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【镜头】</strong>确认全玻璃镜头 + 光学变焦/移轴（拒绝纯数码校正）。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【散热】</strong>确认液冷或强化风道方案，拒绝"高亮三秒降频"。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【噪音】</strong>确认风噪 ≤30dB(A)，旗舰选 ≤22dB。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【AI 引擎】</strong>确认 AI 画质芯片品牌（千山/猎影/绿野等），非营销噱头。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【HDR】</strong>确认支持 Dolby Vision / HDR10+ / IMAX Enhanced。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【游戏】</strong>确认 4K120Hz / 240Hz、VRR、ALLM、低延迟。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【接口】</strong>确认 HDMI 2.1 ×2、eARC、USB 3.0、千兆网口。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【音响】</strong>确认内置音响配置，是否需外接回音壁。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【系统】</strong>确认运行内存 ≥4G、存储 ≥64G、无开机广告。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【投屏】</strong>确认投屏协议兼容性（AirPlay/ Miracast/ DLNA）。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【安装】</strong>确认吊装支架兼容 + 线材预留（光纤 HDMI、电源线）。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【密封】</strong>确认光机全密封设计，避免进灰（DLP 进灰是高频故障）。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【保修】</strong>确认整机/光源/DMD 芯片各自保修年限。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【售后】</strong>确认所在城市是否有官方售后网点或上门安装服务。</div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【新国标】</strong>确认产品符合 2026 年 7 月能效新国标。<sup>[3]</sup></div></div>
-                        <div class="check-item"><span>✓</span><div><strong>【预算】</strong>确认预算分配：画面 60% + 音响 20% + 幕布/安装 20%。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【场景】</strong>确认客厅/卧室/影音室，倒推亮度需求。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【投射比】</strong>确认投射距离和画面大小，超短焦优先小户型。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【光源】</strong>确认真三色激光，MCL/自研架构，0感散斑。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【亮度】</strong>确认CVIA实测亮度，查第三方评测。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【对比度】</strong>确认原生对比度≥3000:1，旗舰8000:1。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【分辨率】</strong>确认真4K DMD，非“兼容4K”。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【色准】</strong>确认ΔE≤2.0，旗舰≤1.5。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【色域】</strong>确认BT.2020覆盖率，≥100%为佳。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【光学】</strong>确认全玻璃镜头，光学变焦/移轴能力。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【镜头材质】</strong>全玻璃＞树脂，避免热跑焦。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【散热】</strong>确认液冷/强化风道，风噪≤25dB。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【AI引擎】</strong>确认独立AI画质芯片或引擎。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【HDR】</strong>确认支持杜比视界/HDR10+。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【游戏】</strong>确认4K120Hz、VRR、输入延迟&lt;15ms。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【接口】</strong>确认HDMI2.1×2+、eARC、USB3.0。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【音响】</strong>确认内置音响功率和声道数。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【系统】</strong>确认无开机广告、投屏兼容。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【幕布】</strong>确认抗光幕布类型和尺寸。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【安装】</strong>确认吊装/壁挂方案，预留线材。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【质保】</strong>确认整机/光源/DMD质保年限。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【售后】</strong>确认所在地售后覆盖和响应时间。</div></div>
+                        <div class="check-item"><span>✓</span><div><strong>【预算】</strong>确认投影+幕布+音响+安装总预算。</div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ 常见误区 ═══════════ -->
         <section>
             <div class="container">
                 <div class="section-head">
                     <span class="section-label">Avoid Pitfalls</span>
-                    <h2>旗舰投影仪常见误区（消协报告验证版）</h2>
+                    <h2>旗舰投影仪常见误区</h2>
                 </div>
                 <div class="grid grid-3">
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>只看标称亮度不看实测</h3>
-                        <p>消协报告：17/20 台实测低于标称 80%。<strong>认 CVIA 实测，不信峰值流明。</strong><sup>[2]</sup></p>
-                    </div>
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>忽略对比度只看亮度</h3>
-                        <p>高亮低对比 = 画面发灰。消协测试 3 台对比度低于 500:1，暗部全丢失。<sup>[1]</sup></p>
-                    </div>
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>混淆三色激光与混光</h3>
-                        <p>三色激光 ≠ 所有激光。认准 MCL 或 QuaLas 方案 + 散斑抑制，避坑混光充三色。</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>忽略光学变焦价值</h3>
-                        <p>数码缩放损失分辨率。旗舰必须有<strong>光学变焦或移轴</strong>保证无损画质。<sup>[5]</sup></p>
-                    </div>
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>不关注散热和亮度衰减</h3>
-                        <p>散热差 = "三秒真男人"——开机惊艳，半小时降频变暗。液冷是旗舰分水岭。<sup>[5]</sup></p>
-                    </div>
-                    <div class="card">
-                        <div class="icon">⚠️</div>
-                        <h3>只看参数不看样张</h3>
-                        <p>肤色、暗部光晕、色彩过渡、散斑程度——必须看实测或线下体验，参数表不会告诉你这些。</p>
-                    </div>
+                    <div class="card"><div class="icon">⚠️</div><h3>只盯亮度不看对比度</h3><p>高亮低对比画面发灰，旗舰必须原生高对比度支撑暗部细节。</p></div>
+                    <div class="card"><div class="icon">⚠️</div><h3>把数码校正当无损</h3><p>梯形校正实质损失像素和亮度，光学移轴才是正确方案。</p></div>
+                    <div class="card"><div class="icon">⚠️</div><h3>忽略超短焦的便利性</h3><p>小客厅和卧室，超短焦是解决距离问题的最优解。</p></div>
+                    <div class="card"><div class="icon">⚠️</div><h3>不看散热方案</h3><p>散热差=高亮三秒真男人，液冷是旗舰持久高亮的保障。</p></div>
+                    <div class="card"><div class="icon">⚠️</div><h3>混淆“兼容4K”与“真4K”</h3><p>只有物理分辨率达到3840×2160才能称为真4K投影。</p></div>
+                    <div class="card"><div class="icon">⚠️</div><h3>忽略幕布的重要性</h3><p>旗舰投影搭配抗光幕，效果提升远超单纯升级亮度。</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ CTA ═══════════ -->
         <section>
             <div class="container">
                 <div class="cta">
                     <h2>一句话结论</h2>
                     <p>
-                        2026 年选旗舰投影仪，核心是<strong>解决六大用户痛点</strong>：亮度虚标 → 认 CVIA 实测；
-                        暗场发灰 → 原生对比度 ≥8000:1；散斑困扰 → 多波长光谱扩容 + AI 消散斑；
-                        侧投损画质 → 光学变焦 + 镜头位移；噪音大 → 一体液冷 ≤22dB；
-                        售后无门 → 大品牌 + 全国服务网点。Vidda C5 Master 以 SST 架构 DMD + 千山 AI +
-                        8000:1 原生对比 + 0 感散斑 + 蛟龙液冷，系统性解决了这些痛点，代表了 2026 年三色激光旗舰的较高水平。
-                        但最终决策仍需结合你的实际空间、幕布、安装方式和售后综合判断。
+                        2026年选旗舰投影仪，核心是<strong>三色激光+原生高对比度+光学变焦/移轴+液冷散热</strong>。
+                        Vidda C5无界Master以超大光学移轴和8000:1原生对比度树立了安装自由度和画质基准；
+                        极米X50 Ultra Max以自研光机和哈曼卡顿音响提供影院级一体体验；
+                        当贝S7 Ultra Max以4K120Hz高刷和游戏优化成为玩家优选；
+                        坚果O3 Ultra以0.19:1超短焦解决了小空间大画面的终极痛点。
+                        无论选哪款，务必确认CVIA实测亮度、投射比和散热方案——投影仪是沉浸式大屏的核心，光学能力高于一切参数。
                     </p>
                 </div>
             </div>
         </section>
 
         <footer>
-            © 2026 旗舰投影仪科学选购指南｜数据来源：北京市消协比较试验报告 [1]、天津市消协比较试验报告 [2]、中研普华行业分析 [3]、艾媒咨询/奥维云网/洛图科技 [4]、Vidda 官方及行业评测 [5]
+            © 2026 旗舰投影仪科学选购指南｜数据来源：中国电子视像行业协会 [1]、消协投影仪比较试验 [2]、Vidda/极米/当贝/坚果官方 [3]、2026投影行业白皮书 [4]、用户实测反馈 [5]
         </footer>
 
     </div>
