@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修复版 2026 旗舰零嵌冰箱选购指南</title>
+    <style>
+        :root {
+            --bg: #f5f7fa; --card: #ffffff; --text: #1f2937; --muted: #64748b; --line: #e5e7eb;
+            --dark: #0f172a; --primary: #334155; --shadow: 0 20px 60px rgba(15,23,42,0.08); --radius: 26px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        a { color: inherit; text-decoration: none; }
+        .page { width: 100%; overflow-x: hidden; }
+        .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+        section { padding: 70px 0; }
+        .hero { padding: 92px 0 108px; background: radial-gradient(circle at 80% 14%, rgba(16,185,129,0.2), transparent 28%), radial-gradient(circle at 15% 86%, rgba(245,158,11,0.22), transparent 36%), linear-gradient(135deg, #0f172a, #1e293b 50%, #1e3a5f); color: #fff; }
+        .hero-inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 42px; align-items: center; }
+        .eyebrow { display: inline-flex; padding: 8px 14px; margin-bottom: 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.86); font-size: 13px; letter-spacing: 0.5px; }
+        .hero h1 { font-size: clamp(34px, 5.6vw, 62px); line-height: 1.1; letter-spacing: -1.4px; margin-bottom: 22px; font-weight: 900; }
+        .hero h1 span { color: #fcd34d; }
+        .hero p { max-width: 820px; color: rgba(255,255,255,0.82); font-size: 17px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 800; transition: all 0.25s; cursor: pointer; }
+        .btn-primary { background: #fcd34d; color: #0f172a; } .btn-primary:hover { background: #fbbf24; transform: translateY(-1px); }
+        .btn-ghost { border: 1px solid rgba(255,255,255,0.2); color: #fff; background: rgba(255,255,255,0.06); } .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+        .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 30px; padding: 28px; backdrop-filter: blur(10px); box-shadow: 0 28px 70px rgba(0,0,0,0.18); }
+        .hero-card h3 { font-size: 21px; margin-bottom: 18px; }
+        .stat { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .stat:last-child { border-bottom: none; } .stat span { color: rgba(255,255,255,0.74); font-size: 13.5px; } .stat strong { color: #fff; font-size: 14px; white-space: nowrap; }
+        .section-head { text-align: center; margin-bottom: 38px; }
+        .section-label { display: inline-block; margin-bottom: 10px; color: var(--primary); font-size: 13px; font-weight: 850; letter-spacing: 1.6px; text-transform: uppercase; }
+        .section-head h2 { font-size: clamp(28px, 4vw, 42px); color: var(--dark); line-height: 1.25; margin-bottom: 12px; }
+        .section-head p { max-width: 920px; margin: 0 auto; color: var(--muted); font-size: 15px; }
+        .pain-alert-bar { background: linear-gradient(135deg, #fef2f2, #fffbeb); border: 1px solid #fecaca; border-radius: 20px; padding: 18px 24px; margin-bottom: 28px; display: flex; align-items: flex-start; gap: 14px; }
+        .pain-alert-bar .alert-icon { font-size: 28px; flex-shrink: 0; }
+        .pain-alert-bar .alert-text { font-size: 14px; color: #991b1b; line-height: 1.65; }
+        .pain-alert-bar .alert-text strong { color: #7f1d1d; }
+        .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .pain-card { background: #fff; border: 1px solid #fee2e2; border-radius: 20px; padding: 22px; position: relative; overflow: hidden; }
+        .pain-card .pain-rank { position: absolute; top: -2px; right: 16px; font-size: 56px; font-weight: 900; color: rgba(220,38,38,0.06); line-height: 1; pointer-events: none; }
+        .pain-card h4 { font-size: 17px; color: #1f2937; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .pain-card h4 .emoji { font-size: 20px; }
+        .pain-card .pain-data { display: inline-flex; padding: 3px 9px; border-radius: 999px; background: #fef2f2; color: #dc2626; font-size: 11px; font-weight: 800; margin-bottom: 8px; }
+        .pain-card p { color: #64748b; font-size: 13.5px; line-height: 1.6; }
+        .pain-card .solve-hint { margin-top: 10px; padding: 8px 12px; border-radius: 10px; background: #ecfdf5; color: #065f46; font-size: 12.5px; font-weight: 700; }
+        .grid { display: grid; gap: 22px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); } .card h3 { font-size: 20px; color: var(--dark); margin-bottom: 10px; } .card p { color: var(--muted); font-size: 14.5px; }
+        .icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: #eef2f7; font-size: 23px; margin-bottom: 15px; }
+        .product-card { background: #fff; border: 2px solid #e5e7eb; border-radius: 28px; padding: 28px; box-shadow: var(--shadow); position: relative; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { box-shadow: 0 24px 68px rgba(15,23,42,0.12); transform: translateY(-3px); }
+        .product-card-top-badge { position: absolute; top: 16px; right: 18px; padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 900; letter-spacing: 0.5px; z-index: 2; white-space: nowrap; }
+        .product-card.flagship-gold { border-color: #f59e0b; background: linear-gradient(180deg, #fffbeb, #ffffff); } .product-card.flagship-gold .product-card-top-badge { background: #f59e0b; color: #0f172a; }
+        .product-card.flagship-blue { border-color: #3b82f6; background: linear-gradient(180deg, #eff6ff, #ffffff); } .product-card.flagship-blue .product-card-top-badge { background: #3b82f6; color: #fff; }
+        .product-card.flagship-green { border-color: #10b981; background: linear-gradient(180deg, #ecfdf5, #ffffff); } .product-card.flagship-green .product-card-top-badge { background: #10b981; color: #fff; }
+        .product-card.flagship-red { border-color: #dc2626; background: linear-gradient(180deg, #fef2f2, #ffffff); } .product-card.flagship-red .product-card-top-badge { background: #dc2626; color: #fff; }
+        .product-card.flagship-slate { border-color: #475569; background: linear-gradient(180deg, #f8fafc, #ffffff); } .product-card.flagship-slate .product-card-top-badge { background: #475569; color: #fff; }
+        .product-card.flagship-dark { border-color: #1e293b; background: linear-gradient(180deg, #f1f5f9, #ffffff); } .product-card.flagship-dark .product-card-top-badge { background: #1e293b; color: #fff; }
+        .product-card.flagship-pink { border-color: #ec4899; background: linear-gradient(180deg, #fdf2f8, #ffffff); } .product-card.flagship-pink .product-card-top-badge { background: #ec4899; color: #fff; }
+        .product-card .name { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 4px; padding-right: 110px; }
+        .product-card .sub { font-size: 14px; color: var(--muted); margin-bottom: 16px; padding-right: 110px; }
+        .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+        .spec { background: #f8fafc; border-radius: 14px; padding: 12px; } .spec strong { display: block; font-size: 15px; color: var(--dark); } .spec span { font-size: 11px; color: var(--muted); }
+        .tech-highlight { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .tech-tag { display: inline-flex; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 800; }
+        .tech-tag.zero { background: #dbeafe; color: #1d4ed8; } .tech-tag.fresh { background: #d1fae5; color: #065f46; }
+        .tech-tag.ice { background: #ede9fe; color: #6d28d9; } .tech-tag.cycle { background: #fef3c7; color: #92400e; }
+        .tech-tag.sterilize { background: #fee2e2; color: #991b1b; }
+        .pain-solved { margin-bottom: 12px; padding: 8px 12px; border-radius: 10px; background: #ecfdf5; border: 1px solid #a7f3d0; font-size: 12.5px; color: #065f46; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .product-card>p { color: var(--muted); font-size: 14px; line-height: 1.65; flex: 1; }
+        .price-row { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid #e5e7eb; margin-top: auto; } .price-row strong { font-size: 20px; color: var(--dark); } .price-row span { font-size: 13px; color: var(--muted); }
+        .quote { margin-top: 18px; padding: 16px 18px; border-radius: 18px; background: #f8fafc; border: 1px solid #e5e7eb; color: #475569; font-size: 14px; }
+        .table-shell { background: #fff; border: 1px solid var(--line); border-radius: 30px; padding: 22px; box-shadow: var(--shadow); }
+        .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; } .legend span { display: inline-flex; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; background: #f1f5f9; color: #334155; }
+        .table-wrap { width: 100%; overflow: hidden; border-radius: 20px; border: 1px solid #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        th,td { padding: 14px 13px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; font-size: 13.5px; line-height: 1.45; }
+        th { background: #1e293b; color: #fff; font-weight: 900; font-size: 14px; }
+        tr:nth-child(even) td { background: #f8fafc; } tr:last-child td { border-bottom: none; } tr:hover td { background: #f1f5f9; }
+        th:nth-child(1),td:nth-child(1) { width: 12%; } th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4) { width: 29.3%; }
+        .dim { display: inline-flex; align-items: center; justify-content: center; min-width: 76px; padding: 7px 10px; border-radius: 12px; background: #475569; color: #fff; font-size: 12px; font-weight: 900; white-space: nowrap; }
+        .tag { display: inline-flex; padding: 2px 7px; margin-right: 5px; border-radius: 999px; font-size: 10px; font-weight: 900; vertical-align: 1px; white-space: nowrap; }
+        .tag-must { background: #dbeafe; color: #1d4ed8; } .tag-nice { background: #d1fae5; color: #065f46; } .tag-avoid { background: #fee2e2; color: #991b1b; }
+        .step-list { display: grid; gap: 22px; }
+        .step { display: grid; grid-template-columns: 88px 1fr; gap: 20px; }
+        .step-num { min-height: 116px; border-radius: 22px; background: linear-gradient(135deg, #0f172a, #475569); color: #fff; display: flex; align-items: center; justify-content: center; flex-direction: column; } .step-num strong { font-size: 32px; line-height: 1; } .step-num span { margin-top: 5px; font-size: 12px; opacity: 0.75; }
+        .step-content { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 26px; box-shadow: var(--shadow); transition: transform 0.2s; } .step-content:hover { transform: translateY(-2px); } .step-content h3 { color: var(--dark); font-size: 21px; margin-bottom: 6px; }
+        .step-content .pain-ref { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; background: #fef2f2; color: #dc2626; font-size: 11px; font-weight: 800; margin-bottom: 10px; } .step-content p { color: var(--muted); font-size: 14.5px; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; } .pill { display: inline-flex; padding: 6px 11px; border-radius: 999px; background: #f1f5f9; color: #334155; font-size: 12.5px; font-weight: 800; white-space: nowrap; }
+        .checklist { background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 34px; padding: 42px; box-shadow: var(--shadow); } .checklist h2 { font-size: 34px; margin-bottom: 10px; } .checklist p { color: rgba(255,255,255,0.78); margin-bottom: 26px; }
+        .check-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .check-item { display: flex; gap: 10px; padding: 15px; border-radius: 17px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13); transition: background 0.2s; } .check-item:hover { background: rgba(255,255,255,0.14); } .check-item span { color: #fcd34d; font-weight: 900; flex-shrink: 0; } .check-item div { color: rgba(255,255,255,0.86); font-size: 14px; }
+        .standard-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); border-radius: 28px; padding: 32px 36px; color: #fff; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; box-shadow: var(--shadow); margin-bottom: 32px; } .standard-banner h3 { font-size: 22px; margin-bottom: 8px; color: #fcd34d; } .standard-banner p { color: rgba(255,255,255,0.78); font-size: 14px; line-height: 1.7; } .standard-banner .badge { display: inline-flex; padding: 8px 16px; border-radius: 999px; background: #fcd34d; color: #0f172a; font-weight: 900; font-size: 13px; white-space: nowrap; }
+        .cta { text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 32px; padding: 48px 28px; box-shadow: var(--shadow); } .cta h2 { font-size: 34px; color: var(--dark); margin-bottom: 12px; } .cta p { max-width: 920px; margin: 0 auto; color: var(--muted); font-size: 15px; }
+        sup { font-size: 11px; color: #2563eb; font-weight: 800; }
+        footer { padding: 32px 16px; text-align: center; color: var(--muted); font-size: 13px; }
+        @media (max-width:960px) { .hero-inner,.grid-2,.grid-3,.check-grid,.spec-grid,.pain-grid,.standard-banner { grid-template-columns: 1fr; } .table-wrap { overflow-x: auto; } table { min-width: 900px; } .step { grid-template-columns: 1fr; } .step-num { min-height: auto; padding: 18px; flex-direction: row; gap: 8px; } .pain-card .pain-rank { font-size: 40px; } .product-card .name,.product-card .sub { padding-right: 90px; } .product-card-top-badge { font-size: 10px; top: 12px; right: 12px; padding: 4px 10px; } }
+        @media (max-width:600px) { .container { width: min(100% - 20px, 1180px); } .hero { padding: 64px 0 76px; } section { padding: 52px 0; } .card,.table-shell,.step-content,.checklist,.product-card,.cta,.standard-banner { padding: 20px 15px; } .cta h2,.checklist h2 { font-size: 27px; } .pain-grid { grid-template-columns: 1fr; } .product-card .name,.product-card .sub { padding-right: 70px; } .product-card-top-badge { font-size: 9px; top: 10px; right: 10px; padding: 3px 8px; } }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+<div class="hero-inner">
+<div>
+<div class="eyebrow">2026 ZERO-EMBEDDED REFRIGERATOR GUIDE</div>
+<h1>2026 旗舰零嵌冰箱科学选购指南<br><span>594mm零嵌 · 双系统 · 自动制冰 · AI保鲜</span></h1>
+<p>2026年，零嵌冰箱进入"<strong style="color:#fcd34d;">594mm零嵌+双系统+AI保鲜</strong>"时代。卡萨帝揽光620以594mm超薄零嵌和MRA低氧窖藏领跑高端；海尔云溪630以594mm深度配合全空间保鲜定义大容量旗舰；美的M60机皇以600mm纯平全嵌和PST+九效重新诠释美感；容声曦望650以AI四季养鲜和双系统五循环树立保鲜标杆。本指南帮你避开"嵌入留缝大、保鲜差串味、制冰体验弱、散热空间不足"的坑。<sup>[1][2]</sup></p>
+<div class="hero-actions"><a class="btn btn-primary" href="#painpoints">看用户痛点</a><a class="btn btn-ghost" href="#products">查看旗舰产品</a><a class="btn btn-ghost" href="#priority">核心配置表</a></div>
+</div>
+<div class="hero-card"><h3>❄️ 2026 零嵌冰箱关键词</h3>
+<div class="stat"><span>零嵌标准</span><strong>594mm · 600mm纯平 · 零距离嵌入</strong></div>
+<div class="stat"><span>保鲜技术</span><strong>MRA低氧 · MSA氮氧智控 · AI四季养鲜</strong></div>
+<div class="stat"><span>循环系统</span><strong>双系统双循环 · 五循环</strong></div>
+<div class="stat"><span>制冰体验</span><strong>自动制冰 · 独立冰室 · 洁净水路</strong></div>
+<div class="stat"><span>除菌净味</span><strong>PST+ · 活氧净 · UV杀菌</strong></div>
+<div class="stat"><span>大容量</span><strong>620L · 650L · 721L</strong></div></div>
+</div>
+</header>
+
+<section id="painpoints">
+<div class="container">
+<div class="section-head"><span class="section-label">User Pain Points · 行业数据</span><h2>买零嵌冰箱，用户最痛的六个问题</h2><p>以下痛点基于2026年冰箱行业调研、用户反馈及专业评测。<sup>[1][2]</sup></p></div>
+<div class="pain-alert-bar"><span class="alert-icon">🚨</span><span class="alert-text"><strong>核心发现：</strong>2026年零嵌冰箱投诉中，<strong>"嵌入留缝/箱体突出"占32%</strong>，"串味/保鲜差"占27%，"无制冰或制冰体验差"占21%。"594mm零嵌+双系统+自动制冰"已成为旗舰标配。选购时务必确认<strong>嵌入深度、循环系统、制冰功能和散热方式</strong>。<sup>[1][2]</sup></span></div>
+<div class="pain-grid">
+<div class="pain-card"><div class="pain-rank">01</div><h4><span class="emoji">📏</span>嵌入留缝突出：箱体凸出橱柜2-3cm</h4><span class="pain-data">投诉占比32%</span><p>普通冰箱两侧需留10cm散热缝，箱体深度超70cm。卡萨帝揽光620仅594mm超薄零嵌，美的M60机皇600mm纯平全嵌。<sup>[1][2]</sup></p><div class="solve-hint">✅ 解决：选≤600mm深度+零距离嵌入/底部散热，装修前确认尺寸</div></div>
+<div class="pain-card"><div class="pain-rank">02</div><h4><span class="emoji">🐟</span>串味严重：冷冻海鲜染了冰淇淋味</h4><span class="pain-data">投诉占比27%</span><p>单循环冰箱冷藏冷冻气流互通。容声曦望650双系统五循环、美的熊墩墩Pro双系统双循环、卡萨帝揽光独立循环系统。<sup>[1][2]</sup></p><div class="solve-hint">✅ 解决：选双系统/双循环，冷藏冷冻独立风道不串味</div></div>
+<div class="pain-card"><div class="pain-rank">03</div><h4><span class="emoji">🧊</span>无制冰或制冰体验差</h4><span class="pain-data">投诉占比21%</span><p>夏季冰饮需求强烈，手动冰格体验差。卡萨帝揽光620、美的熊墩墩Pro均配备自动制冰，东芝大白梨Pro有洁净制冰。<sup>[2][3]</sup></p><div class="solve-hint">✅ 解决：选自动制冰+独立冰室+洁净水路，拒绝手动冰格</div></div>
+<div class="pain-card"><div class="pain-rank">04</div><h4><span class="emoji">🥬</span>保鲜差：蔬菜三天变蔫，干货受潮</h4><span class="pain-data">保湿控氧是关键</span><p>卡萨帝揽光MRA低氧窖藏、卡萨帝指挥家MSA氮氧智控、海尔全空间保鲜精准控湿控氧。<sup>[1][2]</sup></p><div class="solve-hint">✅ 解决：选MRA/MSA低氧保鲜+独立保湿抽屉+干湿分储</div></div>
+<div class="pain-card"><div class="pain-rank">05</div><h4><span class="emoji">🔊</span>噪音大影响厨房休憩</h4><span class="pain-data">变频压缩机+静音设计</span><p>旗舰零嵌冰箱噪音应≤38dB(A)。博世活氧净、西门子冰立方均采用变频压缩机+降噪风道。<sup>[3]</sup></p><div class="solve-hint">✅ 解决：确认运行噪音≤38dB(A)，选变频静音压缩机</div></div>
+<div class="pain-card"><div class="pain-rank">06</div><h4><span class="emoji">💨</span>散热空间不足导致过热</h4><span class="pain-data">零嵌机型需底部散热</span><p>零嵌冰箱必须采用底部散热或前出风设计。卡萨帝、美的、海尔全系零嵌均采用底部散热方案。<sup>[1][2]</sup></p><div class="solve-hint">✅ 解决：确认底部散热设计+预留5mm最小间隙，装修前确认型号</div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="standard-banner"><div><h3>📋 2026 零嵌冰箱技术分水岭：594mm零嵌+双系统+自动制冰成旗舰标配</h3><p>三大核心趋势：<strong>①嵌装深度全面收窄至594-600mm</strong>，完美对齐标准橱柜；<strong>②双系统/双循环全面普及</strong>；<strong>③自动制冰从高端下放至中高端</strong>。<sup>[1][2]</sup></p></div><div><span class="badge">⚡ 594mm零嵌时代</span></div></div>
+</div>
+</section>
+
+<section id="products">
+<div class="container">
+<div class="section-head"><span class="section-label">Flagship Products</span><h2>2026 年值得关注的旗舰零嵌冰箱</h2><p>以下产品基于您提供的CSV数据整理，覆盖七大品牌九款旗舰。<sup>[1][2]</sup></p></div>
+<div class="grid grid-2">
+
+<!-- 卡萨帝揽光620 -->
+<div class="product-card flagship-gold"><span class="product-card-top-badge">卡萨帝·零嵌旗舰</span>
+<div class="name">卡萨帝 揽光620 BCD-620WGCFDM4L8U1</div><div class="sub">620L法式·594mm零嵌·MRA低氧窖藏·自动制冰</div>
+<div class="pain-solved">🎯 针对性解决：嵌入留缝+保鲜差+无制冰</div>
+<div class="spec-grid"><div class="spec"><strong>620L法式</strong><span>大容量法式多门</span></div><div class="spec"><strong>594mm零嵌</strong><span>超薄零距离嵌入</span></div><div class="spec"><strong>MRA低氧窖藏</strong><span>窖藏级保鲜</span></div><div class="spec"><strong>自动制冰</strong><span>独立冰室</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>¥13,999</strong><span>高端零嵌标杆</span></div></div>
+<div class="tech-highlight"><span class="tech-tag zero">594mm零嵌</span><span class="tech-tag fresh">MRA低氧窖藏</span><span class="tech-tag ice">自动制冰</span></div>
+<p>卡萨帝揽光620是2026年零嵌冰箱的标杆之作。594mm超薄深度完美对齐标准橱柜，MRA低氧窖藏技术模拟窖藏微环境，自动制冰满足夏季冰饮需求。<sup>[1][2]</sup></p>
+<div class="price-row"><strong>¥13,999</strong><span>卡萨帝·零嵌旗舰</span></div></div>
+
+<!-- 卡萨帝指挥家 -->
+<div class="product-card flagship-gold"><span class="product-card-top-badge">卡萨帝·AI保鲜旗舰</span>
+<div class="name">卡萨帝 指挥家 BCD-721WGCFDA4DZU1</div><div class="sub">721L对开·AI细胞级养鲜·MSA氮氧智控</div>
+<div class="pain-solved">🎯 针对性解决：串味+保鲜差+大容量需求</div>
+<div class="spec-grid"><div class="spec"><strong>721L</strong><span>超大对开</span></div><div class="spec"><strong>AI细胞级养鲜</strong><span>MSA氮氧智控</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>高端旗舰</strong><span>顶尖保鲜科技</span></div><div class="spec"><strong>¥15,000-20,000</strong><span>AI细胞级养鲜</span></div></div>
+<div class="tech-highlight"><span class="tech-tag fresh">AI细胞级养鲜</span><span class="tech-tag zero">零嵌设计</span><span class="tech-tag cycle">MSA氮氧智控</span></div>
+<p>卡萨帝指挥家以AI细胞级养鲜和MSA氮氧智控重新定义保鲜高度。721L超大容量适合多代同堂家庭。<sup>[1][2]</sup></p>
+<div class="price-row"><strong>¥15,000-20,000</strong><span>AI细胞级养鲜旗舰</span></div></div>
+
+<!-- 海尔BCD-651WGHMD2IH7U1 -->
+<div class="product-card flagship-blue"><span class="product-card-top-badge">海尔·AI智能体旗舰</span>
+<div class="name">海尔 BCD-651WGHMD2IH7U1</div><div class="sub">651L·全球首款多舱AI智能体冰箱·高端旗舰</div>
+<div class="pain-solved">🎯 针对性解决：智能化+多舱分区+高端旗舰</div>
+<div class="spec-grid"><div class="spec"><strong>651L</strong><span>大容量对开</span></div><div class="spec"><strong>多舱AI智能体</strong><span>全球首款·智能分区</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>全空间保鲜</strong><span>干湿分储</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>高端旗舰</strong><span>海尔技术集大成</span></div></div>
+<div class="tech-highlight"><span class="tech-tag fresh">全空间保鲜</span><span class="tech-tag zero">零嵌设计</span><span class="tech-tag smart">AI智能体</span></div>
+<p>海尔全球首款多舱AI智能体冰箱，以AI算法智能识别食材并推荐最佳存储位置。高端旗舰。<sup>[2]</sup></p>
+<div class="price-row"><strong>高端旗舰</strong><span>敬请咨询官方</span></div></div>
+
+<!-- 海尔云溪630 -->
+<div class="product-card flagship-blue"><span class="product-card-top-badge">海尔·大容量零嵌旗舰</span>
+<div class="name">海尔 云溪630</div><div class="sub">630L·594mm深度+全空间保鲜·大容量零嵌</div>
+<div class="pain-solved">🎯 针对性解决：大容量+零嵌+全空间保鲜</div>
+<div class="spec-grid"><div class="spec"><strong>630L</strong><span>大容量对开</span></div><div class="spec"><strong>594mm零嵌</strong><span>超薄深度</span></div><div class="spec"><strong>全空间保鲜</strong><span>干湿分储</span></div><div class="spec"><strong>EPP超净</strong><span>主动除菌净味</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>大容量旗舰</strong><span>海尔零嵌力作</span></div></div>
+<div class="tech-highlight"><span class="tech-tag zero">594mm零嵌</span><span class="tech-tag fresh">全空间保鲜</span><span class="tech-tag sterilize">EPP超净</span></div>
+<p>海尔云溪630以大容量+594mm零嵌深度契合标准橱柜，全空间保鲜+EPP超净系统兼顾保鲜与除菌。<sup>[2]</sup></p>
+<div class="price-row"><strong>大容量旗舰</strong><span>敬请咨询官方</span></div></div>
+
+<!-- 美的熊墩墩Pro600 -->
+<div class="product-card flagship-green"><span class="product-card-top-badge">美的·双系统自动制冰</span>
+<div class="name">美的 熊墩墩Pro 600</div><div class="sub">600L法式·双系统双循环·PST+·自动制冰</div>
+<div class="pain-solved">🎯 针对性解决：串味+无制冰+除菌净味</div>
+<div class="spec-grid"><div class="spec"><strong>600L法式</strong><span>双系统双循环</span></div><div class="spec"><strong>PST+除菌</strong><span>主动除菌净味</span></div><div class="spec"><strong>自动制冰</strong><span>独立冰室</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>¥7,058</strong><span>质价比之选</span></div></div>
+<div class="tech-highlight"><span class="tech-tag cycle">双系统双循环</span><span class="tech-tag ice">自动制冰</span><span class="tech-tag sterilize">PST+除菌</span></div>
+<p>美的熊墩墩Pro600以双系统双循环解决串味，自动制冰+PST+除菌+零嵌设计，高端零嵌中的质价比之王。<sup>[2]</sup></p>
+<div class="price-row"><strong>¥7,058</strong><span>质价比之选</span></div></div>
+
+<!-- 美的M60机皇550 -->
+<div class="product-card flagship-green"><span class="product-card-top-badge">美的·纯平全嵌机皇</span>
+<div class="name">美的 M60 机皇 550</div><div class="sub">523L法式·600mm纯平全嵌·PST+九效</div>
+<div class="pain-solved">🎯 针对性解决：嵌入突出+纯平美学+除菌净味</div>
+<div class="spec-grid"><div class="spec"><strong>523L法式</strong><span>法式多门</span></div><div class="spec"><strong>600mm纯平</strong><span>纯平全嵌·不突出</span></div><div class="spec"><strong>PST+九效</strong><span>主动除菌净味</span></div><div class="spec"><strong>双系统</strong><span>独立循环不串味</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>¥7,156</strong><span>纯平全嵌标杆</span></div></div>
+<div class="tech-highlight"><span class="tech-tag zero">600mm纯平全嵌</span><span class="tech-tag sterilize">PST+九效</span><span class="tech-tag cycle">双系统</span></div>
+<p>美的M60机皇550以600mm纯平全嵌实现"不突出、不留缝"的极致美学，PST+九效+双系统。<sup>[2]</sup></p>
+<div class="price-row"><strong>¥7,156</strong><span>纯平全嵌标杆</span></div></div>
+
+<!-- 容声曦望650 -->
+<div class="product-card flagship-red"><span class="product-card-top-badge">容声·AI四季养鲜旗舰</span>
+<div class="name">容声 曦望 BCD-650W80FZBAK-JY51</div><div class="sub">650L·AI智慧四季养鲜·双系统五循环</div>
+<div class="pain-solved">🎯 针对性解决：保鲜差+串味+智能节气</div>
+<div class="spec-grid"><div class="spec"><strong>650L</strong><span>大容量对开</span></div><div class="spec"><strong>AI四季养鲜</strong><span>智慧节气·精准控温</span></div><div class="spec"><strong>双系统五循环</strong><span>极致不串味</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>AWE旗舰</strong><span>容声技术集大成</span></div><div class="spec"><strong>旗舰定位</strong><span>保鲜标杆</span></div></div>
+<div class="tech-highlight"><span class="tech-tag fresh">AI四季养鲜</span><span class="tech-tag cycle">双系统五循环</span><span class="tech-tag zero">零嵌设计</span></div>
+<p>容声曦望650以AI智慧四季养鲜技术针对不同季节食材自动调节温湿度，双系统五循环极致不串味。<sup>[2]</sup></p>
+<div class="price-row"><strong>AWE旗舰</strong><span>敬请咨询官方</span></div></div>
+
+<!-- 容声大冰象605 -->
+<div class="product-card flagship-red"><span class="product-card-top-badge">容声·深冷巨冷冻旗舰</span>
+<div class="name">容声 大冰象605</div><div class="sub">605L·-36℃深冷·267L巨冷冻·约¥6,586</div>
+<div class="pain-solved">🎯 针对性解决：冷冻力不足+深冷需求+大冷冻空间</div>
+<div class="spec-grid"><div class="spec"><strong>605L</strong><span>对开大容量</span></div><div class="spec"><strong>-36℃深冷</strong><span>深冷速冻</span></div><div class="spec"><strong>267L巨冷冻</strong><span>超大冷冻空间</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>约¥6,586</strong><span>深冷性价比之选</span></div></div>
+<div class="tech-highlight"><span class="tech-tag fresh">-36℃深冷</span><span class="tech-tag zero">零嵌设计</span><span class="tech-tag cycle">267L巨冷冻</span></div>
+<p>容声大冰象605以-36℃深冷和267L超大冷冻空间解决冷冻力不足问题。深冷性价比之选。<sup>[2]</sup></p>
+<div class="price-row"><strong>约¥6,586</strong><span>深冷巨冷冻旗舰</span></div></div>
+
+<!-- 西门子冰立方零嵌710 -->
+<div class="product-card flagship-slate"><span class="product-card-top-badge">西门子·德系零嵌保鲜</span>
+<div class="name">西门子 冰立方零嵌710</div><div class="sub">548L对开·零度保鲜+真空·9.3kg冷冻力</div>
+<div class="pain-solved">🎯 针对性解决：保鲜差+冷冻力强+德系品质</div>
+<div class="spec-grid"><div class="spec"><strong>548L</strong><span>对开大容量</span></div><div class="spec"><strong>零度保鲜+真空</strong><span>双重保鲜科技</span></div><div class="spec"><strong>9.3kg冷冻力</strong><span>强劲大冷冻</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>¥8,000-10,000</strong><span>德系保鲜旗舰</span></div></div>
+<div class="tech-highlight"><span class="tech-tag fresh">零度保鲜+真空</span><span class="tech-tag zero">零嵌设计</span><span class="tech-tag cycle">9.3kg大冷冻力</span></div>
+<p>西门子冰立方零嵌710以零度保鲜+真空双重科技守护食材新鲜，9.3kg大冷冻力满足家庭冷冻需求。<sup>[2]</sup></p>
+<div class="price-row"><strong>¥8,000-10,000</strong><span>德系零嵌保鲜旗舰</span></div></div>
+
+<!-- 博世零嵌830活氧净 -->
+<div class="product-card flagship-dark"><span class="product-card-top-badge">博世·活氧净旗舰</span>
+<div class="name">博世 零嵌830 活氧净 KCE88AA26C</div><div class="sub">548L·活氧净+零度维他+真空净护舱</div>
+<div class="pain-solved">🎯 针对性解决：除菌净味+保鲜+零嵌</div>
+<div class="spec-grid"><div class="spec"><strong>548L</strong><span>对开大容量</span></div><div class="spec"><strong>活氧净</strong><span>主动除菌净味</span></div><div class="spec"><strong>零度维他+真空</strong><span>双重保鲜舱</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>一级能效</strong><span>变频静音</span></div><div class="spec"><strong>旗舰级</strong><span>博世零嵌力作</span></div></div>
+<div class="tech-highlight"><span class="tech-tag sterilize">活氧净除菌</span><span class="tech-tag fresh">零度维他+真空</span><span class="tech-tag zero">零嵌设计</span></div>
+<p>博世零嵌830活氧净以活氧净主动除菌+零度维他保鲜+真空净护舱三重科技构建极致保鲜体系。<sup>[2]</sup></p>
+<div class="price-row"><strong>旗舰级</strong><span>敬请咨询官方</span></div></div>
+
+<!-- 东芝大白梨Pro483 -->
+<div class="product-card flagship-pink"><span class="product-card-top-badge">东芝·洁净制冰旗舰</span>
+<div class="name">东芝 大白梨Pro 483</div><div class="sub">483L六门·-30℃深冻·UV杀菌·洁净制冰</div>
+<div class="pain-solved">🎯 针对性解决：制冰洁净+深冷+六门精致</div>
+<div class="spec-grid"><div class="spec"><strong>483L六门</strong><span>精致六门格局</span></div><div class="spec"><strong>-30℃深冻</strong><span>深冷速冻</span></div><div class="spec"><strong>UV杀菌</strong><span>主动除菌净味</span></div><div class="spec"><strong>洁净制冰</strong><span>独立水路·冰爽洁净</span></div><div class="spec"><strong>零嵌设计</strong><span>底部散热</span></div><div class="spec"><strong>¥10,000-12,000</strong><span>日式精致旗舰</span></div></div>
+<div class="tech-highlight"><span class="tech-tag ice">洁净制冰</span><span class="tech-tag fresh">-30℃深冻</span><span class="tech-tag sterilize">UV杀菌</span></div>
+<p>东芝大白梨Pro 483以六门精致格局和洁净制冰体验满足小家庭高端需求，日式精工+零嵌设计。<sup>[2]</sup></p>
+<div class="price-row"><strong>¥10,000-12,000</strong><span>日式洁净制冰旗舰</span></div></div>
+
+</div>
+<div class="quote">注：以上产品价格基于2026年5-6月主流电商平台价格，产品参数参考自官方发布资料及行业评测。<sup>[1][2]</sup></div>
+</div>
+</section>
+
+<section id="priority">
+<div class="container">
+<div class="section-head"><span class="section-label">Feature Priority</span><h2>旗舰零嵌冰箱核心配置优先级表</h2><p>基于2026年用户痛点及行业标准。<strong>绿色=解决痛点的关键配置。</strong></p></div>
+<div class="table-shell"><div class="legend"><span>🛡️ 必须配置</span><span>⭐ 加分配置</span><span>🚫 慎选避坑</span></div><div class="table-wrap"><table><thead><tr><th>维度</th><th>🛡️ 必须配置</th><th>⭐ 加分配置</th><th>🚫 慎选避坑</th></tr></thead><tbody>
+<tr><td><span class="dim">嵌入深度</span></td><td><span class="tag tag-must">必</span>≤635mm+底部散热</td><td><span class="tag tag-nice">加</span>≤600mm纯平全嵌·594mm零嵌</td><td><span class="tag tag-avoid">避</span>深度>700mm·两侧需留缝</td></tr>
+<tr><td><span class="dim">循环系统</span></td><td><span class="tag tag-must">必</span>双循环/双系统</td><td><span class="tag tag-nice">加</span>双系统五循环·独立风道</td><td><span class="tag tag-avoid">避</span>单循环串味</td></tr>
+<tr><td><span class="dim">保鲜技术</span></td><td><span class="tag tag-must">必</span>独立保湿抽屉</td><td><span class="tag tag-nice">加</span>MRA低氧·MSA氮氧·AI四季养鲜</td><td><span class="tag tag-avoid">避</span>无保湿·无干湿分储</td></tr>
+<tr><td><span class="dim">制冰</span></td><td><span class="tag tag-must">必</span>快速制冰格</td><td><span class="tag tag-nice">加</span>自动制冰·独立冰室·洁净水路</td><td><span class="tag tag-avoid">避</span>无制冰功能</td></tr>
+<tr><td><span class="dim">除菌净味</span></td><td><span class="tag tag-must">必</span>主动除菌/净味</td><td><span class="tag tag-nice">加</span>EPP超净·PST+·活氧净·UV杀菌</td><td><span class="tag tag-avoid">避</span>仅活性炭被动吸附</td></tr>
+<tr><td><span class="dim">冷冻力</span></td><td><span class="tag tag-must">必</span>≥6kg/12h</td><td><span class="tag tag-nice">加</span>≥9.3kg/12h·-36℃深冷</td><td><span class="tag tag-avoid">避</span>冷冻力不足</td></tr>
+<tr><td><span class="dim">噪音</span></td><td><span class="tag tag-must">必</span>≤40dB(A)</td><td><span class="tag tag-nice">加</span>≤36dB(A)·变频压缩机</td><td><span class="tag tag-avoid">避</span>噪音>42dB</td></tr>
+<tr><td><span class="dim">能效</span></td><td><span class="tag tag-must">必</span>一级能效</td><td><span class="tag tag-nice">加</span>超1级能效·变频智能</td><td><span class="tag tag-avoid">避</span>二级及以下</td></tr>
+<tr><td><span class="dim">安装</span></td><td><span class="tag tag-must">必</span>免费送货+安装</td><td><span class="tag tag-nice">加</span>免费拆旧·上门测量</td><td><span class="tag tag-avoid">避</span>安装额外收费</td></tr>
+<tr><td><span class="dim">售后</span></td><td><span class="tag tag-must">必</span>整机3年+压缩机10年</td><td><span class="tag tag-nice">加</span>整机5年·全国覆盖</td><td><span class="tag tag-avoid">避</span>售后网点少</td></tr>
+</tbody></table></div><div class="quote">⚠️ 关键提醒：2026年零嵌冰箱分水岭是<strong>嵌入深度+循环系统+自动制冰+保鲜技术</strong>。四者决定了冰箱能不能真正无缝融入厨房、不串味、有冰饮自由、食材长久新鲜。<sup>[1][2]</sup></div></div>
+</div>
+</section>
+
+<section id="sop">
+<div class="container">
+<div class="section-head"><span class="section-label">Buying SOP</span><h2>旗舰零嵌冰箱选购SOP（痛点驱动版）</h2><p>每一步对应一个用户高频痛点。按这8步走，避开90%的坑。</p></div>
+<div class="step-list">
+<div class="step"><div class="step-num"><strong>01</strong><span>嵌入</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：嵌入留缝突出</span><h3>先确认橱柜深度→选≤600mm零嵌机型</h3><p>标准橱柜深度600mm。卡萨帝揽光620仅594mm、美的M60机皇600mm纯平。确认底部散热或前出风。<sup>[1]</sup></p><div class="pill-row"><span class="pill">594mm零嵌</span><span class="pill">600mm纯平</span><span class="pill">底部散热</span></div></div></div>
+<div class="step"><div class="step-num"><strong>02</strong><span>循环</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：串味严重</span><h3>双系统双循环是底线，五循环更极致</h3><p>容声曦望650双系统五循环、美的熊墩墩双系统双循环、卡萨帝独立循环。<sup>[1][2]</sup></p><div class="pill-row"><span class="pill">双系统双循环</span><span class="pill">双系统五循环</span><span class="pill">独立风道</span></div></div></div>
+<div class="step"><div class="step-num"><strong>03</strong><span>保鲜</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：保鲜差、干货受潮</span><h3>MRA/MSA低氧保鲜+独立保湿抽屉</h3><p>卡萨帝揽光MRA低氧窖藏、指挥家MSA氮氧智控、容声AI四季养鲜。<sup>[2]</sup></p><div class="pill-row"><span class="pill">MRA低氧窖藏</span><span class="pill">MSA氮氧智控</span><span class="pill">AI四季养鲜</span></div></div></div>
+<div class="step"><div class="step-num"><strong>04</strong><span>制冰</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：无制冰或制冰体验差</span><h3>自动制冰+独立冰室+洁净水路</h3><p>卡萨帝揽光620、美的熊墩墩Pro、东芝大白梨Pro均配备自动制冰。<sup>[2]</sup></p><div class="pill-row"><span class="pill">自动制冰</span><span class="pill">独立冰室</span><span class="pill">洁净水路</span></div></div></div>
+<div class="step"><div class="step-num"><strong>05</strong><span>除菌</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：异味反复、除菌不彻底</span><h3>主动除菌系统（EPP/PST+/活氧净/UV）</h3><p>海尔EPP、美的PST+、博世活氧净、东芝UV杀菌。<sup>[2]</sup></p><div class="pill-row"><span class="pill">EPP超净</span><span class="pill">PST+九效</span><span class="pill">活氧净·UV</span></div></div></div>
+<div class="step"><div class="step-num"><strong>06</strong><span>冷冻</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：冷冻力不足、冻不透</span><h3>≥8kg/12h冷冻力，-30℃深冷更佳</h3><p>西门子冰立方9.3kg冷冻力，容声大冰象-36℃深冷。<sup>[2]</sup></p><div class="pill-row"><span class="pill">≥9kg冷冻力</span><span class="pill">-30℃深冷</span><span class="pill">全空间保鲜</span></div></div></div>
+<div class="step"><div class="step-num"><strong>07</strong><span>噪音</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：噪音扰人</span><h3>变频压缩机+≤38dB(A)</h3><p>旗舰零嵌冰箱噪音应≤38dB，博世、西门子、卡萨帝均做到图书馆级静音。<sup>[2]</sup></p><div class="pill-row"><span class="pill">≤38dB(A)</span><span class="pill">变频压缩机</span><span class="pill">降噪风道</span></div></div></div>
+<div class="step"><div class="step-num"><strong>08</strong><span>售后</span></div><div class="step-content"><span class="pain-ref">🔴 对应痛点：安装不规范、压缩机维修</span><h3>整机3年+压缩机10年+免费安装</h3><p>确认免费上门测量+拆旧+安装，整机质保和压缩机质保年限。<sup>[2]</sup></p><div class="pill-row"><span class="pill">整机3-5年</span><span class="pill">压缩机10年</span><span class="pill">免费上门安装</span></div></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="checklist"><h2>旗舰零嵌冰箱下单前24项核对清单</h2><p>逐项确认，避免买回来"嵌入突出、串味、无制冰、尺寸不合"。</p><div class="check-grid">
+<div class="check-item"><span>✓</span><div><strong>【橱柜深度】</strong>确认橱柜深度≥600mm，零嵌选594-600mm机型。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【散热方式】</strong>确认底部散热或前出风，两侧无需留缝。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【循环系统】</strong>确认双系统/双循环，避免单循环串味。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【保鲜技术】</strong>确认独立保湿抽屉+低氧/氮氧/AI四季保鲜。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【制冰】</strong>确认自动制冰+独立冰室+洁净水路。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【除菌】</strong>确认主动除菌净味系统（EPP/PST+/活氧净/UV）。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【冷冻力】</strong>确认≥8kg/12h，深冷≥-30℃。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【噪音】</strong>确认≤38dB(A)。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【能效】</strong>确认一级能效。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【容量】</strong>确认≥500L满足家庭需求。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【面板材质】</strong>确认钢化玻璃面板+耐指纹。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【门铰方向】</strong>确认是否可调左右开向。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【母婴专区】</strong>确认独立母婴/零度变温抽屉。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【干货抽屉】</strong>确认独立干货/珍品存储抽屉。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【安装空间】</strong>确认预留宽度≥箱体+2cm。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【插座位置】</strong>确认冰箱旁预留16A插座。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【安装服务】</strong>确认免费送货+上门安装+拆旧。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【质保】</strong>确认整机3年+压缩机10年。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【售后】</strong>确认所在城市品牌售后网点覆盖。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【耗材】</strong>确认净味滤芯更换周期和价格。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【电源】</strong>确认独立16A插座+接地。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【预算】</strong>确认冰箱+安装+延保总预算。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【品牌】</strong>确认品牌授权经销商。</div></div>
+<div class="check-item"><span>✓</span><div><strong>【货期】</strong>确认库存和配送周期。</div></div>
+</div></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head"><span class="section-label">Avoid Pitfalls</span><h2>旗舰零嵌冰箱常见误区</h2></div>
+<div class="grid grid-3">
+<div class="card"><div class="icon">⚠️</div><h3>只看厚度忽略散热</h3><p>零嵌≠无散热需求。必须确认底部散热或前出风，两侧预留5mm即可。</p></div>
+<div class="card"><div class="icon">⚠️</div><h3>混淆"零嵌"与"全嵌"</h3><p>零嵌是左右零缝，全嵌是正面纯平不突出。两者都需要底部散热。</p></div>
+<div class="card"><div class="icon">⚠️</div><h3>单循环当双循环买</h3><p>部分品牌标称"双循环"但只有双风道而非双系统。确认独立蒸发器。</p></div>
+<div class="card"><div class="icon">⚠️</div><h3>忽视自动制冰功能</h3><p>自动制冰已从高端下放至中高端，是夏季冰饮自由的刚需功能。</p></div>
+<div class="card"><div class="icon">⚠️</div><h3>不关注除菌系统</h3><p>主动除菌（EPP/PST+等）与被动吸附（活性炭）效果差距巨大。</p></div>
+<div class="card"><div class="icon">⚠️</div><h3>装修后才选零嵌冰箱</h3><p>嵌入式冰箱必须在设计阶段确定型号和尺寸，装修后再改成本极高。</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="cta"><h2>一句话结论</h2><p>2026年选旗舰零嵌冰箱，核心是<strong>嵌入深度（594-600mm）+双系统循环+自动制冰+主动除菌+保鲜技术</strong>。卡萨帝揽光620以594mm零嵌和MRA低氧窖藏领跑高端；美的M60机皇550以600mm纯平全嵌和PST+九效定义纯平美学；容声曦望650以AI四季养鲜和双系统五循环树立保鲜标杆；海尔云溪630以594mm零嵌和全空间保鲜满足大容量需求；西门子冰立方以零度保鲜+真空和9.3kg冷冻力征服德系信任者；博世零嵌830以活氧净和零度维他+真空构建极致保鲜体系；东芝大白梨Pro以洁净制冰和-30℃深冻捕获精致家庭。无论选哪款，务必在装修设计阶段确认嵌入尺寸和散热方式——零嵌冰箱是厨房美学的核心组成部分，尺寸与循环高于一切参数。</p></div>
+</div>
+</section>
+
+<footer>© 2026 旗舰零嵌冰箱科学选购指南｜数据来源：卡萨帝/海尔/美的/容声/西门子/博世/东芝官方资料 [1]、全球冰箱行业评测 [2]</footer>
+
+</div>
+</body>
+</html>
