@@ -326,7 +326,7 @@
             margin-bottom: 15px;
         }
 
-        /* ── Product Card ── */
+        /* ── Product Card (修复版) ── */
         .product-card {
             background: #fff;
             border: 2px solid #e5e7eb;
@@ -336,6 +336,8 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .product-card:hover {
             box-shadow: 0 24px 68px rgba(15, 23, 42, 0.12);
@@ -345,21 +347,28 @@
             border-color: #fcd34d;
             background: linear-gradient(180deg, #fffdf5, #ffffff);
         }
-        .product-card.flagship::before {
-            content: "年度画质旗舰";
+        /* 角标通用样式 */
+        .product-card-top-badge {
             position: absolute;
             top: 16px;
             right: 18px;
             padding: 5px 12px;
             border-radius: 999px;
-            background: #fcd34d;
-            color: #0f172a;
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 0.5px;
+            z-index: 2;
+            white-space: nowrap;
         }
-        .product-card.flagship-rgb::before {
-            content: "RGB-MiniLED 旗舰";
+        .product-card.flagship .product-card-top-badge {
+            background: #fcd34d;
+            color: #0f172a;
+        }
+        .product-card.flagship-rgb {
+            border-color: #3b82f6;
+            background: linear-gradient(180deg, #eff6ff, #ffffff);
+        }
+        .product-card.flagship-rgb .product-card-top-badge {
             background: #3b82f6;
             color: #fff;
         }
@@ -368,11 +377,13 @@
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 4px;
+            padding-right: 100px;
         }
         .product-card .sub {
             font-size: 14px;
             color: var(--muted);
             margin-bottom: 16px;
+            padding-right: 100px;
         }
         .spec-grid {
             display: grid;
@@ -428,7 +439,6 @@
             color: #92400e;
         }
         .pain-solved {
-            margin-top: 2px;
             margin-bottom: 12px;
             padding: 8px 12px;
             border-radius: 10px;
@@ -441,12 +451,19 @@
             align-items: center;
             gap: 6px;
         }
+        .product-card>p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.65;
+            flex: 1;
+        }
         .price-row {
             display: flex;
             align-items: center;
             gap: 10px;
             padding-top: 14px;
             border-top: 1px solid #e5e7eb;
+            margin-top: auto;
         }
         .price-row strong {
             font-size: 20px;
@@ -727,7 +744,7 @@
             white-space: nowrap;
         }
 
-        /* ── Size/Distance Table (修复版：移除 max-width 限制) ── */
+        /* ── Size/Distance Table ── */
         .size-ref-card {
             background: #fff;
             border: 1px solid var(--line);
@@ -870,6 +887,16 @@
             .size-ref-table {
                 min-width: 600px;
             }
+            .product-card .name,
+            .product-card .sub {
+                padding-right: 80px;
+            }
+            .product-card-top-badge {
+                font-size: 10px;
+                top: 12px;
+                right: 12px;
+                padding: 4px 10px;
+            }
         }
         @media (max-width: 600px) {
             .container {
@@ -904,12 +931,6 @@
             .checklist h2 {
                 font-size: 27px;
             }
-            .product-card.flagship::before,
-            .product-card.flagship-rgb::before {
-                font-size: 10px;
-                top: 12px;
-                right: 12px;
-            }
             .pain-grid {
                 grid-template-columns: 1fr;
             }
@@ -920,6 +941,16 @@
             .size-ref-table td {
                 padding: 10px 8px;
                 font-size: 12px;
+            }
+            .product-card .name,
+            .product-card .sub {
+                padding-right: 65px;
+            }
+            .product-card-top-badge {
+                font-size: 9px;
+                top: 10px;
+                right: 10px;
+                padding: 3px 8px;
             }
         }
     </style>
@@ -934,7 +965,7 @@
                     <div class="eyebrow">2026 FLAGSHIP TV BUYING GUIDE</div>
                     <h1>2026 旗舰电视科学选购指南<br><span>RGB-MiniLED · 信芯 AI 画质芯片 · 光色同控</span></h1>
                     <p>
-                        2026 年，旗舰电视正式进入“<strong style="color:#fcd34d;">RGB-MiniLED</strong>”时代。海信率先全面拥抱 RGB 背光技术，
+                        2026 年，旗舰电视正式进入"<strong style="color:#fcd34d;">RGB-MiniLED</strong>"时代。海信率先全面拥抱 RGB 背光技术，
                         从 E5 到 E8、U6 到 UX，全系升级三原色直发光。与此同时，TCL 在 SQD-MiniLED 路线上持续深耕。
                         但行业数据显示<strong style="color:#fcd34d;">用户选购电视的核心痛点</strong>——串色光晕、白天反光、
                         高亮衰减、音质单薄——仍然普遍存在。<sup>[1][2]</sup>
@@ -971,7 +1002,7 @@
                     <span class="alert-icon">🚨</span>
                     <span class="alert-text">
                         <strong>核心发现：</strong>2026 年电视市场最大变化——<strong>RGB-MiniLED 技术全面普及</strong>。
-                        海信从 E5 到 E8 全系升级 RGB 背光，实现从“蓝光+量子点转换”到“三原色纯净直出”的底层变革。
+                        海信从 E5 到 E8 全系升级 RGB 背光，实现从"蓝光+量子点转换"到"三原色纯净直出"的底层变革。
                         这意味着<strong>色域、光晕控制、护眼能力</strong>全面超越传统 SQD-MiniLED。消费者选购时需重点关注光源技术路线。<sup>[1][2][4]</sup>
                     </span>
                 </div>
@@ -981,7 +1012,7 @@
                         <div class="pain-rank">01</div>
                         <h4><span class="emoji">🌈</span>串色光晕：高亮场景色彩被冲淡</h4>
                         <span class="pain-data">SQD-MiniLED 的通病</span>
-                        <p>传统 SQD-MiniLED 本质是“蓝光背光+量子点膜+滤光片”，光线经多层转换纯度下降。高亮场景中色彩被冲淡、光晕泛白是普遍现象。RGB-MiniLED 从源头直出三原色，配合“同色消融”技术，光晕与画面边缘同色，视觉上自然消失。<sup>[1][2][4]</sup></p>
+                        <p>传统 SQD-MiniLED 本质是"蓝光背光+量子点膜+滤光片"，光线经多层转换纯度下降。高亮场景中色彩被冲淡、光晕泛白是普遍现象。RGB-MiniLED 从源头直出三原色，配合"同色消融"技术，光晕与画面边缘同色，视觉上自然消失。<sup>[1][2][4]</sup></p>
                         <div class="solve-hint">✅ 解决：选 RGB-MiniLED + 独立画质芯片，避免单色背光方案</div>
                     </div>
                     <div class="pain-card">
@@ -1009,7 +1040,7 @@
                         <div class="pain-rank">05</div>
                         <h4><span class="emoji">👁️</span>蓝光伤眼：长时间观看疲劳</h4>
                         <span class="pain-data">传统方案有害蓝光高</span>
-                        <p>传统“蓝光 LED+量子点”方案的有害蓝光占比高。RGB-MiniLED 的蓝光波峰在 455-456nm，属于硬件级防蓝光，有害蓝光占比降低约 75%，且不偏色。<sup>[1][2]</sup></p>
+                        <p>传统"蓝光 LED+量子点"方案的有害蓝光占比高。RGB-MiniLED 的蓝光波峰在 455-456nm，属于硬件级防蓝光，有害蓝光占比降低约 75%，且不偏色。<sup>[1][2]</sup></p>
                         <div class="solve-hint">✅ 解决：选 RGB-MiniLED（硬件防蓝光），避坑软件防蓝光偏黄</div>
                     </div>
                     <div class="pain-card">
@@ -1054,7 +1085,9 @@
                 </div>
 
                 <div class="grid grid-2">
+                    <!-- 海信 E7S PRO -->
                     <div class="product-card flagship-rgb">
+                        <span class="product-card-top-badge">RGB-MiniLED 旗舰</span>
                         <div class="name">海信 E7S PRO</div>
                         <div class="sub">RGB-MiniLED 中坚王牌 · 万元级画质标杆</div>
                         <div class="pain-solved">🎯 针对性解决：串色光晕 + 白天反光 + 蓝光伤眼 + 音质单薄</div>
@@ -1076,7 +1109,9 @@
                         <div class="price-row"><strong>85"¥12,499 / 75"¥8,999</strong><span>国补后 · 2026.03 发布</span></div>
                     </div>
 
+                    <!-- 海信 E8S PRO -->
                     <div class="product-card flagship">
+                        <span class="product-card-top-badge">年度画质旗舰</span>
                         <div class="name">海信 E8S PRO</div>
                         <div class="sub">RGB-MiniLED 年度机皇 · 画质天花板</div>
                         <div class="pain-solved">🎯 针对性解决：亮度衰减 + 暗场细节 + 高动态闪烁 + 音质单薄</div>
@@ -1098,6 +1133,7 @@
                         <div class="price-row"><strong>85"约 ¥20,000+</strong><span>年度画质旗舰</span></div>
                     </div>
 
+                    <!-- TCL Q10M ULTRA -->
                     <div class="product-card">
                         <div class="name">TCL Q10M ULTRA</div>
                         <div class="sub">SQD-MiniLED 旗舰 · 高分区高亮路线</div>
@@ -1120,6 +1156,7 @@
                         <div class="price-row"><strong>85"约 ¥15,000-18,000</strong><span>SQD 旗舰</span></div>
                     </div>
 
+                    <!-- TCL Q9M PRO -->
                     <div class="product-card">
                         <div class="name">TCL Q9M PRO</div>
                         <div class="sub">SQD-MiniLED 中高端 · 质价比之选</div>
@@ -1279,7 +1316,7 @@
                         <div class="step-content">
                             <span class="pain-ref">🔴 对应痛点：买小了后悔、买大了不协调</span>
                             <h3>先定尺寸 → 再看距离</h3>
-                            <p>客厅 3m 观影距离首选 <strong>85 寸</strong>，4m 以上可上 100 寸。电视“越看越小”是普遍规律——85 寸是 2026 年客厅黄金尺寸。<sup>[2]</sup></p>
+                            <p>客厅 3m 观影距离首选 <strong>85 寸</strong>，4m 以上可上 100 寸。电视"越看越小"是普遍规律——85 寸是 2026 年客厅黄金尺寸。<sup>[2]</sup></p>
                             <div class="pill-row">
                                 <span class="pill">2.5-3m → 75"</span>
                                 <span class="pill">3-3.5m → 85"（黄金尺寸）</span>
@@ -1292,7 +1329,7 @@
                         <div class="step-content">
                             <span class="pain-ref">🔴 对应痛点：串色光晕 + 色彩纯净度不足</span>
                             <h3>认准光源技术路线：RGB vs SQD</h3>
-                            <p>2026 年首选 <strong>RGB-MiniLED</strong>——三原色纯净直出，100% BT.2020 色域，同色消融光晕。SQD-MiniLED 为“蓝光+量子点转换”方案，高亮场景色彩易被冲淡。<sup>[1][2][4]</sup></p>
+                            <p>2026 年首选 <strong>RGB-MiniLED</strong>——三原色纯净直出，100% BT.2020 色域，同色消融光晕。SQD-MiniLED 为"蓝光+量子点转换"方案，高亮场景色彩易被冲淡。<sup>[1][2][4]</sup></p>
                             <div class="pill-row">
                                 <span class="pill">RGB-MiniLED（海信）</span>
                                 <span class="pill">玲珑真彩背光</span>
@@ -1304,7 +1341,7 @@
                         <div class="step-num"><strong>03</strong><span>芯片</span></div>
                         <div class="step-content">
                             <span class="pain-ref">🔴 对应痛点：亮度衰减 + 画面层次感差</span>
-                            <h3>独立画质芯片 = 电视的“显卡”</h3>
+                            <h3>独立画质芯片 = 电视的"显卡"</h3>
                             <p>信芯 H7 具备 <strong>108bits 控色精度</strong>，并行处理 RGB 三路信号，实现像素级光色同控与 0 延时同步。没有独立画质芯片的电视，亮度衰减和偏色是必然的。<sup>[1][2][4]</sup></p>
                             <div class="pill-row">
                                 <span class="pill">信芯 H7（108bits）</span>
@@ -1436,7 +1473,7 @@
                         </table>
                     </div>
                     <div class="ref-quote">
-                        💡 选购建议：<strong>电视“越看越小”是普遍规律</strong>——在预算和空间允许的前提下，选大不选小。85 寸是 2026 年最推荐的客厅尺寸。
+                        💡 选购建议：<strong>电视"越看越小"是普遍规律</strong>——在预算和空间允许的前提下，选大不选小。85 寸是 2026 年最推荐的客厅尺寸。
                     </div>
                 </div>
             </div>
