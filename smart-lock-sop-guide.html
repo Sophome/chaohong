@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智能门锁科学选购 SOP｜安全·实用·不踩坑</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --dark: #0f172a;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --orange: #ea580c;
+      --orange-light: #fff7ed;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+      --shadow: 0 12px 32px rgba(0,0,0,0.06);
+      --radius: 24px;
+    }
+    * { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+    }
+    .page { width:100%; overflow-x:hidden }
+    .container { width:min(1120px, calc(100% - 32px)); margin:0 auto }
+
+    section { padding: 64px 0 }
+    .hero {
+      padding: 88px 0 104px;
+      background: radial-gradient(circle at 80% 20%, rgba(37,99,235,0.14), transparent 32%),
+                  radial-gradient(circle at 12% 86%, rgba(37,99,235,0.18), transparent 35%),
+                  linear-gradient(135deg, #0f172a, #1e293b 50%, #1e3a5f);
+      color: #fff;
+    }
+    .hero-inner {
+      width:min(1120px, calc(100% - 32px)); margin:0 auto;
+      display:grid; grid-template-columns: 1.05fr 0.95fr; gap:48px; align-items:center;
+    }
+    .eyebrow { display:inline-flex; padding:6px 14px; margin-bottom:18px; border-radius:999px; border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.86); font-size:13px }
+    .hero h1 { font-size:clamp(34px,5vw,56px); line-height:1.12; letter-spacing:-1.2px; margin-bottom:20px; font-weight:900 }
+    .hero h1 span { color:#93c5fd }
+    .hero p { max-width:800px; color:rgba(255,255,255,0.82); font-size:17px; margin-bottom:28px }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 22px; border-radius:999px; font-size:14px; font-weight:700 }
+    .btn-primary { background:#dbeafe; color:#0f172a }
+    .btn-ghost { border:1px solid rgba(255,255,255,0.22); color:#fff; background:rgba(255,255,255,0.06) }
+    .hero-stats { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:30px; padding:28px; backdrop-filter:blur(10px); box-shadow:0 24px 60px rgba(0,0,0,0.2) }
+    .hero-stats h3 { font-size:20px; margin-bottom:16px }
+    .stat { display:grid; grid-template-columns:1fr auto; gap:8px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.12) }
+    .stat:last-child { border-bottom:none }
+    .stat span { color:rgba(255,255,255,0.74); font-size:13px }
+    .stat strong { color:#fff; font-size:14px; white-space:nowrap }
+
+    .section-head { text-align:center; margin-bottom:40px }
+    .section-label { display:inline-block; margin-bottom:8px; color:var(--primary); font-size:13px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase }
+    .section-head h2 { font-size:clamp(26px,4vw,38px); color:var(--dark); line-height:1.25; margin-bottom:10px }
+    .section-head p { max-width:780px; margin:0 auto; color:var(--muted); font-size:15px }
+
+    .grid { display:grid; gap:20px }
+    .grid-2 { grid-template-columns:repeat(2,1fr) }
+    .grid-3 { grid-template-columns:repeat(3,1fr) }
+    .grid-4 { grid-template-columns:repeat(4,1fr) }
+
+    .card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow-sm) }
+    .card h3 { font-size:19px; color:var(--dark); margin-bottom:8px; display:flex; align-items:center; gap:10px }
+    .card .icon { width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:14px; background:#f1f5f9; font-size:20px; flex-shrink:0 }
+    .card p, .card li { color:var(--muted); font-size:14px }
+    .card ul { padding-left:18px; margin-top:10px }
+    .card li { margin-bottom:5px }
+
+    .phase { background:var(--card); border:1px solid var(--line); border-radius:28px; padding:28px; box-shadow:var(--shadow); margin-bottom:24px }
+    .phase-header { display:flex; align-items:center; gap:14px; margin-bottom:18px }
+    .phase-icon { width:52px; height:52px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0 }
+    .phase-icon.red { background:var(--red-light); color:var(--red) }
+    .phase-icon.green { background:var(--green-light); color:var(--green) }
+    .phase-icon.orange { background:var(--orange-light); color:var(--orange) }
+    .phase-icon.blue { background:var(--primary-light); color:var(--primary) }
+    .phase h3 { font-size:22px; color:var(--dark); margin-bottom:4px }
+    .phase .sub { color:var(--muted); font-size:14px }
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; margin-bottom:12px }
+    .badge.red { background:var(--red-light); color:var(--red) }
+    .badge.green { background:var(--green-light); color:var(--green) }
+    .badge.orange { background:var(--orange-light); color:var(--orange) }
+    .badge.blue { background:var(--primary-light); color:var(--primary) }
+
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:14px }
+    .compare-item { padding:16px; border-radius:16px; background:#f8fafc; border:1px solid #e2e8f0 }
+    .compare-item.good { background:#f0fdf4; border-color:#bbf7d0 }
+    .compare-item.bad { background:#fef2f2; border-color:#fecaca }
+    .compare-item strong { display:block; font-size:15px; margin-bottom:4px }
+    .compare-item span { font-size:13px; color:var(--muted) }
+
+    .highlight-box { padding:16px 20px; border-radius:18px; background:#f0fdf4; border:1px solid #bbf7d0; color:#065f46; font-size:14px; margin-top:14px }
+
+    .step-list { display:grid; gap:16px; margin-top:14px }
+    .step { display:grid; grid-template-columns:60px 1fr; gap:14px; align-items:center }
+    .step-num { width:56px; height:56px; border-radius:18px; background:linear-gradient(135deg,#0f172a,#475569); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0 }
+    .step-content { background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; box-shadow:var(--shadow-sm) }
+    .step-content h4 { font-size:18px; color:var(--dark); margin-bottom:6px }
+    .step-content p { color:var(--muted); font-size:14px }
+
+    .checklist-box { background:linear-gradient(135deg,#0f172a,#334155); color:#fff; border-radius:28px; padding:36px; box-shadow:var(--shadow) }
+    .checklist-box h2 { font-size:30px; margin-bottom:10px }
+    .checklist-box p { color:rgba(255,255,255,0.78); margin-bottom:24px }
+    .check-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px }
+    .check-item { display:flex; gap:10px; padding:14px; border-radius:16px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.13) }
+    .check-item span { color:#93c5fd; font-weight:900; flex-shrink:0 }
+    .check-item div { color:rgba(255,255,255,0.88); font-size:14px }
+
+    .cta { text-align:center; background:#fff; border:1px solid var(--line); border-radius:28px; padding:44px 28px; box-shadow:var(--shadow) }
+    .cta h2 { font-size:32px; color:var(--dark); margin-bottom:10px }
+    .cta p { max-width:840px; margin:0 auto; color:var(--muted); font-size:15px }
+
+    footer { padding:28px 16px; text-align:center; color:var(--muted); font-size:13px }
+
+    @media (max-width:768px) {
+      .hero-inner, .grid-2, .grid-3, .grid-4, .compare-grid, .check-grid { grid-template-columns:1fr }
+      .step { grid-template-columns:1fr }
+      .step-num { margin:0 auto }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">SMART LOCK BUYING SOP</div>
+        <h1>智能门锁科学选购指南<br><span>先保安全·再看体验·最后懒人属性</span></h1>
+        <p>选智能锁很容易功能堆砌，真正科学的选择分四步：先守住安全底线，再按家人需求加实用功能，最后才是锦上添花。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#phase1">看第一阶段</a>
+          <a class="btn btn-ghost" href="#checklist">直接看清单</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <h3>四阶段原则</h3>
+        <div class="stat"><span>阶段一</span><strong>基础安全 (及格线)</strong></div>
+        <div class="stat"><span>阶段二</span><strong>进阶实用 (80%家庭)</strong></div>
+        <div class="stat"><span>阶段三</span><strong>锦上添花 (预算足再加)</strong></div>
+        <div class="stat"><span>阶段四</span><strong>硬装检查 (避免翻车)</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="phase1">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Phase 1</span>
+        <h2>第一阶段：基础功能 (及格线)</h2>
+        <p>这是智能门锁的底线，不管预算多少，这几项必须拉满，缺一条都不建议买。</p>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-icon red">🔒</div>
+          <div>
+            <span class="badge red">核心安全底座</span>
+            <h3>C级锁芯 · 真插芯 · 内置离合</h3>
+            <p class="sub">这是智能锁安全的基础，不能妥协。</p>
+          </div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-item good">
+            <strong>✅ C级锁芯</strong>
+            <span>公安部最高标准，防技术开启270分钟以上。</span>
+          </div>
+          <div class="compare-item bad">
+            <strong>❌ A/B级锁芯</strong>
+            <span>安全级别低，专业工具几分钟就能打开。</span>
+          </div>
+          <div class="compare-item good">
+            <strong>✅ 真插芯</strong>
+            <span>机械锁芯贯穿锁体，电路损坏仍需要物理钥匙。</span>
+          </div>
+          <div class="compare-item bad">
+            <strong>❌ 假插芯</strong>
+            <span>只有外壳，电子绕过即可破解。</span>
+          </div>
+          <div class="compare-item good">
+            <strong>✅ 内置离合</strong>
+            <span>验证在锁体内完成，外面板被撬也无法直接开锁。</span>
+          </div>
+          <div class="compare-item bad">
+            <strong>❌ 外置离合</strong>
+            <span>安全性下降，外面板容易被攻击。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-icon red">🚨</div>
+          <div>
+            <span class="badge red">应急逃生机制</span>
+            <h3>物理钥匙孔 · Type-C供电 · 一键快开</h3>
+            <p class="sub">关键时刻能保命的设计，必须全部具备。</p>
+          </div>
+        </div>
+        <div class="grid grid-3" style="margin-top:14px">
+          <div class="card">
+            <div class="icon">🔑</div>
+            <h3>物理钥匙孔</h3>
+            <p>必须有，备用钥匙放一把在公司或车里。</p>
+          </div>
+          <div class="card">
+            <div class="icon">🔋</div>
+            <h3>Type-C 应急供电</h3>
+            <p>手机反向充电即可救急，老旧Micro-USB不推荐。</p>
+          </div>
+          <div class="card">
+            <div class="icon">🚪</div>
+            <h3>室内一键快开</h3>
+            <p>火灾等紧急情况一压就开，不能有两步操作。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-icon red">👆</div>
+          <div>
+            <span class="badge red">每日解锁方式</span>
+            <h3>半导体指纹 · 虚位密码</h3>
+            <p class="sub">每天用几十次的基础功能，识别率和防窥是关键。</p>
+          </div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-item good">
+            <strong>✅ 半导体指纹 (电容式)</strong>
+            <span>活体识别，防假指纹，干湿手识别率更稳定。</span>
+          </div>
+          <div class="compare-item bad">
+            <strong>❌ 光学指纹</strong>
+            <span>亮面玻璃，假指纹可通过，冬天干手指识别率低。</span>
+          </div>
+          <div class="compare-item good">
+            <strong>✅ 虚位密码</strong>
+            <span>前后乱码+中间真密码，有效防偷窥。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        ✅ 做到以上三点，一把锁的基本盘就稳了。500-800元价位段很多款都能满足这些基础要求。
+      </div>
+    </div>
+  </section>
+
+  <section id="phase2">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Phase 2</span>
+        <h2>第二阶段：进阶实用功能 (80%家庭值得加钱)</h2>
+        <p>基础打好了，再根据家庭成员需求往上叠。1000-1500元价位基本能把核心功能配齐。</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="icon">📦</div>
+          <h3>独居 / 网购多</h3>
+          <p><strong>加：电子猫眼 + 内屏/APP推送</strong></p>
+          <p>不用贴猫眼看门外，快递骚扰直接拒。</p>
+        </div>
+        <div class="card">
+          <div class="icon">👴</div>
+          <h3>老人 / 小孩多</h3>
+          <p><strong>加：指静脉 / 掌静脉 / NFC卡片</strong></p>
+          <p>老人指纹磨损、小孩指纹浅，半导体指纹常失灵，静脉识别更稳。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏠</div>
+          <h3>常出差 / 出租房</h3>
+          <p><strong>加：周期性临时密码</strong></p>
+          <p>保洁、朋友暂住，过期自动失效，不用改主密码。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔇</div>
+          <h3>怕吵 / 有宝宝</h3>
+          <p><strong>加：降噪全自动锁体</strong></p>
+          <p>关门自动弹锁舌，没有“咔哒”巨响。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🚪</div>
+          <h3>强迫症</h3>
+          <p><strong>加：门未关 / 虚掩报警</strong></p>
+          <p>忘记带上门会持续提醒，防楼道穿堂风。</p>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:18px">
+        💡 1000-1500元，基本能把「指纹 + C级锁芯 + 猫眼 + 临时密码」全部配齐。
+      </div>
+    </div>
+  </section>
+
+  <section id="phase3">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Phase 3</span>
+        <h2>第三阶段：高级/锦上添花 (预算充足再考虑)</h2>
+        <p>这些功能用了爽，但没有也不影响生活，溢价较高。</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="icon">👤</div>
+          <h3>3D人脸识别 (结构光/TOF)</h3>
+          <p>✅ 拎外卖、抱娃秒开。⚠️ 必须选3D结构光，拒绝2D照片能骗过的低端人脸。</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>全自动静音电机+自动反锁</h3>
+          <p>关门自动上提反锁，APP一键反锁，仪式感拉满。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏡</div>
+          <h3>全屋智能联动</h3>
+          <p>开门亮灯、拉窗帘。需匹配米家/HomeKit/鸿蒙，买错协议就联动不了。</p>
+        </div>
+        <div class="card">
+          <div class="icon">✋</div>
+          <h3>掌静脉识别</h3>
+          <p>比指纹贵，比人脸更隐私安全，适合科技敏感人群。</p>
+        </div>
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3>远程APP一键开锁</h3>
+          <p>⚠️ 谨慎使用：风险大于便利。建议用「远程授权临时密码」替代。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phase4">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Phase 4</span>
+        <h2>第四阶段：下单前硬装检查 (最容易翻车)</h2>
+        <p>买之前先量三样东西，否则买回来装不上。</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">📏</div>
+          <h3>1. 门的厚度</h3>
+          <p>≥40mm才能装大部分智能锁。防盗门通常OK，老木门要小心。</p>
+        </div>
+        <div class="card">
+          <div class="icon">📐</div>
+          <h3>2. 导向片尺寸 (最重要)</h3>
+          <p>量锁体侧面铁片的长×宽 (常见240×24mm, 霸王锁体388×40mm)。客服必须看这个。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔗</div>
+          <h3>3. 天地钩</h3>
+          <p>新国标锁体多不支持天地钩。消防角度看，天地钩可能阻碍破门救援，不必执着保留。</p>
+        </div>
+      </div>
+      <div class="phase" style="margin-top:22px">
+        <div class="phase-header">
+          <div class="phase-icon orange">📋</div>
+          <div>
+            <h3>硬装检查三步走</h3>
+            <p class="sub">拍导向片照片发给客服，确认包安装再下单。</p>
+          </div>
+        </div>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content"><h4>量门拍片</h4><p>用尺子对着导向片拍照，带刻度发给客服确认。</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content"><h4>确认安装</h4><p>是否包安装、是否收费、是否支持拆旧锁。</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content"><h4>选品牌</h4><p>凯迪仕、德施曼、小米、鹿客、华为闭眼买主流系列，杂牌售后风险高。</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <div class="container">
+      <div class="checklist-box">
+        <h2>懒人选购 SOP 速记版</h2>
+        <p>不想看长篇？记住这5步就够了。</p>
+        <div class="check-grid">
+          <div class="check-item"><span>1</span><div>定预算：<800保底 / 1000-1500甜点位 / >2000玩生态。</div></div>
+          <div class="check-item"><span>2</span><div>看参数：C级锁芯 + Type-C + 半导体指纹 = 及格。</div></div>
+          <div class="check-item"><span>3</span><div>看家人：老人小孩多 → 加静脉；独居 → 加猫眼。</div></div>
+          <div class="check-item"><span>4</span><div>看门型：拍导向片照片发给客服，确认包安装。</div></div>
+          <div class="check-item"><span>5</span><div>看品牌：凯迪仕、德施曼、小米、鹿客、华为主流系列。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Avoid Pitfalls</span>
+        <h2>智能门锁常见误区</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><h3>⚠️ 只看功能不看安全</h3><p>人脸再多，锁芯A/B级就是数字玩具。</p></div>
+        <div class="card"><h3>⚠️ 只看指纹不看皮肤</h3><p>老人小孩指纹浅，半导体可能失灵，静脉更稳。</p></div>
+        <div class="card"><h3>⚠️ 2D人脸当3D买</h3><p>照片能骗过的不叫安全，必须选3D结构光。</p></div>
+        <div class="card"><h3>⚠️ 忽略导向片尺寸</h3><p>不量导向片就下单，是退货第一大原因。</p></div>
+        <div class="card"><h3>⚠️ 天地钩执念</h3><p>新国标锁体多不支持，消防角度看可能阻碍救援。</p></div>
+        <div class="card"><h3>⚠️ 轻信杂牌</h3><p>参数好看但安装不专业、售后找不到人。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>一句话结论</h2>
+        <p>
+          选智能门锁，先保安全底线 (C级锁芯、真插芯、半导体指纹、应急快开)，再按家人需求加猫眼或静脉，
+          确认导向片尺寸和官方安装。预算1000-1500元是甜点位，品牌锁定凯迪仕、德施曼、小米、鹿客、华为主流系列。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 智能门锁科学选购 SOP · 安全 · 实用 · 不踩坑
+  </footer>
+
+</div>
+</body>
+</html>
