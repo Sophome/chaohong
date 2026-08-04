@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫地机器人 B站运营SOP · 物料清单+全流程操作手册</title>
+    <style>
+        :root {
+            --pink: #FB7299;
+            --blue: #00A1D6;
+            --dark: #18191C;
+            --bg: #F6F7F8;
+            --gold: #F5A623;
+            --green: #10B981;
+            --red: #DC2626;
+            --purple: #7C3AED;
+            --card: #FFFFFF;
+            --border: #E5E7EB;
+            --text: #1F2937;
+            --sub: #6B7280;
+            --radius: 14px;
+            --shadow: 0 4px 12px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+            background:linear-gradient(175deg,#f8fafc 0%,#fdf2f8 25%,#ecfdf5 50%,#f8fafc 100%);
+            color:var(--text);line-height:1.7;min-height:100vh;
+        }
+        .hero{
+            background:linear-gradient(160deg,#0f172a 0%,#0f1f17 40%,#0c1222 100%);
+            color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;
+        }
+        .hero::before{
+            content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+            background:radial-gradient(circle at 25% 40%,rgba(16,185,129,.18) 0%,transparent 50%),
+            radial-gradient(circle at 75% 30%,rgba(251,114,153,.14) 0%,transparent 50%),
+            radial-gradient(circle at 50% 75%,rgba(0,161,214,.12) 0%,transparent 50%);
+        }
+        .hero>*{position:relative;z-index:1;}
+        .hero .tag{
+            display:inline-block;background:var(--green);padding:5px 18px;border-radius:20px;
+            font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:16px;
+        }
+        .hero h1{font-size:clamp(24px,4vw,38px);font-weight:800;margin-bottom:8px;}
+        .hero h1 span{background:linear-gradient(135deg,#10B981,#F5A623);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .hero .sub{font-size:14px;color:#94a3b8;max-width:600px;margin:0 auto;}
+
+        .container{max-width:1100px;margin:0 auto;padding:28px 20px 60px;}
+
+        .section-title{
+            display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700;
+            margin:44px 0 22px;color:var(--dark);
+        }
+        .section-title .si{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+
+        .card{
+            background:var(--card);border-radius:var(--radius);padding:22px 26px;
+            margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border);
+        }
+
+        table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+        table thead{background:#f9fafb;}
+        table th{padding:10px 12px;text-align:left;font-weight:700;border-bottom:2px solid var(--border);white-space:nowrap;}
+        table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--sub);vertical-align:top;}
+        table tbody tr:hover{background:#f9fafb;}
+
+        .tag-sm{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;}
+        .tag-green{background:#d1fae5;color:#065f46;}
+        .tag-blue{background:#dbeafe;color:#1e40af;}
+        .tag-orange{background:#fef3c7;color:#92400e;}
+
+        .sop-step{
+            display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f3f4f6;
+        }
+        .sop-step:last-child{border-bottom:none;}
+        .step-num{
+            width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;
+            display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;
+        }
+        .step-content{flex:1;}
+        .step-content strong{display:block;margin-bottom:4px;font-size:15px;}
+        .step-content p{color:var(--sub);font-size:13px;}
+
+        .checklist{margin-top:8px;}
+        .checklist li{
+            display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:13px;color:var(--sub);
+        }
+        .checklist li::before{content:'☐';color:var(--green);font-weight:700;flex-shrink:0;}
+
+        .highlight{
+            border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;
+        }
+        .hl-green{background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border-left:4px solid var(--green);color:#14532d;}
+        .hl-blue{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border-left:4px solid var(--blue);color:#1e3a5f;}
+
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+        @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+
+        .footer-note{
+            text-align:center;padding:32px;color:#9ca3af;font-size:12px;border-top:1px solid #e5e7eb;margin-top:40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="tag">📋 B站扫地机器人 · 运营SOP全案</div>
+    <h1>物料清单 + <span>标准操作流程</span></h1>
+    <p class="sub">含执行步骤、时间表、物料表、检查清单，可直接打印落地</p>
+</div>
+
+<div class="container">
+
+    <!-- ========== 物料清单 ========== -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">📦</div><span>一、物料清单（发布一期视频所需全部物料）</span></div>
+
+    <div class="card">
+        <table>
+            <thead><tr><th>类别</th><th>物料名称</th><th>描述/规格</th><th>交付时间</th></tr></thead>
+            <tbody>
+                <tr><td rowspan="4"><strong>视频主体</strong></td></tr>
+                <tr><td>拍摄脚本</td><td>含分镜、口播词、SEO关键词嵌入点、弹幕引导点</td><td>发布前5天</td></tr>
+                <tr><td>视频素材</td><td>拆机画面、对比测试、数据可视化图表、产品特写</td><td>发布前3天</td></tr>
+                <tr><td>剪辑成片</td><td>8-15分钟，包含章节标记、字幕、封面素材</td><td>发布前1天</td></tr>
+                <tr><td rowspan="3"><strong>B站发布</strong></td></tr>
+                <tr><td>标题备选库</td><td>3套标题版本（用于A/B测试），需包含核心关键词+情绪标点</td><td>发布前2天</td></tr>
+                <tr><td>标签集合</td><td>8-12个标签，覆盖核心词、品牌词、场景词</td><td>发布日</td></tr>
+                <tr><td rowspan="2"><strong>配套内容</strong></td></tr>
+                <tr><td>专栏文章</td><td>结构化图文版，含选购清单、数据表格，小标题用搜索问句</td><td>发布同日</td></tr>
+                <tr><td rowspan="3"><strong>评论运营</strong></td></tr>
+                <tr><td>置顶评论文案</td><td>精简选购清单+互动引导语</td><td>发布日</td></tr>
+                <tr><td>小号提问库</td><td>3-5个精准问题（覆盖长尾关键词）</td><td>发布前1天</td></tr>
+                <tr><td rowspan="2"><strong>跨平台</strong></td></tr>
+                <tr><td>知乎回答/小红书图文</td><td>精简版攻略+引导至B站看完整视频</td><td>发布后24h内</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ========== 全流程SOP ========== -->
+    <div class="section-title"><div class="si" style="background:#d1fae5;color:#059669;">⚙️</div><span>二、全流程SOP —— 从选题到复盘的11个核心步骤</span></div>
+
+    <div class="card">
+        <!-- Step 1 -->
+        <div class="sop-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <strong>📊 数据选题（发布前7天）</strong>
+                <p>打开B站创作中心→查看"搜索流量来源词"→找到本期最该做的视频方向。<br>规则：选搜索量月增>30%且竞争度<4星的词作为主选题。</p>
+                <div class="highlight hl-blue">🔍 扫地机常见搜索词库：见附录表（滚刷缠绕头发、宠物粪便避障、基站清洗、3000元推荐等）</div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="sop-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <strong>📝 撰写脚本 + 嵌入SEO关键词（发布前5天）</strong>
+                <p>脚本开头30秒必须说出2次核心关键词，中间每3-5分钟自然重复目标长尾词。<br>在脚本中用【】标记弹幕引导点（至少3处）和章节分段点。</p>
+                <div class="highlight hl-green">✅ 口播词清单：LDS激光导航、AI避障、滚筒活水洗地、自动集尘、滚刷防缠绕、dToF传感器</div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="sop-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <strong>🎬 拍摄与素材采集（发布前3天）</strong>
+                <p>建议采用“硬核拆机”或“对比测试”形式，同时拍摄产品外观、内部结构、测试过程。用照度计/游标卡尺/热成像仪采集量化数据。</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="sop-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <strong>✂️ 剪辑成片 + 输出.srt字幕（发布前1天）</strong>
+                <p>添加章节标记（进度条上的小圆点），文字标题需包含关键词；导出外挂字幕文件(.srt)，并检查所有专业名词的文本化。</p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="sop-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <strong>🎨 准备封面 + 3套标题备选（发布前1天）</strong>
+                <p>封面：深色背景+产品特写+大字关键词（黄/绿撞色）。标题库：版本A<strong>避坑指南</strong>、版本B<strong>拆机横评</strong>、版本C<strong>智商税</strong>（均含感叹号/问号）。</p>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="sop-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <strong>🚀 发布与冷启动（发布日，建议19:00-22:00）</strong>
+                <p>上传视频→填写标签(8-12个)→上传.srt字幕→添加章节标记→发布。<strong>立即做3件事：</strong>①置顶评论（含选购清单+互动引导）②3个小号在评论区提5个精准问题③在弹幕预埋点用2-3个小号触发初始弹幕。</p>
+            </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="sop-step">
+            <div class="step-num">7</div>
+            <div class="step-content">
+                <strong>🔄 标题A/B测试（发布后2小时内）</strong>
+                <p>监控CTR（点击率）。如果CTR<5%，每2小时更换一次备选标题，直到找到CTR最高的版本锁定。记录每次CTR数据形成历史参考库。</p>
+            </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="sop-step">
+            <div class="step-num">8</div>
+            <div class="step-content">
+                <strong>💬 评论区SEO运营（发布后24h内）</strong>
+                <p>主号逐一回复小号提问，每条回复不少于50字且包含相关关键词（如“石头G30的滚刷采用全胶材质防缠绕”）。让评论区变成结构化Q&A。</p>
+            </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div class="sop-step">
+            <div class="step-num">9</div>
+            <div class="step-content">
+                <strong>🌐 跨平台导流（发布后48h内）</strong>
+                <p>知乎：回答对应问题（如“202X年扫地机器人怎么选”），嵌入视频链接。小红书：发布9图对比+结论，评论区引导“完整视频在B站搜XXX”。</p>
+            </div>
+        </div>
+
+        <!-- Step 10 -->
+        <div class="sop-step">
+            <div class="step-num">10</div>
+            <div class="step-content">
+                <strong>📑 发布配套专栏（发布同日）</strong>
+                <p>将视频中的选购清单、拆机数据表格、避坑要点整理成图文专栏。小标题使用完整搜索问句（如“扫地机器人基站怎么清洗”）。</p>
+            </div>
+        </div>
+
+        <!-- Step 11 -->
+        <div class="sop-step">
+            <div class="step-num">11</div>
+            <div class="step-content">
+                <strong>📈 数据复盘与迭代（发布后7天）</strong>
+                <p>打开B站创作数据→分析搜索流量来源词（记录有哪些词带来了流量）、观众留存曲线（找到流失点）、CTR/收藏率。根据数据决定下一期选题方向。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 执行时间表 ========== -->
+    <div class="section-title"><div class="si" style="background:#dbeafe;color:#2563eb;">⏱️</div><span>三、执行时间表（以一期视频为单位）</span></div>
+
+    <div class="card">
+        <table>
+            <thead><tr><th>时间</th><th>任务</th><th>负责人</th><th>产出</th></tr></thead>
+            <tbody>
+                <tr><td>D-7</td><td>数据分析选题</td><td>运营</td><td>选题方向+目标关键词</td></tr>
+                <tr><td>D-5</td><td>脚本撰写</td><td>编导</td><td>拍摄脚本（含SEO词+弹幕点）</td></tr>
+                <tr><td>D-3</td><td>素材拍摄</td><td>摄影</td><td>原始视频素材</td></tr>
+                <tr><td>D-2</td><td>标题备选库+小号提问库</td><td>运营</td><td>3套标题+5个精准问题</td></tr>
+                <tr><td>D-1</td><td>剪辑成片+封面+字幕文件</td><td>剪辑</td><td>.mp4 + .srt + 封面图</td></tr>
+                <tr><td>D-Day(19:00)</td><td>发布+冷启动+置顶评论</td><td>运营</td><td>视频上线+弹幕冷启动</td></tr>
+                <tr><td>D+2h内</td><td>A/B测试换标题</td><td>运营</td><td>锁定最优标题</td></tr>
+                <tr><td>D+24h</td><td>评论区SEO回复+跨平台导流</td><td>运营</td><td>知乎/小红书内容</td></tr>
+                <tr><td>D+7</td><td>数据复盘</td><td>运营</td><td>复盘报告+下期选题方向</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ========== 内容形式选择决策树 ========== -->
+    <div class="section-title"><div class="si" style="background:#ede9fe;color:#7c3aed;">🌲</div><span>四、内容形式选择决策树（拍摄前必读）</span></div>
+
+    <div class="card">
+        <p><strong>根据选题类型，自动匹配最合适的内容形式：</strong></p>
+        <div class="grid2">
+            <div class="card" style="margin:0;"><strong>🧪 需要量化对比 →</strong> 硬核拆机+数据可视化</div>
+            <div class="card" style="margin:0;"><strong>🎯 需要建立信任 →</strong> 视频播客/坦白局</div>
+            <div class="card" style="margin:0;"><strong>💥 需要高互动 →</strong> 弹幕指挥极限测试</div>
+            <div class="card" style="margin:0;"><strong>📚 需要长尾沉淀 →</strong> 系列化栏目【扫地机坦白局】</div>
+        </div>
+    </div>
+
+    <!-- ========== 发布前检查清单 ========== -->
+    <div class="section-title"><div class="si" style="background:#fce7f3;color:#ec4899;">✅</div><span>五、发布前检查清单</span></div>
+
+    <div class="card">
+        <ul class="checklist">
+            <li>封面：深色背景+产品特写+大字关键词，黄/绿撞色</li>
+            <li>标题：含核心关键词+数字+感叹号/问号，长度17-24字</li>
+            <li>前3秒：结论前置或痛点场景，含2次核心关键词</li>
+            <li>字幕：.srt外挂字幕已上传，所有技术名词文本化</li>
+            <li>章节标记：已添加3-5个章节，文字标题含关键词</li>
+            <li>标签：8-12个，覆盖核心词+品牌词+场景词</li>
+            <li>置顶评论：选购清单+互动引导已就绪</li>
+            <li>小号提问库：5个Q&A准备完毕</li>
+            <li>弹幕预埋点：3处引爆点坐标已标注</li>
+            <li>专栏文章：同步准备发布</li>
+            <li>跨平台内容：知乎/小红书导流内容备好</li>
+        </ul>
+    </div>
+
+    <!-- ========== 附录 ========== -->
+    <div class="section-title"><div class="si" style="background:#f1f5f9;color:#475569;">📎</div><span>附录：扫地机器人高搜索量关键词库</span></div>
+
+    <div class="card">
+        <table>
+            <thead><tr><th>场景</th><th>高转化长尾词</th><th>预估搜索热度</th></tr></thead>
+            <tbody>
+                <tr><td>养宠家庭</td><td>扫地机器人宠物粪便、扫地机毛发缠绕</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>养护问题</td><td>扫地机基站怎么清洗、基站发臭</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td>安装问题</td><td>上下水预埋、扫地机爬坡能力</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td>价格决策</td><td>3000元扫地机推荐、扫地机和洗地机选谁</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>品牌意向</td><td>科沃斯X11值不值、大疆ROMO深度体验</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td>硬核技术</td><td>LDS vs dToF、全胶刷 vs 毛刷</td><td>⭐⭐⭐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <p>本SOP基于B站平台数据与扫地机器人行业报告设计 | 每个步骤均可量化并可迭代优化 | 建议打印后贴在团队工作墙</p>
+    </div>
+
+</div>
+</body>
+</html>
