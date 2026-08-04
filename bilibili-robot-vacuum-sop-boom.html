@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫地机器人 B站运营SOP · 引爆角度+信任建立+全流程手册</title>
+    <style>
+        :root {
+            --blue: #3B82F6;
+            --blue-light: #DBEAFE;
+            --amber: #F59E0B;
+            --amber-light: #FEF3C7;
+            --slate: #1E293B;
+            --card: #FFFFFF;
+            --border: #E5E7EB;
+            --text: #1F2937;
+            --sub: #6B7280;
+            --radius: 14px;
+            --shadow: 0 4px 12px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+            background:linear-gradient(175deg,#f8fafc 0%,#dbeafe 25%,#fefce8 50%,#f8fafc 100%);
+            color:var(--text);line-height:1.7;min-height:100vh;
+        }
+        .hero{
+            background:linear-gradient(160deg,#0f172a 0%,#1e3a5f 40%,#0c1222 100%);
+            color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;
+        }
+        .hero::before{
+            content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+            background:radial-gradient(circle at 25% 40%,rgba(59,130,246,.20) 0%,transparent 50%),
+            radial-gradient(circle at 75% 30%,rgba(245,158,11,.14) 0%,transparent 50%);
+        }
+        .hero>*{position:relative;z-index:1;}
+        .hero .tag{
+            display:inline-block;background:var(--blue);padding:5px 18px;border-radius:20px;
+            font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:16px;
+        }
+        .hero h1{font-size:clamp(24px,4vw,38px);font-weight:800;margin-bottom:8px;}
+        .hero h1 span{background:linear-gradient(135deg,#3B82F6,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .hero .sub{font-size:14px;color:#94a3b8;max-width:640px;margin:0 auto;}
+
+        .container{max-width:1100px;margin:0 auto;padding:28px 20px 60px;}
+
+        .section-title{
+            display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700;
+            margin:44px 0 22px;color:var(--slate);
+        }
+        .section-title .si{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+
+        .card{background:var(--card);border-radius:var(--radius);padding:22px 26px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border);}
+
+        table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+        table thead{background:#f9fafb;}
+        table th{padding:10px 12px;text-align:left;font-weight:700;border-bottom:2px solid var(--border);white-space:nowrap;}
+        table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--sub);vertical-align:top;}
+        table tbody tr:hover{background:#f9fafb;}
+
+        .sop-step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f3f4f6;}
+        .sop-step:last-child{border-bottom:none;}
+        .step-num{
+            width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;
+            display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;
+        }
+        .step-content{flex:1;}
+        .step-content strong{display:block;margin-bottom:4px;font-size:15px;color:var(--slate);}
+        .step-content p{color:var(--sub);font-size:13px;margin-bottom:4px;}
+
+        .checklist{margin-top:8px;}
+        .checklist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:13px;color:var(--sub);}
+        .checklist li::before{content:'☐';color:var(--blue);font-weight:700;flex-shrink:0;}
+
+        .highlight{border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;}
+        .hl-blue{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-left:4px solid var(--blue);color:#1e3a5f;}
+        .hl-amber{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-left:4px solid var(--amber);color:#78350f;}
+
+        .principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0;}
+        .principle-card{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 16px;}
+        .principle-card h4{font-size:14px;color:var(--blue);margin-bottom:4px;}
+        .principle-card p{font-size:12.5px;color:var(--sub);}
+
+        .viral-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:12px 0;}
+        .viral-card{
+            background:linear-gradient(135deg,#fff7ed,#fffbeb);border:2px solid #fde68a;
+            border-radius:12px;padding:16px 18px;transition:transform .15s;
+        }
+        .viral-card:hover{transform:translateY(-2px);}
+        .viral-card .v-num{
+            display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--amber);
+            color:#fff;text-align:center;line-height:26px;font-weight:800;font-size:13px;margin-bottom:8px;
+        }
+        .viral-card h4{font-size:15px;color:#92400e;margin-bottom:6px;}
+        .viral-card p{font-size:12.5px;color:var(--sub);}
+        .viral-card .v-title{font-size:13px;font-weight:600;color:#78350f;margin-top:8px;}
+
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+        @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+
+        .footer-note{text-align:center;padding:32px;color:#9ca3af;font-size:12px;border-top:1px solid #e5e7eb;margin-top:40px;}
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="tag">🤖 B站扫地机器人 · 运营SOP全案</div>
+    <h1>引爆角度 × <span>信任建立</span> × 全流程操作</h1>
+    <p class="sub">专为扫地机品类设计：8种自带流量的爆款角度 + 6大信任建立原则 + 完整落地SOP</p>
+</div>
+
+<div class="container">
+
+    <!-- 品类特性 -->
+    <div class="section-title"><div class="si" style="background:#dbeafe;color:#3b82f6;">🤖</div><span>扫地机品类特性：流量大但信任稀缺，情绪共鸣是爆款催化剂</span></div>
+    <div class="card">
+        <p>扫地机器人在B站同时具备<strong>科技数码（参数党）</strong>和<strong>家居生活（懒人党）</strong>双重属性。当前内容两极分化：要么和手机一样堆参数，要么拍宠物坐机器上的可爱视频。用户真正的深层需求是<strong>“这玩意到底能不能让我少干家务”</strong>——能回答这个问题且引发情感共鸣的内容，就是爆款。而最能引爆流量的，往往是<strong>“反常识结论”</strong>、<strong>“极端测试”</strong>、<strong>“情绪对比”</strong>和<strong>“争议话题”</strong>。</p>
+        <div class="highlight hl-amber">⚠️ <strong>核心洞察：</strong>扫地机搜索词正从“扫地机器人推荐”向“滚刷缠绕头发”“基站发臭怎么清洗”“宠物粪便避障”等具体体验问题迁移。爆款=解决真实痛点+情绪共鸣+可视化的极端测试。</div>
+    </div>
+
+    <!-- 引爆角度模块（新增） -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">💥</div><span>一、容易引爆的8个内容角度（自带流量与互动）</span></div>
+    <div class="card">
+        <p><strong>以下角度均基于B站高互动视频规律设计，每个角度都附带标题示例与预期引爆点：</strong></p>
+        <div class="viral-grid">
+            <div class="viral-card">
+                <div class="v-num">1</div>
+                <h4>🧨 反常识结论型</h4>
+                <p>直接挑战用户固有认知。例如“3000元以上的扫地机都是智商税”“激光导航不一定比视觉导航好”——颠覆性结论会引发弹幕争论，互动密度极高。</p>
+                <div class="v-title">标题示例：「5000元的旗舰扫地机，被一台2000块的干翻了」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">2</div>
+                <h4>💣 极限破坏测试</h4>
+                <p>用极端场景展示产品极限：泼一地面粉、撒乐高积木、倒酱油+头发混合物。用户最爱看“这东西到底有多抗造”，完播率和分享率极高。</p>
+                <div class="v-title">标题示例：「我把厨房搞成灾难现场，5台扫地机谁能活着出来？」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">3</div>
+                <h4>😱 翻车/踩坑实录</h4>
+                <p>真实记录扫地机翻车瞬间：卡在沙发底下、把宠物粮扫得到处都是、基站漏水泡地板。翻车内容天然具备“幸灾乐祸”的传播属性。</p>
+                <div class="v-title">标题示例：「花4000块买的扫地机，第一天就把我家淹了」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">4</div>
+                <h4>🐱 宠物互动萌系</h4>
+                <p>扫地机+猫/狗的组合永远是流量密码。但进阶做法是融入测试：哪款扫地机不会被猫按停、哪款能避开宠物粪便。</p>
+                <div class="v-title">标题示例：「我家猫和5台扫地机的战争：只有2台活过了第一天」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">5</div>
+                <h4>🔪 品牌拉踩/横评</h4>
+                <p>同价位正面硬刚：科沃斯vs石头vs追觅。明确给出“这个价位买这台”的结论。品牌粉丝会在评论区自发站队，讨论量暴增。</p>
+                <div class="v-title">标题示例：「科沃斯X11 vs 石头G30：同一个家，同一堆垃圾，谁更干净？」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">6</div>
+                <h4>👻 恐怖/恶心向清洁</h4>
+                <p>展示扫地机清理的“战果”：尘盒里倒出来的毛发灰尘团、基站底部积攒的污垢。视觉冲击力极强，弹幕“卧槽”刷屏。</p>
+                <div class="v-title">标题示例：「用了半年的扫地机，拆开基站那一刻我差点吐了」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">7</div>
+                <h4>💰 平替/捡漏攻略</h4>
+                <p>“大牌平替”“代工厂同款”永远是高搜索量话题。但必须配合拆机验证内部用料一致才可信。</p>
+                <div class="v-title">标题示例：「3000元的配置只卖1000？拆开看是不是智商税」</div>
+            </div>
+            <div class="viral-card">
+                <div class="v-num">8</div>
+                <h4>⏳ 长期使用追更</h4>
+                <p>“用了1年的扫地机现在怎么样了”——做时间的朋友，持续更新同一台机器的状态变化。系列化追更粘性极强。</p>
+                <div class="v-title">标题示例：「用了1年的石头G30：避障退化了吗？电池还撑得住吗？」</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 信任建立六大原则 -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">🤝</div><span>二、扫地机内容创作的六大信任建立原则</span></div>
+    <div class="card">
+        <div class="principle-grid">
+            <div class="principle-card"><h4>🔧 拆机看内部</h4><p>打开看风机品牌、激光雷达型号、电池容量、滚刷电机——看不见的地方才是利润点。</p></div>
+            <div class="principle-card"><h4>🧪 量化脏污测试</h4><p>不用随机垃圾，用定量面粉、定量头发、固定面积的酱油渍，做标准化对比。</p></div>
+            <div class="principle-card"><h4>🏠 真实居家场景</h4><p>不摆拍实验室环境，就在普通家庭里测——有门槛、有地毯、有数据线。</p></div>
+            <div class="principle-card"><h4>👨‍🔧 维修师傅背书</h4><p>邀请扫地机维修师傅一起出镜，点评各品牌故障率、配件价格、维修难度。</p></div>
+            <div class="principle-card"><h4>🗣️ 主动暴露缺点</h4><p>每款机器说出2-3个缺点，比如“越障2cm以上就吃力”“基站烘干噪音偏大”。</p></div>
+            <div class="principle-card"><h4>📅 长期跟踪报告</h4><p>1个月、3个月、半年后回访用户体验，展示长期使用的真实状态。</p></div>
+        </div>
+    </div>
+
+    <!-- 物料清单 -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">📦</div><span>三、物料清单（发布一期扫地机视频所需全部物料）</span></div>
+    <div class="card">
+        <table>
+            <thead><tr><th>类别</th><th>物料名称</th><th>描述/规格</th><th>交付时间</th></tr></thead>
+            <tbody>
+                <tr><td rowspan="4"><strong>视频主体</strong></td></tr>
+                <tr><td>拍摄脚本</td><td>含分镜、口播词、引爆角度设计、信任环节、SEO关键词点</td><td>发布前5天</td></tr>
+                <tr><td>视频素材</td><td>拆机内部特写、极端测试过程、长期使用痕迹、产品对比画面</td><td>发布前3天</td></tr>
+                <tr><td>剪辑成片</td><td>10-18分钟，含章节标记、字幕、数据图表、封面素材</td><td>发布前1天</td></tr>
+                <tr><td rowspan="3"><strong>B站发布</strong></td></tr>
+                <tr><td>标题备选库</td><td>3套标题版本（用于A/B测试），至少1套使用引爆角度标题</td><td>发布前2天</td></tr>
+                <tr><td>标签集合</td><td>8-12个标签，覆盖核心词、品牌词、场景词、引爆角度词</td><td>发布日</td></tr>
+                <tr><td rowspan="2"><strong>配套内容</strong></td></tr>
+                <tr><td>专栏文章</td><td>图文版，含选购决策树、测试数据排行、安装避坑清单</td><td>发布同日</td></tr>
+                <tr><td rowspan="3"><strong>评论运营</strong></td></tr>
+                <tr><td>置顶评论文案</td><td>精简选购清单+互动引导（如“你家扫地机最让你崩溃的瞬间是啥？”）</td><td>发布日</td></tr>
+                <tr><td>小号提问库</td><td>3-5个精准问题（覆盖避障、缠绕、基站维护等长尾词）</td><td>发布前1天</td></tr>
+                <tr><td rowspan="2"><strong>跨平台</strong></td></tr>
+                <tr><td>知乎/小红书内容</td><td>精简版攻略+极限测试动图+引导至B站看完整视频</td><td>发布后24h内</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 全流程SOP -->
+    <div class="section-title"><div class="si" style="background:#dbeafe;color:#3b82f6;">⚙️</div><span>四、全流程SOP —— 从选题到复盘的11个核心步骤</span></div>
+
+    <div class="card">
+        <div class="sop-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <strong>📊 数据选题 + 引爆角度匹配（发布前7天）</strong>
+                <p>在B站创作中心分析搜索流量来源词，找到本周高增长长尾词。然后将选题与一个引爆角度绑定——例如选了“滚刷缠绕头发”，匹配“极限破坏测试”角度；选了“基站发臭”，匹配“恶心向清洁”角度。</p>
+                <div class="highlight hl-blue">🔍 扫地机高价值搜索词见附录。引爆角度匹配表：见第一部分8个角度，每个选题至少匹配1个。</div>
+            </div>
+        </div>
+        <div class="sop-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <strong>📝 撰写脚本 + 嵌入引爆点与信任元素（发布前5天）</strong>
+                <p>脚本同时包含引爆设计（极端场景/反常识结论/品牌对决）和信任设计（拆机画面/量化数据/缺点自曝）。开头30秒设计一个“钩子”——可以是反常识结论、灾难级脏污画面、或翻车片段预告。</p>
+                <div class="highlight hl-amber">✅ 口播词清单：dToF导航、AI避障、滚筒活水洗地、自动集尘、滚刷防缠绕、机械臂、热水洗布</div>
+            </div>
+        </div>
+        <div class="sop-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <strong>🎬 拍摄：引爆素材+信任素材双线采集（发布前3天）</strong>
+                <p>引爆素材：制造极端场景（满地面粉、缠绕假发、宠物粮阵）、翻车瞬间抓拍。信任素材：拆机特写（风机、雷达、电池）、量化测试过程记录。</p>
+            </div>
+        </div>
+        <div class="sop-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <strong>✂️ 剪辑 + 字幕 + 描述与章节（发布前1天）</strong>
+                <p>章节标题设计为可搜索的问题句式。导出.srt字幕并人工修正“dToF”“LDS”等专业名词。视频描述前两行融入核心关键词和引爆点暗示。</p>
+                <div class="highlight hl-blue">
+                    <strong>📋 视频描述模板：</strong>“我把家里搞成垃圾场，实测5台热门扫地机。结果有2台直接卡死，1台把狗粮扫得满天飞。拆机看内部做工也发现不少猫腻。如果你在纠结滚刷缠绕头发、基站怎么清洗、宠物家庭选哪款，这期全都给你答案。所有测试数据和推荐清单在评论区。”<br>
+                    <strong>📑 章节标题示例：</strong>“01. 极限脏污测试：谁第一个阵亡”“02. 拆机看风机和雷达差距”“03. 滚刷缠绕头发对比”“04. 半年使用基站清洁实况”“05. 不同预算闭眼入推荐”。
+                </div>
+            </div>
+        </div>
+        <div class="sop-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <strong>🎨 封面 + 3套标题备选 + 字幕终审（发布前1天）</strong>
+                <p>封面：使用极限测试画面或拆机内部特写+大字关键词（如“灾难测试”“拆开傻眼”），蓝橙撞色。标题三选一，至少一套使用引爆角度（反常识/翻车/极限测试）。字幕终审确保技术术语完整。</p>
+            </div>
+        </div>
+        <div class="sop-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <strong>🚀 发布与冷启动（发布日 19:00-22:00）</strong>
+                <p>上传→标签→描述→字幕→章节→发布。冷启动：①置顶评论（选购清单+“你家扫地机最离谱的翻车瞬间是啥？”）；②小号提问（避障、基站、宠物三个方向）；③在极限测试翻车瞬间、拆机露出关键部件、价格对比时预埋弹幕。</p>
+            </div>
+        </div>
+        <div class="sop-step"><div class="step-num">7</div><div class="step-content"><strong>🔄 标题A/B测试（发布后2h内）</strong><p>监控CTR，低于5%立即换备选标题，记录引爆角度标题vs常规标题的CTR差异。</p></div></div>
+        <div class="sop-step"><div class="step-num">8</div><div class="step-content"><strong>💬 评论区SEO（发布后24h内）</strong><p>主号回复小号提问时提供具体细节和真实感受，例如“基站确实会臭，我的解决方法是每周用湿巾擦一次底座+每个月换一次抗菌滤网”。</p></div></div>
+        <div class="sop-step"><div class="step-num">9</div><div class="step-content"><strong>🌐 跨平台导流（发布后48h内）</strong><p>知乎回答“202X年扫地机器人推荐”，用极限测试结果作为论据；小红书发布极限脏污测试9图，文案以“测评博主的客厅今天成了垃圾场”吸睛。</p></div></div>
+        <div class="sop-step"><div class="step-num">10</div><div class="step-content"><strong>📑 配套专栏（发布同日）</strong><p>将拆机数据、极限测试结果、选购清单整理成图文专栏。小标题使用搜索问句。</p></div></div>
+        <div class="sop-step"><div class="step-num">11</div><div class="step-content"><strong>📈 数据复盘（发布后7天）</strong><p>重点分析搜索来源词中引爆角度相关词的流量占比、极限测试片段的留存率、弹幕密度峰值出现的时间点，迭代下期选题。</p></div></div>
+    </div>
+
+    <!-- 执行时间表 -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">⏱️</div><span>五、执行时间表（以一期视频为单位）</span></div>
+    <div class="card">
+        <table>
+            <thead><tr><th>时间</th><th>任务</th><th>负责人</th><th>核心产出</th></tr></thead>
+            <tbody>
+                <tr><td>D-7</td><td>数据选题+引爆角度匹配</td><td>运营</td><td>选题方向+目标关键词+匹配的引爆角度</td></tr>
+                <tr><td>D-5</td><td>脚本撰写+引爆点与信任环节设计</td><td>编导</td><td>拍摄脚本（含极限测试/拆机/量化对比）</td></tr>
+                <tr><td>D-3</td><td>素材拍摄（引爆+信任双线）</td><td>摄影</td><td>极限测试画面+拆机特写+量化数据</td></tr>
+                <tr><td>D-2</td><td>标题备选库+小号提问库</td><td>运营</td><td>3套标题（含引爆标题）+5个精准问题</td></tr>
+                <tr><td>D-1</td><td>剪辑+封面+字幕+描述+章节</td><td>剪辑+运营</td><td>.mp4 + .srt + 封面 + 描述 + 章节时间点</td></tr>
+                <tr><td>D-Day(19:00)</td><td>发布+冷启动+置顶评论</td><td>运营</td><td>视频上线+弹幕冷启动</td></tr>
+                <tr><td>D+2h内</td><td>A/B测试换标题</td><td>运营</td><td>锁定最优标题</td></tr>
+                <tr><td>D+24h</td><td>评论区SEO+跨平台导流</td><td>运营</td><td>知乎/小红书引爆内容</td></tr>
+                <tr><td>D+7</td><td>数据复盘+引爆效果分析</td><td>运营</td><td>复盘报告+下期引爆选题方向</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 内容形式决策树 -->
+    <div class="section-title"><div class="si" style="background:#ede9fe;color:#7c3aed;">🌲</div><span>六、内容形式选择决策树（引爆角度优先）</span></div>
+    <div class="card">
+        <p><strong>先选引爆角度，再匹配内容形式：</strong></p>
+        <div class="grid2">
+            <div class="card" style="margin:0;"><strong>💥 要互动和弹幕 →</strong> 反常识结论 / 品牌拉踩横评</div>
+            <div class="card" style="margin:0;"><strong>🎯 要完播和分享 →</strong> 极限破坏测试 / 翻车实录</div>
+            <div class="card" style="margin:0;"><strong>❤️ 要涨粉和关注 →</strong> 宠物互动 / 长期使用追更系列</div>
+            <div class="card" style="margin:0;"><strong>💰 要带货转化 →</strong> 平替捡漏攻略 / 同价位拆机横评</div>
+        </div>
+    </div>
+
+    <!-- 同质化破局 -->
+    <div class="section-title"><div class="si" style="background:#fef3c7;color:#f59e0b;">💡</div><span>七、同质化破局：扫地机内容差异化清单</span></div>
+    <div class="card">
+        <table>
+            <thead><tr><th>同质化做法（避免）</th><th>差异化做法（执行）</th><th>引爆效果</th></tr></thead>
+            <tbody>
+                <tr><td>念参数+外观展示</td><td>拆机看风机/雷达/电池+维修师傅点评</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>展示干净整洁的测试环境</td><td>制造极端脏污场景（面粉/酱油/假发/乐高）</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>只说优点不提缺点</td><td>每款机器主动说出使用中发现的问题和翻车经历</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>单人对着镜头讲解</td><td>邀请宠物出镜互动+记录扫地机与宠物的真实反应</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td>开箱即评</td><td>至少使用1个月后再评，展示基站、滚刷、尘盒的真实状态</td><td>⭐⭐⭐⭐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 检查清单 -->
+    <div class="section-title"><div class="si" style="background:#dbeafe;color:#3b82f6;">✅</div><span>八、发布前检查清单（扫地机引爆版）</span></div>
+    <div class="card">
+        <ul class="checklist">
+            <li>封面：极限测试画面/拆机特写+大字，蓝橙撞色</li>
+            <li>标题：含引爆角度信号（反常识/翻车/极限/拉踩）+核心关键词+数字+情绪标点</li>
+            <li>视频描述：前两行包含核心关键词和引爆点暗示</li>
+            <li>前3秒：用反常识结论/灾难画面/翻车预告/恶心画面作为钩子</li>
+            <li>字幕：.srt已上传，dToF/LDS/机械臂等术语已人工修正</li>
+            <li>章节标记：3-5个章节，标题为可搜索问题句式</li>
+            <li>标签：8-12个（含引爆角度词如“极限测试”“翻车”“避坑”）</li>
+            <li>置顶评论：选购清单+互动引导（引导用户分享翻车经历）</li>
+            <li>小号提问库：5个问题覆盖避障、缠绕、基站、宠物、品牌</li>
+            <li>弹幕预埋：极限测试翻车时、拆机露出关键部件时、价格公布时</li>
+            <li>专栏文章：同步准备，含测试数据表格</li>
+            <li>跨平台内容：知乎/小红书引爆内容备好</li>
+        </ul>
+    </div>
+
+    <!-- 关键词附录 -->
+    <div class="section-title"><div class="si" style="background:#f1f5f9;color:#475569;">📎</div><span>附录：扫地机器人高搜索量关键词库</span></div>
+    <div class="card">
+        <table>
+            <thead><tr><th>焦虑类型</th><th>高转化长尾词</th><th>搜索热度</th><th>建议引爆角度</th></tr></thead>
+            <tbody>
+                <tr><td>缠绕焦虑</td><td>扫地机器人滚刷缠绕头发、防缠绕滚刷</td><td>⭐⭐⭐⭐⭐</td><td>极限破坏测试+恶心向清洁</td></tr>
+                <tr><td>避障焦虑</td><td>扫地机宠物粪便避障、数据线会不会卡</td><td>⭐⭐⭐⭐⭐</td><td>极端场景+宠物互动</td></tr>
+                <tr><td>清洁焦虑</td><td>基站发臭怎么清洗、基站底部积水</td><td>⭐⭐⭐⭐⭐</td><td>恶心向清洁+长期使用报告</td></tr>
+                <tr><td>品牌选择</td><td>科沃斯vs石头哪个好、大疆ROMO值得买吗</td><td>⭐⭐⭐⭐</td><td>品牌拉踩横评+反常识结论</td></tr>
+                <tr><td>价格决策</td><td>3000元扫地机推荐、平替扫地机</td><td>⭐⭐⭐⭐</td><td>平替捡漏+同价位拆机对比</td></tr>
+                <tr><td>安装适配</td><td>扫地机上下水安装、老房子能装吗</td><td>⭐⭐⭐⭐</td><td>翻车实录+安装全记录</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <p>本SOP基于B站内容生态与扫地机品类特性设计 | 核心公式：引爆角度 × 信任元素 = 高互动高转化</p>
+        <p style="margin-top:4px;">建议每期选题时先翻阅“引爆角度模块”，确保每个视频至少嵌入一种引爆设计</p>
+    </div>
+
+</div>
+</body>
+</html>
