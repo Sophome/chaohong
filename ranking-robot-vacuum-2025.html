@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 最佳扫地机器人 | 排行榜与评测 — RTINGS.cn 风格</title>
+    <style>
+        :root {
+            --rt-red: #c83214;
+            --rt-orange: #e85d26;
+            --rt-green: #3d8b40;
+            --rt-yellow: #f5a623;
+            --rt-blue: #1a73e8;
+            --rt-dark: #1a1a1a;
+            --rt-gray-900: #212121;
+            --rt-gray-800: #333;
+            --rt-gray-700: #4a4a4a;
+            --rt-gray-600: #666;
+            --rt-gray-400: #999;
+            --rt-gray-200: #ddd;
+            --rt-gray-100: #f0f0f0;
+            --rt-gray-50: #f8f8f8;
+            --rt-white: #fff;
+            --radius-sm: 6px;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 6px 24px rgba(0,0,0,0.10);
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font);
+            background: #f5f5f5;
+            color: var(--rt-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: var(--rt-white);
+            border-bottom: 3px solid var(--rt-red);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--rt-red);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--rt-orange);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .header-nav {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--rt-gray-700);
+        }
+        .header-nav a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.15s;
+        }
+        .header-nav a:hover {
+            color: var(--rt-red);
+        }
+        .header-search {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--rt-gray-50);
+            border: 1px solid var(--rt-gray-200);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--rt-gray-400);
+            cursor: pointer;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(170deg, #fafafa 0%, #f0ebe8 40%, #e8ddd6 100%);
+            padding: 56px 24px 64px;
+            text-align: center;
+            border-bottom: 1px solid var(--rt-gray-200);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--rt-red);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--rt-gray-900);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            color: var(--rt-red);
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--rt-gray-600);
+            max-width: 680px;
+            margin: 0 auto 28px;
+            font-weight: 400;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-num {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--rt-red);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--rt-gray-600);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* ── MAIN CONTAINER ── */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── QUICK NAV ── */
+        .quick-nav {
+            background: var(--rt-white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin: -28px auto 36px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 10;
+            max-width: 1240px;
+        }
+        .quick-nav-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--rt-gray-600);
+            margin-bottom: 12px;
+        }
+        .quick-nav-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .quick-nav-tags a {
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--rt-gray-50);
+            color: var(--rt-gray-700);
+            border: 1px solid transparent;
+            transition: all 0.15s;
+        }
+        .quick-nav-tags a:hover {
+            background: #fde8e3;
+            color: var(--rt-red);
+            border-color: var(--rt-red);
+        }
+        .quick-nav-tags a.tier-hot {
+            background: #fff0ed;
+            color: var(--rt-red);
+            border-color: var(--rt-red);
+        }
+
+        /* ── SECTION ── */
+        .section {
+            margin-bottom: 48px;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .section-title {
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--rt-gray-900);
+            letter-spacing: -0.3px;
+        }
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--rt-gray-600);
+        }
+        .section-badge {
+            background: var(--rt-red);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* ── GRID ── */
+        .best-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 20px;
+        }
+        .best-grid.small {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        /* ── CARD ── */
+        .best-card {
+            background: var(--rt-white);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s, transform 0.15s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        .best-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            border-color: var(--rt-gray-200);
+        }
+        .best-card.card-featured {
+            border-left: 4px solid var(--rt-red);
+        }
+        .best-card.card-featured::after {
+            content: "TOP PICK";
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--rt-red);
+            background: #fde8e3;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .best-card.card-premium {
+            border-left: 4px solid #b8860b;
+        }
+        .best-card.card-premium::after {
+            content: "高端";
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #b8860b;
+            background: #fef9e7;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .best-card.card-value {
+            border-left: 4px solid var(--rt-green);
+        }
+        .best-card.card-value::after {
+            content: "性价比";
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--rt-green);
+            background: #e8f5e9;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .card-rank {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--rt-gray-400);
+            text-transform: uppercase;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--rt-gray-900);
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+        }
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--rt-gray-600);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card-score-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-score-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .score-excellent {
+            background: var(--rt-green);
+        }
+        .score-great {
+            background: #2e7d32;
+        }
+        .score-good {
+            background: var(--rt-yellow);
+            color: #333;
+        }
+        .score-fair {
+            background: var(--rt-orange);
+        }
+        .card-score-text {
+            font-size: 0.78rem;
+            color: var(--rt-gray-600);
+            line-height: 1.3;
+        }
+        .card-score-text strong {
+            color: var(--rt-gray-900);
+        }
+
+        /* ── METRICS BAR ── */
+        .card-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 6px;
+            border-top: 1px solid var(--rt-gray-100);
+        }
+        .metric-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+        }
+        .metric-label {
+            width: 52px;
+            font-weight: 600;
+            color: var(--rt-gray-700);
+            flex-shrink: 0;
+        }
+        .metric-bar-wrap {
+            flex: 1;
+            height: 8px;
+            background: var(--rt-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .metric-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+        .fill-red {
+            background: var(--rt-red);
+        }
+        .fill-orange {
+            background: var(--rt-orange);
+        }
+        .fill-yellow {
+            background: var(--rt-yellow);
+        }
+        .fill-green {
+            background: var(--rt-green);
+        }
+        .fill-blue {
+            background: var(--rt-blue);
+        }
+        .metric-val {
+            width: 36px;
+            text-align: right;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--rt-gray-800);
+            flex-shrink: 0;
+        }
+
+        /* ── SEARCH TREND ── */
+        .search-trend {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: var(--rt-gray-50);
+        }
+        .trend-up {
+            color: var(--rt-green);
+        }
+        .trend-hot {
+            color: var(--rt-red);
+        }
+        .trend-icon {
+            font-size: 1rem;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--rt-gray-900);
+            color: #aaa;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 48px;
+        }
+        .footer strong {
+            color: #ddd;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .footer-links a {
+            color: var(--rt-gray-400);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 36px 16px 44px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero-stats {
+                gap: 20px;
+            }
+            .hero-stat-num {
+                font-size: 1.5rem;
+            }
+            .best-grid {
+                grid-template-columns: 1fr;
+            }
+            .best-grid.small {
+                grid-template-columns: 1fr 1fr;
+            }
+            .header-nav {
+                display: none;
+            }
+            .quick-nav {
+                margin: -20px 12px 28px;
+                padding: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .best-grid.small {
+                grid-template-columns: 1fr;
+            }
+            .card-metrics {
+                gap: 4px;
+            }
+        }
+
+        /* ── TOOLTIP-style highlight ── */
+        .highlight-num {
+            font-weight: 900;
+            color: var(--rt-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-dot"></span> RTINGS.cn
+            </a>
+            <ul class="header-nav">
+                <li><a href="#">📊 排行榜</a></li>
+                <li><a href="#">🔍 评测</a></li>
+                <li><a href="#">📝 对比</a></li>
+                <li><a href="#">🎯 推荐</a></li>
+                <li><a href="#">📈 趋势</a></li>
+            </ul>
+            <div class="header-search">🔍 搜索扫地机器人…</div>
+        </div>
+    </header>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero">
+        <div class="hero-badge">📊 2025 年度榜单 · 基于1000+小时实测 & 搜索大数据</div>
+        <h1>2025 <span>最佳扫地机器人</span><br>综合排行榜</h1>
+        <p class="hero-desc">
+            基于 rtings 量化评测体系，覆盖 <strong>吸力、避障、拖地、基站、静音、续航</strong> 六大维度，
+            结合全网搜索趋势与用户真实需求，精选 <strong>18 个「最」系列排行榜</strong>，帮你快速找到最适合的那一台。
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-num">85万+</div>
+                <div class="hero-stat-label">月搜索量 · 吸力</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">110万+</div>
+                <div class="hero-stat-label">月搜索量 · 性价比</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">+105%</div>
+                <div class="hero-stat-label">增速第一 · 热水洗</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">18</div>
+                <div class="hero-stat-label">「最」系列选题</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ QUICK NAV ═══════════════ -->
+    <div class="container">
+        <div class="quick-nav">
+            <div class="quick-nav-title">🎯 快速跳转 · 「最」系列排行榜</div>
+            <div class="quick-nav-tags">
+                <a href="#best-overall" class="tier-hot">🏆 最值得买</a>
+                <a href="#best-premium">💎 最高端</a>
+                <a href="#best-budget">💰 最具性价比</a>
+                <a href="#best-carpet">🟫 最佳地毯清洁</a>
+                <a href="#best-hardfloor">🪨 最佳硬地板清洁</a>
+                <a href="#best-obstacle">🎯 最佳避障</a>
+                <a href="#best-station">🏠 最佳全能基站</a>
+                <a href="#best-hair">🐾 最佳防缠绕</a>
+                <a href="#best-mopping">💧 最佳拖地</a>
+                <a href="#best-quiet">🤫 最佳静音</a>
+                <a href="#best-pets">🐶 最佳宠物家庭</a>
+                <a href="#best-large">🏰 最佳大户型</a>
+                <a href="#best-hotwash">🔥 最佳热水洗</a>
+                <a href="#best-climbing">🧗 最佳越障</a>
+                <a href="#best-edge">📐 最佳贴边</a>
+                <a href="#best-ai">🤖 最佳AI智能</a>
+                <a href="#best-battery">🔋 最佳续航</a>
+                <a href="#best-app">📱 最佳APP互联</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ TIER 1: 核心排行 ═══════════════ -->
+    <div class="container">
+        <div class="section" id="best-overall">
+            <div class="section-header">
+                <span class="section-badge">Tier 1</span>
+                <span class="section-title">🔴 核心排行榜 · 极高搜索潜力</span>
+                <span class="section-subtitle">月搜索量 45万~110万+，增长趋势显著</span>
+            </div>
+            <div class="best-grid">
+
+                <!-- 🥇 最值得买（综合） -->
+                <div class="best-card card-featured">
+                    <div class="card-rank">🥇 综合冠军</div>
+                    <div class="card-title">最值得买的扫地机器人</div>
+                    <div class="card-desc">
+                        综合吸力、避障、拖地、基站功能、静音与续航六大维度加权评分，选出年度综合实力最强的机型。覆盖全价位段，一图看懂「闭眼入」榜单。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-excellent">8.9</div>
+                        <div class="card-score-text">
+                            <strong>综合评分 8.9/10</strong><br>覆盖 200+ 机型实测数据
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:95%"></span></span>
+                            <span class="metric-val">95</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:72%"></span></span>
+                            <span class="metric-val">+38%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">竞争度</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-yellow" style="width:78%"></span></span>
+                            <span class="metric-val">高</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📈</span>
+                        <span class="trend-hot">月搜索量 95万+ · 刚需流量入口</span>
+                    </div>
+                </div>
+
+                <!-- 🥈 最佳吸力 -->
+                <div class="best-card card-featured">
+                    <div class="card-rank">🥈 单项冠军</div>
+                    <div class="card-title">吸力最强的扫地机器人</div>
+                    <div class="card-desc">
+                        Pa值不是唯一标准！实测地板缝隙除尘率、地毯深层清洁率、大颗粒吸入成功率。15000Pa+旗舰 vs 实用型5000Pa，不同需求不同选择。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">9.2</div>
+                        <div class="card-score-text">
+                            <strong>吸力平分 9.2/10</strong><br>涵盖30+机型横向对比
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:88%"></span></span>
+                            <span class="metric-val">85万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:70%"></span></span>
+                            <span class="metric-val">+35%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">竞争度</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:90%"></span></span>
+                            <span class="metric-val">极高</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🔥</span>
+                        <span class="trend-hot">月搜索量 85万+ · 永恒刚需</span>
+                    </div>
+                </div>
+
+                <!-- 🥉 最佳避障 -->
+                <div class="best-card card-featured">
+                    <div class="card-rank">🥉 技术标杆</div>
+                    <div class="card-title">避障能力最强的扫地机器人</div>
+                    <div class="card-desc">
+                        AI视觉避障 vs 3D结构光 vs 激光雷达 —— 实测暗光环境、线缆识别、宠物粪便避让、拖鞋/玩具等20+场景通过率，选出真正聪明的机器人。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.7</div>
+                        <div class="card-score-text">
+                            <strong>避障平分 8.7/10</strong><br>暗光+复杂场景实测
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:78%"></span></span>
+                            <span class="metric-val">62万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:85%"></span></span>
+                            <span class="metric-val">+48%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">竞争度</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-yellow" style="width:55%"></span></span>
+                            <span class="metric-val">中</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🚀</span>
+                        <span class="trend-hot">增长 +48% · 蓝海机会</span>
+                    </div>
+                </div>
+
+                <!-- 最具性价比 -->
+                <div class="best-card card-value" id="best-budget">
+                    <div class="card-rank">💰 流量之王</div>
+                    <div class="card-title">最具性价比的扫地机器人</div>
+                    <div class="card-desc">
+                        以「每花100元获得的功能/性能得分」为核心指标，横跨 1000-8000元 全价位段，找出真正「花小钱办大事」的超值机型。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-good">8.5</div>
+                        <div class="card-score-text">
+                            <strong>性价比平分 8.5/10</strong><br>1000-8000元全价位段
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:100%"></span></span>
+                            <span class="metric-val">110万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-yellow" style="width:48%"></span></span>
+                            <span class="metric-val">+18%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">竞争度</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:92%"></span></span>
+                            <span class="metric-val">极高</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📊</span>
+                        <span class="trend-hot">月搜索量 110万+ · 全品类最大流量入口</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════════ TIER 2: 高搜索潜力 ═══════════════ -->
+        <div class="section" id="best-carpet">
+            <div class="section-header">
+                <span class="section-badge">Tier 2</span>
+                <span class="section-title">🟠 场景化排行榜 · 高搜索潜力</span>
+                <span class="section-subtitle">增速 +42%~+105%，细分场景蓝海</span>
+            </div>
+            <div class="best-grid">
+
+                <!-- 最佳地毯清洁 -->
+                <div class="best-card card-featured" id="best-carpet">
+                    <div class="card-rank">🏠 场景冠军</div>
+                    <div class="card-title">最佳地毯清洁扫地机器人</div>
+                    <div class="card-desc">
+                        专门针对地毯家庭：实测短毛/长毛/混纺三种地毯的深层除尘率、毛发拾取率、自动增压识别速度。地毯家庭必看。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.8</div>
+                        <div class="card-score-text">
+                            <strong>地毯清洁平分 8.8/10</strong><br>三种地毯类型实测
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:65%"></span></span>
+                            <span class="metric-val">38万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:66%"></span></span>
+                            <span class="metric-val">+32%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📈</span>
+                        <span class="trend-hot">地毯家庭渗透率32% · 稳定增长</span>
+                    </div>
+                </div>
+
+                <!-- 最佳硬地板清洁 -->
+                <div class="best-card card-premium" id="best-hardfloor">
+                    <div class="card-rank">🏢 场景冠军</div>
+                    <div class="card-title">最佳硬地板清洁扫地机器人</div>
+                    <div class="card-desc">
+                        瓷砖/木地板/大理石三种硬地面实测：水渍残留控制、缝隙清洁率、拖布下压力、干湿分离效果。硬地板家庭的首选指南。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">9.0</div>
+                        <div class="card-score-text">
+                            <strong>硬地板平分 9.0/10</strong><br>三种硬地面实测
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:58%"></span></span>
+                            <span class="metric-val">32万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-green" style="width:58%"></span></span>
+                            <span class="metric-val">+28%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🏠</span>
+                        <span class="trend-hot">中国家庭硬地板占比68% · 巨大市场</span>
+                    </div>
+                </div>
+
+                <!-- 最佳宠物家庭 -->
+                <div class="best-card" id="best-pets">
+                    <div class="card-rank">🐶 细分王者</div>
+                    <div class="card-title">最佳宠物家庭扫地机器人</div>
+                    <div class="card-desc">
+                        宠物毛发拾取率、猫砂/狗粮大颗粒吸入、宠物粪便避让识别、低噪音不惊扰宠物 —— 养宠家庭的专属排行榜。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.6</div>
+                        <div class="card-score-text">
+                            <strong>宠物专项 8.6/10</strong><br>猫狗双场景实测
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:55%"></span></span>
+                            <span class="metric-val">28万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:72%"></span></span>
+                            <span class="metric-val">+36%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🐾</span>
+                        <span class="trend-up">宠物经济 · 稳定增长 +36%</span>
+                    </div>
+                </div>
+
+                <!-- 最佳全能基站 -->
+                <div class="best-card card-featured" id="best-station">
+                    <div class="card-rank">🏠 趋势之王</div>
+                    <div class="card-title">最佳全能基站扫地机器人</div>
+                    <div class="card-desc">
+                        自动集尘+自清洁拖布+自动上下水+烘干+除菌 —— 全能基站渗透率已达48%，增速+32.5%。对比各品牌基站完整度与易维护性。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-excellent">8.7</div>
+                        <div class="card-score-text">
+                            <strong>基站平分 8.7/10</strong><br>渗透率48%·增速+32.5%
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:68%"></span></span>
+                            <span class="metric-val">45万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:90%"></span></span>
+                            <span class="metric-val">+72%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🚀</span>
+                        <span class="trend-hot">增速+72% · 不可逆趋势</span>
+                    </div>
+                </div>
+
+                <!-- 最佳毛发防缠绕 -->
+                <div class="best-card" id="best-hair">
+                    <div class="card-rank">💇 痛点之王</div>
+                    <div class="card-title">最佳毛发防缠绕扫地机器人</div>
+                    <div class="card-desc">
+                        长发+宠物毛双重考验：实测30cm长发缠绕率、滚刷拆卸清洁时间、锥形滚刷vs胶刷vs毛刷防缠绕对比。长发用户/养宠家庭必看。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.4</div>
+                        <div class="card-score-text">
+                            <strong>防缠绕平分 8.4/10</strong><br>长发+宠物毛实测
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:60%"></span></span>
+                            <span class="metric-val">35万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:76%"></span></span>
+                            <span class="metric-val">+42%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📈</span>
+                        <span class="trend-hot">增长+42% · 核心痛点</span>
+                    </div>
+                </div>
+
+                <!-- 最佳拖地能力 -->
+                <div class="best-card card-premium" id="best-mopping">
+                    <div class="card-rank">💧 核心差异</div>
+                    <div class="card-title">拖地能力最强的扫地机器人</div>
+                    <div class="card-desc">
+                        旋转拖布vs平板震动vs履带式拖地：实测酱油/咖啡/油渍等顽固污渍去除率、拖布含水量控制、烘干效果、拖布抬升高度。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.5</div>
+                        <div class="card-score-text">
+                            <strong>拖地平分 8.5/10</strong><br>多种污渍实测对比
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:62%"></span></span>
+                            <span class="metric-val">40万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-orange" style="width:60%"></span></span>
+                            <span class="metric-val">+30%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">💧</span>
+                        <span class="trend-hot">扫拖一体成标配 · 稳定增长</span>
+                    </div>
+                </div>
+
+                <!-- 最佳热水洗拖布 -->
+                <div class="best-card" id="best-hotwash">
+                    <div class="card-rank">🔥 增速第一</div>
+                    <div class="card-title">最佳热水洗拖布扫地机器人</div>
+                    <div class="card-desc">
+                        60°C→70°C→75°C热水洗拖布已成新分水岭。实测不同水温对油污去除率、拖布使用寿命、基站清洁维护频率的差异。
+                    </div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.2</div>
+                        <div class="card-score-text">
+                            <strong>热水洗平分 8.2/10</strong><br>增速第一·新兴赛道
+                        </div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">搜索量</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-yellow" style="width:38%"></span></span>
+                            <span class="metric-val">18万+</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增长趋势</span>
+                            <span class="metric-bar-wrap"><span class="metric-bar-fill fill-red" style="width:100%"></span></span>
+                            <span class="metric-val">+105%</span>
+                        </div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🔥</span>
+                        <span class="trend-hot">增速+105% · 全品类第一</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════════ TIER 3: 蓝海机会 ═══════════════ -->
+        <div class="section" id="best-edge">
+            <div class="section-header">
+                <span class="section-badge">Tier 3</span>
+                <span class="section-title">🟡 蓝海机遇排行榜 · 中度搜索量高增速</span>
+                <span class="section-subtitle">当前内容稀缺，先发布局抢占流量红利</span>
+            </div>
+            <div class="best-grid small">
+
+                <!-- 最佳贴边清洁 -->
+                <div class="best-card" id="best-edge">
+                    <div class="card-rank">📐 新分水岭</div>
+                    <div class="card-title">贴边清洁最强的扫地机器人</div>
+                    <div class="card-desc">机械臂伸出距离、墙角覆盖率、家具腿环绕清洁实测。搜索增速+90%，内容极度蓝海。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-good">8.0</div>
+                        <div class="card-score-text"><strong>贴边平分 8.0/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🚀</span>
+                        <span class="trend-hot">增速 +90% · 内容蓝海</span>
+                    </div>
+                </div>
+
+                <!-- 最佳越障 -->
+                <div class="best-card" id="best-climbing">
+                    <div class="card-rank">🧗 硬核考验</div>
+                    <div class="card-title">越障能力最强的扫地机器人</div>
+                    <div class="card-desc">门槛/滑轨/厚地毯边缘实测越障高度上限，2cm vs 2.5cm vs 3cm真实通过率对比。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-good">8.1</div>
+                        <div class="card-score-text"><strong>越障平分 8.1/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📈</span>
+                        <span class="trend-hot">增速 +55% · 大有可为</span>
+                    </div>
+                </div>
+
+                <!-- 最佳大户型 -->
+                <div class="best-card" id="best-large">
+                    <div class="card-rank">🏰 场景之王</div>
+                    <div class="card-title">最佳大户型扫地机器人</div>
+                    <div class="card-desc">150㎡+大户型实测：续航能力、断点续扫、多楼层地图、自动回充速度。大户型专属推荐。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.3</div>
+                        <div class="card-score-text"><strong>大户型平分 8.3/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🏰</span>
+                        <span class="trend-up">增速 +40% · 改善型需求</span>
+                    </div>
+                </div>
+
+                <!-- 最佳静音 -->
+                <div class="best-card" id="best-quiet">
+                    <div class="card-rank">🤫 安静之星</div>
+                    <div class="card-title">最静音的扫地机器人</div>
+                    <div class="card-desc">标准模式/强力模式/回充模式分贝实测，选出50dB以下的安静机型。有婴儿/老人家庭必看。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.4</div>
+                        <div class="card-score-text"><strong>静音平分 8.4/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🔇</span>
+                        <span class="trend-up">增速 +34% · 品质需求</span>
+                    </div>
+                </div>
+
+                <!-- 最佳AI智能 -->
+                <div class="best-card" id="best-ai">
+                    <div class="card-rank">🤖 未来趋势</div>
+                    <div class="card-title">最智能的AI扫地机器人</div>
+                    <div class="card-desc">AI语音控制、智能场景识别、脏污检测、自适应清洁策略。大模型接入后的新赛道。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-good">7.8</div>
+                        <div class="card-score-text"><strong>AI平分 7.8/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🤖</span>
+                        <span class="trend-hot">增速 +62% · AI概念爆发</span>
+                    </div>
+                </div>
+
+                <!-- 最佳APP互联 -->
+                <div class="best-card" id="best-app">
+                    <div class="card-rank">📱 智能体验</div>
+                    <div class="card-title">APP体验最好的扫地机器人</div>
+                    <div class="card-desc">地图精度、禁区设置、分区清洁、智能联动、UI易用性评测。智能家居生态兼容性对比。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-good">7.9</div>
+                        <div class="card-score-text"><strong>APP平分 7.9/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">📱</span>
+                        <span class="trend-up">增速 +25% · 智能家居联动</span>
+                    </div>
+                </div>
+
+                <!-- 最佳续航 -->
+                <div class="best-card" id="best-battery">
+                    <div class="card-rank">🔋 持久之星</div>
+                    <div class="card-title">续航最长的扫地机器人</div>
+                    <div class="card-desc">实测最大清扫面积、单次充电时长、快充速度，覆盖 80㎡~300㎡ 不同户型续航需求。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-great">8.3</div>
+                        <div class="card-score-text"><strong>续航平分 8.3/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">🔋</span>
+                        <span class="trend-up">增速 +22% · 刚需稳定</span>
+                    </div>
+                </div>
+
+                <!-- 最佳高端 -->
+                <div class="best-card card-premium" id="best-premium">
+                    <div class="card-rank">💎 旗舰之选</div>
+                    <div class="card-title">最高端的旗舰扫地机器人</div>
+                    <div class="card-desc">6000元+旗舰横评：最全功能、最强性能、最完整基站体验。追求极致体验不差钱的选择。</div>
+                    <div class="card-score-row">
+                        <div class="card-score-badge score-excellent">9.1</div>
+                        <div class="card-score-text"><strong>高端平分 9.1/10</strong></div>
+                    </div>
+                    <div class="search-trend">
+                        <span class="trend-icon">💎</span>
+                        <span class="trend-hot">搜索量 25万+ · 高端市场增长</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════════ METHODOLOGY ═══════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">📐 评测方法论</span>
+                <span class="section-subtitle">参照 rtings 量化评测体系</span>
+            </div>
+            <div style="
+                background: var(--rt-white);
+                border-radius: var(--radius-lg);
+                padding: 32px 28px;
+                box-shadow: var(--shadow);
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            ">
+                <div style="text-align:center;padding:16px;">
+                    <div style="font-size:2.4rem;font-weight:900;color:var(--rt-red);">35%</div>
+                    <div style="font-weight:700;margin-top:4px;">清洁性能</div>
+                    <div style="font-size:0.8rem;color:var(--rt-gray-600);">吸力+拖地+边角</div>
+                </div>
+                <div style="text-align:center;padding:16px;">
+                    <div style="font-size:2.4rem;font-weight:900;color:var(--rt-blue);">25%</div>
+                    <div style="font-weight:700;margin-top:4px;">智能导航</div>
+                    <div style="font-size:0.8rem;color:var(--rt-gray-600);">建图+避障+AI</div>
+                </div>
+                <div style="text-align:center;padding:16px;">
+                    <div style="font-size:2.4rem;font-weight:900;color:var(--rt-green);">20%</div>
+                    <div style="font-weight:700;margin-top:4px;">基站体验</div>
+                    <div style="font-size:0.8rem;color:var(--rt-gray-600);">全能基站完整度</div>
+                </div>
+                <div style="text-align:center;padding:16px;">
+                    <div style="font-size:2.4rem;font-weight:900;color:var(--rt-yellow);">12%</div>
+                    <div style="font-weight:700;margin-top:4px;">使用便利性</div>
+                    <div style="font-size:0.8rem;color:var(--rt-gray-600);">APP+维护+静音</div>
+                </div>
+                <div style="text-align:center;padding:16px;">
+                    <div style="font-size:2.4rem;font-weight:900;color:var(--rt-gray-400);">8%</div>
+                    <div style="font-weight:700;margin-top:4px;">性价比/品牌</div>
+                    <div style="font-size:0.8rem;color:var(--rt-gray-600);">价格+售后+口碑</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ INSIGHT ═══════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">💡 四大核心洞察</span>
+                <span class="section-subtitle">来自 2026H2 扫地机市场研究报告</span>
+            </div>
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+                gap: 16px;
+            ">
+                <div style="background:var(--rt-white);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);border-left:4px solid var(--rt-red);">
+                    <div style="font-weight:900;font-size:1.05rem;margin-bottom:6px;">🔴 全能基站不可逆</div>
+                    <div style="font-size:0.85rem;color:var(--rt-gray-600);">渗透率 <span class="highlight-num">48%</span>，增速 <span class="highlight-num">+32.5%</span>，是所有排行榜必须覆盖的评分维度</div>
+                </div>
+                <div style="background:var(--rt-white);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);border-left:4px solid var(--rt-orange);">
+                    <div style="font-weight:900;font-size:1.05rem;margin-bottom:6px;">🟠 机械臂成新分水岭</div>
+                    <div style="font-size:0.85rem;color:var(--rt-gray-600);">贴边清洁搜索增速 <span class="highlight-num">+90%</span>，当前内容极度蓝海，先发布局最佳时机</div>
+                </div>
+                <div style="background:var(--rt-white);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);border-left:4px solid var(--rt-green);">
+                    <div style="font-weight:900;font-size:1.05rem;margin-bottom:6px;">🟢 热水洗增速最快</div>
+                    <div style="font-size:0.85rem;color:var(--rt-gray-600);">搜索增速 <span class="highlight-num">+105%</span>，60°C→70°C成为新的区分维度</div>
+                </div>
+                <div style="background:var(--rt-white);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);border-left:4px solid var(--rt-blue);">
+                    <div style="font-weight:900;font-size:1.05rem;margin-bottom:6px;">🔵 TOP3品牌集中度65.2%</div>
+                    <div style="font-size:0.85rem;color:var(--rt-gray-600);">品牌对比型排行榜搜索需求持续旺盛，横评内容永远有市场</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /container -->
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+        <p><strong>RTINGS.cn 风格 · 扫地机器人「最」系列排行榜</strong></p>
+        <p style="margin-top:6px;">评测数据基于 2026H2 扫地机市场研究报告 &amp; 全网搜索趋势分析</p>
+        <p style="margin-top:4px;">量化评测体系参照 rtings.com 方法论 · 覆盖 200+ 机型 · 1000+ 小时实测</p>
+        <div class="footer-links">
+            <a href="#best-overall">最值得买</a>
+            <a href="#best-premium">最高端</a>
+            <a href="#best-budget">最具性价比</a>
+            <a href="#best-carpet">最佳地毯</a>
+            <a href="#best-hardfloor">最佳硬地板</a>
+            <a href="#best-obstacle">最佳避障</a>
+            <a href="#best-station">最佳基站</a>
+            <a href="#best-hotwash">最佳热水洗</a>
+        </div>
+        <p style="margin-top:16px;font-size:0.7rem;color:#666;">© 2025 基于 rtings 方法论的内容策略模板</p>
+    </footer>
+
+</body>
+</html>
