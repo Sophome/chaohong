@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【超红传媒】显示器关键词全维度分析报告 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --surface2: #f0f2f5;
+            --text: #1a1d28;
+            --text2: #5a5f6e;
+            --text3: #8b8f9a;
+            --blue: #2563eb;
+            --blue-light: #dbeafe;
+            --blue-dark: #1d4ed8;
+            --green: #059669;
+            --green-light: #d1fae5;
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+            --purple: #7c3aed;
+            --purple-light: #ede9fe;
+            --red: #dc2626;
+            --red-light: #fef2f2;
+            --cyan: #0891b2;
+            --cyan-light: #ecfeff;
+            --teal: #0d9488;
+            --teal-light: #ccfbf1;
+            --border: #e5e7eb;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 30%, #312e81 55%, #1a1d28 100%);
+            color: #fff;
+            padding: 64px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -60px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #818cf8, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: #a5b4fc;
+            max-width: 640px;
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+        .hero-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .hero-sources span {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ---- Container ---- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px 64px;
+        }
+
+        /* ---- Section ---- */
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .section-desc {
+            font-size: 0.9rem;
+            color: var(--text3);
+            margin-bottom: 20px;
+        }
+
+        /* ---- KPI Cards ---- */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .kpi-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s;
+        }
+        .kpi-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .kpi-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text3);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+        .kpi-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        .kpi-change {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        .kpi-change.up {
+            color: var(--green);
+        }
+        .kpi-change.down {
+            color: var(--red);
+        }
+        .kpi-change.warn {
+            color: var(--orange);
+        }
+        .kpi-source {
+            font-size: 0.7rem;
+            color: var(--text3);
+            margin-top: 4px;
+        }
+
+        /* ---- Table ---- */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 800px;
+        }
+        thead th {
+            background: #f8f9fb;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--text2);
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 11px 16px;
+            border-bottom: 1px solid #f1f3f5;
+            vertical-align: middle;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover {
+            background: #fafbfc;
+        }
+        .kw-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .stars {
+            display: inline-flex;
+            gap: 1px;
+            color: #f59e0b;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .stars .dim {
+            color: #d1d5db;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .tag-blue {
+            background: var(--blue-light);
+            color: var(--blue-dark);
+        }
+        .tag-green {
+            background: var(--green-light);
+            color: #065f46;
+        }
+        .tag-orange {
+            background: var(--orange-light);
+            color: #9a3412;
+        }
+        .tag-purple {
+            background: var(--purple-light);
+            color: #5b21b6;
+        }
+        .tag-cyan {
+            background: var(--cyan-light);
+            color: #155e75;
+        }
+        .tag-red {
+            background: var(--red-light);
+            color: #991b1b;
+        }
+        .tag-teal {
+            background: var(--teal-light);
+            color: #0f766e;
+        }
+
+        /* ---- Pyramid ---- */
+        .pyramid-wrap {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px 28px 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .pyramid-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 13px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #fff;
+            text-align: center;
+            transition: transform 0.15s;
+            cursor: default;
+            position: relative;
+        }
+        .pyramid-row:hover {
+            transform: scale(1.02);
+        }
+        .pyramid-r1 {
+            width: 280px;
+            background: linear-gradient(135deg, #1e3a5f, #2563eb);
+        }
+        .pyramid-r2 {
+            width: 380px;
+            background: linear-gradient(135deg, #1e4d6e, #0891b2);
+        }
+        .pyramid-r3 {
+            width: 470px;
+            background: linear-gradient(135deg, #2d5a3f, #059669);
+        }
+        .pyramid-r4 {
+            width: 550px;
+            background: linear-gradient(135deg, #5c3b1f, #ea580c);
+        }
+        .pyramid-r5 {
+            width: 620px;
+            background: linear-gradient(135deg, #4a1d6e, #7c3aed);
+        }
+        .pyramid-r6 {
+            width: 680px;
+            background: linear-gradient(135deg, #6b1a1a, #dc2626);
+        }
+        .pyramid-label {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        /* ---- Platform Grid ---- */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .platform-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s;
+        }
+        .platform-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .platform-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .platform-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .platform-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+        .pi-baidu {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .pi-wechat {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .pi-douyin {
+            background: #1a1d28;
+            color: #fff;
+        }
+        .pi-xiaohongshu {
+            background: #fce7f3;
+            color: #be185d;
+        }
+        .pi-bilibili {
+            background: #fef3c7;
+            color: #b45309;
+        }
+        .pi-jd {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+
+        /* ---- Report List ---- */
+        .report-list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+        .report-list li {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        .report-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #ede9fe;
+            color: #6d28d9;
+            font-weight: 700;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .report-meta {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text3);
+            white-space: nowrap;
+        }
+
+        /* ---- Conclusion Cards ---- */
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 14px;
+        }
+        .conclusion-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            border-left: 4px solid #6366f1;
+            box-shadow: var(--shadow-sm);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .conclusion-card.c2 {
+            border-left-color: var(--cyan);
+        }
+        .conclusion-card.c3 {
+            border-left-color: var(--orange);
+        }
+        .conclusion-card.c4 {
+            border-left-color: var(--green);
+        }
+        .conclusion-card.c5 {
+            border-left-color: var(--purple);
+        }
+        .conclusion-card.c6 {
+            border-left-color: var(--red);
+        }
+        .cc-num {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--border);
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .cc-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .cc-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text3);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 0 48px;
+            }
+            .container {
+                padding: 0 16px 40px;
+            }
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .kpi-card {
+                padding: 14px 16px;
+            }
+            .kpi-value {
+                font-size: 1.35rem;
+            }
+            table {
+                font-size: 0.78rem;
+            }
+            thead th,
+            tbody td {
+                padding: 8px 10px;
+            }
+            .pyramid-r1 {
+                width: 200px;
+            }
+            .pyramid-r2 {
+                width: 260px;
+            }
+            .pyramid-r3 {
+                width: 300px;
+            }
+            .pyramid-r4 {
+                width: 330px;
+            }
+            .pyramid-r5 {
+                width: 350px;
+            }
+            .pyramid-r6 {
+                width: 370px;
+            }
+            .pyramid-row {
+                font-size: 0.75rem;
+                padding: 10px 14px;
+                gap: 8px;
+            }
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+            .conclusion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== Hero ====== -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">🖥️ 关键词全维度分析 · 2026</div>
+            <h1>【超红传媒】显示器<br><span>搜索关键词</span>洞察报告</h1>
+            <p class="hero-sub">整合微信指数 · 百度指数 · 巨量云图（抖音）· Google Trends · 京东/天猫搜索数据，结合洛图科技、IDC、群智咨询、奥维云网、TrendForce等权威报告，系统解析显示器品类关键词体系。</p>
+            <div class="hero-sources">
+                <span>🔵 百度指数</span>
+                <span>🟢 微信指数</span>
+                <span>🟣 巨量云图</span>
+                <span>📦 京东/天猫</span>
+                <span>🌐 Google Trends</span>
+                <span>📋 14+ 行业报告</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== Main Content ====== -->
+    <div class="container">
+
+        <!-- KPI -->
+        <div class="section">
+            <h2 class="section-title">📈 市场大盘速览</h2>
+            <p class="section-desc">2025–2026年显示器核心市场指标 · 电竞显示器半壁江山 · Mini LED+OLED双技术路线驱动升级</p>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">2025 中国显示器线上销量</div>
+                    <div class="kpi-value">≈1,150<span style="font-size:0.8em;font-weight:500;"> 万台</span></div>
+                    <div class="kpi-change up">↑ 同比+6.2%</div>
+                    <div class="kpi-source">洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">2025 中国显示器线上销额</div>
+                    <div class="kpi-value">≈132<span style="font-size:0.8em;font-weight:500;"> 亿元</span></div>
+                    <div class="kpi-change up">↑ 同比+9.5% · 高端化拉动</div>
+                    <div class="kpi-source">洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">电竞显示器销量占比</div>
+                    <div class="kpi-value">≈50<span style="font-size:0.8em;font-weight:500;">%</span></div>
+                    <div class="kpi-change up">↑ 从2019年12%跃升至半壁江山</div>
+                    <div class="kpi-source">IDC / 洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">2025 线上均价</div>
+                    <div class="kpi-value">≈1,150<span style="font-size:0.8em;font-weight:500;"> 元</span></div>
+                    <div class="kpi-change up">↑ Mini LED/OLED拉升高端均价</div>
+                    <div class="kpi-source">洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">27寸 / 31.5寸 销量占比</div>
+                    <div class="kpi-value">≈42<span style="font-size:0.8em;font-weight:500;">% / 14%</span></div>
+                    <div class="kpi-change up">27寸为绝对主流尺寸</div>
+                    <div class="kpi-source">奥维云网 / 洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">高刷显示器（≥144Hz）占比</div>
+                    <div class="kpi-value">≈58<span style="font-size:0.8em;font-weight:500;">%</span></div>
+                    <div class="kpi-change up">高刷已成标配 · 240Hz+加速渗透</div>
+                    <div class="kpi-source">洛图科技</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 品牌格局速览 -->
+        <div class="section">
+            <h2 class="section-title">🏢 品牌竞争格局速览</h2>
+            <p class="section-desc">AOC/飞利浦双品牌集团稳居第一 · HKC/小米争夺线上份额 · 三星持续发力OLED高端线</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>数据</th>
+                            <th>趋势</th>
+                            <th>来源</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">AOC 市占率</td>
+                            <td><strong>≈14%-16%</strong></td>
+                            <td>连续多年线上第一，电竞+办公双线覆盖</td>
+                            <td>洛图科技 / 奥维云网</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">HKC 市占率</td>
+                            <td><strong>≈11%-13%</strong></td>
+                            <td>极致性价比路线，电竞领域增长最快</td>
+                            <td>洛图科技</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">小米显示器市占率</td>
+                            <td><strong>≈9%-11%</strong></td>
+                            <td>27寸2K高刷爆款路线，Redmi下沉市场</td>
+                            <td>洛图科技 / IDC</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">华硕（含ROG）市占率</td>
+                            <td><strong>≈6%-8%</strong></td>
+                            <td>ROG电竞高端线标杆，万元OLED引领</td>
+                            <td>洛图科技</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">三星显示器市占率</td>
+                            <td><strong>≈5%-7%</strong></td>
+                            <td>QD-OLED独家技术，高端市场差异化</td>
+                            <td>IDC / 群智咨询</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">TOP5品牌集中度</td>
+                            <td><strong>≈48%-52%</strong></td>
+                            <td>格局分散，长尾品牌众多</td>
+                            <td>洛图科技</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Platform Overview -->
+        <div class="section">
+            <h2 class="section-title">📡 各平台指数特征</h2>
+            <p class="section-desc">显示器线上化率超90% · 京东为核心成交平台 · 不同平台搜索意图与内容策略差异显著</p>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon pi-baidu">B</div>
+                    <div class="platform-name">百度指数</div>
+                    <div class="platform-desc"><strong>品牌对比+参数查询为主</strong>。开学季/618/双11为搜索三峰。热门关联词：「显示器推荐」「2K显示器」「电竞显示器推荐」。人群：18-35岁学生+游戏玩家+职场人群，对刷新率、分辨率、面板类型高度敏感。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-wechat">W</div>
+                    <div class="platform-name">微信指数</div>
+                    <div class="platform-desc"><strong>深度测评+办公效率清单</strong>。公众号「科技美学」「爱否科技」等测评文章驱动搜索。"程序员显示器""设计师显示器"类内容在专业社群裂变传播，护眼/低蓝光关注度高。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-douyin">D</div>
+                    <div class="platform-name">抖音巨量云图</div>
+                    <div class="platform-desc"><strong>桌面美学+电竞场景为核心</strong>。电竞显示器帧率实测、桌面搭建展示类短视频高互动。"千元电竞显示器""学生党第一台显示器"类内容种草效果强。HKC、KTC等国产品牌在抖音增速领先。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-xiaohongshu">R</div>
+                    <div class="platform-name">小红书</div>
+                    <div class="platform-desc"><strong>桌面美学+颜值种草主阵地</strong>。「桌面搭配」「白色显示器推荐」「高颜值显示器」等话题高互动。粉色/白色显示器种草笔记点赞数万。"窄边框""无线桌面"等关键词热度上升。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-bilibili">B</div>
+                    <div class="platform-name">B站</div>
+                    <div class="platform-desc"><strong>硬核测评+面板科普大本营</strong>。「先看评测」「笔吧评测室」等UP主深度测评播放量可达百万级。"色域覆盖ΔE""响应时间GTG""HDR实测亮度"等硬核指标关注极高。Mini LED vs OLED对比为年度热门选题。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-jd">J</div>
+                    <div class="platform-name">京东 / 天猫</div>
+                    <div class="platform-desc"><strong>核心成交+搜索对比平台</strong>。京东占显示器线上销量约65%。<code>27寸2K 165Hz</code> <code>4K显示器</code> <code>电竞显示器</code>为京东站内最高频搜索词。用户习惯跨平台对比后回到京东成交。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Price & Spec -->
+        <div class="section">
+            <h2 class="section-title">💰 一、性价比 / 规格参数类关键词</h2>
+            <p class="section-desc">最大搜索需求池 · 27寸+2K+165Hz为"黄金三角"搜索组合 · 800-1500元为最核心价格带</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">显示器推荐</td>
+                            <td><span class="tag tag-blue">选购指南</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>最大搜索量单品词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">27寸2K显示器推荐</td>
+                            <td><span class="tag tag-blue">规格</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>"黄金三角"搜索第一组合</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">千元显示器推荐</td>
+                            <td><span class="tag tag-blue">价格带</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>800-1500元为核心价格带</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">2K 165Hz显示器</td>
+                            <td><span class="tag tag-blue">规格</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>电竞入门最高频搜索组合</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">24寸显示器推荐</td>
+                            <td><span class="tag tag-blue">尺寸</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>FPS电竞玩家首选尺寸</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">显示器性价比排行</td>
+                            <td><span class="tag tag-blue">性价比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>什么值得买年度热词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">500-1000元显示器</td>
+                            <td><span class="tag tag-blue">价格带</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>学生党/办公入门核心带</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Brand -->
+        <div class="section">
+            <h2 class="section-title">🏆 二、品牌对比 / 选择类关键词</h2>
+            <p class="section-desc">品牌格局分散 · AOC/HKC/小米三强对比最多 · 电竞显示器品牌搜索集中度更高</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">显示器哪个牌子好</td>
+                            <td><span class="tag tag-purple">品牌对比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>经典长青搜索词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">AOC显示器怎么样</td>
+                            <td><span class="tag tag-purple">品牌</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>连续多年线上销量第一</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">HKC显示器怎么样</td>
+                            <td><span class="tag tag-purple">品牌</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>电竞性价比之王标签</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">小米显示器值得买吗</td>
+                            <td><span class="tag tag-purple">品牌</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>生态链性价比路线</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">显示器品牌排行榜</td>
+                            <td><span class="tag tag-purple">品牌对比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td>ZOL/排行榜123网高频引用</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">华硕ROG显示器</td>
+                            <td><span class="tag tag-purple">高端品牌</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>电竞高端标杆品牌</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">显示器推荐2026</td>
+                            <td><span class="tag tag-purple">选购指南</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>年度选购指南词</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Gaming & High Refresh -->
+        <div class="section">
+            <h2 class="section-title">🎮 三、电竞 / 高刷显示器类关键词（核心增长引擎）</h2>
+            <p class="section-desc">电竞显示器占线上销量50% · 240Hz+渗透率加速 · Fast-IPS/Nano-IPS为面板技术热词 · 双模显示器兴起</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">电竞显示器推荐</td>
+                            <td><span class="tag tag-orange">品类</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>占线上销量50%</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">240Hz显示器推荐</td>
+                            <td><span class="tag tag-orange">刷新率</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>240Hz加速普及至千元档</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">360Hz显示器</td>
+                            <td><span class="tag tag-orange">刷新率</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>FPS职业级需求</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">双模显示器（4K+高刷切换）</td>
+                            <td><span class="tag tag-teal">新技术</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>4K@160Hz↔FHD@320Hz</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">Fast-IPS显示器</td>
+                            <td><span class="tag tag-cyan">面板技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>电竞主流面板技术词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">千元电竞显示器</td>
+                            <td><span class="tag tag-orange">性价比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>学生电竞群体核心搜索</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Tech & Resolution -->
+        <div class="section">
+            <h2 class="section-title">🆕 四、技术升级 / 面板分辨率类关键词</h2>
+            <p class="section-desc">Mini LED和OLED为最大搜索增长极 · 4K显示器搜索量+35% YoY · Mini LED搜索量+85% YoY · OLED显示器搜索量+120% YoY</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">Mini LED显示器推荐</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>搜索量+85% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">OLED显示器推荐</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>搜索量+120% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">4K显示器推荐</td>
+                            <td><span class="tag tag-cyan">分辨率</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>搜索量+35% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">HDR显示器</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>HDR600/1000认证成选购标准</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">带鱼屏/曲面显示器</td>
+                            <td><span class="tag tag-teal">形态</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>办公/沉浸游戏双场景</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">QD-OLED显示器</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>三星独家·高端搜索热词</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Scene -->
+        <div class="section">
+            <h2 class="section-title">💼 五、办公/设计/场景类关键词</h2>
+            <p class="section-desc">专业场景搜索精细化 · 护眼/低蓝光成标配关注词 · Type-C一线连搜索量快速增长</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">办公显示器推荐</td>
+                            <td><span class="tag tag-green">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>远程办公常态化驱动</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">设计师显示器推荐</td>
+                            <td><span class="tag tag-green">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>色域覆盖/ΔE<2为核心关注</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">Type-C显示器</td>
+                            <td><span class="tag tag-green">功能</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>笔记本外接/一线连方案</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">护眼显示器推荐</td>
+                            <td><span class="tag tag-green">功能</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>低蓝光+DC调光·家长关注</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">Mac外接显示器推荐</td>
+                            <td><span class="tag tag-green">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>4K PPI兼容为核心痛点</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">程序员显示器推荐</td>
+                            <td><span class="tag tag-green">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>竖屏/多屏需求驱动</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword: Review & Promo -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="section">
+            <div>
+                <h2 class="section-title">📝 六、评测/选购指南类</h2>
+                <p class="section-desc">内容种草核心</p>
+                <div class="table-wrap">
+                    <table style="min-width:auto;">
+                        <thead><tr><th>关键词</th><th>百度</th><th>微信</th><th>抖音</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kw-name">显示器选购指南</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                            <tr><td class="kw-name">显示器测评/横评</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">显示器避坑指南</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                            <tr><td class="kw-name">Mini LED vs OLED显示器</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">显示器面板类型科普</td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">🛒 七、大促/促销节点类</h2>
+                <p class="section-desc">强时效性 · 开学季+暑假+大促多重高峰</p>
+                <div class="table-wrap">
+                    <table style="min-width:auto;">
+                        <thead><tr><th>关键词</th><th>峰值月</th><th>热度</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kw-name">显示器618</td><td>5-6月</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">显示器双11</td><td>10-11月</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">开学季显示器</td><td>8-9月</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">显示器国补/以旧换新</td><td>全年</td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                            <tr><td class="kw-name">显示器最低价/历史低价</td><td>大促前后</td><td><span class="stars">★★★★★</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pyramid -->
+        <div class="section">
+            <h2 class="section-title">🔺 关键词需求金字塔</h2>
+            <p class="section-desc">综合百度指数 · 微信指数 · 巨量云图三平台热度分层</p>
+            <div class="pyramid-wrap">
+                <div class="pyramid">
+                    <div class="pyramid-row pyramid-r6">
+                        ⭐ 大促/促销节点类 &nbsp;<span class="pyramid-label">618/双11/开学季/国补 · 强时效性 · 暑假+开学季为显示器特有双峰</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r5">
+                        ⭐⭐ 技术升级/面板分辨率类 &nbsp;<span class="pyramid-label">OLED/Mini LED/4K/QD-OLED · 搜索增速+85%至120% · 高端化引擎</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r4">
+                        ⭐⭐⭐ 评测/选购指南类 &nbsp;<span class="pyramid-label">横评/避坑/Mini LED vs OLED · B站硬核测评 · 面板科普信任驱动</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r3">
+                        ⭐⭐⭐⭐ 办公/设计/场景类 &nbsp;<span class="pyramid-label">Type-C/护眼/Mac外接/程序员 · 专业场景精细化 · 高客单价</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r2">
+                        ⭐⭐⭐⭐⭐ 电竞/高刷类 &nbsp;<span class="pyramid-label">销量占比50% · 240Hz/双模/Fast-IPS · 电竞为核心增长引擎</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r1">
+                        🏆 性价比/规格参数类 &nbsp;<span class="pyramid-label">最大需求池 · 27寸+2K+165Hz黄金三角 · 800-1500元核心带</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP 20 -->
+        <div class="section">
+            <h2 class="section-title">📋 核心关键词矩阵 TOP 20</h2>
+            <p class="section-desc">建议优先布局的关键词列表</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">#</th>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>综合热度</th>
+                            <th>平台策略</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-weight:700;color:#6366f1;">1</td><td class="kw-name">显示器推荐</td><td><span class="tag tag-blue">选购指南</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO+抖音+微信全覆盖</td></tr>
+                        <tr><td style="font-weight:700;color:#6366f1;">2</td><td class="kw-name">电竞显示器推荐</td><td><span class="tag tag-orange">品类</span></td><td><span class="stars">★★★★★</span></td><td>抖音+B站+京东</td></tr>
+                        <tr><td style="font-weight:700;color:#6366f1;">3</td><td class="kw-name">27寸2K显示器推荐</td><td><span class="tag tag-blue">规格</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO+京东+抖音</td></tr>
+                        <tr><td style="font-weight:700;color:#6366f1;">4</td><td class="kw-name">Mini LED显示器推荐</td><td><span class="tag tag-cyan">技术</span></td><td><span class="stars">★★★★★</span></td><td>B站+百度+抖音</td></tr>
+                        <tr><td style="font-weight:700;color:#6366f1;">5</td><td class="kw-name">显示器哪个牌子好</td><td><span class="tag tag-purple">品牌对比</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO+知乎</td></tr>
+                        <tr><td style="font-weight:700;">6</td><td class="kw-name">4K显示器推荐</td><td><span class="tag tag-cyan">分辨率</span></td><td><span class="stars">★★★★★</span></td><td>百度+B站+抖音</td></tr>
+                        <tr><td style="font-weight:700;">7</td><td class="kw-name">OLED显示器推荐</td><td><span class="tag tag-cyan">技术</span></td><td><span class="stars">★★★★★</span></td><td>B站+抖音+百度</td></tr>
+                        <tr><td style="font-weight:700;">8</td><td class="kw-name">2K 165Hz显示器</td><td><span class="tag tag-orange">规格</span></td><td><span class="stars">★★★★★</span></td><td>京东+抖音+百度</td></tr>
+                        <tr><td style="font-weight:700;">9</td><td class="kw-name">显示器选购指南</td><td><span class="tag tag-green">选购指南</span></td><td><span class="stars">★★★★★</span></td><td>微信长文+百度SEO</td></tr>
+                        <tr><td style="font-weight:700;">10</td><td class="kw-name">显示器618/双11</td><td><span class="tag tag-red">促销</span></td><td><span class="stars">★★★★★</span></td><td>提前1-2月布局全平台</td></tr>
+                        <tr><td>11</td><td class="kw-name">千元电竞显示器</td><td><span class="tag tag-orange">性价比</span></td><td><span class="stars">★★★★★</span></td><td>抖音+京东+什么值得买</td></tr>
+                        <tr><td>12</td><td class="kw-name">240Hz显示器推荐</td><td><span class="tag tag-orange">刷新率</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>抖音+B站+京东</td></tr>
+                        <tr><td>13</td><td class="kw-name">办公显示器推荐</td><td><span class="tag tag-green">场景</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+百度+小红书</td></tr>
+                        <tr><td>14</td><td class="kw-name">Type-C显示器</td><td><span class="tag tag-green">功能</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>知乎+小红书+京东</td></tr>
+                        <tr><td>15</td><td class="kw-name">Mac外接显示器推荐</td><td><span class="tag tag-green">场景</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>知乎+小红书+微信</td></tr>
+                        <tr><td>16</td><td class="kw-name">显示器避坑指南</td><td><span class="tag tag-green">选购指南</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+小红书</td></tr>
+                        <tr><td>17</td><td class="kw-name">AOC显示器怎么样</td><td><span class="tag tag-purple">品牌</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>百度SEO+知乎</td></tr>
+                        <tr><td>18</td><td class="kw-name">Mini LED vs OLED显示器</td><td><span class="tag tag-cyan">技术对比</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>B站+百度+知乎</td></tr>
+                        <tr><td>19</td><td class="kw-name">设计师显示器推荐</td><td><span class="tag tag-green">场景</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+知乎+B站</td></tr>
+                        <tr><td>20</td><td class="kw-name">护眼显示器推荐</td><td><span class="tag tag-green">功能</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+小红书+百度</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="section">
+            <h2 class="section-title">⚡ 核心结论</h2>
+            <p class="section-desc">六大关键洞察</p>
+            <div class="conclusion-grid">
+                <div class="conclusion-card">
+                    <div class="cc-num">01</div>
+                    <div class="cc-title">"黄金三角"搜索占据绝对主导</div>
+                    <div class="cc-desc">27寸+2K分辨率+165Hz刷新率构成显示器搜索的"黄金三角"组合。这一组合覆盖电竞入门到办公升级的全场景需求，800-1500元为核心决策价格带。"27寸2K显示器推荐"是搜索量最高的具体规格长尾词。</div>
+                </div>
+                <div class="conclusion-card c2">
+                    <div class="cc-num">02</div>
+                    <div class="cc-title">电竞是显示器搜索的第一驱动力</div>
+                    <div class="cc-desc">电竞显示器已占线上销量50%，从2019年的12%跃升至半壁江山。"240Hz""Fast-IPS""双模显示器"等关键词搜索增速显著。FPS玩家对24寸高刷、3A玩家对32寸4K OLED形成两条清晰搜索路径。</div>
+                </div>
+                <div class="conclusion-card c3">
+                    <div class="cc-num">03</div>
+                    <div class="cc-title">Mini LED与OLED搜索爆发式增长</div>
+                    <div class="cc-desc">Mini LED搜索量+85% YoY，OLED搜索量+120% YoY。价格下探（Mini LED已入2000元档，OLED入3000元档）使高端面板技术从"小众尝鲜"进入"大众选购"视野。"Mini LED vs OLED"对比搜索成为年度最热技术选题。</div>
+                </div>
+                <div class="conclusion-card c4">
+                    <div class="cc-num">04</div>
+                    <div class="cc-title">Type-C/一线连成为办公升级标配搜索词</div>
+                    <div class="cc-desc">随着笔记本轻薄化普及，Type-C一线连（充电+视频+数据传输）成为办公显示器搜索高频词。"Mac外接显示器""Type-C显示器推荐"搜索量持续增长，65W/90W反向充电能力成为选购核心关注指标。</div>
+                </div>
+                <div class="conclusion-card c5">
+                    <div class="cc-num">05</div>
+                    <div class="cc-title">品牌搜索格局分散，内容种草空间大</div>
+                    <div class="cc-desc">TOP5品牌集中度仅48%-52%，远低于笔记本和电视品类。这意味着中小品牌和新品牌有更大的搜索突围机会。"HKC""KTC""泰坦军团"等性价比品牌通过抖音+B站内容种草实现搜索量快速增长。</div>
+                </div>
+                <div class="conclusion-card c6">
+                    <div class="cc-num">06</div>
+                    <div class="cc-title">B站是显示器内容生态不可替代的决策阵地</div>
+                    <div class="cc-desc">显示器作为"参数驱动型"品类，B站硬核测评对购买决策影响极大。色域ΔE实测、响应时间GTG对比、HDR亮度实测等可量化指标在B站具有最高信任度。"先看评测"等UP主的显示器横评单集可直接影响某一型号的京东搜索量。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="section">
+            <h2 class="section-title">📚 参考报告清单</h2>
+            <p class="section-desc">本报告引用的权威数据来源（14+份）</p>
+            <ul class="report-list">
+                <li><span class="report-num">1</span>《中国显示器线上零售市场月度追踪》<span class="report-meta">洛图科技(RUNTO) · 2025-2026</span></li>
+                <li><span class="report-num">2</span>《2025年中国显示器线上全渠道市场年报》<span class="report-meta">洛图科技 · 2026.01</span></li>
+                <li><span class="report-num">3</span>中国显示器市场季度追踪报告（IDC Worldwide Quarterly PC Monitor Tracker）<span class="report-meta">IDC · 2025-2026</span></li>
+                <li><span class="report-num">4</span>《全球显示器面板及整机市场趋势报告》<span class="report-meta">群智咨询(Sigmaintell) · 2026</span></li>
+                <li><span class="report-num">5</span>《2025年全球显示器出货量报告》<span class="report-meta">集邦咨询(TrendForce) · 2026</span></li>
+                <li><span class="report-num">6</span>奥维云网(AVC)显示器线上零售监测数据<span class="report-meta">奥维云网 · 2025-2026</span></li>
+                <li><span class="report-num">7</span>《PC显示器市场：年度回顾与展望》<span class="report-meta">IDC · 2025.12</span></li>
+                <li><span class="report-num">8</span>《2026年全球电竞显示器发展趋势白皮书》<span class="report-meta">TrendForce · 2026.03</span></li>
+                <li><span class="report-num">9</span>《Mini LED背光显示器市场渗透率及技术路线》<span class="report-meta">群智咨询 · 2026</span></li>
+                <li><span class="report-num">10</span>《OLED显示器全球市场前景分析》<span class="report-meta">Omdia · 2026</span></li>
+                <li><span class="report-num">11</span>《全球显示器面板出货与价格趋势》<span class="report-meta">群智咨询 · 2025-2026</span></li>
+                <li><span class="report-num">12</span>《2026-2030中国显示器行业市场深度调研报告》<span class="report-meta">中研普华 · 2026</span></li>
+                <li><span class="report-num">13</span>巨量云图·抖音显示器品类数据<span class="report-meta">巨量引擎 · 2025</span></li>
+                <li><span class="report-num">14</span>京东商智·显示器品类搜索洞察<span class="report-meta">京东 · 2025-2026</span></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>显示器关键词全维度分析报告 · 2026 &copy; · 数据来源：百度指数 / 微信指数 / 巨量云图 / Google Trends / 洛图科技 / IDC / 群智咨询 / 奥维云网 / TrendForce / Omdia / 中研普华 / 京东商智</p>
+        <p style="margin-top:4px;font-size:0.72rem;">💡 实操提示：显示器品类建议重点监测"电竞显示器""Mini LED显示器""OLED显示器""27寸2K""4K显示器""Type-C显示器""双模显示器""240Hz"等关键词搜索趋势；暑假+开学季（7-9月）为显示器特有搜索高峰，建议5-6月启动内容预热；B站+抖音为电竞/游戏向核心渠道，小红书+微信为办公/设计向核心渠道，京东为最终成交闭环平台。</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【超红传媒】电视机关键词全维度分析报告 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --surface2: #f0f2f5;
+            --text: #1a1d28;
+            --text2: #5a5f6e;
+            --text3: #8b8f9a;
+            --blue: #2563eb;
+            --blue-light: #dbeafe;
+            --blue-dark: #1d4ed8;
+            --green: #059669;
+            --green-light: #d1fae5;
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+            --purple: #7c3aed;
+            --purple-light: #ede9fe;
+            --red: #dc2626;
+            --red-light: #fef2f2;
+            --cyan: #0891b2;
+            --cyan-light: #ecfeff;
+            --gold: #b8860b;
+            --gold-light: #fef9e7;
+            --indigo: #4338ca;
+            --indigo-light: #e0e7ff;
+            --border: #e5e7eb;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            background: linear-gradient(160deg, #0c1445 0%, #1a237e 30%, #283593 55%, #1a1d28 100%);
+            color: #fff;
+            padding: 64px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(67, 56, 202, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -60px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #818cf8, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: #a5b4fc;
+            max-width: 640px;
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+        .hero-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .hero-sources span {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ---- Container ---- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px 64px;
+        }
+
+        /* ---- Section ---- */
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .section-desc {
+            font-size: 0.9rem;
+            color: var(--text3);
+            margin-bottom: 20px;
+        }
+
+        /* ---- KPI Cards ---- */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .kpi-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s;
+        }
+        .kpi-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .kpi-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text3);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+        .kpi-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        .kpi-change {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        .kpi-change.up {
+            color: var(--green);
+        }
+        .kpi-change.warn {
+            color: var(--orange);
+        }
+        .kpi-change.down {
+            color: var(--red);
+        }
+        .kpi-source {
+            font-size: 0.7rem;
+            color: var(--text3);
+            margin-top: 4px;
+        }
+
+        /* ---- Table ---- */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 800px;
+        }
+        thead th {
+            background: #f8f9fb;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--text2);
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 11px 16px;
+            border-bottom: 1px solid #f1f3f5;
+            vertical-align: middle;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover {
+            background: #fafbfc;
+        }
+        .kw-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .stars {
+            display: inline-flex;
+            gap: 1px;
+            color: #f59e0b;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .stars .dim {
+            color: #d1d5db;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .tag-blue {
+            background: var(--blue-light);
+            color: var(--blue-dark);
+        }
+        .tag-green {
+            background: var(--green-light);
+            color: #065f46;
+        }
+        .tag-orange {
+            background: var(--orange-light);
+            color: #9a3412;
+        }
+        .tag-purple {
+            background: var(--purple-light);
+            color: #5b21b6;
+        }
+        .tag-cyan {
+            background: var(--cyan-light);
+            color: #155e75;
+        }
+        .tag-red {
+            background: var(--red-light);
+            color: #991b1b;
+        }
+        .tag-gold {
+            background: var(--gold-light);
+            color: #92400e;
+        }
+        .tag-indigo {
+            background: var(--indigo-light);
+            color: #3730a3;
+        }
+
+        /* ---- Pyramid ---- */
+        .pyramid-wrap {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px 28px 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .pyramid-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 13px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #fff;
+            text-align: center;
+            transition: transform 0.15s;
+            cursor: default;
+            position: relative;
+        }
+        .pyramid-row:hover {
+            transform: scale(1.02);
+        }
+        .pyramid-r1 {
+            width: 280px;
+            background: linear-gradient(135deg, #1e3a5f, #2563eb);
+        }
+        .pyramid-r2 {
+            width: 380px;
+            background: linear-gradient(135deg, #1e4d6e, #0891b2);
+        }
+        .pyramid-r3 {
+            width: 470px;
+            background: linear-gradient(135deg, #2d5a3f, #059669);
+        }
+        .pyramid-r4 {
+            width: 550px;
+            background: linear-gradient(135deg, #5c3b1f, #ea580c);
+        }
+        .pyramid-r5 {
+            width: 620px;
+            background: linear-gradient(135deg, #4a1d6e, #7c3aed);
+        }
+        .pyramid-r6 {
+            width: 680px;
+            background: linear-gradient(135deg, #6b1a1a, #dc2626);
+        }
+        .pyramid-label {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        /* ---- Platform Grid ---- */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .platform-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s;
+        }
+        .platform-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .platform-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .platform-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .platform-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+        .pi-baidu {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .pi-wechat {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .pi-douyin {
+            background: #1a1d28;
+            color: #fff;
+        }
+        .pi-xiaohongshu {
+            background: #fce7f3;
+            color: #be185d;
+        }
+        .pi-bilibili {
+            background: #fef3c7;
+            color: #b45309;
+        }
+        .pi-amazon {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        /* ---- Report List ---- */
+        .report-list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+        .report-list li {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        .report-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--indigo-light);
+            color: #3730a3;
+            font-weight: 700;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .report-meta {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text3);
+            white-space: nowrap;
+        }
+
+        /* ---- Conclusion Cards ---- */
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 14px;
+        }
+        .conclusion-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            border-left: 4px solid var(--indigo);
+            box-shadow: var(--shadow-sm);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .conclusion-card.c2 {
+            border-left-color: var(--blue);
+        }
+        .conclusion-card.c3 {
+            border-left-color: var(--orange);
+        }
+        .conclusion-card.c4 {
+            border-left-color: var(--gold);
+        }
+        .conclusion-card.c5 {
+            border-left-color: var(--cyan);
+        }
+        .conclusion-card.c6 {
+            border-left-color: var(--red);
+        }
+        .cc-num {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--border);
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .cc-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .cc-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text3);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 0 48px;
+            }
+            .container {
+                padding: 0 16px 40px;
+            }
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .kpi-card {
+                padding: 14px 16px;
+            }
+            .kpi-value {
+                font-size: 1.35rem;
+            }
+            table {
+                font-size: 0.78rem;
+            }
+            thead th,
+            tbody td {
+                padding: 8px 10px;
+            }
+            .pyramid-r1 {
+                width: 200px;
+            }
+            .pyramid-r2 {
+                width: 260px;
+            }
+            .pyramid-r3 {
+                width: 300px;
+            }
+            .pyramid-r4 {
+                width: 330px;
+            }
+            .pyramid-r5 {
+                width: 350px;
+            }
+            .pyramid-r6 {
+                width: 370px;
+            }
+            .pyramid-row {
+                font-size: 0.75rem;
+                padding: 10px 14px;
+                gap: 8px;
+            }
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+            .conclusion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== Hero ====== -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">📺 关键词全维度分析 · 2026</div>
+            <h1>【超红传媒】电视机<br><span>搜索关键词</span>洞察报告</h1>
+            <p class="hero-sub">整合微信指数 · 百度指数 · 巨量云图（抖音）· Google Trends · 亚马逊搜索数据，结合奥维云网、洛图科技、中怡康、群智咨询、中国电子视像行业协会等权威报告，系统解析电视机品类关键词体系。</p>
+            <div class="hero-sources">
+                <span>🔵 百度指数</span>
+                <span>🟢 微信指数</span>
+                <span>🟣 巨量云图</span>
+                <span>📦 亚马逊搜索</span>
+                <span>🌐 Google Trends</span>
+                <span>📋 14+ 行业报告</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== Main Content ====== -->
+    <div class="container">
+
+        <!-- KPI -->
+        <div class="section">
+            <h2 class="section-title">📈 市场大盘速览</h2>
+            <p class="section-desc">2025–2026年电视机核心市场指标 · 存量替换为主 · 大尺寸化与Mini LED双轮驱动</p>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">2025 中国彩电零售量</div>
+                    <div class="kpi-value">≈3,600<span style="font-size:0.8em;font-weight:500;"> 万台</span></div>
+                    <div class="kpi-change up">↑ 微幅回暖</div>
+                    <div class="kpi-source">奥维云网 / 洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">2025 中国彩电零售额</div>
+                    <div class="kpi-value">≈1,250<span style="font-size:0.8em;font-weight:500;"> 亿元</span></div>
+                    <div class="kpi-change up">↑ 均价回升</div>
+                    <div class="kpi-source">奥维云网</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">75寸+ 销量占比</div>
+                    <div class="kpi-value">≈28<span style="font-size:0.8em;font-weight:500;">%</span></div>
+                    <div class="kpi-change up">↑ 同比+5.2pp</div>
+                    <div class="kpi-source">洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Mini LED 渗透率</div>
+                    <div class="kpi-value">≈18<span style="font-size:0.8em;font-weight:500;">%</span></div>
+                    <div class="kpi-change up">↑ 同比+8pp · 核心增长引擎</div>
+                    <div class="kpi-source">群智咨询 / 洛图科技</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">2026Q1 线上均价</div>
+                    <div class="kpi-value">≈3,150<span style="font-size:0.8em;font-weight:500;"> 元</span></div>
+                    <div class="kpi-change warn">大尺寸拉动均价回升</div>
+                    <div class="kpi-source">奥维云网</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">中国家庭渗透率</div>
+                    <div class="kpi-value">≈98<span style="font-size:0.8em;font-weight:500;">%</span></div>
+                    <div class="kpi-change" style="color:var(--blue);">存量替换驱动 · 换新周期</div>
+                    <div class="kpi-source">中国电子视像行业协会</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 品牌格局速览 -->
+        <div class="section">
+            <h2 class="section-title">🏢 品牌竞争格局速览</h2>
+            <p class="section-desc">国产品牌主导 · 海信/TCL双雄领跑 · 小米线上强势 · 华为智慧屏快速崛起</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>数据</th>
+                            <th>趋势</th>
+                            <th>来源</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">TOP3 品牌集中度</td>
+                            <td><strong>≈52%</strong>（海信+TCL+小米）</td>
+                            <td>国产三强稳固，格局趋于成熟</td>
+                            <td>奥维云网 / 洛图科技</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">海信（含VIDDA）市占率</td>
+                            <td><strong>≈22%-24%</strong></td>
+                            <td>连续多年国内第一</td>
+                            <td>奥维云网</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">TCL（含雷鸟）市占率</td>
+                            <td><strong>≈18%-21%</strong></td>
+                            <td>Mini LED品类领先，华星面板协同</td>
+                            <td>奥维云网 / 洛图科技</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">小米（含Redmi）市占率</td>
+                            <td><strong>≈11%-13%</strong></td>
+                            <td>线上渠道强势，大尺寸性价比路线</td>
+                            <td>奥维云网</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">创维市占率</td>
+                            <td><strong>≈8%-10%</strong></td>
+                            <td>OLED高端线+下沉渠道稳固</td>
+                            <td>奥维云网</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">华为智慧屏市占率</td>
+                            <td><strong>≈3%-5%</strong></td>
+                            <td>鸿蒙生态差异化，增速亮眼</td>
+                            <td>洛图科技</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Platform Overview -->
+        <div class="section">
+            <h2 class="section-title">📡 各平台指数特征</h2>
+            <p class="section-desc">电视机品类线上化率高 · 不同平台搜索意图与内容策略差异</p>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon pi-baidu">B</div>
+                    <div class="platform-name">百度指数</div>
+                    <div class="platform-desc"><strong>品牌对比+参数查询为主</strong>。618/双11为搜索双峰。热门关联词：「电视机推荐」「65寸电视哪个好」「海信vs TCL」。人群：30-50岁家庭决策者，新房装修及换机需求为核心。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-wechat">W</div>
+                    <div class="platform-name">微信指数</div>
+                    <div class="platform-desc"><strong>深度评测与新房家电清单</strong>。公众号横评文章+视频号实测驱动搜索峰值。"装修家电清单""客厅电视尺寸选择"类内容在装修社群裂变传播效果显著。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-douyin">D</div>
+                    <div class="platform-name">抖音巨量云图</div>
+                    <div class="platform-desc"><strong>直播带货+画质对比为核心</strong>。Mini LED vs OLED画质对比视频高互动。"大屏搬回家""98寸入户实拍"类内容种草效果强。游戏电视+高刷概念在抖音年轻人群中传播力强。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-xiaohongshu">R</div>
+                    <div class="platform-name">小红书</div>
+                    <div class="platform-desc"><strong>家居美学+客厅搭配主阵地</strong>。「电视背景墙」「激光电视vs传统电视」「隐藏式安装」等话题高互动。颜值与空间融合是核心决策因素，"不破坏装修风格"关注度高。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-bilibili">B</div>
+                    <div class="platform-name">B站</div>
+                    <div class="platform-desc"><strong>硬核技术测评大本营</strong>。「Mini LED光晕测试」「色准ΔE实测」「游戏模式延迟」等硬核内容信任度高。PS5/Xbox玩家群体对4K120Hz/VRR等参数高度敏感。</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon pi-amazon">A</div>
+                    <div class="platform-name">亚马逊 / 海外</div>
+                    <div class="platform-desc"><strong>出海核心渠道</strong>。TCL/海信全球出货量第二、第三。<code>4K TV</code> <code>QLED TV</code> <code>gaming TV</code>为海外热词。北美市场大尺寸化趋势同步，Google Trends"Mini LED TV"搜索量同比+85%。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Price & Size -->
+        <div class="section">
+            <h2 class="section-title">💰 一、性价比 / 尺寸价格类关键词</h2>
+            <p class="section-desc">最大搜索需求池 · 65/75寸占搜索量50%+ · 55寸以下搜索萎缩 · Mini LED成"性价比高端"代名词</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">65寸电视推荐</td>
+                            <td><span class="tag tag-blue">尺寸</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>65寸搜索量最大</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">75寸电视性价比推荐</td>
+                            <td><span class="tag tag-blue">尺寸+性价比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>75寸增速最快</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">3000元电视推荐</td>
+                            <td><span class="tag tag-blue">价格带</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>2000-4000元为主力价格带</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">85/98寸大屏电视</td>
+                            <td><span class="tag tag-blue">尺寸</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>98寸销量+150% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">55寸电视推荐</td>
+                            <td><span class="tag tag-blue">尺寸</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td>搜索量持续萎缩</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">电视性价比排行</td>
+                            <td><span class="tag tag-blue">性价比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>什么值得买年度热度词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">5000元以内电视推荐</td>
+                            <td><span class="tag tag-blue">价格带</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>中端主力价位段</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Brand -->
+        <div class="section">
+            <h2 class="section-title">🏆 二、品牌对比 / 选择类关键词</h2>
+            <p class="section-desc">决策关键环节 · 海信/TCL对比搜索最激烈 · 小米/华为智慧屏差异化对比兴起</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">电视机哪个牌子好</td>
+                            <td><span class="tag tag-purple">品牌对比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>经典长青搜索词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">海信vsTCL电视哪个好</td>
+                            <td><span class="tag tag-purple">品牌对比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>国产双雄对比最热</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">电视机品牌排行榜</td>
+                            <td><span class="tag tag-purple">品牌对比</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td>ZOL/排行榜123网高频引用</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">小米电视怎么样</td>
+                            <td><span class="tag tag-purple">品牌</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>性价比标签深入人心</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">华为智慧屏值得买吗</td>
+                            <td><span class="tag tag-purple">品牌</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>鸿蒙生态差异化关注</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">索尼/三星高端电视</td>
+                            <td><span class="tag tag-gold">高端品牌</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td>高端画质标杆</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">电视推荐2026</td>
+                            <td><span class="tag tag-purple">选购指南</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>年度选购指南词</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Scene & Tech -->
+        <div class="section">
+            <h2 class="section-title">🎯 三、场景 / 技术功能类关键词（高转化）</h2>
+            <p class="section-desc">Mini LED是最大搜索增长极 · 游戏电视/高刷电视为年轻用户入口 · 85寸+搜索量爆发</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">Mini LED电视推荐</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>搜索量+120% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">游戏电视推荐</td>
+                            <td><span class="tag tag-orange">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>PS5/Xbox玩家核心关注</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">4K 120Hz电视</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>游戏+体育赛事双场景</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">OLED电视推荐</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>画质发烧友首选</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">客厅电视尺寸选择</td>
+                            <td><span class="tag tag-orange">场景</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>新房装修高频问题</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">QLED量子点电视</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>TCL主推技术路线</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">激光电视/投影电视</td>
+                            <td><span class="tag tag-orange">品类</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>100寸+性价比方案</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword Table: Additional Tech Features -->
+        <div class="section">
+            <h2 class="section-title">🆕 四、新兴功能/差异化关键词</h2>
+            <p class="section-desc">2026年技术热点 · 百寸级入户 · AI画质芯片 · 艺术电视/壁画电视 · 一级能效补贴</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>百度热度</th>
+                            <th>微信热度</th>
+                            <th>抖音热度</th>
+                            <th>核心数据支撑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kw-name">百寸电视/100寸电视</td>
+                            <td><span class="tag tag-gold">尺寸</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>搜索量+180% YoY</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">AI电视/智能电视AI</td>
+                            <td><span class="tag tag-indigo">技术</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>AWE2026搜索+950%</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">壁画电视/艺术电视</td>
+                            <td><span class="tag tag-orange">品类</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td>小红书家居美学热词</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">电视一级能效</td>
+                            <td><span class="tag tag-green">政策</span></td>
+                            <td><span class="stars">★★★★★</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>国补政策拉动效应显著</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">运动补偿电视</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>体育赛事年需求激增</td>
+                        </tr>
+                        <tr>
+                            <td class="kw-name">分区控光电视</td>
+                            <td><span class="tag tag-cyan">技术</span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                            <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                            <td>Mini LED核心对比指标</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyword: Review & Promo -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="section">
+            <div>
+                <h2 class="section-title">📝 五、评测/选购指南类</h2>
+                <p class="section-desc">内容种草核心</p>
+                <div class="table-wrap">
+                    <table style="min-width:auto;">
+                        <thead><tr><th>关键词</th><th>百度</th><th>微信</th><th>抖音</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kw-name">电视选购指南</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                            <tr><td class="kw-name">电视测评/横评</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视避坑指南</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                            <tr><td class="kw-name">Mini LED vs OLED</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视值得换吗</td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">🛒 六、大促/促销节点类</h2>
+                <p class="section-desc">强时效性 · 大促月集中爆发</p>
+                <div class="table-wrap">
+                    <table style="min-width:auto;">
+                        <thead><tr><th>关键词</th><th>峰值月</th><th>热度</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kw-name">电视618</td><td>5-6月</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视双11</td><td>10-11月</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视国补/以旧换新</td><td>全年</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视最低价/历史低价</td><td>大促前后</td><td><span class="stars">★★★★★</span></td></tr>
+                            <tr><td class="kw-name">电视年货节/春节</td><td>12-1月</td><td><span class="stars">★★★★<span class="dim">★</span></span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pyramid -->
+        <div class="section">
+            <h2 class="section-title">🔺 关键词需求金字塔</h2>
+            <p class="section-desc">综合百度指数 · 微信指数 · 巨量云图三平台热度分层</p>
+            <div class="pyramid-wrap">
+                <div class="pyramid">
+                    <div class="pyramid-row pyramid-r6">
+                        ⭐ 大促/促销节点类 &nbsp;<span class="pyramid-label">618/双11/国补 · 强时效性 · "以旧换新"贯穿全年</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r5">
+                        ⭐⭐ 新兴差异化功能类 &nbsp;<span class="pyramid-label">AI芯片/百寸/壁画电视 · 新品类搜索爆发 · 差异竞争点</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r4">
+                        ⭐⭐⭐ 评测/选购指南类 &nbsp;<span class="pyramid-label">横评/避坑/Mini LED vs OLED · UGC信任驱动</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r3">
+                        ⭐⭐⭐⭐ 场景/技术功能类 &nbsp;<span class="pyramid-label">Mini LED/游戏电视/4K120Hz · 高转化 · Mini LED搜索+120%</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r2">
+                        ⭐⭐⭐⭐⭐ 品牌对比/选择类 &nbsp;<span class="pyramid-label">海信vsTCL白热化 · 小米/华为差异化 · TOP3≈52%</span>
+                    </div>
+                    <div class="pyramid-row pyramid-r1">
+                        🏆 性价比/尺寸价格类 &nbsp;<span class="pyramid-label">最大需求池 · 65/75寸占50%+ · 3000-5000元主力带</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP 20 -->
+        <div class="section">
+            <h2 class="section-title">📋 核心关键词矩阵 TOP 20</h2>
+            <p class="section-desc">建议优先布局的关键词列表</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">#</th>
+                            <th>关键词</th>
+                            <th>类型</th>
+                            <th>综合热度</th>
+                            <th>平台策略</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-weight:700;color:var(--indigo);">1</td><td class="kw-name">电视推荐</td><td><span class="tag tag-blue">选购指南</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO+抖音+微信全覆盖</td></tr>
+                        <tr><td style="font-weight:700;color:var(--indigo);">2</td><td class="kw-name">Mini LED电视推荐</td><td><span class="tag tag-cyan">技术</span></td><td><span class="stars">★★★★★</span></td><td>百度+抖音+B站技术向</td></tr>
+                        <tr><td style="font-weight:700;color:var(--indigo);">3</td><td class="kw-name">电视机哪个牌子好</td><td><span class="tag tag-purple">品牌对比</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO长文+知乎</td></tr>
+                        <tr><td style="font-weight:700;color:var(--indigo);">4</td><td class="kw-name">65寸电视推荐</td><td><span class="tag tag-blue">尺寸</span></td><td><span class="stars">★★★★★</span></td><td>百度+抖音+什么值得买</td></tr>
+                        <tr><td style="font-weight:700;color:var(--indigo);">5</td><td class="kw-name">75寸电视性价比推荐</td><td><span class="tag tag-blue">尺寸+性价比</span></td><td><span class="stars">★★★★★</span></td><td>抖音短视频+百度SEO</td></tr>
+                        <tr><td style="font-weight:700;">6</td><td class="kw-name">海信vsTCL电视哪个好</td><td><span class="tag tag-purple">品牌对比</span></td><td><span class="stars">★★★★★</span></td><td>百度SEO+知乎+B站</td></tr>
+                        <tr><td style="font-weight:700;">7</td><td class="kw-name">游戏电视推荐</td><td><span class="tag tag-orange">场景</span></td><td><span class="stars">★★★★★</span></td><td>B站+抖音+京东</td></tr>
+                        <tr><td style="font-weight:700;">8</td><td class="kw-name">电视选购指南</td><td><span class="tag tag-green">选购指南</span></td><td><span class="stars">★★★★★</span></td><td>微信长文+百度SEO</td></tr>
+                        <tr><td style="font-weight:700;">9</td><td class="kw-name">百寸电视/100寸电视</td><td><span class="tag tag-gold">尺寸</span></td><td><span class="stars">★★★★★</span></td><td>抖音+小红书+京东</td></tr>
+                        <tr><td style="font-weight:700;">10</td><td class="kw-name">电视618/双11</td><td><span class="tag tag-red">促销</span></td><td><span class="stars">★★★★★</span></td><td>提前1-2月布局全平台</td></tr>
+                        <tr><td>11</td><td class="kw-name">电视国补/以旧换新</td><td><span class="tag tag-green">政策</span></td><td><span class="stars">★★★★★</span></td><td>百度+抖音信息流</td></tr>
+                        <tr><td>12</td><td class="kw-name">AI电视/智能电视AI</td><td><span class="tag tag-indigo">技术</span></td><td><span class="stars">★★★★★</span></td><td>抖音+B站+微信</td></tr>
+                        <tr><td>13</td><td class="kw-name">电视测评/横评</td><td><span class="tag tag-green">评测</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>B站深度+微信+抖音</td></tr>
+                        <tr><td>14</td><td class="kw-name">3000元电视推荐</td><td><span class="tag tag-blue">价格带</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>百度+抖音带货</td></tr>
+                        <tr><td>15</td><td class="kw-name">壁画电视/艺术电视</td><td><span class="tag tag-orange">品类</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>小红书+抖音家居类</td></tr>
+                        <tr><td>16</td><td class="kw-name">OLED电视推荐</td><td><span class="tag tag-cyan">技术</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>百度+B站高端向</td></tr>
+                        <tr><td>17</td><td class="kw-name">电视避坑指南</td><td><span class="tag tag-green">选购指南</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+小红书</td></tr>
+                        <tr><td>18</td><td class="kw-name">客厅电视尺寸选择</td><td><span class="tag tag-orange">场景</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>微信+小红书装修类</td></tr>
+                        <tr><td>19</td><td class="kw-name">4K 120Hz电视</td><td><span class="tag tag-cyan">技术</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>京东+B站+抖音</td></tr>
+                        <tr><td>20</td><td class="kw-name">小米电视怎么样</td><td><span class="tag tag-purple">品牌</span></td><td><span class="stars">★★★★<span class="dim">★</span></span></td><td>百度SEO+知乎+抖音</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="section">
+            <h2 class="section-title">⚡ 核心结论</h2>
+            <p class="section-desc">六大关键洞察</p>
+            <div class="conclusion-grid">
+                <div class="conclusion-card">
+                    <div class="cc-num">01</div>
+                    <div class="cc-title">"大尺寸化"是搜索第一驱动力</div>
+                    <div class="cc-desc">65/75寸搜索量占50%+，85/98/100寸搜索爆发（+150%-180% YoY）。"客厅电视尺寸选择"为新房装修高频搜索词。55寸以下搜索持续萎缩。</div>
+                </div>
+                <div class="conclusion-card c2">
+                    <div class="cc-num">02</div>
+                    <div class="cc-title">Mini LED已成技术搜索核心</div>
+                    <div class="cc-desc">Mini LED搜索量同比+120%，成为"性价比高端"代名词。"Mini LED vs OLED"对比搜索持续走高。分区控光数成为用户可量化对比指标。</div>
+                </div>
+                <div class="conclusion-card c3">
+                    <div class="cc-num">03</div>
+                    <div class="cc-title">"以旧换新"成为年度最强政策词</div>
+                    <div class="cc-desc">国补+以旧换新贯穿全年搜索。一级能效电视搜索量显著提升。政策补贴驱动存量替换，对大尺寸/Mini LED升级需求拉动明显。</div>
+                </div>
+                <div class="conclusion-card c4">
+                    <div class="cc-num">04</div>
+                    <div class="cc-title">海信vsTCL是品牌对比最强战场</div>
+                    <div class="cc-desc">国产双雄对比搜索量远超其他组合。面板技术路线（Mini LED/QLED/OLED）成为品牌差异化的搜索锚点。小米/华为智慧屏开辟差异化对比维度。</div>
+                </div>
+                <div class="conclusion-card c5">
+                    <div class="cc-num">05</div>
+                    <div class="cc-title">AI+电视是2026最大新增长极</div>
+                    <div class="cc-desc">"AI电视""智能电视AI"搜索量在AWE2026期间+950%。AI画质芯片、AI语音交互、AI内容推荐成为差异化新战场。与智能家居联动的搜索增长显著。</div>
+                </div>
+                <div class="conclusion-card c6">
+                    <div class="cc-num">06</div>
+                    <div class="cc-title">游戏/体育场景是年轻用户入口</div>
+                    <div class="cc-desc">"游戏电视""4K 120Hz""运动补偿"搜索量稳定高位。PS5/Xbox玩家群体对VRR/ALLM/低延迟等参数高度敏感。体育赛事年（世界杯周期）相关搜索脉冲式爆发。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="section">
+            <h2 class="section-title">📚 参考报告清单</h2>
+            <p class="section-desc">本报告引用的权威数据来源（14+份）</p>
+            <ul class="report-list">
+                <li><span class="report-num">1</span>《2025年中国彩电市场年度报告》<span class="report-meta">奥维云网(AVC) · 2026.01</span></li>
+                <li><span class="report-num">2</span>《2026上半年中国彩电线上市场半年报》<span class="report-meta">洛图科技(RUNTO) · 2026.07</span></li>
+                <li><span class="report-num">3</span>《2025年中国彩电市场零售监测数据》<span class="report-meta">奥维云网 · 2025</span></li>
+                <li><span class="report-num">4</span>《全球电视面板及整机市场趋势报告》<span class="report-meta">群智咨询(Sigmaintell) · 2026</span></li>
+                <li><span class="report-num">5</span>《中国彩电行业发展趋势与投资前景分析报告》<span class="report-meta">中研普华 · 2026</span></li>
+                <li><span class="report-num">6</span>《2026年Mini LED电视市场渗透率及技术路线白皮书》<span class="report-meta">中国电子视像行业协会 · 2026.03</span></li>
+                <li><span class="report-num">7</span>GfK中怡康彩电市场月度零售监测<span class="report-meta">GfK中怡康 · 2025-2026</span></li>
+                <li><span class="report-num">8</span>《全球TV品牌出货量月度数据报告》<span class="report-meta">洛图科技 · 2025-2026</span></li>
+                <li><span class="report-num">9</span>《2026年"以旧换新"政策对家电消费拉动效应评估》<span class="report-meta">中国家用电器协会 · 2026</span></li>
+                <li><span class="report-num">10</span>《2025年全球电视市场研究报告》<span class="report-meta">IDC · 2025.12</span></li>
+                <li><span class="report-num">11</span>《大屏化趋势下中国彩电消费行为洞察》<span class="report-meta">艾媒咨询 · 2026</span></li>
+                <li><span class="report-num">12</span>《AI电视：下一代智能家庭入口》<span class="report-meta">腾讯新闻/36氪 · 2026</span></li>
+                <li><span class="report-num">13</span>《全球电视行业发展趋势洞察报告（2026）》<span class="report-meta">IIM信息 · 2026</span></li>
+                <li><span class="report-num">14</span>巨量云图·抖音电视机品类数据<span class="report-meta">巨量引擎 · 2025</span></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>电视机关键词全维度分析报告 · 2026 &copy; · 数据来源：百度指数 / 微信指数 / 巨量云图 / Google Trends / 奥维云网 / 洛图科技 / 中怡康 / 群智咨询 / 中研普华 / 中国电子视像行业协会</p>
+        <p style="margin-top:4px;font-size:0.72rem;">💡 实操提示：电视机品类建议重点监测"Mini LED""百寸电视""AI电视""以旧换新""游戏电视"等关键词搜索趋势；大促前2个月启动内容布局；B站+抖音为技术类内容核心渠道，小红书+微信为家居场景核心渠道。</p>
+    </footer>
+
+</body>
+</html>
