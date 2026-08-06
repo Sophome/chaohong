@@ -8,7 +8,8 @@
 :root{--c:#4285f4;--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--txt:#1a2333;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);}
-header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:22px 28px;}
+header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:22px 0;}
+.header-inner{max-width:1500px;margin:0 auto;padding:0 18px;}
 header h1{font-size:22px;margin-bottom:4px}
 header p{font-size:13px;opacity:.85}
 .wrap{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1500px;margin:0 auto;align-items:start}
@@ -22,14 +23,13 @@ header p{font-size:13px;opacity:.85}
 input[type=text],input[type=number]{border:1px solid var(--line);border-radius:7px;padding:7px 9px;font-size:13px;width:100%}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{border:1px solid var(--line);padding:7px 9px;text-align:center;vertical-align:middle}
-th{background:#f0f4fb;font-weight:600;color:#0f2557;position:sticky;top:0}
+th{background:#f0f4fb;font-weight:600;color:#0f2557}
 td.item{text-align:left;min-width:220px;background:#fff}
 td.item .hint{font-size:11px;color:#8a94a6;margin-top:3px}
 tr.group td{background:#e9effb;font-weight:700;color:#1e3a8a;text-align:left;font-size:13px}
-td.firstcol,th.firstcol{position:sticky;left:0;z-index:2;background:#fff}
+td.firstcol,th.firstcol{background:#fff}
 th.firstcol{background:#f0f4fb}
-.scrollbox{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:10px}
-.scrollbox table{min-width:600px}
+.scrollbox{border:1px solid var(--line);border-radius:10px}
 .scoreInput{width:62px;text-align:center}
 .rank-row-1 td{background:#fff8e1!important}
 .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700}
@@ -47,8 +47,11 @@ canvas{max-width:100%}
 </head>
 <body>
 <header>
+  <div class="header-inner">
   <h1>📺 电视 · 评测排行榜工具</h1>
   <p>画质 / 音质 / 游戏 / 智能化 / 护眼 五维评测 · 每项按统一标准测试后打分 0–100（80=达标 90+=优秀）</p>
+  </div>
+  </div>
 </header>
 
 <div class="wrap">
