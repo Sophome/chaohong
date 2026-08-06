@@ -24,7 +24,10 @@
       --badge-1: #4f6ef7; /* SOP */
       --badge-5: #ef4444; /* 达人商单 */
       --toggle-bg: rgba(255,255,255,0.2);
-    }
+          --line: rgba(15,23,42,.1);
+      --muted: #64748b;
+      --card-2: rgba(255,255,255,.92);
+}
     [data-theme="dark"] {
       --bg: #0f1117;
       --surface: #1c1f2e;
@@ -42,7 +45,10 @@
       --header-bg: linear-gradient(135deg,#1e2a7a 0%,#4a1d96 100%);
       --header-text: #eef0ff;
       --toggle-bg: rgba(0,0,0,0.25);
-    }
+          --line: rgba(148,163,184,.16);
+      --muted: #94a3b8;
+      --card-2: rgba(23,31,47,.88);
+}
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -296,27 +302,40 @@
     }
 
     /* ---- 三向导航药丸 ---- */
-    .nav-links { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    
+    
+    
+    
+  /* ── PASSWORD GATE ── */
+
+  
+    /* ── 品类跳转 ── */
+    
+    
+    
+    
+
+      /* ── NAV PILLS ── */
+    .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; }
     .nav-pill {
-      display:inline-flex; align-items:center; gap:5px;
-      padding:6px 14px; border-radius:20px; font-size:0.82rem;
-      text-decoration:none; border:1.5px solid var(--border);
-      color:var(--text2); background:var(--surface2);
-      transition: all 0.2s;
+      display:inline-flex; align-items:center; gap:4px;
+      padding:5px 14px; border-radius:16px; font-size:0.78rem;
+      text-decoration:none; border:1.5px solid var(--line);
+      color:var(--muted); background:var(--card-2);
+      transition:all 0.2s;
     }
     .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); }
     .nav-pill.active {
       background:var(--accent); color:#fff; border-color:var(--accent);
       pointer-events:none; font-weight:600;
     }
-  /* ── PASSWORD GATE ── */
 
-  
     /* ── 品类跳转 ── */
-    .cat-links { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; }
+    .cat-switch { margin-bottom:24px; }
+    .cat-links { display:flex; gap:8px; flex-wrap:wrap; }
     .cat-pill {
       display:inline-flex; align-items:center; gap:4px;
-      padding:6px 16px; border-radius:18px; font-size:0.83rem;
+      padding:7px 18px; border-radius:18px; font-size:0.85rem;
       text-decoration:none; border:1.5px solid var(--line);
       color:var(--muted); background:var(--card-2);
       transition:all 0.2s; font-weight:500;
