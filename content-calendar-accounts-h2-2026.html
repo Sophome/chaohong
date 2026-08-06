@@ -3,173 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年8-12月 · 家电总动员 · 排行榜体系选题规划（精简版）</title>
+    <title>2026年8-12月 · 家电总动员 · 排行榜体系选题规划</title>
     <style>
         :root {
-            --bg: #f6f8fb; --card: #ffffff; --text: #0f172a; --muted: #52627a;
+            --bg: #f4f6f9; --card: #ffffff; --text: #0f172a; --muted: #52627a;
             --line: #e2e8f0; --red: #dc2626; --orange: #ea580c; --blue: #2563eb;
             --purple: #7c3aed; --teal: #0891b2; --green: #0d9488; --gaming: #e11d48;
-            --radius: 14px; --shadow: 0 8px 28px rgba(15,23,42,0.05); --jd-red: #e60012;
+            --radius: 14px; --shadow: 0 8px 28px rgba(15,23,42,0.05);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-            background: var(--bg); color: var(--text); font-size: 15.5px; line-height: 1.75; -webkit-font-smoothing: antialiased;
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+            background:var(--bg);color:var(--text);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;
         }
-        .wrap { max-width: 1400px; margin: 0 auto; padding: 0 20px 60px; }
+        .wrap{max-width:1480px;margin:0 auto;padding:0 24px 64px}
 
-        .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:20px 0 14px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
-        .topbar .logo-line { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-        .acct-tag { padding:6px 16px; border-radius:999px; font-weight:900; font-size:14px; color:#fff; background:var(--jd-red); }
-        .topbar-title { font-weight:900; font-size:15.5px; }
-        .pills { display:flex; gap:6px; flex-wrap:wrap; }
-        .pill { background:#eef2ff; color:#1e3a5f; border-radius:999px; padding:5px 12px; font-size:11.5px; font-weight:700; white-space:nowrap; }
-        .pill.green { background:#dcfce7; color:#166534; }
-        .pill.amber { background:#fffbeb; color:#92400e; }
-        .pill.red { background:#fef2f2; color:#b91c1c; }
+        /* ═══ 顶栏 ═══ */
+        .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 0 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+        .logo-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+        .acct-tag{padding:6px 16px;border-radius:999px;font-weight:900;font-size:14px;color:#fff;background:#e60012}
+        .topbar-title{font-weight:900;font-size:15.5px;letter-spacing:-0.2px}
+        .pills{display:flex;gap:7px;flex-wrap:wrap}
+        .pill{background:#eef2ff;color:#1e3a5f;border-radius:999px;padding:5px 13px;font-size:11.5px;font-weight:700;white-space:nowrap}
+        .pill.green{background:#dcfce7;color:#166534}
+        .pill.amber{background:#fffbeb;color:#92400e}
+        .pill.red{background:#fef2f2;color:#b91c1c}
 
-        .hero { margin:30px 0 32px; }
-        .hero h1 { font-size:clamp(30px,4vw,44px); font-weight:950; letter-spacing:-1px; margin-bottom:12px; }
-        .hero p { color:var(--muted); font-size:16px; max-width:960px; }
-        .hero p strong { color:#0f172a; }
+        /* ═══ 英雄区 ═══ */
+        .hero{margin:32px 0 34px}
+        .hero h1{font-size:clamp(28px,3.8vw,42px);font-weight:950;letter-spacing:-1px;margin-bottom:14px}
+        .hero p{color:var(--muted);font-size:16px;max-width:980px}
+        .hero p strong{color:#0f172a}
 
-        .kpi-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
-        .kpi-item { flex:1; min-width:108px; background:#fff; border-radius:12px; padding:18px 14px; text-align:center; border:1px solid #e2e8f0; }
-        .kpi-item .val { font-size:24px; font-weight:950; color:#1e3a5f; }
-        .kpi-item .lbl { font-size:12.5px; color:var(--muted); margin-top:3px; }
-        .kpi-item.red .val { color:#dc2626; }
-        .kpi-item.blue .val { color:#2563eb; }
-        .kpi-item.teal .val { color:#0891b2; }
-        .kpi-item.gaming .val { color:#e11d48; }
-        .kpi-item.gold .val { color:#b45309; }
+        /* ═══ KPI ═══ */
+        .kpi-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+        .kpi-item{flex:1;min-width:112px;background:#fff;border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e2e8f0}
+        .kpi-item .val{font-size:24px;font-weight:950;color:#1e3a5f}
+        .kpi-item .lbl{font-size:12px;color:var(--muted);margin-top:3px}
+        .kpi-item.red .val{color:#dc2626}
+        .kpi-item.blue .val{color:#2563eb}
+        .kpi-item.teal .val{color:#0891b2}
+        .kpi-item.gold .val{color:#b45309}
 
-        .formula-strip { background:linear-gradient(135deg,#0f172a,#1e3a5f); color:#fff; border-radius:16px; padding:22px 28px; margin-bottom:24px; text-align:center; }
-        .formula-strip .big { font-size:clamp(19px,2.6vw,25px); font-weight:950; color:#fcd34d; margin-bottom:8px; }
-        .formula-strip .sub { color:rgba(255,255,255,0.78); font-size:13.5px; }
+        /* ═══ 公式条 ═══ */
+        .formula-strip{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;border-radius:16px;padding:22px 28px;margin-bottom:28px;text-align:center}
+        .formula-strip .big{font-size:clamp(18px,2.4vw,24px);font-weight:950;color:#fcd34d;margin-bottom:6px}
+        .formula-strip .sub{color:rgba(255,255,255,0.78);font-size:13.5px}
 
-        .section-title { margin:40px 0 14px; font-size:24px; font-weight:900; border-left:5px solid var(--orange); padding-left:14px; letter-spacing:-0.4px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
-        .section-title.nov-title { border-left-color:#dc2626; }
-        .section-title.search-title { border-left-color:#2563eb; }
-        .section-title.sys-title { border-left-color:#7c3aed; }
-        .section-title small { font-size:14px; font-weight:500; color:var(--muted); }
+        /* ═══ 区块标题 ═══ */
+        .section-title{margin:44px 0 16px;font-size:23px;font-weight:900;border-left:5px solid var(--orange);padding-left:15px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;letter-spacing:-0.3px}
+        .section-title small{font-size:14px;font-weight:500;color:var(--muted)}
+        .section-title.nov{border-left-color:#dc2626}
+        .section-title.sys{border-left-color:#7c3aed}
 
-        .system-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:16px; margin-bottom:8px; }
-        .system-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--shadow); }
-        .system-card.tv-sys { border-top:4px solid #7c3aed; }
-        .system-card.bot-sys { border-top:4px solid #f59e0b; }
-        .system-card.sweep-sys { border-top:4px solid #10b981; }
-        .system-card.mon-sys { border-top:4px solid #06b6d4; }
-        .system-card.lap-sys { border-top:4px solid #3b82f6; }
-        .system-card.game-sys { border-top:4px solid #e11d48; }
-        .sc-head { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
-        .sc-title { font-size:16px; font-weight:900; }
-        .sc-launch { font-size:11.5px; font-weight:700; color:#fff; background:#334155; padding:3px 10px; border-radius:999px; }
-        .sc-launch.oct { background:#ea580c; }
-        .rank-line { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-        .r-tag { padding:4px 11px; border-radius:8px; font-size:12.5px; font-weight:800; }
-        .r-tv { background:#f3e8ff; color:#6b21a8; }
-        .r-bot { background:#fff7ed; color:#c2410c; }
-        .r-sweep { background:#dcfce7; color:#166534; }
-        .r-mon { background:#e0f7fa; color:#0f766e; }
-        .r-lap { background:#eef2ff; color:#1e40af; }
-        .r-game { background:#fee2e2; color:#b91c1c; }
-        .r-best { background:linear-gradient(135deg,#fef3c7,#fde68a); color:#92400e; border:1px solid #fbbf24; }
-        .sc-note { font-size:12.5px; color:#64748b; line-height:1.7; }
-        .sc-note b { color:#334155; }
+        /* ═══ 排行榜体系总览 ═══ */
+        .system-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px;margin-bottom:10px}
+        .sys-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+        .sys-card.tv{border-top:4px solid #7c3aed}
+        .sys-card.bot{border-top:4px solid #f59e0b}
+        .sys-card.sweep{border-top:4px solid #10b981}
+        .sys-card.mon{border-top:4px solid #06b6d4}
+        .sys-card.game{border-top:4px solid #e11d48}
+        .sys-card.lap{border-top:4px solid #3b82f6}
+        .sys-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+        .sys-name{font-size:16px;font-weight:900}
+        .sys-launch{font-size:11.5px;font-weight:700;color:#fff;background:#334155;padding:3px 11px;border-radius:999px}
+        .sys-launch.oct{background:#ea580c}
+        .sys-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+        .st{padding:3px 10px;border-radius:7px;font-size:12px;font-weight:800}
+        .st-tv{background:#f3e8ff;color:#6b21a8}
+        .st-bot{background:#fff7ed;color:#c2410c}
+        .st-sweep{background:#dcfce7;color:#166534}
+        .st-mon{background:#e0f7fa;color:#0f766e}
+        .st-lap{background:#eef2ff;color:#1e40af}
+        .st-game{background:#fee2e2;color:#b91c1c}
+        .st-best{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;border:1px solid #fbbf24}
+        .sys-note{font-size:12.5px;color:#64748b;line-height:1.7}
+        .sys-note b{color:#334155}
 
-        .category-strip { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 18px; }
-        .cat-badge { padding:6px 13px; border-radius:999px; font-size:12.5px; font-weight:800; white-space:nowrap; }
-        .cat-badge.tv { background:#f3e8ff; color:#6b21a8; }
-        .cat-badge.bot { background:#fff7ed; color:#c2410c; }
-        .cat-badge.sweep { background:#dcfce7; color:#166534; }
-        .cat-badge.monitor { background:#e0f7fa; color:#0f766e; }
-        .cat-badge.laptop { background:#eef2ff; color:#1e40af; }
-        .cat-badge.gaming { background:#fee2e2; color:#b91c1c; }
+        /* ═══ 品类标签 ═══ */
+        .category-strip{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 20px}
+        .cat-badge{padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:800;white-space:nowrap}
+        .cat-badge.tv{background:#f3e8ff;color:#6b21a8}
+        .cat-badge.bot{background:#fff7ed;color:#c2410c}
+        .cat-badge.sweep{background:#dcfce7;color:#166534}
+        .cat-badge.monitor{background:#e0f7fa;color:#0f766e}
+        .cat-badge.laptop{background:#eef2ff;color:#1e40af}
+        .cat-badge.gaming{background:#fee2e2;color:#b91c1c}
 
-        .insight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:16px; margin-bottom:8px; }
-        .insight-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--shadow); }
-        .insight-head { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
-        .insight-head .cat-name { font-size:17px; font-weight:900; }
-        .insight-src { font-size:11px; color:#94a3b8; font-weight:600; }
-        .rank-list { margin-bottom:12px; }
-        .rank-item { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,2.2fr) 44px; align-items:center; gap:10px; padding:4.5px 0; }
-        .rank-label { font-size:13.5px; font-weight:700; color:#1f2937; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .rank-label .no { display:inline-block; width:18px; color:#94a3b8; font-weight:900; }
-        .rank-label.top .no { color:#dc2626; }
-        .rank-bar { height:9px; background:#f1f5f9; border-radius:999px; overflow:hidden; }
-        .rank-bar i { display:block; height:100%; border-radius:999px; }
-        .bar-tv i { background:linear-gradient(90deg,#a78bfa,#7c3aed); }
-        .bar-bot i { background:linear-gradient(90deg,#fbbf24,#ea580c); }
-        .bar-sweep i { background:linear-gradient(90deg,#4ade80,#0d9488); }
-        .bar-monitor i { background:linear-gradient(90deg,#22d3ee,#0891b2); }
-        .bar-laptop i { background:linear-gradient(90deg,#60a5fa,#2563eb); }
-        .bar-gaming i { background:linear-gradient(90deg,#fb7185,#e11d48); }
-        .rank-pct { font-size:13px; font-weight:900; color:#334155; text-align:right; }
-        .search-words { font-size:12.5px; color:var(--muted); line-height:2; border-top:1px dashed #e2e8f0; padding-top:10px; margin-bottom:8px; }
-        .search-words b { color:#334155; font-size:12.5px; }
-        .search-words span { display:inline-block; background:#f1f5f9; border-radius:6px; padding:2px 9px; margin:2px 3px 2px 0; font-size:12.5px; color:#334155; font-weight:600; }
-        .insight-action { font-size:13px; font-weight:800; color:#b45309; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:8px 12px; line-height:1.6; }
+        /* ═══ 搜索洞察 ═══ */
+        .insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px;margin-bottom:10px}
+        .insight-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+        .insight-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+        .insight-head .cat-name{font-size:16px;font-weight:900}
+        .insight-src{font-size:10.5px;color:#94a3b8;font-weight:600}
+        .rank-list{margin-bottom:10px}
+        .rank-item{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,2.2fr) 40px;align-items:center;gap:10px;padding:4px 0}
+        .rank-label{font-size:13px;font-weight:700;color:#1f2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .rank-label .no{display:inline-block;width:18px;color:#94a3b8;font-weight:900}
+        .rank-label.top .no{color:#dc2626}
+        .rank-bar{height:8px;background:#f1f5f9;border-radius:999px;overflow:hidden}
+        .rank-bar i{display:block;height:100%;border-radius:999px}
+        .bar-tv i{background:linear-gradient(90deg,#a78bfa,#7c3aed)}
+        .bar-bot i{background:linear-gradient(90deg,#fbbf24,#ea580c)}
+        .bar-sweep i{background:linear-gradient(90deg,#4ade80,#0d9488)}
+        .bar-mon i{background:linear-gradient(90deg,#22d3ee,#0891b2)}
+        .bar-lap i{background:linear-gradient(90deg,#60a5fa,#2563eb)}
+        .bar-game i{background:linear-gradient(90deg,#fb7185,#e11d48)}
+        .rank-pct{font-size:12.5px;font-weight:900;color:#334155;text-align:right}
+        .search-words{font-size:12px;color:var(--muted);line-height:2;border-top:1px dashed #e2e8f0;padding-top:9px;margin-bottom:6px}
+        .search-words b{color:#334155;font-size:12px}
+        .search-words span{display:inline-block;background:#f1f5f9;border-radius:5px;padding:2px 8px;margin:2px 3px 2px 0;font-size:12px;color:#334155;font-weight:600}
+        .insight-action{font-size:12.5px;font-weight:800;color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:7px 11px;line-height:1.6}
 
-        .month-block { margin-bottom:28px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
-        .month-header { padding:16px 22px; font-weight:900; font-size:18px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #f1f5f9; flex-wrap:wrap; }
-        .month-num { display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:10px; font-size:16px; font-weight:950; color:#fff; flex-shrink:0; }
-        .m-aug { background:#0d9488; } .m-sep { background:#2563eb; }
-        .m-oct { background:#ea580c; } .m-nov { background:#dc2626; } .m-dec { background:#7c3aed; }
-        .theme-tag { font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:#fef3c7; color:#92400e; }
-        .theme-tag.double11 { background:#fef2f2; color:#b91c1c; }
-        .theme-tag.new { background:#dbeafe; color:#1d4ed8; }
-        .combo-dist { width:100%; font-size:12.5px; font-weight:700; color:#64748b; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px; }
-        .combo-dist b { color:#0f172a; }
+        /* ═══ 月份块 ═══ */
+        .month-block{margin-bottom:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+        .month-header{padding:16px 24px;font-weight:900;font-size:17px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f1f5f9;flex-wrap:wrap}
+        .month-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;font-size:15px;font-weight:950;color:#fff;flex-shrink:0}
+        .m-aug{background:#0d9488}.m-sep{background:#2563eb}.m-oct{background:#ea580c}.m-nov{background:#dc2626}.m-dec{background:#7c3aed}
+        .theme-tag{font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;background:#fef3c7;color:#92400e}
+        .theme-tag.d11{background:#fef2f2;color:#b91c1c}
+        .theme-tag.new{background:#dbeafe;color:#1d4ed8}
+        .month-info{width:100%;font-size:12.5px;font-weight:700;color:#64748b;display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+        .month-info b{color:#0f172a}
 
-        .ep-list { padding:16px 22px 20px; }
-        .ep-card { background:#f9fafb; border-radius:10px; padding:14px 17px; margin-bottom:10px; border-left:4px solid #e2e8f0; transition:box-shadow 0.15s; }
-        .ep-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.05); }
-        .ep-card.tv-card { border-left-color:#7c3aed; }
-        .ep-card.bot-card { border-left-color:#f59e0b; }
-        .ep-card.sweep-card { border-left-color:#10b981; }
-        .ep-card.monitor-card { border-left-color:#06b6d4; }
-        .ep-card.laptop-card { border-left-color:#3b82f6; }
-        .ep-card.gaming-card { border-left-color:#e11d48; }
-        .ep-top { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:4px; }
-        .ep-num { font-weight:800; font-size:12px; color:#64748b; }
-        .rank-chip { display:inline-block; padding:2px 10px; border-radius:999px; font-size:11px; font-weight:800; background:#e0e7ff; color:#3730a3; }
-        .rank-chip.best { background:linear-gradient(135deg,#fef3c7,#fde68a); color:#92400e; border:1px solid #fbbf24; }
-        .rank-chip.phase { background:#fef2f2; color:#b91c1c; border:1px solid #fca5a5; }
-        .rank-chip.new { background:#dbeafe; color:#1d4ed8; }
-        .ep-title { font-weight:900; font-size:16px; margin-bottom:5px; letter-spacing:-0.2px; color:#0f172a; }
-        .ep-desc { font-size:13.5px; color:#45556b; line-height:1.7; }
-        .ep-desc strong { color:#1e293b; }
-        .search-hook { display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:800; color:#b91c1c; background:#fef2f2; border-radius:6px; padding:1px 8px; margin-right:4px; }
-        .ep-ref { margin-top:9px; padding-top:7px; border-top:1px dashed #e2e8f0; font-size:12.5px; color:#64748b; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-        .ep-ref b { color:#0f172a; font-weight:900; }
-        .ep-ref .ref-name { font-weight:800; color:#1e3a5f; }
-        .ep-tags { margin-top:7px; display:flex; flex-wrap:wrap; gap:5px; }
-        .ep-tag { display:inline-block; padding:2px 9px; border-radius:999px; font-size:11px; font-weight:700; background:#eef2ff; color:#1e3a5f; }
-        .ep-tag.hot { background:#fef2f2; color:#b91c1c; }
-        .ep-tag.price { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
-        .ep-tag.tech { background:#f3e8ff; color:#6b21a8; }
-        .ep-tag.new-tag { background:#dbeafe; color:#1d4ed8; }
-        .ep-tag.gaming-tag { background:#fee2e2; color:#b91c1c; }
+        /* ═══ 期数列表 ═══ */
+        .ep-list{padding:18px 24px 22px}
+        .ep-card{background:#f9fafb;border-radius:10px;padding:14px 18px;margin-bottom:10px;border-left:4px solid #e2e8f0;transition:box-shadow .15s;display:grid;grid-template-columns:1fr;gap:6px}
+        .ep-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+        .ep-card.tv-card{border-left-color:#7c3aed}
+        .ep-card.bot-card{border-left-color:#f59e0b}
+        .ep-card.sweep-card{border-left-color:#10b981}
+        .ep-card.monitor-card{border-left-color:#06b6d4}
+        .ep-card.laptop-card{border-left-color:#3b82f6}
+        .ep-card.gaming-card{border-left-color:#e11d48}
+        .ep-card.best-card{background:#fffbf0;border-left-color:#fbbf24}
+        .ep-top-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .ep-num{font-weight:800;font-size:11.5px;color:#64748b;white-space:nowrap}
+        .ep-chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:10.5px;font-weight:800}
+        .ep-chip.core{background:#e0e7ff;color:#3730a3}
+        .ep-chip.best{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;border:1px solid #fbbf24}
+        .ep-chip.phase{background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5}
+        .ep-chip.new{background:#dbeafe;color:#1d4ed8}
+        .ep-title{font-weight:900;font-size:15.5px;color:#0f172a;letter-spacing:-0.2px}
+        .ep-meta{font-size:13px;color:#45556b;line-height:1.65}
+        .ep-meta strong{color:#1e293b}
+        .search-hook{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:800;color:#b91c1c;background:#fef2f2;border-radius:5px;padding:1px 7px;margin-right:3px}
+        .ep-ref{margin-top:3px;padding-top:6px;border-top:1px dashed #e2e8f0;font-size:12px;color:#64748b;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+        .ep-ref b{color:#0f172a;font-weight:900}
+        .ep-tags{margin-top:4px;display:flex;flex-wrap:wrap;gap:4px}
+        .ep-tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;background:#eef2ff;color:#1e3a5f}
+        .ep-tag.hot{background:#fef2f2;color:#b91c1c}
+        .ep-tag.price{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+        .ep-tag.tech{background:#f3e8ff;color:#6b21a8}
 
-        .callout { background:#f8faff; border-left:4px solid #2563eb; border-radius:10px; padding:15px 18px; font-size:14px; color:#334155; margin:12px 0; line-height:1.8; }
-        .callout.amber { background:#fffbeb; border-left-color:#f59e0b; }
-        .callout.green { background:#f0fdf4; border-left-color:#10b981; }
-        .double11-highlight { background:linear-gradient(135deg,#fff5f5,#fffbfb); border:2px dashed #fca5a5; border-radius:12px; padding:15px 19px; margin:12px 0 16px; font-size:14px; line-height:1.75; }
-        .double11-highlight strong { color:#dc2626; }
+        /* ═══ 品类分隔 ═══ */
+        .cat-divider{display:flex;align-items:center;gap:8px;margin:8px 0 12px;padding-left:2px}
+        .cat-divider .cdot{width:8px;height:8px;border-radius:999px;flex-shrink:0}
+        .cdot-tv{background:#7c3aed}.cdot-bot{background:#f59e0b}.cdot-sweep{background:#10b981}
+        .cdot-mon{background:#06b6d4}.cdot-game{background:#e11d48}.cdot-lap{background:#3b82f6}
+        .cat-divider span{font-size:12px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px}
 
-        .summary-table { width:100%; border-collapse:collapse; font-size:14px; margin:10px 0; background:#fff; }
-        .summary-table th { background:#f1f5f9; text-align:left; padding:11px 13px; font-weight:800; font-size:12px; color:#475569; }
-        .summary-table td { padding:11px 13px; border-bottom:1px solid #f1f5f9; }
-        .summary-table .num { text-align:right; font-weight:800; }
+        /* ═══ 双11高亮 ═══ */
+        .d11-note{background:linear-gradient(135deg,#fff5f5,#fffbfb);border:2px dashed #fca5a5;border-radius:12px;padding:14px 18px;margin:10px 0 16px;font-size:13.5px;line-height:1.75}
+        .d11-note strong{color:#dc2626}
 
-        footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:42px; padding-top:20px; border-top:1px solid var(--line); line-height:2; }
+        /* ═══ 汇总表 ═══ */
+        .summary-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0;background:#fff}
+        .summary-table th{background:#f1f5f9;text-align:left;padding:10px 13px;font-weight:800;font-size:11.5px;color:#475569}
+        .summary-table td{padding:10px 13px;border-bottom:1px solid #f1f5f9}
+        .summary-table .num{text-align:right;font-weight:800}
 
-        @media (max-width:768px) {
-            .wrap { padding:0 12px 40px; }
-            .system-grid, .insight-grid { grid-template-columns:1fr; }
-            .rank-item { grid-template-columns:minmax(0,1.6fr) minmax(0,1.8fr) 40px; }
-            .month-header { font-size:16px; }
-            .ep-title { font-size:15px; }
+        /* ═══ 说明块 ═══ */
+        .callout{background:#f8faff;border-left:4px solid #2563eb;border-radius:10px;padding:14px 18px;font-size:13.5px;color:#334155;margin:12px 0;line-height:1.8}
+        .callout.amber{background:#fffbeb;border-left-color:#f59e0b}
+        .callout.green{background:#f0fdf4;border-left-color:#10b981}
+
+        footer{text-align:center;color:var(--muted);font-size:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);line-height:2.2}
+
+        @media(max-width:768px){
+            .wrap{padding:0 10px 40px}
+            .system-grid,.insight-grid{grid-template-columns:1fr}
+            .rank-item{grid-template-columns:minmax(0,1.6fr) minmax(0,1.8fr) 38px}
+            .ep-title{font-size:14.5px}
+            .ep-list{padding:14px 14px 18px}
         }
     </style>
 </head>
@@ -178,270 +195,126 @@
 
     <!-- ═══════ 顶栏 ═══════ -->
     <div class="topbar">
-        <div class="logo-line">
-            <span class="acct-tag">家电总动员</span>
-            <span class="topbar-title">2026年8-12月 · 排行榜体系选题规划（精简版）</span>
-        </div>
-        <div class="pills">
-            <span class="pill">排行榜体系</span>
-            <span class="pill green">17个核心排行榜</span>
-            <span class="pill amber">8月8期 / 9-12月每月12期</span>
-            <span class="pill red">总计56期</span>
-        </div>
+        <div class="logo-line"><span class="acct-tag">家电总动员</span><span class="topbar-title">2026年8-12月 · 排行榜体系选题规划</span></div>
+        <div class="pills"><span class="pill">排行榜体系</span><span class="pill green">17个核心排行榜</span><span class="pill amber">8月8期 / 9-12月每月12期</span><span class="pill red">总计56期</span></div>
     </div>
 
     <!-- ═══════ 英雄区 ═══════ -->
     <div class="hero">
         <h1>🏆 2026下半年 · 排行榜体系选题规划</h1>
-        <p>全部选题<strong>只保留用户指定的排行榜名称，不做任何额外扩展</strong>。<strong>📺电视5大排行榜</strong>（画质/音质/游戏/智能化/护眼）、<strong>🤖扫地机6大排行榜</strong>（清洁力/避障/防缠绕/智能化/基站清洁力/抗菌）、<strong>🧹洗地机6大排行榜</strong>（清洁力/续航/防缠绕/除菌/易用性/自清洁），加<strong>每月最佳电视/扫地机/洗地机</strong>；<strong>10月上线显示器/游戏本/笔记本性价比排行榜</strong>。每期标题即榜单名（版本化加更为版本后缀），测试维度可测量。8月8期，9-12月每月12期，共56期。</p>
+        <p><strong>全部选题 = 排行榜名称（+版本后缀），无任何描述性扩展。</strong>📺电视5榜：画质/音质/游戏/智能化/护眼 · 🤖扫地机6榜：清洁力/避障/防缠绕/智能化/基站清洁力/抗菌 · 🧹洗地机6榜：清洁力/续航/防缠绕/除菌/易用性/自清洁 · 每月最佳各3期 · 10月上线显示器/游戏本/笔记本性价比排行榜 · 每期测试维度可测量 · 每期内按电视→扫地机→洗地机→新品类→每月最佳排序 · 8月8期，9-12月每月12期，共56期。</p>
     </div>
 
     <!-- ═══════ KPI ═══════ -->
     <div class="kpi-row">
         <div class="kpi-item red"><div class="val">56期</div><div class="lbl">8-12月总期数</div></div>
-        <div class="kpi-item"><div class="val">17个</div><div class="lbl">核心排行榜（电视5+扫地机6+洗地机6）</div></div>
+        <div class="kpi-item"><div class="val">17个</div><div class="lbl">核心排行榜</div></div>
         <div class="kpi-item blue"><div class="val">8期</div><div class="lbl">8月（三品类首发）</div></div>
         <div class="kpi-item teal"><div class="val">12期/月</div><div class="lbl">9-12月每月</div></div>
         <div class="kpi-item gold"><div class="val">15期</div><div class="lbl">每月最佳（3×5月）</div></div>
-        <div class="kpi-item gaming"><div class="val">3个</div><div class="lbl">10月上线性价比榜（显示器/游戏本/笔记本）</div></div>
+        <div class="kpi-item"><div class="val">3个</div><div class="lbl">10月上线性价比榜</div></div>
     </div>
 
     <div class="formula-strip">
         <div class="big">选题 = 排行榜名称（+版本后缀）｜ 测试维度可测量</div>
-        <div class="sub">严格按用户指定榜单排布，无任何扩展榜、无描述性标题扩展；版本化加更（双11预热/双11实时/年度）仅用于满足每月12期</div>
+        <div class="sub">版本化加更：双11预热版 / 双11实时版 / 年度版 ｜ 每期标题均为纯榜单名，无描述性扩展</div>
     </div>
 
     <!-- ════════════════════════════════════════ -->
     <!-- 排行榜体系总览 -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title sys-title">🏆 排行榜体系总览 <small>仅含用户指定榜单：17个核心排行榜 + 每月最佳 + 10月新品类性价比榜</small></h2>
+    <h2 class="section-title sys">🏆 排行榜体系总览 <small>仅含用户指定榜单：17个核心榜 + 每月最佳 + 新品类性价比榜</small></h2>
     <div class="system-grid">
-
-        <div class="system-card tv-sys">
-            <div class="sc-head"><span class="sc-title">📺 电视 · 排行榜体系</span><span class="sc-launch">8月首发</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-tv">画质排行榜</span>
-                <span class="r-tag r-tv">音质排行榜</span>
-                <span class="r-tag r-tv">游戏排行榜</span>
-                <span class="r-tag r-tv">智能化排行榜</span>
-                <span class="r-tag r-tv">护眼排行榜</span>
-                <span class="r-tag r-best">每月最佳电视</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>8月画质/音质 → 9月游戏/智能化/护眼 → 每月最佳全年更新（9月起版本化：预热/实时/年度）。<b>搜索锚点：</b>"75寸电视推荐""MiniLED和OLED哪个好""电视开机广告怎么关"。</div>
-        </div>
-
-        <div class="system-card bot-sys">
-            <div class="sc-head"><span class="sc-title">🤖 扫地机器人 · 排行榜体系</span><span class="sc-launch">8月首发</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-bot">清洁力排行榜</span>
-                <span class="r-tag r-bot">避障排行榜</span>
-                <span class="r-tag r-bot">防缠绕排行榜</span>
-                <span class="r-tag r-bot">智能化排行榜</span>
-                <span class="r-tag r-bot">基站清洁力排行榜</span>
-                <span class="r-tag r-bot">抗菌排行榜</span>
-                <span class="r-tag r-best">每月最佳扫地机器人</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>8月清洁力/避障 → 9月防缠绕/智能化/基站 → 10月抗菌收官。<b>搜索锚点：</b>"毛发缠绕""自动上下水""石头和科沃斯哪个好"。</div>
-        </div>
-
-        <div class="system-card sweep-sys">
-            <div class="sc-head"><span class="sc-title">🧹 洗地机 · 排行榜体系</span><span class="sc-launch">8月首发</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-sweep">清洁力排行榜</span>
-                <span class="r-tag r-sweep">续航排行榜</span>
-                <span class="r-tag r-sweep">防缠绕排行榜</span>
-                <span class="r-tag r-sweep">除菌排行榜</span>
-                <span class="r-tag r-sweep">易用性排行榜</span>
-                <span class="r-tag r-sweep">自清洁排行榜</span>
-                <span class="r-tag r-best">每月最佳洗地机</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>8月清洁力 → 9月防缠绕/续航/除菌 → 10月易用性/自清洁收官。<b>搜索锚点：</b>"洗地机发臭怎么办""水渍大""添可和追觅哪个好"。</div>
-        </div>
-
-        <div class="system-card mon-sys">
-            <div class="sc-head"><span class="sc-title">🖥️ 显示器 · 排行榜体系</span><span class="sc-launch oct">10月上线</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-mon">性价比排行榜</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"27寸显示器2k还是4k""显示器推荐"。</div>
-        </div>
-
-        <div class="system-card game-sys">
-            <div class="sc-head"><span class="sc-title">🎮 游戏本 · 排行榜体系</span><span class="sc-launch oct">10月上线</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-game">性价比排行榜</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"游戏本推荐2026""7000左右游戏本""拯救者和天选哪个好"。</div>
-        </div>
-
-        <div class="system-card lap-sys">
-            <div class="sc-head"><span class="sc-title">💻 笔记本 · 排行榜体系</span><span class="sc-launch oct">10月上线</span></div>
-            <div class="rank-line">
-                <span class="r-tag r-lap">性价比排行榜</span>
-            </div>
-            <div class="sc-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"5000左右笔记本推荐""轻薄本推荐""大学生笔记本推荐"。</div>
-        </div>
+        <div class="sys-card tv"><div class="sys-head"><span class="sys-name">📺 电视 · 5大排行榜</span><span class="sys-launch">8月首发</span></div><div class="sys-tags"><span class="st st-tv">画质排行榜</span><span class="st st-tv">音质排行榜</span><span class="st st-tv">游戏排行榜</span><span class="st st-tv">智能化排行榜</span><span class="st st-tv">护眼排行榜</span><span class="st st-best">每月最佳电视</span></div><div class="sys-note"><b>排布：</b>8月画质/音质 → 9月游戏/智能化/护眼 → 最佳每月更新（9月起版本化加更）。<b>搜索锚点：</b>"75寸推荐""MiniLED vs OLED""开机广告怎么关"。</div></div>
+        <div class="sys-card bot"><div class="sys-head"><span class="sys-name">🤖 扫地机器人 · 6大排行榜</span><span class="sys-launch">8月首发</span></div><div class="sys-tags"><span class="st st-bot">清洁力排行榜</span><span class="st st-bot">避障排行榜</span><span class="st st-bot">防缠绕排行榜</span><span class="st st-bot">智能化排行榜</span><span class="st st-bot">基站清洁力排行榜</span><span class="st st-bot">抗菌排行榜</span><span class="st st-best">每月最佳扫地机器人</span></div><div class="sys-note"><b>排布：</b>8月清洁力/避障 → 9月防缠绕/智能化/基站 → 10月抗菌收官。<b>搜索锚点：</b>"毛发缠绕""自动上下水""石头vs科沃斯"。</div></div>
+        <div class="sys-card sweep"><div class="sys-head"><span class="sys-name">🧹 洗地机 · 6大排行榜</span><span class="sys-launch">8月首发</span></div><div class="sys-tags"><span class="st st-sweep">清洁力排行榜</span><span class="st st-sweep">续航排行榜</span><span class="st st-sweep">防缠绕排行榜</span><span class="st st-sweep">除菌排行榜</span><span class="st st-sweep">易用性排行榜</span><span class="st st-sweep">自清洁排行榜</span><span class="st st-best">每月最佳洗地机</span></div><div class="sys-note"><b>排布：</b>8月清洁力 → 9月防缠绕/续航/除菌 → 10月易用性/自清洁收官。<b>搜索锚点：</b>"发臭怎么办""水渍大""添可vs追觅"。</div></div>
+        <div class="sys-card mon"><div class="sys-head"><span class="sys-name">🖥️ 显示器</span><span class="sys-launch oct">10月上线</span></div><div class="sys-tags"><span class="st st-mon">性价比排行榜</span></div><div class="sys-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"27寸2k还是4k""显示器推荐"。</div></div>
+        <div class="sys-card game"><div class="sys-head"><span class="sys-name">🎮 游戏本</span><span class="sys-launch oct">10月上线</span></div><div class="sys-tags"><span class="st st-game">性价比排行榜</span></div><div class="sys-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"游戏本推荐2026""7000左右游戏本"。</div></div>
+        <div class="sys-card lap"><div class="sys-head"><span class="sys-name">💻 笔记本</span><span class="sys-launch oct">10月上线</span></div><div class="sys-tags"><span class="st st-lap">性价比排行榜</span></div><div class="sys-note"><b>排布：</b>10月上线 → 11月双11实时版 → 12月年度版。<b>搜索锚点：</b>"5000左右笔记本推荐""大学生笔记本推荐"。</div></div>
     </div>
 
-    <div class="callout amber">
-        <strong>📌 排布原则：</strong>仅使用用户指定的 <span class="r-tag r-tv">电视5榜</span> + <span class="r-tag r-bot">扫地机6榜</span> + <span class="r-tag r-sweep">洗地机6榜</span> + <span class="r-tag r-best">每月最佳×3</span> + <span class="r-tag r-mon">新品类性价比×3</span>，<strong>无任何扩展榜、无描述性标题</strong>。版本化加更（双11预热/双11实时/年度版）为同一榜单的周期性更新，仅以版本后缀区分，标题依旧为纯榜单名。
-    </div>
+    <div class="callout amber"><strong>📌 排布原则：</strong>仅使用用户指定榜单（电视5+扫地机6+洗地机6+新品类性价比×3+每月最佳×3），<strong>无任何扩展榜、无描述性标题。</strong>同一榜单的周期性更新以版本后缀区分（双11预热版/双11实时版/年度版），标题主体仍为纯榜单名。每月内部按电视→扫地机→洗地机→新品类→每月最佳排序。</div>
 
     <!-- ════════════════════════════════════════ -->
     <!-- 搜索洞察（六大品类） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title search-title">🔍 品类搜索洞察 · 排行榜优先级校准 <small>数据源：百度指数 / 巨量算数 / 知乎 / 小红书下拉词 / 京东问大家（2025-2026趋势，指数为相对热度示意）</small></h2>
+    <h2 class="section-title">🔍 品类搜索洞察 · 排行榜优先级校准 <small>数据源：百度指数 / 巨量算数 / 知乎 / 小红书下拉词 / 京东问大家（热度为相对值示意）</small></h2>
     <div class="insight-grid">
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">📺 电视</span><span class="insight-src">→ 映射5大排行榜</span></div>
-            <div class="rank-list bar-tv">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>画质清晰度（→画质榜）</span><div class="rank-bar"><i style="width:95%"></i></div><span class="rank-pct">95</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>尺寸选择（→每月最佳）</span><div class="rank-bar"><i style="width:88%"></i></div><span class="rank-pct">88</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>开机广告/系统（→智能化榜）</span><div class="rank-bar"><i style="width:82%"></i></div><span class="rank-pct">82</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>价格/性价比（→每月最佳）</span><div class="rank-bar"><i style="width:78%"></i></div><span class="rank-pct">78</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>抗反光（→画质榜分项）</span><div class="rank-bar"><i style="width:64%"></i></div><span class="rank-pct">64</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">6</span>游戏体验（→游戏榜）</span><div class="rank-bar"><i style="width:57%"></i></div><span class="rank-pct">57</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">7</span>音质（→音质榜）</span><div class="rank-bar"><i style="width:42%"></i></div><span class="rank-pct">42</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">8</span>护眼（→护眼榜）</span><div class="rank-bar"><i style="width:38%"></i></div><span class="rank-pct">38</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"75寸电视推荐"</span><span>"MiniLED和OLED哪个好"</span><span>"电视开机广告怎么关"</span></div>
-            <div class="insight-action">→ 5大排行榜全部由TOP8搜索痛点驱动，8月画质/音质首发，9月补全</div>
-        </div>
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">🤖 扫地机器人</span><span class="insight-src">→ 映射6大排行榜</span></div>
-            <div class="rank-list bar-bot">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>清洁能力（→清洁力榜）</span><div class="rank-bar"><i style="width:96%"></i></div><span class="rank-pct">96</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>毛发缠绕（→防缠绕榜）</span><div class="rank-bar"><i style="width:86%"></i></div><span class="rank-pct">86</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>避障能力（→避障榜）</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>基站自清洁（→基站清洁力榜）</span><div class="rank-bar"><i style="width:74%"></i></div><span class="rank-pct">74</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>拖地效果（→清洁力榜分项）</span><div class="rank-bar"><i style="width:70%"></i></div><span class="rank-pct">70</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">6</span>智能化建图（→智能化榜）</span><div class="rank-bar"><i style="width:52%"></i></div><span class="rank-pct">52</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">7</span>抗菌/卫生（→抗菌榜）</span><div class="rank-bar"><i style="width:46%"></i></div><span class="rank-pct">46</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"扫地机器人毛发缠绕"</span><span>"自动上下水有必要吗"</span><span>"石头和科沃斯哪个好"</span></div>
-            <div class="insight-action">→ 6大排行榜直接对应痛点，抗菌榜10月收官（养宠家庭卫生焦虑）</div>
-        </div>
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">🧹 洗地机</span><span class="insight-src">→ 映射6大排行榜</span></div>
-            <div class="rank-list bar-sweep">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>清洁效果/水渍（→清洁力榜）</span><div class="rank-bar"><i style="width:90%"></i></div><span class="rank-pct">90</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>发臭/自清洁（→自清洁榜）</span><div class="rank-bar"><i style="width:85%"></i></div><span class="rank-pct">85</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>毛发缠绕（→防缠绕榜）</span><div class="rank-bar"><i style="width:76%"></i></div><span class="rank-pct">76</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>重量/操控（→易用性榜）</span><div class="rank-bar"><i style="width:70%"></i></div><span class="rank-pct">70</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>续航（→续航榜）</span><div class="rank-bar"><i style="width:63%"></i></div><span class="rank-pct">63</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">6</span>除菌/母婴（→除菌榜）</span><div class="rank-bar"><i style="width:58%"></i></div><span class="rank-pct">58</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"洗地机发臭怎么办"</span><span>"洗地机水渍大"</span><span>"添可和追觅哪个好"</span></div>
-            <div class="insight-action">→ 发臭痛点(TOP2)支撑自清洁榜，除菌榜回应母婴场景搜索增长</div>
-        </div>
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">🖥️ 显示器</span><span class="insight-src">10月上线 · 性价比榜</span></div>
-            <div class="rank-list bar-monitor">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>尺寸×分辨率（27寸2K甜点）</span><div class="rank-bar"><i style="width:92%"></i></div><span class="rank-pct">92</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>刷新率</span><div class="rank-bar"><i style="width:84%"></i></div><span class="rank-pct">84</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>面板类型</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>护眼</span><div class="rank-bar"><i style="width:71%"></i></div><span class="rank-pct">71</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>价格/性价比（→性价比榜）</span><div class="rank-bar"><i style="width:69%"></i></div><span class="rank-pct">69</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"27寸显示器2k还是4k"</span><span>"显示器推荐"</span></div>
-            <div class="insight-action">→ 性价比榜10月上线，双11实时版11月、年度版12月</div>
-        </div>
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">🎮 游戏本</span><span class="insight-src">10月上线 · 性价比榜</span></div>
-            <div class="rank-list bar-gaming">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>显卡性能（→性价比得分）</span><div class="rank-bar"><i style="width:95%"></i></div><span class="rank-pct">95</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>散热/噪音</span><div class="rank-bar"><i style="width:88%"></i></div><span class="rank-pct">88</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>价格档位（→性价比榜）</span><div class="rank-bar"><i style="width:85%"></i></div><span class="rank-pct">85</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>屏幕素质</span><div class="rank-bar"><i style="width:74%"></i></div><span class="rank-pct">74</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>品牌（拯救者/天选）</span><div class="rank-bar"><i style="width:72%"></i></div><span class="rank-pct">72</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"游戏本推荐2026"</span><span>"7000左右游戏本推荐"</span><span>"拯救者和天选哪个好"</span></div>
-            <div class="insight-action">→ 性价比榜绑定价格档（TOP3句式），10月上线卡位双11</div>
-        </div>
-
-        <div class="insight-card">
-            <div class="insight-head"><span class="cat-name">💻 笔记本（轻薄/全能）</span><span class="insight-src">10月上线 · 性价比榜</span></div>
-            <div class="rank-list bar-laptop">
-                <div class="rank-item"><span class="rank-label top"><span class="no">1</span>预算价位（→性价比榜）</span><div class="rank-bar"><i style="width:97%"></i></div><span class="rank-pct">97</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">2</span>用途匹配（办公/学习）</span><div class="rank-bar"><i style="width:90%"></i></div><span class="rank-pct">90</span></div>
-                <div class="rank-item"><span class="rank-label top"><span class="no">3</span>品牌选择</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">4</span>续航</span><div class="rank-bar"><i style="width:72%"></i></div><span class="rank-pct">72</span></div>
-                <div class="rank-item"><span class="rank-label"><span class="no">5</span>重量/便携</span><div class="rank-bar"><i style="width:66%"></i></div><span class="rank-pct">66</span></div>
-            </div>
-            <div class="search-words"><b>高频搜索词：</b><span>"5000左右笔记本推荐"</span><span>"轻薄本推荐"</span><span>"大学生笔记本推荐"</span></div>
-            <div class="insight-action">→ 性价比榜直接卡位"XX元推荐"第一搜索句式，10月上线</div>
-        </div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">📺 电视</span><span class="insight-src">→ 映射5大排行榜</span></div><div class="rank-list bar-tv"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>画质清晰度（→画质榜）</span><div class="rank-bar"><i style="width:95%"></i></div><span class="rank-pct">95</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>尺寸选择（→每月最佳）</span><div class="rank-bar"><i style="width:88%"></i></div><span class="rank-pct">88</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>开机广告/系统（→智能化榜）</span><div class="rank-bar"><i style="width:82%"></i></div><span class="rank-pct">82</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>价格/性价比（→每月最佳）</span><div class="rank-bar"><i style="width:78%"></i></div><span class="rank-pct">78</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>抗反光（→画质榜分项）</span><div class="rank-bar"><i style="width:64%"></i></div><span class="rank-pct">64</span></div><div class="rank-item"><span class="rank-label"><span class="no">6</span>游戏体验（→游戏榜）</span><div class="rank-bar"><i style="width:57%"></i></div><span class="rank-pct">57</span></div><div class="rank-item"><span class="rank-label"><span class="no">7</span>音质（→音质榜）</span><div class="rank-bar"><i style="width:42%"></i></div><span class="rank-pct">42</span></div><div class="rank-item"><span class="rank-label"><span class="no">8</span>护眼（→护眼榜）</span><div class="rank-bar"><i style="width:38%"></i></div><span class="rank-pct">38</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"75寸电视推荐"</span><span>"MiniLED和OLED哪个好"</span><span>"电视开机广告怎么关"</span></div><div class="insight-action">→ 5大排行榜全部由TOP8搜索痛点驱动，8月画质/音质首发，9月补全</div></div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">🤖 扫地机器人</span><span class="insight-src">→ 映射6大排行榜</span></div><div class="rank-list bar-bot"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>清洁能力（→清洁力榜）</span><div class="rank-bar"><i style="width:96%"></i></div><span class="rank-pct">96</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>毛发缠绕（→防缠绕榜）</span><div class="rank-bar"><i style="width:86%"></i></div><span class="rank-pct">86</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>避障能力（→避障榜）</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>基站自清洁（→基站清洁力榜）</span><div class="rank-bar"><i style="width:74%"></i></div><span class="rank-pct">74</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>拖地效果（→清洁力榜分项）</span><div class="rank-bar"><i style="width:70%"></i></div><span class="rank-pct">70</span></div><div class="rank-item"><span class="rank-label"><span class="no">6</span>智能化建图（→智能化榜）</span><div class="rank-bar"><i style="width:52%"></i></div><span class="rank-pct">52</span></div><div class="rank-item"><span class="rank-label"><span class="no">7</span>抗菌/卫生（→抗菌榜）</span><div class="rank-bar"><i style="width:46%"></i></div><span class="rank-pct">46</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"扫地机器人毛发缠绕"</span><span>"自动上下水有必要吗"</span><span>"石头和科沃斯哪个好"</span></div><div class="insight-action">→ 6大排行榜直接对应痛点，抗菌榜10月收官（养宠卫生焦虑）</div></div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">🧹 洗地机</span><span class="insight-src">→ 映射6大排行榜</span></div><div class="rank-list bar-sweep"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>清洁效果/水渍（→清洁力榜）</span><div class="rank-bar"><i style="width:90%"></i></div><span class="rank-pct">90</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>发臭/自清洁（→自清洁榜）</span><div class="rank-bar"><i style="width:85%"></i></div><span class="rank-pct">85</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>毛发缠绕（→防缠绕榜）</span><div class="rank-bar"><i style="width:76%"></i></div><span class="rank-pct">76</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>重量/操控（→易用性榜）</span><div class="rank-bar"><i style="width:70%"></i></div><span class="rank-pct">70</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>续航（→续航榜）</span><div class="rank-bar"><i style="width:63%"></i></div><span class="rank-pct">63</span></div><div class="rank-item"><span class="rank-label"><span class="no">6</span>除菌/母婴（→除菌榜）</span><div class="rank-bar"><i style="width:58%"></i></div><span class="rank-pct">58</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"洗地机发臭怎么办"</span><span>"洗地机水渍大"</span><span>"添可和追觅哪个好"</span></div><div class="insight-action">→ 发臭痛点(TOP2)支撑自清洁榜，除菌榜回应母婴场景</div></div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">🖥️ 显示器</span><span class="insight-src">10月上线</span></div><div class="rank-list bar-mon"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>尺寸×分辨率（27寸2K甜点）</span><div class="rank-bar"><i style="width:92%"></i></div><span class="rank-pct">92</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>刷新率</span><div class="rank-bar"><i style="width:84%"></i></div><span class="rank-pct">84</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>面板类型</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>护眼</span><div class="rank-bar"><i style="width:71%"></i></div><span class="rank-pct">71</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>价格/性价比（→性价比榜）</span><div class="rank-bar"><i style="width:69%"></i></div><span class="rank-pct">69</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"27寸显示器2k还是4k"</span><span>"显示器推荐"</span></div><div class="insight-action">→ 性价比榜10月上线，双11实时版11月、年度版12月</div></div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">🎮 游戏本</span><span class="insight-src">10月上线</span></div><div class="rank-list bar-game"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>显卡性能（→性价比得分）</span><div class="rank-bar"><i style="width:95%"></i></div><span class="rank-pct">95</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>散热/噪音</span><div class="rank-bar"><i style="width:88%"></i></div><span class="rank-pct">88</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>价格档位（→性价比榜）</span><div class="rank-bar"><i style="width:85%"></i></div><span class="rank-pct">85</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>屏幕素质</span><div class="rank-bar"><i style="width:74%"></i></div><span class="rank-pct">74</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>品牌（拯救者/天选）</span><div class="rank-bar"><i style="width:72%"></i></div><span class="rank-pct">72</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"游戏本推荐2026"</span><span>"7000左右游戏本推荐"</span><span>"拯救者和天选哪个好"</span></div><div class="insight-action">→ 性价比榜10月上线卡位双11，11月实时版、12月年度版</div></div>
+        <div class="insight-card"><div class="insight-head"><span class="cat-name">💻 笔记本</span><span class="insight-src">10月上线</span></div><div class="rank-list bar-lap"><div class="rank-item"><span class="rank-label top"><span class="no">1</span>预算价位（→性价比榜）</span><div class="rank-bar"><i style="width:97%"></i></div><span class="rank-pct">97</span></div><div class="rank-item"><span class="rank-label top"><span class="no">2</span>用途匹配（办公/学习）</span><div class="rank-bar"><i style="width:90%"></i></div><span class="rank-pct">90</span></div><div class="rank-item"><span class="rank-label top"><span class="no">3</span>品牌选择</span><div class="rank-bar"><i style="width:80%"></i></div><span class="rank-pct">80</span></div><div class="rank-item"><span class="rank-label"><span class="no">4</span>续航</span><div class="rank-bar"><i style="width:72%"></i></div><span class="rank-pct">72</span></div><div class="rank-item"><span class="rank-label"><span class="no">5</span>重量/便携</span><div class="rank-bar"><i style="width:66%"></i></div><span class="rank-pct">66</span></div></div><div class="search-words"><b>高频搜索词：</b><span>"5000左右笔记本推荐"</span><span>"轻薄本推荐"</span><span>"大学生笔记本推荐"</span></div><div class="insight-action">→ 性价比榜直接卡位"XX元推荐"句式，10月上线</div></div>
     </div>
 
     <!-- ════════════════════════════════════════ -->
     <!-- 8月（8期） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title">🏠 八月 · 核心排行榜首发月（8期）</h2>
+    <h2 class="section-title">🏠 八月 · 核心排行榜首发（8期） <small>电视2 + 扫地机2 + 洗地机1 + 每月最佳3</small></h2>
     <div class="month-block">
-        <div class="month-header">
-            <span class="month-num m-aug">8</span> 首批核心排行榜 + 每月最佳×3
-            <span class="theme-tag">🏆 排行榜首发</span>
-            <div class="combo-dist"><b>本期阵容：</b>电视：画质·音质·最佳 ｜ 扫地机：清洁力·避障·最佳 ｜ 洗地机：清洁力·最佳</div>
-        </div>
+        <div class="month-header"><span class="month-num m-aug">8</span> 首批核心排行榜 + 每月最佳 · 三品类场景×维度打底<span class="theme-tag">🏆 排行榜首发</span><div class="month-info"><b>顺序：</b>电视→扫地机→洗地机→每月最佳</div></div>
         <div class="ep-list">
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>📺 电视 · 核心榜</span></div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第1期 · 8月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip">画质排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第1期 · 8月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip core">画质排行榜</span></div>
                 <div class="ep-title">电视画质排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>对比度、黑位均匀性、HDR峰值亮度、色彩准确度、色域覆盖（暗室+亮室双场景加权，全价格带）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>对比度、黑位均匀性、HDR峰值亮度、色彩准确度、色域覆盖（暗室+亮室双场景加权，全价格带）。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·画质排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">画质</span><span class="ep-tag">HDR</span><span class="ep-tag">MiniLED</span><span class="ep-tag">OLED</span></div>
             </div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第2期 · 8月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip">音质排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第2期 · 8月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip core">音质排行榜</span></div>
                 <div class="ep-title">电视音质排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP7</span><strong>测试维度：</strong>频响曲线、最大声压级、低音下潜、音场宽度、声学参数（不接回音壁的原生音质实测）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP7</span><strong>测试维度：</strong>频响曲线、最大声压级、低音下潜、音场宽度、声学参数（不接回音壁的原生音质实测）。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·音质排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">音质</span><span class="ep-tag">频响</span><span class="ep-tag">低音</span><span class="ep-tag">音场</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-bot"></span><span>🤖 扫地机器人 · 核心榜</span></div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第3期 · 8月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">清洁力排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第3期 · 8月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">清洁力排行榜</span></div>
                 <div class="ep-title">扫地机清洁力排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>硬地碎屑拾取率、地毯深层拾取率、边角覆盖、吸力维持（中国家庭硬地占比超80%）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>硬地碎屑拾取率、地毯深层拾取率、边角覆盖、吸力维持（中国家庭硬地占比超80%）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·清洁力排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">清洁力</span><span class="ep-tag hot">拾取率</span><span class="ep-tag">石头</span><span class="ep-tag">科沃斯</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第4期 · 8月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">避障排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第4期 · 8月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">避障排行榜</span></div>
                 <div class="ep-title">扫地机避障排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>数据线避障成功率、家具腿碰撞次数、低矮障碍识别、宠物粪便规避（安全分核心）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>数据线避障成功率、家具腿碰撞次数、低矮障碍识别、宠物粪便规避（安全分核心）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·避障排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">避障</span><span class="ep-tag hot">缠线</span><span class="ep-tag">宠物规避</span><span class="ep-tag">碰撞</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-sweep"></span><span>🧹 洗地机 · 核心榜</span></div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第5期 · 8月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">清洁力排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第5期 · 8月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">清洁力排行榜</span></div>
                 <div class="ep-title">洗地机清洁力排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>干涸污渍去除率、湿垃圾吸净率、水渍残留量化（拖后干燥时间）、木地板保护。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1</span><strong>测试维度：</strong>干涸污渍去除率、湿垃圾吸净率、水渍残留量化（拖后干燥时间）、木地板保护。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·清洁力排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">清洁力</span><span class="ep-tag hot">水渍实测</span><span class="ep-tag">追觅</span><span class="ep-tag">添可</span></div>
             </div>
-            <div class="ep-card tv-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第6期 · 8月下旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip best">每月最佳</span></div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🏆 每月最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第6期 · 8月下旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳电视</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>画质+音质+游戏+智能化+护眼五维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>画质+音质+游戏+智能化+护眼五维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳电视</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag">综合</span><span class="ep-tag">三档</span><span class="ep-tag">2026.08</span></div>
             </div>
-            <div class="ep-card bot-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第7期 · 8月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip best">每月最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第7期 · 8月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳扫地机器人</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>清洁力+避障+防缠绕+智能化+基站+抗菌六维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>清洁力+避障+防缠绕+智能化+基站+抗菌六维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳扫地机器人</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag">综合</span><span class="ep-tag">三档</span><span class="ep-tag">2026.08</span></div>
             </div>
-            <div class="ep-card sweep-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第8期 · 8月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip best">每月最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第8期 · 8月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳洗地机</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>清洁力+续航+防缠绕+除菌+易用性+自清洁六维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>清洁力+续航+防缠绕+除菌+易用性+自清洁六维加权综合分，按预算/中端/旗舰三档各推TOP3。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳洗地机</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag">综合</span><span class="ep-tag">三档</span><span class="ep-tag">2026.08</span></div>
             </div>
@@ -451,95 +324,98 @@
     <!-- ════════════════════════════════════════ -->
     <!-- 9月（12期） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title">🍂 九月 · 核心排行榜全覆盖（12期） <small>电视5榜+扫地机6榜+洗地机6榜全部首发完成</small></h2>
+    <h2 class="section-title">🍂 九月 · 核心排行榜全覆盖（12期） <small>电视3新榜 + 扫地机3新榜 + 洗地机3新榜 + 每月最佳3</small></h2>
     <div class="month-block">
-        <div class="month-header">
-            <span class="month-num m-sep">9</span> 电视3新榜 + 扫地机3新榜 + 洗地机3新榜 + 每月最佳×3
-            <span class="theme-tag">🏆 排行榜全覆盖</span>
-            <div class="combo-dist"><b>本期阵容：</b>电视：游戏·智能化·护眼 ｜ 扫地机：防缠绕·智能化·基站 ｜ 洗地机：防缠绕·续航·除菌</div>
-        </div>
+        <div class="month-header"><span class="month-num m-sep">9</span> 17个核心排行榜全部首发完成<span class="theme-tag">🏆 排行榜全覆盖</span><div class="month-info"><b>顺序：</b>电视→扫地机→洗地机→每月最佳</div></div>
         <div class="ep-list">
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>📺 电视 · 补全3榜</span></div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第1期 · 9月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip">游戏排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第1期 · 9月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip core">游戏排行榜</span></div>
                 <div class="ep-title">电视游戏排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP6</span><strong>测试维度：</strong>输入延迟(ms)、面板响应、VRR兼容性、HDMI2.1满血、运动处理（PS5/Xbox玩家核心关注）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP6</span><strong>测试维度：</strong>输入延迟(ms)、面板响应、VRR兼容性、HDMI2.1满血、运动处理（PS5/Xbox核心关注）。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·游戏排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">游戏</span><span class="ep-tag">VRR</span><span class="ep-tag">输入延迟</span><span class="ep-tag">PS5</span></div>
             </div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第2期 · 9月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip">智能化排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第2期 · 9月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip core">智能化排行榜</span></div>
                 <div class="ep-title">电视智能化排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>开机广告时长、系统流畅度、语音唤醒率、AI画质芯片、投屏易用性。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>开机广告时长、系统流畅度、语音唤醒率、AI画质芯片、投屏易用性。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·智能化排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">开机广告</span><span class="ep-tag tech">系统</span><span class="ep-tag">语音</span><span class="ep-tag">AI芯片</span></div>
             </div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第3期 · 9月中旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip">护眼排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第3期 · 9月中旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip core">护眼排行榜</span></div>
                 <div class="ep-title">电视护眼排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP8</span><strong>测试维度：</strong>蓝光占比、频闪PWM、亮度均匀性、色温调节、护眼模式有效性（有娃/老人家庭高关注）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP8</span><strong>测试维度：</strong>蓝光占比、频闪PWM、亮度均匀性、色温调节、护眼模式有效性（有娃/老人家庭高关注）。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·护眼排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">护眼</span><span class="ep-tag">低蓝光</span><span class="ep-tag">频闪</span><span class="ep-tag">色温</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-bot"></span><span>🤖 扫地机器人 · 补全3榜</span></div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第4期 · 9月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">防缠绕排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第4期 · 9月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">防缠绕排行榜</span></div>
                 <div class="ep-title">扫地机防缠绕排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP2</span><strong>测试维度：</strong>滚刷毛发缠绕率、毛发吸入率、边刷缠绕、吸口防缠设计（小红书劝退笔记第一主题）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP2</span><strong>测试维度：</strong>滚刷毛发缠绕率、毛发吸入率、边刷缠绕、吸口防缠设计（小红书劝退第一主题）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·防缠绕排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">防缠绕</span><span class="ep-tag">毛发</span><span class="ep-tag">养宠家庭</span><span class="ep-tag">滚刷</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第5期 · 9月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">智能化排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第5期 · 9月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">智能化排行榜</span></div>
                 <div class="ep-title">扫地机智能化排行榜</div>
-                <div class="ep-desc"><strong>测试维度：</strong>AI物体识别种类、建图精度、断点续扫、APP易用度、多楼层记忆（2026年AI大模型落地主战场）。</div>
+                <div class="ep-meta"><strong>测试维度：</strong>AI物体识别种类、建图精度、断点续扫、APP易用度、多楼层记忆（2026年AI大模型落地主战场）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·智能化排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">智能化</span><span class="ep-tag">AI识别</span><span class="ep-tag">建图</span><span class="ep-tag">APP</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第6期 · 9月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">基站清洁力排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第6期 · 9月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">基站清洁力排行榜</span></div>
                 <div class="ep-title">扫地机基站清洁力排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP4</span><strong>测试维度：</strong>拖布洗净率、烘干彻底度、污水箱清洁、自动上下水稳定性（"自动上下水有必要吗"高频疑问）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP4</span><strong>测试维度：</strong>拖布洗净率、烘干彻底度、污水箱清洁、自动上下水稳定性（"自动上下水有必要吗"高频疑问）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·基站清洁力排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">基站</span><span class="ep-tag">自动上下水</span><span class="ep-tag">烘干</span><span class="ep-tag">自清洁</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-sweep"></span><span>🧹 洗地机 · 补全3榜</span></div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第7期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">防缠绕排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第7期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">防缠绕排行榜</span></div>
                 <div class="ep-title">洗地机防缠绕排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>滚刷缠绕率、毛发切断设计、滚刷清洁耗时（与扫地机防缠绕榜联动"毛发三连"系列）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP3</span><strong>测试维度：</strong>滚刷缠绕率、毛发切断设计、滚刷清洁耗时（与扫地机防缠绕榜联动"毛发三连"系列）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·防缠绕排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">防缠绕</span><span class="ep-tag">滚刷</span><span class="ep-tag">毛发</span><span class="ep-tag">养宠</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第8期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">续航排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第8期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">续航排行榜</span></div>
                 <div class="ep-title">洗地机续航排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP5</span><strong>测试维度：</strong>标准+强力双模式续航(分钟)、回充速度、大户型覆盖面积（120㎡+户型实测）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP5</span><strong>测试维度：</strong>标准+强力双模式续航(分钟)、回充速度、大户型覆盖面积（120㎡+户型实测）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·续航排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">续航</span><span class="ep-tag">回充</span><span class="ep-tag hot">大户型</span><span class="ep-tag">120㎡</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第9期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">除菌排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第9期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">除菌排行榜</span></div>
                 <div class="ep-title">洗地机除菌排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP6</span><strong>测试维度：</strong>电解水除菌率、污水箱抑菌、滚刷卫生、母婴场景适配（有娃家庭搜索增长最快）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP6</span><strong>测试维度：</strong>电解水除菌率、污水箱抑菌、滚刷卫生、母婴场景适配（有娃家庭搜索增长最快维度）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·除菌排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">除菌</span><span class="ep-tag">电解水</span><span class="ep-tag">抑菌</span><span class="ep-tag">母婴</span></div>
             </div>
-            <div class="ep-card tv-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第10期 · 9月下旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip best">每月最佳</span></div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🏆 每月最佳 · 双11预热注入</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第10期 · 9月下旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳电视</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>五维加权×三档，本期加入双11预热：历史低价回顾+降价预测。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>五维加权×三档，本期注入双11预热：历史低价回顾+降价预测。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳电视</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11预热</span><span class="ep-tag">2026.09</span></div>
             </div>
-            <div class="ep-card bot-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第11期 · 9月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip best">每月最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第11期 · 9月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳扫地机器人</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>六维加权×三档，品牌内战（石头vs科沃斯vs追觅）历史低价对比。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档，品牌内战（石头vs科沃斯vs追觅）历史低价对比。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳扫地机器人</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">品牌内战</span><span class="ep-tag">2026.09</span></div>
             </div>
-            <div class="ep-card sweep-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第12期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip best">每月最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第12期 · 9月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip best">每月最佳</span></div>
                 <div class="ep-title">每月最佳洗地机</div>
-                <div class="ep-desc"><strong>评分逻辑：</strong>六维加权×三档，本期聚焦2000-3000元价位段好价预测+抄底清单。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档，聚焦2000-3000元价位段好价预测+抄底清单。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳洗地机</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">2000元</span><span class="ep-tag">2026.09</span></div>
             </div>
@@ -549,100 +425,101 @@
     <!-- ════════════════════════════════════════ -->
     <!-- 10月（12期） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title">🎯 十月 · 核心榜收官 + 三新品类性价比榜上线 + 双11预热（12期）</h2>
+    <h2 class="section-title">🎯 十月 · 核心榜收官 + 新品类上线 + 双11预热（12期） <small>核心收官3 + 新品类3 + 预热版3 + 最佳预热版3</small></h2>
     <div class="month-block">
-        <div class="month-header">
-            <span class="month-num m-oct">10</span> 核心收官3 + 新品类上线3 + 核心榜双11预热版3 + 每月最佳双11预热版3
-            <span class="theme-tag">🏆 核心收官</span>
-            <span class="theme-tag new">🆕 新品类上线</span>
-            <span class="theme-tag double11">🔥 双11预热</span>
-            <div class="combo-dist"><b>本期阵容：</b>扫地机抗菌 ｜ 洗地机易用性·自清洁 ｜ 显示器/游戏本/笔记本性价比 ｜ 画质·清洁力×3预热版 ｜ 最佳×3预热版</div>
-        </div>
-        <div class="double11-highlight">
-            <strong>🔥 10月双11节奏：</strong>10月中旬"双11XX推荐"搜索爬升 → 10月20日预售后"历史最低价"爆发 → 10月31日晚8点首波转化。<strong>显示器（第3周）、游戏本+笔记本（第4周）上线</strong>，性价比榜卡位双11购买高峰。
-        </div>
+        <div class="month-header"><span class="month-num m-oct">10</span> 核心收官 · 显示器/游戏本/笔记本性价比上线 · 双11预热<span class="theme-tag">🏆 核心收官</span><span class="theme-tag new">🆕 新品类上线</span><span class="theme-tag d11">🔥 双11预热</span><div class="month-info"><b>顺序：</b>核心收官（扫地机→洗地机）→新品类（显示器→游戏本→笔记本）→预热版（电视→扫地机→洗地机）→最佳预热版</div></div>
+        <div class="d11-note"><strong>🔥 10月双11节奏：</strong>10月中旬"双11XX推荐"搜索爬升 → 10月20日预售后"历史最低价"爆发 → 10月31日晚8点首波转化。<strong>显示器（第3周）、游戏本+笔记本（第4周）上线。</strong></div>
         <div class="ep-list">
+            <div class="cat-divider"><span class="cdot cdot-bot"></span><span>🤖 扫地机器人 · 核心收官</span></div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第1期 · 10月上旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip">抗菌排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第1期 · 10月上旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip core">抗菌排行榜</span></div>
                 <div class="ep-title">扫地机抗菌排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP8</span><strong>测试维度：</strong>尘袋抑菌率、滤网过滤效率、污水箱抑菌、滚刷卫生（扫地机六大核心榜收官）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP7</span><strong>测试维度：</strong>尘袋抑菌率、滤网过滤效率、污水箱抑菌、滚刷卫生（扫地机六大核心榜收官）。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·抗菌排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">抗菌</span><span class="ep-tag">抑菌率</span><span class="ep-tag">滤网</span><span class="ep-tag hot">养宠</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-sweep"></span><span>🧹 洗地机 · 核心收官</span></div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第2期 · 10月上旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">易用性排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第2期 · 10月上旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">易用性排行榜</span></div>
                 <div class="ep-title">洗地机易用性排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP4</span><strong>测试维度：</strong>整机重量、牵引助力、转向灵活度、躺平角度（床底覆盖）、噪音（洗地机六大核心榜收官之一）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP4</span><strong>测试维度：</strong>整机重量、牵引助力、转向灵活度、躺平角度（床底覆盖）、噪音。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·易用性排行榜</div>
                 <div class="ep-tags"><span class="ep-tag tech">易用性</span><span class="ep-tag">重量</span><span class="ep-tag">助力</span><span class="ep-tag">床底</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第3期 · 10月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip">自清洁排行榜</span></div>
+                <div class="ep-top-row"><span class="ep-num">第3期 · 10月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip core">自清洁排行榜</span></div>
                 <div class="ep-title">洗地机自清洁排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP2</span><strong>测试维度：</strong>滚刷烘干彻底度、污水箱异味控制、管道残留、自清洁耗时（"洗地机发臭"全网最大劝退点）。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP2</span><strong>测试维度：</strong>滚刷烘干彻底度、污水箱异味控制、管道残留、自清洁耗时（"洗地机发臭"全网最大劝退点，洗地机六大核心榜收官）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·自清洁排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">发臭实测</span><span class="ep-tag tech">自清洁</span><span class="ep-tag">烘干</span><span class="ep-tag">异味</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-mon"></span><span>🆕 新品类上线 · 性价比排行榜</span></div>
             <div class="ep-card monitor-card">
-                <div class="ep-top"><span class="ep-num">第4期 · 10月第3周</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="rank-chip new">性价比排行榜 · 上新</span></div>
+                <div class="ep-top-row"><span class="ep-num">第4期 · 10月第3周</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="ep-chip new">性价比排行榜 · 上新</span></div>
                 <div class="ep-title">显示器性价比排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（尺寸×分辨率×刷新率×面板），直击"27寸显示器2k还是4k"第一纠结点。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（尺寸×分辨率×刷新率×面板），直击"27寸显示器2k还是4k"第一纠结点。</div>
                 <div class="ep-ref"><b>选题参考</b> 显示器·性价比排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">27寸2K</span><span class="ep-tag price">性价比</span><span class="ep-tag new-tag">新品上线</span></div>
             </div>
             <div class="ep-card gaming-card">
-                <div class="ep-top"><span class="ep-num">第5期 · 10月第4周</span><span class="cat-badge gaming">🎮 游戏本</span><span class="rank-chip new">性价比排行榜 · 上新</span></div>
+                <div class="ep-top-row"><span class="ep-num">第5期 · 10月第4周</span><span class="cat-badge gaming">🎮 游戏本</span><span class="ep-chip new">性价比排行榜 · 上新</span></div>
                 <div class="ep-title">游戏本性价比排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（RTX5060/5070×散热×屏幕），卡位双11游戏本购买高峰。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（RTX5060/5070×散热×屏幕），卡位双11游戏本购买高峰。</div>
                 <div class="ep-ref"><b>选题参考</b> 游戏本·性价比排行榜</div>
                 <div class="ep-tags"><span class="ep-tag gaming-tag">游戏本</span><span class="ep-tag price">性价比</span><span class="ep-tag new-tag">新品上线</span></div>
             </div>
             <div class="ep-card laptop-card">
-                <div class="ep-top"><span class="ep-num">第6期 · 10月第4周</span><span class="cat-badge laptop">💻 笔记本</span><span class="rank-chip new">性价比排行榜 · 上新</span></div>
+                <div class="ep-top-row"><span class="ep-num">第6期 · 10月第4周</span><span class="cat-badge laptop">💻 笔记本</span><span class="ep-chip new">性价比排行榜 · 上新</span></div>
                 <div class="ep-title">笔记本性价比排行榜</div>
-                <div class="ep-desc"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（CPU/内存/屏幕/重量），"5000左右笔记本推荐"第一搜索句式。</div>
+                <div class="ep-meta"><span class="search-hook">🔍TOP1句式</span><strong>测试维度：</strong>价格÷性能得分（CPU/内存/屏幕/重量），"5000左右笔记本推荐"第一搜索句式。</div>
                 <div class="ep-ref"><b>选题参考</b> 笔记本·性价比排行榜</div>
                 <div class="ep-tags"><span class="ep-tag hot">5000元</span><span class="ep-tag price">性价比</span><span class="ep-tag new-tag">新品上线</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🔥 核心榜 · 双11预热版</span></div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第7期 · 10月中旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip phase">画质排行榜 · 双11预热版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第7期 · 10月中旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip phase">画质排行榜 · 双11预热版</span></div>
                 <div class="ep-title">电视画质排行榜 · 双11预热版</div>
-                <div class="ep-desc">画质数据叠加双11价格——历史低价回顾+降价预测，"什么时候最便宜"直接回答。</div>
+                <div class="ep-meta">画质数据叠加双11价格——历史低价回顾+降价预测，"什么时候最便宜"直接回答。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·画质排行榜 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag price">双11预热</span><span class="ep-tag">历史低价</span><span class="ep-tag">降价预测</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第8期 · 10月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip phase">清洁力排行榜 · 双11预热版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第8期 · 10月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip phase">清洁力排行榜 · 双11预热版</span></div>
                 <div class="ep-title">扫地机清洁力排行榜 · 双11预热版</div>
-                <div class="ep-desc">清洁力数据叠加双11价格——石头vs科沃斯vs追觅跨平台比价+入手时机。</div>
+                <div class="ep-meta">清洁力数据叠加双11价格——石头vs科沃斯vs追觅跨平台比价+入手时机。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·清洁力排行榜 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag price">双11预热</span><span class="ep-tag hot">品牌内战</span><span class="ep-tag">跨平台比价</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第9期 · 10月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip phase">清洁力排行榜 · 双11预热版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第9期 · 10月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip phase">清洁力排行榜 · 双11预热版</span></div>
                 <div class="ep-title">洗地机清洁力排行榜 · 双11预热版</div>
-                <div class="ep-desc">清洁力数据叠加双11价格——添可vs追觅同型号差价实测（"哪个好"第一对比句式）。</div>
+                <div class="ep-meta">清洁力数据叠加双11价格——添可vs追觅同型号差价实测（"哪个好"第一对比句式）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·清洁力排行榜 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag price">双11预热</span><span class="ep-tag hot">添可vs追觅</span><span class="ep-tag">价格战</span></div>
             </div>
-            <div class="ep-card tv-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第10期 · 10月下旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip best">每月最佳 · 双11预热版</span></div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🏆 每月最佳 · 双11预热版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第10期 · 10月下旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip best">每月最佳 · 双11预热版</span></div>
                 <div class="ep-title">每月最佳电视 · 双11预热版</div>
-                <div class="ep-desc">五维加权×三档×预售价——输出"现在买还是11.11买"决策参考。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>五维加权×三档×预售价——输出"现在买还是11.11买"决策参考。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳电视 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11预热</span><span class="ep-tag">抄底清单</span></div>
             </div>
-            <div class="ep-card bot-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第11期 · 10月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip best">每月最佳 · 双11预热版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第11期 · 10月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip best">每月最佳 · 双11预热版</span></div>
                 <div class="ep-title">每月最佳扫地机器人 · 双11预热版</div>
-                <div class="ep-desc">六维加权×三档×预售价——自动上下水版本差价+安装条件说明。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档×预售价——自动上下水版本差价+安装条件说明。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳扫地机器人 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11预热</span><span class="ep-tag">自动上下水</span></div>
             </div>
-            <div class="ep-card sweep-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第12期 · 10月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip best">每月最佳 · 双11预热版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第12期 · 10月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip best">每月最佳 · 双11预热版</span></div>
                 <div class="ep-title">每月最佳洗地机 · 双11预热版</div>
-                <div class="ep-desc">六维加权×三档×预售价——滚刷类型+三年耗材成本测算。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档×预售价——滚刷类型+三年耗材成本测算（购前忽略、购后最痛的决策盲点）。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳洗地机 · 双11预热版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">滚刷耗材</span><span class="ep-tag">三年成本</span></div>
             </div>
@@ -652,99 +529,101 @@
     <!-- ════════════════════════════════════════ -->
     <!-- 11月（12期） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title nov-title">🔥 十一月 · 双11实时价格决战（12期） <small>核心榜双11实时版 + 新品类性价比实时版 + 每月最佳实时版</small></h2>
+    <h2 class="section-title nov">🔥 十一月 · 双11实时价格决战（12期） <small>核心榜实时版6 + 新品类实时版3 + 每月最佳实时版3</small></h2>
     <div class="month-block">
-        <div class="month-header">
-            <span class="month-num m-nov">11</span> 核心榜双11实时版6 + 新品类性价比实时版3 + 每月最佳实时版3
-            <span class="theme-tag double11">🔥 双11决战</span>
-            <span class="theme-tag">📊 实时价格</span>
-            <div class="combo-dist"><b>本期阵容：</b>电视：画质·音质 ｜ 扫地机：清洁力·避障 ｜ 洗地机：清洁力·续航 ｜ 性价比×3 ｜ 最佳×3</div>
-        </div>
-        <div class="double11-highlight">
-            <strong>🔥 11月是全年价格最低点：</strong>① 11月1-3日实时好价速递（"XX最低价"搜索峰值）；② 11月4-10日中场补货；③ 11月11日终极冲刺；④ 中下旬安装攻略+年度回顾铺垫。
-        </div>
+        <div class="month-header"><span class="month-num m-nov">11</span> 双11实时价格决战 · 全年价格最低点<span class="theme-tag d11">🔥 双11决战</span><span class="theme-tag">📊 实时价格</span><div class="month-info"><b>顺序：</b>电视→扫地机→洗地机→新品类→每月最佳</div></div>
+        <div class="d11-note"><strong>🔥 11月是全年价格最低点：</strong>① 11月1-3日实时好价速递（"XX最低价"搜索峰值）；② 11月4-10日中场补货；③ 11月11日终极冲刺；④ 中下旬安装攻略+年度回顾铺垫。</div>
         <div class="ep-list">
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>📺 电视 · 双11实时版</span></div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第1期 · 11月初</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip phase">画质排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第1期 · 11月初</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip phase">画质排行榜 · 双11实时版</span></div>
                 <div class="ep-title">电视画质排行榜 · 双11实时版</div>
-                <div class="ep-desc">画质数据叠加实时价格——75寸MiniLED好价速递+是否到底价实时标注。</div>
+                <div class="ep-meta">画质数据叠加实时价格——75寸MiniLED好价速递+是否到底价实时标注。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·画质排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag">75寸</span><span class="ep-tag">MiniLED</span></div>
             </div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第2期 · 11月初</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip phase">音质排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第2期 · 11月初</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip phase">音质排行榜 · 双11实时版</span></div>
                 <div class="ep-title">电视音质排行榜 · 双11实时版</div>
-                <div class="ep-desc">音质数据叠加实时价格——带好音响的电视双11底价追踪。</div>
+                <div class="ep-meta">音质数据叠加实时价格——带好音响的电视双11底价追踪。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·音质排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag">音质</span><span class="ep-tag">底价追踪</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-bot"></span><span>🤖 扫地机器人 · 双11实时版</span></div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第3期 · 11月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip phase">清洁力排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第3期 · 11月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip phase">清洁力排行榜 · 双11实时版</span></div>
                 <div class="ep-title">扫地机清洁力排行榜 · 双11实时版</div>
-                <div class="ep-desc">清洁力数据叠加实时价格——石头/科沃斯/追觅旗舰机型双11底价追踪。</div>
+                <div class="ep-meta">清洁力数据叠加实时价格——石头/科沃斯/追觅旗舰机型双11底价追踪。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·清洁力排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时追踪</span><span class="ep-tag">旗舰</span><span class="ep-tag">降价</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第4期 · 11月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip phase">避障排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第4期 · 11月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip phase">避障排行榜 · 双11实时版</span></div>
                 <div class="ep-title">扫地机避障排行榜 · 双11实时版</div>
-                <div class="ep-desc">避障数据叠加实时价格——养宠家庭安全规避机型底价追踪。</div>
+                <div class="ep-meta">避障数据叠加实时价格——养宠家庭安全规避机型底价追踪。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·避障排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag">避障</span><span class="ep-tag">宠物安全</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-sweep"></span><span>🧹 洗地机 · 双11实时版</span></div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第5期 · 11月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip phase">清洁力排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第5期 · 11月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip phase">清洁力排行榜 · 双11实时版</span></div>
                 <div class="ep-title">洗地机清洁力排行榜 · 双11实时版</div>
-                <div class="ep-desc">清洁力数据叠加实时价格——追觅/添可/石头到手价公式+跨平台凑单最优解。</div>
+                <div class="ep-meta">清洁力数据叠加实时价格——追觅/添可/石头到手价公式+跨平台凑单最优解。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·清洁力排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时价格</span><span class="ep-tag">到手价</span><span class="ep-tag">凑单</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第6期 · 11月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip phase">续航排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第6期 · 11月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip phase">续航排行榜 · 双11实时版</span></div>
                 <div class="ep-title">洗地机续航排行榜 · 双11实时版</div>
-                <div class="ep-desc">续航数据叠加实时价格——大户型120㎡+覆盖机型底价追踪。</div>
+                <div class="ep-meta">续航数据叠加实时价格——大户型120㎡+覆盖机型底价追踪。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·续航排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag">续航</span><span class="ep-tag">大户型</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-mon"></span><span>🆕 新品类 · 双11实时版</span></div>
             <div class="ep-card monitor-card">
-                <div class="ep-top"><span class="ep-num">第7期 · 11月中旬</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="rank-chip phase">性价比排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第7期 · 11月中旬</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="ep-chip phase">性价比排行榜 · 双11实时版</span></div>
                 <div class="ep-title">显示器性价比排行榜 · 双11实时版</div>
-                <div class="ep-desc">性价比得分叠加实时价格——4K/2K价位段双11降价最狠，是否到底价实时标注。</div>
+                <div class="ep-meta">性价比得分叠加实时价格——4K/2K价位段双11降价最狠，是否到底价实时标注。</div>
                 <div class="ep-ref"><b>选题参考</b> 显示器·性价比排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag hot">4K推荐</span><span class="ep-tag">1600元</span></div>
             </div>
             <div class="ep-card gaming-card">
-                <div class="ep-top"><span class="ep-num">第8期 · 11月中旬</span><span class="cat-badge gaming">🎮 游戏本</span><span class="rank-chip phase">性价比排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第8期 · 11月中旬</span><span class="cat-badge gaming">🎮 游戏本</span><span class="ep-chip phase">性价比排行榜 · 双11实时版</span></div>
                 <div class="ep-title">游戏本性价比排行榜 · 双11实时版</div>
-                <div class="ep-desc">性价比得分叠加实时价格——拯救者vs天选vs暗影精灵同配置价格对决。</div>
+                <div class="ep-meta">性价比得分叠加实时价格——拯救者vs天选vs暗影精灵同配置价格对决。</div>
                 <div class="ep-ref"><b>选题参考</b> 游戏本·性价比排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag gaming-tag">拯救者vs天选</span><span class="ep-tag">品牌内战</span></div>
             </div>
             <div class="ep-card laptop-card">
-                <div class="ep-top"><span class="ep-num">第9期 · 11月下旬</span><span class="cat-badge laptop">💻 笔记本</span><span class="rank-chip phase">性价比排行榜 · 双11实时版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第9期 · 11月下旬</span><span class="cat-badge laptop">💻 笔记本</span><span class="ep-chip phase">性价比排行榜 · 双11实时版</span></div>
                 <div class="ep-title">笔记本性价比排行榜 · 双11实时版</div>
-                <div class="ep-desc">性价比得分叠加实时价格——5000-8000元到手价公式+平台券叠加。</div>
+                <div class="ep-meta">性价比得分叠加实时价格——5000-8000元到手价公式+平台券叠加。</div>
                 <div class="ep-ref"><b>选题参考</b> 笔记本·性价比排行榜 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag price">实时好价</span><span class="ep-tag hot">5000元</span><span class="ep-tag">到手价</span></div>
             </div>
-            <div class="ep-card tv-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第10期 · 11月下旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip best">每月最佳 · 双11实时版</span></div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🏆 每月最佳 · 双11实时版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第10期 · 11月下旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip best">每月最佳 · 双11实时版</span></div>
                 <div class="ep-title">每月最佳电视 · 双11实时版</div>
-                <div class="ep-desc">五维加权×三档×实时价格——11月11日当天价格峰值内容，全网比价冲刺。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>五维加权×三档×实时价格——11月11日当天价格峰值内容，全网比价冲刺。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳电视 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11实时</span><span class="ep-tag">比价冲刺</span></div>
             </div>
-            <div class="ep-card bot-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第11期 · 11月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip best">每月最佳 · 双11实时版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第11期 · 11月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip best">每月最佳 · 双11实时版</span></div>
                 <div class="ep-title">每月最佳扫地机器人 · 双11实时版</div>
-                <div class="ep-desc">六维加权×三档×实时价格——防缠绕机型底价追踪，养宠家庭决策末期收口。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档×实时价格——防缠绕机型底价追踪，养宠家庭决策末期收口。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳扫地机器人 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11实时</span><span class="ep-tag">防缠绕</span></div>
             </div>
-            <div class="ep-card sweep-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第12期 · 11月25日</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip best">每月最佳 · 双11实时版</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第12期 · 11月25日</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip best">每月最佳 · 双11实时版</span></div>
                 <div class="ep-title">每月最佳洗地机 · 双11实时版</div>
-                <div class="ep-desc">六维加权×三档×实时价格——双11收官终极好价清单。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维加权×三档×实时价格——双11收官终极好价清单。</div>
                 <div class="ep-ref"><b>选题参考</b> 每月最佳洗地机 · 双11实时版</div>
                 <div class="ep-tags"><span class="ep-tag hot">月度最佳</span><span class="ep-tag price">双11收官</span><span class="ep-tag">终极好价</span></div>
             </div>
@@ -754,95 +633,100 @@
     <!-- ════════════════════════════════════════ -->
     <!-- 12月（12期） -->
     <!-- ════════════════════════════════════════ -->
-    <h2 class="section-title">🎄 十二月 · 年度收官（12期） <small>核心榜年度版 + 新品类性价比年度版 + 年度最佳</small></h2>
+    <h2 class="section-title">🎄 十二月 · 年度收官（12期） <small>核心榜年度版6 + 新品类年度版3 + 年度最佳3</small></h2>
     <div class="month-block">
-        <div class="month-header">
-            <span class="month-num m-dec">12</span> 核心榜年度版6 + 新品类性价比年度版3 + 年度最佳3
-            <span class="theme-tag">🏆 年度收官</span>
-            <div class="combo-dist"><b>本期阵容：</b>电视：画质·智能化 ｜ 扫地机：清洁力·智能化 ｜ 洗地机：清洁力·自清洁 ｜ 性价比×3年度版 ｜ 年度最佳×3</div>
-        </div>
+        <div class="month-header"><span class="month-num m-dec">12</span> 年度数据汇总 · 红黑榜 · 年度最佳<span class="theme-tag">🏆 年度收官</span><div class="month-info"><b>顺序：</b>电视→扫地机→洗地机→新品类→年度最佳</div></div>
         <div class="ep-list">
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>📺 电视 · 年度版</span></div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第1期 · 12月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip phase">画质排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第1期 · 12月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip phase">画质排行榜 · 年度版</span></div>
                 <div class="ep-title">电视画质排行榜 · 年度版</div>
-                <div class="ep-desc">全年画质实测数据终极汇总——"年度画质排行"搜索高峰持续至次年Q1。</div>
+                <div class="ep-meta">全年画质实测数据终极汇总——"年度画质排行"搜索高峰持续至次年Q1。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·画质排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度版</span><span class="ep-tag">画质</span><span class="ep-tag">2026</span></div>
             </div>
             <div class="ep-card tv-card">
-                <div class="ep-top"><span class="ep-num">第2期 · 12月上旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip phase">智能化排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第2期 · 12月上旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip phase">智能化排行榜 · 年度版</span></div>
                 <div class="ep-title">电视智能化排行榜 · 年度版</div>
-                <div class="ep-desc">全年智能化实测+系统更新评测——AI画质芯片进化、开机广告治理进展年度复盘。</div>
+                <div class="ep-meta">全年智能化实测+系统更新评测——AI画质芯片进化、开机广告治理进展年度复盘。</div>
                 <div class="ep-ref"><b>选题参考</b> 电视·智能化排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag tech">智能化</span><span class="ep-tag">AI芯片</span><span class="ep-tag">年度版</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-bot"></span><span>🤖 扫地机器人 · 年度版</span></div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第3期 · 12月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip phase">清洁力排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第3期 · 12月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip phase">清洁力排行榜 · 年度版</span></div>
                 <div class="ep-title">扫地机清洁力排行榜 · 年度版</div>
-                <div class="ep-desc">全年清洁力实测数据终极汇总——"年度扫地机排行"搜索流量持续至次年Q1。</div>
+                <div class="ep-meta">全年清洁力实测数据终极汇总——"年度扫地机排行"搜索流量持续至次年Q1。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·清洁力排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度版</span><span class="ep-tag">清洁力</span><span class="ep-tag">2026</span></div>
             </div>
             <div class="ep-card bot-card">
-                <div class="ep-top"><span class="ep-num">第4期 · 12月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip phase">智能化排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第4期 · 12月中旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip phase">智能化排行榜 · 年度版</span></div>
                 <div class="ep-title">扫地机智能化排行榜 · 年度版</div>
-                <div class="ep-desc">全年智能化实测——AI大模型导航/建图能力进化年度复盘。</div>
+                <div class="ep-meta">全年智能化实测——AI大模型导航/建图能力进化年度复盘。</div>
                 <div class="ep-ref"><b>选题参考</b> 扫地机·智能化排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag tech">智能化</span><span class="ep-tag">AI导航</span><span class="ep-tag">年度版</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-sweep"></span><span>🧹 洗地机 · 年度版</span></div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第5期 · 12月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip phase">清洁力排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第5期 · 12月中旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip phase">清洁力排行榜 · 年度版</span></div>
                 <div class="ep-title">洗地机清洁力排行榜 · 年度版</div>
-                <div class="ep-desc">全年清洁力实测数据终极汇总——水渍/去污能力年度排行。</div>
+                <div class="ep-meta">全年清洁力实测数据终极汇总——水渍/去污能力年度排行。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·清洁力排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度版</span><span class="ep-tag">清洁力</span><span class="ep-tag">2026</span></div>
             </div>
             <div class="ep-card sweep-card">
-                <div class="ep-top"><span class="ep-num">第6期 · 12月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip phase">自清洁排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第6期 · 12月下旬</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip phase">自清洁排行榜 · 年度版</span></div>
                 <div class="ep-title">洗地机自清洁排行榜 · 年度版</div>
-                <div class="ep-desc">全年自清洁实测——滚刷烘干/污水箱/管道三处异味源治理年度复盘（独家差异数据）。</div>
+                <div class="ep-meta">全年自清洁实测——滚刷烘干/污水箱/管道三处异味源治理年度复盘（独家差异数据）。</div>
                 <div class="ep-ref"><b>选题参考</b> 洗地机·自清洁排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag hot">自清洁</span><span class="ep-tag">发臭治理</span><span class="ep-tag">年度版</span></div>
             </div>
+
+            <div class="cat-divider"><span class="cdot cdot-mon"></span><span>🆕 新品类 · 年度版</span></div>
             <div class="ep-card monitor-card">
-                <div class="ep-top"><span class="ep-num">第7期 · 12月中旬</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="rank-chip phase">性价比排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第7期 · 12月中旬</span><span class="cat-badge monitor">🖥️ 显示器</span><span class="ep-chip phase">性价比排行榜 · 年度版</span></div>
                 <div class="ep-title">显示器性价比排行榜 · 年度版</div>
-                <div class="ep-desc">10-12月性价比数据汇总——年度综合TOP10，承接"显示器推荐2026"长尾搜索。</div>
+                <div class="ep-meta">10-12月性价比数据汇总——年度综合TOP10，承接"显示器推荐2026"长尾搜索。</div>
                 <div class="ep-ref"><b>选题参考</b> 显示器·性价比排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag price">年度版</span><span class="ep-tag">综合</span><span class="ep-tag">显示器2026</span></div>
             </div>
             <div class="ep-card gaming-card">
-                <div class="ep-top"><span class="ep-num">第8期 · 12月下旬</span><span class="cat-badge gaming">🎮 游戏本</span><span class="rank-chip phase">性价比排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第8期 · 12月下旬</span><span class="cat-badge gaming">🎮 游戏本</span><span class="ep-chip phase">性价比排行榜 · 年度版</span></div>
                 <div class="ep-title">游戏本性价比排行榜 · 年度版</div>
-                <div class="ep-desc">10-12月性价比数据汇总——年度综合TOP10，承接"游戏本推荐2026"长尾搜索。</div>
+                <div class="ep-meta">10-12月性价比数据汇总——年度综合TOP10，承接"游戏本推荐2026"长尾搜索。</div>
                 <div class="ep-ref"><b>选题参考</b> 游戏本·性价比排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag gaming-tag">年度版</span><span class="ep-tag">综合</span><span class="ep-tag">游戏本2026</span></div>
             </div>
             <div class="ep-card laptop-card">
-                <div class="ep-top"><span class="ep-num">第9期 · 12月下旬</span><span class="cat-badge laptop">💻 笔记本</span><span class="rank-chip phase">性价比排行榜 · 年度版</span></div>
+                <div class="ep-top-row"><span class="ep-num">第9期 · 12月下旬</span><span class="cat-badge laptop">💻 笔记本</span><span class="ep-chip phase">性价比排行榜 · 年度版</span></div>
                 <div class="ep-title">笔记本性价比排行榜 · 年度版</div>
-                <div class="ep-desc">10-12月性价比数据汇总——年度综合TOP10，承接"笔记本推荐2026"长尾搜索。</div>
+                <div class="ep-meta">10-12月性价比数据汇总——年度综合TOP10，承接"笔记本推荐2026"长尾搜索。</div>
                 <div class="ep-ref"><b>选题参考</b> 笔记本·性价比排行榜 · 年度版</div>
                 <div class="ep-tags"><span class="ep-tag price">年度版</span><span class="ep-tag">综合</span><span class="ep-tag">笔记本2026</span></div>
             </div>
-            <div class="ep-card tv-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第10期 · 12月下旬</span><span class="cat-badge tv">📺 电视</span><span class="rank-chip best">年度最佳电视</span></div>
+
+            <div class="cat-divider"><span class="cdot cdot-tv"></span><span>🏆 年度最佳</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第10期 · 12月下旬</span><span class="cat-badge tv">📺 电视</span><span class="ep-chip best">年度最佳</span></div>
                 <div class="ep-title">年度最佳电视</div>
-                <div class="ep-desc">五维全年数据终极汇总+红黑榜——"年度电视排行"搜索高峰持续至次年Q1。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>五维全年数据终极汇总+红黑榜——"年度电视排行"搜索高峰持续至次年Q1。</div>
                 <div class="ep-ref"><b>选题参考</b> 年度最佳电视</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度最佳</span><span class="ep-tag">红黑榜</span><span class="ep-tag">2026</span></div>
             </div>
-            <div class="ep-card bot-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第11期 · 12月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="rank-chip best">年度最佳扫地机器人</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第11期 · 12月下旬</span><span class="cat-badge bot">🤖 扫地机</span><span class="ep-chip best">年度最佳</span></div>
                 <div class="ep-title">年度最佳扫地机器人</div>
-                <div class="ep-desc">六维全年数据终极汇总+红黑榜——搜索流量持续至次年Q1。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维全年数据终极汇总+红黑榜——搜索流量持续至次年Q1。</div>
                 <div class="ep-ref"><b>选题参考</b> 年度最佳扫地机器人</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度最佳</span><span class="ep-tag">红黑榜</span><span class="ep-tag">2026</span></div>
             </div>
-            <div class="ep-card sweep-card" style="background:#fffbf0;">
-                <div class="ep-top"><span class="ep-num">第12期 · 12月底</span><span class="cat-badge sweep">🧹 洗地机</span><span class="rank-chip best">年度最佳洗地机</span></div>
+            <div class="ep-card best-card">
+                <div class="ep-top-row"><span class="ep-num">第12期 · 12月底</span><span class="cat-badge sweep">🧹 洗地机</span><span class="ep-chip best">年度最佳</span></div>
                 <div class="ep-title">年度最佳洗地机</div>
-                <div class="ep-desc">六维全年数据终极汇总+红黑榜——"发臭"实测数据为年度榜独家差异点。</div>
+                <div class="ep-meta"><strong>评分逻辑：</strong>六维全年数据终极汇总+红黑榜——"发臭"实测数据为年度榜独家差异点。</div>
                 <div class="ep-ref"><b>选题参考</b> 年度最佳洗地机</div>
                 <div class="ep-tags"><span class="ep-tag hot">年度最佳</span><span class="ep-tag">红黑榜</span><span class="ep-tag">发臭数据</span></div>
             </div>
@@ -857,10 +741,10 @@
         <table class="summary-table">
             <thead><tr><th>月份</th><th>主题</th><th class="num">📺电视</th><th class="num">🤖扫地机</th><th class="num">🧹洗地机</th><th class="num">🖥️显示器</th><th class="num">🎮游戏本</th><th class="num">💻笔记本</th><th class="num">合计</th></tr></thead>
             <tbody>
-                <tr><td><strong>8月</strong></td><td>核心排行榜首发（画质/音质/清洁力/避障）</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num"><strong>8</strong></td></tr>
-                <tr><td><strong>9月</strong></td><td>核心排行榜全覆盖（17榜全部首发）</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num"><strong>12</strong></td></tr>
-                <tr><td><strong>10月</strong></td><td>核心收官+新品类性价比上线+双11预热</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num" style="color:#2563eb;">1</td><td class="num" style="color:#e11d48;">1</td><td class="num" style="color:#2563eb;">1</td><td class="num"><strong>12</strong></td></tr>
-                <tr><td><strong>11月</strong></td><td>双11实时决战</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>12</strong></td></tr>
+                <tr><td><strong>8月</strong></td><td>核心排行榜首发</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num"><strong>8</strong></td></tr>
+                <tr><td><strong>9月</strong></td><td>核心排行榜全覆盖</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num" style="color:#dc2626;">—</td><td class="num"><strong>12</strong></td></tr>
+                <tr><td><strong>10月</strong></td><td>核心收官+新品类上线+双11预热</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num" style="color:#2563eb;">1</td><td class="num" style="color:#e11d48;">1</td><td class="num" style="color:#2563eb;">1</td><td class="num"><strong>12</strong></td></tr>
+                <tr><td><strong>11月</strong></td><td>双11实时价格决战</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>12</strong></td></tr>
                 <tr><td><strong>12月</strong></td><td>年度收官</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>12</strong></td></tr>
                 <tr style="background:#f8faff;font-weight:900;"><td><strong>合计</strong></td><td></td><td class="num">15</td><td class="num">16</td><td class="num">16</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">56</td></tr>
             </tbody>
@@ -868,22 +752,22 @@
     </div>
 
     <div class="callout green">
-        <strong>✅ 精简校准要点：</strong><br>
-        ① <strong>仅保留用户指定榜单：</strong>电视5榜（画质/音质/游戏/智能化/护眼）+ 扫地机6榜（清洁力/避障/防缠绕/智能化/基站清洁力/抗菌）+ 洗地机6榜（清洁力/续航/防缠绕/除菌/易用性/自清洁）+ 每月最佳×3 + 新品类性价比×3（显示器/游戏本/笔记本）。<strong>无任何扩展榜。</strong><br>
-        ② <strong>标题一律为纯榜单名：</strong>如「显示器性价比排行榜」「电视画质排行榜」，不带任何描述性扩展（TOP10、甜点规格、实测等均不进入标题）；版本化加更仅以「· 双11预热版 / · 双11实时版 / · 年度版」后缀区分，标题主体不变。<br>
-        ③ <strong>测试维度保留在描述中：</strong>每期「测试维度」列出可测量项（对比度、拾取率、缠绕率、续航分钟等），符合"维度可测量"要求，但不进入标题。<br>
-        ④ <strong>期数：</strong>8月8期 + 9-12月每月12期 = 56期（电视15/扫地机16/洗地机16/显示器3/游戏本3/笔记本3）。
+        <strong>✅ 校准确认：</strong><br>
+        ① <strong>品类排序：</strong>每月内部严格按电视→扫地机器人→洗地机→新品类（显示器→游戏本→笔记本）→每月最佳排序，用<strong>品类分隔线</strong>（带品类色点+标签）视觉分区，扫读即可定位。<br>
+        ② <strong>标题全部为纯榜单名：</strong>无任何描述性扩展，版本化加更仅以「· 双11预热版/双11实时版/年度版」后缀区分，标题主体不变。<br>
+        ③ <strong>17个核心榜 + 3个性价比榜 + 15期每月最佳 = 35个榜单名，56期</strong>——8月8期首发、9月12期全覆盖、10月12期核心收官+新品上线+预热、11月12期实时决战、12月12期年度收官。<br>
+        ④ <strong>测试维度可测量：</strong>每期描述中列出具体指标（对比度、拾取率%、缠绕率%、续航分钟等），符合要求。
     </div>
 
     <div class="callout amber">
-        <strong>📖 字体与可读性：</strong>基础字号15.5px、期标题16px加粗、描述13.5px深灰(#45556b)、行高1.75；榜单标签色区分——<span class="rank-chip">核心榜</span>（蓝紫）、<span class="rank-chip best">每月最佳/年度最佳</span>（金）、<span class="rank-chip phase">版本化加更</span>（红）、<span class="rank-chip new">新品类上线</span>（蓝）；标题全部为纯榜单名，扫读即知选题。
+        <strong>📖 排版优化要点：</strong>品类分隔线（category-divider）用 8px 色点 + 大写标签分组，每月内视觉层级清晰；ep-card 改为 grid 布局、ep-top-row 统一顶行信息密度；best-card 用暖金底色区别于核心榜；双11高亮块独立样式收口促销节奏；基础字号15px、标题15.5px、描述13px、行高1.75，整体更紧凑但可读性不降。
     </div>
 
     <footer>
         搜索洞察数据源：百度指数 / 巨量算数（抖音）/ 知乎搜索热榜 / 小红书搜索下拉词 / 京东"问大家"高频问题（2025-2026趋势整理，热度指数为相对值示意）。<br>
-        内容架构：17个核心排行榜（电视5+扫地机6+洗地机6）× 每月最佳×3 × 10月新品类性价比榜（显示器/游戏本/笔记本），无扩展榜。<br>
-        期数分布：8月8期 + 9-12月每月12期 = 56期，全部实拍实测。<br>
-        © 家电总动员 内容团队 · 2026年8-12月排行榜体系选题规划（精简版） · 六大品类 · 56期
+        内容架构：17个核心排行榜（电视5+扫地机6+洗地机6）+ 每月最佳×3 + 新品类性价比排行榜×3（显示器/游戏本/笔记本），无扩展榜。<br>
+        期数分布：8月8期 + 9-12月每月12期 = 56期，全部实拍实测。每月内部按电视→扫地机→洗地机→新品类→每月最佳排序。<br>
+        © 家电总动员 内容团队 · 2026年8-12月排行榜体系选题规划 · 六大品类 · 56期
     </footer>
 </div>
 </body>
