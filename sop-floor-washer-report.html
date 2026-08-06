@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>洗地机测评内容 SOP 与商务开发报告</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", Arial, sans-serif;
+      background: #f3f9f1;
+      color: #172033;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: 1220px;
+      margin: 34px auto;
+      background: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 26px 80px rgba(15, 23, 42, 0.16);
+    }
+
+    .hero {
+      padding: 58px 64px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 85% 14%, rgba(52,211,153,.45), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(34,197,94,.28), transparent 32%),
+        linear-gradient(135deg, #064e3b 0%, #0f172a 45%, #059669 100%);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #d1fae5;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 46px;
+      line-height: 1.18;
+      letter-spacing: -1.2px;
+    }
+
+    .subtitle {
+      max-width: 980px;
+      margin-top: 18px;
+      color: #d1fae5;
+      font-size: 18px;
+    }
+
+    .hero-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .hero-card {
+      padding: 19px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 3px;
+    }
+
+    .hero-card span {
+      font-size: 13px;
+      color: #a7f3d0;
+    }
+
+    .content {
+      padding: 46px 64px 64px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 22px;
+    }
+
+    .num {
+      width: 37px;
+      height: 37px;
+      border-radius: 13px;
+      background: #059669;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: #111827;
+      font-size: 18px;
+    }
+
+    p { margin: 8px 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(15,23,42,.055);
+    }
+
+    .blue {
+      background: linear-gradient(180deg, #eff6ff 0%, #fff 100%);
+      border-color: #bfdbfe;
+    }
+
+    .green {
+      background: linear-gradient(180deg, #ecfdf5 0%, #fff 100%);
+      border-color: #a7f3d0;
+    }
+
+    .orange {
+      background: linear-gradient(180deg, #fff7ed 0%, #fff 100%);
+      border-color: #fed7aa;
+    }
+
+    .purple {
+      background: linear-gradient(180deg, #f5f3ff 0%, #fff 100%);
+      border-color: #ddd6fe;
+    }
+
+    .red {
+      background: linear-gradient(180deg, #fef2f2 0%, #fff 100%);
+      border-color: #fecaca;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+
+    li { margin: 7px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    th {
+      background: #0f172a;
+      color: #fff;
+      text-align: left;
+      padding: 14px 15px;
+      font-weight: 650;
+    }
+
+    td {
+      padding: 14px 15px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    .score {
+      color: #059669;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .danger {
+      color: #dc2626;
+      font-weight: 800;
+    }
+
+    .success {
+      color: #16a34a;
+      font-weight: 800;
+    }
+
+    .warning {
+      color: #ea580c;
+      font-weight: 800;
+    }
+
+    .quote {
+      padding: 22px 26px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border-left: 6px solid #059669;
+      color: #334155;
+      font-size: 16px;
+    }
+
+    .alert {
+      padding: 20px 24px;
+      border-radius: 18px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #7f1d1d;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      font-size: 14px;
+    }
+
+    .check {
+      color: #16a34a;
+      font-weight: 900;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .pill {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      padding: 17px 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .step b {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #059669;
+      color: #fff;
+      margin-bottom: 9px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 13px;
+      color: #0f172a;
+    }
+
+    .step span {
+      display: block;
+      color: #64748b;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer {
+      padding: 26px 64px;
+      background: #0f172a;
+      color: #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="badge">🧹 洗地机测评 · 干湿清洁 · 内容 SOP · 商务开发 · 自清洁红线</div>
+      <h1>中国市场洗地机内容创作<br />测试体系与商务执行报告</h1>
+      <p class="subtitle">
+        适用于 B站 / YouTube 长视频博主、清洁家电账号及生活方式内容团队。报告覆盖洗地机（无线智能洗地机）、地毯清洗机、蒸汽洗地机等品类，建立可复用的干湿垃圾清理、贴边、自清洁、续航、噪音、毛发缠绕、污水箱处理、维护成本和商务合作与红线体系。
+      </p>
+
+      <div class="hero-grid">
+        <div class="hero-card">
+          <strong>7类</strong>
+          <span>真实家庭清洁测试场景</span>
+        </div>
+        <div class="hero-card">
+          <strong>50+</strong>
+          <span>干 / 湿 / 贴边 / 自清洁项目</span>
+        </div>
+        <div class="hero-card">
+          <strong>8步</strong>
+          <span>内容生产 SOP</span>
+        </div>
+        <div class="hero-card">
+          <strong>5条</strong>
+          <span>核心红线：干净度、残留、自清洁、维护、披露</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">01</span>
+          <h2>洗地机测评体系目标</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card blue">
+            <h3>对用户的价值</h3>
+            <ul>
+              <li>判断洗地机是不是真的比拖把好用，而不是只看参数和吸力。</li>
+              <li>解释滚刷、吸力、贴边、自清洁、固液分离、续航、水箱容量、毛发处理等关键概念。</li>
+              <li>帮助用户避坑：湿拖水渍残留、墙角死角、滚刷发臭、污水箱难清理、电池衰减、地毯使用限制。</li>
+              <li>给出适合人群：有娃家庭、养宠家庭、老人家庭、小户型、大平层和混合地面家庭。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>对内容团队的价值</h3>
+            <ul>
+              <li>构建可复用的干垃圾、湿垃圾、混合垃圾、重污渍、贴边、自清洁、续航测试流程。</li>
+              <li>减少“看起来干净了”“吸力很强”的纯主观表达，用标准脏污样本和水量称重说话。</li>
+              <li>积累洗地机长期维护、电池衰减、异味、滚刷损耗数据，形成年度推荐和避坑内容。</li>
+              <li>提升清洁家电赛道商单竞争力和客单价。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>对商务合作的价值</h3>
+            <ul>
+              <li>向品牌证明账号具备真实家庭地面和标准化脏污测试能力。</li>
+              <li>提前明确样机、耗材（清洁液、滚刷、滤芯）、漏水、故障和结论边界。</li>
+              <li>把单品测评升级为全屋清洁方案、宠物家庭专题、大促转化和年度长测合作。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote" style="margin-top:18px;">
+          洗地机测评的核心不是展示吸地面碎屑的爽感，而是回答：拖完有没有水渍、墙角干不干净、滚刷会不会发臭、污水箱是不是每次都得洗到崩溃、自清洁到底能不能洗得干净滚刷、充满电能拖多大的家。
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">02</span>
+          <h2>测试场景搭建</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card blue">
+            <h3>场景 A：标准瓷砖 / 地板测试</h3>
+            <ul>
+              <li><strong>用途：</strong>模拟中国家庭最常见的硬质地面清洁。</li>
+              <li><strong>地面：</strong>客厅瓷砖、厨房地砖、卧室强化地板，记录材质和颜色。</li>
+              <li><strong>测试重点：</strong>水渍残留、干湿洁净度、滚刷痕迹、刮擦和地板保护。</li>
+              <li><strong>注意：</strong>不同地面颜色和材质对水渍可见度影响很大。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>场景 B：干垃圾极限测试</h3>
+            <ul>
+              <li><strong>用途：</strong>测试日常灰尘、毛发、食物碎屑清除能力。</li>
+              <li><strong>脏污：</strong>面粉、米粒、瓜子壳、头发、猫砂、饼干碎。</li>
+              <li><strong>测试重点：</strong>单次通过率、吸入通道是否堵塞、干垃圾是否打湿结团。</li>
+              <li><strong>注意：</strong>干垃圾测试需要在地面完全干燥状态下进行。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>场景 C：湿垃圾与混合垃圾测试</h3>
+            <ul>
+              <li><strong>用途：</strong>测试厨房及餐厅场景下液体、半流质和混合垃圾处理能力。</li>
+              <li><strong>脏污：</strong>牛奶、酱油、番茄酱、鸡蛋液、汤面、燕麦粥。</li>
+              <li><strong>测试重点：</strong>吸水性、污水箱容量、固液分离、滚刷是否会染色、污水残留。</li>
+              <li><strong>注意：</strong>混合垃圾测试后必须立即自清洁并检查异味。</li>
+            </ul>
+          </div>
+
+          <div class="card purple">
+            <h3>场景 D：贴边与死角测试</h3>
+            <ul>
+              <li><strong>用途：</strong>测试洗地机对墙边、墙角、家具边缘的清洁能力。</li>
+              <li><strong>方法：</strong>在离墙1cm处撒面粉、米粒，检查残留。</li>
+              <li><strong>测试重点：</strong>单侧贴边、双侧贴边、低矮空间能否伸入、滚刷漏刷区域。</li>
+              <li><strong>注意：</strong>标称“0贴边”不代表所有角落都能清洁到位。</li>
+            </ul>
+          </div>
+
+          <div class="card blue">
+            <h3>场景 E：地毯与不同地面切换测试</h3>
+            <ul>
+              <li><strong>用途：</strong>测试洗地机在地毯、短毛地毯、地垫上的清洁和干吸能力。</li>
+              <li><strong>脏污：</strong>头发、薯片渣、饼干碎、宠物粮食。</li>
+              <li><strong>测试重点：</strong>干吸模式、避免湿拖污染地毯、滚刷抬升或切换功能。</li>
+              <li><strong>注意：</strong>大部分洗地机不能用于长毛地毯，需明确说明。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>场景 F：自清洁与基站体验测试</h3>
+            <ul>
+              <li><strong>用途：</strong>验证自清洁是否真的能洗干净滚刷和管道。</li>
+              <li><strong>测试：</strong>完成干湿混合重脏污清洁后，开启自清洁。</li>
+              <li><strong>检查：</strong>滚刷是否还有残留、管道是否冲洗干净、底座是否有残渣积水。</li>
+              <li><strong>注意：</strong>自清洁完成后的烘干效果、异味控制和防缠毛能力非常重要。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>场景 G：续航与全屋覆盖测试</h3>
+            <ul>
+              <li><strong>用途：</strong>测试一次充电和一次加水能拖多大面积。</li>
+              <li><strong>方法：</strong>在 50㎡、100㎡、150㎡ 真实户型下连续清洁。</li>
+              <li><strong>测试重点：</strong>电池续航、水续航、自清洁次数、充电和加水时间。</li>
+              <li><strong>注意：</strong>不能只看官方宣传的“可覆盖 200㎡”，需实测。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">03</span>
+          <h2>测试环境记录模板</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>记录项</th>
+              <th>填写要求</th>
+              <th>示例</th>
+              <th>为什么重要</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>产品型号</td>
+              <td>完整型号、滚刷类型、电池容量、水箱容量、版本。</td>
+              <td>某品牌智能洗地机 2025款</td>
+              <td>同款不同批次滚刷、电机或固件可能影响体验。</td>
+            </tr>
+            <tr>
+              <td>测试地面</td>
+              <td>瓷砖、地板材质、颜色、新旧程度、是否有划痕。</td>
+              <td>浅灰色柔光瓷砖，80x80cm</td>
+              <td>地面颜色影响水渍和污渍可见度。</td>
+            </tr>
+            <tr>
+              <td>脏污配方</td>
+              <td>干垃圾种类、重量，湿垃圾种类、体积，混合垃圾配比。</td>
+              <td>面粉 5g + 头发 20根 + 酱油 10ml</td>
+              <td>复测和横评必须标准化。</td>
+            </tr>
+            <tr>
+              <td>测试模式</td>
+              <td>自动、强力、吸水、节能，记录档位和滚刷转速。</td>
+              <td>自动模式，标准滚刷</td>
+              <td>不同模式吸力、水量、噪音、续航差异大。</td>
+            </tr>
+            <tr>
+              <td>测试面积</td>
+              <td>记录清洁面积、户型、房间数和障碍物。</td>
+              <td>客厅+餐厅+厨房约 60㎡</td>
+              <td>直接影响续航和水箱容量评价。</td>
+            </tr>
+            <tr>
+              <td>污水箱状态</td>
+              <td>清洁前后污水量、固液分离情况、脏污附着。</td>
+              <td>清洁后污水约 300ml，无明显干垃圾</td>
+              <td>决定机器处理能力和用户清洁难度。</td>
+            </tr>
+            <tr>
+              <td>价格信息</td>
+              <td>到手价、耗材价格、充电座 / 水箱版 / 上下水版差异。</td>
+              <td>到手价 2999 元，记录于 2025-06-01</td>
+              <td>推荐必须结合长期使用成本。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">04</span>
+          <h2>测试工具清单</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>工具类型</th>
+              <th>推荐工具 / 材料</th>
+              <th>用途</th>
+              <th>必要程度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>脏污标准化材料</td>
+              <td>面粉、米粒、酱油、牛奶、番茄酱、猫砂、头发、食物碎屑。</td>
+              <td>模拟家庭常见干湿垃圾。</td>
+              <td class="score">高</td>
+            </tr>
+            <tr>
+              <td>定量工具</td>
+              <td>电子秤、量杯、滴管、计时器。</td>
+              <td>控制脏污量和测试时间。</td>
+              <td class="score">高</td>
+            </tr>
+            <tr>
+              <td>清洁效果评估</td>
+              <td>白手套、厨房纸、荧光手电筒、高亮摄影补光灯。</td>
+              <td>检查地面水渍、残留和滚刷脏污。</td>
+              <td class="score">高</td>
+            </tr>
+            <tr>
+              <td>噪音 / 能耗</td>
+              <td>分贝仪、功耗计、智能插座。</td>
+              <td>测试运行噪音、充电功耗、自清洁能耗。</td>
+              <td class="score">中高</td>
+            </tr>
+            <tr>
+              <td>温湿度 / 水渍</td>
+              <td>温湿计、白纸水渍测试法、纸巾吸水称重。</td>
+              <td>测试拖过后的地面水痕和湿度。</td>
+              <td class="score">中高</td>
+            </tr>
+            <tr>
+              <td>续航与重量</td>
+              <td>卷尺、电子体重秤、手机计时、户型图。</td>
+              <td>测试全屋覆盖能力、机器手感和重量。</td>
+              <td class="score">高</td>
+            </tr>
+            <tr>
+              <td>维护与清洁</td>
+              <td>螺丝刀（可拆卸部件）、旧牙刷、除垢剂、净味剂。</td>
+              <td>测试管道、滚刷、滤芯、污水箱的拆洗难度。</td>
+              <td class="score">高</td>
+            </tr>
+            <tr>
+              <td>拍摄设备</td>
+              <td>相机、三脚架、补光灯、手持稳定器、延时摄影。</td>
+              <td>拍摄清洁过程、水渍残留、自清洁和拆机维护。</td>
+              <td class="score">高</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pill-list">
+          <span class="pill">基础必备：电子秤</span>
+          <span class="pill">基础必备：量杯 / 滴管</span>
+          <span class="pill">基础必备：白手套 / 厨房纸</span>
+          <span class="pill">基础必备：分贝仪</span>
+          <span class="pill">基础必备：计时器</span>
+          <span class="pill">进阶必备：荧光检测手电</span>
+          <span class="pill">进阶必备：温湿计</span>
+          <span class="pill">进阶必备：重量与手部力量评价</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">05</span>
+          <h2>洗地机测试项目总清单</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card blue">
+            <h3>一、干垃圾清理能力</h3>
+            <ul>
+              <li>面粉：单次通过是否遗留白印、扬尘。</li>
+              <li>米粒：吸入是否顺畅、是否弹飞。</li>
+              <li>猫砂 / 粗颗粒：是否被滚刷打碎、残留。</li>
+              <li>头发：是否缠绕滚刷、吸口是否堵塞。</li>
+              <li>瓜子壳、饼干碎：大颗粒一次性吸入率。</li>
+              <li>干垃圾在不同模式下的清洁效率和噪音。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>二、湿垃圾与污水回收</h3>
+            <ul>
+              <li>酱油 / 牛奶：残留颜色、水渍、污水回收率。</li>
+              <li>番茄酱 / 鸡蛋液：黏稠液体是否清理干净。</li>
+              <li>汤面 / 粥：固液混合物处理及滚刷染色。</li>
+              <li>污水箱固液分离效果、一次清洁污水量。</li>
+              <li>干湿混合垃圾后是否在管道内结块。</li>
+              <li>吸水模式下的低噪和吸力表现。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>三、贴边与死角清洁</h3>
+            <ul>
+              <li>左右贴边：面粉 / 猫砂距墙 1cm 残留。</li>
+              <li>前部死角：机器前端无法伸入的垂直面。</li>
+              <li>家具底部：床底、沙发、电视柜下方。</li>
+              <li>角落弧度：圆弧转角 vs 直角转角的清洁差异。</li>
+              <li>自清洁后滚刷两端脏污是否洗净。</li>
+              <li>滚筒边缘与机器外壳之间的垃圾卡入。</li>
+            </ul>
+          </div>
+
+          <div class="card purple">
+            <h3>四、自清洁与烘干体验</h3>
+            <ul>
+              <li>重脏污后自清洁：滚刷表面、清洁槽残留。</li>
+              <li>管道冲洗：吸污口、污水箱接口是否冲洗到。</li>
+              <li>烘干效果：滚刷潮湿度、异味、烘干时间。</li>
+              <li>基站清洁：脏水、干垃圾残留和发霉风险。</li>
+              <li>自清洁噪音和能耗。</li>
+              <li>是否需要手动拆卸滚刷和滤芯二次清洁。</li>
+            </ul>
+          </div>
+
+          <div class="card blue">
+            <h3>五、续航与水电管理</h3>
+            <ul>
+              <li>电池续航：清档 / 高档连续工作时间。</li>
+              <li>水续航：一箱净水可清洁面积。</li>
+              <li>中途加水、充电、倒污水所需时间。</li>
+              <li>150㎡以上大户型是否需要加水倒水。</li>
+              <li>充电时间、是否可拆卸电池、备用电池成本。</li>
+              <li>自动液位感应是否准确，缺水提醒是否及时。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>六、毛发处理与防缠绕</h3>
+            <ul>
+              <li>短发、长发、宠物毛发在滚刷上的缠绕情况。</li>
+              <li>吸口、滚刷轴、污水箱过滤是否堵麻。</li>
+              <li>自清洁对毛发缠绕的改善效果。</li>
+              <li>随机附赠的刀片或梳齿切割器是否好用。</li>
+              <li>长期使用后轴承和管道内毛发堆积。</li>
+              <li>免缠绕滚刷设计的实际效果。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>七、维护与使用感受</h3>
+            <ul>
+              <li>机器重量、手把高度、操控力度和转向灵活度。</li>
+              <li>滚刷、滤芯、清洁液的更换成本。</li>
+              <li>污水箱、净水箱开盖、倒水、清洗便利性。</li>
+              <li>底座摆放、充电、收纳和线缆管理。</li>
+              <li>机器异味、霉菌、电池衰减、固件稳定性。</li>
+              <li>保修政策、污水电机保修和售后响应。</li>
+            </ul>
+          </div>
+
+          <div class="card purple">
+            <h3>八、噪音与安全测试</h3>
+            <ul>
+              <li>标准模式、强力模式、自清洁模式噪音。</li>
+              <li>污水箱水满后是否自动停机。</li>
+              <li>倾斜、倾倒、平放是否漏水或造成安全隐患。</li>
+              <li>充电器、适配器防水防潮等级。</li>
+              <li>清洁液是否有腐蚀性或刺激性气味。</li>
+              <li>儿童安全锁或防误触设计。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">06</span>
+          <h2>洗地机测评评分模型</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>权重</th>
+              <th>核心测试</th>
+              <th>结论表达</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>干湿垃圾清洁力</td>
+              <td class="score">30%</td>
+              <td>面粉、酱油、蛋液、汤面、头发、猫砂、混合垃圾。</td>
+              <td>一次性能不能拖干净，不残留污渍水痕。</td>
+            </tr>
+            <tr>
+              <td>自清洁与烘干效果</td>
+              <td class="score">20%</td>
+              <td>重脏污后滚刷、管道和底座的清洁度、烘干效果。</td>
+              <td>自清洁完到底需不需要再手洗。</td>
+            </tr>
+            <tr>
+              <td>贴边与死角覆盖</td>
+              <td class="score">15%</td>
+              <td>贴边残留、低矮空间、角落和边缘一致性。</td>
+              <td>是不是还要用抹布补擦墙边。</td>
+            </tr>
+            <tr>
+              <td>续航与全屋适用</td>
+              <td class="score">10%</td>
+              <td>电池续航、水箱容量、全屋实测面积、加水加电频率。</td>
+              <td>100㎡以上家庭能不能一次搞定。</td>
+            </tr>
+            <tr>
+              <td>毛发处理与防缠绕</td>
+              <td class="score">8%</td>
+              <td>短发、长发、宠物毛发缠绕和清理难度。</td>
+              <td>长发家庭和养宠家庭是否友好。</td>
+            </tr>
+            <tr>
+              <td>维护成本与易用性</td>
+              <td class="score">10%</td>
+              <td>滚刷、滤芯、清洁液、重量、污水箱清洁、操作手感。</td>
+              <td>买回去之后是否愿意天天用。</td>
+            </tr>
+            <tr>
+              <td>价格与长期成本</td>
+              <td class="score">7%</td>
+              <td>机器价格、耗材、维修、售后。</td>
+              <td>当前价格下推荐等级。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">07</span>
+          <h2>内容生产 SOP</h2>
+        </div>
+
+        <div class="workflow">
+          <div class="step"><b>1</b><strong>选题立项</strong><span>单品/横评/专题</span></div>
+          <div class="step"><b>2</b><strong>商务确认</strong><span>样机/耗材/合同</span></div>
+          <div class="step"><b>3</b><strong>样品入库</strong><span>型号/配件/状态</span></div>
+          <div class="step"><b>4</b><strong>脏污配方设计</strong><span>干湿垃圾/配比</span></div>
+          <div class="step"><b>5</b><strong>实测拍摄</strong><span>清洁过程/自清洁</span></div>
+          <div class="step"><b>6</b><strong>清洁后评估</strong><span>残留/水渍/异味</span></div>
+          <div class="step"><b>7</b><strong>脚本剪辑</strong><span>结论/证据/建议</span></div>
+          <div class="step"><b>8</b><strong>复盘归档</strong><span>播放/转化/反馈</span></div>
+        </div>
+
+        <div style="height:18px;"></div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>SOP环节</th>
+              <th>具体动作</th>
+              <th>责任人</th>
+              <th>交付物</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>选题立项</td>
+              <td>确定单品长测、多品牌横评、宠物家庭、母婴家庭或大促推荐选题。</td>
+              <td>主理人 / 选题编辑</td>
+              <td>选题单、竞品列表、脏污配方方案。</td>
+            </tr>
+            <tr>
+              <td>样品确认</td>
+              <td>确认样机来源、型号、固件、是否商单、耗材配件和是否寄回。</td>
+              <td>商务 / 运营</td>
+              <td>样品登记表、合作确认单。</td>
+            </tr>
+            <tr>
+              <td>脏污准备</td>
+              <td>按标准配方配制干、湿和混合垃圾，记录初始重量和摆放位置。</td>
+              <td>测评编辑</td>
+              <td>脏污清单、配方记录表、地面照片。</td>
+            </tr>
+            <tr>
+              <td>实测执行</td>
+              <td>固定机位拍摄清洁全过程、贴边特写、污水箱状态和自清洁过程。</td>
+              <td>摄像 / 测评编辑</td>
+              <td>清洁视频素材、残留照片、噪音和电耗记录。</td>
+            </tr>
+            <tr>
+              <td>清洁复查</td>
+              <td>使用白手套、厨房纸、高亮手电检查地面、滚刷、污水箱和基站。</td>
+              <td>测评编辑</td>
+              <td>残留证据图、水渍记录、异味描述。</td>
+            </tr>
+            <tr>
+              <td>结论评审</td>
+              <td>形成优缺点、适合人群、不适合人群、耗材成本和购买建议。</td>
+              <td>主理人 / 编辑</td>
+              <td>评分卡、推荐等级。</td>
+            </tr>
+            <tr>
+              <td>脚本拍摄</td>
+              <td>先给结论，再展示干湿清洁、自清洁、贴边、续航和维护证据。</td>
+              <td>博主 / 摄像</td>
+              <td>口播、特写、过程素材。</td>
+            </tr>
+            <tr>
+              <td>发布复盘</td>
+              <td>维护价格、回复用户地面、宠物、面积问题，统计转化数据。</td>
+              <td>运营 / 商务</td>
+              <td>复盘报告、商务案例。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">08</span>
+          <h2>单条洗地机测评视频结构 SOP</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card blue">
+            <h3>标准长视频结构</h3>
+            <ul>
+              <li><strong>00:00 - 00:30：</strong>结论前置：推荐给谁，不推荐给谁。</li>
+              <li><strong>00:30 - 02:00：</strong>型号、价格、样品来源、主配件。</li>
+              <li><strong>02:00 - 04:30：</strong>干垃圾一次性清理实测，展示面粉、头发、颗粒。</li>
+              <li><strong>04:30 - 07:00：</strong>湿垃圾与混合垃圾测试，展示酱油、蛋液和汤面。</li>
+              <li><strong>07:00 - 09:00：</strong>贴边、角落和低矮空间测试，展示残留。</li>
+              <li><strong>09:00 - 11:00：</strong>自清洁、烘干效果、滚刷前后对比和管道清洁。</li>
+              <li><strong>11:00 - 13:00：</strong>续航、水箱、全屋覆盖、加水排水、噪音。</li>
+              <li><strong>13:00 - 14:30：</strong>维护、耗材成本、缺点和替代方案、最终推荐。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>必须出现在视频里的信息</h3>
+            <ul>
+              <li>样品来源：自购 / 借测 / 送测 / 商业合作。</li>
+              <li>测试地面：材质、颜色、新旧。</li>
+              <li>脏污配方：重量、体积、位置。</li>
+              <li>清洁模式、滚刷类型、挡位。</li>
+              <li>至少 3 个明确优点和 3 个明确缺点。</li>
+              <li>水渍、异味、贴边残留和自清洁前后的证据。</li>
+              <li>如有带货链接，说明可能存在佣金。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pill-list">
+          <span class="pill">必拍：标准脏污布置</span>
+          <span class="pill">必拍：清洁后地面水渍</span>
+          <span class="pill">必拍：白手套擦拭</span>
+          <span class="pill">必拍：滚刷自清洁前后对比</span>
+          <span class="pill">必拍：污水箱内部</span>
+          <span class="pill">必拍：贴边残留特写</span>
+          <span class="pill">必拍：全屋续航电量变化</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">09</span>
+          <h2>样品与维护管理规则</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>环节</th>
+              <th>规则</th>
+              <th>必须记录</th>
+              <th>风险点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>样品接收</td>
+              <td>开箱前拍包装、封条，开箱后记录机身、滚刷、水箱、充电座状态。</td>
+              <td>到货日期、快递单号、破损情况。</td>
+              <td>机身划痕、水箱破损、污水箱漏液。</td>
+            </tr>
+            <tr>
+              <td>样品登记</td>
+              <td>登记型号、序列号、固件、电池容量、配件清单。</td>
+              <td>样品登记表、铭牌照片。</td>
+              <td>测评媒体机与零售机固件不一致。</td>
+            </tr>
+            <tr>
+              <td>测试前准备</td>
+              <td>充满电、加满净水箱、清空污水箱、安装滚刷、确认清洁液。</td>
+              <td>充电和加水记录。</td>
+              <td>未充满电导致续航结论偏差。</td>
+            </tr>
+            <tr>
+              <td>脏污后处理</td>
+              <td>立即执行自清洁，避免脏污干结，拍摄自清洁效果。</td>
+              <td>自清洁时间、烘干时间、滚刷状态。</td>
+              <td>长时间未清洁导致机器发臭、堵塞、损坏。</td>
+            </tr>
+            <tr>
+              <td>样品寄回</td>
+              <td>清洁滚刷、滤网、污水箱、底座，晾干后打包寄回。</td>
+              <td>寄回日期、物流单号、打包视频。</td>
+              <td>异味、霉菌、残渣引发退货纠纷。</td>
+            </tr>
+            <tr>
+              <td>样品留存</td>
+              <td>若样品不寄回，明确归属和后续长期使用权限。</td>
+              <td>合同或邮件确认。</td>
+              <td>利益披露不清，后续二次商单需说明。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">10</span>
+          <h2>测试红线与商单红线</h2>
+        </div>
+
+        <div class="alert">
+          <strong>核心原则：</strong>洗地机测评必须展示真实脏污、真实地面残留、真实自清洁效果。不能隐藏水渍、贴边不干净、滚刷发臭、污水箱难洗、续航虚标等真实问题，更不能因为商单把自清洁效果拍成“全新一样”。
+        </div>
+
+        <div style="height:18px;"></div>
+
+        <div class="grid-2">
+          <div class="card red">
+            <h3>测试红线</h3>
+            <ul>
+              <li><span class="danger">禁止</span> 虚构脏污量和清洁效果，或用非标准手法后期“修复”。</li>
+              <li><span class="danger">禁止</span> 不说明地面材质、脏污配方和清洁模式就下结论。</li>
+              <li><span class="danger">禁止</span> 隐藏水渍、贴边残留、滚刷染色、异味、污水箱脏污和缠绕问题。</li>
+              <li><span class="danger">禁止</span> 把仅适用于特别清洁场景的极限视频当作日常表现。</li>
+              <li><span class="danger">禁止</span> 用全新滚刷和刚出厂状态掩盖长期使用后的性能衰减。</li>
+              <li><span class="danger">禁止</span> 宣称“吸力永不变”“永不堵塞、永不发臭”等不科学表述。</li>
+            </ul>
+          </div>
+
+          <div class="card red">
+            <h3>商单红线</h3>
+            <ul>
+              <li><span class="danger">禁止</span> 接受“不能拍缺点、不能拍自清洁残留”的合作。</li>
+              <li><span class="danger">禁止</span> 接受品牌要求删除真实水渍、贴边死角、续航不足等内容。</li>
+              <li><span class="danger">禁止</span> 未披露商业合作、样品来源或佣金关系。</li>
+              <li><span class="danger">禁止</span> 在横评中恶意隐藏竞品优点或夸大推广产品数据。</li>
+              <li><span class="danger">禁止</span> 使用“全网第一、没有对手、彻底解放双手”等绝对表述。</li>
+              <li><span class="danger">禁止</span> 宣称清洁液可食用、可完全替代消毒剂等安全性误导。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="height:18px;"></div>
+
+        <div class="grid-2">
+          <div class="card orange">
+            <h3>可以接受的品牌修改</h3>
+            <ul>
+              <li><span class="success">允许</span> 修改产品名称、型号、价格、参数、耗材价格等事实错误。</li>
+              <li><span class="success">允许</span> 补充官方清洁建议、保修政策、电池保养说明。</li>
+              <li><span class="success">允许</span> 修改未发布信息、保密技术细节和发布时间。</li>
+              <li><span class="success">允许</span> 指出测试方法问题并要求在相同条件下复测。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>不能接受的品牌修改</h3>
+            <ul>
+              <li><span class="danger">不允许</span> 删除真实水渍、贴边不干净、自清洁不完全、续航不足等画面和结论。</li>
+              <li><span class="danger">不允许</span> 要求将“不推荐”改成“推荐”。</li>
+              <li><span class="danger">不允许</span> 隐藏耗材成本、维护难度和设计缺陷。</li>
+              <li><span class="danger">不允许</span> 删除样品来源和商业合作披露。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">11</span>
+          <h2>商务开发需要的材料清单</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card blue">
+            <h3>账号基础资料</h3>
+            <ul>
+              <li>账号简介、定位、平台和内容调性。</li>
+              <li>B站 / YouTube 主页链接。</li>
+              <li>粉丝数、平均播放量、完播率、互动率。</li>
+              <li>用户画像：城市、家庭结构、居住面积、宠物拥有率。</li>
+              <li>内容栏目：单品测评、横评、宠物家庭、母婴清洁、大促推荐等。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>专业能力证明</h3>
+            <ul>
+              <li>洗地机测试 SOP 文档。</li>
+              <li>标准脏污配方和测试工具照片。</li>
+              <li>白手套、荧光检测、水渍残留的测试记录样本。</li>
+              <li>历史测评案例链接。</li>
+              <li>评分模型和推荐等级说明。</li>
+              <li>长期使用设备（如多品牌洗地机）和真实家庭环境视频。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>商业合作材料</h3>
+            <ul>
+              <li>商务报价单。</li>
+              <li>合作权益包。</li>
+              <li>发布排期表。</li>
+              <li>内容授权和切片二次使用报价。</li>
+              <li>佣金合作说明。</li>
+              <li>合同模板、样品条款、耗材和清洗费用说明。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="height:18px;"></div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>材料名称</th>
+              <th>用途</th>
+              <th>建议格式</th>
+              <th>是否必备</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>账号 Media Kit</td>
+              <td>商务初次开发展示账号价值和用户画像。</td>
+              <td>PDF / 网页</td>
+              <td class="score">必备</td>
+            </tr>
+            <tr>
+              <td>洗地机测评体系说明</td>
+              <td>证明具备标准化脏污测试和清洗评估能力。</td>
+              <td>PDF / 飞书文档</td>
+              <td class="score">必备</td>
+            </tr>
+            <tr>
+              <td>标准脏污配方表</td>
+              <td>让品牌理解测试条件，认可测试公平性。</td>
+              <td>表格 / 文档</td>
+              <td class="score">必备</td>
+            </tr>
+            <tr>
+              <td>历史案例合集</td>
+              <td>展示内容风格、播放表现和用户互动。</td>
+              <td>链接表 / PDF</td>
+              <td class="score">必备</td>
+            </tr>
+            <tr>
+              <td>报价单</td>
+              <td>明确长视频、短视频、直播、授权价格。</td>
+              <td>PDF / 表格</td>
+              <td class="score">必备</td>
+            </tr>
+            <tr>
+              <td>合规披露与耗材说明</td>
+              <td>说明商单、样品、佣金披露方式和耗材费用承担。</td>
+              <td>合同附件 / 文档</td>
+              <td class="score">必备</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">12</span>
+          <h2>商务开发 SOP</h2>
+        </div>
+
+        <div class="workflow">
+          <div class="step"><b>1</b><strong>目标名单</strong><span>品牌/平台/渠道</span></div>
+          <div class="step"><b>2</b><strong>资料发送</strong><span>Media Kit/案例</span></div>
+          <div class="step"><b>3</b><strong>需求确认</strong><span>新品/大促/品类</span></div>
+          <div class="step"><b>4</b><strong>产品初筛</strong><span>功能/水箱/基站</span></div>
+          <div class="step"><b>5</b><strong>方案报价</strong><span>视频/切片/授权</span></div>
+          <div class="step"><b>6</b><strong>合同排期</strong><span>样机/耗材/付款</span></div>
+          <div class="step"><b>7</b><strong>执行发布</strong><span>测试/拍摄/上线</span></div>
+          <div class="step"><b>8</b><strong>复盘续约</strong><span>数据/ROI/节点</span></div>
+        </div>
+
+        <div style="height:18px;"></div>
+
+        <div class="grid-2">
+          <div class="card blue">
+            <h3>商务开发目标客户</h3>
+            <ul>
+              <li>洗地机品牌：添可、追觅、小米 / 米家、石头、必胜、美的、海尔、小狗、莱克、云鲸等。</li>
+              <li>清洁电器品牌：吸尘器、扫地机、蒸汽拖把、擦窗机等跨界品牌。</li>
+              <li>电商平台：京东、天猫、抖音、拼多多。</li>
+              <li>渠道商：品牌旗舰店、线下家电连锁、会员制商场。</li>
+              <li>相关品类：清洁液、滚刷、滤芯、地板蜡、家居消毒用品。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>首次商务沟通要问清楚</h3>
+            <ul>
+              <li>推广目标：新品曝光、卖点教育、宠物 / 母婴场景还是大促转化？</li>
+              <li>合作产品：具体型号、基站版本、是否含上下水模块。</li>
+              <li>样机属性：零售机、媒体机还是工程机，固件版本。</li>
+              <li>测试边界：是否允许展示真实残留、水渍、异味和耗材价格。</li>
+              <li>耗材与费用：清洁液、滚刷、滤网由谁提供，是否计入报价。</li>
+              <li>合作形式：单品测评、横评、场景合集、直播、切片、授权。</li>
+              <li>数据需求：是否需要提供播放、互动、转化和用户画像。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">13</span>
+          <h2>商务权益包建议</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>合作包</th>
+              <th>适合场景</th>
+              <th>交付内容</th>
+              <th>注意事项</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="score">基础单品测评包</td>
+              <td>新品上市、引流种草。</td>
+              <td>1 条 8-15 分钟长视频 + 简介链接 + 评论置顶。</td>
+              <td>适合品牌首次合作，低成本试水。</td>
+            </tr>
+            <tr>
+              <td class="score">深度清洁实测包</td>
+              <td>旗舰洗地机、基站款、全能款。</td>
+              <td>1 条 15-25 分钟深度视频 + 3-5 条切片 + 图文。</td>
+              <td>需涵盖干湿垃圾、自清洁、贴边、续航和毛发。</td>
+            </tr>
+            <tr>
+              <td class="score">场景专题包</td>
+              <td>养宠、有娃、大平层、老人家庭定制。</td>
+              <td>场景故事 + 真实使用 + 日常维护 + 购买清单。</td>
+              <td>要求机器匹配目标家庭特点。</td>
+            </tr>
+            <tr>
+              <td class="score">横评赞助包</td>
+              <td>品牌希望与同价位竞品对比。</td>
+              <td>多机横评 + 品牌标注 + 数据表格。</td>
+              <td>必须提前约定不当修改结论。</td>
+            </tr>
+            <tr>
+              <td class="score">大促转化包</td>
+              <td>618、双11、年货节。</td>
+              <td>推荐清单 + 直播切片 + 评论价格更新。</td>
+              <td>适合商单费 + 佣金组合。</td>
+            </tr>
+            <tr>
+              <td class="score">内容授权包</td>
+              <td>品牌用于官方号、详情页、直播间。</td>
+              <td>视频片段、口播、图表、污渍对比素材授权。</td>
+              <td>需明确平台、期限、是否可剪辑。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">14</span>
+          <h2>合同与合作条款检查清单</h2>
+        </div>
+
+        <div class="checklist">
+          <div class="check-item"><span class="check">✓</span> 明确合作性质：商单、送测、借测、纯佣。</div>
+          <div class="check-item"><span class="check">✓</span> 明确样品归属：寄回、留存、买断。</div>
+          <div class="check-item"><span class="check">✓</span> 明确耗材责任：清洁液、滚刷、滤芯、除垢剂由谁提供。</div>
+          <div class="check-item"><span class="check">✓</span> 明确清洁与维修责任：测试后清洁要求、机器故障处理。</div>
+          <div class="check-item"><span class="check">✓</span> 明确测试周期：是否允许多轮脏污和长期使用测试。</div>
+          <div class="check-item"><span class="check">✓</span> 明确内容形式和平台：B站、YouTube、抖音等。</div>
+          <div class="check-item"><span class="check">✓</span> 明确审核范围：仅限事实错误和技术信息。</div>
+          <div class="check-item"><span class="check">✓</span> 明确结论自主权：不得要求篡改清洁效果或推荐等级。</div>
+          <div class="check-item"><span class="check">✓</span> 明确排他和禁止期：竞品范围和合作期间竞品限制。</div>
+          <div class="check-item"><span class="check">✓</span> 明确授权条款：素材使用范围、期限、是否独占。</div>
+          <div class="check-item"><span class="check">✓</span> 明确异常条款：机器严重故障、漏水漏电等安全问题的处理流程。</div>
+          <div class="check-item"><span class="check">✓</span> 明确费用支付：预付款、尾款、发票、违约金。</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">15</span>
+          <h2>带货转化 SOP</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card blue">
+            <h3>发布前</h3>
+            <ul>
+              <li>确认主推型号、版本、基站类型和核心卖点。</li>
+              <li>获取京东 / 天猫 / 抖音等链接和佣金比例。</li>
+              <li>记录当前价格、历史低价、赠品和耗材礼包。</li>
+              <li>准备适配清单：小户型、有娃、养宠、全屋地板等。</li>
+              <li>确认是否可叠加以旧换新、平台补贴、品牌券。</li>
+            </ul>
+          </div>
+
+          <div class="card green">
+            <h3>发布中</h3>
+            <ul>
+              <li>简介区放链接、价格参考日期和测试环境说明。</li>
+              <li>评论区置顶推荐型号和适用场景。</li>
+              <li>视频分段标注“贴边测试”“自清洁效果”“续航实测”。</li>
+              <li>提醒价格和赠品可能变化，以下单页面为准。</li>
+              <li>避免“全球最强”“绝对无残留”“永久不换耗材”等违规用语。</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h3>发布后</h3>
+            <ul>
+              <li>每日更新优惠、库存、新增赠品信息。</li>
+              <li>回复关于地面材质、毛发、面积、噪音等问题。</li>
+              <li>统计链接点击、订单量、佣金和退货率。</li>
+              <li>收集用户反馈，补充说明长期维护和耗材成本。</li>
+              <li>大促后复盘转化最高的卖点和人群。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">16</span>
+          <h2>对外披露模板</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card blue">
+            <h3>视频开头 / 简介披露</h3>
+            <p>
+              本期测试产品由品牌提供样机，视频包含商业合作。我们测试使用的干湿垃圾配方、地面材质和清洁模式均在视频中说明。品牌未干预最终结论。简介购买链接可能产生佣金，但不影响推荐标准。
+            </p>
+          </div>
+
+          <div class="card green">
+            <h3>非商单送测披露</h3>
+            <p>
+              本期产品为品牌送测样机，未收取视频制作费用。测试过程和结论由我们独立完成。样品来源不影响我们对清洁能力、残留、自清洁和日维护体验的评价。
+            </p>
+          </div>
+
+          <div class="card orange">
+            <h3>价格 / 效果说明</h3>
+            <p>
+              视频中价格为录制时参考价。洗地机清洁效果受地面材质、脏污种类、使用模式和维护习惯影响，实际体验可能因家庭环境不同而有差异。耗材成本和电池寿命以官方售后政策为准。
+            </p>
+          </div>
+
+          <div class="card purple">
+            <h3>横评 / 对比披露</h3>
+            <p>
+              本次横评各机型都在相同地面、相同脏污配方和相同模式下进行，温度、湿度等环境条件已记录。结果仅代表测试条件下的表现，不同家庭可能产生差异。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">17</span>
+          <h2>最终文件归档清单</h2>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>归档类别</th>
+              <th>文件内容</th>
+              <th>命名建议</th>
+              <th>用途</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>样品资料</td>
+              <td>型号、序列号、固件、样品来源、价格、配件清单。</td>
+              <td>品牌_型号_样品登记</td>
+              <td>复查和财务对账。</td>
+            </tr>
+            <tr>
+              <td>脏污配方记录</td>
+              <td>干湿垃圾种类、重量、体积、摆放位置、测试日期。</td>
+              <td>品牌_型号_脏污配方</td>
+              <td>横评公平性和复测。</td>
+            </tr>
+            <tr>
+              <td>测试数据</td>
+              <td>清洁效果评分、水渍和残留照片、污水量、噪音、续航记录。</td>
+              <td>品牌_型号_测试数据</td>
+              <td>生成图表和结论。</td>
+            </tr>
+            <tr>
+              <td>视频素材</td>
+              <td>清洁过程、自清洁、贴边、污水箱、滚刷对比特写。</td>
+              <td>日期_型号_素材类型</td>
+              <td>剪辑和二次切片。</td>
+            </tr>
+            <tr>
+              <td>商务文件</td>
+              <td>合同、报价、需求单、发票、授权文件。</td>
+              <td>客户_项目_商务文件</td>
+              <td>项目管理和归档。</td>
+            </tr>
+            <tr>
+              <td>复盘报告</td>
+              <td>播放量、互动、链接点击、成交、退货、用户反馈。</td>
+              <td>项目_发布后7天复盘</td>
+              <td>商务续约和内容优化。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div>© 洗地机测评内容 SOP 与商务开发报告 · 适用于 B站 / YouTube 清洁家电长视频团队</div>
+      <div>版本：V1.0</div>
+    </footer>
+  </div>
+</body>
+</html>
