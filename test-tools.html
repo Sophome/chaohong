@@ -1,57 +1,333 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧪 测试专用页面 · 评测排行榜工具</title>
-<style>
-:root{--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--txt:#1a2333;--blue:#2563eb;}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);}
-header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:28px 28px;}
-header h1{font-size:24px;margin-bottom:6px}
-header p{font-size:13.5px;opacity:.88;max-width:980px}
-.wrap{max-width:1200px;margin:0 auto;padding:22px 18px 60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-decoration:none;color:var(--txt);transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(37,99,235,.14);border-color:#3b82f6}
-.card .icon{font-size:28px;margin-bottom:12px}
-.card .name{font-size:16.5px;font-weight:800;color:#0f2557;margin-bottom:8px}
-.card .desc{font-size:13px;color:#5b6b8c;flex:1;line-height:1.7}
-.card .arr{margin-top:14px;font-size:13px;font-weight:800;color:var(--blue)}
-.note{margin-top:20px;font-size:12.5px;color:#5b6b8c;background:#eef2fb;border:1px solid var(--line);border-radius:10px;padding:12px 16px;line-height:1.8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超红传媒 · 测试工具</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0f17;
+      --bg-soft:#111827;
+      --card:rgba(18,24,37,.92);
+      --card-2:rgba(23,31,47,.88);
+      --text:#f8fafc;
+      --soft:#d7dee8;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.16);
+      --accent:#4f6ef7;
+      --accent2:#818cf8;
+      --shadow:0 4px 20px rgba(0,0,0,.28);
+    
+      --header-bg: linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);
+      --header-text: #fff;
+      --toggle-bg: rgba(255,255,255,0.2);}
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f4f7fb;
+      --bg-soft:#eef3f8;
+      --card:rgba(255,255,255,.92);
+      --card-2:rgba(248,250,252,.96);
+      --text:#111827;
+      --soft:#334155;
+      --muted:#64748b;
+      --line:rgba(15,23,42,.1);
+      --accent:#4f6ef7;
+      --accent2:#7c3aed;
+      --shadow:0 4px 20px rgba(15,23,42,.06);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb,var(--accent) 15%,transparent), transparent 30%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb,var(--accent2) 12%,transparent), transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg-soft) 48%,var(--bg));
+    }
+
+    .page { max-width:1200px; margin:0 auto; padding:28px 24px 56px; }
+
+    /* ── NAV PILLS ── */
+    .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; }
+    .nav-pill {
+      display:inline-flex; align-items:center; gap:4px;
+      padding:5px 14px; border-radius:16px; font-size:0.78rem;
+      text-decoration:none; border:1.5px solid var(--line);
+      color:var(--muted); background:var(--card-2);
+      transition:all 0.2s; font-weight:500;
+    }
+    .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+    .nav-pill.active {
+      background:var(--accent); color:#fff; border-color:var(--accent);
+      pointer-events:none; font-weight:700;
+    }
+
+    /* ── 品类跳转 ── */
+    .cat-links { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+    .cat-pill {
+      display:inline-flex; align-items:center; gap:4px;
+      padding:5px 14px; border-radius:16px; font-size:0.78rem;
+      text-decoration:none; border:1.5px solid var(--line);
+      color:var(--muted); background:var(--card-2);
+      transition:all 0.2s; font-weight:500;
+    }
+    .cat-pill:not(.active):hover { border-color:#ea580c; color:#ea580c; transform:translateY(-1px); }
+    .cat-pill.active { background:#ea580c; color:#fff; border-color:#ea580c; pointer-events:none; font-weight:700; }
+
+    /* ── SECTION ── */
+    .sec { margin-bottom:36px; }
+    .sec-head {
+      display:flex; align-items:center; gap:10px;
+      margin-bottom:14px; padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+    }
+    .sec-dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+    .sec-title { font-size:1.18rem; font-weight:700; }
+    .sec-count { font-size:0.82rem; color:var(--muted); background:var(--bg-soft); border-radius:8px; padding:2px 9px; }
+
+    /* ── CARDS GRID ── */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    .card {
+      border:1px solid var(--line);
+      background:var(--card-2);
+      border-radius:14px; padding:18px;
+      text-decoration:none; color:inherit;
+      display:flex; flex-direction:column; gap:8px;
+      box-shadow:var(--shadow);
+      transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor:pointer;
+    }
+    .card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:0 8px 28px rgba(0,0,0,.24); }
+    .card-row { display:flex; align-items:center; gap:7px; }
+    .card-icon { font-size:1.2rem; flex-shrink:0; }
+    .card-name { font-size:1.08rem; font-weight:700; line-height:1.35; }
+    .card-desc { font-size:0.85rem; color:var(--muted); line-height:1.55; flex:1; }
+    .card-arr { font-size:0.82rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
+    .card:hover .card-arr { opacity:1; }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 44px 0 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content:"";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header::after {
+      content:"";
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 400px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .header-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index:1; padding: 0 24px; box-sizing: border-box; }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 0.92rem;
+      opacity: 0.78;
+      line-height: 1.5;
+    }
+    .header-meta {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: var(--toggle-bg);
+      font-size: 0.78rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 14px; right: 24px;
+      z-index: 5;
+      border: none;
+      background: var(--toggle-bg);
+      color: var(--header-text);
+      padding: 7px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-family: inherit;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: rgba(255,255,255,0.15); }
+
+    /* ── DOT COLORS ── */
+    .d-tools  .sec-dot { background:#4f6ef7; }
+    .d-tv     .sec-dot { background:#7c3aed; }
+    .d-robot  .sec-dot { background:#0891b2; }
+    .d-floor  .sec-dot { background:#ea580c; }
+    .d-guide  .sec-dot { background:#10b981; }
+
+    /* ── FOOTER ── */
+    .foot {
+      text-align:center; padding:18px 0;
+      font-size:0.74rem; color:var(--muted);
+      border-top:1px solid var(--line); margin-top:8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:820px) { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+    @media (max-width:480px) { .grid { grid-template-columns:1fr; } .page { padding:20px 16px 40px; } }
+  </style>
 </head>
 <body>
-<header>
-  <h1>🧪 测试专用页面 · 评测排行榜工具</h1>
-  <p>电视 / 扫地机器人 / 洗地机 三款评测排行榜工具的集中入口，点击卡片在新窗口打开独立工具页。</p>
-</header>
 
-<div class="wrap">
-  <div class="grid">
-    <a class="card" href="tool-rank-tv.html" target="_blank">
-      <span class="icon">📺</span>
-      <span class="name">电视 · 评测排行榜工具</span>
-      <span class="desc">画质 / 音质 / 游戏 / 智能化 / 护眼 五维评测打分（0–100，80=达标 90+=优秀），支持机型增删、权重调节、实时排行与雷达图对比，一键导出结果。</span>
-      <span class="arr">打开工具 →</span>
-    </a>
-    <a class="card" href="tool-rank-robot-vacuum.html" target="_blank">
-      <span class="icon">🤖</span>
-      <span class="name">扫地机器人 · 评测排行榜工具</span>
-      <span class="desc">清洁 / 导航 / 避障 / 续航 / 智能 多维度评测打分，支持机型增删、权重调节、实时排行与雷达图对比，一键导出结果。</span>
-      <span class="arr">打开工具 →</span>
-    </a>
-    <a class="card" href="tool-rank-floor-washer.html" target="_blank">
-      <span class="icon">🧹</span>
-      <span class="name">洗地机 · 评测排行榜工具</span>
-      <span class="desc">清洁力 / 自清洁 / 续航 / 操作 / 智能 多维度评测打分，支持机型增删、权重调节、实时排行与雷达图对比，一键导出结果。</span>
-      <span class="arr">打开工具 →</span>
-    </a>
+<div class="header">
+  <button class="toggle-btn" onclick="toggleTheme()" id="toggleBtn">
+    <span id="toggleIcon">&#127769;</span>
+    <span id="toggleText">深色</span>
+  </button>
+  <div class="header-inner">
+    <h1>🧪 超红传媒 · 测试工具</h1>
+    <p>评测排行榜工具集 · 打分、排行、雷达图一键搞定</p>
+    <div class="header-meta">
+      <span class="header-badge">🛠️ 3 个工具</span>
+      <span class="header-badge">📺 3 大品类</span>
+      <span class="header-badge">⚙️ 0–100 打分 · 权重可调</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="nav-links">
+    <a class="nav-pill" href="index.html">📁 知识库导航</a>
+    <a class="nav-pill" href="timeline.html">📅 时间线</a>
+    <a class="nav-pill" href="market-research.html">📊 市场调研</a>
+    <a class="nav-pill" href="seo.html">🔍 SEO</a>
+    <a class="nav-pill" href="sop.html">📋 SOP</a>
+    <a class="nav-pill" href="score-content-evaluation.html" target="_blank">⭐ 评分标准</a>
+    <a class="nav-pill" href="content-calendar-accounts-h2-2026.html" target="_blank">📅 账号日历</a>
+    <span class="nav-pill active">🧪 测试工具</span>
   </div>
 
-  <div class="note">💡 使用说明：每个工具支持添加/删除机型、逐项打分（0–100，80=达标）、调整子榜单权重（自动归一化）、实时排行与雷达图对比，并可一键导出结果到剪贴板。独立访问地址：<br>
-  📺 电视 → <a href="tool-rank-tv.html" target="_blank">tool-rank-tv.html</a>　🤖 扫地机 → <a href="tool-rank-robot-vacuum.html" target="_blank">tool-rank-robot-vacuum.html</a>　🧹 洗地机 → <a href="tool-rank-floor-washer.html" target="_blank">tool-rank-floor-washer.html</a></div>
-</div>
+  <!-- 🧭 品类跳转 -->
+  <div class="cat-links">
+    <a class="cat-pill" href="category-tv.html">📺 电视</a>
+    <a class="cat-pill" href="category-robot-vacuum.html">🤖 扫地机</a>
+    <a class="cat-pill" href="category-floor-washer.html">🧹 洗地机</a>
+    <a class="cat-pill" href="category-monitor.html">🖥️ 显示器</a>
+    <a class="cat-pill" href="category-gaming-laptop.html">🎮 游戏本</a>
+    <a class="cat-pill" href="category-laptop.html">💻 笔记本</a>
+  </div>
+
+  <!-- 评测排行榜工具 -->
+  <div class="sec d-tools">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">评测排行榜工具</span>
+      <span class="sec-count">3 个</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="tool-rank-tv.html" target="_blank">
+        <div class="card-row"><span class="card-icon">📺</span><span class="card-name">电视 · 评测排行榜工具</span></div>
+        <div class="card-desc">画质 / 音质 / 游戏 / 智能化 / 护眼 五维评测打分（0–100，80=达标），机型增删 · 权重调节 · 实时排行与雷达图 · 一键导出</div>
+        <div class="card-arr">打开工具 →</div>
+      </a>
+      <a class="card" href="tool-rank-robot-vacuum.html" target="_blank">
+        <div class="card-row"><span class="card-icon">🤖</span><span class="card-name">扫地机器人 · 评测排行榜工具</span></div>
+        <div class="card-desc">清洁 / 导航 / 避障 / 续航 / 智能 多维度评测打分（0–100），机型增删 · 权重调节 · 实时排行与雷达图 · 一键导出</div>
+        <div class="card-arr">打开工具 →</div>
+      </a>
+      <a class="card" href="tool-rank-floor-washer.html" target="_blank">
+        <div class="card-row"><span class="card-icon">🧹</span><span class="card-name">洗地机 · 评测排行榜工具</span></div>
+        <div class="card-desc">清洁力 / 自清洁 / 续航 / 操作 / 智能 多维度评测打分（0–100），机型增删 · 权重调节 · 实时排行与雷达图 · 一键导出</div>
+        <div class="card-arr">打开工具 →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 使用说明 -->
+  <div class="sec d-guide">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">使用说明</span>
+      <span class="sec-count">4 步</span>
+    </div>
+    <div class="grid">
+      <div class="card" style="cursor:default">
+        <div class="card-row"><span class="card-icon">➕</span><span class="card-name">1 · 添加机型</span></div>
+        <div class="card-desc">在「机型管理」输入机型名称点击添加，可随时删除，支持任意数量的机型横向对比。</div>
+      </div>
+      <div class="card" style="cursor:default">
+        <div class="card-row"><span class="card-icon">✍️</span><span class="card-name">2 · 逐项打分</span></div>
+        <div class="card-desc">按统一测试标准逐项打分 0–100（80=达标，90+=优秀），打分矩阵内置每项测试方法与参考值。</div>
+      </div>
+      <div class="card" style="cursor:default">
+        <div class="card-row"><span class="card-icon">⚖️</span><span class="card-name">3 · 调节权重</span></div>
+        <div class="card-desc">子榜单权重可自由调整并自动归一化，综合分 = Σ(子榜分 × 权重)，排行与雷达图实时更新。</div>
+      </div>
+      <div class="card" style="cursor:default">
+        <div class="card-row"><span class="card-icon">📤</span><span class="card-name">4 · 导出结果</span></div>
+        <div class="card-desc">点击「导出结果」一键复制完整排行与打分矩阵到剪贴板，直接粘贴进文档或表格。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">超红传媒 &nbsp;·&nbsp; 测试工具 &nbsp;·&nbsp; 3 个 &nbsp;·&nbsp; 2026</div>
+
+</div><!-- /page -->
+
+<script>
+  (function() {
+    const saved = localStorage.getItem("chaohong-theme");
+    const theme = saved || "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    const icon = document.getElementById("toggleIcon");
+    const text = document.getElementById("toggleText");
+    if (icon && text) {
+      icon.textContent = theme === "dark" ? "🌙" : "☀️";
+      text.textContent = theme === "dark" ? "深色" : "浅色";
+    }
+  })();
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const cur = html.getAttribute("data-theme") || "light";
+    const next = cur === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("chaohong-theme", next);
+    const icon = document.getElementById("toggleIcon");
+    const text = document.getElementById("toggleText");
+    if (icon && text) {
+      icon.textContent = next === "dark" ? "🌙" : "☀️";
+      text.textContent = next === "dark" ? "深色" : "浅色";
+    }
+  }
+</script>
 </body>
 </html>
