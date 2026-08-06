@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>超红传媒 · 电视品类</title>
+  <title>超红传媒 · SOP 分类</title>
   <style>
     :root {
       color-scheme: dark;
@@ -19,7 +19,7 @@
       --accent2:#818cf8;
       --shadow:0 4px 20px rgba(0,0,0,.28);
     
-      --header-bg: linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);
+      --header-bg: linear-gradient(135deg,#ea580c 0%,#e11d48 100%);
       --header-text: #fff;
       --toggle-bg: rgba(255,255,255,0.2);}
     html[data-theme="light"] {
@@ -52,6 +52,13 @@
     .page { max-width:1200px; margin:0 auto; padding:28px 24px 56px; }
 
     /* ── NAV PILLS ── */
+    
+    
+    
+    
+
+    /* ── 品类跳转 ── */
+    
     
     
     
@@ -92,8 +99,7 @@
     .card-arr { font-size:0.82rem; color:var(--accent); opacity:0; transition:opacity 0.2s; margin-top:auto; }
     .card:hover .card-arr { opacity:1; }
 
-    
-    /* ── HEADER (index style) ── */
+    /* ── HEADER ── */
     .header {
       background: var(--header-bg);
       color: var(--header-text);
@@ -166,14 +172,23 @@
     }
     .toggle-btn:hover { background: rgba(255,255,255,0.15); }
 
-/* ── DOT COLORS ── */
-    .d-guide   .sec-dot { background:#f97316; }
-    .d-sop     .sec-dot { background:#4f6ef7; }
-    .d-framework .sec-dot { background:#8b5cf6; }
-    .d-plan    .sec-dot { background:#10b981; }
-    .d-storyboard .sec-dot { background:#ef4444; }
-    .d-proposal .sec-dot { background:#3b82f6; }
+    /* ── DOT COLORS ── */
+    .d-guide     .sec-dot { background:#f97316; }
+    .d-plan      .sec-dot { background:#8b5cf6; }
+    .d-sop       .sec-dot { background:#4f6ef7; }
+    .d-market    .sec-dot { background:#22c55e; }
+    .d-seo       .sec-dot { background:#059669; }
+    .d-bili      .sec-dot { background:#1a73e8; }
 
+
+    /* ── SOP DOT COLORS ── */
+    .d-platform .sec-dot { background:#4f6ef7; }
+    .d-tv .sec-dot { background:#7c3aed; }
+    .d-robot .sec-dot { background:#0891b2; }
+    .d-floor .sec-dot { background:#ea580c; }
+    .d-fridge .sec-dot { background:#0ea5e9; }
+    .d-aircon .sec-dot { background:#10b981; }
+    .d-theater .sec-dot { background:#d946ef; }
     /* ── FOOTER ── */
     .foot {
       text-align:center; padding:18px 0;
@@ -184,13 +199,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width:820px) { .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
     @media (max-width:480px) { .grid { grid-template-columns:1fr; } .page { padding:20px 16px 40px; } }
-  
-    /* ── 品类跳转 ── */
-    
-    
-    
-    
-
       /* ── NAV PILLS ── */
     .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; }
     .nav-pill {
@@ -232,212 +240,208 @@
     <span id="toggleText">深色</span>
   </button>
   <div class="header-inner">
-    <h1>超红传媒 · 电视品类</h1>
-    <p>电视内容 · 一站式分类导航</p>
+    <h1>超红传媒 · SOP 分类</h1>
+    <p>SOP 标准操作规程 · 一站式分类导航</p>
     <div class="header-meta">
-      <span class="header-badge">📺 11 篇文档</span>
+      <span class="header-badge">📋 13 篇文档</span>
       <span class="header-badge">🏷️ 7 个分类</span>
-      <span class="header-badge">&#128225; 三平台同步</span>
+      <span class="header-badge">🛠️ 按品类排序 · 数量优先</span>
     </div>
   </div>
 </div>
 
 <div class="page">
-  <!-- NAV PILLS -->
-            <div class="nav-links">
+              <div class="nav-links">
     <a class="nav-pill" href="index.html">📁 知识库导航</a>
     <a class="nav-pill" href="timeline.html">📅 时间线</a>
     <a class="nav-pill" href="market-research.html">📊 市场调研</a>
     <a class="nav-pill" href="seo.html">🔍 SEO</a>
-    <a class="nav-pill" href="sop.html">📋 SOP</a>
+    <span class="nav-pill active">📋 SOP</span>
     <a class="nav-pill" href="score-content-evaluation.html" target="_blank">⭐ 评分标准</a>
     <a class="nav-pill" href="content-calendar-accounts-h2-2026.html" target="_blank">📅 账号日历</a>
   </div>
 
-      <!-- 🧭 品类跳转 -->
-      <div class="cat-links">
-      <a class="cat-pill" href="category-tv.html">📺 电视</a>
-      <a class="cat-pill" href="category-robot-vacuum.html">🤖 扫地机</a>
-      <a class="cat-pill" href="category-floor-washer.html">🧹 洗地机</a>
-      <a class="cat-pill" href="category-monitor.html">🖥️ 显示器</a>
-      <a class="cat-pill" href="category-gaming-laptop.html">🎮 游戏本</a>
-      <a class="cat-pill" href="category-laptop.html">💻 笔记本</a>
-      </div>
+  <!-- 🧭 品类跳转 -->
+  <div class="sec cat-switch">
+    <div class="cat-links">
+      <a class="cat-pill" href="category-tv.html">📺 电视类目</a>
+      <a class="cat-pill" href="category-robot-vacuum.html">🤖 扫地机类目</a>
+      <a class="cat-pill" href="category-floor-washer.html">🧹 洗地机类目</a>
+      <a class="cat-pill" href="category-monitor.html">🖥️ 显示器类目</a>
+      <a class="cat-pill" href="category-gaming-laptop.html">🎮 游戏本类目</a>
+      <a class="cat-pill" href="category-laptop.html">💻 笔记本类目</a>
+    </div>
+  </div>
 
-  <!-- 🛒 选购指南 -->
-  <div class="sec d-guide">
+  <div class="sec d-platform">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">选购指南</span>
-      <span class="sec-count">3 篇</span>
+      <span class="sec-title">平台/通用 SOP</span>
+      <span class="sec-count">7 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="buying-guide-tv-china-market.html" target="_blank">
+      <a class="card" href="sop-feishu-delivery.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">🇨🇳</span>
-          <span class="card-name">中国市场电视机科学选购指南</span>
+          <span class="card-icon">📮</span>
+          <span class="card-name">超红传媒飞书交付SOP 2.0</span>
         </div>
-        <div class="card-desc">Mini LED、OLED、RGB Mini LED 与核心配置优先级</div>
+        <div class="card-desc">飞书协同交付标准化流程与规范</div>
         <div class="card-arr">打开 →</div>
       </a>
-      <a class="card" href="buying-guide-tv-scientific.html" target="_blank">
+      <a class="card" href="sop-longvideo-yt-bilibili.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">🔬</span>
-          <span class="card-name">电视机科学选购指南</span>
+          <span class="card-icon">🎬</span>
+          <span class="card-name">家电数码长视频 SOP</span>
         </div>
-        <div class="card-desc">Mini LED、OLED、大屏、HDR 与游戏电视配置优先级</div>
+        <div class="card-desc">YouTube · B站全流程标准操作规程</div>
         <div class="card-arr">打开 →</div>
       </a>
-      <a class="card" href="buying-guide-tv-picture-quality.html" target="_blank">
+      <a class="card" href="commerce-execution-dashboard.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">🎨</span>
-          <span class="card-name">电视选购指南｜画质与智能舒适</span>
+          <span class="card-icon">📈</span>
+          <span class="card-name">结果导向带货与商单执行看板</span>
         </div>
-        <div class="card-desc">画质与智能舒适配置优先级详解</div>
+        <div class="card-desc">带货商单执行进度追踪与数据看板</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="bilibili-workflow-report.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">📺</span>
+          <span class="card-name">B站数码/家电博主标准执行流程报告</span>
+        </div>
+        <div class="card-desc">B站创作者完整工作流程规范</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="bilibili-video-competitiveness-sop.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">⚡</span>
+          <span class="card-name">B站视频竞争力提升SOP</span>
+        </div>
+        <div class="card-desc">数据驱动竞争力优化操作规程</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="bilibili-video-competitiveness-dashboard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">📊</span>
+          <span class="card-name">B站视频竞争力 SOP 看板</span>
+        </div>
+        <div class="card-desc">B站视频数据可视化看板与进度追踪</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="bilibili-content-competitiveness-action-table.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">📋</span>
+          <span class="card-name">B站内容竞争力提升行动总表</span>
+        </div>
+        <div class="card-desc">竞争力提升行动计划与任务追踪</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
-
-  <!-- 📋 SOP 指南 -->
-  <div class="sec d-sop">
+  <div class="sec d-tv">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">SOP 指南</span>
+      <span class="sec-title">电视 SOP</span>
       <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
       <a class="card" href="sop-tv-report.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">📝</span>
-          <span class="card-name">电视机测评 SOP + 商务开发材料</span>
+          <span class="card-icon">📺</span>
+          <span class="card-name">电视机测评内容 SOP</span>
         </div>
-        <div class="card-desc">电视品类内容规范与合作清单</div>
+        <div class="card-desc">测评内容 SOP 与商务开发材料清单</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
-
-  <!-- 📊 全年框架 -->
-  <div class="sec d-framework">
+  <div class="sec d-robot">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">全年框架</span>
+      <span class="sec-title">扫地机 SOP</span>
       <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="content-framework-tv-2026.html" target="_blank">
+      <a class="card" href="sop-robot-report.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">📊</span>
-          <span class="card-name">电视机全年内容框架</span>
+          <span class="card-icon">🤖</span>
+          <span class="card-name">扫地机器人测评内容 SOP</span>
         </div>
-        <div class="card-desc">三层内容结构 · 36个核心选题 · 全年大促节点覆盖</div>
+        <div class="card-desc">测评内容 SOP 与商务开发报告</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
-
-  <!-- 📋 选题清单 -->
-  <div class="sec d-plan">
+  <div class="sec d-floor">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">选题清单</span>
+      <span class="sec-title">洗地机 SOP</span>
       <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="content-plan-tv.html" target="_blank">
+      <a class="card" href="sop-floor-washer-report.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">📋</span>
-          <span class="card-name">电视内容规划表</span>
+          <span class="card-icon">🧹</span>
+          <span class="card-name">洗地机测评内容 SOP</span>
         </div>
-        <div class="card-desc">全年内容发布规划，覆盖新品解读、画质对比、选购攻略等核心方向</div>
+        <div class="card-desc">测评内容 SOP 与商务开发报告</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
-
-  <!-- 🎬 项目策划 -->
-  <div class="sec d-plan">
+  <div class="sec d-fridge">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">项目策划</span>
-      <span class="sec-count">4 篇</span>
-    </div>
-    <div class="grid">
-      <a class="card" href="plan-tv-2026h2.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">📅</span>
-          <span class="card-name">2026下半年电视长视频项目策划报告</span>
-        </div>
-        <div class="card-desc">电视品类年度内容策划方案</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="plan-tv-overall-2026h2.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">📅</span>
-          <span class="card-name">2026下半年电视长视频整体项目策划报告</span>
-        </div>
-        <div class="card-desc">电视品类整体执行策划</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="plan-tv.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">📁</span>
-          <span class="card-name">电视长视频项目策划报告</span>
-        </div>
-        <div class="card-desc">电视品类内容策划完整方案</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-      <a class="card" href="plan-tv-overall.html" target="_blank">
-        <div class="card-row">
-          <span class="card-icon">📁</span>
-          <span class="card-name">电视长视频整体项目策划报告</span>
-        </div>
-        <div class="card-desc">电视品类整体执行策划完整方案</div>
-        <div class="card-arr">打开 →</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- 🎞️ 分镜表 -->
-  <div class="sec d-storyboard">
-    <div class="sec-head">
-      <div class="sec-dot"></div>
-      <span class="sec-title">分镜表</span>
+      <span class="sec-title">冰箱 SOP</span>
       <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="storyboard-tv-buying-guide-202607.html" target="_blank">
+      <a class="card" href="sop-fridge-report.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">🎞️</span>
-          <span class="card-name">电视机选购指南视频分镜表</span>
+          <span class="card-icon">🧊</span>
+          <span class="card-name">冰箱测评内容 SOP</span>
         </div>
-        <div class="card-desc">电视机选购指南202607-视频分镜表</div>
+        <div class="card-desc">测评内容 SOP 与商务开发报告</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
-
-  <!-- 📋 立项书 -->
-  <div class="sec d-proposal">
+  <div class="sec d-aircon">
     <div class="sec-head">
       <div class="sec-dot"></div>
-      <span class="sec-title">立项书</span>
+      <span class="sec-title">空调 SOP</span>
       <span class="sec-count">1 篇</span>
     </div>
     <div class="grid">
-      <a class="card" href="proposal-projector-buying-guide-2026.html" target="_blank">
+      <a class="card" href="sop-aircon-report.html" target="_blank">
         <div class="card-row">
-          <span class="card-icon">📋</span>
-          <span class="card-name">2026 家用投影仪选购指南 · 视频立项书</span>
+          <span class="card-icon">❄️</span>
+          <span class="card-name">空调测评内容 SOP</span>
         </div>
-        <div class="card-desc">选题定位、内容结构、拍摄计划与交付标准</div>
+        <div class="card-desc">测评内容 SOP 与商务开发报告</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+    </div>
+  </div>
+  <div class="sec d-theater">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">家庭影院 SOP</span>
+      <span class="sec-count">1 篇</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="sop-hometheater-report.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">🎬</span>
+          <span class="card-name">家庭影院测评内容 SOP</span>
+        </div>
+        <div class="card-desc">测评内容 SOP 与商务开发报告</div>
         <div class="card-arr">打开 →</div>
       </a>
     </div>
   </div>
 
-  <div class="foot">超红传媒 &nbsp;·&nbsp; 电视品类 &nbsp;·&nbsp; 2026</div>
+  <div class="foot">超红传媒 &nbsp;·&nbsp; SOP 分类 &nbsp;·&nbsp; 13 篇 &nbsp;·&nbsp; 2026</div>
 
 </div><!-- /page -->
 
@@ -454,13 +458,6 @@
     }
   })();
 
-  function updateBtn(theme) {
-    const btn = document.getElementById('themeBtn');
-    if (!btn) return;
-    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
-  }
-
-  
   function toggleTheme() {
     const html = document.documentElement;
     const cur = html.getAttribute("data-theme") || "light";
