@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电视 · 评测排行榜工具</title>
+<style>
+:root{--c:#4285f4;--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--txt:#1a2333;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);}
+header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:22px 28px;}
+header h1{font-size:22px;margin-bottom:4px}
+header p{font-size:13px;opacity:.85}
+.wrap{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1500px;margin:0 auto;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card h3{font-size:15px;margin-bottom:12px;color:#0f2557;border-left:4px solid var(--c);padding-left:8px}
+.btn{display:inline-block;border:none;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;background:var(--c);color:#fff;transition:.2s}
+.btn:hover{filter:brightness(1.08)}
+.btn.gray{background:#e8edf5;color:#3a4a6b}
+.btn.red{background:#e5484d}
+.btn.sm{padding:3px 8px;font-size:12px;margin-left:6px}
+input[type=text],input[type=number]{border:1px solid var(--line);border-radius:7px;padding:7px 9px;font-size:13px;width:100%}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center;vertical-align:middle}
+th{background:#f0f4fb;font-weight:600;color:#0f2557;position:sticky;top:0}
+td.item{text-align:left;min-width:220px;background:#fff}
+td.item .hint{font-size:11px;color:#8a94a6;margin-top:3px}
+tr.group td{background:#e9effb;font-weight:700;color:#1e3a8a;text-align:left;font-size:13px}
+td.firstcol,th.firstcol{position:sticky;left:0;z-index:2;background:#fff}
+th.firstcol{background:#f0f4fb}
+.scrollbox{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:10px}
+.scrollbox table{min-width:600px}
+.scoreInput{width:62px;text-align:center}
+.rank-row-1 td{background:#fff8e1!important}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700}
+.pill.one{background:#ffd54f;color:#7a5b00}
+.model-head{font-weight:700}
+canvas{max-width:100%}
+.weights label{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}
+.weights input{width:70px;flex:none}
+.weights .pct{color:#8a94a6;font-size:12px;min-width:34px}
+.stat{font-size:12px;color:#5b6b8c;line-height:1.8}
+.legend{font-size:12px;color:#5b6b8c;margin-top:10px;line-height:1.9}
+.ranknum{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;background:#e8edf5;color:#3a4a6b;font-weight:700;font-size:12px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>📺 电视 · 评测排行榜工具</h1>
+  <p>画质 / 音质 / 游戏 / 智能化 / 护眼 五维评测 · 每项按统一标准测试后打分 0–100（80=达标 90+=优秀）</p>
+</header>
+
+<div class="wrap">
+  <aside>
+    <div class="card">
+      <h3>机型管理</h3>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="newModel" placeholder="输入机型名称">
+        <button class="btn" onclick="addModel()">添加</button>
+      </div>
+      <div style="margin-top:10px" class="stat">已收录：<span id="modelCount">0</span> 台<br>提示：每个机型逐项打分后自动出排行与雷达图</div>
+      <div style="margin-top:10px">
+        <button class="btn gray sm" onclick="resetScores()">清空打分</button>
+        <button class="btn gray sm" onclick="exportResult()">导出结果</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>子榜单权重</h3>
+      <div class="weights" id="weights"></div>
+      <div class="legend">权重自动归一化。综合分 = Σ(子榜分×权重)。<br>默认参考：画质30 / 音质20 / 游戏25 / 智能15 / 护眼10。</div>
+    </div>
+    <div class="card">
+      <h3>雷达图</h3>
+      <select id="radarSel" style="width:100%;padding:7px;border-radius:7px;border:1px solid var(--line);margin-bottom:8px"></select>
+      <canvas id="radar" width="420" height="420"></canvas>
+    </div>
+  </aside>
+
+  <main>
+    <div class="card">
+      <h3>综合排行榜</h3>
+      <table>
+        <thead><tr>
+          <th>排名</th><th>机型</th><th>综合分</th>
+          <th>画质</th><th>音质</th><th>游戏</th><th>智能化</th><th>护眼</th>
+        </tr></thead>
+        <tbody id="rankBody"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>打分矩阵（含测试方法与参考值）</h3>
+      <div class="scrollbox">
+        <table>
+          <thead><tr><th class="firstcol">测试项目</th><th id="modelHeaders"></th></tr></thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA={
+ name:'电视',
+ subRankings:[
+  {id:'pic',name:'画质',weight:30,items:[
+   {n:'峰值亮度',h:'10%白窗SDR/HDR实测(nit)，液晶≥1000 / OLED≥800'},
+   {n:'黑位与对比度',h:'原生对比度+分区控光等级，越高越好'},
+   {n:'色域覆盖',h:'DCI-P3 / BT.2020 实测%，DCI-P3≥90%'},
+   {n:'色准 ΔE',h:'出厂校色平均ΔE，<2 优秀'},
+   {n:'灰阶与白平衡',h:'20–100%灰阶伽马曲线与色温漂移'},
+   {n:'光晕控制',h:'字幕/高光物体边缘光晕目测'},
+   {n:'暗部细节',h:'低亮度黑电平与噪点，不发灰不发白'},
+   {n:'可视角度',h:'30°/60° 偏色与亮度衰减，衰减小为佳'},
+   {n:'亮度均匀性',h:'全屏9点亮度偏差%，<10%'},
+   {n:'运动清晰度',h:'MEMC插帧/响应时间/拖影实测'},
+   {n:'HDR 映射',h:'杜比视界/HLG 高光滚落细节保留'}]},
+  {id:'audio',name:'音质',weight:20,items:[
+   {n:'频响曲线',h:'20Hz–20kHz 人位麦克风实测，越平直越好'},
+   {n:'声压级',h:'失真前最大音量 dB，≥90 优秀'},
+   {n:'低频下潜',h:'最低有效频率，≤60Hz 为佳'},
+   {n:'声道结构',h:'单元数量 / 2.1 / 5.1 / 天空声道'},
+   {n:'解码支持',h:'杜比全景声、DTS:X 实测点亮'},
+   {n:'对白清晰度',h:'电影人声频段突出度实测'},
+   {n:'失真率 THD',h:'高音量下总谐波失真，<1%'},
+   {n:'声场定位',h:'虚拟环绕、声像移动测试'},
+   {n:'大动态表现',h:'大动态片段是否破音/毛刺'}]},
+  {id:'game',name:'游戏',weight:25,items:[
+   {n:'输入延迟',h:'1080p/4K、60Hz/120Hz 分档实测(ms)，<20 优秀'},
+   {n:'刷新率',h:'120Hz 是否原生、是否支持 144Hz'},
+   {n:'HDMI 2.1 满血',h:'48Gbps、4K144Hz 10bit 能否跑满'},
+   {n:'VRR 范围',h:'G-Sync/FreeSync 支持区间与低帧补偿'},
+   {n:'ALLM',h:'自动低延迟模式切换速度'},
+   {n:'游戏模式画质损失',h:'低延迟模式下亮度/色准变化'},
+   {n:'画面撕裂',h:'无VRR时高速画面撕裂测试'},
+   {n:'游戏工具栏',h:'准星/暗部增强/帧率显示等电竞功能'},
+   {n:'响应时间',h:'灰阶响应实测(ms)'},
+   {n:'云游戏延迟',h:'串流/云游戏端到端延迟'}]},
+  {id:'smart',name:'智能化',weight:15,items:[
+   {n:'开机速度',h:'冷启动到可操作秒数，<15s 优秀'},
+   {n:'系统流畅度',h:'连续操作是否掉帧/卡顿'},
+   {n:'广告',h:'开机/待机广告数量、可否关闭'},
+   {n:'语音助手',h:'远场唤醒、方言识别、连续对话'},
+   {n:'AI 画质芯片',h:'低清片源优化、场景识别实测'},
+   {n:'投屏兼容',h:'AirPlay/Miracast/华为Cast 兼容'},
+   {n:'智能家居联动',h:'米家/HomeKit/华为 平台接入'},
+   {n:'App 体验',h:'遥控、传屏、日程功能完整度'},
+   {n:'内容生态',h:'影视资源丰富度、会员体系'}]},
+  {id:'eye',name:'护眼',weight:10,items:[
+   {n:'有害蓝光占比',h:'415–455nm 蓝光峰值实测，越低越好'},
+   {n:'频闪 / PWM',h:'各亮度档位是否DC调光、PWM频率'},
+   {n:'光感调节',h:'环境光传感器响应与亮度自适应'},
+   {n:'反射率',h:'镜面反射实测（反光严重度）'},
+   {n:'护眼模式',h:'低蓝光模式对色准的影响'},
+   {n:'亮度均匀性',h:'四角与中央亮度差异'},
+   {n:'儿童模式',h:'时间锁、内容过滤、护眼认证'},
+   {n:'认证情况',h:'TÜV 低蓝光/无频闪认证等级'}]}
+ ]
+};
+
+const $=id=>document.getElementById(id);
+let models=['示例机型A','示例机型B'];
+const state={scores:{},weights:{}};
+
+function init(){
+ DATA.subRankings.forEach(s=>state.weights[s.id]=s.weight);
+ models.forEach((m,i)=>initModel(m,i===0?85:72));
+ renderWeights();renderMatrix();renderModelSelect();updateResults();
+}
+function initModel(name,base){state.scores[name]={};DATA.subRankings.forEach(s=>state.scores[name][s.id]=s.items.map(()=>base));}
+function addModel(){
+ const name=($('newModel').value||'').trim();
+ if(!name){alert('请输入机型名称');return;}
+ if(models.includes(name)){alert('已存在该机型');return;}
+ models.push(name);initModel(name,80);$('newModel').value='';
+ renderMatrix();renderModelSelect();updateResults();
+}
+function removeModel(name){models=models.filter(m=>m!==name);delete state.scores[name];renderMatrix();renderModelSelect();updateResults();}
+function resetScores(){if(!confirm('确定清空所有打分？'))return;models.forEach(m=>initModel(m,80));renderMatrix();updateResults();}
+function getModelScore(m,sid){
+ const sub=DATA.subRankings.find(s=>s.id===sid),arr=state.scores[m]?.[sid];if(!arr)return 0;
+ let sum=0,cnt=0;sub.items.forEach((_,i)=>{const v=arr[i];if(v!==''&&v!=null){sum+=+v;cnt++;}});
+ return cnt?Math.round(sum/cnt*10)/10:0;
+}
+function getOverall(m){let s=0,t=0;DATA.subRankings.forEach(sub=>{s+=getModelScore(m,sub.id)*state.weights[sub.id];t+=state.weights[sub.id];});return t?Math.round(s/t*10)/10:0;}
+
+function renderWeights(){
+ $('weights').innerHTML=DATA.subRankings.map(s=>`<label><span style="min-width:52px">${s.name}</span>
+   <input type="number" min="0" max="100" id="w-${s.id}" value="${state.weights[s.id]}" oninput="weightChange('${s.id}',this.value)">
+   <span class="pct" id="pct-${s.id}"></span></label>`).join('');
+ updateWeightsLabel();
+}
+function weightChange(id,v){state.weights[id]=Math.max(0,+v||0);updateWeightsLabel();updateResults();}
+function updateWeightsLabel(){
+ const tot=DATA.subRankings.reduce((a,s)=>a+state.weights[s.id],0)||1;
+ DATA.subRankings.forEach(s=>{$('pct-'+s.id).textContent=Math.round(state.weights[s.id]/tot*100)+'%';});
+}
+
+function renderMatrix(){
+ $('modelHeaders').innerHTML=models.map((m,i)=>`<th class="model-head">${m} <button class="btn red sm" onclick="removeModel('${m}')">×</button></th>`).join('');
+ $('matrixBody').innerHTML=DATA.subRankings.map(sub=>{
+  let h=`<tr class="group"><td colspan="${models.length+1}">${sub.name}（权重 ${state.weights[sub.id]}）</td></tr>`;
+  sub.items.forEach((it,idx)=>{
+   h+=`<tr><td class="item"><div>${it.n}</div><div class="hint">${it.h}</div></td>`;
+   models.forEach((m,mi)=>{h+=`<td><input class="scoreInput" type="number" min="0" max="100" step="1" value="${state.scores[m][sub.id][idx]}" data-m="${mi}" data-s="${sub.id}" data-i="${idx}"></td>`;});
+   h+='</tr>';
+  });
+  return h;
+ }).join('');
+ $('modelCount').textContent=models.length;
+}
+
+$('matrixBody').addEventListener('input',e=>{
+ if(e.target.classList.contains('scoreInput')){
+  const d=e.target.dataset;state.scores[models[+d.m]][d.s][+d.i]=e.target.value;updateResults();
+ }
+});
+
+function renderModelSelect(){
+ const cur=$('radarSel').value;
+ $('radarSel').innerHTML=models.map(m=>`<option ${m===cur?'selected':''}>${m}</option>`).join('');
+ if(!models.includes(cur))$('radarSel').value=models[0];
+}
+
+function renderRanking(){
+ const rows=models.map(m=>({m,ov:getOverall(m),subs:Object.fromEntries(DATA.subRankings.map(s=>[s.id,getModelScore(m,s.id)]))}))
+  .sort((a,b)=>b.ov-a.ov);
+ $('rankBody').innerHTML=rows.map((r,i)=>`<tr class="${i===0?'rank-row-1':''}">
+  <td><span class="ranknum">${i+1}</span></td>
+  <td><b>${r.m}</b>${i===0?' <span class="pill one">榜首</span>':''}</td>
+  <td><b style="font-size:15px;color:var(--c)">${r.ov}</b></td>
+  ${DATA.subRankings.map(s=>`<td>${r.subs[s.id]}</td>`).join('')}
+ </tr>`).join('');
+}
+
+function drawRadar(model){
+ const cv=$('radar'),ctx=cv.getContext('2d'),w=cv.width,h=cv.height,cx=w/2,cy=h/2+8,R=Math.min(w,h)/2-46;
+ ctx.clearRect(0,0,w,h);const subs=DATA.subRankings,n=subs.length;
+ const ang=i=>-Math.PI/2+i*2*Math.PI/n;
+ ctx.strokeStyle='#d9e0ec';ctx.fillStyle='#9aa7bd';ctx.font='11px sans-serif';ctx.textAlign='center';
+ for(let r=1;r<=5;r++){ctx.beginPath();for(let i=0;i<n;i++){const a=ang(i),x=cx+Math.cos(a)*R*r/5,y=cy+Math.sin(a)*R*r/5;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();}
+ for(let i=0;i<n;i++){
+  const a=ang(i),x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
+  ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.stroke();
+  ctx.fillText(subs[i].name,cx+Math.cos(a)*(R+24),cy+Math.sin(a)*(R+24));
+ }
+ const vals=subs.map(s=>getModelScore(model,s.id));
+ ctx.beginPath();
+ for(let i=0;i<n;i++){const a=ang(i),r=R*vals[i]/100,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+ ctx.closePath();ctx.fillStyle='rgba(66,133,244,.25)';ctx.fill();ctx.strokeStyle='#4285f4';ctx.lineWidth=2;ctx.stroke();
+ for(let i=0;i<n;i++){const a=ang(i),r=R*vals[i]/100;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,3.5,0,7);ctx.fillStyle='#4285f4';ctx.fill();}
+ ctx.fillStyle='#0f2557';ctx.font='bold 14px sans-serif';ctx.fillText(model+' · 综合 '+getOverall(model),cx,16);
+}
+$('radarSel').addEventListener('change',e=>drawRadar(e.target.value));
+function updateResults(){renderRanking();drawRadar($('radarSel').value||models[0]);}
+
+function exportResult(){
+ const rows=models.map(m=>({m,ov:getOverall(m),subs:Object.fromEntries(DATA.subRankings.map(s=>[s.id,getModelScore(m,s.id)]))})).sort((a,b)=>b.ov-a.ov);
+ let t=`【电视 · 评测排行榜】\n`+rows.map((r,i)=>`${i+1}. ${r.m} — 综合 ${r.ov}\n   `+DATA.subRankings.map(s=>`${s.name}: ${r.subs[s.id]}`).join(' | ')).join('\n');
+ t+='\n\n— 打分矩阵 —\n';
+ DATA.subRankings.forEach(sub=>{t+='\n◆ '+sub.name+'\n';sub.items.forEach((it,idx)=>{t+='  '+it.n+'：'+models.map(m=>m+'='+state.scores[m][sub.id][idx]).join('  ')+'\n';});});
+ navigator.clipboard?.writeText(t).then(()=>alert('已复制到剪贴板')).catch(()=>{prompt('复制结果：',t);});
+}
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧪 测试专用页面 · 评测排行榜工具</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--txt:#1a2333;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);}
+header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:26px 28px;}
+header h1{font-size:24px;margin-bottom:6px}
+header p{font-size:13.5px;opacity:.88;max-width:980px}
+.wrap{max-width:1400px;margin:0 auto;padding:20px 18px 60px}
+.tool-block{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,.05);overflow:hidden}
+.tool-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tool-head .t-icon{font-size:22px}
+.tool-head .t-name{font-size:16px;font-weight:800;color:#0f2557}
+.tool-head .t-desc{font-size:12.5px;color:#5b6b8c;flex:1;min-width:220px}
+.tool-head a{display:inline-block;border-radius:8px;padding:6px 14px;font-size:13px;text-decoration:none;background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;transition:.2s}
+.tool-head a:hover{filter:brightness(1.12)}
+iframe{display:block;width:100%;height:920px;border:0}
+.note{margin-top:14px;font-size:12.5px;color:#5b6b8c;background:#eef2fb;border:1px solid var(--line);border-radius:10px;padding:12px 16px;line-height:1.8}
+@media(max-width:900px){iframe{height:1100px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧪 测试专用页面 · 评测排行榜工具</h1>
+  <p>电视 / 扫地机器人 / 洗地机 三款评测排行榜工具的集中测试台，可直接在本页操作打分、权重、排名与雷达图，或点右侧按钮在独立窗口打开。</p>
+</header>
+
+<div class="wrap">
+
+  <div class="tool-block">
+    <div class="tool-head">
+      <span class="t-icon">📺</span>
+      <span class="t-name">电视 · 评测排行榜工具</span>
+      <span class="t-desc">画质/音质/游戏/智能化/护眼 五维评测打分</span>
+      <a href="tool-rank-tv.html" target="_blank">新窗口打开 ↗</a>
+    </div>
+    <iframe src="tool-rank-tv.html" title="电视评测排行榜工具"></iframe>
+  </div>
+
+  <div class="tool-block">
+    <div class="tool-head">
+      <span class="t-icon">🤖</span>
+      <span class="t-name">扫地机器人 · 评测排行榜工具</span>
+      <span class="t-desc">清洁/导航/避障/续航/智能 多维度评测打分</span>
+      <a href="tool-rank-robot-vacuum.html" target="_blank">新窗口打开 ↗</a>
+    </div>
+    <iframe src="tool-rank-robot-vacuum.html" title="扫地机器人评测排行榜工具"></iframe>
+  </div>
+
+  <div class="tool-block">
+    <div class="tool-head">
+      <span class="t-icon">🧹</span>
+      <span class="t-name">洗地机 · 评测排行榜工具</span>
+      <span class="t-desc">清洁力/自清洁/续航/操作/智能 多维度评测打分</span>
+      <a href="tool-rank-floor-washer.html" target="_blank">新窗口打开 ↗</a>
+    </div>
+    <iframe src="tool-rank-floor-washer.html" title="洗地机评测排行榜工具"></iframe>
+  </div>
+
+  <div class="note">💡 使用说明：每个工具支持添加/删除机型、逐项打分（0–100，80=达标）、调整子榜单权重（自动归一化）、实时排行与雷达图对比，并可一键导出结果到剪贴板。独立访问地址：<br>
+  📺 电视 → <a href="tool-rank-tv.html" target="_blank">tool-rank-tv.html</a>　🤖 扫地机 → <a href="tool-rank-robot-vacuum.html" target="_blank">tool-rank-robot-vacuum.html</a>　🧹 洗地机 → <a href="tool-rank-floor-washer.html" target="_blank">tool-rank-floor-washer.html</a></div>
+
+</div>
+</body>
+</html>

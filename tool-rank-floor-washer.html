@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洗地机 · 评测排行榜工具</title>
+<style>
+:root{--c:#7b5cd6;--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--txt:#1a2333;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);}
+header{background:linear-gradient(135deg,#4c2f8f,#9d7be8);color:#fff;padding:22px 28px;}
+header h1{font-size:22px;margin-bottom:4px}
+header p{font-size:13px;opacity:.85}
+.wrap{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1500px;margin:0 auto;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card h3{font-size:15px;margin-bottom:12px;color:#3d2470;border-left:4px solid var(--c);padding-left:8px}
+.btn{display:inline-block;border:none;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;background:var(--c);color:#fff;transition:.2s}
+.btn:hover{filter:brightness(1.08)}
+.btn.gray{background:#e8edf5;color:#3a4a6b}
+.btn.red{background:#e5484d}
+.btn.sm{padding:3px 8px;font-size:12px;margin-left:6px}
+input[type=text],input[type=number]{border:1px solid var(--line);border-radius:7px;padding:7px 9px;font-size:13px;width:100%}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center;vertical-align:middle}
+th{background:#f0f4fb;font-weight:600;color:#3d2470;position:sticky;top:0}
+td.item{text-align:left;min-width:230px;background:#fff}
+td.item .hint{font-size:11px;color:#8a94a6;margin-top:3px}
+tr.group td{background:#efe9fa;font-weight:700;color:#4c2f8f;text-align:left;font-size:13px}
+td.firstcol,th.firstcol{position:sticky;left:0;z-index:2;background:#fff}
+th.firstcol{background:#f0f4fb}
+.scrollbox{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:10px}
+.scrollbox table{min-width:640px}
+.scoreInput{width:62px;text-align:center}
+.rank-row-1 td{background:#fff8e1!important}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700}
+.pill.one{background:#ffd54f;color:#7a5b00}
+canvas{max-width:100%}
+.weights label{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}
+.weights input{width:70px;flex:none}
+.weights .pct{color:#8a94a6;font-size:12px;min-width:34px}
+.stat{font-size:12px;color:#5b6b8c;line-height:1.8}
+.legend{font-size:12px;color:#5b6b8c;margin-top:10px;line-height:1.9}
+.ranknum{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;background:#e8edf5;color:#3a4a6b;font-weight:700;font-size:12px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧹 洗地机 · 评测排行榜工具</h1>
+  <p>清洁力 / 续航 / 防缠绕 / 除菌 / 易用性 / 自清洁 六维评测 · 每项按统一标准测试后打分 0–100（80=达标 90+=优秀）</p>
+</header>
+
+<div class="wrap">
+  <aside>
+    <div class="card">
+      <h3>机型管理</h3>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="newModel" placeholder="输入机型名称">
+        <button class="btn" onclick="addModel()">添加</button>
+      </div>
+      <div style="margin-top:10px" class="stat">已收录：<span id="modelCount">0</span> 台<br>提示：每个机型逐项打分后自动出排行与雷达图</div>
+      <div style="margin-top:10px">
+        <button class="btn gray sm" onclick="resetScores()">清空打分</button>
+        <button class="btn gray sm" onclick="exportResult()">导出结果</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>子榜单权重</h3>
+      <div class="weights" id="weights"></div>
+      <div class="legend">权重自动归一化。综合分 = Σ(子榜分×权重)。<br>默认参考：清洁力30 / 续航15 / 防缠绕15 / 除菌10 / 易用性15 / 自清洁15。</div>
+    </div>
+    <div class="card">
+      <h3>雷达图</h3>
+      <select id="radarSel" style="width:100%;padding:7px;border-radius:7px;border:1px solid var(--line);margin-bottom:8px"></select>
+      <canvas id="radar" width="420" height="420"></canvas>
+    </div>
+  </aside>
+
+  <main>
+    <div class="card">
+      <h3>综合排行榜</h3>
+      <table>
+        <thead><tr>
+          <th>排名</th><th>机型</th><th>综合分</th>
+          <th>清洁力</th><th>续航</th><th>防缠绕</th><th>除菌</th><th>易用性</th><th>自清洁</th>
+        </tr></thead>
+        <tbody id="rankBody"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>打分矩阵（含测试方法与参考值）</h3>
+      <div class="scrollbox">
+        <table>
+          <thead><tr><th class="firstcol">测试项目</th><th id="modelHeaders"></th></tr></thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA={
+ name:'洗地机',
+ subRankings:[
+  {id:'clean',name:'清洁力',weight:30,items:[
+   {n:'湿垃圾清洁率',h:'酱油/牛奶/咖啡 实测%，≥90 优秀'},
+   {n:'干湿混合',h:'颗粒+液体混合污渍清洁率'},
+   {n:'顽固污渍',h:'干涸酱料推拉次数，≤7次 优秀'},
+   {n:'颗粒物',h:'米粒/麦片吸入率'},
+   {n:'毛发吸入率',h:'长发/宠物毛吸入比例，≥95'},
+   {n:'贴边清洁',h:'三侧0mm贴边残留'},
+   {n:'地毯清洁',h:'地毯模式切换与清洁率'},
+   {n:'水回收率',h:'地面残留水量，≥91 优秀'},
+   {n:'地面适配',h:'瓷砖/木地板/大理石差异'},
+   {n:'角落清洁',h:'墙角/家具底部进入率'},
+   {n:'大颗粒',h:'瓶盖/硬币等重物吸入'},
+   {n:'单次推拉率',h:'一次推拉污渍清除率'}]},
+  {id:'battery',name:'续航',weight:15,items:[
+   {n:'纯电续航',h:'标准档实测分钟，≥35 优秀'},
+   {n:'清水续航',h:'清水箱支持拖地时长'},
+   {n:'污水箱容量',h:'污水容纳量（续航匹配）'},
+   {n:'水电同步',h:'水电同时耗尽时间（短板项）'},
+   {n:'充电时间',h:'0–100% 实测'},
+   {n:'快充能力',h:'30分钟充电百分比，≥50'},
+   {n:'多档续航',h:'节能/标准/强劲三档时长'},
+   {n:'电池衰减',h:'循环寿命、可更换设计'},
+   {n:'大户型适配',h:'150–200㎡ 能否一次完拖'}]},
+  {id:'tangle',name:'防缠绕',weight:15,items:[
+   {n:'长发缠绕率',h:'500根标准测试残留%，<1 优秀'},
+   {n:'宠物毛缠绕',h:'狗毛残留率'},
+   {n:'自解缠绕',h:'反向旋转/切割自动解缠'},
+   {n:'吸口/管道',h:'吸入管道内缠绕风险'},
+   {n:'滚刷设计',h:'平直 vs 锥形刷实测'},
+   {n:'清理便捷',h:'缠毛清理不脏手、免工具'},
+   {n:'吸入率',h:'毛发吸入不残留滚刷，≥95'}]},
+  {id:'dis',name:'除菌',weight:10,items:[
+   {n:'电解水除菌率',h:'大肠杆菌/金葡菌检测%，≥99.9'},
+   {n:'除菌液效果',h:'清洁液/除菌液实际效果'},
+   {n:'污水箱抑菌',h:'污水存放防臭除菌'},
+   {n:'滚刷/管道抑菌',h:'内部抑菌材质实测'},
+   {n:'耗材成本',h:'除菌液月成本（元）'},
+   {n:'电解水制备',h:'制备速度与浓度'},
+   {n:'母婴认证',h:'母婴级/认证等级'},
+   {n:'长期抑味',h:'30天使用无异味'}]},
+  {id:'use',name:'易用性',weight:15,items:[
+   {n:'机身重量',h:'实测kg，≤5kg 优秀'},
+   {n:'助力效果',h:'前推后拉助力、回拉轻松度'},
+   {n:'手柄操作',h:'按键布局、单手操作'},
+   {n:'躺平角度',h:'床底/沙发底进入高度'},
+   {n:'水箱拆装',h:'快拆设计、单手装卸'},
+   {n:'收纳充电',h:'底座站立、不占空间'},
+   {n:'噪音',h:'各档位人位dB，≤75 优秀'},
+   {n:'显示提示',h:'屏显/语音/App 三重提示'},
+   {n:'滚刷拆装',h:'拆卸清洗耗时，<1分钟'},
+   {n:'打理耗时',h:'单次使用后清理总耗时'},
+   {n:'老人友好',h:'长辈操作学习成本'},
+   {n:'灵活性',h:'转向半径、沙发下转向'}]},
+  {id:'self',name:'自清洁',weight:15,items:[
+   {n:'自清洁效果',h:'滚刷清洁后残留率'},
+   {n:'烘干效果',h:'含水率≤5%、烘干时长'},
+   {n:'正反转',h:'滚刷正反转自清洁设计'},
+   {n:'管道自清洁',h:'吸尘管道内部清洁'},
+   {n:'基座自清洁',h:'充电座底盘自清洁'},
+   {n:'离心甩干',h:'离心含水率实测'},
+   {n:'热风烘干',h:'温度与均匀性'},
+   {n:'自清洁噪音',h:'自清洁时分贝'},
+   {n:'自清洁耗电',h:'单次自清洁能耗'},
+   {n:'30天不臭',h:'长期使用异味追踪'}]}
+ ]
+};
+
+const $=id=>document.getElementById(id);
+let models=['示例机型A','示例机型B'];
+const state={scores:{},weights:{}};
+
+function init(){
+ DATA.subRankings.forEach(s=>state.weights[s.id]=s.weight);
+ models.forEach((m,i)=>initModel(m,i===0?87:71));
+ renderWeights();renderMatrix();renderModelSelect();updateResults();
+}
+function initModel(name,base){state.scores[name]={};DATA.subRankings.forEach(s=>state.scores[name][s.id]=s.items.map(()=>base));}
+function addModel(){
+ const name=($('newModel').value||'').trim();
+ if(!name){alert('请输入机型名称');return;}
+ if(models.includes(name)){alert('已存在该机型');return;}
+ models.push(name);initModel(name,80);$('newModel').value='';
+ renderMatrix();renderModelSelect();updateResults();
+}
+function removeModel(name){models=models.filter(m=>m!==name);delete state.scores[name];renderMatrix();renderModelSelect();updateResults();}
+function resetScores(){if(!confirm('确定清空所有打分？'))return;models.forEach(m=>initModel(m,80));renderMatrix();updateResults();}
+function getModelScore(m,sid){
+ const sub=DATA.subRankings.find(s=>s.id===sid),arr=state.scores[m]?.[sid];if(!arr)return 0;
+ let sum=0,cnt=0;sub.items.forEach((_,i)=>{const v=arr[i];if(v!==''&&v!=null){sum+=+v;cnt++;}});
+ return cnt?Math.round(sum/cnt*10)/10:0;
+}
+function getOverall(m){let s=0,t=0;DATA.subRankings.forEach(sub=>{s+=getModelScore(m,sub.id)*state.weights[sub.id];t+=state.weights[sub.id];});return t?Math.round(s/t*10)/10:0;}
+
+function renderWeights(){
+ $('weights').innerHTML=DATA.subRankings.map(s=>`<label><span style="min-width:60px">${s.name}</span>
+   <input type="number" min="0" max="100" id="w-${s.id}" value="${state.weights[s.id]}" oninput="weightChange('${s.id}',this.value)">
+   <span class="pct" id="pct-${s.id}"></span></label>`).join('');
+ updateWeightsLabel();
+}
+function weightChange(id,v){state.weights[id]=Math.max(0,+v||0);updateWeightsLabel();updateResults();}
+function updateWeightsLabel(){
+ const tot=DATA.subRankings.reduce((a,s)=>a+state.weights[s.id],0)||1;
+ DATA.subRankings.forEach(s=>{$('pct-'+s.id).textContent=Math.round(state.weights[s.id]/tot*100)+'%';});
+}
+
+function renderMatrix(){
+ $('modelHeaders').innerHTML=models.map((m,i)=>`<th class="model-head">${m} <button class="btn red sm" onclick="removeModel('${m}')">×</button></th>`).join('');
+ $('matrixBody').innerHTML=DATA.subRankings.map(sub=>{
+  let h=`<tr class="group"><td colspan="${models.length+1}">${sub.name}（权重 ${state.weights[sub.id]}）</td></tr>`;
+  sub.items.forEach((it,idx)=>{
+   h+=`<tr><td class="item"><div>${it.n}</div><div class="hint">${it.h}</div></td>`;
+   models.forEach((m,mi)=>{h+=`<td><input class="scoreInput" type="number" min="0" max="100" step="1" value="${state.scores[m][sub.id][idx]}" data-m="${mi}" data-s="${sub.id}" data-i="${idx}"></td>`;});
+   h+='</tr>';
+  });
+  return h;
+ }).join('');
+ $('modelCount').textContent=models.length;
+}
+
+$('matrixBody').addEventListener('input',e=>{
+ if(e.target.classList.contains('scoreInput')){
+  const d=e.target.dataset;state.scores[models[+d.m]][d.s][+d.i]=e.target.value;updateResults();
+ }
+});
+
+function renderModelSelect(){
+ const cur=$('radarSel').value;
+ $('radarSel').innerHTML=models.map(m=>`<option ${m===cur?'selected':''}>${m}</option>`).join('');
+ if(!models.includes(cur))$('radarSel').value=models[0];
+}
+
+function renderRanking(){
+ const rows=models.map(m=>({m,ov:getOverall(m),subs:Object.fromEntries(DATA.subRankings.map(s=>[s.id,getModelScore(m,s.id)]))}))
+  .sort((a,b)=>b.ov-a.ov);
+ $('rankBody').innerHTML=rows.map((r,i)=>`<tr class="${i===0?'rank-row-1':''}">
+  <td><span class="ranknum">${i+1}</span></td>
+  <td><b>${r.m}</b>${i===0?' <span class="pill one">榜首</span>':''}</td>
+  <td><b style="font-size:15px;color:var(--c)">${r.ov}</b></td>
+  ${DATA.subRankings.map(s=>`<td>${r.subs[s.id]}</td>`).join('')}
+ </tr>`).join('');
+}
+
+function drawRadar(model){
+ const cv=$('radar'),ctx=cv.getContext('2d'),w=cv.width,h=cv.height,cx=w/2,cy=h/2+8,R=Math.min(w,h)/2-46;
+ ctx.clearRect(0,0,w,h);const subs=DATA.subRankings,n=subs.length;
+ const ang=i=>-Math.PI/2+i*2*Math.PI/n;
+ ctx.strokeStyle='#d9e0ec';ctx.fillStyle='#9aa7bd';ctx.font='11px sans-serif';ctx.textAlign='center';
+ for(let r=1;r<=5;r++){ctx.beginPath();for(let i=0;i<n;i++){const a=ang(i),x=cx+Math.cos(a)*R*r/5,y=cy+Math.sin(a)*R*r/5;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();}
+ for(let i=0;i<n;i++){
+  const a=ang(i),x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
+  ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.stroke();
+  ctx.fillText(subs[i].name,cx+Math.cos(a)*(R+26),cy+Math.sin(a)*(R+26));
+ }
+ const vals=subs.map(s=>getModelScore(model,s.id));
+ ctx.beginPath();
+ for(let i=0;i<n;i++){const a=ang(i),r=R*vals[i]/100,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+ ctx.closePath();ctx.fillStyle='rgba(123,92,214,.25)';ctx.fill();ctx.strokeStyle='#7b5cd6';ctx.lineWidth=2;ctx.stroke();
+ for(let i=0;i<n;i++){const a=ang(i),r=R*vals[i]/100;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,3.5,0,7);ctx.fillStyle='#7b5cd6';ctx.fill();}
+ ctx.fillStyle='#3d2470';ctx.font='bold 14px sans-serif';ctx.fillText(model+' · 综合 '+getOverall(model),cx,16);
+}
+$('radarSel').addEventListener('change',e=>drawRadar(e.target.value));
+function updateResults(){renderRanking();drawRadar($('radarSel').value||models[0]);}
+
+function exportResult(){
+ const rows=models.map(m=>({m,ov:getOverall(m),subs:Object.fromEntries(DATA.subRankings.map(s=>[s.id,getModelScore(m,s.id)]))})).sort((a,b)=>b.ov-a.ov);
+ let t=`【洗地机 · 评测排行榜】\n`+rows.map((r,i)=>`${i+1}. ${r.m} — 综合 ${r.ov}\n   `+DATA.subRankings.map(s=>`${s.name}: ${r.subs[s.id]}`).join(' | ')).join('\n');
+ t+='\n\n— 打分矩阵 —\n';
+ DATA.subRankings.forEach(sub=>{t+='\n◆ '+sub.name+'\n';sub.items.forEach((it,idx)=>{t+='  '+it.n+'：'+models.map(m=>m+'='+state.scores[m][sub.id][idx]).join('  ')+'\n';});});
+ navigator.clipboard?.writeText(t).then(()=>alert('已复制到剪贴板')).catch(()=>{prompt('复制结果：',t);});
+}
+init();
+</script>
+</body>
+</html>
