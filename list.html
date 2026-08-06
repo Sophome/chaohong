@@ -180,22 +180,32 @@
 
       /* ── NAV PILLS ── */
     .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; }
-    .nav-pill {
-      display:inline-flex; align-items:center; gap:4px;
-      padding:5px 14px; border-radius:16px; font-size:0.78rem;
-      text-decoration:none; border:1.5px solid var(--line);
-      color:var(--muted); background:var(--card-2);
-      transition:all 0.2s;
-    }
-    .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); }
-    .nav-pill.active {
-      background:var(--accent); color:#fff; border-color:var(--accent);
-      pointer-events:none; font-weight:600;
-    }
+    
+    
+    
 
     /* ── 品类跳转 ── */
     .cat-switch { margin-bottom:24px; }
     .cat-links { display:flex; gap:8px; flex-wrap:wrap; }
+    
+    
+    
+
+      /* ── NAV PILLS ── */
+    .nav-pill {
+      display:inline-flex; align-items:center; gap:4px;
+      padding:7px 18px; border-radius:18px; font-size:0.85rem;
+      text-decoration:none; border:1.5px solid var(--line);
+      color:var(--muted); background:var(--card-2);
+      transition:all 0.2s; font-weight:500;
+    }
+    .nav-pill:not(.active):hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+    .nav-pill.active {
+      background:var(--accent); color:#fff; border-color:var(--accent);
+      pointer-events:none; font-weight:700;
+    }
+
+    /* ── 品类跳转 ── */
     .cat-pill {
       display:inline-flex; align-items:center; gap:4px;
       padding:7px 18px; border-radius:18px; font-size:0.85rem;
