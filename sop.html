@@ -15,7 +15,7 @@
     .wrap{max-width:1200px;margin:0 auto;padding:0 24px 60px}
 
     /* ── 统一菜单 ── */
-    .nav-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; padding-top:20px; }
+    .nav-links { display:flex; gap:7px; flex-wrap:wrap; }
     .nav-pill {
       display:inline-flex; align-items:center; gap:4px;
       padding:5px 14px; border-radius:16px; font-size:0.78rem;
@@ -25,7 +25,7 @@
     }
     .nav-pill:not(.active):hover { border-color:var(--sop); color:var(--sop); transform:translateY(-1px); }
     .nav-pill.active { background:var(--sop); color:#fff; border-color:var(--sop); pointer-events:none; font-weight:700; }
-    .cat-links { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+    .cat-links { display:flex; gap:8px; flex-wrap:wrap; }
     .cat-pill {
       display:inline-flex; align-items:center; gap:4px;
       padding:5px 14px; border-radius:16px; font-size:0.78rem;
@@ -38,6 +38,7 @@
 
     /* ── topbar ── */
     .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+    .top-menu{display:flex;flex-direction:column;gap:8px;flex:1;min-width:300px}
     .acct-tag{padding:6px 16px;border-radius:999px;font-weight:900;font-size:15px;color:#fff;background:var(--sop)}
     .pills{display:flex;gap:8px;flex-wrap:wrap}
     .pill{background:#eef2ff;color:#1e3a5f;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
@@ -80,32 +81,33 @@
 <body>
 <div class="wrap">
 
-  <!-- 统一菜单 -->
-  <div class="nav-links">
-    <a class="nav-pill" href="index.html">📁 知识库导航</a>
-    <a class="nav-pill" href="timeline.html">📅 时间线</a>
-    <a class="nav-pill" href="market-research.html">📊 市场调研</a>
-    <a class="nav-pill" href="seo.html">🔍 SEO</a>
-    <span class="nav-pill active">📋 SOP</span>
-    <a class="nav-pill" href="score-content-evaluation.html" target="_blank">⭐ 评分标准</a>
-    <a class="nav-pill" href="content-calendar-accounts-h2-2026.html" target="_blank">📅 账号日历</a>
-  </div>
-  <div class="cat-links">
-    <a class="cat-pill" href="category-tv.html">📺 电视</a>
-    <a class="cat-pill" href="category-robot-vacuum.html">🤖 扫地机</a>
-    <a class="cat-pill" href="category-floor-washer.html">🧹 洗地机</a>
-    <a class="cat-pill" href="category-monitor.html">🖥️ 显示器</a>
-    <a class="cat-pill" href="category-gaming-laptop.html">🎮 游戏本</a>
-    <a class="cat-pill" href="category-laptop.html">💻 笔记本</a>
-  </div>
-
   <!-- topbar -->
   <div class="topbar">
     <div class="logo-line">
       <span class="acct-tag">📋 SOP 分类</span>
       <span style="font-weight:900;font-size:16px;">标准操作规程 · 全流程手册</span>
     </div>
-    <div class="pills"><span class="pill green">平台/通用</span><span class="pill">B站运营</span><span class="pill amber">品类测评</span><span class="pill orange">商务开发</span></div>
+    <div class="top-menu">
+      <!-- 统一菜单：第一列 -->
+      <div class="nav-links">
+        <a class="nav-pill" href="index.html">📁 知识库导航</a>
+        <a class="nav-pill" href="timeline.html">📅 时间线</a>
+        <a class="nav-pill" href="market-research.html">📊 市场调研</a>
+        <a class="nav-pill" href="seo.html">🔍 SEO</a>
+        <span class="nav-pill active">📋 SOP</span>
+        <a class="nav-pill" href="score-content-evaluation.html" target="_blank">⭐ 评分标准</a>
+        <a class="nav-pill" href="content-calendar-accounts-h2-2026.html" target="_blank">📅 账号日历</a>
+      </div>
+      <!-- 统一菜单：第二列 -->
+      <div class="cat-links">
+        <a class="cat-pill" href="category-tv.html">📺 电视</a>
+        <a class="cat-pill" href="category-robot-vacuum.html">🤖 扫地机</a>
+        <a class="cat-pill" href="category-floor-washer.html">🧹 洗地机</a>
+        <a class="cat-pill" href="category-monitor.html">🖥️ 显示器</a>
+        <a class="cat-pill" href="category-gaming-laptop.html">🎮 游戏本</a>
+        <a class="cat-pill" href="category-laptop.html">💻 笔记本</a>
+      </div>
+    </div>
   </div>
 
   <!-- hero -->
