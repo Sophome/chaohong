@@ -356,6 +356,27 @@
   </style>
 </head>
 <body>
+<!-- ── 访问密码验证 ── -->
+<style>
+  #passOverlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 20% 20%,#1e3a8a,#0b0f17 70%);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+  .pass-card{background:#fff;border-radius:18px;padding:38px 42px;width:min(92vw,360px);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+  .pass-logo{font-size:22px;font-weight:800;color:#0f2557;margin-bottom:6px;}
+  .pass-sub{font-size:13px;color:#64748b;margin-bottom:22px;}
+  .pass-input{width:100%;box-sizing:border-box;padding:11px 14px;border:1.5px solid #dbe2ec;border-radius:10px;font-size:15px;text-align:center;outline:none;transition:border-color .2s;}
+  .pass-input:focus{border-color:#4f6ef7;}
+  .pass-btn{width:100%;margin-top:14px;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#4f6ef7,#7c3aed);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:filter .2s;}
+  .pass-btn:hover{filter:brightness(1.1);}
+  .pass-err{color:#e5484d;font-size:12.5px;margin-top:10px;display:none;}
+</style>
+<div id="passOverlay">
+  <div class="pass-card">
+    <div class="pass-logo">📁 超红传媒知识库</div>
+    <div class="pass-sub">请输入访问密码进入</div>
+    <input class="pass-input" type="password" id="passInput" placeholder="访问密码" autocomplete="off">
+    <button class="pass-btn" id="passBtn">进 入</button>
+    <div class="pass-err" id="passErr">密码错误，请重试</div>
+  </div>
+</div>
 
 <!-- MAIN CONTENT -->
 <div id="pageContent">
@@ -1273,6 +1294,31 @@
     document.getElementById('toggleIcon').textContent = '☀️';
     document.getElementById('toggleText').textContent = '浅色';
   }
+</script>
+<script>
+  // ── 访问密码验证 ──
+  (function () {
+    var KEY = 'chaohong-pass', PASS = 'maxsam';
+    var overlay = document.getElementById('passOverlay');
+    if (!overlay) return;
+    if (sessionStorage.getItem(KEY) === '1') { overlay.style.display = 'none'; return; }
+    var input = document.getElementById('passInput');
+    var btn = document.getElementById('passBtn');
+    var err = document.getElementById('passErr');
+    function check() {
+      if (input.value === PASS) {
+        sessionStorage.setItem(KEY, '1');
+        overlay.style.display = 'none';
+      } else {
+        err.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    }
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); });
+    input.focus();
+  })();
 </script>
 </body>
 </html>
