@@ -315,11 +315,11 @@
       <div class="stat-sub">九大技术分类</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">测评进度</div>
-      <div class="stat-num">30%</div>
+      <div class="stat-label">已测评</div>
+      <div class="stat-num" style="color:#4ade80">10</div>
       <div class="stat-sub">
         <div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:4px;overflow:hidden">
-          <div style="height:100%;width:30%;background:linear-gradient(90deg,#d4a24e,#c4953a);border-radius:2px"></div>
+          <div style="height:100%;width:23%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:2px"></div>
         </div>
       </div>
     </div>
@@ -353,7 +353,6 @@
             <select id="robotStatus">
               <option value="all">全部状态</option>
               <option value="done">已测评</option>
-              <option value="prog">测评中</option>
               <option value="todo">待测评</option>
             </select>
           </div>
@@ -407,7 +406,6 @@
             <select id="washerStatus">
               <option value="all">全部状态</option>
               <option value="done">已测评</option>
-              <option value="prog">测评中</option>
               <option value="todo">待测评</option>
             </select>
           </div>
@@ -457,33 +455,32 @@
   };
   const statusMap = {
     done:{cls:'done',label:'已测评'},
-    prog:{cls:'prog',label:'测评中'},
     todo:{cls:'todo',label:'待测评'}
   };
   const posClass = {
     '机皇':'king','旗舰':'flag','中高端':'','中端':'','入门':''
   };
 
-  // ===== 扫地机数据 =====
+  // ===== 扫地机数据（追觅+友望已测评，其他待测评） =====
   const robotItems = [
-    {brand:'石头',model:'G30S Pro',pos:'中高端',tech:'机械足越障',price:3999,status:'done',feat:'底盘升降 3.0 · 越障能力旗舰'},
-    {brand:'石头',model:'P20 Max',pos:'中高端',tech:'旋转盘活水',price:3499,status:'prog',feat:'100℃ 热水洗 + 0 缠滚刷 · 活水洗地走量'},
-    {brand:'石头',model:'P20 Ultra',pos:'中高端',tech:'滚筒活水',price:4499,status:'done',feat:'270mm 滚筒活水 · 0 缠清扫旗舰'},
-    {brand:'科沃斯',model:'X12 Pro',pos:'旗舰',tech:'滚筒活水',price:5999,status:'done',feat:'OZMO ROLLER 3.0 + FocusJet 喷溶 · 滚筒旗舰'},
+    {brand:'石头',model:'G30S Pro',pos:'中高端',tech:'机械足越障',price:3999,status:'todo',feat:'底盘升降 3.0 · 越障能力旗舰'},
+    {brand:'石头',model:'P20 Max',pos:'中高端',tech:'旋转盘活水',price:3499,status:'todo',feat:'100℃ 热水洗 + 0 缠滚刷 · 活水洗地走量'},
+    {brand:'石头',model:'P20 Ultra',pos:'中高端',tech:'滚筒活水',price:4499,status:'todo',feat:'270mm 滚筒活水 · 0 缠清扫旗舰'},
+    {brand:'科沃斯',model:'X12 Pro',pos:'旗舰',tech:'滚筒活水',price:5999,status:'todo',feat:'OZMO ROLLER 3.0 + FocusJet 喷溶 · 滚筒旗舰'},
     {brand:'科沃斯',model:'T90 Pro',pos:'中高端',tech:'滚筒活水',price:3999,status:'todo',feat:'恒压活水 3.0 + 瞬时超充 · 中高端走量'},
-    {brand:'科沃斯',model:'X9 Pro Omni',pos:'旗舰',tech:'滚筒活水',price:5499,status:'prog',feat:'活水洗地 + AI 识污 · Omni 全能旗舰'},
-    {brand:'云鲸',model:'JX',pos:'旗舰',tech:'履带活水',price:4999,status:'done',feat:'60℃ 动态热活水履带 · 履带活水旗舰'},
-    {brand:'云鲸',model:'逍遥003',pos:'旗舰',tech:'履带活水',price:5999,status:'prog',feat:'热活水履带 + VLM 双目视觉 · 3/23 现货'},
-    {brand:'友望',model:'魔方',pos:'中高端',tech:'滚筒活水',price:3499,status:'todo',feat:'80℃ 热水滚筒 + 二合一基站 · 新锐走量'},
-    {brand:'友望',model:'T300',pos:'中端',tech:'旋转盘活水',price:2499,status:'todo',feat:'嵌入式上下水基站 · 中端走量'},
+    {brand:'科沃斯',model:'X9 Pro Omni',pos:'旗舰',tech:'滚筒活水',price:5499,status:'todo',feat:'活水洗地 + AI 识污 · Omni 全能旗舰'},
+    {brand:'云鲸',model:'JX',pos:'旗舰',tech:'履带活水',price:4999,status:'todo',feat:'60℃ 动态热活水履带 · 履带活水旗舰'},
+    {brand:'云鲸',model:'逍遥003',pos:'旗舰',tech:'履带活水',price:5999,status:'todo',feat:'热活水履带 + VLM 双目视觉 · 3/23 现货'},
+    {brand:'友望',model:'魔方',pos:'中高端',tech:'滚筒活水',price:3499,status:'done',feat:'80℃ 热水滚筒 + 二合一基站 · 新锐走量'},
+    {brand:'友望',model:'T300',pos:'中端',tech:'旋转盘活水',price:2499,status:'done',feat:'嵌入式上下水基站 · 中端走量'},
     {brand:'追觅',model:'S50 Pro',pos:'旗舰',tech:'机械足越障',price:5999,status:'done',feat:'仿生机械足 6cm + 100℃ 热水 · 越障旗舰'},
-    {brand:'追觅',model:'X60 Pro',pos:'旗舰',tech:'机械臂',price:6999,status:'todo',feat:'二代仿生机械臂 + 机械足 · 双机械旗舰'},
-    {brand:'追觅',model:'Matrix10 Ultra',pos:'机皇',tech:'机械臂',price:9999,status:'prog',feat:'自动换拖布分区 + 多拖布 · 机皇 · 8/6 开售'},
-    {brand:'小米',model:'扫拖机器人 6 Max',pos:'机皇',tech:'机械足越障',price:8999,status:'done',feat:'三重机械臂 + 双机械足 6cm · 扫地机皇'},
+    {brand:'追觅',model:'X60 Pro',pos:'旗舰',tech:'机械臂',price:6999,status:'done',feat:'二代仿生机械臂 + 机械足 · 双机械旗舰'},
+    {brand:'追觅',model:'Matrix10 Ultra',pos:'机皇',tech:'机械臂',price:9999,status:'done',feat:'自动换拖布分区 + 多拖布 · 机皇 · 8/6 开售'},
+    {brand:'小米',model:'扫拖机器人 6 Max',pos:'机皇',tech:'机械足越障',price:8999,status:'todo',feat:'三重机械臂 + 双机械足 6cm · 扫地机皇'},
     {brand:'小米',model:'扫拖机器人 6 Pro',pos:'旗舰',tech:'滚筒活水',price:4999,status:'todo',feat:'实时活水滚筒 + AI 三摄 · 滚筒旗舰'},
     {brand:'小米',model:'M40S',pos:'中端',tech:'旋转盘活水',price:2499,status:'todo',feat:'80℃ 热水洗 + 双刮洗臂 · 中端走量'},
     {brand:'小米',model:'M40',pos:'中端',tech:'旋转盘活水',price:1999,status:'todo',feat:'双机械臂 + 70℃ 热水 · 千元档走量'},
-    {brand:'美的',model:'V16 Pro',pos:'中高端',tech:'旋转盘活水',price:3499,status:'done',feat:'柔性机械臂 + 80℃ 热水 · 中高端走量'},
+    {brand:'美的',model:'V16 Pro',pos:'中高端',tech:'旋转盘活水',price:3499,status:'todo',feat:'柔性机械臂 + 80℃ 热水 · 中高端走量'},
     {brand:'美的',model:'V16s Pro',pos:'中高端',tech:'旋转盘活水',price:3999,status:'todo',feat:'热水喷拖 + 自动集尘 · V16 升级款'},
     {brand:'美的',model:'V16 珍珠版',pos:'中端',tech:'旋转盘活水',price:2799,status:'todo',feat:'超薄机身走量 · 中端性价比'}
   ];
@@ -495,31 +492,31 @@
     {brand:'美的',count:3,color:'#60a5fa'}
   ];
 
-  // ===== 洗地机数据 =====
+  // ===== 洗地机数据（追觅+友望已测评，其他待测评） =====
   const washerItems = [
     {brand:'石头',model:'A30 2.0',pos:'中端',tech:'基础热水自清洁',price:2499,status:'todo',feat:'95℃ 自清洁 + 平躺 · 中端走量'},
     {brand:'石头',model:'A30 Pro 2.0',pos:'中高端',tech:'基础热水自清洁',price:3299,status:'todo',feat:'95℃ 除菌 + AI 脏污识别 · 中高端'},
-    {brand:'石头',model:'A30 Pro Steam 2.0',pos:'旗舰',tech:'蒸汽热水双热',price:4999,status:'done',feat:'180℃ 蒸汽 + 90℃ 热水 · 蒸汽旗舰'},
-    {brand:'石头',model:'A30 Pro Combo 2.0',pos:'中高端',tech:'蒸汽热水双热',price:3799,status:'prog',feat:'洗地+吸尘+除螨多合一 · Combo 全能'},
-    {brand:'添可',model:'Scientist M9',pos:'机皇',tech:'双系统净味',price:8999,status:'done',feat:'双恒压活水 + 全链路自清洁 · 洗地机皇'},
+    {brand:'石头',model:'A30 Pro Steam 2.0',pos:'旗舰',tech:'蒸汽热水双热',price:4999,status:'todo',feat:'180℃ 蒸汽 + 90℃ 热水 · 蒸汽旗舰'},
+    {brand:'石头',model:'A30 Pro Combo 2.0',pos:'中高端',tech:'蒸汽热水双热',price:3799,status:'todo',feat:'洗地+吸尘+除螨多合一 · Combo 全能'},
+    {brand:'添可',model:'Scientist M9',pos:'机皇',tech:'双系统净味',price:8999,status:'todo',feat:'双恒压活水 + 全链路自清洁 · 洗地机皇'},
     {brand:'添可',model:'极客 2.0',pos:'中端',tech:'基础热水自清洁',price:2299,status:'todo',feat:'28000Pa + 0 缠毛 · 中端走量'},
-    {brand:'添可',model:'极客蒸汽 2.0',pos:'中高端',tech:'蒸汽热水双热',price:3299,status:'prog',feat:'110℃ 活性蒸汽 + 热水 · 蒸汽中高端'},
-    {brand:'添可',model:'Station View',pos:'旗舰',tech:'双系统净味',price:5999,status:'done',feat:'自动上下水空间站 · 净味旗舰'},
+    {brand:'添可',model:'极客蒸汽 2.0',pos:'中高端',tech:'蒸汽热水双热',price:3299,status:'todo',feat:'110℃ 活性蒸汽 + 热水 · 蒸汽中高端'},
+    {brand:'添可',model:'Station View',pos:'旗舰',tech:'双系统净味',price:5999,status:'todo',feat:'自动上下水空间站 · 净味旗舰'},
     {brand:'添可',model:'Station Pod',pos:'中高端',tech:'双系统净味',price:3999,status:'todo',feat:'胶囊空间站 + 脉冲强排污 · Pod 走量'},
     {brand:'添可',model:'Fold X90',pos:'中高端',tech:'基础热水自清洁',price:3499,status:'todo',feat:'可折叠 + 180° 躺平 · 折叠走量'},
-    {brand:'添可',model:'Artist 60 Pro',pos:'旗舰',tech:'双系统净味',price:5499,status:'prog',feat:'艺术线 + 活水净味 · 艺术旗舰'},
+    {brand:'添可',model:'Artist 60 Pro',pos:'旗舰',tech:'双系统净味',price:5499,status:'todo',feat:'艺术线 + 活水净味 · 艺术旗舰'},
     {brand:'友望',model:'云朵 2.0',pos:'入门',tech:'基础热水自清洁',price:1799,status:'done',feat:'25000Pa + 180° 躺平 · 入门走量'},
-    {brand:'友望',model:'云朵蒸汽版',pos:'中端',tech:'蒸汽热水双热',price:2799,status:'todo',feat:'160℃ 蒸汽 + 80℃ 热水 · 中端蒸汽'},
-    {brand:'友望',model:'天鹅',pos:'中高端',tech:'基础热水自清洁',price:3299,status:'todo',feat:'人体工学整机工效 · 工效学设计'},
-    {brand:'追觅',model:'T70 Ultra Station',pos:'旗舰',tech:'机械臂巡边',price:5499,status:'prog',feat:'EdgeHunter 巡边探洗臂 · 巡边旗舰'},
+    {brand:'友望',model:'云朵蒸汽版',pos:'中端',tech:'蒸汽热水双热',price:2799,status:'done',feat:'160℃ 蒸汽 + 80℃ 热水 · 中端蒸汽'},
+    {brand:'友望',model:'天鹅',pos:'中高端',tech:'基础热水自清洁',price:3299,status:'done',feat:'人体工学整机工效 · 工效学设计'},
+    {brand:'追觅',model:'T70 Ultra Station',pos:'旗舰',tech:'机械臂巡边',price:5499,status:'done',feat:'EdgeHunter 巡边探洗臂 · 巡边旗舰'},
     {brand:'追觅',model:'H70 Ultra Station',pos:'机皇',tech:'蒸汽热水双热',price:7999,status:'done',feat:'200℃ 蒸汽 + 90℃ 热水 · 洗地机皇 · 4/14 上市'},
-    {brand:'小米',model:'无线洗地机 5 MAX',pos:'中高端',tech:'蒸汽热水双热',price:3499,status:'done',feat:'160℃ 蒸汽 + 活性泡沫 + 90℃ 热水 · 蒸汽中高端'},
+    {brand:'小米',model:'无线洗地机 5 MAX',pos:'中高端',tech:'蒸汽热水双热',price:3499,status:'todo',feat:'160℃ 蒸汽 + 活性泡沫 + 90℃ 热水 · 蒸汽中高端'},
     {brand:'小米',model:'无线洗地机 5 Pro',pos:'中端',tech:'蒸汽热水双热',price:2499,status:'todo',feat:'160℃ 蒸汽 + 100℃ 沸水自清洁 · 中端蒸汽'},
     {brand:'小米',model:'无线洗地机 5',pos:'入门',tech:'基础热水自清洁',price:1799,status:'todo',feat:'防缠四重刮条 · 入门走量'},
-    {brand:'美的',model:'S60 Ultra',pos:'中高端',tech:'双系统净味',price:3999,status:'done',feat:'100℃ 热融洗 + 元气魔方/等离子 · 净味中高端'},
+    {brand:'美的',model:'S60 Ultra',pos:'中高端',tech:'双系统净味',price:3999,status:'todo',feat:'100℃ 热融洗 + 元气魔方/等离子 · 净味中高端'},
     {brand:'美的',model:'S60 Pro',pos:'中高端',tech:'双系统净味',price:3499,status:'todo',feat:'88℃ 火山泉 + 80℃ 热风 + 等离子 · 净味走量'},
     {brand:'美的',model:'S60 honor',pos:'中端',tech:'双系统净味',price:2799,status:'todo',feat:'推入式基站 + 100℃ 热水 + 等离子 · 中端净味'},
-    {brand:'美的',model:'S60 Steam',pos:'中高端',tech:'蒸汽热水双热',price:3999,status:'prog',feat:'380℃ 蒸汽源 + 净味防臭 · 蒸汽净味双线'}
+    {brand:'美的',model:'S60 Steam',pos:'中高端',tech:'蒸汽热水双热',price:3999,status:'todo',feat:'380℃ 蒸汽源 + 净味防臭 · 蒸汽净味双线'}
   ];
 
   const washerBrandInfo = [
@@ -543,7 +540,7 @@
 
   function renderTable(listId, items, groupMap){
     document.getElementById(listId).innerHTML = items.map((item,i)=>{
-      const st = statusMap[item.status];
+      const st = item.status==='done'?{cls:'done',label:'已测评'}:{cls:'todo',label:'待测评'};
       const tc = techClass[item.tech]||'c1';
       const pc = posClass[item.pos]||'';
       const color = brandColors[item.brand]||'#8b8fa3';
