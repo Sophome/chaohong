@@ -43,6 +43,7 @@
     border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);
     color:#c8c4bc;cursor:pointer;transition:all 0.2s;height:34px;
     font-family:inherit;
+    text-decoration:none;
   }
   .btn:hover{border-color:#d4a24e;color:#d4a24e;background:rgba(212,162,78,0.06)}
   .btn-primary{background:#d4a24e;color:#0b0b12;border-color:#d4a24e}
@@ -248,7 +249,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         搜索
       </button>
-      <button class="btn btn-primary">关注我们</button>
+      <a href="https://space.bilibili.com/589152650" target="_blank" class="btn btn-primary">关注我们</a>
     </div>
   </div>
 
@@ -376,7 +377,6 @@
     '机皇':'king','旗舰':'flag','高端':'high','中高端':'mid','中端':'mid','入门':'entry','入门中端':'entry'
   };
 
-  // 更新状态：TCL 除 X11L 外全部已测评，创维全部已测评
   const tvItems = [
     {brand:'TCL',model:'X11L',pos:'机皇',tech:'SQD-Mini LED',status:'todo'},
     {brand:'TCL',model:'Q10M Ultra',pos:'机皇',tech:'RGB-Mini LED',status:'done'},
