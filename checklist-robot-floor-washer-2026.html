@@ -83,6 +83,7 @@
   }
   .brand-card{transition:all .25s ease}
   .brand-card:hover{border-color:var(--gold); transform:translateY(-2px)}
+  .sec-anchor{scroll-margin-top:24px}
   @media (max-width:900px){.hide-mobile{display:none}}
   @media (max-width:1100px){
     .grid-row{grid-template-columns:50px 1fr 1.6fr 1fr 70px !important}
@@ -92,25 +93,7 @@
     .grid-row{grid-template-columns:40px 1fr 1fr 60px !important}
     .col-pos{display:none}
   }
-
-
-    /* ── 字体放大 · 增强可读性 ── */
-    .text-\[11px\]{font-size:12.5px !important}
-    .text-\[12px\]{font-size:13.5px !important}
-    .text-\[13px\]{font-size:14.5px !important}
-    .text-\[14px\]{font-size:15.5px !important}
-    .text-\[15px\]{font-size:16.5px !important}
-    .text-\[16px\]{font-size:17.5px !important}
-    .text-\[17px\]{font-size:18.5px !important}
-    .text-\[18px\]{font-size:19.5px !important}
-    .text-\[24px\]{font-size:26px !important}
-    .text-\[26px\]{font-size:28px !important}
-    .text-\[32px\]{font-size:34px !important}
-    .text-\[44px\]{font-size:46px !important}
-    .text-\[58px\]{font-size:60px !important}
-    .text-\[88px\]{font-size:90px !important}
-  </style>
-
+</style>
 </head>
 <body>
 
@@ -123,7 +106,7 @@
       </div>
       <div>
         <div class="display text-[16px] font-bold tracking-wide">家电总动员</div>
-        <div class="text-[11px] mono text-[var(--text-3)] -mt-0.5">HOME · APPLIANCE · LAB</div>
+        <div class="text-[12.5px] mono text-[var(--text-3)] -mt-0.5">HOME · APPLIANCE · LAB</div>
       </div>
     </div>
     <nav class="hide-mobile flex items-center gap-7 text-[14px]">
@@ -143,7 +126,7 @@
 <!-- Hero -->
 <section class="relative z-10 max-w-[1400px] mx-auto px-6 pt-16 pb-10">
   <div class="corner-tag" style="top:18px; left:24px;">DOC / 2026 / CLEAN-MODELS</div>
-  <div class="corner-tag" style="top:18px; right:24px;">内部资料 · 持续更新 · v1.0</div>
+  <div class="corner-tag" style="top:18px; right:24px;">内部资料 · 持续更新 · v2.0</div>
   <div class="flex items-center gap-3 mb-6">
     <span class="deco-line"></span>
     <span class="mono text-[12px] tracking-[0.2em] text-[var(--gold)]">2026 ANNUAL REVIEW · 43 SKU · 8 BRANDS</span>
@@ -155,15 +138,12 @@
   <p class="text-[var(--text-2)] text-[16px] max-w-[760px] leading-relaxed mb-6">
     国内线上在售新款逐型号总表：<span class="text-[var(--gold)] mono">8</span> 品牌 · <span class="text-[var(--gold)] mono">43</span> 款独立 SKU。
     扫地机 <span class="text-[var(--gold)] mono">20</span> 款 · 洗地机 <span class="text-[var(--gold)] mono">23</span> 款，九大技术代次全覆盖。
-    技术代次按清洁品类重定义，未强行套用电视六类。
   </p>
   <div class="panel px-4 py-3 mb-8 inline-flex items-center gap-3 flex-wrap max-w-[820px]">
     <span class="mono text-[11px] text-[var(--amber)]">⚠ 口径说明</span>
     <span class="text-[13px] text-[var(--text-2)]">仅 2026 国内首发 + 京东/天猫/官网当前在售</span>
     <span class="text-[var(--text-3)]">·</span>
     <span class="text-[13px] text-[var(--text-2)]">型号去斜杠去尺寸、单行单 SKU</span>
-    <span class="text-[var(--text-3)]">·</span>
-    <span class="text-[13px] text-[var(--text-3)]">已剔除石头 G30S Ultra（未售）、云鲸 J6（2025 延续）、小米 6 标准版等非本年首发款</span>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <div class="panel p-5 relative overflow-hidden">
@@ -180,42 +160,43 @@
     </div>
     <div class="panel p-5 relative overflow-hidden">
       <div class="absolute top-2 right-3 mono text-[11px] text-[var(--text-3)]">03</div>
-      <div class="text-[var(--text-3)] text-[12px] mono mb-2 tracking-wider">TECH</div>
-      <div class="display text-[44px] font-bold leading-none text-[var(--blue)]">9<span class="text-[15px] text-[var(--text-2)] ml-1">代次</span></div>
-      <div class="text-[var(--text-2)] text-[13px] mt-1">滚筒/履带/机械臂/蒸汽/净味…</div>
+      <div class="text-[var(--text-3)] text-[12px] mono mb-2 tracking-wider">ROBOT</div>
+      <div class="display text-[44px] font-bold leading-none text-[var(--blue)]">20<span class="text-[15px] text-[var(--text-2)] ml-1">款</span></div>
+      <div class="text-[var(--text-2)] text-[13px] mt-1">扫地机器人 · 5 代次</div>
     </div>
     <div class="panel p-5 relative overflow-hidden">
       <div class="absolute top-2 right-3 mono text-[11px] text-[var(--text-3)]">04</div>
-      <div class="text-[var(--text-3)] text-[12px] mono mb-2 tracking-wider">PROGRESS</div>
-      <div class="display text-[44px] font-bold leading-none">30<span class="text-[15px] text-[var(--text-2)] ml-1">%</span></div>
-      <div class="mt-2 h-1.5 bg-[var(--border)] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[var(--gold)] to-[var(--gold-2)]" style="width:30%;"></div></div>
+      <div class="text-[var(--text-3)] text-[12px] mono mb-2 tracking-wider">WASHER</div>
+      <div class="display text-[44px] font-bold leading-none text-[var(--green)]">23<span class="text-[15px] text-[var(--text-2)] ml-1">款</span></div>
+      <div class="text-[var(--text-2)] text-[13px] mt-1">洗地机 · 4 代次</div>
     </div>
   </div>
 </section>
 
-<!-- 8 品牌主线 -->
-<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-12">
-  <div class="flex items-center gap-3 mb-4">
-    <span class="deco-line"></span>
-    <span class="mono text-[12px] tracking-[0.2em] text-[var(--gold)]">BRAND STRATEGY · 8 BRANDS</span>
-  </div>
-  <h2 class="display text-[26px] md:text-[32px] font-bold mb-6">8 个品牌 · 2026 主线一句话</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="brand-grid"></div>
-</section>
-
-<!-- Tabs + Toolbar -->
-<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-12">
-  <div class="panel p-0">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-b border-[var(--border)]">
-      <div class="flex items-center overflow-x-auto">
-        <button class="tab-btn active px-5 py-3 text-[15px] font-semibold" data-tab="all">全部<span class="mono text-[12px] ml-2 text-[var(--text-3)]">/ 43</span></button>
-        <button class="tab-btn px-5 py-3 text-[15px] font-semibold text-[var(--text-2)]" data-tab="robot">扫地机器人<span class="mono text-[12px] ml-2 text-[var(--text-3)]">/ 20</span></button>
-        <button class="tab-btn px-5 py-3 text-[15px] font-semibold text-[var(--text-2)]" data-tab="washer">洗地机<span class="mono text-[12px] ml-2 text-[var(--text-3)]">/ 23</span></button>
+<!-- ========== 扫地机器人 ========== -->
+<section id="sec-robot" class="sec-anchor relative z-10 max-w-[1400px] mx-auto px-6 mt-14">
+  <div class="flex items-end justify-between gap-4 flex-wrap mb-6">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="deco-line"></span>
+        <span class="mono text-[12px] tracking-[0.2em] text-[var(--gold)]">SECTION 01 · ROBOT VACUUM</span>
       </div>
+      <h2 class="display text-[30px] md:text-[38px] font-bold">🤖 扫地机器人 <span class="text-[var(--gold)]">20</span> 款</h2>
+      <p class="text-[var(--text-2)] text-[14px] mt-1">滚筒活水 6 · 履带活水 2 · 机械臂 2 · 机械足越障 3 · 旋转盘活水 7</p>
+    </div>
+    <a href="#sec-washer" class="btn">跳转洗地机 ↓</a>
+  </div>
+
+  <!-- 扫地机品牌主线 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8" id="brand-grid-robot"></div>
+
+  <!-- 工具栏 -->
+  <div class="panel p-0 mb-10">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-b border-[var(--border)]">
       <div class="flex items-center gap-2 flex-wrap">
         <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[13px]">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
-          <select id="filter-status" class="bg-transparent text-[var(--text-2)] outline-none text-[13px] cursor-pointer">
+          <select id="filter-status-robot" class="bg-transparent text-[var(--text-2)] outline-none text-[13px] cursor-pointer">
             <option value="all">全部状态</option>
             <option value="done">已测评</option>
             <option value="prog">测评中</option>
@@ -224,53 +205,104 @@
         </div>
         <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[13px]">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          <input id="search" type="text" placeholder="搜索品牌 / 型号…" class="bg-transparent outline-none text-[13px] w-[170px] placeholder:text-[var(--text-3)]"/>
+          <input id="search-robot" type="text" placeholder="搜索品牌 / 型号…" class="bg-transparent outline-none text-[13px] w-[170px] placeholder:text-[var(--text-3)]"/>
         </div>
         <div class="flex border border-[var(--border-hi)] rounded overflow-hidden">
-          <button id="view-table" class="px-3 py-2 text-[13px] bg-[var(--gold)] text-[#0D0D11] font-semibold">表格</button>
-          <button id="view-card" class="px-3 py-2 text-[13px] text-[var(--text-2)] font-semibold">卡片</button>
+          <button id="view-table-robot" class="px-3 py-2 text-[13px] bg-[var(--gold)] text-[#0D0D11] font-semibold">表格</button>
+          <button id="view-card-robot" class="px-3 py-2 text-[13px] text-[var(--text-2)] font-semibold">卡片</button>
         </div>
       </div>
     </div>
 
-    <div id="table-all">
+    <div id="table-robot">
       <div class="grid-row grid gap-4 px-6 py-3 text-[12px] mono text-[var(--text-3)] tracking-wider border-b border-[var(--border)]" style="grid-template-columns:60px 1fr 1fr 1fr 3fr 1fr 1fr 80px;">
         <div>#</div><div>BRAND / MODEL</div><div class="col-pos">定位</div><div class="col-tech">技术代次</div><div>核心特色</div><div class="col-status text-right">参考价</div><div class="col-status text-center">状态</div><div class="col-op text-right">操作</div>
       </div>
-      <div id="list-all"></div>
+      <div id="list-robot"></div>
     </div>
 
-    <div class="card-view p-5" id="card-all">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-all"></div>
+    <div class="card-view p-5" id="card-robot">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-robot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 洗地机 ========== -->
+<section id="sec-washer" class="sec-anchor relative z-10 max-w-[1400px] mx-auto px-6 mt-14">
+  <div class="flex items-end justify-between gap-4 flex-wrap mb-6">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="deco-line"></span>
+        <span class="mono text-[12px] tracking-[0.2em] text-[var(--gold)]">SECTION 02 · FLOOR WASHER</span>
+      </div>
+      <h2 class="display text-[30px] md:text-[38px] font-bold">🧹 洗地机 <span class="text-[var(--gold)]">23</span> 款</h2>
+      <p class="text-[var(--text-2)] text-[14px] mt-1">蒸汽热水双热 8 · 双系统净味 7 · 机械臂巡边 1 · 基础热水自清洁 7</p>
+    </div>
+    <a href="#sec-robot" class="btn">跳转扫地机 ↑</a>
+  </div>
+
+  <!-- 洗地机品牌主线 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8" id="brand-grid-washer"></div>
+
+  <!-- 工具栏 -->
+  <div class="panel p-0 mb-10">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-b border-[var(--border)]">
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[13px]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+          <select id="filter-status-washer" class="bg-transparent text-[var(--text-2)] outline-none text-[13px] cursor-pointer">
+            <option value="all">全部状态</option>
+            <option value="done">已测评</option>
+            <option value="prog">测评中</option>
+            <option value="todo">待测评</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[13px]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search-washer" type="text" placeholder="搜索品牌 / 型号…" class="bg-transparent outline-none text-[13px] w-[170px] placeholder:text-[var(--text-3)]"/>
+        </div>
+        <div class="flex border border-[var(--border-hi)] rounded overflow-hidden">
+          <button id="view-table-washer" class="px-3 py-2 text-[13px] bg-[var(--gold)] text-[#0D0D11] font-semibold">表格</button>
+          <button id="view-card-washer" class="px-3 py-2 text-[13px] text-[var(--text-2)] font-semibold">卡片</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="table-washer">
+      <div class="grid-row grid gap-4 px-6 py-3 text-[12px] mono text-[var(--text-3)] tracking-wider border-b border-[var(--border)]" style="grid-template-columns:60px 1fr 1fr 1fr 3fr 1fr 1fr 80px;">
+        <div>#</div><div>BRAND / MODEL</div><div class="col-pos">定位</div><div class="col-tech">技术代次</div><div>核心特色</div><div class="col-status text-right">参考价</div><div class="col-status text-center">状态</div><div class="col-op text-right">操作</div>
+      </div>
+      <div id="list-washer"></div>
+    </div>
+
+    <div class="card-view p-5" id="card-washer">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-washer"></div>
     </div>
   </div>
 </section>
 
 <!-- Bottom Stats -->
-<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-10 mb-16">
+<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-8 mb-16">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div class="panel p-6">
-      <div class="mono text-[11px] text-[var(--text-3)] mb-2 tracking-wider">EVALUATION PROGRESS</div>
-      <div class="display text-[24px] font-bold mb-4">测评进度</div>
-      <div class="space-y-3">
-        <div class="flex items-center gap-3"><span class="badge b-done"><span class="dot"></span>已完成</span><span class="mono text-[15px]">13</span><div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--green)]" style="width:30%;"></div></div></div>
-        <div class="flex items-center gap-3"><span class="badge b-prog"><span class="dot"></span>测评中</span><span class="mono text-[15px]">9</span><div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--amber)]" style="width:21%;"></div></div></div>
-        <div class="flex items-center gap-3"><span class="badge b-todo"><span class="dot"></span>待测评</span><span class="mono text-[15px]">21</span><div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--text-3)]" style="width:49%;"></div></div></div>
-      </div>
-    </div>
-    <div class="panel p-6">
-      <div class="mono text-[11px] text-[var(--text-3)] mb-2 tracking-wider">TECH GENERATIONS</div>
-      <div class="display text-[24px] font-bold mb-4">九大技术代次分布</div>
+      <div class="mono text-[11px] text-[var(--text-3)] mb-2 tracking-wider">ROBOT TECH GENERATIONS</div>
+      <div class="display text-[24px] font-bold mb-4">🤖 扫地机技术代次分布</div>
       <div class="space-y-2 text-[14px]">
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🤖 滚筒活水</span><span class="mono text-[var(--gold)]">6</span></div>
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🤖 履带活水</span><span class="mono text-[#5DC8B0]">2</span></div>
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🤖 机械臂</span><span class="mono text-[#B89BCE]">2</span></div>
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🤖 机械足越障</span><span class="mono text-[#FF7866]">3</span></div>
-        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🤖 旋转盘活水</span><span class="mono text-[var(--blue)]">7</span></div>
-        <div class="flex items-center justify-between border-t border-[var(--border)] pt-2 mt-2"><span class="text-[var(--text-2)]">🧹 蒸汽热水双热</span><span class="mono text-[#FF7866]">8</span></div>
+        <div class="flex items-center justify-between border-t border-[var(--border)] pt-2 mt-2"><span class="text-[var(--text-2)]">🤖 旋转盘活水</span><span class="mono text-[var(--blue)]">7</span></div>
+      </div>
+    </div>
+    <div class="panel p-6">
+      <div class="mono text-[11px] text-[var(--text-3)] mb-2 tracking-wider">WASHER TECH GENERATIONS</div>
+      <div class="display text-[24px] font-bold mb-4">🧹 洗地机技术代次分布</div>
+      <div class="space-y-2 text-[14px]">
+        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🧹 蒸汽热水双热</span><span class="mono text-[#FF7866]">8</span></div>
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🧹 双系统净味</span><span class="mono text-[var(--green)]">7</span></div>
         <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🧹 机械臂巡边</span><span class="mono text-[#B89BCE]">1</span></div>
-        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">🧹 基础热水自清洁</span><span class="mono text-[var(--blue)]">7</span></div>
+        <div class="flex items-center justify-between border-t border-[var(--border)] pt-2 mt-2"><span class="text-[var(--text-2)]">🧹 基础热水自清洁</span><span class="mono text-[var(--blue)]">7</span></div>
       </div>
     </div>
     <div class="panel p-6">
@@ -280,9 +312,9 @@
         <div>主笔 / <span class="text-[var(--text)]">阿德</span> <span class="mono text-[11px] text-[var(--text-3)] ml-1">EDITOR</span></div>
         <div>实测 / <span class="text-[var(--text)]">小宇</span> · <span class="text-[var(--text)]">小鹿</span></div>
         <div>拆机 / <span class="text-[var(--text)]">老王</span></div>
-        <div>更新 / <span class="mono text-[var(--text)]">2026-03-12</span></div>
+        <div>更新 / <span class="mono text-[var(--text)]">2026-08-12</span></div>
         <div class="pt-3 border-t border-[var(--border)] mt-3 text-[12px] text-[var(--text-3)] leading-relaxed">
-          技术代次按清洁品类重定义：扫地机分滚筒活水/履带活水/机械臂/机械足越障/旋转盘活水五大类；洗地机分蒸汽热水双热/双系统净味/机械臂巡边/基础热水自清洁四大类。参考价为编辑估算，仅供筛选参考。
+          清单按扫地机器人 / 洗地机分开展示，全部 43 款为 2026 国内首发且在售机型。参考价为编辑估算，仅供筛选参考。
         </div>
       </div>
     </div>
@@ -292,7 +324,7 @@
 <footer class="relative z-10 border-t border-[var(--border)] py-8">
   <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 items-center text-[13px] text-[var(--text-3)]">
     <div>© 2026 家电总动员 · HOME APPLIANCE LAB · 测评内容受版权保护</div>
-    <div class="mono">v1.0 · BUILD 20260312 · 43 SKU · 8 BRANDS</div>
+    <div class="mono">v2.0 · BUILD 20260812 · 43 SKU · 8 BRANDS</div>
   </div>
 </footer>
 
@@ -306,18 +338,25 @@
     '美的':['#1A1A21','#60A5FA'], '添可':['#1A1A21','#A78BFA']
   };
 
-  const brandLines = [
-    {brand:'石头', count:7, line:'活水洗地 P20 + 蒸汽双热 A30 Pro Steam 双技术线，机械足越障 G30S Pro 补位', tag:'活水+蒸汽'},
+  const robotBrandLines = [
+    {brand:'石头', count:3, line:'活水洗地 P20 系列 + 机械足越障 G30S Pro，滚筒/旋转盘/越障三线并进', tag:'三线并进'},
     {brand:'科沃斯', count:3, line:'全滚筒活水，X12 Pro / X9 Pro Omni 双旗舰 + T90 Pro 走量', tag:'滚筒活水'},
     {brand:'云鲸', count:2, line:'履带活水技术独门，JX + 逍遥003 VLM 双目旗舰', tag:'履带活水'},
-    {brand:'友望', count:5, line:'滚筒活水 + 蒸汽双热，新锐品牌全品类冲量', tag:'新锐冲量'},
-    {brand:'追觅', count:5, line:'机械臂/越障 + 蒸汽200℃机皇 H70 Ultra Station 冲顶', tag:'机械臂+蒸汽'},
-    {brand:'小米', count:7, line:'6 Max 三重机械臂机皇 + 5 MAX 蒸汽泡沫双热', tag:'生态走量'},
-    {brand:'美的', count:7, line:'旋转盘走量 + S60 双系统净味，全系热水+等离子', tag:'净味防臭'},
-    {brand:'添可', count:7, line:'双系统净味技术领跑者，Scientist M9 机皇 + 空间站系列', tag:'双系统净味'}
+    {brand:'友望', count:2, line:'魔方 80℃ 热水滚筒 + T300 嵌入式上下水，新锐走量', tag:'新锐冲量'},
+    {brand:'追觅', count:3, line:'S50 Pro 越障 + X60 Pro/Matrix10 Ultra 机械臂，冲击机皇', tag:'机械臂+越障'},
+    {brand:'小米', count:4, line:'6 Max 三重机械臂机皇 + 6 Pro 滚筒活水 + M40 系列走量', tag:'生态走量'},
+    {brand:'美的', count:3, line:'V16 系列旋转盘全系，柔性机械臂 / 热水喷拖差异化', tag:'旋转盘走量'}
   ];
 
-  // 技术代次颜色映射
+  const washerBrandLines = [
+    {brand:'石头', count:4, line:'A30 2.0 系列全谱系，Steam 蒸汽双热旗舰 + Combo 多合一', tag:'蒸汽双热'},
+    {brand:'添可', count:7, line:'双系统净味技术领跑者，Scientist M9 机皇 + 空间站系列', tag:'双系统净味'},
+    {brand:'友望', count:3, line:'云朵 2.0 入门 + 云朵蒸汽版 + 天鹅工效学，全价位覆盖', tag:'价位全覆盖'},
+    {brand:'追觅', count:2, line:'T70 Ultra 巡边探洗 + H70 Ultra Station 200℃ 蒸汽机皇', tag:'巡边+蒸汽'},
+    {brand:'小米', count:3, line:'无线洗地机 5 系三代，蒸汽泡沫双热 + 沸水自清洁', tag:'蒸汽走量'},
+    {brand:'美的', count:4, line:'S60 系列双系统净味全系，热融洗/火山泉/等离子多组合', tag:'净味防臭'}
+  ];
+
   const techColors = {
     '滚筒活水':'text-[var(--gold)]',
     '履带活水':'text-[#5DC8B0]',
@@ -337,54 +376,55 @@
     return 'text-[var(--text-2)]';
   }
 
-  // 43 款 SKU 数据
-  const items = [
-    // ========== 扫地机器人 20 ==========
-    {cat:'robot',brand:'石头',model:'G30S Pro',pos:'中高端',tech:'机械足越障',techFull:'机械足越障（底盘升降 3.0）',price:'3999',status:'done',feat:'底盘升降 3.0 · 越障能力旗舰'},
-    {cat:'robot',brand:'石头',model:'P20 Max',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（100℃ 热水洗 + 0 缠滚刷）',price:'3499',status:'prog',feat:'100℃ 热水洗 + 0 缠滚刷 · 活水洗地走量'},
-    {cat:'robot',brand:'石头',model:'P20 Ultra',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（270mm 滚筒 + 0 缠清扫）',price:'4499',status:'done',feat:'270mm 滚筒活水 · 0 缠清扫旗舰'},
-    {cat:'robot',brand:'科沃斯',model:'X12 Pro',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（OZMO ROLLER 3.0 + FocusJet 喷溶）',price:'5999',status:'done',feat:'OZMO ROLLER 3.0 + FocusJet 喷溶 · 滚筒旗舰'},
-    {cat:'robot',brand:'科沃斯',model:'T90 Pro',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（恒压活水 3.0 + 瞬时超充）',price:'3999',status:'todo',feat:'恒压活水 3.0 + 瞬时超充 · 中高端走量'},
-    {cat:'robot',brand:'科沃斯',model:'X9 Pro Omni',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（活水洗地 + AI 识污）',price:'5499',status:'prog',feat:'活水洗地 + AI 识污 · Omni 全能旗舰'},
-    {cat:'robot',brand:'云鲸',model:'JX',pos:'旗舰',tech:'履带活水',techFull:'履带活水（60℃ 动态热活水履带）',price:'4999',status:'done',feat:'60℃ 动态热活水履带 · 履带活水旗舰'},
-    {cat:'robot',brand:'云鲸',model:'逍遥003',pos:'旗舰',tech:'履带活水',techFull:'履带活水（热活水履带 + VLM 双目）',price:'5999',status:'prog',feat:'热活水履带 + VLM 双目视觉 · 3/23 现货'},
-    {cat:'robot',brand:'友望',model:'魔方',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（80℃ 热水滚筒 + 二合一基站）',price:'3499',status:'todo',feat:'80℃ 热水滚筒 + 二合一基站 · 新锐走量'},
-    {cat:'robot',brand:'友望',model:'T300',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（嵌入式上下水基站）',price:'2499',status:'todo',feat:'嵌入式上下水基站 · 中端走量'},
-    {cat:'robot',brand:'追觅',model:'S50 Pro',pos:'旗舰',tech:'机械足越障',techFull:'机械足越障（仿生机械足 6cm + 100℃ 热水）',price:'5999',status:'done',feat:'仿生机械足 6cm + 100℃ 热水 · 越障旗舰'},
-    {cat:'robot',brand:'追觅',model:'X60 Pro',pos:'旗舰',tech:'机械臂',techFull:'机械臂（二代仿生机械臂 + 机械足）',price:'6999',status:'todo',feat:'二代仿生机械臂 + 机械足 · 双机械旗舰'},
-    {cat:'robot',brand:'追觅',model:'Matrix10 Ultra',pos:'机皇',tech:'机械臂',techFull:'机械臂（自动换拖布分区 + 多拖布）',price:'9999',status:'prog',feat:'自动换拖布分区 + 多拖布 · 机皇 · 8/6 开售'},
-    {cat:'robot',brand:'小米',model:'扫拖机器人 6 Max',pos:'机皇',tech:'机械足越障',techFull:'机械足越障（三重机械臂 + 双机械足 6cm）',price:'8999',status:'done',feat:'三重机械臂 + 双机械足 6cm · 扫地机皇'},
-    {cat:'robot',brand:'小米',model:'扫拖机器人 6 Pro',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（实时活水滚筒 + AI 三摄）',price:'4999',status:'todo',feat:'实时活水滚筒 + AI 三摄 · 滚筒旗舰'},
-    {cat:'robot',brand:'小米',model:'M40S',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（80℃ 热水洗 + 双刮洗臂）',price:'2499',status:'todo',feat:'80℃ 热水洗 + 双刮洗臂 · 中端走量'},
-    {cat:'robot',brand:'小米',model:'M40',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（双机械臂 + 70℃ 热水）',price:'1999',status:'todo',feat:'双机械臂 + 70℃ 热水 · 千元档走量'},
-    {cat:'robot',brand:'美的',model:'V16 Pro',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（柔性机械臂 + 80℃ 热水）',price:'3499',status:'done',feat:'柔性机械臂 + 80℃ 热水 · 中高端走量'},
-    {cat:'robot',brand:'美的',model:'V16s Pro',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（热水喷拖 + 自动集尘）',price:'3999',status:'todo',feat:'热水喷拖 + 自动集尘 · V16 升级款'},
-    {cat:'robot',brand:'美的',model:'V16 珍珠版',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（超薄机身走量）',price:'2799',status:'todo',feat:'超薄机身走量 · 中端性价比'},
+  // ===== 扫地机器人 20（仅附件在售型号） =====
+  const robotItems = [
+    {brand:'石头',model:'G30S Pro',pos:'中高端',tech:'机械足越障',techFull:'机械足越障（底盘升降 3.0）',price:'3999',status:'done',feat:'底盘升降 3.0 · 越障能力旗舰'},
+    {brand:'石头',model:'P20 Max',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（100℃ 热水洗 + 0 缠滚刷）',price:'3499',status:'prog',feat:'100℃ 热水洗 + 0 缠滚刷 · 活水洗地走量'},
+    {brand:'石头',model:'P20 Ultra',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（270mm 滚筒 + 0 缠清扫）',price:'4499',status:'done',feat:'270mm 滚筒活水 · 0 缠清扫旗舰'},
+    {brand:'科沃斯',model:'X12 Pro',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（OZMO ROLLER 3.0 + FocusJet 喷溶）',price:'5999',status:'done',feat:'OZMO ROLLER 3.0 + FocusJet 喷溶 · 滚筒旗舰'},
+    {brand:'科沃斯',model:'T90 Pro',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（恒压活水 3.0 + 瞬时超充）',price:'3999',status:'todo',feat:'恒压活水 3.0 + 瞬时超充 · 中高端走量'},
+    {brand:'科沃斯',model:'X9 Pro Omni',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（活水洗地 + AI 识污）',price:'5499',status:'prog',feat:'活水洗地 + AI 识污 · Omni 全能旗舰'},
+    {brand:'云鲸',model:'JX',pos:'旗舰',tech:'履带活水',techFull:'履带活水（60℃ 动态热活水履带）',price:'4999',status:'done',feat:'60℃ 动态热活水履带 · 履带活水旗舰'},
+    {brand:'云鲸',model:'逍遥003',pos:'旗舰',tech:'履带活水',techFull:'履带活水（热活水履带 + VLM 双目）',price:'5999',status:'prog',feat:'热活水履带 + VLM 双目视觉 · 3/23 现货'},
+    {brand:'友望',model:'魔方',pos:'中高端',tech:'滚筒活水',techFull:'滚筒活水（80℃ 热水滚筒 + 二合一基站）',price:'3499',status:'todo',feat:'80℃ 热水滚筒 + 二合一基站 · 新锐走量'},
+    {brand:'友望',model:'T300',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（嵌入式上下水基站）',price:'2499',status:'todo',feat:'嵌入式上下水基站 · 中端走量'},
+    {brand:'追觅',model:'S50 Pro',pos:'旗舰',tech:'机械足越障',techFull:'机械足越障（仿生机械足 6cm + 100℃ 热水）',price:'5999',status:'done',feat:'仿生机械足 6cm + 100℃ 热水 · 越障旗舰'},
+    {brand:'追觅',model:'X60 Pro',pos:'旗舰',tech:'机械臂',techFull:'机械臂（二代仿生机械臂 + 机械足）',price:'6999',status:'todo',feat:'二代仿生机械臂 + 机械足 · 双机械旗舰'},
+    {brand:'追觅',model:'Matrix10 Ultra',pos:'机皇',tech:'机械臂',techFull:'机械臂（自动换拖布分区 + 多拖布）',price:'9999',status:'prog',feat:'自动换拖布分区 + 多拖布 · 机皇 · 8/6 开售'},
+    {brand:'小米',model:'扫拖机器人 6 Max',pos:'机皇',tech:'机械足越障',techFull:'机械足越障（三重机械臂 + 双机械足 6cm）',price:'8999',status:'done',feat:'三重机械臂 + 双机械足 6cm · 扫地机皇'},
+    {brand:'小米',model:'扫拖机器人 6 Pro',pos:'旗舰',tech:'滚筒活水',techFull:'滚筒活水（实时活水滚筒 + AI 三摄）',price:'4999',status:'todo',feat:'实时活水滚筒 + AI 三摄 · 滚筒旗舰'},
+    {brand:'小米',model:'M40S',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（80℃ 热水洗 + 双刮洗臂）',price:'2499',status:'todo',feat:'80℃ 热水洗 + 双刮洗臂 · 中端走量'},
+    {brand:'小米',model:'M40',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（双机械臂 + 70℃ 热水）',price:'1999',status:'todo',feat:'双机械臂 + 70℃ 热水 · 千元档走量'},
+    {brand:'美的',model:'V16 Pro',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（柔性机械臂 + 80℃ 热水）',price:'3499',status:'done',feat:'柔性机械臂 + 80℃ 热水 · 中高端走量'},
+    {brand:'美的',model:'V16s Pro',pos:'中高端',tech:'旋转盘活水',techFull:'旋转盘活水（热水喷拖 + 自动集尘）',price:'3999',status:'todo',feat:'热水喷拖 + 自动集尘 · V16 升级款'},
+    {brand:'美的',model:'V16 珍珠版',pos:'中端',tech:'旋转盘活水',techFull:'旋转盘活水（超薄机身走量）',price:'2799',status:'todo',feat:'超薄机身走量 · 中端性价比'}
+  ];
 
-    // ========== 洗地机 23 ==========
-    {cat:'washer',brand:'石头',model:'A30 2.0',pos:'中端',tech:'基础热水自清洁',techFull:'基础热水自清洁（95℃ 自清洁 + 平躺）',price:'2499',status:'todo',feat:'95℃ 自清洁 + 平躺 · 中端走量'},
-    {cat:'washer',brand:'石头',model:'A30 Pro 2.0',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（95℃ 除菌 + AI 脏污识别）',price:'3299',status:'todo',feat:'95℃ 除菌 + AI 脏污识别 · 中高端'},
-    {cat:'washer',brand:'石头',model:'A30 Pro Steam 2.0',pos:'旗舰',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（180℃ 蒸汽 + 90℃ 热水）',price:'4999',status:'done',feat:'180℃ 蒸汽 + 90℃ 热水 · 蒸汽旗舰'},
-    {cat:'washer',brand:'石头',model:'A30 Pro Combo 2.0',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（洗地+吸尘+除螨多合一）',price:'3799',status:'prog',feat:'洗地+吸尘+除螨多合一 · Combo 全能'},
-    {cat:'washer',brand:'添可',model:'Scientist M9',pos:'机皇',tech:'双系统净味',techFull:'双系统净味（双恒压活水 + 全链路自清洁）',price:'8999',status:'done',feat:'双恒压活水 + 全链路自清洁 · 洗地机皇'},
-    {cat:'washer',brand:'添可',model:'极客 2.0',pos:'中端',tech:'基础热水自清洁',techFull:'基础热水自清洁（28000Pa + 0 缠毛）',price:'2299',status:'todo',feat:'28000Pa + 0 缠毛 · 中端走量'},
-    {cat:'washer',brand:'添可',model:'极客蒸汽 2.0',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（110℃ 活性蒸汽 + 热水）',price:'3299',status:'prog',feat:'110℃ 活性蒸汽 + 热水 · 蒸汽中高端'},
-    {cat:'washer',brand:'添可',model:'Station View',pos:'旗舰',tech:'双系统净味',techFull:'双系统净味（自动上下水空间站）',price:'5999',status:'done',feat:'自动上下水空间站 · 净味旗舰'},
-    {cat:'washer',brand:'添可',model:'Station Pod',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（胶囊空间站 + 脉冲强排污）',price:'3999',status:'todo',feat:'胶囊空间站 + 脉冲强排污 · Pod 走量'},
-    {cat:'washer',brand:'添可',model:'Fold X90',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（可折叠 + 180° 躺平）',price:'3499',status:'todo',feat:'可折叠 + 180° 躺平 · 折叠走量'},
-    {cat:'washer',brand:'添可',model:'Artist 60 Pro',pos:'旗舰',tech:'双系统净味',techFull:'双系统净味（艺术线 + 活水净味）',price:'5499',status:'prog',feat:'艺术线 + 活水净味 · 艺术旗舰'},
-    {cat:'washer',brand:'友望',model:'云朵 2.0',pos:'入门',tech:'基础热水自清洁',techFull:'基础热水自清洁（25000Pa + 180° 躺平）',price:'1799',status:'done',feat:'25000Pa + 180° 躺平 · 入门走量'},
-    {cat:'washer',brand:'友望',model:'云朵蒸汽版',pos:'中端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 80℃ 热水）',price:'2799',status:'todo',feat:'160℃ 蒸汽 + 80℃ 热水 · 中端蒸汽'},
-    {cat:'washer',brand:'友望',model:'天鹅',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（人体工学整机工效）',price:'3299',status:'todo',feat:'人体工学整机工效 · 工效学设计'},
-    {cat:'washer',brand:'追觅',model:'T70 Ultra Station',pos:'旗舰',tech:'机械臂巡边',techFull:'机械臂巡边（EdgeHunter 巡边探洗臂）',price:'5499',status:'prog',feat:'EdgeHunter 巡边探洗臂 · 巡边旗舰'},
-    {cat:'washer',brand:'追觅',model:'H70 Ultra Station',pos:'机皇',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（200℃ 蒸汽 + 90℃ 热水）',price:'7999',status:'done',feat:'200℃ 蒸汽 + 90℃ 热水 · 洗地机皇 · 4/14 上市'},
-    {cat:'washer',brand:'小米',model:'无线洗地机 5 MAX',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 活性泡沫 + 90℃ 热水）',price:'3499',status:'done',feat:'160℃ 蒸汽 + 活性泡沫 + 90℃ 热水 · 蒸汽中高端'},
-    {cat:'washer',brand:'小米',model:'无线洗地机 5 Pro',pos:'中端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 100℃ 沸水自清洁）',price:'2499',status:'todo',feat:'160℃ 蒸汽 + 100℃ 沸水自清洁 · 中端蒸汽'},
-    {cat:'washer',brand:'小米',model:'无线洗地机 5',pos:'入门',tech:'基础热水自清洁',techFull:'基础热水自清洁（防缠四重刮条）',price:'1799',status:'todo',feat:'防缠四重刮条 · 入门走量'},
-    {cat:'washer',brand:'美的',model:'S60 Ultra',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（100℃ 热融洗 + 元气魔方 / 等离子）',price:'3999',status:'done',feat:'100℃ 热融洗 + 元气魔方/等离子 · 净味中高端'},
-    {cat:'washer',brand:'美的',model:'S60 Pro',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（88℃ 火山泉 + 80℃ 热风 + 等离子）',price:'3499',status:'todo',feat:'88℃ 火山泉 + 80℃ 热风 + 等离子 · 净味走量'},
-    {cat:'washer',brand:'美的',model:'S60 honor',pos:'中端',tech:'双系统净味',techFull:'双系统净味（推入式基站 + 100℃ 热水 + 等离子）',price:'2799',status:'todo',feat:'推入式基站 + 100℃ 热水 + 等离子 · 中端净味'},
-    {cat:'washer',brand:'美的',model:'S60 Steam',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（380℃ 蒸汽源 + 净味防臭）',price:'3999',status:'prog',feat:'380℃ 蒸汽源 + 净味防臭 · 蒸汽净味双线'}
+  // ===== 洗地机 23（仅附件在售型号） =====
+  const washerItems = [
+    {brand:'石头',model:'A30 2.0',pos:'中端',tech:'基础热水自清洁',techFull:'基础热水自清洁（95℃ 自清洁 + 平躺）',price:'2499',status:'todo',feat:'95℃ 自清洁 + 平躺 · 中端走量'},
+    {brand:'石头',model:'A30 Pro 2.0',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（95℃ 除菌 + AI 脏污识别）',price:'3299',status:'todo',feat:'95℃ 除菌 + AI 脏污识别 · 中高端'},
+    {brand:'石头',model:'A30 Pro Steam 2.0',pos:'旗舰',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（180℃ 蒸汽 + 90℃ 热水）',price:'4999',status:'done',feat:'180℃ 蒸汽 + 90℃ 热水 · 蒸汽旗舰'},
+    {brand:'石头',model:'A30 Pro Combo 2.0',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（洗地+吸尘+除螨多合一）',price:'3799',status:'prog',feat:'洗地+吸尘+除螨多合一 · Combo 全能'},
+    {brand:'添可',model:'Scientist M9',pos:'机皇',tech:'双系统净味',techFull:'双系统净味（双恒压活水 + 全链路自清洁）',price:'8999',status:'done',feat:'双恒压活水 + 全链路自清洁 · 洗地机皇'},
+    {brand:'添可',model:'极客 2.0',pos:'中端',tech:'基础热水自清洁',techFull:'基础热水自清洁（28000Pa + 0 缠毛）',price:'2299',status:'todo',feat:'28000Pa + 0 缠毛 · 中端走量'},
+    {brand:'添可',model:'极客蒸汽 2.0',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（110℃ 活性蒸汽 + 热水）',price:'3299',status:'prog',feat:'110℃ 活性蒸汽 + 热水 · 蒸汽中高端'},
+    {brand:'添可',model:'Station View',pos:'旗舰',tech:'双系统净味',techFull:'双系统净味（自动上下水空间站）',price:'5999',status:'done',feat:'自动上下水空间站 · 净味旗舰'},
+    {brand:'添可',model:'Station Pod',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（胶囊空间站 + 脉冲强排污）',price:'3999',status:'todo',feat:'胶囊空间站 + 脉冲强排污 · Pod 走量'},
+    {brand:'添可',model:'Fold X90',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（可折叠 + 180° 躺平）',price:'3499',status:'todo',feat:'可折叠 + 180° 躺平 · 折叠走量'},
+    {brand:'添可',model:'Artist 60 Pro',pos:'旗舰',tech:'双系统净味',techFull:'双系统净味（艺术线 + 活水净味）',price:'5499',status:'prog',feat:'艺术线 + 活水净味 · 艺术旗舰'},
+    {brand:'友望',model:'云朵 2.0',pos:'入门',tech:'基础热水自清洁',techFull:'基础热水自清洁（25000Pa + 180° 躺平）',price:'1799',status:'done',feat:'25000Pa + 180° 躺平 · 入门走量'},
+    {brand:'友望',model:'云朵蒸汽版',pos:'中端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 80℃ 热水）',price:'2799',status:'todo',feat:'160℃ 蒸汽 + 80℃ 热水 · 中端蒸汽'},
+    {brand:'友望',model:'天鹅',pos:'中高端',tech:'基础热水自清洁',techFull:'基础热水自清洁（人体工学整机工效）',price:'3299',status:'todo',feat:'人体工学整机工效 · 工效学设计'},
+    {brand:'追觅',model:'T70 Ultra Station',pos:'旗舰',tech:'机械臂巡边',techFull:'机械臂巡边（EdgeHunter 巡边探洗臂）',price:'5499',status:'prog',feat:'EdgeHunter 巡边探洗臂 · 巡边旗舰'},
+    {brand:'追觅',model:'H70 Ultra Station',pos:'机皇',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（200℃ 蒸汽 + 90℃ 热水）',price:'7999',status:'done',feat:'200℃ 蒸汽 + 90℃ 热水 · 洗地机皇 · 4/14 上市'},
+    {brand:'小米',model:'无线洗地机 5 MAX',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 活性泡沫 + 90℃ 热水）',price:'3499',status:'done',feat:'160℃ 蒸汽 + 活性泡沫 + 90℃ 热水 · 蒸汽中高端'},
+    {brand:'小米',model:'无线洗地机 5 Pro',pos:'中端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（160℃ 蒸汽 + 100℃ 沸水自清洁）',price:'2499',status:'todo',feat:'160℃ 蒸汽 + 100℃ 沸水自清洁 · 中端蒸汽'},
+    {brand:'小米',model:'无线洗地机 5',pos:'入门',tech:'基础热水自清洁',techFull:'基础热水自清洁（防缠四重刮条）',price:'1799',status:'todo',feat:'防缠四重刮条 · 入门走量'},
+    {brand:'美的',model:'S60 Ultra',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（100℃ 热融洗 + 元气魔方 / 等离子）',price:'3999',status:'done',feat:'100℃ 热融洗 + 元气魔方/等离子 · 净味中高端'},
+    {brand:'美的',model:'S60 Pro',pos:'中高端',tech:'双系统净味',techFull:'双系统净味（88℃ 火山泉 + 80℃ 热风 + 等离子）',price:'3499',status:'todo',feat:'88℃ 火山泉 + 80℃ 热风 + 等离子 · 净味走量'},
+    {brand:'美的',model:'S60 honor',pos:'中端',tech:'双系统净味',techFull:'双系统净味（推入式基站 + 100℃ 热水 + 等离子）',price:'2799',status:'todo',feat:'推入式基站 + 100℃ 热水 + 等离子 · 中端净味'},
+    {brand:'美的',model:'S60 Steam',pos:'中高端',tech:'蒸汽热水双热',techFull:'蒸汽热水双热（380℃ 蒸汽源 + 净味防臭）',price:'3999',status:'prog',feat:'380℃ 蒸汽源 + 净味防臭 · 蒸汽净味双线'}
   ];
 
   const statusMap = {
@@ -398,8 +438,8 @@
     return {bg:`linear-gradient(135deg, ${c[0]} 0%, ${c[0]} 60%, ${c[1]}22 100%)`, color:c[1]};
   }
 
-  function renderBrandLines(){
-    document.getElementById('brand-grid').innerHTML = brandLines.map(b=>{
+  function renderBrandLines(containerId, lines){
+    document.getElementById(containerId).innerHTML = lines.map(b=>{
       const bs = brandStyle(b.brand);
       return `<div class="brand-card panel p-5">
         <div class="flex items-center gap-3 mb-3">
@@ -414,25 +454,23 @@
       </div>`;
     }).join('');
   }
-  renderBrandLines();
 
   function renderRow(item, idx){
     const st = statusMap[item.status];
     const bs = brandStyle(item.brand);
     const techCls = getTechColor(item.tech);
-    const catIcon = item.cat==='robot' ? '🤖' : '🧹';
-    return `<div class="product-row grid-row grid gap-4 px-6 py-4 items-center" data-status="${item.status}" data-keyword="${item.brand} ${item.model}" data-cat="${item.cat}" style="grid-template-columns:60px 1fr 1fr 1fr 3fr 1fr 1fr 80px;">
+    return `<div class="product-row grid-row grid gap-4 px-6 py-4 items-center" data-status="${item.status}" data-keyword="${item.brand} ${item.model}" style="grid-template-columns:60px 1fr 1fr 1fr 3fr 1fr 1fr 80px;">
       <div class="row-index mono text-[18px] text-[var(--text-3)] transition-all">${String(idx+1).padStart(2,'0')}</div>
       <div class="flex items-center gap-3">
         <div class="product-img" style="background:${bs.bg};color:${bs.color};">${item.brand.slice(0,1)}</div>
         <div>
-          <div class="flex items-center gap-2 mb-1"><span class="chip">${item.brand}</span><span class="text-[11px]">${catIcon}</span></div>
+          <div class="flex items-center gap-2 mb-1"><span class="chip">${item.brand}</span><span class="text-[11px]">${item.catIcon||''}</span></div>
           <div class="display font-semibold text-[15px]">${item.model}</div>
         </div>
       </div>
       <div class="col-pos"><span class="chip" style="${item.pos==='机皇'?'color:var(--gold);border-color:rgba(229,178,93,0.3);':''}${item.pos==='旗舰'?'color:var(--blue);border-color:rgba(122,184,201,0.3);':''}">${item.pos}</span></div>
       <div class="col-tech mono text-[13px] ${techCls} font-semibold">${item.tech}</div>
-      <div class="text-[13px] text-[var(--text-2)] leading-relaxed pr-2">${item.feat}</div>
+      <div class="text-[13px] text-[var(--text-2)] leading-relaxed pr-2">${item.feat} <span class="text-[var(--text-3)]">· ${item.techFull}</span></div>
       <div class="col-status text-right"><div class="mono text-[15px] font-semibold text-[var(--gold)]">¥${item.price}</div><div class="mono text-[11px] text-[var(--text-3)]">REF</div></div>
       <div class="col-status text-center"><span class="badge ${st.cls}"><span class="dot"></span>${st.label}</span></div>
       <div class="col-op text-right"><button class="btn" style="padding:6px 12px;font-size:14.5px;">详情<svg class="row-arrow transition-all" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg></button></div>
@@ -442,13 +480,11 @@
   function renderCard(item, idx){
     const st = statusMap[item.status];
     const bs = brandStyle(item.brand);
-    const catIcon = item.cat==='robot' ? '🤖' : '🧹';
-    const catLabel = item.cat==='robot' ? '扫地机器人' : '洗地机';
-    return `<div class="panel p-5 hover:border-[var(--gold)] transition-all" data-status="${item.status}" data-keyword="${item.brand} ${item.model}" data-cat="${item.cat}">
+    return `<div class="panel p-5 hover:border-[var(--gold)] transition-all" data-status="${item.status}" data-keyword="${item.brand} ${item.model}">
       <div class="flex items-start gap-3 mb-3">
         <div class="product-img" style="background:${bs.bg};color:${bs.color};">${item.brand.slice(0,1)}</div>
         <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-1"><span class="chip">${item.brand}</span><span class="chip" style="color:var(--text-3);">${catIcon} ${catLabel}</span></div>
+          <div class="flex items-center gap-2 mb-1"><span class="chip">${item.brand}</span><span class="chip" style="color:var(--text-3);">${item.catIcon||''}</span></div>
           <div class="display font-bold text-[16px] truncate">${item.model}</div>
         </div>
         <span class="badge ${st.cls}"><span class="dot"></span>${st.label}</span>
@@ -458,6 +494,7 @@
         <span class="mono text-[12px] ${getTechColor(item.tech)} font-semibold">${item.tech}</span>
       </div>
       <div class="mb-3 text-[13px] text-[var(--text-2)] leading-relaxed min-h-[40px]">${item.feat}</div>
+      <div class="text-[12px] text-[var(--text-3)] leading-relaxed mb-3">${item.techFull}</div>
       <div class="flex items-center justify-between pt-3 border-t border-[var(--border)]">
         <div><div class="mono text-[11px] text-[var(--text-3)]">REF PRICE</div><div class="mono text-[18px] font-bold text-[var(--gold)]">¥${item.price}</div></div>
         <button class="btn btn-primary" style="padding:6px 16px;font-size:14.5px;">查看详情</button>
@@ -465,35 +502,61 @@
     </div>`;
   }
 
-  document.getElementById('list-all').innerHTML = items.map((it,i)=>renderRow(it,i)).join('');
-  document.getElementById('grid-all').innerHTML = items.map((it,i)=>renderCard(it,i)).join('');
+  // 扫地机
+  robotItems.forEach(it=>{it.catIcon='🤖';});
+  washerItems.forEach(it=>{it.catIcon='🧹';});
 
-  let isCardView = false;
-  let currentTab = 'all';
+  renderBrandLines('brand-grid-robot', robotBrandLines);
+  renderBrandLines('brand-grid-washer', washerBrandLines);
+  document.getElementById('list-robot').innerHTML = robotItems.map((it,i)=>renderRow(it,i)).join('');
+  document.getElementById('grid-robot').innerHTML = robotItems.map((it,i)=>renderCard(it,i)).join('');
+  document.getElementById('list-washer').innerHTML = washerItems.map((it,i)=>renderRow(it,i)).join('');
+  document.getElementById('grid-washer').innerHTML = washerItems.map((it,i)=>renderCard(it,i)).join('');
 
-  function applyFilter(){
-    const status = document.getElementById('filter-status').value;
-    const kw = document.getElementById('search').value.toLowerCase();
-    const container = isCardView ? document.getElementById('grid-all') : document.getElementById('list-all');
-    container.querySelectorAll('[data-status]').forEach(el=>{
-      const okS = status==='all' || el.dataset.status===status;
-      const okK = !kw || el.dataset.keyword.toLowerCase().includes(kw);
-      const okC = currentTab==='all' || el.dataset.cat===currentTab;
-      el.style.display = (okS && okK && okC) ? '' : 'none';
+  // 分区工具：搜索/筛选/视图切换
+  function initSection(section){
+    const key = section; // robot / washer
+    const statusSel = document.getElementById('filter-status-'+key);
+    const search = document.getElementById('search-'+key);
+    const tableBox = document.getElementById('table-'+key);
+    const cardBox = document.getElementById('card-'+key);
+    const listEl = document.getElementById('list-'+key);
+    const gridEl = document.getElementById('grid-'+key);
+    const btnTable = document.getElementById('view-table-'+key);
+    const btnCard = document.getElementById('view-card-'+key);
+    let isCard = false;
+
+    function apply(){
+      const st = statusSel.value;
+      const kw = search.value.toLowerCase();
+      const container = isCard ? gridEl : listEl;
+      container.querySelectorAll('[data-status]').forEach(el=>{
+        const okS = st==='all' || el.dataset.status===st;
+        const okK = !kw || el.dataset.keyword.toLowerCase().includes(kw);
+        el.style.display = (okS && okK) ? '' : 'none';
+      });
+    }
+
+    statusSel.addEventListener('change', apply);
+    search.addEventListener('input', apply);
+
+    btnTable.addEventListener('click', ()=>{
+      if(!isCard) return;
+      isCard = false;
+      btnTable.style.background='var(--gold)'; btnTable.style.color='#0D0D11';
+      btnCard.style.background=''; btnCard.style.color='';
+      tableBox.style.display=''; cardBox.classList.remove('active');
+      apply(); showToast('已切换为表格视图');
+    });
+    btnCard.addEventListener('click', ()=>{
+      if(isCard) return;
+      isCard = true;
+      btnCard.style.background='var(--gold)'; btnCard.style.color='#0D0D11';
+      btnTable.style.background=''; btnTable.style.color='';
+      tableBox.style.display='none'; cardBox.classList.add('active');
+      apply(); showToast('已切换为卡片视图');
     });
   }
-
-  document.querySelectorAll('.tab-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.classList.add('text-[var(--text-2)]');});
-      btn.classList.add('active'); btn.classList.remove('text-[var(--text-2)]');
-      currentTab = btn.dataset.tab;
-      applyFilter();
-    });
-  });
-
-  document.getElementById('filter-status').addEventListener('change', applyFilter);
-  document.getElementById('search').addEventListener('input', applyFilter);
 
   let toastTimer = null;
   function showToast(msg){
@@ -501,37 +564,11 @@
     t.textContent = msg;
     t.classList.add('show');
     if(toastTimer){ clearTimeout(toastTimer); toastTimer = null; }
-    toastTimer = setTimeout(()=>{
-      t.classList.remove('show');
-      toastTimer = null;
-    }, 2000);
+    toastTimer = setTimeout(()=>{ t.classList.remove('show'); toastTimer = null; }, 2000);
   }
 
-  document.getElementById('view-table').addEventListener('click', ()=>{
-    if(!isCardView) return;
-    isCardView = false;
-    document.getElementById('view-table').style.background = 'var(--gold)';
-    document.getElementById('view-table').style.color = '#0D0D11';
-    document.getElementById('view-card').style.background = '';
-    document.getElementById('view-card').style.color = '';
-    document.getElementById('table-all').style.display='';
-    document.getElementById('card-all').classList.remove('active');
-    applyFilter();
-    showToast('已切换为表格视图');
-  });
-
-  document.getElementById('view-card').addEventListener('click', ()=>{
-    if(isCardView) return;
-    isCardView = true;
-    document.getElementById('view-card').style.background = 'var(--gold)';
-    document.getElementById('view-card').style.color = '#0D0D11';
-    document.getElementById('view-table').style.background = '';
-    document.getElementById('view-table').style.color = '';
-    document.getElementById('table-all').style.display='none';
-    document.getElementById('card-all').classList.add('active');
-    applyFilter();
-    showToast('已切换为卡片视图');
-  });
+  initSection('robot');
+  initSection('washer');
 </script>
 
 </body>
