@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 电视测评清单 | 家电总动员</title>
 <style>
+  /* ===== 基础重置 ===== */
   *{margin:0;padding:0;box-sizing:border-box}
   body{
     background:#0b0b12;
@@ -15,12 +16,8 @@
     -webkit-font-smoothing:antialiased;
   }
   .container{max-width:1360px;margin:0 auto;padding:0 28px}
-  .t12{font-size:12px}
-  .t14{font-size:14px}
-  .t16{font-size:16px}
-  .t22{font-size:22px}
-  .fw6{font-weight:600}
-  .fw7{font-weight:700}
+
+  /* ===== 头部 ===== */
   .header{
     display:flex;align-items:center;justify-content:space-between;
     padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);
@@ -34,9 +31,11 @@
   }
   .logo-text{font-size:16px;font-weight:700;color:#f0ece4}
   .logo-sub{font-size:12px;color:#7a7a8a;letter-spacing:1.5px;margin-top:0}
-  .nav{display:flex;gap:24px;font-size:14px;font-weight:500}
-  .nav a{color:#9a9aaa;text-decoration:none;cursor:pointer;transition:color 0.25s}
-  .nav a:hover,.nav a.active{color:#d4a24e}
+
+  .nav{display:flex;gap:6px;font-size:14px;font-weight:500;align-items:center}
+  .nav a{color:#9a9aaa;text-decoration:none;cursor:pointer;transition:color 0.25s;padding:6px 12px;border-radius:5px}
+  .nav a:hover,.nav a.active{color:#d4a24e;background:rgba(212,162,78,0.06)}
+
   .btn{
     display:inline-flex;align-items:center;gap:5px;
     padding:7px 16px;border-radius:6px;font-size:14px;font-weight:600;
@@ -48,10 +47,53 @@
   .btn:hover{border-color:#d4a24e;color:#d4a24e;background:rgba(212,162,78,0.06)}
   .btn-primary{background:#d4a24e;color:#0b0b12;border-color:#d4a24e}
   .btn-primary:hover{background:#c4953a;color:#0b0b12}
+
+  /* ===== 下拉菜单（修复悬停消失） ===== */
+  .dropdown{position:relative;display:inline-flex;align-items:center}
+  .dropdown > a{padding:6px 12px;border-radius:5px;display:flex;align-items:center;gap:4px}
+  .dropdown::after{
+    content:'';
+    position:absolute;
+    left:0;right:0;
+    bottom:-14px;
+    height:14px;
+    z-index:101;
+  }
+  .dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    margin-top:8px;
+    background:#1a1a24;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    padding:4px;
+    min-width:160px;
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.15s;
+    pointer-events:none;
+    box-shadow:0 8px 32px rgba(0,0,0,0.5);
+    z-index:100;
+  }
+  .dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .dropdown-menu a{
+    display:block;padding:8px 14px;border-radius:5px;color:#c8c4bc;text-decoration:none;
+    transition:all 0.15s;font-size:14px;font-weight:500;
+  }
+  .dropdown-menu a:hover{background:rgba(212,162,78,0.1);color:#d4a24e}
+  .dropdown-menu .divider{height:1px;background:rgba(255,255,255,0.05);margin:3px 10px}
+  .dropdown-menu .current{color:#d4a24e;background:rgba(212,162,78,0.06);font-weight:600}
+
+  /* ===== 英雄区 ===== */
   .hero{padding:40px 0 28px}
   .hero-tag{font-size:14px;letter-spacing:3px;color:#7a7a8a;margin-bottom:10px;font-weight:500}
   .hero h1{
-    font-size:22px;font-weight:800;line-height:1.2;letter-spacing:0;
+    font-size:58px;font-weight:800;line-height:1.1;letter-spacing:0;
     color:#f0ece4;margin-bottom:10px;
   }
   .hero h1 span{color:#d4a24e}
@@ -62,6 +104,8 @@
     background:rgba(255,255,255,0.02);font-size:14px;color:#7a7a8a
   }
   .hero .note em{font-style:normal;color:#d4a24e;font-weight:600}
+
+  /* ===== 统计卡片 ===== */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px}
   .stat-card{
     padding:18px 20px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);
@@ -72,6 +116,8 @@
   .stat-num.gold{color:#d4a24e}
   .stat-num.blue{color:#7ab8c9}
   .stat-sub{font-size:14px;color:#7a7a8a;margin-top:4px}
+
+  /* ===== 区块标题 ===== */
   .section-header{
     display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-top:4px
   }
@@ -87,6 +133,8 @@
   .section-header .line{
     width:28px;height:2px;background:#d4a24e;flex-shrink:0;align-self:center;
   }
+
+  /* ===== 品牌卡片 ===== */
   .brand-grid{display:grid;gap:8px;margin-bottom:20px}
   .brand-grid.r12{grid-template-columns:repeat(6,1fr)}
   .brand-card{
@@ -103,6 +151,8 @@
   .brand-info{min-width:0;flex:1}
   .brand-name{font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .brand-count{font-size:14px;color:#7a7a8a;margin-top:0}
+
+  /* ===== 面板 ===== */
   .panel{
     border-radius:10px;border:1px solid rgba(255,255,255,0.06);
     overflow:hidden;background:rgba(255,255,255,0.015);
@@ -134,22 +184,25 @@
   .filter-box input{width:120px}
   .filter-box input::placeholder{color:#5a5a6a}
   .filter-box select option{background:#1a1a24;color:#e8e4dc}
+
+  /* ===== 表格 ===== */
   .table-wrap{overflow-x:auto;padding:0 2px}
   .table-header{
     display:grid;gap:0;padding:12px 20px;align-items:center;
     font-size:14px;color:#7a7a8a;font-weight:600;
     background:rgba(255,255,255,0.02);
     border-bottom:1px solid rgba(255,255,255,0.04);
-    grid-template-columns:40px 76px 1.6fr 84px 2.2fr 100px 80px
+    grid-template-columns:40px 76px 1.6fr 84px 1.1fr 2.2fr 100px 80px
   }
   .table-row{
     display:grid;gap:0;padding:12px 20px;align-items:center;
     border-bottom:1px solid rgba(255,255,255,0.03);
     transition:all 0.15s;cursor:default;
-    grid-template-columns:40px 76px 1.6fr 84px 2.2fr 100px 80px
+    grid-template-columns:40px 76px 1.6fr 84px 1.1fr 2.2fr 100px 80px
   }
   .table-row:last-child{border-bottom:none}
   .table-row:hover{background:rgba(212,162,78,0.04);box-shadow:inset 2px 0 0 rgba(212,162,78,0.15)}
+
   .row-index{font-size:14px;color:#5a5a6a;text-align:center;font-weight:600}
   .row-brand{
     font-size:14px;font-weight:700;padding:3px 10px;border-radius:5px;
@@ -161,14 +214,14 @@
     display:inline-block;line-height:22px;height:28px;width:fit-content;min-width:56px;
     background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:#9a9aaa
   }
-  .row-pos.king{color:#d4a24e;border-color:rgba(212,162,78,0.25);background:rgba(212,162,78,0.06)}
   .row-pos.flag{color:#7ab8c9;border-color:rgba(122,184,201,0.25);background:rgba(122,184,201,0.06)}
-  .row-pos.high{color:#a78bfa;border-color:rgba(167,139,250,0.25);background:rgba(167,139,250,0.06)}
-  .row-pos.mid{color:#5dc8b0;border-color:rgba(93,200,176,0.25);background:rgba(93,200,176,0.06)}
-  .row-pos.entry{color:#7a7a8a;border-color:rgba(122,122,138,0.25);background:rgba(122,122,138,0.06)}
-  .row-tech{font-size:14px;font-weight:600;text-align:left;padding:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row-pos.king{color:#d4a24e;border-color:rgba(212,162,78,0.25);background:rgba(212,162,78,0.06)}
+  .row-tech{font-size:14px;font-weight:600;text-align:center;padding:0 4px}
   .row-tech.c1{color:#d4a24e}.row-tech.c2{color:#5dc8b0}.row-tech.c3{color:#a78bfa}.row-tech.c4{color:#fb923c}
-  .row-tech.c5{color:#7ab8c9}.row-tech.c6{color:#4ade80}.row-tech.c7{color:#7a7a8a}
+  .row-tech.c5{color:#7ab8c9}.row-tech.c6{color:#4ade80}.row-tech.c7{color:#a78bfa}
+  .row-feat{font-size:14px;color:#9a9aaa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px}
+
+  /* ===== 状态列 ===== */
   .row-status{display:flex;justify-content:center;padding:0 2px}
   .status-badge{
     display:inline-flex;align-items:center;gap:5px;padding:3px 12px;height:28px;
@@ -183,6 +236,8 @@
   .status-badge.todo{color:#5a5a6a;border-color:rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
   .status-badge.todo .dot{background:#5a5a6a}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
+
+  /* ===== 操作列 ===== */
   .row-op{display:flex;justify-content:center;padding:0 2px}
   .btn-detail{
     height:30px;padding:0 16px;font-size:14px;font-weight:600;gap:4px;
@@ -198,26 +253,35 @@
   }
   .btn-detail svg{transition:transform 0.2s;flex-shrink:0}
   .btn-detail:hover svg{transform:translateX(3px)}
+
   .section{margin-bottom:48px}
+
+  /* ===== 响应式 ===== */
   @media(max-width:1100px){
-    .table-header,.table-row{grid-template-columns:36px 68px 1.4fr 76px 2fr 90px 72px}
+    .table-header,.table-row{grid-template-columns:36px 68px 1.4fr 76px 1.8fr 90px 72px}
+    .row-tech{display:none}
     .brand-grid.r12{grid-template-columns:repeat(4,1fr)}
+    .hero h1{font-size:42px}
   }
   @media(max-width:820px){
     .table-header,.table-row{grid-template-columns:32px 60px 1fr 1.5fr 80px 64px}
     .row-pos{display:none}
     .brand-grid.r12{grid-template-columns:repeat(3,1fr)}
-    .hero h1{font-size:22px}
+    .hero h1{font-size:32px}
     .stats{grid-template-columns:repeat(2,1fr)}
     .nav{display:none}
   }
   @media(max-width:520px){
     .table-header,.table-row{grid-template-columns:28px 52px 1fr 1.2fr 70px 56px}
+    .row-feat{display:none}
     .brand-grid.r12{grid-template-columns:repeat(2,1fr)}
     .container{padding:0 14px}
     .panel-toolbar{padding:10px 14px}
     .table-header,.table-row{padding:10px 14px}
+    .hero h1{font-size:28px}
   }
+
+  /* ===== 底部 ===== */
   .footer{
     padding:24px 0;border-top:1px solid rgba(255,255,255,0.05);
     display:flex;justify-content:space-between;align-items:center;
@@ -229,6 +293,7 @@
 
 <div class="container">
 
+  <!-- ===== 头部 ===== -->
   <div class="header">
     <div class="logo">
       <div class="logo-icon">H</div>
@@ -239,7 +304,14 @@
     </div>
     <div class="nav">
       <a href="#">首页</a>
-      <a href="#" class="active">测评清单</a>
+      <div class="dropdown">
+        <a href="#" class="active">测评清单 ▾</a>
+        <div class="dropdown-menu">
+          <a href="checklist-robot-floor-washer-2026.html" target="_blank">清洁电器</a>
+          <div class="divider"></div>
+          <a href="checklist-tv-2026.html" target="_blank" class="current">电视机</a>
+        </div>
+      </div>
       <a href="#">购买指南</a>
       <a href="#">避坑手册</a>
       <a href="#">关于我们</a>
@@ -253,18 +325,20 @@
     </div>
   </div>
 
+  <!-- ===== 英雄区 ===== -->
   <div class="hero">
     <div class="hero-tag">2026 年度测评总览</div>
     <h1>2026 电视 <span>测评清单</span></h1>
-    <p>国内线上在售新款逐型号总表。<strong style="color:#d4a24e;font-weight:700">11 个品牌</strong> · <strong style="color:#d4a24e;font-weight:700">62 款 SKU</strong>，六类技术代次全覆盖。已剔除康佳全部型号。</p>
+    <p>国内线上在售新款逐型号总表。<strong style="color:#d4a24e;font-weight:700">11 个品牌</strong> · <strong style="color:#d4a24e;font-weight:700">65 款 SKU</strong>，六类技术代次全覆盖。已剔除全部「不计入六类」型号。</p>
     <div class="note">
       <em>口径说明</em>
-      <span>仅 2026 国内首发 · 京东/天猫/官网在售 · 单行单 SKU</span>
+      <span>仅 2026 国内首发 · 京东/天猫/官网在售 · 型号去斜杠去尺寸 · 单行单 SKU</span>
       <span style="color:#5a5a6a">|</span>
       <span style="color:#5a5a6a">雷鸟=TCL 子牌 · Vidda=海信子牌 · 酷开=创维子牌 · 卡萨帝=海尔子牌</span>
     </div>
   </div>
 
+  <!-- ===== 统计 ===== -->
   <div class="stats">
     <div class="stat-card">
       <div class="stat-label">品牌覆盖</div>
@@ -273,7 +347,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-label">SKU 总数</div>
-      <div class="stat-num gold">62</div>
+      <div class="stat-num gold">65</div>
       <div class="stat-sub">独立 SKU 行</div>
     </div>
     <div class="stat-card">
@@ -286,17 +360,18 @@
       <div class="stat-num" style="color:#4ade80">17</div>
       <div class="stat-sub">
         <div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:4px;overflow:hidden">
-          <div style="height:100%;width:27%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:2px"></div>
+          <div style="height:100%;width:26%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:2px"></div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ===== 电视机 ===== -->
   <div class="section">
     <div class="section-header">
       <span class="line"></span>
       <h2>电视机</h2>
-      <span class="count">62 款</span>
+      <span class="count">65 款</span>
     </div>
 
     <div class="brand-grid r12" id="tvBrands"></div>
@@ -329,7 +404,6 @@
               <option value="MiniLED">MiniLED</option>
               <option value="OLED">OLED</option>
               <option value="MicroLED">MicroLED</option>
-              <option value="不计入六类">不计入六类</option>
             </select>
           </div>
           <div class="filter-box">
@@ -344,7 +418,8 @@
           <div style="text-align:center">品牌</div>
           <div>型号</div>
           <div style="text-align:center">定位</div>
-          <div>技术代次</div>
+          <div style="text-align:center">技术代次</div>
+          <div>核心卖点</div>
           <div style="text-align:center">状态</div>
           <div style="text-align:center">操作</div>
         </div>
@@ -353,13 +428,15 @@
     </div>
   </div>
 
+  <!-- ===== 底部 ===== -->
   <div class="footer">
     <div>© 2026 家电总动员 · 智能家电测评实验室</div>
-    <div>版本 1.0 · 62 款 SKU · 11 个品牌</div>
+    <div>版本 1.0 · 65 款 SKU · 11 个品牌</div>
   </div>
 </div>
 
 <script>
+  // ===== 颜色配置 =====
   const brandColors = {
     'TCL':'#d4a24e','雷鸟':'#4a90e2','海信':'#5dc8b0','Vidda':'#fb923c',
     '小米':'#fbbf24','Redmi':'#f97316','创维':'#a78bfa','酷开':'#60a5fa',
@@ -370,99 +447,104 @@
     '小米':'xiaomi','Redmi':'redmi','创维':'skyworth','酷开':'coocaa',
     '华为':'huawei','海尔':'haier','卡萨帝':'casarte','长虹':'changhong'
   };
-  const techColor = {
+  const techClass = {
     'SQD-Mini LED':'c1','RGB-Mini LED':'c2','QD-Mini LED':'c3','MiniLED':'c4','OLED':'c5','MicroLED':'c6'
   };
   const posClass = {
-    '机皇':'king','旗舰':'flag','高端':'high','中高端':'mid','中端':'mid','入门':'entry','入门中端':'entry'
+    '机皇':'king','旗舰':'flag','高端':'','中高端':'','中端':'','入门':'','入门中端':''
   };
 
+  // ===== 电视机数据（仅六类技术代次） =====
   const tvItems = [
-    {brand:'TCL',model:'X11L',pos:'机皇',tech:'SQD-Mini LED',status:'todo'},
-    {brand:'TCL',model:'Q10M Ultra',pos:'机皇',tech:'RGB-Mini LED',status:'done'},
-    {brand:'TCL',model:'Q9M',pos:'旗舰',tech:'RGB-Mini LED',status:'done'},
-    {brand:'TCL',model:'Q10M',pos:'旗舰',tech:'SQD-Mini LED',status:'done'},
-    {brand:'TCL',model:'Q10M Pro',pos:'旗舰',tech:'SQD-Mini LED',status:'done'},
-    {brand:'TCL',model:'Q9M Pro',pos:'中高端',tech:'SQD-Mini LED',status:'done'},
-    {brand:'TCL',model:'T7M Ultra',pos:'中高端',tech:'SQD-Mini LED',status:'done'},
-    {brand:'TCL',model:'T7M Pro',pos:'中端',tech:'SQD-Mini LED',status:'done'},
-    {brand:'TCL',model:'C12L',pos:'旗舰',tech:'MiniLED',status:'done'},
-    {brand:'TCL',model:'A400 Pro',pos:'中高端',tech:'MiniLED',status:'done'},
-    {brand:'TCL',model:'Max163M',pos:'机皇',tech:'MicroLED',status:'done'},
-    {brand:'TCL',model:'Max163M Pro',pos:'机皇',tech:'MicroLED',status:'done'},
-    {brand:'雷鸟',model:'鹤7 Pro 26款',pos:'旗舰',tech:'QD-Mini LED',status:'todo'},
-    {brand:'雷鸟',model:'鹤7 26款',pos:'中高端',tech:'SQD-Mini LED',status:'todo'},
-    {brand:'雷鸟',model:'鹤6 Ultra 26款',pos:'中高端',tech:'QD-Mini LED',status:'todo'},
-    {brand:'雷鸟',model:'鹤6 26款',pos:'中端',tech:'QD-Mini LED',status:'todo'},
-    {brand:'雷鸟',model:'鹤6 Plus 26款',pos:'中端',tech:'QD-Mini LED',status:'todo'},
-    {brand:'雷鸟',model:'鹏7 26款',pos:'中端',tech:'MiniLED',status:'todo'},
-    {brand:'雷鸟',model:'鹏7 Plus 26款',pos:'中端',tech:'MiniLED',status:'todo'},
-    {brand:'雷鸟',model:'鹏6 SE 26款',pos:'入门',tech:'MiniLED',status:'todo'},
-    {brand:'海信',model:'UX2026',pos:'机皇',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'E8S',pos:'旗舰',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'E8S Pro',pos:'旗舰',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'E7S Pro',pos:'中高端',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'小墨E5S',pos:'中端',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'小墨E5S Pro',pos:'中端',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'海信',model:'探索X1',pos:'旗舰',tech:'不计入六类（激光）',status:'todo'},
-    {brand:'海信',model:'星光S1 2026',pos:'中高端',tech:'不计入六类（激光）',status:'todo'},
-    {brand:'Vidda',model:'大玩家G7',pos:'旗舰',tech:'MiniLED',status:'todo'},
-    {brand:'Vidda',model:'发现X 2027',pos:'旗舰',tech:'QD-Mini LED',status:'todo'},
-    {brand:'Vidda',model:'小钢炮S Mini',pos:'入门中端',tech:'MiniLED',status:'todo'},
-    {brand:'Vidda',model:'贴贴V7Q',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'Vidda',model:'R Pro 2026',pos:'中端',tech:'MiniLED',status:'todo'},
-    {brand:'小米',model:'S Mini LED 2026',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'小米',model:'S Pro Mini LED 2026',pos:'旗舰',tech:'QD-Mini LED',status:'todo'},
-    {brand:'Redmi',model:'X 2026',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'小米',model:'MAX 100 2026',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'小米',model:'A Pro 2026',pos:'入门中端',tech:'不计入六类（QLED LCD）',status:'todo'},
-    {brand:'创维',model:'A10H Pro',pos:'机皇',tech:'SQD-Mini LED',status:'done'},
-    {brand:'创维',model:'A8H',pos:'旗舰',tech:'SQD-Mini LED',status:'done'},
-    {brand:'创维',model:'A7H Pro 2026',pos:'中高端',tech:'QD-Mini LED',status:'done'},
-    {brand:'创维',model:'A6F Ultra 2026',pos:'中高端',tech:'QD-Mini LED',status:'done'},
-    {brand:'创维',model:'A3F 2026',pos:'中端',tech:'MiniLED',status:'done'},
-    {brand:'创维',model:'A4F 2026',pos:'中端',tech:'MiniLED',status:'done'},
-    {brand:'酷开',model:'柔光K6 2026',pos:'入门中端',tech:'不计入六类（柔光 LCD）',status:'todo'},
-    {brand:'酷开',model:'K6+ 2026',pos:'中端',tech:'MiniLED',status:'todo'},
-    {brand:'华为',model:'Vision 智慧屏6',pos:'旗舰',tech:'MiniLED',status:'todo'},
-    {brand:'华为',model:'Vision 智慧屏6 Pro',pos:'机皇',tech:'MiniLED',status:'todo'},
-    {brand:'华为',model:'Vision 智慧屏6 SE',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'华为',model:'Vision 智慧屏6 SE RGB',pos:'旗舰',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'华为',model:'智慧屏S7 Pro',pos:'高端',tech:'MiniLED',status:'todo'},
-    {brand:'华为',model:'智慧屏S7X Pro',pos:'高端',tech:'MiniLED',status:'todo'},
-    {brand:'海尔',model:'小红花H5D 2026',pos:'入门中端',tech:'不计入六类（高刷 LCD）',status:'todo'},
-    {brand:'海尔',model:'小红花H5C 2026',pos:'入门中端',tech:'不计入六类（高刷 LCD）',status:'todo'},
-    {brand:'海尔',model:'云溪H6T',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'海尔',model:'100H6C',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'海尔',model:'麦浪H7C',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'海尔',model:'S60C',pos:'中端',tech:'不计入六类（高刷 LCD）',status:'todo'},
-    {brand:'卡萨帝',model:'M70D',pos:'机皇',tech:'SQD-Mini LED',status:'todo'},
-    {brand:'卡萨帝',model:'M50D',pos:'机皇',tech:'SQD-Mini LED',status:'todo'},
-    {brand:'卡萨帝',model:'K75M150',pos:'旗舰',tech:'OLED',status:'todo'},
-    {brand:'卡萨帝',model:'K65M150',pos:'旗舰',tech:'OLED',status:'todo'},
-    {brand:'卡萨帝',model:'K85E68',pos:'高端',tech:'MiniLED',status:'todo'},
-    {brand:'卡萨帝',model:'K75E68',pos:'高端',tech:'MiniLED',status:'todo'},
-    {brand:'卡萨帝',model:'K85E8 Pro',pos:'旗舰',tech:'MiniLED',status:'todo'},
-    {brand:'卡萨帝',model:'K75E8 Ultra',pos:'旗舰',tech:'MiniLED',status:'todo'},
-    {brand:'卡萨帝',model:'K85M160',pos:'机皇',tech:'MiniLED',status:'todo'},
-    {brand:'卡萨帝',model:'壁画M160',pos:'机皇',tech:'MiniLED',status:'todo'},
-    {brand:'长虹',model:'D8S Pro',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'长虹',model:'D6S Mini',pos:'中端',tech:'MiniLED',status:'todo'},
-    {brand:'长虹',model:'D7H Pro',pos:'中高端',tech:'MiniLED',status:'todo'},
-    {brand:'长虹',model:'T70S 金标',pos:'机皇',tech:'RGB-Mini LED',status:'todo'},
-    {brand:'长虹',model:'追光Q70S',pos:'中端',tech:'不计入六类（AI 高刷 LCD）',status:'todo'},
-    {brand:'长虹',model:'55Z60H',pos:'中端',tech:'不计入六类（AI 高刷 LCD）',status:'todo'}
+    // TCL
+    {brand:'TCL',model:'X11L',pos:'机皇',tech:'SQD-Mini LED',feat:'20736分区/10000nits',status:'todo'},
+    {brand:'TCL',model:'Q10M Ultra',pos:'机皇',tech:'RGB-Mini LED',feat:'16848分区/9000nits/B&O',status:'done'},
+    {brand:'TCL',model:'Q9M',pos:'旗舰',tech:'RGB-Mini LED',feat:'2880分区/2000nits/7999起',status:'done'},
+    {brand:'TCL',model:'Q10M',pos:'旗舰',tech:'SQD-Mini LED',feat:'2584分区/6000nits/安桥',status:'done'},
+    {brand:'TCL',model:'Q10M Pro',pos:'旗舰',tech:'SQD-Mini LED',feat:'8052分区/8500nits/B&O',status:'done'},
+    {brand:'TCL',model:'Q9M Pro',pos:'中高端',tech:'SQD-Mini LED',feat:'3552分区/5000nits/300Hz',status:'done'},
+    {brand:'TCL',model:'T7M Ultra',pos:'中高端',tech:'SQD-Mini LED',feat:'2176分区/3000nits/普及款',status:'done'},
+    {brand:'TCL',model:'T7M Pro',pos:'中端',tech:'SQD-Mini LED',feat:'1152分区/2200nits/安桥2.1.2',status:'done'},
+    {brand:'TCL',model:'C12L',pos:'旗舰',tech:'MiniLED',feat:'极景无黑边壁纸屏',status:'done'},
+    {brand:'TCL',model:'A400 Pro',pos:'中高端',tech:'MiniLED',feat:'QD-Mini LED艺术可移动',status:'done'},
+    {brand:'TCL',model:'Max163M',pos:'机皇',tech:'MicroLED',feat:'163″无机自发光巨幕',status:'done'},
+    {brand:'TCL',model:'Max163M Pro',pos:'机皇',tech:'MicroLED',feat:'163″ Micro LED/XDR万nit',status:'done'},
+    // 雷鸟
+    {brand:'雷鸟',model:'鹤7 Pro 26款',pos:'旗舰',tech:'QD-Mini LED',feat:'3840分区/5000nits/300Hz',status:'todo'},
+    {brand:'雷鸟',model:'鹤7 26款',pos:'中高端',tech:'SQD-Mini LED',feat:'SQD首下7K档/300Hz',status:'todo'},
+    {brand:'雷鸟',model:'鹤6 Ultra 26款',pos:'中高端',tech:'QD-Mini LED',feat:'蝶翼星曜/安桥2.1.2/150Hz',status:'todo'},
+    {brand:'雷鸟',model:'鹤6 26款',pos:'中端',tech:'QD-Mini LED',feat:'万象分区/高阶VA',status:'todo'},
+    {brand:'雷鸟',model:'鹤6 Plus 26款',pos:'中端',tech:'QD-Mini LED',feat:'180Hz真高刷/360Hz加速',status:'todo'},
+    {brand:'雷鸟',model:'鹏7 26款',pos:'中端',tech:'MiniLED',feat:'240Hz/满血HDMI2.1',status:'todo'},
+    {brand:'雷鸟',model:'鹏7 Plus 26款',pos:'中端',tech:'MiniLED',feat:'360Hz/高阶VA屏',status:'todo'},
+    {brand:'雷鸟',model:'鹏6 SE 26款',pos:'入门',tech:'MiniLED',feat:'144Hz入门高刷',status:'todo'},
+    // 海信
+    {brand:'海信',model:'UX2026',pos:'机皇',tech:'RGB-Mini LED',feat:'43008分区/万nits/信芯H7 Pro',status:'todo'},
+    {brand:'海信',model:'E8S',pos:'旗舰',tech:'RGB-Mini LED',feat:'7020分区/4500nits/170Hz',status:'todo'},
+    {brand:'海信',model:'E8S Pro',pos:'旗舰',tech:'RGB-Mini LED',feat:'9360分区/170Hz/帝瓦雷4.2.2',status:'todo'},
+    {brand:'海信',model:'E7S Pro',pos:'中高端',tech:'RGB-Mini LED',feat:'7560分区/180Hz/53mm贴墙',status:'todo'},
+    {brand:'海信',model:'小墨E5S',pos:'中端',tech:'RGB-Mini LED',feat:'玲珑真彩/墨晶屏2.0',status:'todo'},
+    {brand:'海信',model:'小墨E5S Pro',pos:'中端',tech:'RGB-Mini LED',feat:'4680分区/180Hz/墨晶屏2.0',status:'todo'},
+    // Vidda
+    {brand:'Vidda',model:'大玩家G7',pos:'旗舰',tech:'MiniLED',feat:'3264分区/7300nits/330Hz/帝瓦雷',status:'todo'},
+    {brand:'Vidda',model:'发现X 2027',pos:'旗舰',tech:'QD-Mini LED',feat:'黑曜屏Pro/330Hz/6000nits',status:'todo'},
+    {brand:'Vidda',model:'小钢炮S Mini',pos:'入门中端',tech:'MiniLED',feat:'低反屏/180Hz/帝瓦雷2.1',status:'todo'},
+    {brand:'Vidda',model:'贴贴V7Q',pos:'中高端',tech:'MiniLED',feat:'35mm超薄壁纸屏',status:'todo'},
+    {brand:'Vidda',model:'R Pro 2026',pos:'中端',tech:'MiniLED',feat:'144Hz低反走量',status:'todo'},
+    // 小米/Redmi
+    {brand:'小米',model:'S Mini LED 2026',pos:'中高端',tech:'MiniLED',feat:'0.5% LR低反/288Hz/576分区起',status:'todo'},
+    {brand:'小米',model:'S Pro Mini LED 2026',pos:'旗舰',tech:'QD-Mini LED',feat:'5200nits/330Hz/XM9000/WHVA',status:'todo'},
+    {brand:'Redmi',model:'X 2026',pos:'中高端',tech:'MiniLED',feat:'288Hz高刷/1200nits',status:'todo'},
+    {brand:'小米',model:'MAX 100 2026',pos:'中高端',tech:'MiniLED',feat:'100″巨幕普及',status:'todo'},
+    // 创维
+    {brand:'创维',model:'A10H Pro',pos:'机皇',tech:'SQD-Mini LED',feat:'11520分区/万nits/2.79cm无边',status:'done'},
+    {brand:'创维',model:'A8H',pos:'旗舰',tech:'SQD-Mini LED',feat:'3600分区/5500nits/壁纸',status:'done'},
+    {brand:'创维',model:'A7H Pro 2026',pos:'中高端',tech:'QD-Mini LED',feat:'1344分区/3800nits/3.9cm贴墙',status:'done'},
+    {brand:'创维',model:'A6F Ultra 2026',pos:'中高端',tech:'QD-Mini LED',feat:'3600分区/极黑类纸屏/7.1.2',status:'done'},
+    {brand:'创维',model:'A3F 2026',pos:'中端',tech:'MiniLED',feat:'144Hz护眼走量',status:'done'},
+    {brand:'创维',model:'A4F 2026',pos:'中端',tech:'MiniLED',feat:'144Hz高刷走量',status:'done'},
+    // 酷开
+    {brand:'酷开',model:'K6+ 2026',pos:'中端',tech:'MiniLED',feat:'Mini LED升版/180Hz/柔光屏',status:'todo'},
+    // 华为
+    {brand:'华为',model:'Vision 智慧屏6',pos:'旗舰',tech:'MiniLED',feat:'黑晶屏0.5%LR/288Hz/鸿蒙AI',status:'todo'},
+    {brand:'华为',model:'Vision 智慧屏6 Pro',pos:'机皇',tech:'MiniLED',feat:'Super Mini LED/130W影院音响',status:'todo'},
+    {brand:'华为',model:'Vision 智慧屏6 SE',pos:'中高端',tech:'MiniLED',feat:'Super Mini LED/288Hz/3349起',status:'todo'},
+    {brand:'华为',model:'Vision 智慧屏6 SE RGB',pos:'旗舰',tech:'RGB-Mini LED',feat:'首款3K档RGB/105%BT.2020/300Hz',status:'todo'},
+    {brand:'华为',model:'智慧屏S7 Pro',pos:'高端',tech:'MiniLED',feat:'黑晶屏/鸿蒙智家生态',status:'todo'},
+    {brand:'华为',model:'智慧屏S7X Pro',pos:'高端',tech:'MiniLED',feat:'超薄零贴墙/灵犀指向遥控',status:'todo'},
+    // 海尔
+    {brand:'海尔',model:'云溪H6T',pos:'中高端',tech:'MiniLED',feat:'抗反光Mini LED/240Hz',status:'todo'},
+    {brand:'海尔',model:'100H6C',pos:'中高端',tech:'MiniLED',feat:'100″Mini LED巨幕',status:'todo'},
+    {brand:'海尔',model:'麦浪H7C',pos:'中高端',tech:'MiniLED',feat:'超薄0贴/448–720分区',status:'todo'},
+    // 卡萨帝
+    {brand:'卡萨帝',model:'M70D',pos:'机皇',tech:'SQD-Mini LED',feat:'SQD-Mini LED MAX/AWE2026首发',status:'todo'},
+    {brand:'卡萨帝',model:'M50D',pos:'机皇',tech:'SQD-Mini LED',feat:'SQD Max+KEF音响',status:'todo'},
+    {brand:'卡萨帝',model:'K75M150',pos:'旗舰',tech:'OLED',feat:'75″4K OLED真自发光',status:'todo'},
+    {brand:'卡萨帝',model:'K65M150',pos:'旗舰',tech:'OLED',feat:'65″4K OLED真自发光',status:'todo'},
+    {brand:'卡萨帝',model:'K85E68',pos:'高端',tech:'MiniLED',feat:'光年套系/240Hz全阵列',status:'todo'},
+    {brand:'卡萨帝',model:'K75E68',pos:'高端',tech:'MiniLED',feat:'光年套系/240Hz全阵列',status:'todo'},
+    {brand:'卡萨帝',model:'K85E8 Pro',pos:'旗舰',tech:'MiniLED',feat:'3024分区揽光',status:'todo'},
+    {brand:'卡萨帝',model:'K75E8 Ultra',pos:'旗舰',tech:'MiniLED',feat:'2560分区揽光',status:'todo'},
+    {brand:'卡萨帝',model:'K85M160',pos:'机皇',tech:'MiniLED',feat:'零贴壁画艺术屏',status:'todo'},
+    {brand:'卡萨帝',model:'壁画M160',pos:'机皇',tech:'MiniLED',feat:'零贴壁画艺术屏',status:'todo'},
+    // 长虹
+    {brand:'长虹',model:'D8S Pro',pos:'中高端',tech:'MiniLED',feat:'3.9cm壁画/黑晶屏/Micro OD',status:'todo'},
+    {brand:'长虹',model:'D6S Mini',pos:'中端',tech:'MiniLED',feat:'黑晶屏Pro/2782起',status:'todo'},
+    {brand:'长虹',model:'D7H Pro',pos:'中高端',tech:'MiniLED',feat:'黑晶屏/65–100″全覆盖',status:'todo'},
+    {brand:'长虹',model:'T70S 金标',pos:'机皇',tech:'RGB-Mini LED',feat:'光色场同控首款/19997起',status:'todo'}
   ];
 
-  function getBrandCounts(items){
-    const map = {};
-    items.forEach(item=>{map[item.brand]=(map[item.brand]||0)+1});
-    const order = ['TCL','雷鸟','海信','Vidda','小米','Redmi','创维','酷开','华为','海尔','卡萨帝','长虹'];
-    return order.filter(b=>map[b]).map(b=>({brand:b,count:map[b],color:brandColors[b]||'#7a7a8a'}));
-  }
+  // ===== 品牌数据 =====
+  const tvBrandInfo = [
+    {brand:'TCL',count:12,color:'#d4a24e'},{brand:'雷鸟',count:8,color:'#4a90e2'},
+    {brand:'海信',count:6,color:'#5dc8b0'},{brand:'Vidda',count:5,color:'#fb923c'},
+    {brand:'小米',count:3,color:'#fbbf24'},{brand:'Redmi',count:1,color:'#f97316'},
+    {brand:'创维',count:6,color:'#a78bfa'},{brand:'酷开',count:1,color:'#60a5fa'},
+    {brand:'华为',count:6,color:'#4ade80'},{brand:'海尔',count:3,color:'#e879f9'},
+    {brand:'卡萨帝',count:10,color:'#c084fc'},{brand:'长虹',count:4,color:'#f87171'}
+  ];
 
-  const tvBrandInfo = getBrandCounts(tvItems);
-
+  // ===== 渲染函数 =====
   function renderBrands(containerId, list){
     document.getElementById(containerId).innerHTML = list.map(b=>`
       <div class="brand-card">
@@ -477,28 +559,28 @@
 
   function renderTable(listId, items, groupMap){
     document.getElementById(listId).innerHTML = items.map((item,i)=>{
-      const st = item.status==='done'?{cls:'done',label:'已测评'}:
-                 item.status==='prog'?{cls:'prog',label:'测评中'}:
-                 {cls:'todo',label:'待测评'};
-      const isTech = Object.keys(techColor).includes(item.tech);
-      const tc = isTech ? techColor[item.tech] : 'c7';
+      const st = item.status==='done'?{cls:'done',label:'已测评'}:{cls:'todo',label:'待测评'};
+      const tc = techClass[item.tech]||'c1';
       const pc = posClass[item.pos]||'';
-      const color = brandColors[item.brand]||'#7a7a8a';
-      return `<div class="table-row" data-keyword="${item.brand} ${item.model}" data-group="${groupMap[item.brand]||'other'}" data-tech="${item.tech}">
+      const color = brandColors[item.brand]||'#8b8fa3';
+      return `<div class="table-row" data-keyword="${item.brand} ${item.model}" data-group="${groupMap[item.brand]}" data-tech="${item.tech}">
         <div class="row-index">${String(i+1).padStart(2,'0')}</div>
         <div class="row-brand" style="background:${color}18;color:${color};border:1px solid ${color}33">${item.brand}</div>
         <div class="row-model" title="${item.model}">${item.model}</div>
         <div class="row-pos ${pc}">${item.pos}</div>
         <div class="row-tech ${tc}">${item.tech}</div>
+        <div class="row-feat" title="${item.feat}">${item.feat}</div>
         <div class="row-status"><span class="status-badge ${st.cls}"><span class="dot"></span>${st.label}</span></div>
         <div class="row-op"><button class="btn-detail">详情<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></button></div>
       </div>`;
     }).join('');
   }
 
+  // ===== 初始化 =====
   renderBrands('tvBrands', tvBrandInfo);
   renderTable('tvList', tvItems, brandAlias);
 
+  // ===== 筛选逻辑 =====
   function initFilter(listId, tabContainerId, techId, searchId, groupMap){
     let currentTab = 'all';
     const container = document.getElementById(listId);

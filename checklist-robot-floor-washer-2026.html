@@ -17,14 +17,6 @@
   }
   .container{max-width:1360px;margin:0 auto;padding:0 28px}
 
-  /* ===== 统一字体层级 ===== */
-  .t12{font-size:12px}
-  .t14{font-size:14px}
-  .t16{font-size:16px}
-  .t22{font-size:22px}
-  .fw6{font-weight:600}
-  .fw7{font-weight:700}
-
   /* ===== 头部 ===== */
   .header{
     display:flex;align-items:center;justify-content:space-between;
@@ -40,9 +32,9 @@
   .logo-text{font-size:16px;font-weight:700;color:#f0ece4}
   .logo-sub{font-size:12px;color:#7a7a8a;letter-spacing:1.5px;margin-top:0}
 
-  .nav{display:flex;gap:24px;font-size:14px;font-weight:500}
-  .nav a{color:#9a9aaa;text-decoration:none;cursor:pointer;transition:color 0.25s}
-  .nav a:hover,.nav a.active{color:#d4a24e}
+  .nav{display:flex;gap:6px;font-size:14px;font-weight:500;align-items:center}
+  .nav a{color:#9a9aaa;text-decoration:none;cursor:pointer;transition:color 0.25s;padding:6px 12px;border-radius:5px}
+  .nav a:hover,.nav a.active{color:#d4a24e;background:rgba(212,162,78,0.06)}
 
   .btn{
     display:inline-flex;align-items:center;gap:5px;
@@ -56,11 +48,53 @@
   .btn-primary{background:#d4a24e;color:#0b0b12;border-color:#d4a24e}
   .btn-primary:hover{background:#c4953a;color:#0b0b12}
 
+  /* ===== 下拉菜单（修复悬停消失） ===== */
+  .dropdown{position:relative;display:inline-flex;align-items:center}
+  .dropdown > a{padding:6px 12px;border-radius:5px;display:flex;align-items:center;gap:4px}
+  /* 关键修复：透明桥接区域，防止鼠标移动时悬停中断 */
+  .dropdown::after{
+    content:'';
+    position:absolute;
+    left:0;right:0;
+    bottom:-14px;
+    height:14px;
+    z-index:101;
+  }
+  .dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    margin-top:8px;
+    background:#1a1a24;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    padding:4px;
+    min-width:160px;
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.15s;
+    pointer-events:none;
+    box-shadow:0 8px 32px rgba(0,0,0,0.5);
+    z-index:100;
+  }
+  .dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .dropdown-menu a{
+    display:block;padding:8px 14px;border-radius:5px;color:#c8c4bc;text-decoration:none;
+    transition:all 0.15s;font-size:14px;font-weight:500;
+  }
+  .dropdown-menu a:hover{background:rgba(212,162,78,0.1);color:#d4a24e}
+  .dropdown-menu .divider{height:1px;background:rgba(255,255,255,0.05);margin:3px 10px}
+  .dropdown-menu .current{color:#d4a24e;background:rgba(212,162,78,0.06);font-weight:600}
+
   /* ===== 英雄区 ===== */
   .hero{padding:40px 0 28px}
   .hero-tag{font-size:14px;letter-spacing:3px;color:#7a7a8a;margin-bottom:10px;font-weight:500}
   .hero h1{
-    font-size:22px;font-weight:800;line-height:1.2;letter-spacing:0;
+    font-size:58px;font-weight:800;line-height:1.1;letter-spacing:0;
     color:#f0ece4;margin-bottom:10px;
   }
   .hero h1 span{color:#d4a24e}
@@ -230,12 +264,13 @@
     .table-header,.table-row{grid-template-columns:36px 68px 1.4fr 76px 1.8fr 90px 90px 72px}
     .row-tech{display:none}
     .brand-grid.r7,.brand-grid.r6{grid-template-columns:repeat(4,1fr)}
+    .hero h1{font-size:42px}
   }
   @media(max-width:820px){
     .table-header,.table-row{grid-template-columns:32px 60px 1fr 1.5fr 80px 80px 64px}
     .row-pos{display:none}
     .brand-grid.r7,.brand-grid.r6{grid-template-columns:repeat(3,1fr)}
-    .hero h1{font-size:22px}
+    .hero h1{font-size:32px}
     .stats{grid-template-columns:repeat(2,1fr)}
     .nav{display:none}
   }
@@ -246,6 +281,7 @@
     .container{padding:0 14px}
     .panel-toolbar{padding:10px 14px}
     .table-header,.table-row{padding:10px 14px}
+    .hero h1{font-size:28px}
   }
 
   /* ===== 底部 ===== */
@@ -271,7 +307,14 @@
     </div>
     <div class="nav">
       <a href="#">首页</a>
-      <a href="#" class="active">测评清单</a>
+      <div class="dropdown">
+        <a href="#" class="active">测评清单 ▾</a>
+        <div class="dropdown-menu">
+          <a href="checklist-robot-floor-washer-2026.html" target="_blank" class="current">清洁电器</a>
+          <div class="divider"></div>
+          <a href="checklist-tv-2026.html" target="_blank">电视机</a>
+        </div>
+      </div>
       <a href="#">购买指南</a>
       <a href="#">避坑手册</a>
       <a href="#">关于我们</a>
