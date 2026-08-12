@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 扫地机 · 洗地机 测评清单 | 家电总动员</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0D11; --bg-2:#14141A; --card:#16161D; --card-2:#1B1B23;
+    --border:#2A2A35; --border-hi:#3D3D4A;
+    --gold:#E5B25D; --gold-2:#C99940; --gold-glow:rgba(229,178,93,0.12);
+    --text:#F2EDE0; --text-2:#A6A6B2; --text-3:#5F5F6B;
+    --blue:#7AB8C9; --green:#4ADE80; --amber:#FBBF24; --red:#F87171; --pink:#F472B6;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Noto Sans SC','Manrope',sans-serif;
+    background-image:
+      radial-gradient(ellipse 100% 60% at 50% -10%, rgba(229,178,93,0.10), transparent 60%),
+      radial-gradient(ellipse 70% 40% at 100% 0%, rgba(122,184,201,0.06), transparent 60%);
+    background-attachment:fixed; min-height:100vh;
+  }
+  body::before{
+    content:""; position:fixed; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size:64px 64px; pointer-events:none; z-index:0;
+  }
+  .display{font-family:'Manrope','Noto Sans SC'; letter-spacing:-0.025em}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .panel{
+    background:linear-gradient(180deg, var(--card-2) 0%, var(--card) 100%);
+    border:1px solid var(--border); border-radius:6px;
+  }
+  .product-row{transition:all .25s ease; border-bottom:1px solid var(--border)}
+  .product-row:hover{background:linear-gradient(90deg, transparent 0%, var(--gold-glow) 50%, transparent 100%)}
+  .product-row:hover .row-index{color:var(--gold)}
+  .product-row:hover .row-arrow{transform:translateX(4px); color:var(--gold)}
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:3px 10px; border-radius:3px; font-size:11px; font-weight:500;
+    border:1px solid; font-family:'JetBrains Mono',monospace; white-space:nowrap;
+  }
+  .badge .dot{width:6px; height:6px; border-radius:50%}
+  .b-done{color:var(--green); border-color:rgba(74,222,128,0.35); background:rgba(74,222,128,0.08)}
+  .b-done .dot{background:var(--green); box-shadow:0 0 8px var(--green)}
+  .b-prog{color:var(--amber); border-color:rgba(251,191,36,0.35); background:rgba(251,191,36,0.08)}
+  .b-prog .dot{background:var(--amber); box-shadow:0 0 8px var(--amber); animation:pulse 1.4s infinite}
+  .b-todo{color:var(--text-3); border-color:var(--border-hi); background:rgba(255,255,255,0.02)}
+  .b-todo .dot{background:var(--text-3)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .chip{
+    display:inline-flex; align-items:center;
+    padding:2px 8px; border-radius:3px; font-size:10px; font-weight:600;
+    background:var(--bg-2); border:1px solid var(--border); color:var(--text-2);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .product-img{
+    width:56px; height:56px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope'; font-weight:800; font-size:18px;
+    position:relative; overflow:hidden; border:1px solid var(--border);
+  }
+  .product-img::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%);
+  }
+  .tab-btn{transition:all .2s ease; border-bottom:2px solid transparent; cursor:pointer; background:transparent}
+  .tab-btn.active{color:var(--gold); border-bottom-color:var(--gold)}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px; border-radius:4px; font-size:13px; font-weight:500;
+    border:1px solid var(--border-hi); background:var(--card-2); color:var(--text);
+    cursor:pointer; transition:all .2s; font-family:inherit;
+  }
+  .btn:hover{border-color:var(--gold); color:var(--gold)}
+  .btn-primary{background:var(--gold); color:#1a1a1a; border-color:var(--gold)}
+  .btn-primary:hover{background:var(--gold-2); color:#1a1a1a}
+  .corner-tag{position:absolute; font-family:'JetBrains Mono'; font-size:10px; color:var(--text-3); letter-spacing:0.1em}
+  ::-webkit-scrollbar{width:8px; height:8px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--border-hi); border-radius:4px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--gold-2)}
+  .hero-title{
+    font-weight:800; line-height:0.95;
+    background:linear-gradient(180deg, #FFFFFF 0%, #C7C0AE 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .deco-line{width:48px; height:1px; background:var(--gold); display:inline-block; vertical-align:middle}
+  .param{display:inline-flex; align-items:baseline; gap:4px; font-size:12px}
+  .param-label{color:var(--text-3)}
+  .param-value{color:var(--text); font-family:'JetBrains Mono',monospace; font-weight:500}
+  .card-view{display:none}
+  .card-view.active{display:block}
+  .toast{
+    position:fixed; bottom:30px; left:50%;
+    transform:translateX(-50%) translateY(120%);
+    background:var(--card-2); border:1px solid var(--gold);
+    color:var(--text); padding:12px 24px; border-radius:4px;
+    font-size:13px; z-index:1000; transition:transform .35s ease;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  @media (max-width:900px){.hide-mobile{display:none}}
+  @media (max-width:1100px){
+    .grid-row{grid-template-columns:50px 1fr 1.6fr 1fr 70px !important}
+    .col-feat, .col-status, .col-op{display:none}
+  }
+  @media (max-width:640px){
+    .grid-row{grid-template-columns:40px 1fr 1fr 60px !important}
+    .col-param{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<header class="relative z-10 border-b border-[var(--border)] backdrop-blur-md" style="background:rgba(13,13,17,0.75);">
+  <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded bg-gradient-to-br from-[var(--gold)] to-[var(--gold-2)] flex items-center justify-center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D11" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L20 7 V17 L12 22 L4 17 V7 Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <div>
+        <div class="display text-[15px] font-bold tracking-wide">家电总动员</div>
+        <div class="text-[10px] mono text-[var(--text-3)] -mt-0.5">HOME · APPLIANCE · LAB</div>
+      </div>
+    </div>
+    <nav class="hide-mobile flex items-center gap-7 text-[13px]">
+      <a class="text-[var(--text)] hover:text-[var(--gold)] transition cursor-pointer">首页</a>
+      <a class="text-[var(--gold)] cursor-pointer">测评清单</a>
+      <a class="text-[var(--text-2)] hover:text-[var(--gold)] transition cursor-pointer">购买指南</a>
+      <a class="text-[var(--text-2)] hover:text-[var(--gold)] transition cursor-pointer">避坑手册</a>
+      <a class="text-[var(--text-2)] hover:text-[var(--gold)] transition cursor-pointer">关于我们</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        搜索
+      </button>
+      <button class="btn btn-primary">关注账号</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative z-10 max-w-[1400px] mx-auto px-6 pt-16 pb-10">
+  <div class="corner-tag" style="top:18px; left:24px;">DOC / 2026 / Q1-EDITION</div>
+  <div class="corner-tag" style="top:18px; right:24px;">内部资料 · 持续更新 · v1.0</div>
+
+  <div class="flex items-center gap-3 mb-6">
+    <span class="deco-line"></span>
+    <span class="mono text-[11px] tracking-[0.2em] text-[var(--gold)]">2026 ANNUAL REVIEW · 41 ITEMS</span>
+  </div>
+
+  <h1 class="hero-title display text-[58px] md:text-[88px] mb-4">
+    扫地机 · 洗地机<br/>
+    <span style="-webkit-text-fill-color:var(--gold); color:var(--gold);">2026 测评清单</span>
+  </h1>
+
+  <p class="text-[var(--text-2)] text-[15px] max-w-[680px] leading-relaxed mb-10">
+    本年度国内发布且在售的全部主流机型，覆盖 <span class="text-[var(--gold)] mono">20</span> 款扫地机器人 与 <span class="text-[var(--blue)] mono">21</span> 款洗地机（含添可 6 款）。
+    每台均经过实测、拆机、长测三轮验证；以下为完整测评清单与进度跟踪。
+  </p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="panel p-5 relative overflow-hidden">
+      <div class="absolute top-2 right-3 mono text-[10px] text-[var(--text-3)]">01</div>
+      <div class="text-[var(--text-3)] text-[11px] mono mb-2 tracking-wider">TOTAL</div>
+      <div class="display text-[44px] font-bold leading-none">41<span class="text-[14px] text-[var(--text-2)] ml-1">款</span></div>
+      <div class="text-[var(--text-2)] text-[12px] mt-1">在测机型总数</div>
+    </div>
+    <div class="panel p-5 relative overflow-hidden">
+      <div class="absolute top-2 right-3 mono text-[10px] text-[var(--text-3)]">02</div>
+      <div class="text-[var(--text-3)] text-[11px] mono mb-2 tracking-wider">ROBOT</div>
+      <div class="display text-[44px] font-bold leading-none text-[var(--gold)]">20<span class="text-[14px] text-[var(--text-2)] ml-1">款</span></div>
+      <div class="text-[var(--text-2)] text-[12px] mt-1">扫地机器人</div>
+    </div>
+    <div class="panel p-5 relative overflow-hidden">
+      <div class="absolute top-2 right-3 mono text-[10px] text-[var(--text-3)]">03</div>
+      <div class="text-[var(--text-3)] text-[11px] mono mb-2 tracking-wider">WASHER</div>
+      <div class="display text-[44px] font-bold leading-none text-[var(--blue)]">21<span class="text-[14px] text-[var(--text-2)] ml-1">款</span></div>
+      <div class="text-[var(--text-2)] text-[12px] mt-1">洗地机（含添可 6）</div>
+    </div>
+    <div class="panel p-5 relative overflow-hidden">
+      <div class="absolute top-2 right-3 mono text-[10px] text-[var(--text-3)]">04</div>
+      <div class="text-[var(--text-3)] text-[11px] mono mb-2 tracking-wider">PROGRESS</div>
+      <div class="display text-[44px] font-bold leading-none">38<span class="text-[14px] text-[var(--text-2)] ml-1">%</span></div>
+      <div class="mt-2 h-1 bg-[var(--border)] rounded-full overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-[var(--gold)] to-[var(--gold-2)]" style="width:38%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tabs + Toolbar -->
+<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-6">
+  <div class="panel p-0">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-b border-[var(--border)]">
+      <div class="flex items-center">
+        <button class="tab-btn active px-5 py-3 text-[14px] font-semibold" data-tab="robot">
+          <span>扫地机器人</span>
+          <span class="mono text-[11px] ml-2 text-[var(--text-3)]">/ 20</span>
+        </button>
+        <button class="tab-btn px-5 py-3 text-[14px] font-semibold text-[var(--text-2)]" data-tab="washer">
+          <span>洗地机</span>
+          <span class="mono text-[11px] ml-2 text-[var(--text-3)]">/ 21</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[12px]">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+          <select id="filter-status" class="bg-transparent text-[var(--text-2)] outline-none text-[12px] cursor-pointer">
+            <option value="all">全部状态</option>
+            <option value="done">已测评</option>
+            <option value="prog">测评中</option>
+            <option value="todo">待测评</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-2 border border-[var(--border-hi)] rounded text-[12px]">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search" type="text" placeholder="搜索品牌 / 型号…" class="bg-transparent outline-none text-[12px] w-[160px] placeholder:text-[var(--text-3)]"/>
+        </div>
+        <div class="flex border border-[var(--border-hi)] rounded overflow-hidden">
+          <button id="view-table" class="px-3 py-2 text-[12px] bg-[var(--gold)] text-[#0D0D11] font-semibold">表格</button>
+          <button id="view-card" class="px-3 py-2 text-[12px] text-[var(--text-2)] font-semibold">卡片</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 表头 robot -->
+    <div id="table-robot">
+      <div class="grid-row grid grid-cols-[60px_1fr_2.2fr_3fr_1fr_1fr_80px] gap-4 px-6 py-3 text-[11px] mono text-[var(--text-3)] tracking-wider border-b border-[var(--border)]">
+        <div>#</div><div>BRAND / MODEL</div><div class="col-param">关键参数</div><div class="col-feat">核心特色</div><div class="text-right col-status">参考价</div><div class="text-center col-status">状态</div><div class="text-right col-op">操作</div>
+      </div>
+      <div id="list-robot"></div>
+    </div>
+
+    <!-- 表头 washer -->
+    <div id="table-washer" style="display:none;">
+      <div class="grid-row grid grid-cols-[60px_1fr_2.2fr_3fr_1fr_1fr_80px] gap-4 px-6 py-3 text-[11px] mono text-[var(--text-3)] tracking-wider border-b border-[var(--border)]">
+        <div>#</div><div>BRAND / MODEL</div><div class="col-param">关键参数</div><div class="col-feat">核心特色</div><div class="text-right col-status">参考价</div><div class="text-center col-status">状态</div><div class="text-right col-op">操作</div>
+      </div>
+      <div id="list-washer"></div>
+    </div>
+
+    <!-- 卡片视图 -->
+    <div class="card-view p-5" id="card-robot"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-robot"></div></div>
+    <div class="card-view p-5" id="card-washer"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-washer"></div></div>
+  </div>
+</section>
+
+<!-- Bottom Stats -->
+<section class="relative z-10 max-w-[1400px] mx-auto px-6 mt-10 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="panel p-6">
+      <div class="mono text-[10px] text-[var(--text-3)] mb-2 tracking-wider">EVALUATION PROGRESS</div>
+      <div class="display text-[24px] font-bold mb-4">测评进度</div>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="badge b-done"><span class="dot"></span>已完成</span>
+          <span class="mono text-[14px]">16</span>
+          <div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--green)]" style="width:39%;"></div></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="badge b-prog"><span class="dot"></span>测评中</span>
+          <span class="mono text-[14px]">9</span>
+          <div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--amber)]" style="width:22%;"></div></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="badge b-todo"><span class="dot"></span>待测评</span>
+          <span class="mono text-[14px]">16</span>
+          <div class="flex-1 h-1.5 bg-[var(--border)] rounded overflow-hidden"><div class="h-full bg-[var(--text-3)]" style="width:39%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel p-6">
+      <div class="mono text-[10px] text-[var(--text-3)] mb-2 tracking-wider">PRICE RANGE</div>
+      <div class="display text-[24px] font-bold mb-4">价格区间分布</div>
+      <div class="space-y-2.5 text-[13px]">
+        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">¥1,500 以下 · 入门</span><span class="mono">5 款</span></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">¥1,500-3,000 · 主流</span><span class="mono text-[var(--gold)]">14 款</span></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">¥3,000-5,000 · 高端</span><span class="mono">15 款</span></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-2)]">¥5,000 以上 · 旗舰</span><span class="mono">7 款</span></div>
+      </div>
+    </div>
+
+    <div class="panel p-6">
+      <div class="mono text-[10px] text-[var(--text-3)] mb-2 tracking-wider">EDITORIAL</div>
+      <div class="display text-[24px] font-bold mb-4">编辑信息</div>
+      <div class="space-y-2 text-[13px] text-[var(--text-2)]">
+        <div>主笔 / <span class="text-[var(--text)]">阿德</span> <span class="mono text-[10px] text-[var(--text-3)] ml-1">EDITOR</span></div>
+        <div>实测 / <span class="text-[var(--text)]">小宇</span> · <span class="text-[var(--text)]">小鹿</span></div>
+        <div>拆机 / <span class="text-[var(--text)]">老王</span></div>
+        <div>更新 / <span class="mono text-[var(--text)]">2026-03-12</span></div>
+        <div class="pt-3 border-t border-[var(--border)] mt-3 text-[11px] text-[var(--text-3)] leading-relaxed">
+          所有参数基于实测机型，仅供参考。最终售价与配置以厂商官方渠道为准。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="relative z-10 border-t border-[var(--border)] py-8">
+  <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 items-center text-[12px] text-[var(--text-3)]">
+    <div>© 2026 家电总动员 · HOME APPLIANCE LAB · 测评内容受版权保护</div>
+    <div class="mono">v1.0 · BUILD 20260312 · 41 ITEMS</div>
+  </div>
+</footer>
+
+<div id="toast" class="toast">已切换视图</div>
+
+<script>
+  const brandColors = {
+    '石头':['#1F1F28','#E5B25D'], '追觅':['#1A1A21','#7AB8C9'], '科沃斯':['#1A1A21','#4ADE80'],
+    '云鲸':['#1A1A21','#F472B6'], '小米':['#1A1A21','#FF7A45'], '美的':['#1A1A21','#60A5FA'],
+    '海尔':['#1A1A21','#A78BFA'], '添可':['#1A1A21','#FBBF24'], '360':['#1A1A21','#34D399'],
+    '莱克':['#1A1A21','#F87171'], '由利':['#1A1A21','#22D3EE'], '睿米':['#1A1A21','#FB923C'],
+    '飞利浦':['#1A1A21','#60A5FA'], '小熊':['#1A1A21','#FBBF24'], 'Uwant':['#1A1A21','#A3E635'],
+    '顺造':['#1A1A21','#F472B6'], '万摩尔':['#1A1A21','#E879F9'], '智意':['#1A1A21','#34D399'],
+    '联想':['#1A1A21','#FB923C'], '长虹':['#1A1A21','#F87171'], 'TCL':['#1A1A21','#60A5FA']
+  };
+
+  // 表一：2026 国内发布且在售 · 扫地机器人（20 款）
+  const robots = [
+    {brand:'石头',model:'G25 Pro Max',month:'2026.01',price:'5999',status:'done',suction:'8200Pa',nav:'LDS+AI双视',avoid:'结构光+RGB',battery:'64Wh',dust:'1.5L+4L',feature:'仿生双机械臂 · 全自动上下水 · 智能烘干'},
+    {brand:'石头',model:'P20 Pro Ultra',month:'2026.02',price:'4299',status:'prog',suction:'7500Pa',nav:'LDS+3D结构光',avoid:'AI避障',battery:'57Wh',dust:'1.2L+2.5L',feature:'全自动基站 · 自动集尘 · 热水洗拖'},
+    {brand:'追觅',model:'X50 Pro Ultra',month:'2026.01',price:'6999',status:'done',suction:'9000Pa',nav:'dToF+双目视觉',avoid:'AI双目',battery:'72Wh',dust:'1.8L+4L',feature:'割毛防缠绕滚刷 · 70°热水洗 · 双机械臂'},
+    {brand:'追觅',model:'X40 Pro',month:'2026.01',price:'4699',status:'done',suction:'8000Pa',nav:'LDS+3D结构光',avoid:'AI避障',battery:'64Wh',dust:'1.5L+3L',feature:'主动式滚刷 · 智能复拖 · 自动上下水'},
+    {brand:'科沃斯',model:'X6 Pro Plus',month:'2026.02',price:'5499',status:'prog',suction:'8400Pa',nav:'dToF激光',avoid:'TrueMapping 3D',battery:'64Wh',dust:'1.5L+3.5L',feature:'OMINI万能基站 · YIKO语音 · 全自动养护'},
+    {brand:'科沃斯',model:'T80 Pro',month:'2026.01',price:'3299',status:'done',suction:'7800Pa',nav:'LDS激光',avoid:'3D结构光',battery:'57Wh',dust:'1.2L+2.5L',feature:'超薄机身87mm · 自动集尘 · 智能复拖'},
+    {brand:'云鲸',model:'J6 Pro',month:'2026.01',price:'4299',status:'done',suction:'7500Pa',nav:'LDS+3D',avoid:'AI避障',battery:'57Wh',dust:'1.2L+3L',feature:'清洁液自动投放 · 仿生加压拖 · 上下水'},
+    {brand:'云鲸',model:'J5 Max',month:'2026.02',price:'3199',status:'prog',suction:'6800Pa',nav:'LDS激光',avoid:'红外避障',battery:'54Wh',dust:'1L+2.5L',feature:'轻量化设计 · 智能复拖 · 静音模式'},
+    {brand:'小米',model:'M5 Pro',month:'2026.01',price:'2999',status:'todo',suction:'7000Pa',nav:'LDS激光',avoid:'3D ToF',battery:'57Wh',dust:'1L+2.5L',feature:'HyperOS互联 · 全自动基站 · 米家联动'},
+    {brand:'小米',model:'M3S Pro',month:'2026.01',price:'1999',status:'done',suction:'6000Pa',nav:'LDS激光',avoid:'红外避障',battery:'46Wh',dust:'0.8L+1.8L',feature:'高性价比 · 自动集尘 · 智能复拖'},
+    {brand:'美的',model:'V15 Pro',month:'2026.02',price:'3999',status:'prog',suction:'8000Pa',nav:'LDS+3D结构光',avoid:'AI避障',battery:'64Wh',dust:'1.5L+3L',feature:'仿生拖布 · 全自动上下水 · 美居APP'},
+    {brand:'美的',model:'W11 Pro+',month:'2026.01',price:'2499',status:'todo',suction:'6500Pa',nav:'LDS激光',avoid:'红外避障',battery:'54Wh',dust:'1L+2L',feature:'集成基站 · 自动洗拖 · 美居互联'},
+    {brand:'海尔',model:'X5 Pro',month:'2026.01',price:'3299',status:'todo',suction:'7000Pa',nav:'LDS+AI',avoid:'AI避障',battery:'57Wh',dust:'1.2L+2.5L',feature:'海尔智家联动 · 全自动基站 · 上下水'},
+    {brand:'360',model:'X100 Ultra',month:'2026.02',price:'4499',status:'todo',suction:'8000Pa',nav:'LDS+3D结构光',avoid:'AI避障',battery:'64Wh',dust:'1.5L+3L',feature:'360 OS · 双机械臂 · 全自动上下水'},
+    {brand:'由利',model:'V20 Pro',month:'2026.01',price:'2799',status:'todo',suction:'6500Pa',nav:'LDS激光',avoid:'3D结构光',battery:'54Wh',dust:'1L+2.5L',feature:'自动集尘基站 · 智能复拖 · 性价比'},
+    {brand:'睿米',model:'Z9 Pro',month:'2026.02',price:'3499',status:'todo',suction:'7200Pa',nav:'LDS+3D',avoid:'AI避障',battery:'57Wh',dust:'1.2L+2.5L',feature:'超薄基站 · 智能复拖 · 自动上下水'},
+    {brand:'智意',model:'R12 Pro',month:'2026.01',price:'2299',status:'todo',suction:'6000Pa',nav:'LDS激光',avoid:'红外避障',battery:'46Wh',dust:'0.8L+1.5L',feature:'集成基站 · 自动洗拖 · 入门级'},
+    {brand:'联想',model:'M5 Pro',month:'2026.02',price:'2599',status:'todo',suction:'6800Pa',nav:'LDS激光',avoid:'3D ToF',battery:'54Wh',dust:'1L+2L',feature:'联想智能生态 · 自动集尘 · 复拖'},
+    {brand:'长虹',model:'Z7 Pro',month:'2026.01',price:'1999',status:'todo',suction:'5500Pa',nav:'LDS激光',avoid:'红外避障',battery:'46Wh',dust:'0.8L+1.8L',feature:'性价比之选 · 自动集尘 · 入门款'},
+    {brand:'TCL',model:'R1 Pro',month:'2026.02',price:'2199',status:'todo',suction:'6000Pa',nav:'LDS激光',avoid:'3D结构光',battery:'46Wh',dust:'0.9L+1.8L',feature:'智能家居联动 · 自动集尘 · 性价比'}
+  ];
+
+  // 表二：2026 国内发布且在售 · 洗地机（21 款，含添可 6 款）
+  const washers = [
+    {brand:'添可',model:'芙万 Stretch Artist',month:'2026.01',price:'5499',status:'done',tank:'0.85L/0.85L',brush:'无刷软绒',battery:'40min',clean:'70°C热水+银离子',feature:'180°平躺 · 5min速干 · 智能控水'},
+    {brand:'添可',model:'芙万 Stretch Fold',month:'2026.01',price:'3999',status:'done',tank:'0.8L/0.8L',brush:'无刷软绒',battery:'35min',clean:'65°C热水',feature:'折叠机身 · 180°平躺 · Compact设计'},
+    {brand:'添可',model:'芙万 Station Pro',month:'2026.02',price:'6999',status:'prog',tank:'1L/1L',brush:'悬浮滚刷',battery:'45min',clean:'热水+自动烘干',feature:'全自动基站 · 滚刷自更换 · 长效续航'},
+    {brand:'添可',model:'芙万 Aqua Pro',month:'2026.02',price:'3499',status:'done',tank:'0.8L/0.7L',brush:'软绒+硬毛',battery:'30min',clean:'常温自清洁',feature:'性价比 · 智能控水 · 轻量化'},
+    {brand:'添可',model:'芙万 Dot Pro',month:'2026.01',price:'2799',status:'done',tank:'0.7L/0.65L',brush:'软绒',battery:'28min',clean:'常温自清洁',feature:'入门款 · 智能感应 · 高性价比'},
+    {brand:'添可',model:'芙万 4.0',month:'2026.01',price:'3299',status:'prog',tank:'0.85L/0.75L',brush:'软绒+刮条',battery:'35min',clean:'50°C温热',feature:'智能控水 · 长续航 · 经典型号升级'},
+    {brand:'追觅',model:'H50 Pro Ultra',month:'2026.02',price:'5999',status:'done',tank:'0.95L/0.95L',brush:'PTC发热滚刷',battery:'45min',clean:'沸水洗+热烘',feature:'全自动基站 · 60°C热水 · 滚刷烘干'},
+    {brand:'追觅',model:'H40 Pro',month:'2026.01',price:'3699',status:'done',tank:'0.85L/0.85L',brush:'梳齿防缠',battery:'40min',clean:'热水+热风烘',feature:'180°平躺 · 智能感应 · 防缠绕'},
+    {brand:'石头',model:'A30 Pro Max',month:'2026.02',price:'4499',status:'prog',tank:'0.9L/0.9L',brush:'双向悬浮滚刷',battery:'40min',clean:'70°C热水',feature:'180°平躺 · 智能控水 · 全自动基站'},
+    {brand:'石头',model:'A30 Steam',month:'2026.02',price:'4999',status:'todo',tank:'0.85L/0.85L',brush:'蒸汽滚刷',battery:'40min',clean:'蒸汽杀菌',feature:'160°C蒸汽 · 深度去污 · 除菌99.99%'},
+    {brand:'小米',model:'M30 Pro',month:'2026.01',price:'2799',status:'todo',tank:'0.8L/0.8L',brush:'软绒',battery:'35min',clean:'常温自清洁',feature:'HyperOS互联 · 米家联动 · 性价比'},
+    {brand:'美的',model:'G7 Pro',month:'2026.02',price:'3499',status:'prog',tank:'0.85L/0.85L',brush:'软绒+硬毛',battery:'40min',clean:'热水+热烘',feature:'180°平躺 · 美居APP · 智能复拖'},
+    {brand:'海尔',model:'Z10 Pro',month:'2026.01',price:'2999',status:'todo',tank:'0.8L/0.7L',brush:'软绒',battery:'35min',clean:'常温自清洁',feature:'海尔智家 · 自动基站 · 高性价比'},
+    {brand:'莱克',model:'X9 Pro',month:'2026.02',price:'3999',status:'todo',tank:'0.9L/0.9L',brush:'立式滚刷',battery:'40min',clean:'热水洗+热烘',feature:'立式设计 · 大容量水箱 · 长续航'},
+    {brand:'飞利浦',model:'X8000',month:'2026.02',price:'4599',status:'todo',tank:'1L/1L',brush:'双滚刷',battery:'45min',clean:'70°C热水',feature:'双滚刷 · 一次双清洁 · 长续航'},
+    {brand:'由利',model:'H100 Pro',month:'2026.01',price:'2599',status:'todo',tank:'0.75L/0.75L',brush:'软绒',battery:'30min',clean:'常温自清洁',feature:'性价比 · 轻量化 · 入门洗地机'},
+    {brand:'小熊',model:'M2 Pro',month:'2026.02',price:'1799',status:'todo',tank:'0.65L/0.6L',brush:'软绒',battery:'25min',clean:'常温自清洁',feature:'轻量化 · 入门级 · 适合小户型'},
+    {brand:'Uwant',model:'X200 Pro',month:'2026.02',price:'3299',status:'todo',tank:'0.85L/0.85L',brush:'双滚刷',battery:'40min',clean:'热水+热烘',feature:'双滚刷 · 180°平躺 · 智能感应'},
+    {brand:'顺造',model:'Z11 Pro',month:'2026.01',price:'2899',status:'todo',tank:'0.8L/0.75L',brush:'软绒+刮条',battery:'35min',clean:'常温自清洁',feature:'性价比 · 智能感应 · 轻量化'},
+    {brand:'睿米',model:'F8 Pro',month:'2026.02',price:'3199',status:'todo',tank:'0.8L/0.8L',brush:'软绒',battery:'35min',clean:'常温自清洁',feature:'180°平躺 · 智能控水 · 高性价比'},
+    {brand:'万摩尔',model:'V20 Pro',month:'2026.01',price:'2299',status:'todo',tank:'0.7L/0.65L',brush:'软绒',battery:'28min',clean:'常温自清洁',feature:'性价比 · 轻量便携 · 入门款'}
+  ];
+
+  const statusMap = {
+    done:{cls:'b-done',label:'已测评'},
+    prog:{cls:'b-prog',label:'测评中'},
+    todo:{cls:'b-todo',label:'待测评'}
+  };
+
+  function brandStyle(brand){
+    const c = brandColors[brand] || ['#1A1A21','#E5B25D'];
+    return {bg:`linear-gradient(135deg, ${c[0]} 0%, ${c[0]} 60%, ${c[1]}22 100%)`, color:c[1]};
+  }
+
+  function renderRow(item, idx, type){
+    const st = statusMap[item.status];
+    const bs = brandStyle(item.brand);
+    const initial = item.brand.slice(0,1);
+    let paramLine;
+    if(type === 'robot'){
+      paramLine = `
+        <div class="param"><span class="param-label">吸力</span><span class="param-value">${item.suction}</span></div>
+        <div class="param"><span class="param-label">导航</span><span class="param-value">${item.nav}</span></div>
+        <div class="param"><span class="param-label">避障</span><span class="param-value">${item.avoid}</span></div>
+        <div class="param"><span class="param-label">电池</span><span class="param-value">${item.battery}</span></div>
+        <div class="param"><span class="param-label">尘盒</span><span class="param-value">${item.dust}</span></div>`;
+    } else {
+      paramLine = `
+        <div class="param"><span class="param-label">水箱</span><span class="param-value">${item.tank}</span></div>
+        <div class="param"><span class="param-label">滚刷</span><span class="param-value">${item.brush}</span></div>
+        <div class="param"><span class="param-label">续航</span><span class="param-value">${item.battery}</span></div>
+        <div class="param"><span class="param-label">自清洁</span><span class="param-value">${item.clean}</span></div>`;
+    }
+    return `
+      <div class="product-row grid-row grid grid-cols-[60px_1fr_2.2fr_3fr_1fr_1fr_80px] gap-4 px-6 py-4 items-center" data-status="${item.status}" data-keyword="${item.brand} ${item.model}">
+        <div class="row-index mono text-[18px] text-[var(--text-3)] transition-all">${String(idx+1).padStart(2,'0')}</div>
+        <div class="flex items-center gap-3">
+          <div class="product-img" style="background:${bs.bg}; color:${bs.color};">${initial}</div>
+          <div>
+            <div class="chip mb-1">${item.brand}</div>
+            <div class="display font-semibold text-[14px]">${item.model}</div>
+            <div class="mono text-[10px] text-[var(--text-3)] mt-0.5">${item.month}</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5 col-param">${paramLine}</div>
+        <div class="text-[12px] text-[var(--text-2)] leading-relaxed pr-2 col-feat">${item.feature}</div>
+        <div class="text-right col-status">
+          <div class="mono text-[15px] font-semibold text-[var(--gold)]">¥${item.price}</div>
+          <div class="mono text-[10px] text-[var(--text-3)]">REF</div>
+        </div>
+        <div class="text-center col-status"><span class="badge ${st.cls}"><span class="dot"></span>${st.label}</span></div>
+        <div class="text-right col-op">
+          <button class="btn" style="padding:6px 12px; font-size:12px;">详情
+            <svg class="row-arrow transition-all" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>`;
+  }
+
+  function renderCard(item, idx, type){
+    const st = statusMap[item.status];
+    const bs = brandStyle(item.brand);
+    const initial = item.brand.slice(0,1);
+    let paramLine;
+    if(type === 'robot'){
+      paramLine = `
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">吸力</span><span class="mono">${item.suction}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">导航</span><span class="mono text-right">${item.nav}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">避障</span><span class="mono text-right">${item.avoid}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">尘盒</span><span class="mono">${item.dust}</span></div>`;
+    } else {
+      paramLine = `
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">水箱</span><span class="mono">${item.tank}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">滚刷</span><span class="mono text-right">${item.brush}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">续航</span><span class="mono">${item.battery}</span></div>
+        <div class="flex items-center justify-between text-[12px] py-1.5 border-b border-[var(--border)]"><span class="text-[var(--text-3)]">自清洁</span><span class="mono text-right">${item.clean}</span></div>`;
+    }
+    return `
+      <div class="panel p-5 hover:border-[var(--gold)] transition-all" data-status="${item.status}" data-keyword="${item.brand} ${item.model}">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="product-img" style="width:56px; height:56px; font-size:20px; background:${bs.bg}; color:${bs.color};">${initial}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="chip">${item.brand}</span>
+              <span class="mono text-[10px] text-[var(--text-3)]">${item.month}</span>
+            </div>
+            <div class="display font-bold text-[15px] truncate">${item.model}</div>
+          </div>
+          <span class="badge ${st.cls}"><span class="dot"></span>${st.label}</span>
+        </div>
+        <div class="mb-3 text-[12px] text-[var(--text-2)] leading-relaxed min-h-[40px]">${item.feature}</div>
+        <div class="mb-3">${paramLine}</div>
+        <div class="flex items-center justify-between pt-3 border-t border-[var(--border)]">
+          <div>
+            <div class="mono text-[10px] text-[var(--text-3)]">REF PRICE</div>
+            <div class="mono text-[18px] font-bold text-[var(--gold)]">¥${item.price}</div>
+          </div>
+          <button class="btn btn-primary" style="padding:6px 16px; font-size:12px;">查看详情</button>
+        </div>
+      </div>`;
+  }
+
+  function render(type){
+    const list = type === 'robot' ? robots : washers;
+    document.getElementById('list-'+type).innerHTML = list.map((it,i)=>renderRow(it,i,type)).join('');
+    document.getElementById('grid-'+type).innerHTML = list.map((it,i)=>renderCard(it,i,type)).join('');
+  }
+
+  render('robot');
+  render('washer');
+
+  let isCardView = false;
+
+  function currentTab(){ return document.querySelector('.tab-btn.active').dataset.tab; }
+
+  function applyFilter(){
+    const status = document.getElementById('filter-status').value;
+    const kw = document.getElementById('search').value.toLowerCase();
+    const tab = currentTab();
+    const container = isCardView ? document.getElementById('grid-'+tab) : document.getElementById('list-'+tab);
+    container.querySelectorAll('[data-status]').forEach(el=>{
+      const okS = status==='all' || el.dataset.status===status;
+      const okK = !kw || el.dataset.keyword.toLowerCase().includes(kw);
+      el.style.display = (okS && okK) ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active'); b.classList.add('text-[var(--text-2)]');});
+      btn.classList.add('active'); btn.classList.remove('text-[var(--text-2)]');
+      const tab = btn.dataset.tab;
+      if(isCardView){
+        document.getElementById('table-robot').style.display='none';
+        document.getElementById('table-washer').style.display='none';
+        document.getElementById('card-robot').classList.toggle('active', tab==='robot');
+        document.getElementById('card-washer').classList.toggle('active', tab==='washer');
+      } else {
+        document.getElementById('table-robot').style.display = tab==='robot' ? '' : 'none';
+        document.getElementById('table-washer').style.display = tab==='washer' ? '' : 'none';
+        document.getElementById('card-robot').classList.remove('active');
+        document.getElementById('card-washer').classList.remove('active');
+      }
+      applyFilter();
+    });
+  });
+
+  document.getElementById('filter-status').addEventListener('change', applyFilter);
+  document.getElementById('search').addEventListener('input', applyFilter);
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2000);
+  }
+
+  document.getElementById('view-table').addEventListener('click', ()=>{
+    isCardView = false;
+    document.getElementById('view-table').style.background = 'var(--gold)';
+    document.getElementById('view-table').style.color = '#0D0D11';
+    document.getElementById('view-card').style.background = '';
+    document.getElementById('view-card').style.color = '';
+    const tab = currentTab();
+    document.getElementById('table-'+tab).style.display='';
+    document.getElementById('card-'+tab).classList.remove('active');
+    showToast('已切换为表格视图');
+  });
+
+  document.getElementById('view-card').addEventListener('click', ()=>{
+    isCardView = true;
+    document.getElementById('view-card').style.background = 'var(--gold)';
+    document.getElementById('view-card').style.color = '#0D0D11';
+    document.getElementById('view-table').style.background = '';
+    document.getElementById('view-table').style.color = '';
+    const tab = currentTab();
+    document.getElementById('table-'+tab).style.display='none';
+    document.getElementById('card-'+tab).classList.add('active');
+    showToast('已切换为卡片视图');
+  });
+</script>
+
+</body>
+</html>
