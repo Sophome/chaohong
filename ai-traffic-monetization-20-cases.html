@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 流量变现 · 四大渠道 20 案例</title>
+<style>
+  :root{
+    --bg:#0a0e17;
+    --panel:rgba(255,255,255,.045);
+    --panel-2:rgba(255,255,255,.07);
+    --border:rgba(255,255,255,.09);
+    --text:#e9edf6;
+    --sub:#9aa7bd;
+    --dim:#6b7890;
+    --blue:#4cc3ff;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --amber:#fbbf24;
+    --red:#f87171;
+    --pink:#f472b6;
+    --radius:16px;
+    --shadow:0 18px 50px -18px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(124,58,237,.16), transparent 60%),
+      radial-gradient(900px 460px at -10% 12%, rgba(47,129,247,.14), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    min-height:100vh;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+  /* ---------- 顶部导航 ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,14,23,.78);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex;align-items:center;gap:18px;
+    height:58px;overflow-x:auto;scrollbar-width:none;
+  }
+  nav .wrap::-webkit-scrollbar{display:none}
+  .nav-brand{
+    display:flex;align-items:center;gap:9px;
+    font-weight:700;font-size:15px;white-space:nowrap;letter-spacing:.3px;
+  }
+  .nav-brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),var(--violet));
+    box-shadow:0 0 14px rgba(124,58,237,.8);
+  }
+  .nav-links{display:flex;gap:4px;margin-left:auto}
+  .nav-links a{
+    color:var(--sub);text-decoration:none;font-size:13.5px;
+    padding:7px 12px;border-radius:999px;white-space:nowrap;transition:.2s;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--panel-2)}
+  .nav-links a.active{
+    color:#fff;background:linear-gradient(135deg,rgba(76,195,255,.2),rgba(167,139,250,.2));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+  }
+
+  /* ---------- Hero ---------- */
+  header{padding:68px 0 26px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:3px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:7px 16px;border-radius:999px;margin-bottom:20px;
+  }
+  .eyebrow b{background:linear-gradient(90deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{
+    font-size:clamp(26px,4.4vw,42px);font-weight:800;line-height:1.25;letter-spacing:.5px;
+    background:linear-gradient(100deg,#fff 20%,var(--blue) 48%,var(--violet) 78%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{margin-top:14px;color:var(--sub);font-size:15px;max-width:860px;margin-left:auto;margin-right:auto}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+  .chip{
+    font-size:13px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:8px 16px;border-radius:999px;
+  }
+  .chip b{color:var(--text);font-weight:700}
+  .chip .n{color:var(--blue);font-weight:800}
+  .chip .n.v{color:var(--violet)}
+
+  /* ---------- TL;DR ---------- */
+  .tldr{margin:26px 0 8px}
+  .tldr-title{
+    font-size:12.5px;font-weight:800;letter-spacing:2.5px;color:var(--dim);
+    text-align:left;margin-bottom:12px;
+  }
+  .tldr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:980px){.tldr-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.tldr-grid{grid-template-columns:1fr}}
+  .tldr-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);text-align:left;position:relative;overflow:hidden;
+  }
+  .tldr-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .tldr-card.b::before{background:linear-gradient(90deg,var(--blue),transparent)}
+  .tldr-card.v::before{background:linear-gradient(90deg,var(--violet),transparent)}
+  .tldr-card.g::before{background:linear-gradient(90deg,var(--green),transparent)}
+  .tldr-card.a::before{background:linear-gradient(90deg,var(--amber),transparent)}
+  .tldr-card .k{font-size:11.5px;font-weight:800;color:var(--dim);letter-spacing:1.5px}
+  .tldr-card .v{font-size:15px;font-weight:800;margin-top:6px}
+  .tldr-card.b .v{color:var(--blue)}
+  .tldr-card.v .v{color:var(--violet)}
+  .tldr-card.g .v{color:var(--green)}
+  .tldr-card.a .v{color:var(--amber)}
+  .tldr-card .d{font-size:12.5px;color:var(--sub);margin-top:6px}
+
+  /* ---------- 区块通用 ---------- */
+  section{padding:52px 0 8px;scroll-margin-top:70px}
+  .sec-head{margin-bottom:22px}
+  .sec-tag{
+    font-size:12px;letter-spacing:2.5px;font-weight:700;
+    display:inline-block;padding:5px 13px;border-radius:999px;margin-bottom:12px;
+  }
+  .sec-tag.blue{color:var(--blue);background:rgba(76,195,255,.1);border:1px solid rgba(76,195,255,.3)}
+  .sec-tag.violet{color:var(--violet);background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3)}
+  .sec-tag.green{color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3)}
+  .sec-tag.amber{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3)}
+  h2{font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:.3px}
+  .sec-desc{margin-top:8px;color:var(--sub);font-size:14.5px;max-width:840px}
+
+  /* ---------- 表格(固定布局,无横向滚动) ---------- */
+  .tbl-wrap{
+    border-radius:var(--radius);
+    border:1px solid var(--border);background:var(--panel);
+    box-shadow:var(--shadow);margin-bottom:14px;
+  }
+  table{width:100%;table-layout:fixed;border-collapse:collapse;min-width:0}
+  thead th{
+    font-size:12.5px;letter-spacing:1px;font-weight:700;
+    text-align:left;padding:12px 14px;white-space:nowrap;
+    color:var(--sub);background:rgba(255,255,255,.04);
+    border-bottom:1px solid var(--border);
+  }
+  tbody td{
+    padding:12px 14px;font-size:13px;vertical-align:top;
+    border-bottom:1px solid rgba(255,255,255,.055);color:var(--sub);
+    overflow-wrap:break-word;word-break:break-word;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr{transition:background .18s}
+  tbody tr:hover{background:rgba(255,255,255,.045)}
+  td.idx{width:40px;color:var(--dim);font-weight:800;font-family:Consolas,monospace;font-size:12.5px;white-space:nowrap}
+  td.case{color:var(--text);font-weight:700}
+  td.case small{display:block;font-weight:500;color:var(--dim);font-size:12px;margin-top:2px;line-height:1.5}
+  td.link a{
+    color:var(--blue);text-decoration:none;font-size:12.5px;
+    overflow-wrap:break-word;word-break:break-all;
+  }
+  td.link a:hover{text-decoration:underline}
+  td.link .h{color:var(--dim);font-size:12.5px}
+  td.mode{line-height:1.7}
+  td.mode b{color:var(--text)}
+  td.bonus{line-height:1.7}
+  td.bonus b{color:var(--text)}
+  .map-note{font-size:13.5px;color:var(--sub);padding:12px 16px;border-radius:12px;border:1px dashed var(--border);background:var(--panel)}
+
+  /* ---------- 四机对比 ---------- */
+  .logic-strip{
+    border-radius:var(--radius);padding:16px 22px;margin-bottom:18px;
+    background:linear-gradient(135deg,rgba(76,195,255,.08),rgba(167,139,250,.1));
+    border:1px solid rgba(167,139,250,.28);font-size:14.5px;color:var(--sub);
+  }
+  .logic-strip b{color:var(--text)}
+
+  /* ---------- 页脚 ---------- */
+  footer{padding:44px 0 60px;margin-top:44px;border-top:1px solid var(--border)}
+  .foot-note{text-align:center;color:var(--dim);font-size:12.5px;letter-spacing:1px}
+
+  /* ---------- 入场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-brand"><span class="dot"></span>AI 流量变现</div>
+    <div class="nav-links">
+      <a href="#nav-sites">导航站</a>
+      <a href="#video">视频博主</a>
+      <a href="#blog">博客 SEO</a>
+      <a href="#community">私域生态</a>
+      <a href="#summary">四机对比</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">AI 时代 · <b>流量变现</b>机器</div>
+    <h1>四大渠道 20 个案例<br>把 AI 流量变成佣金</h1>
+    <p class="sub">导航站靠 SEO 霸屏、视频博主靠视觉冲击、博客靠长尾睡后收入、私域靠模板与社群——20 个真实案例,覆盖 AI 时代"流量分发 → CPS 佣金"的全部主流打法。</p>
+    <div class="chips">
+      <span class="chip"><b class="n">4</b> 大渠道</span>
+      <span class="chip"><b class="n v">20</b> 个案例</span>
+      <span class="chip">导航站 <b>SEO 黄页</b></span>
+      <span class="chip">私域 <b>双重收割</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== TL;DR ========== -->
+<div class="wrap reveal">
+  <div class="tldr">
+    <div class="tldr-title">TL;DR · 四个结论</div>
+    <div class="tldr-grid">
+      <div class="tldr-card v">
+        <div class="k">01 · 导航站 = SEO 黄页</div>
+        <div class="v">There's An AI For That 垄断长尾词</div>
+        <div class="d">几乎吃下谷歌"AI for xxx"全部长尾流量,向工具方收固定置顶费 + CPS 佣金</div>
+      </div>
+      <div class="tldr-card b">
+        <div class="k">02 · 视频博主 = 视觉转化机</div>
+        <div class="v">实操展示 + 终身佣金双变现</div>
+        <div class="d">Matt Wolfe 靠极客信任度;AI Revolution 无脸频道零成本吃盘点类长尾</div>
+      </div>
+      <div class="tldr-card g">
+        <div class="k">03 · 博客 = 睡后收入机</div>
+        <div class="v">Geekflare 一篇"十大AI工具"排谷歌第一</div>
+        <div class="d">高 DR 权重 + 高意图长尾词,文章里 10 个链接全是高分成 CPS</div>
+      </div>
+      <div class="tldr-card a">
+        <div class="k">04 · 私域 = 双重收割</div>
+        <div class="v">"送榨汁机卖橙汁"模式</div>
+        <div class="d">Notion 模板引流、Discord 社群黏性、微信小程序充值 + 佣金两头赚</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 一、导航站 ========== -->
+<section id="nav-sites">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag violet">01 · 流量分发机</span>
+      <h2>AI 导航站与聚合平台</h2>
+      <p class="sec-desc">AI 时代的"黄页"——靠 SEO 截流海量搜索"AI 工具"的用户,转化为佣金。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col style="width:40px">
+          <col style="width:17%">
+          <col style="width:19%">
+          <col style="width:31%">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr><th>#</th><th>案例名称</th><th>网址</th><th>核心模式</th><th>优势分析</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="idx">1</td>
+            <td class="case">There's An AI For That<small>全球最大 AI 导航站</small></td>
+            <td class="link"><a href="https://theresanaiforthat.com/" target="_blank" rel="noopener">theresanaiforthat.com</a></td>
+            <td class="mode">将全网 AI 工具按"使用场景"分类,通过程序化抓取 + AI 生成描述构建海量页面</td>
+            <td class="bonus">先发优势与<b>SEO 霸屏</b>:几乎垄断谷歌"AI for xxx"所有长尾词流量;流量大到可直接向工具方收<b>固定置顶费 + CPS 佣金</b></td>
+          </tr>
+          <tr>
+            <td class="idx">2</td>
+            <td class="case">Futurepedia<small>每日最新 AI 工具</small></td>
+            <td class="link"><a href="https://futurepedia.io/" target="_blank" rel="noopener">futurepedia.io</a></td>
+            <td class="mode">早期主打"每日最新 AI 工具"评测与收录,设计极其极客化</td>
+            <td class="bonus"><b>高频更新与社区效应</b>:用户每天来看新工具,极高回访率使经其链接注册新工具转化率极高</td>
+          </tr>
+          <tr>
+            <td class="idx">3</td>
+            <td class="case">Toolify.ai<small>按月访问量排名</small></td>
+            <td class="link"><a href="https://www.toolify.ai/" target="_blank" rel="noopener">toolify.ai</a></td>
+            <td class="mode">面向全球、主要由中国极客团队运营,主打按月访问量对 AI 工具排名</td>
+            <td class="bonus"><b>数据驱动信任</b>:Similarweb 式流量预估建立公信力,顺势插入联盟链接,吃透全球流量</td>
+          </tr>
+          <tr>
+            <td class="idx">4</td>
+            <td class="case">AI Valley<small>视觉效果导向</small></td>
+            <td class="link"><a href="https://aivalley.ai/" target="_blank" rel="noopener">aivalley.ai</a></td>
+            <td class="mode">极简风格的 AI 工具目录,专注收录"视觉效果惊艳"的 AI 工具</td>
+            <td class="bonus"><b>视觉营销红利</b>:在 Pinterest 和 Twitter 大量发布 AI 惊艳图片吸引点击,转化率极高</td>
+          </tr>
+          <tr>
+            <td class="idx">5</td>
+            <td class="case">TopAI.tools<small>人工严选</small></td>
+            <td class="link"><a href="https://topai.tools/" target="_blank" rel="noopener">topai.tools</a></td>
+            <td class="mode">专注收录"高质量、无废话"的生产力 AI 工具</td>
+            <td class="bonus"><b>精选溢价</b>:信息泛滥时代主打人工严选,用户对推荐付费工具信任度更高,CPS 转化率远超纯机器抓取站</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 二、视频博主 ========== -->
+<section id="video">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag blue">02 · 视觉转化机</span>
+      <h2>YouTube / TikTok 评测与教程博主</h2>
+      <p class="sec-desc">通过视频展示 AI 工具实操效果,利用视觉冲击力直接引导点击描述区链接。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col style="width:40px">
+          <col style="width:17%">
+          <col style="width:19%">
+          <col style="width:31%">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr><th>#</th><th>案例名称</th><th>平台 / 网址</th><th>核心模式</th><th>优势分析</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="idx">6</td>
+            <td class="case">Matt Wolfe</td>
+            <td class="link"><span class="h">YouTube: @mreflow</span></td>
+            <td class="mode">单人运营 AI 新闻与评测频道,高频日更,视频下方附所有提及工具的 CPS 链接</td>
+            <td class="bonus"><b>极客信任度</b>:真人出镜 + 极客身份,用户极度信任其推荐;YouTube 广告分成 + AI 工具终身佣金双重变现</td>
+          </tr>
+          <tr>
+            <td class="idx">7</td>
+            <td class="case">AI Revolution<small>Faceless 无脸频道</small></td>
+            <td class="link"><span class="h">YouTube 无脸频道</span></td>
+            <td class="mode">AI 生成脚本和配音,做"5 个最佳 AI 视频剪辑工具"类盘点</td>
+            <td class="bonus"><b>极致降本与长尾效应</b>:制作成本为 0,盘点类视频有长尾搜索价值,发布一年后仍能源源不断带来新注册与佣金</td>
+          </tr>
+          <tr>
+            <td class="idx">8</td>
+            <td class="case">Corbin AI</td>
+            <td class="link"><span class="h">YouTube: @corbinai</span></td>
+            <td class="mode">专攻 B 端 AI 应用(商业提案、财务报表分析),教企业员工用 AI</td>
+            <td class="bonus"><b>高客单价红利</b>:受众是企业白领或老板,订阅工具客单价极高,单笔佣金可达数十美元</td>
+          </tr>
+          <tr>
+            <td class="idx">9</td>
+            <td class="case">IdeaSpot</td>
+            <td class="link"><span class="h">YouTube: @IdeaSpot</span></td>
+            <td class="mode">专注"如何用 AI 赚钱"的副业教程,每期教一个网赚路子并推销特定 AI 工具</td>
+            <td class="bonus"><b>精准痛点与欲望</b>:吸引极度渴望变现的人群,这部分人为了赚钱极舍得购买 AI 工具,转化率与客单价双高</td>
+          </tr>
+          <tr>
+            <td class="idx">10</td>
+            <td class="case">TikTok AI Hacker</td>
+            <td class="link"><span class="h">TikTok 合集</span></td>
+            <td class="mode">15 秒短视频展示一个 AI 工具的震撼用法(如一键去除视频背景),主页挂 Linktree 链接</td>
+            <td class="bonus"><b>病毒式传播与冲动消费</b>:完播率极高,视觉冲击直接导致冲动注册,适合推广客单价较低、有免费试用的 AI 工具</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 三、博客 SEO ========== -->
+<section id="blog">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag green">03 · 长尾被动收入机</span>
+      <h2>博客与 SEO 内容站</h2>
+      <p class="sec-desc">靠写文章占据谷歌搜索排名,见效慢,但一旦起量就是真正的"睡后收入"。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col style="width:40px">
+          <col style="width:17%">
+          <col style="width:19%">
+          <col style="width:31%">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr><th>#</th><th>案例名称</th><th>网址</th><th>核心模式</th><th>优势分析</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="idx">11</td>
+            <td class="case">MightyGPT Blog</td>
+            <td class="link"><a href="https://mightygpt.com/blog" target="_blank" rel="noopener">mightygpt.com/blog</a></td>
+            <td class="mode">极简博客,只写"如何用 XX AI 工具完成 YY 任务"的保姆级教程</td>
+            <td class="bonus"><b>高意图截流</b>:搜索这类长尾词的用户已面临具体痛点,看完教程直接点击购买工具的概率超过 10%</td>
+          </tr>
+          <tr>
+            <td class="idx">12</td>
+            <td class="case">AI Tool Report</td>
+            <td class="link"><a href="https://aitoolreport.com/" target="_blank" rel="noopener">aitoolreport.com</a></td>
+            <td class="mode">每日发布 AI 行业新闻与工具更新,文章中嵌入大量联盟链接</td>
+            <td class="bonus"><b>新闻聚合红利</b>:AI 自动抓取改写新闻,以日更频率维持搜索引擎抓取,流量稳定且获客成本几乎为 0</td>
+          </tr>
+          <tr>
+            <td class="idx">13</td>
+            <td class="case">Geekflare</td>
+            <td class="link"><a href="https://geekflare.com/" target="_blank" rel="noopener">geekflare.com</a></td>
+            <td class="mode">通用技术博客,后期全面转向 AI 工具评测(如"最好的 10 个 AI 代码助手")</td>
+            <td class="bonus"><b>矩阵化 SEO</b>:强大的域名权重(DR),一篇"十大 AI 工具"文章轻松排谷歌第一,文中 10 个链接全是高分成 CPS</td>
+          </tr>
+          <tr>
+            <td class="idx">14</td>
+            <td class="case">WritingBeginner</td>
+            <td class="link"><a href="https://writingbeginner.com/" target="_blank" rel="noopener">writingbeginner.com</a></td>
+            <td class="mode">垂直于"AI 写作"的微型博客,专为作家和营销人员推荐 AI 文案工具</td>
+            <td class="bonus"><b>垂直领域统治</b>:不贪大求全,只吃"AI 写作"这一极细分流量,极度垂直,转化率远超综合大站</td>
+          </tr>
+          <tr>
+            <td class="idx">15</td>
+            <td class="case">SaaSHub</td>
+            <td class="link"><a href="https://www.saashub.com/" target="_blank" rel="noopener">saashub.com</a></td>
+            <td class="mode">对比类博客站,主打"工具 A 对比 工具 B"的评测文章</td>
+            <td class="bonus"><b>高转化搜索词</b>:用户搜"Jasper vs Copy.ai"说明已在做购买决策;中立对比,无论买哪个博主都能拿佣金</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 四、私域生态 ========== -->
+<section id="community">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag amber">04 · 私域转化机</span>
+      <h2>社区、模板与资源生态</h2>
+      <p class="sec-desc">不依赖谷歌 SEO,在私域或特定平台通过提供资源换取佣金。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col style="width:40px">
+          <col style="width:17%">
+          <col style="width:19%">
+          <col style="width:31%">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr><th>#</th><th>案例名称</th><th>平台 / 渠道</th><th>核心模式</th><th>优势分析</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="idx">16</td>
+            <td class="case">Notion AI 模板创作者</td>
+            <td class="link"><span class="h">Gumroad 卖家</span></td>
+            <td class="mode">售卖"ChatGPT 提示词大全"或"Notion AI 生产力模板"(0-10 美元),模板内嵌入大量 AI 工具推广链接</td>
+            <td class="bonus"><b>送榨汁机卖橙汁模式</b>:用户为使用提示词必然注册对应 AI 工具;引流品为载体,后端赚取高额 SaaS 分成</td>
+          </tr>
+          <tr>
+            <td class="idx">17</td>
+            <td class="case">AI Art Shop</td>
+            <td class="link"><span class="h">Etsy 独立卖家</span></td>
+            <td class="mode">在 Etsy 售卖 Midjourney 生成的矢量图或壁纸,商品描述附"我是如何用这个 AI 工具生成的"链接</td>
+            <td class="bonus"><b>电商流量复用</b>:买图的人对 AI 工具好奇,将电商平台的精准买家转化为 SaaS 订阅用户</td>
+          </tr>
+          <tr>
+            <td class="idx">18</td>
+            <td class="case">Discord AI 社区群主</td>
+            <td class="link"><span class="h">Discord 社群</span></td>
+            <td class="mode">建立 Discord 社群分享优质 AI 绘画作品,频道置顶"如何生成这些图"的教程与工具链接</td>
+            <td class="bonus"><b>社群高黏性</b>:成员作品形成攀比效应,新成员点置顶链接注册转化率极高,且终身绑定</td>
+          </tr>
+          <tr>
+            <td class="idx">19</td>
+            <td class="case">AI Tools Hunter</td>
+            <td class="link"><span class="h">X 推特: @aitoolshunter</span></td>
+            <td class="mode">X(推特)上的 AI 工具播报账号,每天发几十条推文介绍新工具,链接全部使用短链挂参</td>
+            <td class="bonus"><b>推特的病毒传播力</b>:依托极客生态,好用的工具推文极易被转发;高频轰炸,以量取胜获取佣金</td>
+          </tr>
+          <tr>
+            <td class="idx">20</td>
+            <td class="case">微信 AI 工具箱站长</td>
+            <td class="link"><span class="h">微信小程序</span></td>
+            <td class="mode">小程序收录海外 AI 工具,用户充值"点数"解锁高级教程或镜像站入口</td>
+            <td class="bonus"><b>双重收割模式</b>:前端赚用户充值教程的钱,后端引导海外注册(或自己的 API 中转)赚差价/佣金,利用国内信息差实现利润最大化</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 四机对比 ========== -->
+<section id="summary">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag blue">05 · 对比总结</span>
+      <h2>四类"流量机"怎么选</h2>
+      <p class="sec-desc">本质都是"内容/资源截流 → CPS 佣金变现",区别在截流方式与见效速度。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col style="width:20%">
+          <col style="width:28%">
+          <col style="width:28%">
+          <col style="width:24%">
+        </colgroup>
+        <thead>
+          <tr><th>流量机类型</th><th>代表案例</th><th>核心打法</th><th>变现与见效速度</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="case">导航站<small>流量分发机</small></td>
+            <td class="mode">There's An AI For That、Futurepedia、Toolify.ai</td>
+            <td class="mode">SEO 霸屏 + 海量收录,垄断长尾词</td>
+            <td class="bonus"><b>置顶费 + CPS 佣金</b>;见效慢,但长尾复利大</td>
+          </tr>
+          <tr>
+            <td class="case">视频博主<small>视觉转化机</small></td>
+            <td class="mode">Matt Wolfe、AI Revolution、IdeaSpot</td>
+            <td class="mode">实操展示 + 视觉冲击,冲动点击</td>
+            <td class="bonus"><b>广告分成 + 终身佣金</b>;见效快,爆发力强</td>
+          </tr>
+          <tr>
+            <td class="case">博客 SEO<small>长尾被动收入机</small></td>
+            <td class="mode">Geekflare、SaaSHub、WritingBeginner</td>
+            <td class="mode">高意图长尾词 + 高 DR 权重文章</td>
+            <td class="bonus"><b>CPS 佣金(睡后收入)</b>;最慢,一旦起量是复利</td>
+          </tr>
+          <tr>
+            <td class="case">私域生态<small>私域转化机</small></td>
+            <td class="mode">Notion 模板、Discord 社群、微信小程序</td>
+            <td class="mode">模板/社群/资源承载,黏性转化</td>
+            <td class="bonus"><b>前端卖货 + 后端 SaaS 分成</b>;速度中等,黏性极高</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="logic-strip"><b>共同本质:</b>四种"流量机"赚的都是同一笔钱——AI 工具让渡的 CPS 佣金;区别只在于:你用 SEO、视频、文章还是私域资源去截流,以及你愿意等多久。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-note">AI 流量变现 · 四大渠道 20 案例 · 整理于 2026-08-14 · 仅供研究参考</div>
+  </div>
+</footer>
+
+<script>
+  // 入场动画
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 导航高亮
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const map = {};
+  links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const link = map[e.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  ['nav-sites','video','blog','community','summary'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+</script>
+</body>
+</html>
