@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两代红利人群 × A股产业链映射 · 2026-08-14</title>
+<style>
+  :root{
+    --bg:#0a0e17;
+    --panel:rgba(255,255,255,.045);
+    --panel-2:rgba(255,255,255,.07);
+    --border:rgba(255,255,255,.09);
+    --text:#e9edf6;
+    --sub:#9aa7bd;
+    --dim:#6b7890;
+    --blue:#4cc3ff;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --amber:#fbbf24;
+    --red:#f87171;
+    --radius:16px;
+    --shadow:0 18px 50px -18px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(124,58,237,.16), transparent 60%),
+      radial-gradient(900px 460px at -10% 12%, rgba(47,129,247,.14), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    min-height:100vh;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+  /* ---------- 顶部导航 ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,14,23,.78);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex;align-items:center;gap:18px;
+    height:58px;overflow-x:auto;scrollbar-width:none;
+  }
+  nav .wrap::-webkit-scrollbar{display:none}
+  .nav-brand{
+    display:flex;align-items:center;gap:9px;
+    font-weight:700;font-size:15px;white-space:nowrap;letter-spacing:.3px;
+  }
+  .nav-brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),var(--violet));
+    box-shadow:0 0 14px rgba(124,58,237,.8);
+  }
+  .nav-links{display:flex;gap:4px;margin-left:auto}
+  .nav-links a{
+    color:var(--sub);text-decoration:none;font-size:13.5px;
+    padding:7px 12px;border-radius:999px;white-space:nowrap;transition:.2s;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--panel-2)}
+  .nav-links a.active{
+    color:#fff;background:linear-gradient(135deg,rgba(76,195,255,.2),rgba(167,139,250,.2));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+  }
+
+  /* ---------- Hero ---------- */
+  header{padding:64px 0 26px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:3px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:7px 16px;border-radius:999px;margin-bottom:20px;
+  }
+  .eyebrow b{background:linear-gradient(90deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{
+    font-size:clamp(26px,4.4vw,42px);font-weight:800;line-height:1.25;letter-spacing:.5px;
+    background:linear-gradient(100deg,#fff 20%,var(--blue) 48%,var(--violet) 78%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{margin-top:14px;color:var(--sub);font-size:15px;max-width:760px;margin-left:auto;margin-right:auto}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+  .chip{
+    font-size:13px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:8px 16px;border-radius:999px;
+  }
+  .chip b{color:var(--text);font-weight:700}
+  .chip .n{color:var(--blue);font-weight:800}
+  .chip .n.v{color:var(--violet)}
+
+  /* ---------- TL;DR ---------- */
+  .tldr{margin:26px 0 8px}
+  .tldr-title{
+    font-size:12.5px;font-weight:800;letter-spacing:2.5px;color:var(--dim);
+    text-align:left;margin-bottom:12px;
+  }
+  .tldr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:980px){.tldr-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.tldr-grid{grid-template-columns:1fr}}
+  .tldr-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);text-align:left;position:relative;overflow:hidden;
+  }
+  .tldr-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .tldr-card.b::before{background:linear-gradient(90deg,var(--blue),transparent)}
+  .tldr-card.v::before{background:linear-gradient(90deg,var(--violet),transparent)}
+  .tldr-card.g::before{background:linear-gradient(90deg,var(--green),transparent)}
+  .tldr-card.r::before{background:linear-gradient(90deg,var(--red),transparent)}
+  .tldr-card .k{font-size:11.5px;font-weight:800;color:var(--dim);letter-spacing:1.5px}
+  .tldr-card .v{font-size:15px;font-weight:800;margin-top:6px}
+  .tldr-card.b .v{color:var(--blue)}
+  .tldr-card.v .v{color:var(--violet)}
+  .tldr-card.g .v{color:var(--green)}
+  .tldr-card.r .v{color:var(--red)}
+  .tldr-card .d{font-size:12.5px;color:var(--sub);margin-top:6px}
+
+  /* ---------- 区块通用 ---------- */
+  section{padding:52px 0 8px;scroll-margin-top:70px}
+  .sec-head{margin-bottom:22px}
+  .sec-tag{
+    font-size:12px;letter-spacing:2.5px;font-weight:700;
+    display:inline-block;padding:5px 13px;border-radius:999px;margin-bottom:12px;
+  }
+  .sec-tag.blue{color:var(--blue);background:rgba(76,195,255,.1);border:1px solid rgba(76,195,255,.3)}
+  .sec-tag.violet{color:var(--violet);background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3)}
+  .sec-tag.green{color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3)}
+  .sec-tag.amber{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3)}
+  h2{font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:.3px}
+  .sec-desc{margin-top:8px;color:var(--sub);font-size:14.5px;max-width:820px}
+
+  /* ---------- 映射表 ---------- */
+  .tbl-wrap{
+    border-radius:var(--radius);overflow-x:auto;
+    border:1px solid var(--border);background:var(--panel);
+    box-shadow:var(--shadow);margin-bottom:14px;
+  }
+  table{width:100%;border-collapse:collapse;min-width:980px}
+  thead th{
+    font-size:12.5px;letter-spacing:1.5px;font-weight:700;
+    text-align:left;padding:14px 18px;white-space:nowrap;
+    color:var(--sub);background:rgba(255,255,255,.04);
+    border-bottom:1px solid var(--border);
+  }
+  tbody td{
+    padding:16px 18px;font-size:14px;vertical-align:top;
+    border-bottom:1px solid rgba(255,255,255,.055);color:var(--sub);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr{transition:background .18s}
+  tbody tr:hover{background:rgba(255,255,255,.045)}
+  td.role{color:var(--text);font-weight:700;white-space:nowrap;min-width:150px}
+  td.role small{display:block;font-weight:500;color:var(--dim);font-size:12px;margin-top:2px}
+  .chain-tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:999px;white-space:nowrap;margin-bottom:6px}
+  .chain-tag.blue{color:var(--blue);background:rgba(76,195,255,.1);border:1px solid rgba(76,195,255,.35)}
+  .chain-tag.violet{color:var(--violet);background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.35)}
+  .chain-tag.green{color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35)}
+  .chain-tag.amber{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35)}
+
+  /* 股票列表:单只对齐,名称与代码分开 */
+  .stk-group{margin-bottom:12px}
+  .stk-group:last-child{margin-bottom:0}
+  .stk-group-t{
+    font-size:12px;font-weight:800;letter-spacing:1.5px;color:var(--dim);
+    margin-bottom:7px;
+  }
+  .stk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
+  @media(max-width:920px){.stk-grid{grid-template-columns:1fr}}
+  .stk{
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    padding:5px 11px;border-radius:9px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
+    transition:background .15s;
+  }
+  .stk:hover{background:rgba(255,255,255,.07)}
+  .stk .nm{color:var(--text);font-weight:600;font-size:13.5px;white-space:nowrap}
+  .stk .cd{
+    font-family:Consolas,"SF Mono",Menlo,monospace;
+    font-size:12px;color:var(--blue);white-space:nowrap;letter-spacing:.3px;font-weight:700;
+  }
+  .stk.hk .cd{color:var(--violet)}
+  .stk.us .cd{color:var(--green)}
+  .stk-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:12px;color:var(--dim)}
+  .stk-legend i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+  .stk-legend .cd-demo{font-family:Consolas,monospace;font-weight:800;font-size:12px}
+  .cd-demo.a{color:var(--blue)} .cd-demo.h{color:var(--violet)} .cd-demo.u{color:var(--green)}
+  .map-note{font-size:13.5px;color:var(--sub);padding:12px 16px;border-radius:12px;border:1px dashed var(--border);background:var(--panel)}
+
+  /* ---------- 产业链分层 ---------- */
+  .chain{display:grid;gap:14px}
+  .chain-row{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px 20px;box-shadow:var(--shadow);
+  }
+  .chain-row .layer-t{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .layer-badge{font-size:12px;font-weight:800;letter-spacing:1.5px;padding:4px 13px;border-radius:8px;color:#fff}
+  .lb-up{background:linear-gradient(135deg,#2563eb,#7c3aed)}
+  .lb-mid{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+  .lb-down{background:linear-gradient(135deg,#059669,#0d9488)}
+  .layer-t .t{font-weight:800;font-size:15.5px}
+  .layer-t .s{font-size:12.5px;color:var(--dim)}
+  .layer-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .node{
+    background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;
+    padding:7px 12px;font-size:13px;font-weight:700;color:var(--text);
+  }
+  .node small{display:block;font-weight:500;color:var(--dim);font-size:11px}
+  .node.hl{border-color:rgba(76,195,255,.4);background:rgba(76,195,255,.07)}
+  .flow-arrow{color:var(--dim);font-weight:800}
+  .chain-cap{
+    margin-top:14px;border-radius:var(--radius);padding:14px 18px;font-size:13.5px;color:var(--amber);
+    background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.3);
+  }
+  .chain-cap b{color:var(--amber)}
+
+  /* ---------- 结论卡 / 风险 ---------- */
+  .concl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px}
+  @media(max-width:820px){.concl-grid{grid-template-columns:1fr}}
+  .concl{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .concl::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .concl.g::before{background:linear-gradient(90deg,var(--green),transparent)}
+  .concl.v::before{background:linear-gradient(90deg,var(--violet),transparent)}
+  .concl.b::before{background:linear-gradient(90deg,var(--blue),transparent)}
+  .concl.r::before{background:linear-gradient(90deg,var(--red),transparent)}
+  .concl .ct{font-weight:800;font-size:14.5px;margin-bottom:10px}
+  .concl.g .ct{color:var(--green)} .concl.v .ct{color:var(--violet)}
+  .concl.b .ct{color:var(--blue)} .concl.r .ct{color:var(--red)}
+  .concl ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .concl li{font-size:13.5px;color:var(--sub);padding-left:15px;position:relative}
+  .concl li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:currentColor}
+  .concl li b{color:var(--text)}
+  .risk-list{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:20px 24px;box-shadow:var(--shadow);
+  }
+  .risk-list li{font-size:13.5px;color:var(--sub);margin:9px 0 9px 18px}
+  .risk-list li b{color:var(--text)}
+  .risk-list li::marker{color:var(--red)}
+
+  /* ---------- 来源 / 免责 ---------- */
+  .src{margin-top:36px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow)}
+  .src h3{font-size:14px;font-weight:800;margin-bottom:10px}
+  .src ul{list-style:none}
+  .src li{font-size:12.5px;color:var(--dim);margin-bottom:6px;padding-left:14px;position:relative}
+  .src li::before{content:"·";position:absolute;left:2px;color:var(--blue)}
+  .src li b{color:var(--sub)}
+  .disclaimer{
+    margin-top:14px;border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.8;
+    color:#fca5a5;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.3);
+  }
+  .disclaimer b{color:var(--red)}
+
+  /* ---------- 页脚 ---------- */
+  footer{padding:44px 0 60px;margin-top:44px;border-top:1px solid var(--border)}
+  .foot-note{text-align:center;color:var(--dim);font-size:12.5px;letter-spacing:1px}
+
+  /* ---------- 入场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-brand"><span class="dot"></span>红利人群 × A股</div>
+    <div class="nav-links">
+      <a href="#web">互联网映射</a>
+      <a href="#ai">AI 映射</a>
+      <a href="#chain">产业链全景</a>
+      <a href="#concl">关键结论</a>
+      <a href="#risk">风险提示</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">红利归属 <b>×</b> A股产业链映射</div>
+    <h1>两代红利人群<br>对应哪些 A 股标的</h1>
+    <p class="sub">把「造浪者 → 掘金者 → 卖水人 → 升级者」与「卖水人/造神者 → 超级个体 → 私有数据企业主 → 场景落地者 → 职场新贵」落到 A 股市场:每类人群对应产业链哪一环、有哪些代表标的。A 股缺位的角色(如 BAT/TMD、英伟达)以港美股补充并明确标注。</p>
+    <div class="chips">
+      <span class="chip">互联网时代 <b class="n">4</b> 类人群</span>
+      <span class="chip">AI 时代 <b class="n v">5</b> 类人群</span>
+      <span class="chip">产业链 <b>3</b> 层拆解</span>
+      <span class="chip">数据时点 <b>2026-08-14</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== TL;DR ========== -->
+<div class="wrap reveal">
+  <div class="tldr">
+    <div class="tldr-title">TL;DR · 四个结论</div>
+    <div class="tldr-grid">
+      <div class="tldr-card b">
+        <div class="k">01 · 平台红利(A股缺位)</div>
+        <div class="v">造浪者几乎不在 A 股</div>
+        <div class="d">BAT/TMD 均在港美股;A股只有"平台型"对标:东方财富、同花顺、国联股份等</div>
+      </div>
+      <div class="tldr-card v">
+        <div class="k">02 · 基建红利(两代通用)</div>
+        <div class="v">卖水人最确定</div>
+        <div class="d">互联网 = 运营商/IDC/物流;AI = 算力芯片/服务器/光模块/液冷/IDC,业绩最先兑现</div>
+      </div>
+      <div class="tldr-card g">
+        <div class="k">03 · 应用红利(弹性最大)</div>
+        <div class="v">AI 办公 + 垂直应用</div>
+        <div class="d">对应超级个体/职场新贵/场景落地者:金山办公、用友网络、恒生电子、卫宁健康等</div>
+      </div>
+      <div class="tldr-card r">
+        <div class="k">04 · 数据红利(壁垒在私有数据)</div>
+        <div class="v">金融/医疗/工业数据公司</div>
+        <div class="d">同花顺、恒生电子、卫宁健康、宝信软件——结合独家数据的 AI 应用才有护城河</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 互联网时代 ========== -->
+<section id="web">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag blue">01 · 互联网时代</span>
+      <h2>4 类红利人群 × A股映射</h2>
+      <p class="sec-desc">关键前提:互联网时代的核心赢家「造浪者」(BAT/TMD)几乎都未在 A 股上市,故用港美股标注 + A股平台型对标;其余三类在 A 股均有成体系映射。</p>
+    </div>
+
+    <div class="stk-legend">
+      <i><span class="cd-demo a">600519</span> A股(6 位代码)</i>
+      <i><span class="cd-demo h">00700.HK</span> 港股</i>
+      <i><span class="cd-demo u">NVDA</span> 美股</i>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:150px">红利人群</th><th style="min-width:140px">产业链环节</th><th style="min-width:380px">代表标的</th><th>映射说明</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role">造浪者<small>平台创立者与早期员工</small></td>
+            <td><span class="chain-tag blue">平台层</span><br>流量入口 / 规则 / 生态</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-group-t">港美股(核心赢家)</div>
+                <div class="stk-grid">
+                  <div class="stk hk"><span class="nm">腾讯控股</span><span class="cd">00700.HK</span></div>
+                  <div class="stk hk"><span class="nm">阿里巴巴</span><span class="cd">09988.HK</span></div>
+                  <div class="stk hk"><span class="nm">美团</span><span class="cd">03690.HK</span></div>
+                  <div class="stk"><span class="nm">字节跳动 / 滴滴</span><span class="cd">未上市</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">A股平台型对标</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">东方财富</span><span class="cd">300059</span></div>
+                  <div class="stk"><span class="nm">同花顺</span><span class="cd">300033</span></div>
+                  <div class="stk"><span class="nm">国联股份</span><span class="cd">603613</span></div>
+                  <div class="stk"><span class="nm">上海钢联</span><span class="cd">300226</span></div>
+                  <div class="stk"><span class="nm">焦点科技</span><span class="cd">002315</span></div>
+                </div>
+              </div>
+            </td>
+            <td>真正的 BAT/TMD 不在 A 股;<b>A股只有"平台型"对标</b>(金融信息平台 / 产业互联网平台),与"流量分配与变现"逻辑相近</td>
+          </tr>
+          <tr>
+            <td class="role">掘金者<small>流量玩家与电商先驱</small></td>
+            <td><span class="chain-tag blue">流量 / 营销层</span><br>内容 / 电商代运营 / 导购</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">蓝色光标</span><span class="cd">300058</span></div>
+                  <div class="stk"><span class="nm">天下秀</span><span class="cd">600556</span></div>
+                  <div class="stk"><span class="nm">引力传媒</span><span class="cd">603598</span></div>
+                  <div class="stk"><span class="nm">遥望科技</span><span class="cd">002291</span></div>
+                  <div class="stk"><span class="nm">元隆雅图</span><span class="cd">002878</span></div>
+                  <div class="stk"><span class="nm">值得买</span><span class="cd">300785</span></div>
+                  <div class="stk"><span class="nm">南极电商</span><span class="cd">002127</span></div>
+                  <div class="stk"><span class="nm">壹网壹创</span><span class="cd">300792</span></div>
+                  <div class="stk"><span class="nm">丽人丽妆</span><span class="cd">605136</span></div>
+                  <div class="stk"><span class="nm">若羽臣</span><span class="cd">003010</span></div>
+                  <div class="stk"><span class="nm">分众传媒</span><span class="cd">002027</span></div>
+                </div>
+              </div>
+            </td>
+            <td>映射逻辑:内容/网红营销、电商代运营、导购——靠流量与信息差变现的"掘金者"在 A 股的对应</td>
+          </tr>
+          <tr>
+            <td class="role">卖水人<small>基础设施提供者</small></td>
+            <td><span class="chain-tag blue">基础设施层</span><br>云 / IDC / 物流 / 硬件 / 支付</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-group-t">运营商</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">中国移动</span><span class="cd">600941</span></div>
+                  <div class="stk"><span class="nm">中国电信</span><span class="cd">601728</span></div>
+                  <div class="stk"><span class="nm">中国联通</span><span class="cd">600050</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">IDC / CDN</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">光环新网</span><span class="cd">300383</span></div>
+                  <div class="stk"><span class="nm">数据港</span><span class="cd">603881</span></div>
+                  <div class="stk"><span class="nm">奥飞数据</span><span class="cd">300738</span></div>
+                  <div class="stk"><span class="nm">宝信软件</span><span class="cd">600845</span></div>
+                  <div class="stk"><span class="nm">网宿科技</span><span class="cd">300017</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">物流</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">顺丰控股</span><span class="cd">002352</span></div>
+                  <div class="stk"><span class="nm">圆通速递</span><span class="cd">600233</span></div>
+                  <div class="stk"><span class="nm">韵达股份</span><span class="cd">002120</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">消费电子产业链</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">立讯精密</span><span class="cd">002475</span></div>
+                  <div class="stk"><span class="nm">歌尔股份</span><span class="cd">002241</span></div>
+                  <div class="stk"><span class="nm">蓝思科技</span><span class="cd">300433</span></div>
+                  <div class="stk"><span class="nm">京东方A</span><span class="cd">000725</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">支付</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">拉卡拉</span><span class="cd">300773</span></div>
+                  <div class="stk"><span class="nm">新大陆</span><span class="cd">000997</span></div>
+                  <div class="stk"><span class="nm">新国都</span><span class="cd">300130</span></div>
+                </div>
+              </div>
+            </td>
+            <td>无论平台怎么打,都需要算力、传输与物流——<b>底层红利最确定</b>,且这条映射会延续到 AI 时代</td>
+          </tr>
+          <tr>
+            <td class="role">升级者<small>借势转型的传统企业</small></td>
+            <td><span class="chain-tag blue">产业应用层</span><br>数字化新消费 / 先进制造</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">美的集团</span><span class="cd">000333</span></div>
+                  <div class="stk"><span class="nm">海尔智家</span><span class="cd">600690</span></div>
+                  <div class="stk"><span class="nm">格力电器</span><span class="cd">000651</span></div>
+                  <div class="stk"><span class="nm">珀莱雅</span><span class="cd">603605</span></div>
+                  <div class="stk"><span class="nm">盐津铺子</span><span class="cd">002847</span></div>
+                  <div class="stk"><span class="nm">三只松鼠</span><span class="cd">300783</span></div>
+                  <div class="stk"><span class="nm">良品铺子</span><span class="cd">603719</span></div>
+                </div>
+              </div>
+            </td>
+            <td>映射逻辑:及早线上化、重构成本结构并扩大经营半径的<b>数字化转型龙头</b>(渠道数字化 + 新零售)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="map-note">说明:本表为产业链位置分类,非推荐排序;标的归属为定性梳理(分类依据为公开业务描述),具体以公司公告为准。</p>
+  </div>
+</section>
+
+<!-- ========== AI 时代 ========== -->
+<section id="ai">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag violet">02 · AI 时代(进行时)</span>
+      <h2>5 类红利人群 × A股映射</h2>
+      <p class="sec-desc">AI 时代的五类人群在 A 股均有成体系映射,整体沿「上游算力 → 中游模型/数据 → 下游应用」分布;上游硬件已进入业绩兑现期,下游应用正处估值重估期。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:170px">红利人群</th><th style="min-width:140px">产业链环节</th><th style="min-width:400px">代表标的</th><th>映射说明</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role">卖水人 / 造神者<small>底层算力与模型层巨头</small></td>
+            <td><span class="chain-tag violet">上游算力</span><span class="chain-tag violet">中游模型</span><br>芯片 / 整机 / 光模块 / 模型</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-group-t">算力芯片</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">寒武纪</span><span class="cd">688256</span></div>
+                  <div class="stk"><span class="nm">海光信息</span><span class="cd">688041</span></div>
+                  <div class="stk"><span class="nm">龙芯中科</span><span class="cd">688047</span></div>
+                  <div class="stk"><span class="nm">景嘉微</span><span class="cd">300474</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">服务器 / 整机</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">工业富联</span><span class="cd">601138</span></div>
+                  <div class="stk"><span class="nm">浪潮信息</span><span class="cd">000977</span></div>
+                  <div class="stk"><span class="nm">中科曙光</span><span class="cd">603019</span></div>
+                  <div class="stk"><span class="nm">紫光股份</span><span class="cd">000938</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">光模块</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">中际旭创</span><span class="cd">300308</span></div>
+                  <div class="stk"><span class="nm">新易盛</span><span class="cd">300502</span></div>
+                  <div class="stk"><span class="nm">天孚通信</span><span class="cd">300394</span></div>
+                  <div class="stk"><span class="nm">光迅科技</span><span class="cd">002281</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">存储 / 液冷 / IDC</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">澜起科技</span><span class="cd">688008</span></div>
+                  <div class="stk"><span class="nm">兆易创新</span><span class="cd">603986</span></div>
+                  <div class="stk"><span class="nm">英维克</span><span class="cd">002837</span></div>
+                  <div class="stk"><span class="nm">润泽科技</span><span class="cd">300442</span></div>
+                  <div class="stk"><span class="nm">优刻得</span><span class="cd">688158</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">模型层(A股)</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">科大讯飞</span><span class="cd">002230</span></div>
+                  <div class="stk"><span class="nm">三六零</span><span class="cd">601360</span></div>
+                  <div class="stk"><span class="nm">昆仑万维</span><span class="cd">300418</span></div>
+                  <div class="stk"><span class="nm">云从科技</span><span class="cd">688327</span></div>
+                  <div class="stk"><span class="nm">拓尔思</span><span class="cd">300229</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">港美股补充(全球核心)</div>
+                <div class="stk-grid">
+                  <div class="stk us"><span class="nm">英伟达</span><span class="cd">NVDA</span></div>
+                  <div class="stk us"><span class="nm">微软</span><span class="cd">MSFT</span></div>
+                  <div class="stk hk"><span class="nm">腾讯控股</span><span class="cd">00700.HK</span></div>
+                  <div class="stk hk"><span class="nm">百度</span><span class="cd">09888.HK</span></div>
+                  <div class="stk hk"><span class="nm">商汤</span><span class="cd">00020.HK</span></div>
+                </div>
+              </div>
+            </td>
+            <td>AI 是资本 + 技术密集型;<b>最明确的钱在 GPU、云与大模型</b>。A股无英伟达级别标的,寒武纪 / 海光为国产算力主要映射</td>
+          </tr>
+          <tr>
+            <td class="role">超级个体<small>极客创业者 / AI 内容创作者</small></td>
+            <td><span class="chain-tag violet">效率工具层</span><br>AI 软件 / 创作工具 / 算力租赁</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">金山办公</span><span class="cd">688111</span></div>
+                  <div class="stk"><span class="nm">万兴科技</span><span class="cd">300624</span></div>
+                  <div class="stk"><span class="nm">福昕软件</span><span class="cd">688095</span></div>
+                  <div class="stk"><span class="nm">中文在线</span><span class="cd">300364</span></div>
+                  <div class="stk"><span class="nm">掌阅科技</span><span class="cd">603533</span></div>
+                  <div class="stk"><span class="nm">优刻得</span><span class="cd">688158</span></div>
+                  <div class="stk"><span class="nm">中贝通信</span><span class="cd">603220</span></div>
+                  <div class="stk hk"><span class="nm">美图</span><span class="cd">01357.HK</span></div>
+                </div>
+              </div>
+            </td>
+            <td>映射逻辑:"1 人 + AI 成军"依赖的<b>工具与算力</b>;注意算力租赁类标的多为概念映射,需甄别业绩</td>
+          </tr>
+          <tr>
+            <td class="role">护城河加深者<small>私有数据企业主</small></td>
+            <td><span class="chain-tag violet">数据要素层</span><br>行业数据 / 数据确权</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-group-t">金融数据</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">恒生电子</span><span class="cd">600570</span></div>
+                  <div class="stk"><span class="nm">同花顺</span><span class="cd">300033</span></div>
+                  <div class="stk"><span class="nm">东方财富</span><span class="cd">300059</span></div>
+                  <div class="stk"><span class="nm">指南针</span><span class="cd">300803</span></div>
+                  <div class="stk"><span class="nm">财富趋势</span><span class="cd">688318</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">医疗数据</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">卫宁健康</span><span class="cd">300253</span></div>
+                  <div class="stk"><span class="nm">创业慧康</span><span class="cd">300451</span></div>
+                  <div class="stk"><span class="nm">久远银海</span><span class="cd">002777</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">工业数据</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">宝信软件</span><span class="cd">600845</span></div>
+                  <div class="stk"><span class="nm">中控技术</span><span class="cd">688777</span></div>
+                  <div class="stk"><span class="nm">能科科技</span><span class="cd">603859</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">数据要素</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">人民网</span><span class="cd">603000</span></div>
+                  <div class="stk"><span class="nm">新华网</span><span class="cd">603888</span></div>
+                  <div class="stk"><span class="nm">易华录</span><span class="cd">300212</span></div>
+                  <div class="stk"><span class="nm">深桑达A</span><span class="cd">000032</span></div>
+                </div>
+              </div>
+            </td>
+            <td>AI 时代胜负在<b>私有数据</b>:大模型通用,结合独家数据的应用才有壁垒——金融 / 医疗 / 工业是数据最密集的行业</td>
+          </tr>
+          <tr>
+            <td class="role">场景落地者<small>垂直 AI 应用开发者</small></td>
+            <td><span class="chain-tag violet">下游应用层</span><br>金融 / 医疗 / 教育 / 法律 / 工业 / 安防</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-group-t">金融</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">恒生电子</span><span class="cd">600570</span></div>
+                  <div class="stk"><span class="nm">新致软件</span><span class="cd">688590</span></div>
+                  <div class="stk"><span class="nm">京北方</span><span class="cd">002987</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">医疗</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">卫宁健康</span><span class="cd">300253</span></div>
+                  <div class="stk"><span class="nm">东软集团</span><span class="cd">600718</span></div>
+                  <div class="stk"><span class="nm">万东医疗</span><span class="cd">600055</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">教育</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">科大讯飞</span><span class="cd">002230</span></div>
+                  <div class="stk"><span class="nm">佳发教育</span><span class="cd">300559</span></div>
+                  <div class="stk"><span class="nm">鸥玛软件</span><span class="cd">301185</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">法律</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">华宇软件</span><span class="cd">300271</span></div>
+                  <div class="stk"><span class="nm">通达海</span><span class="cd">301378</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">工业视觉</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">奥普特</span><span class="cd">688686</span></div>
+                  <div class="stk"><span class="nm">凌云光</span><span class="cd">688400</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">安防 / 视觉</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">海康威视</span><span class="cd">002415</span></div>
+                  <div class="stk"><span class="nm">大华股份</span><span class="cd">002236</span></div>
+                </div>
+              </div>
+              <div class="stk-group">
+                <div class="stk-group-t">营销 / 客服</div>
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">蓝色光标</span><span class="cd">300058</span></div>
+                  <div class="stk"><span class="nm">拓尔思</span><span class="cd">300229</span></div>
+                  <div class="stk"><span class="nm">神州泰岳</span><span class="cd">300002</span></div>
+                </div>
+              </div>
+            </td>
+            <td>巨头做底层、他们做应用层——<b>用 AI 重做一遍传统 SaaS</b>,高客单价 + 高留存;规则明确、数据可用、反馈闭环快的场景最先受益</td>
+          </tr>
+          <tr>
+            <td class="role">职场新贵<small>懂 AI 的复合型人才(企业端)</small></td>
+            <td><span class="chain-tag violet">AI 办公 / 企服层</span><br>效率软件 / 协同 / ERP</td>
+            <td>
+              <div class="stk-group">
+                <div class="stk-grid">
+                  <div class="stk"><span class="nm">金山办公</span><span class="cd">688111</span></div>
+                  <div class="stk"><span class="nm">用友网络</span><span class="cd">600588</span></div>
+                  <div class="stk"><span class="nm">泛微网络</span><span class="cd">603039</span></div>
+                  <div class="stk"><span class="nm">致远互联</span><span class="cd">688369</span></div>
+                  <div class="stk"><span class="nm">福昕软件</span><span class="cd">688095</span></div>
+                  <div class="stk"><span class="nm">汉得信息</span><span class="cd">300170</span></div>
+                </div>
+              </div>
+            </td>
+            <td>映射逻辑:"一人抵三人"发生在<b>AI 办公与协同软件</b>上——企业采购 AI 效率工具,把个体放大 3-5 倍</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="map-note">说明:AI 板块热点轮动快,部分标的(尤其算力租赁、数据要素、AI 智能体)为题材概念映射,业绩关联度需逐一核实;排序为产业链位置分类,非硬排名。</p>
+  </div>
+</section>
+
+<!-- ========== 产业链全景 ========== -->
+<section id="chain">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag green">03 · 产业链全景</span>
+      <h2>AI 产业链分层:价值在哪一段</h2>
+      <p class="sec-desc">按「上游算力 → 中游模型/数据 → 下游应用」拆解。上游已进入业绩兑现期;中游大模型平台正处估值重估;下游应用弹性最大、也是普通个体能"对齐红利"的位置。</p>
+    </div>
+
+    <div class="chain">
+      <div class="chain-row">
+        <div class="layer-t">
+          <span class="layer-badge lb-up">上游</span>
+          <span class="t">算力底座(卖水人 / 造神者)</span>
+          <span class="s">业绩最先兑现 · 卡点最硬</span>
+        </div>
+        <div class="layer-flow">
+          <span class="node hl">算力芯片<small>寒武纪 688256 · 海光信息 688041 · 景嘉微 300474</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">服务器 / 整机<small>工业富联 601138 · 浪潮信息 000977 · 中科曙光 603019</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">光模块 / 铜连接<small>中际旭创 300308 · 新易盛 300502 · 天孚通信 300394</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">存储<small>澜起科技 688008 · 兆易创新 603986</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">液冷 / 电源<small>英维克 002837 · 申菱环境 301018</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">IDC / 云 / 运营商<small>润泽科技 300442 · 数据港 603881 · 中国移动 600941</small></span>
+        </div>
+      </div>
+
+      <div class="chain-row">
+        <div class="layer-t">
+          <span class="layer-badge lb-mid">中游</span>
+          <span class="t">模型与数据(造神者 / 护城河加深者)</span>
+          <span class="s">估值重估中 · 私有数据 = 壁垒</span>
+        </div>
+        <div class="layer-flow">
+          <span class="node">大模型平台<small>科大讯飞 002230 · 昆仑万维 300418 · 三六零 601360</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">行业数据 / 数据要素<small>同花顺 300033 · 恒生电子 600570 · 卫宁健康 300253 · 人民网 603000</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">基础软件<small>金山办公 688111 · 用友网络 600588 · 达梦数据 688692</small></span>
+        </div>
+      </div>
+
+      <div class="chain-row">
+        <div class="layer-t">
+          <span class="layer-badge lb-down">下游</span>
+          <span class="t">场景应用(超级个体 / 场景落地者 / 职场新贵)</span>
+          <span class="s">弹性最大 · 普通人可对齐</span>
+        </div>
+        <div class="layer-flow">
+          <span class="node">办公 / 企服<small>金山办公 · 泛微网络 603039 · 致远互联 688369</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">金融 AI<small>恒生电子 · 同花顺 · 新致软件 688590</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">医疗 AI<small>卫宁健康 · 东软集团 600718 · 万东医疗 600055</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">工业 AI<small>中控技术 688777 · 奥普特 688686</small></span>
+          <span class="flow-arrow">→</span>
+          <span class="node">安防 / 营销<small>海康威视 002415 · 蓝色光标 300058</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chain-cap"><b>卡点判断:</b>最受益且已兑现的是「光模块 + AI 服务器」(2026 年中报普遍高增,据公开媒体梳理);最容易形成龙头溢价的是「算力芯片 + 光模块」;仅概念映射、业绩贡献有限的是部分「算力租赁 / 数据要素 / AI 智能体」小票。华为昇腾(未上市)相关标的(拓维信息 002261 等)属生态映射,非直接受益。</div>
+  </div>
+</section>
+
+<!-- ========== 关键结论 ========== -->
+<section id="concl">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag amber">04 · 关键结论</span>
+      <h2>普通人怎么"对齐"红利</h2>
+      <p class="sec-desc">结论基于公开产业链资料(2026-07/08),为定性判断,非投资建议。</p>
+    </div>
+
+    <div class="concl-grid">
+      <div class="concl g">
+        <div class="ct">已兑现 · 确定性最高</div>
+        <ul>
+          <li><b>上游算力硬件</b>:光模块、AI 服务器进入业绩兑现期——中际旭创 800G 光模块全球市占率超 40%(据 2026-07 媒体梳理,需核实原文)、浪潮信息 2026 上半年净利预增 226%~288%(业绩预告口径)</li>
+          <li><b>基础设施红利两代通用</b>:从运营商的确定性,延续到算力时代的 IDC / 液冷</li>
+        </ul>
+      </div>
+      <div class="concl v">
+        <div class="ct">重估中 · 弹性最大</div>
+        <ul>
+          <li><b>AI 应用层</b>(办公 / 营销 / 内容):毛利率高、订阅模式跑通,市场从"模型竞赛"转向"场景落地"</li>
+          <li><b>超级个体 / 职场新贵对应标的</b>:AI 效率工具与办公协同软件,是普通个体"对齐红利"最直接的一环</li>
+        </ul>
+      </div>
+      <div class="concl b">
+        <div class="ct">壁垒型 · 长逻辑</div>
+        <ul>
+          <li><b>私有数据持有者</b>(金融 / 医疗 / 工业):大模型通用化之后,数据与场景成为差异化来源</li>
+          <li><b>垂直 AI 应用</b>:金融风控、医疗辅助、工业质检等"规则明确 + 数据可用 + 反馈闭环快"的场景最先规模化</li>
+        </ul>
+      </div>
+      <div class="concl r">
+        <div class="ct">概念型 · 需甄别</div>
+        <ul>
+          <li>算力租赁、数据要素、AI 智能体等部分小票<b>业绩关联度低</b>,行情轮动快、回撤大</li>
+          <li>华为昇腾未上市,昇腾生态标的属<b>间接映射</b>,受益程度需按订单核实</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 风险提示 ========== -->
+<section id="risk">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag amber">05 · 风险提示</span>
+      <h2>风险与"伪受益"识别</h2>
+    </div>
+    <div class="risk-list">
+      <li><b>概念 ≠ 业绩</b>:AI 主题轮动快,大量标的仅"沾边",需用订单、营收占比、毛利验证真实受益程度</li>
+      <li><b>国产替代要核对"真国产 vs 名义国产"</b>:同一板块内,自研芯片 / 自主生态与贴牌 / 代理的受益度完全不同</li>
+      <li><b>上游价格与供给波动大</b>:算力硬件周期性强,产能与需求存在"供不应求 / 过剩"的激烈分歧</li>
+      <li><b>模型层商业化待验证</b>:大模型公司普遍高投入,盈利兑现节奏存在不确定性</li>
+      <li><b>政策与监管</b>:数据要素、AI 监管政策变化可能改变部分环节的长期格局</li>
+      <li><b>归类为定性判断</b>:标的归属为产业链位置梳理,非推荐排序;公司业务以公告为准,行情数据以交易所为准</li>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 来源与免责 ========== -->
+<div class="wrap reveal">
+  <div class="src">
+    <h3>数据来源与口径</h3>
+    <ul>
+      <li>产业链分层与代表标的:综合 2026-07/08 公开市场梳理(今日头条财经、爱企查行业知识、新浪财经、东方财富财富号等媒体文章)与公司公开业务信息;<b>均为非一手来源,需核实原文</b>,公司财务以公告为准</li>
+      <li>关键业绩数据:中际旭创 800G 市占率、浪潮信息 2026H1 净利预增、新易盛 2026Q1 营收等,引自 2026-07 媒体文章,<b>需核实公司公告原文</b></li>
+      <li>参考来源:今日头条《中国大模型包揽全球调用榜前五,A股算力链迎硬支撑》(2026-07)、爱企查《国产算力十大龙头公司》(2026)、今日头条《政治局再部署!AI应用爆发元年,七大产业链28只核心标的》(2026-07)等</li>
+      <li>数据时点:2026-08-14;股票代码以交易所最新为准,个别标的有退市 / 改名风险,投资前请核对</li>
+    </ul>
+    <div class="disclaimer">
+      <b>免责声明:</b>以上内容基于公开数据和量化分析,仅供参考,不构成投资建议。市场有风险,投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断,必要时咨询持牌专业机构。过往表现不预示未来收益。
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-note">红利人群 × A股产业链映射 · 整理于 2026-08-14 · 仅供研究参考</div>
+  </div>
+</footer>
+
+<script>
+  // 入场动画
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 导航高亮
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const map = {};
+  links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const link = map[e.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  ['web','ai','chain','concl','risk'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+</script>
+</body>
+</html>

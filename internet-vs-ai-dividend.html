@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从"连接"到"智能" · 两代红利归属对照</title>
+<style>
+  :root{
+    --bg:#0a0e17;
+    --panel:rgba(255,255,255,.045);
+    --panel-2:rgba(255,255,255,.07);
+    --border:rgba(255,255,255,.09);
+    --text:#e9edf6;
+    --sub:#9aa7bd;
+    --dim:#6b7890;
+    --blue:#4cc3ff;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --amber:#fbbf24;
+    --red:#f87171;
+    --radius:16px;
+    --shadow:0 18px 50px -18px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(124,58,237,.16), transparent 60%),
+      radial-gradient(900px 460px at -10% 12%, rgba(47,129,247,.14), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    min-height:100vh;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- 顶部导航 ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,14,23,.78);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex;align-items:center;gap:18px;
+    height:58px;overflow-x:auto;scrollbar-width:none;
+  }
+  nav .wrap::-webkit-scrollbar{display:none}
+  .nav-brand{
+    display:flex;align-items:center;gap:9px;
+    font-weight:700;font-size:15px;white-space:nowrap;letter-spacing:.3px;
+  }
+  .nav-brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),var(--violet));
+    box-shadow:0 0 14px rgba(124,58,237,.8);
+  }
+  .nav-links{display:flex;gap:4px;margin-left:auto}
+  .nav-links a{
+    color:var(--sub);text-decoration:none;font-size:13.5px;
+    padding:7px 12px;border-radius:999px;white-space:nowrap;transition:.2s;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--panel-2)}
+  .nav-links a.active{
+    color:#fff;background:linear-gradient(135deg,rgba(76,195,255,.2),rgba(167,139,250,.2));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+  }
+
+  /* ---------- Hero ---------- */
+  header{padding:74px 0 30px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:3px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:7px 16px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow b{background:linear-gradient(90deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{
+    font-size:clamp(28px,4.6vw,44px);font-weight:800;line-height:1.25;letter-spacing:.5px;
+    background:linear-gradient(100deg,#fff 20%,var(--blue) 48%,var(--violet) 78%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{margin-top:14px;color:var(--sub);font-size:15.5px;max-width:720px;margin-left:auto;margin-right:auto}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+  .chip{
+    font-size:13px;color:var(--sub);
+    border:1px solid var(--border);background:var(--panel);
+    padding:8px 16px;border-radius:999px;
+  }
+  .chip b{color:var(--text);font-weight:700}
+  .chip .n{color:var(--blue);font-weight:800}
+  .chip .n.v{color:var(--violet)}
+
+  /* ---------- 区块通用 ---------- */
+  section{padding:56px 0 8px;scroll-margin-top:70px}
+  .sec-head{margin-bottom:24px}
+  .sec-tag{
+    font-size:12px;letter-spacing:2.5px;font-weight:700;
+    display:inline-block;padding:5px 13px;border-radius:999px;margin-bottom:12px;
+  }
+  .sec-tag.blue{color:var(--blue);background:rgba(76,195,255,.1);border:1px solid rgba(76,195,255,.3)}
+  .sec-tag.violet{color:var(--violet);background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3)}
+  .sec-tag.green{color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3)}
+  .sec-tag.amber{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3)}
+  h2{font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:.3px}
+  .sec-desc{margin-top:8px;color:var(--sub);font-size:14.5px;max-width:780px}
+
+  /* ---------- 对比卡 ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  @media(max-width:820px){.duo{grid-template-columns:1fr}}
+  .era-card{
+    border-radius:var(--radius);padding:22px 24px;
+    background:var(--panel);border:1px solid var(--border);
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .era-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .era-card.blue::before{background:linear-gradient(90deg,var(--blue),transparent)}
+  .era-card.violet::before{background:linear-gradient(90deg,var(--violet),transparent)}
+  .era-name{font-size:17px;font-weight:800;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .era-name .pill{font-size:11px;font-weight:700;padding:2px 10px;border-radius:999px;letter-spacing:1px}
+  .pill.blue{color:var(--blue);background:rgba(76,195,255,.12);border:1px solid rgba(76,195,255,.35)}
+  .pill.violet{color:var(--violet);background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.35)}
+  .logic-line{margin:12px 0;font-size:15px;font-weight:800}
+  .era-card.blue .logic-line{color:var(--blue)}
+  .era-card.violet .logic-line{color:var(--violet)}
+  .era-logic{margin-bottom:12px;color:var(--sub);font-size:13.5px}
+  .era-logic b{color:var(--text)}
+  .era-note{
+    font-size:13px;padding:10px 14px;border-radius:10px;
+    border:1px dashed var(--border);color:var(--sub);margin-top:8px;
+  }
+  .era-card.blue .era-note b{color:var(--blue)}
+  .era-card.violet .era-note b{color:var(--violet)}
+  .logic-strip{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    border-radius:var(--radius);padding:16px 22px;margin-bottom:8px;
+    background:linear-gradient(135deg,rgba(76,195,255,.08),rgba(167,139,250,.1));
+    border:1px solid rgba(167,139,250,.28);font-size:14.5px;color:var(--sub);
+  }
+  .logic-strip .arrow{font-weight:900;color:var(--violet);font-size:18px}
+  .logic-strip b{color:var(--text)}
+
+  /* ---------- 表格 ---------- */
+  .tbl-wrap{
+    border-radius:var(--radius);overflow-x:auto;
+    border:1px solid var(--border);background:var(--panel);
+    box-shadow:var(--shadow);margin-bottom:14px;
+  }
+  table{width:100%;border-collapse:collapse;min-width:760px}
+  thead th{
+    font-size:12.5px;letter-spacing:1.5px;font-weight:700;
+    text-align:left;padding:14px 18px;white-space:nowrap;
+    color:var(--sub);background:rgba(255,255,255,.04);
+    border-bottom:1px solid var(--border);
+  }
+  tbody td{
+    padding:15px 18px;font-size:14px;vertical-align:top;
+    border-bottom:1px solid rgba(255,255,255,.055);color:var(--sub);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr{transition:background .18s}
+  tbody tr:hover{background:rgba(255,255,255,.045)}
+  td.role{color:var(--text);font-weight:700;white-space:nowrap;min-width:150px}
+  td.role small{display:block;font-weight:500;color:var(--dim);font-size:12px;margin-top:2px}
+  td.strong{color:var(--text)}
+  .mark{color:var(--text);font-weight:600}
+  .quote b{color:var(--text)}
+  .tag-a,.tag-b,.tag-c,.tag-d,.tag-e{
+    display:inline-block;min-width:26px;height:26px;line-height:26px;
+    text-align:center;border-radius:8px;font-size:12.5px;font-weight:800;
+    margin-right:9px;vertical-align:1px;
+  }
+  .tag-a{color:#7dd3fc;background:rgba(56,189,248,.14)}
+  .tag-b{color:#93c5fd;background:rgba(96,165,250,.14)}
+  .tag-c{color:#c4b5fd;background:rgba(167,139,250,.14)}
+  .tag-d{color:#c084fc;background:rgba(192,132,252,.14)}
+  .tag-e{color:#5eead4;background:rgba(45,212,191,.14)}
+  .rel-pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:1px;padding:3px 11px;border-radius:999px;white-space:nowrap}
+  .rel-pill.inherit{color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35)}
+  .rel-pill.mutate{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35)}
+  .rel-pill.new{color:var(--violet);background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.4)}
+  .arrow-cell{color:var(--violet);font-weight:800;white-space:nowrap}
+  .era-cell b{color:var(--text)}
+
+  /* ---------- 残酷现实 / 破局 ---------- */
+  .reality-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  @media(max-width:820px){.reality-wrap{grid-template-columns:1fr}}
+  .reality{
+    border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;
+    background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow);
+  }
+  .reality::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .reality.blue::before{background:linear-gradient(90deg,var(--blue),transparent)}
+  .reality.red::before{background:linear-gradient(90deg,var(--red),transparent)}
+  .reality h3{font-size:18px;font-weight:800}
+  .reality.blue h3{color:var(--blue)}
+  .reality.red h3{color:var(--red)}
+  .reality .tag{font-size:12px;letter-spacing:2px;color:var(--dim);margin:6px 0 12px}
+  .reality p{font-size:14px;color:var(--sub)}
+  .reality p b{color:var(--text)}
+  .breakthrough{
+    border-radius:var(--radius);padding:26px 28px;
+    background:linear-gradient(135deg,rgba(76,195,255,.1),rgba(167,139,250,.14));
+    border:1px solid rgba(167,139,250,.4);box-shadow:var(--shadow);
+  }
+  .breakthrough .b-title{font-weight:800;font-size:16px;color:var(--violet);margin-bottom:12px;letter-spacing:.5px}
+  .breakthrough ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+  .breakthrough li{
+    font-size:14px;color:var(--text);background:rgba(255,255,255,.06);
+    padding:13px 16px;border-radius:11px;line-height:1.6;
+  }
+  .breakthrough li small{display:block;color:var(--sub);font-size:12.5px;margin-top:3px}
+  .breakthrough .formula{
+    margin-top:16px;font-size:14.5px;color:var(--sub);
+    padding:12px 16px;border-radius:11px;background:rgba(0,0,0,.25);
+  }
+  .breakthrough .formula b{color:#fff}
+
+  /* ---------- 页脚 ---------- */
+  footer{padding:60px 0 70px;margin-top:50px;border-top:1px solid var(--border)}
+  .sum-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:820px){.sum-wrap{grid-template-columns:1fr}}
+  .sum{
+    border-radius:var(--radius);padding:20px 22px;background:var(--panel);
+    border:1px solid var(--border);
+  }
+  .sum h4{font-size:14px;letter-spacing:1px;margin-bottom:10px}
+  .sum.blue h4{color:var(--blue)}
+  .sum.violet h4{color:var(--violet)}
+  .sum .formula{font-size:15px;font-weight:800;margin-bottom:8px}
+  .sum.blue .formula{color:var(--blue)}
+  .sum.violet .formula{color:var(--violet)}
+  .sum p{font-size:13.5px;color:var(--sub)}
+  .foot-note{margin-top:26px;text-align:center;color:var(--dim);font-size:12.5px;letter-spacing:1px}
+
+  /* ---------- 入场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-brand"><span class="dot"></span>连接 → 智能</div>
+    <div class="nav-links">
+      <a href="#logic">逻辑之变</a>
+      <a href="#internet">互联网红利人群</a>
+      <a href="#ai">AI 红利人群</a>
+      <a href="#map">传承与变异</a>
+      <a href="#compare">总结对比</a>
+      <a href="#breakthrough">破局点</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">时代红利 <b>归属</b> 对照 · V2</div>
+    <h1>从"连接"到"智能"<br>红利到底被谁拿走</h1>
+    <p class="sub">互联网时代的核心逻辑是"连接"——消除信息差与地理差;AI 时代的核心逻辑是"智能"——降低智力成本、提高生产力。两代最大的红利获取者,既有传承,也有变异。</p>
+    <div class="chips">
+      <span class="chip">互联网时代 <b class="n">4</b> 类人群</span>
+      <span class="chip">AI 时代 <b class="n v">5</b> 类人群</span>
+      <span class="chip">底层逻辑 <b>连接 → 智能</b></span>
+      <span class="chip">本质 <b>人口红利 → 应用层红利</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== 逻辑之变 ========== -->
+<section id="logic">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag blue">01 · 底层逻辑</span>
+      <h2>不是同一个游戏,是换了规则的游戏</h2>
+      <p class="sec-desc">同样是"红利",驱动它的底层逻辑已经换轨:互联网靠"连接"把人、货、场搬到线上;AI 靠"智能"把智力成本打下来、把生产力提上去。</p>
+    </div>
+
+    <div class="duo">
+      <div class="era-card blue">
+        <div class="era-name"><span class="pill">连接 CONNECTION</span>互联网时代</div>
+        <div class="logic-line">核心逻辑:消除信息差、地理差</div>
+        <div class="era-logic">红利本质 = <b>消费端的人口红利</b>。分 PC 互联网、移动互联网两个阶段演进,红利依次被不同人群接走。</div>
+        <div class="era-note"><b>一句话:</b>谁能最快把线下的人搬到线上、把商品/内容塞给用户,谁就赢。</div>
+      </div>
+      <div class="era-card violet">
+        <div class="era-name"><span class="pill">智能 INTELLIGENCE</span>AI 时代</div>
+        <div class="logic-line">核心逻辑:降低智力成本、提高生产力</div>
+        <div class="era-logic">目前处于早期,<b>约等于互联网的 1998 年、移动互联网的 2010 年</b>——红利正在被算力、大模型与"最会用 AI 的人"接走。</div>
+        <div class="era-note"><b>一句话:</b>红利从"流量"迁移到"效率、自动化、智能决策与新型能力"。</div>
+      </div>
+    </div>
+
+    <div class="logic-strip">
+      <span>互联网赢在 <b>"抢人上线上"</b> —— 比谁连接得快、分发得广</span>
+      <span class="arrow">→</span>
+      <span>AI 赢在 <b>"抢智能落地"</b> —— 比谁把 AI 嵌进业务、压成本提产出</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 互联网时代 ========== -->
+<section id="internet">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag blue">02 · 互联网时代</span>
+      <h2>最大的红利被四类人拿走</h2>
+      <p class="sec-desc">PC 互联网与移动互联网两波浪潮叠加,红利被「造浪者 → 掘金者 → 卖水人 → 升级者」依次接棒。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:170px">人群</th><th style="min-width:200px">代表人群</th><th>红利来源</th><th style="min-width:200px">一句话</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role"><span class="tag-a">1</span>早期平台创立者<small>造浪者 · 含早期员工</small></td>
+            <td>BAT(百度、阿里、腾讯)、TMD(字节、美团、滴滴)等巨头的创始人及前几百号员工</td>
+            <td class="strong">享受风险资本狂热涌入 + 人口红利爆发;靠"网络效应"建起垄断平台,获得指数级财富增长</td>
+            <td class="quote">早期员工靠<b>期权与股票</b>实现阶层跨越</td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-b">2</span>流量玩家与电商先驱<small>掘金者</small></td>
+            <td>早期淘宝/亚马逊大卖家、初代网红/自媒体(微博大V、公众号矩阵号主)、SEO 专家、早期买量投手</td>
+            <td class="strong">流量极便宜甚至免费;利用信息差与时间差,以极低成本获取海量用户</td>
+            <td class="quote">完成原始积累,如 2010 年前后开淘宝店的<b>很多人实现财富自由</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-c">3</span>基础设施提供者<small>卖水人</small></td>
+            <td>云服务创业者、物流网络建设者(如通达系快递老板)、智能手机产业链上下游老板</td>
+            <td class="strong">无论电商还是内容平台怎么打,都需要算力、传输与物流</td>
+            <td class="quote">赚取互联网扩张的<b>底层红利</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-d">4</span>借势转型的传统企业<small>升级者</small></td>
+            <td>及早拥抱线上化的传统品牌、连锁餐饮(如早期接入外卖平台的线下店)</td>
+            <td class="strong">用互联网工具重构原有成本结构、扩大经营半径</td>
+            <td class="quote"><b>淘汰固步自封的同行</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="logic-strip">
+      <span><b>红利本质:</b>消费端的人口红利 —— 谁能最快把线下的人搬到线上、把商品/内容塞给用户,谁就赢。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AI 时代 ========== -->
+<section id="ai">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag violet">03 · AI 时代(进行时)</span>
+      <h2>红利正在流向五类人</h2>
+      <p class="sec-desc">AI 时代尚处早期,与互联网的 1998 年 / 移动互联网的 2010 年相当。目前与可预见的未来,红利主要流向以下人群。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:190px">人群</th><th style="min-width:210px">代表人群</th><th>红利来源</th><th style="min-width:190px">一句话</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role"><span class="tag-a">1</span>底层算力与模型层巨头<small>新时代的"卖水人"与"造神者"</small></td>
+            <td>英伟达(黄仁勋)、微软、OpenAI、谷歌等的核心管理层、投资者及早期员工</td>
+            <td class="strong">AI 是资本密集型 + 技术密集型;最明确的钱被卖 GPU 芯片、卖云服务、做大模型的人赚走</td>
+            <td class="quote">典型的<b>"基础设施红利"</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-b">2</span>超级个体与极客创业者<small>降本增效的极致受益者</small></td>
+            <td>独立开发者、懂 AI 工具的内容创作者、1-3 人的微型创业团队</td>
+            <td class="strong">AI 极大降低编程(Cursor)、设计(Midjourney)、文案的门槛——过去 20 人团队的活,现在 1 人 + AI 完成</td>
+            <td class="quote">第一批优化工作流的人,正享受<b>极高利润率与惊人单人产出</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-c">3</span>拥有独家私有数据的企业主<small>护城河加深者</small></td>
+            <td>积累大量行业数据的老牌医疗企业、工业制造企业、金融机构、头部法律/咨询机构</td>
+            <td class="strong">互联网时代数据是公域的,AI 时代胜负在于"私有数据"——大模型通用,结合独家数据的应用才能形成壁垒</td>
+            <td class="quote">正利用 AI 重塑行业,<b>进一步拉大与同行的差距</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-d">4</span>垂直领域 AI 应用开发者<small>场景落地者</small></td>
+            <td>法律合同审核 AI、医疗影像分析 AI、电商虚拟试衣 AI 等垂直行业工具创业者</td>
+            <td class="strong">大模型巨头做底层,他们做应用层;针对具体痛点用 AI 重做一遍传统 SaaS</td>
+            <td class="quote">获取<b>高客单价与高留存</b></td>
+          </tr>
+          <tr>
+            <td class="role"><span class="tag-e">5</span>懂 AI 的复合型人才<small>职场新贵</small></td>
+            <td>懂业务又懂 Prompt 的中层骨干、"AI + 产品经理"组合</td>
+            <td class="strong">用 AI 把工作效率提升 3-5 倍,一人抵三人;企业降本增效环境下不易被裁</td>
+            <td class="quote">还能<b>整合被裁人员的资源</b>,获取更高薪酬与奖金</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 传承与变异 ========== -->
+<section id="map">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag amber">04 · 传承与变异</span>
+      <h2>同一批"角色",换了玩法</h2>
+      <p class="sec-desc">两代红利人群并非完全换血:造浪者、卖水人的角色被继承并升级;掘金者、升级者完成变异;还多出一类全新的"职场新贵"。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:170px">互联网时代</th><th style="min-width:150px">关系</th><th style="min-width:190px">AI 时代</th><th>变化说明</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="era-cell"><b>造浪者</b><small style="display:block;color:var(--dim);font-size:12px">平台创立者与早期员工</small></td>
+            <td><span class="rel-pill mutate">传承 + 变异</span></td>
+            <td class="era-cell"><b>造神者</b><small style="display:block;color:var(--dim);font-size:12px">算力与模型层巨头</small></td>
+            <td class="quote">同样是"造浪潮的人":从<b>网络效应圈用户</b>,变成<b>资本 + 技术卡住底座</b></td>
+          </tr>
+          <tr>
+            <td class="era-cell"><b>卖水人</b><small style="display:block;color:var(--dim);font-size:12px">云 / 物流 / 硬件基础设施</small></td>
+            <td><span class="rel-pill inherit">传承</span></td>
+            <td class="era-cell"><b>卖水人</b><small style="display:block;color:var(--dim);font-size:12px">GPU / 云 / 大模型</small></td>
+            <td class="quote">最确定的<b>基础设施红利</b>:从物流与云,升级为算力与模型</td>
+          </tr>
+          <tr>
+            <td class="era-cell"><b>掘金者</b><small style="display:block;color:var(--dim);font-size:12px">流量玩家 / 电商先驱</small></td>
+            <td><span class="rel-pill mutate">变异</span></td>
+            <td class="era-cell"><b>超级个体</b><small style="display:block;color:var(--dim);font-size:12px">极客创业者 / 内容创作者</small></td>
+            <td class="quote">同样吃"低成本红利":从<b>低价买流量</b>,变成<b>用 AI 极致降本、一人成军</b></td>
+          </tr>
+          <tr>
+            <td class="era-cell"><b>升级者</b><small style="display:block;color:var(--dim);font-size:12px">借势转型的传统企业</small></td>
+            <td><span class="rel-pill mutate">变异</span></td>
+            <td class="era-cell"><b>护城河加深者 + 场景落地者</b><small style="display:block;color:var(--dim);font-size:12px">私有数据企业 / 垂直 AI 应用</small></td>
+            <td class="quote">从<b>"上网获客"</b>升级为<b>"私有数据 + 垂直场景重塑行业"</b></td>
+          </tr>
+          <tr>
+            <td class="era-cell" style="color:var(--dim)">(无对应)</td>
+            <td><span class="rel-pill new">新增</span></td>
+            <td class="era-cell"><b>职场新贵</b><small style="display:block;color:var(--dim);font-size:12px">懂 AI 的复合型人才</small></td>
+            <td class="quote">内部人效红利:AI 把个体放大 3-5 倍,<b>一人抵三人</b>——互联网时代没有的玩法</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 总结对比 ========== -->
+<section id="compare">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag green">05 · 总结对比</span>
+      <h2>四个维度的时代差异</h2>
+      <p class="sec-desc">从驱动、画像、团队形态到财富速度,两代时代的内核完全不同。</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="min-width:140px">维度</th><th>互联网时代</th><th>AI 时代</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role">核心驱动</td>
+            <td class="strong">连接(To C 为主)</td>
+            <td class="strong">智能(To B 为主,逐渐向 To C 渗透)</td>
+          </tr>
+          <tr>
+            <td class="role">红利获取者画像</td>
+            <td>长于营销、懂流量、敢砸钱买用户的人</td>
+            <td>长于技术整合、懂垂直行业、能优化工作流的人</td>
+          </tr>
+          <tr>
+            <td class="role">团队形态</td>
+            <td>烧钱扩张、人海战术,动辄千人规模</td>
+            <td>精兵简政、超级个体,几人公司估值过亿</td>
+          </tr>
+          <tr>
+            <td class="role">财富分配速度</td>
+            <td>需要规模效应,通常 5-10 年见大成效</td>
+            <td>技术爆炸快,踩中痛点 1-2 年即可爆发</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 残酷现实与破局 ========== -->
+<section id="breakthrough">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag amber">06 · 现实与破局</span>
+      <h2>从"草根逆袭"到"精英加速"</h2>
+      <p class="sec-desc">两代时代对普通人的友好度完全不同——认清现实,才能找准自己的位置。</p>
+    </div>
+
+    <div class="reality-wrap">
+      <div class="reality blue">
+        <h3>互联网时代 = 草根逆袭</h3>
+        <div class="tag">普通人翻身的时代</div>
+        <p>凭一腔热血和网感就能翻身:<b>低门槛、流量便宜、信息差大</b>,敢想敢干的人有机会白手起家。</p>
+      </div>
+      <div class="reality red">
+        <h3>AI 时代 = 精英加速</h3>
+        <div class="tag">普通人分羹变难的时代</div>
+        <p>底层算力与大模型的红利被<b>顶级资本垄断</b>;技术密集 + 资本密集,普通人很难在底层分一杯羹。</p>
+      </div>
+    </div>
+
+    <div class="breakthrough">
+      <div class="b-title">普通人的破局点:在"应用层",不在底层</div>
+      <ul>
+        <li><b>不要造大模型</b><small>底层被顶级资本与技术巨头垄断</small></li>
+        <li><b>成为"最会用 AI 解决具体问题的人"</b><small>把 AI 用在真实业务里,而不是停留在工具层面</small></li>
+        <li><b>懂行业 know-how(行业认知)</b><small>知道痛点在哪、结果好不好,这是 AI 给不了的</small></li>
+        <li><b>懂 AI 工具与工作流</b><small>能稳定跑起来、可评估、可迭代、可监控</small></li>
+      </ul>
+      <div class="formula">未来 5 年最大的红利获得者 = <b>行业 know-how(认知)+ 会用 AI 工具的人</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer>
+  <div class="wrap reveal">
+    <div class="sum-wrap">
+      <div class="sum blue">
+        <h4>互联网时代</h4>
+        <div class="formula">红利 = 消费端人口红利</div>
+        <p>赢在"把线下搬到线上、把内容塞给用户":造浪者、掘金者、卖水人、升级者依次接棒,本质拼的是连接速度与流量获取。</p>
+      </div>
+      <div class="sum violet">
+        <h4>AI 时代</h4>
+        <div class="formula">红利 = 应用层红利(对普通人)</div>
+        <p>底层算力与大模型归顶级资本;普通人的机会在应用层——"行业 know-how + 会用 AI"的人,是未来 5 年最大的红利获得者。</p>
+      </div>
+    </div>
+    <div class="foot-note">内容整理自对话讨论 · 2026-08-14</div>
+  </div>
+</footer>
+
+<script>
+  // 入场动画
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 导航高亮
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const map = {};
+  links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const link = map[e.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  ['logic','internet','ai','map','compare','breakthrough'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+</script>
+</body>
+</html>
