@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爆款B站视频分析方法论报告</title>
+<style>
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg-page: #131319;
+    --bg-card: #1e1e28;
+    --bg-card-hover: #25252f;
+    --bg-inset: #181820;
+    --text-primary: #e8e8ee;
+    --text-secondary: #a0a0ac;
+    --text-tertiary: #6b6b76;
+    --border: #2e2e3a;
+    --border-strong: #3d3d4a;
+    --accent: #5b8def;
+    --c-blue: #4a7fd6;
+    --c-blue-bg: #1a2740;
+    --c-teal: #2db886;
+    --c-teal-bg: #11352a;
+    --c-amber: #e0a632;
+    --c-amber-bg: #3a2e12;
+    --c-purple: #9b7ee0;
+    --c-purple-bg: #2a2147;
+    --c-red: #e25555;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg-page: #f4f4ef;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fafaf5;
+    --bg-inset: #f0f0ea;
+    --text-primary: #1a1a22;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #999992;
+    --border: #e2e2da;
+    --border-strong: #d0d0c8;
+    --accent: #185fa5;
+    --c-blue: #185fa5;
+    --c-blue-bg: #e6f1fb;
+    --c-teal: #0f6e56;
+    --c-teal-bg: #e1f5ee;
+    --c-amber: #854f0b;
+    --c-amber-bg: #faeeda;
+    --c-purple: #534ab7;
+    --c-purple-bg: #eeedfe;
+    --c-red: #a32d2d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s, color 0.3s;
+  }
+  .report {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* 主题切换 */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+  /* 报告头 */
+  .report-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .report-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .report-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .report-title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+  }
+  .report-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+  .report-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+  .report-meta span { display: inline-flex; align-items: center; gap: 5px; }
+  .report-meta span::before { content: "·"; color: var(--text-tertiary); }
+  .report-meta span:first-child::before { display: none; }
+
+  /* 摘要 */
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+  }
+  .summary-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .summary-text {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  .summary-text strong { color: var(--accent); font-weight: 600; }
+
+  /* 区块标题 */
+  .section { margin-bottom: 48px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  .section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* 四阶框架横向流程 */
+  .framework-flow {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .flow-step {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .flow-step:hover { background: var(--bg-card-hover); transform: translateY(-2px); }
+  .flow-step .step-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .flow-step.s1 .step-icon { background: var(--c-blue); }
+  .flow-step.s2 .step-icon { background: var(--c-teal); }
+  .flow-step.s3 .step-icon { background: var(--c-amber); }
+  .flow-step.s4 .step-icon { background: var(--c-purple); }
+  .flow-step .step-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .flow-step .step-q { font-size: 12px; color: var(--text-tertiary); }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--text-tertiary);
+    font-size: 18px;
+  }
+
+  /* 阶段详细卡片 */
+  .stage-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    display: flex;
+    transition: all 0.2s;
+  }
+  .stage-card:hover { border-color: var(--border-strong); }
+  .stage-bar { width: 5px; flex-shrink: 0; }
+  .stage-card.s1 .stage-bar { background: var(--c-blue); }
+  .stage-card.s2 .stage-bar { background: var(--c-teal); }
+  .stage-card.s3 .stage-bar { background: var(--c-amber); }
+  .stage-card.s4 .stage-bar { background: var(--c-purple); }
+  .stage-body { padding: 24px; flex: 1; }
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .stage-name { font-size: 17px; font-weight: 600; }
+  .stage-q { font-size: 13px; color: var(--text-tertiary); }
+  .stage-points { display: flex; flex-direction: column; gap: 12px; }
+  .point {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .point-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+  .s1 .point-dot { background: var(--c-blue); }
+  .s2 .point-dot { background: var(--c-teal); }
+  .s3 .point-dot { background: var(--c-amber); }
+  .s4 .point-dot { background: var(--c-purple); }
+  .point-content { flex: 1; }
+  .point-title { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .point-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .point-desc strong { color: var(--text-primary); font-weight: 600; }
+
+  /* 信号线表格 */
+  .signal-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .signal-table th {
+    background: var(--bg-inset);
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .signal-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+  }
+  .signal-table tr:last-child td { border-bottom: none; }
+  .signal-table tr:hover td { background: var(--bg-card-hover); }
+  .signal-table .metric { font-weight: 500; }
+  .signal-table .avg { color: var(--text-secondary); }
+  .signal-table .hot { color: var(--c-red); font-weight: 600; }
+  .signal-table .note { color: var(--text-tertiary); font-size: 12px; }
+
+  /* 落地建议 */
+  .advice-list { display: flex; flex-direction: column; gap: 14px; }
+  .advice-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.2s;
+  }
+  .advice-item:hover { background: var(--bg-card-hover); }
+  .advice-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--bg-inset);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .advice-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .advice-content p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* 下一步 */
+  .next-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .next-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .next-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .next-card p strong { color: var(--text-primary); }
+
+  /* 页脚 */
+  .report-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  /* 响应式 */
+  @media (max-width: 640px) {
+    .report { padding: 32px 16px 60px; }
+    .report-title { font-size: 22px; }
+    .framework-flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
+    .stage-card { flex-direction: column; }
+    .stage-bar { width: 100%; height: 4px; }
+    .signal-table { font-size: 12px; }
+    .signal-table th, .signal-table td { padding: 10px 12px; }
+    .report-meta { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()" title="切换主题">◐</button>
+
+<div class="report">
+
+  <header class="report-header">
+    <span class="report-tag">方法论报告</span>
+    <h1 class="report-title">爆款B站视频分析方法论</h1>
+    <p class="report-subtitle">数码家电赛道 · 四阶递进分析框架</p>
+    <div class="report-meta">
+      <span>超红传媒</span>
+      <span>2026-08-15</span>
+      <span>v1.0</span>
+      <span>适用于B站中长视频</span>
+    </div>
+  </header>
+
+  <section class="summary-card">
+    <div class="summary-label">核心观点</div>
+    <p class="summary-text">
+      爆款分析的本质是用数据倒推爆款基因，再把基因固化成可复用的SOP。完整链路分四阶：<strong>采数据（What）→ 找对标（Who）→ 拆归因（Why）→ 沉SOP（How）</strong>。关键不在最终数字，而在曲线形态、对标样本和因果归因。
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="num">1</span>四阶框架总览</h2>
+    <div class="framework-flow">
+      <div class="flow-step s1">
+        <div class="step-icon">1</div>
+        <div class="step-name">采数据</div>
+        <div class="step-q">What 抓什么</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step s2">
+        <div class="step-icon">2</div>
+        <div class="step-name">找对标</div>
+        <div class="step-q">Who 和谁比</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step s3">
+        <div class="step-icon">3</div>
+        <div class="step-name">拆归因</div>
+        <div class="step-q">Why 为什么爆</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step s4">
+        <div class="step-icon">4</div>
+        <div class="step-name">沉SOP</div>
+        <div class="step-q">How 怎么复用</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="num">2</span>各阶段拆解</h2>
+
+    <div class="stage-card s1">
+      <div class="stage-bar"></div>
+      <div class="stage-body">
+        <div class="stage-head">
+          <span class="stage-name">① 采数据</span>
+          <span class="stage-q">别只看总量，看曲线形态</span>
+        </div>
+        <div class="stage-points">
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">1小时曲线</div>
+              <div class="point-desc">发布后1小时是算法第一波推荐试金石。播放破千且互动率 > 5%，大概率进二阶流量池。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">6小时拐点</div>
+              <div class="point-desc">6小时增速无明显下滑，说明内容扛住推荐流筛选，进入扩散期。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">硬币/收藏比</div>
+              <div class="point-desc">数码家电赛道<strong>收藏率特别重要</strong>——用户把视频当选购参考存下来，收藏率 > 3% 通常是爆款信号。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">三联率</div>
+              <div class="point-desc">（点赞+硬币+收藏）/ 播放，达到数码家电均值的 <strong>2倍以上</strong>，基本可判定为内容型爆款。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-card s2">
+      <div class="stage-bar"></div>
+      <div class="stage-body">
+        <div class="stage-head">
+          <span class="stage-name">② 找对标</span>
+          <span class="stage-q">三层样本缺一不可</span>
+        </div>
+        <div class="stage-points">
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">同赛道对标</div>
+              <div class="point-desc">锁定数码家电分区近30天播放 Top20，重点看品类重合的（电视/清洁电器/厨卫等）。不只看数据，要看标题套路和封面设计。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">跨赛道学习</div>
+              <div class="point-desc">找知识区、科技区的破圈视频，研究怎么把硬核内容讲得有传播力——这是数码家电最该偷师的。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">自身历史复盘</div>
+              <div class="point-desc">把播放最高的5条视频拉出来横向比，找共性。往往自己都不知道哪条会爆，复盘能挖出隐藏成功因子。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-card s3">
+      <div class="stage-bar"></div>
+      <div class="stage-body">
+        <div class="stage-head">
+          <span class="stage-name">③ 拆归因</span>
+          <span class="stage-q">爆款的三个引擎</span>
+        </div>
+        <div class="stage-points">
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">流量引擎</div>
+              <div class="point-desc">B站创作中心可看流量来源占比。推荐流占 70% 以上 = 内容驱动；搜索占比高 = 选题命中长尾需求；站外占比高 = 有破圈传播。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">算法引擎</div>
+              <div class="point-desc">完播率是B站推荐核心权重。数码家电中长视频<strong>完播率 > 40%</strong> 算优秀；互动率（评论+弹幕）/ 播放 > 8% 触发二次推荐。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">内容引擎</div>
+              <div class="point-desc">拆解结构：开头3秒是否给钩子（悬念/冲突/利益点）、中段是否有节奏变化（避免平铺直叙）、结尾是否有互动引导（提问/投票/下期预告）。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">归因模板</div>
+              <div class="point-desc">每条爆款写一句"它爆是因为______"，填不出说明归因没做到位。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-card s4">
+      <div class="stage-bar"></div>
+      <div class="stage-body">
+        <div class="stage-head">
+          <span class="stage-name">④ 沉SOP</span>
+          <span class="stage-q">把单次成功变成可复制公式</span>
+        </div>
+        <div class="stage-points">
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">选题库</div>
+              <div class="point-desc">按品类归档爆款选题，标注四类标签：蹭热点型 / 知识干货型 / 横评对比型 / 避坑指南型。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">标题公式</div>
+              <div class="point-desc">从爆款里提炼可套用句式（如"2024年X款电视横评，这3款千万别买"）。</div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-dot"></div>
+            <div class="point-content">
+              <div class="point-title">结构checklist</div>
+              <div class="point-desc">开头钩子 → 痛点共鸣 → 核心内容 → 对比数据 → 结尾引导，每段标注时长占比。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="num">3</span>数码家电爆款信号线</h2>
+    <table class="signal-table">
+      <thead>
+        <tr>
+          <th>核心指标</th>
+          <th>赛道均值参考</th>
+          <th>爆款信号线</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric">完播率</td>
+          <td class="avg">25 - 35%</td>
+          <td class="hot">&gt; 40%</td>
+          <td class="note">推荐流核心权重</td>
+        </tr>
+        <tr>
+          <td class="metric">互动率</td>
+          <td class="avg">3 - 5%</td>
+          <td class="hot">&gt; 8%</td>
+          <td class="note">触发二次推荐</td>
+        </tr>
+        <tr>
+          <td class="metric">收藏率</td>
+          <td class="avg">1 - 2%</td>
+          <td class="hot">&gt; 3%</td>
+          <td class="note">数码家电尤其重要</td>
+        </tr>
+        <tr>
+          <td class="metric">三联率</td>
+          <td class="avg">2 - 4%</td>
+          <td class="hot">&gt; 6%</td>
+          <td class="note">综合质量信号</td>
+        </tr>
+        <tr>
+          <td class="metric">1小时播放</td>
+          <td class="avg">300 - 800</td>
+          <td class="hot">&gt; 1500</td>
+          <td class="note">一阶流量池入场</td>
+        </tr>
+        <tr>
+          <td class="metric">硬币率</td>
+          <td class="avg">1 - 3%</td>
+          <td class="hot">&gt; 4%</td>
+          <td class="note">用户认可度</td>
+        </tr>
+        <tr>
+          <td class="metric">弹幕密度</td>
+          <td class="avg">5-15条/千播</td>
+          <td class="hot">&gt; 30条/千播</td>
+          <td class="note">内容讨论度</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="num">4</span>落地建议</h2>
+    <div class="advice-list">
+      <div class="advice-item">
+        <div class="advice-num">1</div>
+        <div class="advice-content">
+          <h4>从自身历史Top5复盘切入</h4>
+          <p>成本最低、信号最准的起点。把5条视频的流量来源占比、完播率、内容结构拆解填进一张表，共性规律往往1次复盘就能浮现。</p>
+        </div>
+      </div>
+      <div class="advice-item">
+        <div class="advice-num">2</div>
+        <div class="advice-content">
+          <h4>建立爆款信号线预警表</h4>
+          <p>把赛道Top20各项指标中位数标出来，新视频发布后每小时比对一次，超线即预警，及时加推或调整运营策略。</p>
+        </div>
+      </div>
+      <div class="advice-item">
+        <div class="advice-num">3</div>
+        <div class="advice-content">
+          <h4>按品类归档选题库</h4>
+          <p>结合你已覆盖的家庭影院、清洁电器、厨卫、环境电器、水健康、笔记本六大领域，每品类维护独立爆款档案，标注四类选题标签。</p>
+        </div>
+      </div>
+      <div class="advice-item">
+        <div class="advice-num">4</div>
+        <div class="advice-content">
+          <h4>固化标题公式与结构checklist</h4>
+          <p>从爆款提炼可套用句式，把开头钩子→痛点→核心→对比→引导的结构写成拍摄/剪辑checklist，降低单条视频的创作不确定性。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="next-card">
+      <h4>下一步行动</h4>
+      <p>建议优先完成<strong>自身历史Top5爆款复盘表</strong>——这是整套方法论的第一个落地动作。填完后可逐步扩展到同赛道对标库和信号线预警体系。已有数据追踪体系可直接复用，无需重建采集层。</p>
+    </div>
+  </section>
+
+  <footer class="report-footer">
+    <span>超红传媒 · 数码家电内容运营</span>
+    <span>本报告为方法论框架，信号线数值为参考值，需结合实际数据校准</span>
+  </footer>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+}
+</script>
+</body>
+</html>
