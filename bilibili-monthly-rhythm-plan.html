@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月度 12 期固定节奏规律 · 通用模板 v8</title>
+<style>
+:root{
+  --bg:#f5f6f8;--card:#ffffff;--text:#1c1d21;--sub:#5b5e66;--line:#e3e5ea;
+  --brand1:#4f46e5;--brand2:#7c3aed;--brand-grad:linear-gradient(120deg,#4f46e5,#7c3aed);
+  --tv:#185fa5;--tv-bg:#e6f1fb;--tv-line:#b5d4f4;
+  --vac:#0f6e56;--vac-bg:#e1f5ee;--vac-line:#9fe1cb;
+  --wash:#854f0b;--wash-bg:#faeeda;--wash-line:#fac775;
+  --s:#a32d2d;--s-bg:#fcebeb;
+  --b:#534ab7;--b-bg:#eeedfe;
+}
+[data-theme="dark"]{
+  --bg:#121318;--card:#1a1c22;--text:#e8e8ea;--sub:#9a9aa0;--line:#2c2f38;
+  --tv:#85b7eb;--tv-bg:rgba(24,95,165,.16);--tv-line:rgba(133,183,235,.4);
+  --vac:#5dcaa5;--vac-bg:rgba(15,110,86,.16);--vac-line:rgba(93,202,165,.4);
+  --wash:#ef9f27;--wash-bg:rgba(133,79,11,.18);--wash-line:rgba(239,159,39,.4);
+  --s:#f09595;--s-bg:rgba(163,45,45,.18);
+  --b:#afa9ec;--b-bg:rgba(83,74,183,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.7;min-width:320px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+.hero{background:var(--brand-grad);color:#fff;padding:44px 0 36px;border-radius:0 0 24px 24px;position:relative}
+.hero .tag{display:inline-block;font-size:13px;padding:3px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:26px;font-weight:600;letter-spacing:.5px}
+.hero p{margin-top:10px;font-size:14px;opacity:.92;max-width:780px}
+.hero .chip{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:2px 10px;border-radius:999px;font-size:13px;margin:12px 6px 0 0}
+
+.theme-btn{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+.theme-btn:hover{background:rgba(255,255,255,.28)}
+
+.sec{margin:30px 0}
+.sec h2{font-size:19px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.sec h2 .no{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:9px;background:var(--brand-grad);color:#fff;font-size:14px;padding:0 8px}
+.sec .lead{color:var(--sub);font-size:13px;margin-bottom:16px}
+
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g3,.g2{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.kpi-top{display:flex;gap:14px}
+@media(max-width:900px){.kpi-top{flex-wrap:wrap}.kpi-top .card{flex:1 1 40%}}
+.kpi-top .card{flex:1;text-align:center;padding:20px 14px}
+.kpi-top .num{font-size:30px;font-weight:600;background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.kpi-top .lbl{font-size:13px;color:var(--sub);margin-top:4px}
+.kpi-top .sub{font-size:13px;margin-top:6px;color:var(--text)}
+
+.rule{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.rule .ic{flex-shrink:0;width:34px;height:34px;border-radius:10px;background:var(--brand-grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+.rule b{font-size:14px;display:block;margin-bottom:3px}
+.rule p{font-size:13px;color:var(--sub)}
+
+.catline{display:grid;grid-template-columns:86px 1fr;gap:12px;margin-bottom:12px;align-items:stretch}
+@media(max-width:640px){.catline{grid-template-columns:1fr}}
+.catline .cn{background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px}
+.catline .cn b{font-size:15px}
+.catline .cn span{font-size:13px;color:var(--sub)}
+.catline .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:640px){.catline .flow{grid-template-columns:repeat(2,1fr)}}
+.flow .step{position:relative;border-radius:12px;padding:10px 10px 9px;border:1px solid var(--line);background:var(--card)}
+.flow .step b{font-size:13.5px;display:block;margin-top:4px}
+.flow .step span{font-size:13px;color:var(--sub)}
+.flow .step .wk{font-size:13px;font-weight:600}
+.flow .step::after{content:"›";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--sub);font-size:15px;z-index:2}
+.flow .step:last-child::after{content:""}
+@media(max-width:640px){.flow .step:nth-child(2)::after{content:""}}
+.cl-tv{background:var(--tv-bg)!important;border-color:var(--tv-line)!important}
+.cl-tv .wk{color:var(--tv)}
+.cl-va{background:var(--vac-bg)!important;border-color:var(--vac-line)!important}
+.cl-va .wk{color:var(--vac)}
+.cl-wa{background:var(--wash-bg)!important;border-color:var(--wash-line)!important}
+.cl-wa .wk{color:var(--wash)}
+.step.lv-s{border-color:var(--s)!important;background:var(--s-bg)!important}
+.step.lv-s b{color:var(--s)}
+.step .lvchip{display:inline-block;font-size:13px;font-weight:600;color:#fff;background:var(--brand2);border-radius:6px;padding:0 7px;line-height:18px}
+.step.lv-s .lvchip{background:var(--s)}
+.step.lv-b .lvchip{background:var(--b)}
+
+.cal{width:100%;border-collapse:separate;border-spacing:8px}
+.cal th{font-size:13.5px;font-weight:600;padding:8px 6px;text-align:center;color:var(--text)}
+.cal th small{display:block;font-size:13px;font-weight:400;color:var(--sub);margin-top:2px}
+.cal th small.hot{color:var(--s)}
+.cal td.r{width:64px;font-size:13px;color:var(--sub);text-align:right;vertical-align:middle;padding-right:6px}
+.cal td.r b{display:block;font-size:13.5px;color:var(--text);font-weight:600}
+.cal td.c{padding:0}
+.slot{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 10px;min-height:88px;position:relative}
+.slot .lv{position:absolute;top:8px;left:8px;min-width:22px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;padding:0 5px}
+.slot b{display:block;font-size:13.5px;margin:2px 0 2px 34px}
+.slot span{display:block;font-size:13px;color:var(--sub)}
+.slot.sv{border-color:var(--tv-line);background:var(--tv-bg)}
+.slot.va{border-color:var(--vac-line);background:var(--vac-bg)}
+.slot.wa{border-color:var(--wash-line);background:var(--wash-bg)}
+.slot.slv{background:var(--s-bg);border-color:var(--s)}
+.slot.slv b{color:var(--s)}
+.slot .hot{color:var(--s);font-weight:500}
+@media(max-width:640px){.cal{display:block}.cal thead{display:none}.cal tbody,.cal tr,.cal td{display:block}.cal td.r{width:auto;text-align:left;padding:14px 2px 4px;color:var(--text)}.cal td.r b{display:inline}.slot{min-height:0}}
+
+.tl{display:flex;gap:0;overflow-x:auto;padding:14px 4px 6px}
+.tl .node{flex:1;min-width:118px;text-align:center;position:relative;padding:22px 8px 0;border-top:2px solid var(--line)}
+.tl .node::before{content:"";position:absolute;top:-7px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--brand2);transform:translateX(-50%);border:2px solid var(--card)}
+.tl .node b{font-size:13.5px;display:block}
+.tl .node b.day{font-size:14px}
+.tl .node span{font-size:13px;color:var(--sub);display:block;margin-top:2px}
+.tl .node .gap{display:inline-block;font-size:13px;font-weight:600;margin-top:6px;padding:1px 9px;border-radius:999px;background:var(--s-bg);color:var(--s)}
+.tl .n-tv::before{background:var(--tv)}.tl .n-va::before{background:var(--vac)}
+.tl .n-wa::before{background:var(--wash)}.tl .n-jd::before{background:var(--s)}
+.tl .n-tv{border-top-color:var(--tv-line)}.tl .n-va{border-top-color:var(--vac-line)}
+.tl .n-wa{border-top-color:var(--wash-line)}.tl .n-jd{border-top-color:var(--s)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);border-radius:14px;overflow:hidden}
+.tbl th{background:var(--brand-grad);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:13.5px}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600;white-space:nowrap}
+.tbl .muted{color:var(--sub)}
+
+.pcat{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.pcat button{font-size:13.5px;padding:6px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.pcat button.on{background:var(--brand-grad);color:#fff;border-color:transparent}
+.panel{display:none}
+.panel.on{display:block}
+.plist{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:800px){.plist{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.plist{grid-template-columns:1fr}}
+.pitem{border-radius:12px;padding:14px;border:1px solid var(--line);background:var(--card);position:relative}
+.pitem .wk{font-size:13px;font-weight:600;color:var(--sub)}
+.pitem b{font-size:14px;display:block;margin:4px 0}
+.pitem span{font-size:13px;color:var(--sub)}
+.pitem .lv{position:absolute;top:12px;right:12px;min-width:22px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;padding:0 5px}
+.pit-tv{border-left:4px solid var(--tv)}.pit-va{border-left:4px solid var(--vac)}.pit-wa{border-left:4px solid var(--wash)}
+.pit-slv{background:var(--s-bg);border-color:var(--s)}
+.pit-slv b{color:var(--s)}
+
+.note{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px;font-size:13px;color:var(--sub)}
+.foot{text-align:center;padding:30px 0 40px;font-size:13px;color:var(--sub)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <button class="theme-btn" id="themeBtn">切换主题</button>
+    <span class="tag">B站运营 · 排期方案 v8 · 通用模板</span>
+    <h1>月度 12 期固定节奏规律</h1>
+    <p>每月完全一致的节奏引擎：固定档位 × 内容循环 × 先测后榜 × 出榜窗口。本页不绑定具体月份——档位按每月日历自动落位（每月第 1 个周二 = 电视档，以此类推），出榜窗口统一对齐每月 18 日大促，月月可复用。</p>
+    <div>
+      <span class="chip">固定档位 周二视 · 周四扫 · 周六洗</span>
+      <span class="chip">12 期 = 3 品类 × 4 期</span>
+      <span class="chip">出榜窗口 day8-12</span>
+      <span class="chip">等级 S3 · A6 · B3</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="sec">
+    <div class="kpi-top">
+      <div class="card"><div class="num">12期</div><div class="lbl">月度总量</div><div class="sub">= 3 品类 × 4 期，无独立创新位</div></div>
+      <div class="card"><div class="num">每周3期</div><div class="lbl">三品类全覆盖</div><div class="sub">每品类固定星期，周周 1 次触点</div></div>
+      <div class="card"><div class="num">day8-12</div><div class="lbl">出榜窗口</div><div class="sub">提前 6-10 天对齐每月 18 日</div></div>
+      <div class="card"><div class="num">S3·A6·B3</div><div class="lbl">等级分布</div><div class="sub">每品类 1S 榜 + 2A + 1B 混脸熟</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">01</span>五条固定规律</h2>
+    <p class="lead">这五条是月度节奏的"宪法"，每月直接套用，不做任何重新决策。</p>
+    <div class="rule"><div class="ic">1</div><div><b>固定档位</b><p>电视永远周二、扫地机永远周四、洗地机永远周六，周周不漂移。观众形成"周二看电视 / 周四看扫地机 / 周六看洗地机"的追更心智，算法稳定识别垂直定位。</p></div></div>
+    <div class="rule"><div class="ic">2</div><div><b>内容循环</b><p>每品类每月按固定顺序循环：W1 品牌系列 → W2 单品类多品牌榜 → W3 混脸熟 → W4 场景测试，月月重复、四季不变，主编排期零决策成本。</p></div></div>
+    <div class="rule"><div class="ic">3</div><div><b>先测后榜</b><p>W1 品牌系列 = 当月榜增量数据源（3-7 天入库窗口）；W4 场景测试 = 下月榜增量数据源。每月榜单 = 上月 W4 + 当月 W1 + 测评库存量，滚动复利、永不倒灌。</p></div></div>
+    <div class="rule"><div class="ic">4</div><div><b>出榜窗口 day8-12</b><p>三张榜集中在每月 18 日前 6-10 天的窗口内按各自档位连发：电视最早（提前 10 天）、扫地机居中（提前 8 天）、洗地机最晚（提前 6 天），全部在 16 日预热前出完。</p></div></div>
+    <div class="rule"><div class="ic">5</div><div><b>大促避坑轮换</b><p>17 日 20:00 的大促避坑指南（3 值 2 避）不新增档期，由 W3 周四扫地机 B 混脸熟位轮换承接。B 位每月轮换形态：互动提问榜 / 商单 / 整活 / 大促避坑。</p></div></div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">02</span>固定档位 × 内容循环</h2>
+    <p class="lead">每品类一条节奏线，四条线同步循环；W2 的榜单段（红）是每月的核心资产。</p>
+    <div class="catline">
+      <div class="cn"><b>电视</b><span>决策最长 · 最先出榜</span></div>
+      <div class="flow">
+        <div class="step cl-tv"><span class="wk">W1</span><span class="lvchip">A</span><b>品牌系列</b><span>全系定位 · 喂当月榜</span></div>
+        <div class="step cl-tv lv-s"><span class="wk">W2</span><span class="lvchip">S</span><b>电视榜</b><span>day8 · 提前10天</span></div>
+        <div class="step cl-tv"><span class="wk">W3</span><span class="lvchip lv-b">B</span><b>混脸熟</b><span>互动提问榜</span></div>
+        <div class="step cl-tv"><span class="wk">W4</span><span class="lvchip">A</span><b>场景测试</b><span>抗反光/画质/颜值 · 喂下月榜</span></div>
+      </div>
+    </div>
+    <div class="catline">
+      <div class="cn"><b>扫地机</b><span>互动型 · 弹幕密度高</span></div>
+      <div class="flow">
+        <div class="step cl-va"><span class="wk">W1</span><span class="lvchip">A</span><b>品牌系列</b><span>全系定位 · 喂当月榜</span></div>
+        <div class="step cl-va lv-s"><span class="wk">W2</span><span class="lvchip">S</span><b>扫地机榜</b><span>day10 · 提前8天</span></div>
+        <div class="step cl-va"><span class="wk">W3</span><span class="lvchip lv-b">B</span><b>混脸熟</b><span>大促避坑 3值2避</span></div>
+        <div class="step cl-va"><span class="wk">W4</span><span class="lvchip">A</span><b>场景测试</b><span>避障/毛发/地毯 · 喂下月榜</span></div>
+      </div>
+    </div>
+    <div class="catline">
+      <div class="cn"><b>洗地机</b><span>最稀缺 · 蓝海占位</span></div>
+      <div class="flow">
+        <div class="step cl-wa"><span class="wk">W1</span><span class="lvchip">A</span><b>品牌系列</b><span>全系定位 · 喂当月榜</span></div>
+        <div class="step cl-wa lv-s"><span class="wk">W2</span><span class="lvchip">S</span><b>洗地机榜</b><span>day12 · 提前6天</span></div>
+        <div class="step cl-wa"><span class="wk">W3</span><span class="lvchip lv-b">B</span><b>混脸熟</b><span>整活 · 榜单解读</span></div>
+        <div class="step cl-wa"><span class="wk">W4</span><span class="lvchip">A</span><b>场景测试</b><span>污渍/自清洁 · 喂下月榜</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">03</span>通用月度日历</h2>
+    <p class="lead">每月一样：W1 实测 → W2 出榜 → W3 大促 → W4 蓄水。档位 = 每月固定星期，日期随月历自动落位；W2 的三个档位日天然落在 day8-12 出榜窗口内。</p>
+    <div class="card" style="padding:10px">
+      <table class="cal">
+        <thead><tr>
+          <th></th>
+          <th>周二 · 电视档<small>固定星期二</small></th>
+          <th>周四 · 扫地机档<small>固定星期四</small></th>
+          <th>周六 · 洗地机档<small>固定星期六</small></th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="r"><b>W1 实测</b>day1-7</td>
+            <td class="c"><div class="slot sv"><span class="lv">A</span><b>电视 · 品牌系列</b><span>全系定位 · 喂当月榜</span></div></td>
+            <td class="c"><div class="slot va"><span class="lv">A</span><b>扫地机 · 品牌系列</b><span>全系定位 · 喂当月榜</span></div></td>
+            <td class="c"><div class="slot wa"><span class="lv">A</span><b>洗地机 · 品牌系列</b><span>全系定位 · 喂当月榜</span></div></td>
+          </tr>
+          <tr>
+            <td class="r"><b>W2 出榜</b>day8-14</td>
+            <td class="c"><div class="slot sv slv"><span class="lv">S</span><b>电视榜</b><span>提前 10 天 · 窗口最长</span></div></td>
+            <td class="c"><div class="slot va slv"><span class="lv">S</span><b>扫地机榜</b><span>提前 8 天 · 24h 必看窗口</span></div></td>
+            <td class="c"><div class="slot wa slv"><span class="lv">S</span><b>洗地机榜</b><span>提前 6 天 · 紧贴大促</span></div></td>
+          </tr>
+          <tr>
+            <td class="r"><b>W3 大促</b>day15-21</td>
+            <td class="c"><div class="slot sv"><span class="lv lv-b">B</span><b>电视 · 混脸熟</b><span>互动提问榜</span></div></td>
+            <td class="c"><div class="slot va"><span class="lv lv-b">B</span><b>扫地机 · 大促避坑</b><span>17 日 20:00 · 3 值 2 避</span></div></td>
+            <td class="c"><div class="slot wa"><span class="lv lv-b">B</span><b>洗地机 · 混脸熟</b><span>整活 · 榜单解读</span></div></td>
+          </tr>
+          <tr>
+            <td class="r"><b>W4 蓄水</b>day22-30</td>
+            <td class="c"><div class="slot sv"><span class="lv">A</span><b>电视 · 场景测试</b><span>抗反光/画质/颜值 · 喂下月榜</span></div></td>
+            <td class="c"><div class="slot va"><span class="lv">A</span><b>扫地机 · 场景测试</b><span>避障/毛发/地毯 · 喂下月榜</span></div></td>
+            <td class="c"><div class="slot wa"><span class="lv">A</span><b>洗地机 · 场景测试</b><span>污渍/自清洁 · 喂下月榜</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--sub);margin-top:10px">数据流方向：W1 品牌系列（测）→ W2 当月榜（印）；W4 场景测试（测）→ 下月 W1/W2（印）。每月日历完全一致，替换月历日期即可复用。</p>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">04</span>出榜窗口时间轴（day 编号 · 每月通用）</h2>
+    <p class="lead">day N = 每月第 N 日。三榜集中在 16 日预热前出完，用户 16-17 日领券加购时恰逢榜单热度高峰。</p>
+    <div class="card">
+      <div class="tl">
+        <div class="node n-tv"><b class="day">day8</b><b>电视榜</b><span>决策最长 · 最早出</span><span class="gap">提前10天</span></div>
+        <div class="node n-va"><b class="day">day10</b><b>扫地机榜</b><span>7-14 天决策窗口</span><span class="gap">提前8天</span></div>
+        <div class="node n-wa"><b class="day">day12</b><b>洗地机榜</b><span>最稀缺 · 最后埋点</span><span class="gap">提前6天</span></div>
+        <div class="node n-jd"><b class="day">day16</b><b>京东预热</b><span>领券 / 加购 / 抽红包</span></div>
+        <div class="node n-jd"><b class="day">day17</b><b>大促爆发</b><span>20:00 起 · 避坑指南同步</span></div>
+        <div class="node n-jd"><b class="day">day18</b><b>大促正日</b><span>评论区答疑 · 晒单楼</span></div>
+        <div class="node n-jd"><b class="day">day21</b><b>红包到期</b><span>下单缓冲结束</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">05</span>品类月度节奏（点按切换）</h2>
+    <p class="lead">三个主编各管一条线，每品类每月固定 4 期 + 各自的 KPI 考核基线。</p>
+    <div class="pcat" id="pcat">
+      <button class="on" data-p="tv">电视</button>
+      <button data-p="va">扫地机</button>
+      <button data-p="wa">洗地机</button>
+    </div>
+    <div class="panel on" id="pn-tv">
+      <div class="plist">
+        <div class="pitem pit-tv"><span class="lv" style="background:var(--b)">B</span><span class="wk">W1 · 周二</span><b>品牌系列</b><span>品牌特点 · 型号优缺点解读</span></div>
+        <div class="pitem pit-tv pit-slv"><span class="lv" style="background:var(--s)">S</span><span class="wk">W2 · 周二</span><b>电视榜</b><span>单品类多品牌混排 · day8</span></div>
+        <div class="pitem pit-tv"><span class="lv" style="background:var(--b)">B</span><span class="wk">W3 · 周二</span><b>混脸熟</b><span>互动提问榜 / 商单 / 整活</span></div>
+        <div class="pitem pit-tv"><span class="lv" style="background:var(--tv)">A</span><span class="wk">W4 · 周二</span><b>场景测试</b><span>抗反射 / 画质 / 颜值 · 喂下月榜</span></div>
+      </div>
+      <div class="note" style="margin-top:12px"><b>KPI 基线：</b>S 榜完播 ≥45% · 收藏 ≥5%；A 级完播 ≥40%；B 级 CTR ≥5% · 搜索流量 ≥35%。三条红线：缺点 ≥3 / 数据入库 100% / 方法可复现。</div>
+    </div>
+    <div class="panel" id="pn-va">
+      <div class="plist">
+        <div class="pitem pit-va"><span class="lv" style="background:var(--b)">B</span><span class="wk">W1 · 周四</span><b>品牌系列</b><span>品牌特点 · 型号优缺点解读</span></div>
+        <div class="pitem pit-va pit-slv"><span class="lv" style="background:var(--s)">S</span><span class="wk">W2 · 周四</span><b>扫地机榜</b><span>单品类多品牌混排 · day10</span></div>
+        <div class="pitem pit-va"><span class="lv" style="background:var(--b)">B</span><span class="wk">W3 · 周四</span><b>混脸熟</b><span>大促月轮换为避坑指南</span></div>
+        <div class="pitem pit-va"><span class="lv" style="background:var(--vac)">A</span><span class="wk">W4 · 周四</span><b>场景测试</b><span>避障 / 毛发 / 地毯 · 喂下月榜</span></div>
+      </div>
+      <div class="note" style="margin-top:12px"><b>KPI 基线：</b>S 榜 CTR ≥6% · 弹幕密度（互动型品类加分项）；A 级完播 ≥40%；B 级互动率 · 弹幕密度。三条红线同上。</div>
+    </div>
+    <div class="panel" id="pn-wa">
+      <div class="plist">
+        <div class="pitem pit-wa"><span class="lv" style="background:var(--b)">B</span><span class="wk">W1 · 周六</span><b>品牌系列</b><span>品牌特点 · 型号优缺点解读</span></div>
+        <div class="pitem pit-wa pit-slv"><span class="lv" style="background:var(--s)">S</span><span class="wk">W2 · 周六</span><b>洗地机榜</b><span>单品类多品牌混排 · day12</span></div>
+        <div class="pitem pit-wa"><span class="lv" style="background:var(--b)">B</span><span class="wk">W3 · 周六</span><b>混脸熟</b><span>整活 · 榜单解读</span></div>
+        <div class="pitem pit-wa"><span class="lv" style="background:var(--wash)">A</span><span class="wk">W4 · 周六</span><b>场景测试</b><span>污渍矩阵 / 自清洁 · 喂下月榜</span></div>
+      </div>
+      <div class="note" style="margin-top:12px"><b>KPI 基线：</b>S 榜搜索增速最快（蓝海占位）；A/B 完播 ≥38%（功能驱动型 · 看结论就走）；B 级数据入库率。三条红线同上。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">06</span>发布 / 投流 / KPI 规律</h2>
+    <p class="lead">三条执行规律：发布管时间、投流管预算、KPI 管考核，全部按月固定。</p>
+    <div class="grid g3">
+      <div class="card">
+        <b style="font-size:14.5px;display:block;margin-bottom:10px">发布规律</b>
+        <p style="font-size:13px;color:var(--sub)">· S/A 级固定 18:00-20:00 发布</p>
+        <p style="font-size:13px;color:var(--sub)">· S 榜永不延期（改期 = 失信）</p>
+        <p style="font-size:13px;color:var(--sub)">· 唯一例外：17 日 20:00 大促避坑卡爆发点</p>
+        <p style="font-size:13px;color:var(--sub)">· W2 每张榜发布后 1-6 天内赶必看榜窗口</p>
+      </div>
+      <div class="card">
+        <b style="font-size:14.5px;display:block;margin-bottom:10px">投流规律</b>
+        <p style="font-size:13px;color:var(--sub)">· S 榜 50-60% 预算 · 三阶段漏斗（0-2h 冷启动 CTR≥5% → 2-24h 放量完播≥45% → 24-72h 冲刺）</p>
+        <p style="font-size:13px;color:var(--sub)">· A 级 30-40% · 观察 12-24h 达标才轻投 10-15%</p>
+        <p style="font-size:13px;color:var(--sub)">· B 级 5-10% · 不投，爆了再追</p>
+      </div>
+      <div class="card">
+        <b style="font-size:14.5px;display:block;margin-bottom:10px">KPI 规律</b>
+        <p style="font-size:13px;color:var(--sub)">· 三主编各考 4 期（1S + 1A品牌 + 1B混脸熟 + 1A场景）</p>
+        <p style="font-size:13px;color:var(--sub)">· 考核节奏：48h 初评 → 7 天终评 → 每月 15 日复盘</p>
+        <p style="font-size:13px;color:var(--sub)">· 三条红线：缺点 ≥3 / 数据入库 100% / 方法可复现</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">07</span>v7 → v8 规律对照</h2>
+    <p class="lead">本次版本唯一变化就是"规律"本身：档位、数据流、出榜节奏三条被重新校直。</p>
+    <table class="tbl">
+      <tr><th style="width:18%">规律</th><th style="width:41%">v7（作废）</th><th>v8（现行）</th></tr>
+      <tr><td>档位</td><td class="muted">品类星期漂移，观众无法形成追更习惯</td><td><b>固定档位</b>：周二视 / 周四扫 / 周六洗，周周不漂移</td></tr>
+      <tr><td>内容循环</td><td class="muted">每周内容随机排布</td><td><b>四连拍循环</b>：W1 品牌 → W2 榜 → W3 混脸熟 → W4 场景，月月重复</td></tr>
+      <tr><td>数据流</td><td class="muted">榜在测前（电视场景晚于电视榜），数据倒灌</td><td><b>先测后榜</b>：W1 喂当月榜 · W4 喂下月榜，滚动复利</td></tr>
+      <tr><td>出榜节奏</td><td class="muted">每周四各一张，洗地机榜撞 17 日大促日</td><td><b>day8-12 集中连发</b>：电视最早（-10天）→ 扫地机（-8天）→ 洗地机（-6天）</td></tr>
+      <tr><td>大促避坑</td><td class="muted">需额外占期</td><td><b>轮换制</b>：并入 W3 周四 B 混脸熟位，不新增档期</td></tr>
+    </table>
+  </div>
+
+  <div class="note">
+    <b>使用说明：</b>本模板每月 1 日自动启用——W1 周二档 = 每月第 1 个周二，W2 周二档 = 第 2 个周二，依此类推；出榜周（W2）的三个档位日天然落在每月 day8-12 区间。大促月（3/6/9/11）将 W3 周四混脸熟位切换为"大促避坑指南"形态即可，其余月份轮换为互动 / 商单 / 整活。
+  </div>
+
+  <div class="foot">依据：B站×益普索 2026 家电消费洞察 · 每周必看榜机制 · 京东超级 18 日节奏 · 差异化战略供需分析（2026-08）</div>
+
+</div>
+
+<script>
+  var k='ch-theme';
+  function apply(t){document.documentElement.setAttribute('data-theme',t)}
+  var t=localStorage.getItem(k);
+  if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';localStorage.setItem(k,t)}
+  apply(t);
+  var btn=document.getElementById('themeBtn');
+  btn.textContent=t==='dark'?'切换浅色':'切换深色';
+  btn.onclick=function(){
+    var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    apply(cur);localStorage.setItem(k,cur);btn.textContent=cur==='dark'?'切换浅色':'切换深色';
+  };
+  var tabs=document.querySelectorAll('#pcat button');
+  for(var i=0;i<tabs.length;i++){
+    tabs[i].onclick=function(){
+      for(var j=0;j<tabs.length;j++){tabs[j].classList.remove('on')}
+      this.classList.add('on');
+      var ps=document.querySelectorAll('.panel');
+      for(var n=0;n<ps.length;n++){ps[n].classList.remove('on')}
+      document.getElementById('pn-'+this.getAttribute('data-p')).classList.add('on');
+    };
+  }
+</script>
+</body>
+</html>
