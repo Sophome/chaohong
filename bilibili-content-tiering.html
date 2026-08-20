@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站内容分级与排期管理方案 | 超红传媒</title>
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e3e6ea;
+  --text:#1c2333; --text-2:#5a6478; --text-3:#8b94a7;
+  --accent:#4c5fe0; --accent-soft:#eceefb;
+  --s:#6d5ef0; --a:#0fa07a; --b:#2f7fd6; --c:#8b94a7;
+  --s-bg:#f1effd; --a-bg:#e8f7f1; --b-bg:#e9f2fc; --c-bg:#f1f2f4;
+  --shadow:0 1px 3px rgba(28,35,51,.06);
+}
+html[data-theme="dark"]{
+  --bg:#12151d; --surface:#1a1e29; --surface-2:#222736; --border:#2c3242;
+  --text:#e8ebf2; --text-2:#a6aec2; --text-3:#6f7890;
+  --accent:#7c8cf5; --accent-soft:#232842;
+  --s:#9a8df7; --a:#3ecf9e; --b:#6aaee8; --c:#8b94a7;
+  --s-bg:#241f45; --a-bg:#0e2b23; --b-bg:#12253c; --c-bg:#1f2432;
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .25s,color .25s}
+.hero{background:linear-gradient(135deg,#3a3f9e 0%,#4c5fe0 45%,#0fa07a 100%);color:#fff;padding:56px 24px 64px;position:relative}
+html[data-theme="dark"] .hero{background:linear-gradient(135deg,#252a55 0%,#37418f 45%,#0b5b45 100%)}
+.hero-inner{max-width:1080px;margin:0 auto}
+.hero-tag{display:inline-block;font-size:12px;letter-spacing:2px;opacity:.85;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:3px 14px;margin-bottom:18px}
+.hero h1{font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:1px;margin-bottom:12px}
+.hero p{max-width:640px;font-size:14px;opacity:.88}
+.theme-toggle{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;backdrop-filter:blur(4px)}
+.theme-toggle:hover{background:rgba(255,255,255,.28)}
+.container{max-width:1080px;margin:-32px auto 64px;padding:0 20px}
+.sec-title{display:flex;align-items:baseline;gap:12px;margin:48px 0 20px}
+.sec-title .no{font-size:13px;color:var(--accent);font-weight:600;letter-spacing:1px}
+.sec-title h2{font-size:20px;font-weight:600}
+.sec-title .sub{font-size:12px;color:var(--text-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+.principles{display:flex;gap:16px;flex-wrap:wrap}
+.principle{flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.principle h3{font-size:15px;margin-bottom:8px;color:var(--accent)}
+.principle p{font-size:13px;color:var(--text-2)}
+.tiers{display:flex;flex-direction:column;gap:14px}
+.tier{display:flex;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow)}
+.tier-badge{flex:0 0 96px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:600}
+.tier-badge .lv{font-size:26px}
+.tier-badge .nm{font-size:12px;opacity:.9;margin-top:2px}
+.tier-s .tier-badge{background:linear-gradient(160deg,var(--s),#4a3fc0)}
+.tier-a .tier-badge{background:linear-gradient(160deg,var(--a),#0a7a5c)}
+.tier-b .tier-badge{background:linear-gradient(160deg,var(--b),#1f5fa8)}
+.tier-c .tier-badge{background:linear-gradient(160deg,#9aa2b5,#6f7890)}
+.tier-body{flex:1;padding:18px 22px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.tier-body .goal{flex:2;min-width:200px}
+.tier-body .goal h3{font-size:15px;margin-bottom:4px}
+.tier-body .goal p{font-size:13px;color:var(--text-2)}
+.tier-body .forms{flex:2;min-width:200px;font-size:13px;color:var(--text-2)}
+.tier-body .forms b{display:block;font-size:12px;color:var(--text-3);font-weight:500;margin-bottom:2px}
+.tier-body .kpi{flex:1.4;min-width:170px;font-size:13px;background:var(--surface-2);border-radius:10px;padding:10px 14px}
+.tier-body .kpi b{display:block;font-size:12px;color:var(--text-3);font-weight:500;margin-bottom:2px}
+.tier-body .kpi .v{color:var(--text);font-weight:600}
+.scorer{display:flex;gap:28px;flex-wrap:wrap}
+.scorer-inputs{flex:1;min-width:300px;display:flex;flex-direction:column;gap:16px}
+.dim{display:flex;flex-direction:column;gap:6px}
+.dim-head{display:flex;justify-content:space-between;font-size:13px}
+.dim-head .name{font-weight:500}
+.dim-head .val{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums}
+.dim input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.dim .desc{font-size:12px;color:var(--text-3)}
+.scorer-result{flex:0 0 260px;background:var(--surface-2);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px}
+.scorer-result .total{font-size:42px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.scorer-result .lv-chip{font-size:14px;font-weight:600;border-radius:99px;padding:4px 20px;color:#fff}
+.scorer-result .tip{font-size:12px;color:var(--text-2)}
+.scorer-actions{margin-top:6px;display:flex;gap:10px}
+.scorer-actions button{border:1px solid var(--border);background:var(--surface);color:var(--text-2);border-radius:8px;padding:5px 14px;font-size:12px;cursor:pointer}
+.scorer-actions button:hover{color:var(--accent);border-color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;color:var(--text-3);font-weight:500;white-space:nowrap}
+td .strong{font-weight:600}
+.tbl-wrap{overflow-x:auto}
+.chip{display:inline-block;border-radius:6px;padding:1px 10px;font-size:12px;font-weight:600}
+.chip.s{background:var(--s-bg);color:var(--s)}
+.chip.a{background:var(--a-bg);color:var(--a)}
+.chip.b{background:var(--b-bg);color:var(--b)}
+.chip.c{background:var(--c-bg);color:var(--c)}
+.sched-note{font-size:12px;color:var(--text-3);margin-top:12px}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow-node{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);position:relative}
+.flow-node h4{font-size:14px;margin-bottom:6px}
+.flow-node p{font-size:12.5px;color:var(--text-2)}
+.flow-arrow{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:18px}
+.checklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.check-item{display:flex;gap:10px;align-items:flex-start;background:var(--surface-2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--text-2)}
+.check-item::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
+.foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
+@media (max-width:640px){
+  .tier-badge{flex-basis:72px}
+  .tier-body{flex-direction:column;align-items:stretch}
+  .scorer-result{flex:1 1 100%}
+  .flow-arrow{flex:1 1 100%;transform:rotate(90deg);height:34px}
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <button class="theme-toggle" onclick="toggleTheme()">深浅切换</button>
+  <div class="hero-inner">
+    <div class="hero-tag">CHAOHONG SOP · B站运营</div>
+    <h1>B站内容分级与排期管理方案</h1>
+    <p>SABC 四级内容体系：立项按战略目标分级，指标分治。S级买记忆，A级买信任，B级买流量，C级买活跃。</p>
+  </div>
+</div>
+<div class="container">
+
+  <div class="sec-title"><span class="no">01</span><h2>分级原则</h2><span class="sub">先定规则，再谈内容</span></div>
+  <div class="principles">
+    <div class="principle"><h3>按战略目标分级</h3><p>内容等级在立项时确定，不按事后播放量划分。播放量是结果，若S级项目没爆就降级考核，团队永远不敢做重投入内容。</p></div>
+    <div class="principle"><h3>指标分治</h3><p>每一级只考核属于自己的KPI：A级考完播率而非播放量，S级考涨粉与上榜而非完播率。用错尺子会杀死正确的事。</p></div>
+    <div class="principle"><h3>风险隔离</h3><p>S级冲榜天然带博弈属性，失败是正常成本。季度1-2个的频率，保证单次失败不伤账号基本盘。</p></div>
+  </div>
+
+  <div class="sec-title"><span class="no">02</span><h2>四级体系总览</h2><span class="sub">不同等级，不同的钱花在不同的地方</span></div>
+  <div class="tiers">
+    <div class="tier tier-s">
+      <div class="tier-badge"><span class="lv">S</span><span class="nm">事件级</span></div>
+      <div class="tier-body">
+        <div class="goal"><h3>冲必看榜 · 破圈涨粉</h3><p>季度 1-2 个，重投入。目标是被记住，买的是"记忆"。</p></div>
+        <div class="forms"><b>典型形态</b>排名赛跑可视化、观众盲测会、极限场景实测、大规模拆机对比</div>
+        <div class="kpi"><b>核心KPI</b><span class="v">播放量级 · 涨粉数 · 是否上榜</span></div>
+      </div>
+    </div>
+    <div class="tier tier-a">
+      <div class="tier-badge"><span class="lv">A</span><span class="nm">支柱级</span></div>
+      <div class="tier-body">
+        <div class="goal"><h3>建立品类信任 · 养铁粉</h3><p>周更或双周，中高投入。买的是"信任"。</p></div>
+        <div class="forms"><b>典型形态</b>深度横评、拆机验用料、长测记录、年度榜单</div>
+        <div class="kpi"><b>核心KPI</b><span class="v">完播率 ≥40% · 三连率 ≥8% · 收藏率 ≥3%</span></div>
+      </div>
+    </div>
+    <div class="tier tier-b">
+      <div class="tier-badge"><span class="lv">B</span><span class="nm">流量级</span></div>
+      <div class="tier-body">
+        <div class="goal"><h3>搜索承接 · 长尾转化</h3><p>每周 1-2 支，标准投入。买的是"流量"。</p></div>
+        <div class="forms"><b>典型形态</b>单品测评、价位段选购攻略、避坑指南（标题埋真实搜索词）</div>
+        <div class="kpi"><b>核心KPI</b><span class="v">CTR ≥5% · 搜索流量占比 · 导流转化</span></div>
+      </div>
+    </div>
+    <div class="tier tier-c">
+      <div class="tier-badge"><span class="lv">C</span><span class="nm">日常级</span></div>
+      <div class="tier-body">
+        <div class="goal"><h3>维持存在感 · 互动养号</h3><p>高频穿插，轻投入。买的是"活跃"。</p></div>
+        <div class="forms"><b>典型形态</b>短视频、动态、直播切片、幕后花絮、评论区问答</div>
+        <div class="kpi"><b>核心KPI</b><span class="v">互动率 · 弹幕密度</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">03</span><h2>立项评分器</h2><span class="sub">拿一个选题来打分，五维定级</span></div>
+  <div class="card">
+    <div class="scorer">
+      <div class="scorer-inputs">
+        <div class="dim">
+          <div class="dim-head"><span class="name">投入规模 <span style="color:var(--text-3);font-weight:400">×0.25</span></span><span class="val" id="v1">3</span></div>
+          <input type="range" min="1" max="5" value="3" oninput="score()">
+          <div class="desc">成本、周期、人力：轻量拍摄=1，包场地/多机位/数月长测=5</div>
+        </div>
+        <div class="dim">
+          <div class="dim-head"><span class="name">不可复制性 <span style="color:var(--text-3);font-weight:400">×0.25</span></span><span class="val" id="v2">3</span></div>
+          <input type="range" min="1" max="5" value="3" oninput="score()">
+          <div class="desc">只有我们做得出来吗：谁都能拍=1，独家方法/数据管线/资源=5</div>
+        </div>
+        <div class="dim">
+          <div class="dim-head"><span class="name">结论冲击力 <span style="color:var(--text-3);font-weight:400">×0.2</span></span><span class="val" id="v3">3</span></div>
+          <input type="range" min="1" max="5" value="3" oninput="score()">
+          <div class="desc">有没有反常识/争议点：平铺直叙=1，"第一你可能想不到"=5</div>
+        </div>
+        <div class="dim">
+          <div class="dim-head"><span class="name">决策承接需求 <span style="color:var(--text-3);font-weight:400">×0.2</span></span><span class="val" id="v4">3</span></div>
+          <input type="range" min="1" max="5" value="3" oninput="score()">
+          <div class="desc">能承接多大的搜索与选购流量：冷门品类=1，价位段刚需=5</div>
+        </div>
+        <div class="dim">
+          <div class="dim-head"><span class="name">弹幕梗点潜力 <span style="color:var(--text-3);font-weight:400">×0.1</span></span><span class="val" id="v5">3</span></div>
+          <input type="range" min="1" max="5" value="3" oninput="score()">
+          <div class="desc">氛围感：无可讨论=1，自带争议/名场面潜力=5</div>
+        </div>
+      </div>
+      <div class="scorer-result">
+        <div class="total" id="total">3.0</div>
+        <div class="lv-chip" id="lvchip" style="background:var(--b)">B 级 · 流量级</div>
+        <div class="tip" id="lvtip">标准投入制作，重点优化标题封面与搜索词承接。</div>
+        <div class="scorer-actions">
+          <button onclick="resetScore()">重置</button>
+          <button onclick="window.print()">打印/存档</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">04</span><h2>季度排期模板</h2><span class="sub">一个标准季度的节奏示例（13周）</span></div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>周次</th><th>主线内容</th><th>等级</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>W1</td><td>品类价位段攻略（选题池top）</td><td><span class="chip b">B</span></td><td>季度开局先吃稳定流量</td></tr>
+        <tr><td>W2</td><td>深度横评：本季主打品类</td><td><span class="chip a">A</span></td><td>支柱内容，建立品类心智</td></tr>
+        <tr><td>W3</td><td>单品测评 + 短视频穿插</td><td><span class="chip b">B</span></td><td>C级动态同步导流</td></tr>
+        <tr><td>W4</td><td>拆机验用料</td><td><span class="chip a">A</span></td><td>信任向内容，敢说缺点</td></tr>
+        <tr><td class="strong">W5</td><td class="strong">S级项目发布（周四18-20点）</td><td><span class="chip s">S</span></td><td>冲每周必看榜数据窗口</td></tr>
+        <tr><td>W6</td><td>单品测评</td><td><span class="chip b">B</span></td><td>承接S级带来的新粉搜索</td></tr>
+        <tr><td>W7</td><td>长测中期报告</td><td><span class="chip a">A</span></td><td>延续信任线</td></tr>
+        <tr><td>W8</td><td>避坑指南</td><td><span class="chip b">B</span></td><td>评论区问题反哺选题</td></tr>
+        <tr><td>W9-W10</td><td>深度横评 + 单品测评</td><td><span class="chip a">A</span>+<span class="chip b">B</span></td><td>常规双线节奏</td></tr>
+        <tr><td class="strong">W11</td><td class="strong">S级项目2发布</td><td><span class="chip s">S</span></td><td>第二冲榜窗口（或商单共创）</td></tr>
+        <tr><td>W12</td><td>单品测评 + 短视频</td><td><span class="chip b">B</span></td><td>收尾承接</td></tr>
+        <tr><td>W13</td><td>季度数据复盘 + 年度榜单更新</td><td><span class="chip a">A</span></td><td>复盘沉淀方法论进S级弹药库</td></tr>
+      </tbody>
+    </table>
+    <div class="sched-note">节奏要点：S级发布前2周减量B级、集中资源预热；S级发布后1周加量B级承接新粉搜索。C级（动态/短视频/切片）全程穿插，不占主线排期。</div>
+  </div>
+
+  <div class="sec-title"><span class="no">05</span><h2>KPI 基线与考核</h2><span class="sub">每级只看自己的尺子</span></div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>等级</th><th>核心指标</th><th>及格线</th><th>优秀线</th><th>考核周期</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip s">S</span></td><td>播放量级 / 涨粉数</td><td>破账号常态3倍播放</td><td>破圈量级 + 单周涨粉峰值</td><td>发布后7天</td></tr>
+        <tr><td><span class="chip a">A</span></td><td>完播率 / 三连率 / 收藏率</td><td>40% / 6% / 2%</td><td>55% / 10% / 5%</td><td>发布后28天</td></tr>
+        <tr><td><span class="chip b">B</span></td><td>CTR / 搜索流量占比</td><td>5% / 15%</td><td>8% / 30%</td><td>发布后28天（长尾看90天）</td></tr>
+        <tr><td><span class="chip c">C</span></td><td>互动率 / 弹幕密度</td><td>互动率3%</td><td>互动率6% + 产生可复用梗</td><td>周维度汇总</td></tr>
+      </tbody>
+    </table>
+    <div class="sched-note">诊断口径：前30秒留存断崖=开头问题；中段50%-70%流失=结构冗长；三连率高但涨粉低=内容好但缺少关注理由（补人设/系列化钩子）。</div>
+  </div>
+
+  <div class="sec-title"><span class="no">06</span><h2>升降级机制</h2><span class="sub">分级体系的关键闭环</span></div>
+  <div class="card">
+    <div class="flow">
+      <div class="flow-node"><h4>B → A</h4><p>某选题CTR连续3支超基线、搜索长尾持续 → 升级为固定栏目系列（如"XX价位段"栏目化）。</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><h4>A → S</h4><p>A级验证过的方法论（评测维度、数据管线、拍摄流程）沉淀入弹药库，季度S级项目直接调用。</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><h4>C 反哺选题</h4><p>评论区高频问题、弹幕争议点、动态投票结果 → 直接进入B级选题池，供需缺口分析定期校准。</p></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">07</span><h2>S级冲榜SOP</h2><span class="sub">每周必看：先过数据门，再过编辑门</span></div>
+  <div class="card">
+    <div class="checklist">
+      <div class="check-item">选题过四要素：不可复制的投入 + 硬核方法 + 明确结论 + 弹幕梗点，缺一不做</div>
+      <div class="check-item">周四18-20点发布，为周五18:00榜单更新留足数据窗口</div>
+      <div class="check-item">标题封面：结果前置 + 具体数字 + 反常识，前30秒结论倒放</div>
+      <div class="check-item">发布前2小时在线，集中回评、置顶引导弹幕钩子（"你们猜第几名"）</div>
+      <div class="check-item">首日盯数据：前30秒留存、首小时CTR、弹幕密度异常点即时调整封面/简介</div>
+      <div class="check-item">视频导流tool-rank数据页，承接50天决策周期的反复搜索</div>
+      <div class="check-item">发布后1周加量B级内容承接新粉，避免涨粉后断供掉粉</div>
+      <div class="check-item">7天后复盘：无论上榜与否，方法论沉淀回S级弹药库</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    数据依据：B站×益普索《2026年轻人智能家电消费洞察报告》（81%用户信任深度测评、76%认为影响购买决策、80%高客单用户约50天/5次触点种草）；每周必看机制（每周五18:00更新50支，2025年上榜商单占比24%）；案例参考：先看评测、笔吧评测室、家电侦探平雪等。 · 超红传媒 B站运营 SOP
+  </div>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('ch-theme');
+  if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+  document.documentElement.setAttribute('data-theme',t);
+})();
+function toggleTheme(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  var next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('ch-theme',next);
+}
+var weights=[0.25,0.25,0.2,0.2,0.1];
+function score(){
+  var total=0;
+  for(var i=1;i<=5;i++){
+    var v=parseInt(document.querySelectorAll('input[type=range]')[i-1].value);
+    document.getElementById('v'+i).textContent=v;
+    total+=v*weights[i-1];
+  }
+  total=Math.round(total*10)/10;
+  document.getElementById('total').textContent=total.toFixed(1);
+  var chip=document.getElementById('lvchip'),tip=document.getElementById('lvtip');
+  if(total>=4.2){chip.style.background='var(--s)';chip.textContent='S 级 · 事件级';tip.textContent='冲榜项目：按四要素配方立项，季度窗口+重资源投入，目标每周必看。';}
+  else if(total>=3.4){chip.style.background='var(--a)';chip.textContent='A 级 · 支柱级';tip.textContent='支柱内容：深度横评/拆机/长测，重点打磨完播与三连，养品类信任。';}
+  else if(total>=2.4){chip.style.background='var(--b)';chip.textContent='B 级 · 流量级';tip.textContent='标准投入制作，重点优化标题封面与搜索词承接，吃长尾流量。';}
+  else{chip.style.background='var(--c)';chip.textContent='C 级 · 日常级';tip.textContent='轻量制作维持活跃，或回到选题池重新打磨（不建议直接立项）。';}
+}
+function resetScore(){
+  var rs=document.querySelectorAll('input[type=range]');
+  for(var i=0;i<rs.length;i++){rs[i].value=3;}
+  score();
+}
+score();
+</script>
+</body>
+</html>
