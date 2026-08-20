@@ -668,39 +668,6 @@
 </div><!-- /pageContent -->
 
 <script>
-  /* ── SHARED PASSWORD CHECK ── */
-
-  var AUTH_EXPIRY_MS = Number.MAX_SAFE_INTEGER;
-
-  ; }
-    catch(e) { return {count:0, lockUntil:0}; }
-  }
-
-    catch(e) { return null; }
-  }
-
-    }
-  }
-
-  );
-  }
-
-  ));
-      return;
-    }
-    f.count = (f.count || 0) + 1;
-    } else {
-    }
-  }
-
-   });
-
-  (function() {
-    
-    if (f.lockUntil && f.lockUntil > Date.now()) {
-    }
-  })();
-
   /* ── THEME ── */
   function toggleTheme() {
     const html = document.documentElement;
