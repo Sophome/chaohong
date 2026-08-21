@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电视画质百分制评分表 · TV Picture Quality Score</title>
+<style>
+/* ============ 基础 & 主题变量 ============ */
+:root{
+  --bg:#eef1f5; --sheet:#ffffff; --ink:#1a2430; --sub:#5b6b7c;
+  --line:#e2e7ee; --panel:#f6f8fa; --input:#ffffff; --track:#e4e9ef;
+  --primary:#1e3a5f; --primary-soft:#e7eef6;
+  --gold:#b8860b; --gold-bg:#faf3e3;
+  --good:#1f8a5f; --teal:#0f8f8f; --warn:#c2701d; --bad:#c03a34;
+  --shadow:0 10px 30px rgba(20,32,50,.10);
+}
+html[data-theme="dark"]{
+  --bg:#0d131b; --sheet:#151e28; --ink:#e7edf3; --sub:#8fa0b2;
+  --line:#27333f; --panel:#1b2733; --input:#111a23; --track:#2a3744;
+  --primary:#8fb3d9; --primary-soft:#1e2c3d;
+  --gold:#d9b877; --gold-bg:#2c2417;
+  --good:#45c48b; --teal:#3bb8b8; --warn:#e09a4a; --bad:#e06a62;
+  --shadow:0 12px 32px rgba(0,0,0,.45);
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background:var(--bg); color:var(--ink);
+  padding:28px 16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.num{ font-variant-numeric:tabular-nums; }
+
+/* ============ 纸张容器 ============ */
+.sheet{
+  max-width:1120px; margin:0 auto; background:var(--sheet);
+  border:1px solid var(--line); border-radius:18px;
+  padding:44px 52px 52px; box-shadow:var(--shadow);
+}
+@media (max-width:900px){
+  body{ padding:14px 10px; }
+  .sheet{ padding:24px 18px 30px; border-radius:12px; }
+}
+
+/* ============ 顶栏 ============ */
+.topbar{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.title-block h1{
+  font-size:26px; font-weight:800; letter-spacing:1px; color:var(--ink);
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+h1 .ver{
+  font-size:11px; font-weight:600; color:var(--primary); background:var(--primary-soft);
+  border:1px solid transparent; padding:2px 8px; border-radius:999px; letter-spacing:0;
+}
+.sub{ margin-top:6px; font-size:13px; color:var(--sub); letter-spacing:.5px; }
+.sub b{ color:var(--primary); }
+.actions{ display:flex; gap:8px; flex-wrap:wrap; }
+.btn{
+  border:1px solid var(--line); background:var(--panel); color:var(--ink);
+  padding:9px 16px; border-radius:10px; font-size:13px; font-weight:600;
+  cursor:pointer; transition:all .18s ease; font-family:inherit;
+}
+.btn:hover{ border-color:var(--primary); color:var(--primary); }
+.btn.primary{
+  background:var(--primary); border-color:var(--primary); color:#fff;
+}
+.btn.primary:hover{ filter:brightness(1.12); color:#fff; }
+html[data-theme="dark"] .btn.primary{ color:#0d131b; }
+
+/* ============ 机型信息 ============ */
+.meta-card{
+  margin-top:24px; border:1px solid var(--line); border-radius:14px;
+  background:var(--panel); padding:16px 18px;
+}
+.meta-card .cap{
+  font-size:12px; font-weight:700; color:var(--sub); letter-spacing:2px;
+  margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.meta-card .cap::after{ content:""; flex:1; height:1px; background:var(--line); }
+.meta-grid{ display:flex; flex-wrap:wrap; gap:12px; }
+.meta-item{ flex:1 1 150px; min-width:140px; }
+.meta-item.wide{ flex:2 1 300px; }
+.meta-item label{ display:block; font-size:12px; color:var(--sub); margin-bottom:6px; }
+
+/* ============ 表单控件 ============ */
+input[type=text], input[type=number], select, textarea{
+  width:100%; border:1px solid var(--line); background:var(--input); color:var(--ink);
+  border-radius:9px; padding:9px 11px; font-size:14px; font-family:inherit;
+  outline:none; transition:border-color .15s ease;
+}
+input:focus, select:focus, textarea:focus{ border-color:var(--primary); }
+input::placeholder{ color:var(--sub); opacity:.6; }
+select{ appearance:none; -webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--sub) 50%),linear-gradient(135deg,var(--sub) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;
+  background-size:5px 5px; background-repeat:no-repeat; padding-right:32px; }
+
+/* ============ 总览卡 ============ */
+.summary-card{
+  margin-top:18px; border:1px solid var(--line); border-radius:14px;
+  padding:20px 22px; display:flex; gap:28px; align-items:stretch; flex-wrap:wrap;
+}
+.total-box{ flex:0 0 auto; display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:190px; }
+.total-box .t-label{ font-size:12px; color:var(--sub); letter-spacing:3px; font-weight:700; }
+.total-box .t-num{
+  font-size:74px; font-weight:800; letter-spacing:-2px; line-height:1.05;
+  color:var(--primary); font-variant-numeric:tabular-nums;
+}
+.total-box .t-num.off{ color:var(--sub); opacity:.5; }
+.total-box .t-grade{
+  margin-top:6px; padding:4px 16px; border-radius:999px; font-size:14px; font-weight:700; color:#fff;
+}
+.w-right{ flex:1 1 320px; display:flex; flex-direction:column; justify-content:center; gap:9px; }
+.w-row{ display:flex; align-items:center; gap:10px; font-size:13px; }
+.w-name{ flex:0 0 74px; font-weight:600; }
+.w-w{ flex:0 0 40px; color:var(--sub); font-size:12px; text-align:right; }
+.w-bar{ flex:1; height:8px; background:var(--track); border-radius:99px; overflow:hidden; }
+.w-bar .fill{ height:100%; width:0; border-radius:99px; transition:width .35s ease; }
+.w-score{ flex:0 0 42px; text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
+.w-row .w-score.off{ color:var(--sub); opacity:.55; }
+
+/* ============ 维度卡 ============ */
+.dim-card{
+  margin-top:18px; border:1px solid var(--line); border-radius:14px;
+  overflow:hidden; break-inside:avoid;
+}
+.dim-head{
+  display:flex; align-items:center; gap:12px; padding:14px 18px;
+  background:var(--panel); border-bottom:1px solid var(--line);
+}
+.dim-no{
+  flex:0 0 auto; width:32px; height:32px; border-radius:9px;
+  background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:15px;
+}
+html[data-theme="dark"] .dim-no{ color:#0d131b; }
+.dim-name{ font-size:16px; font-weight:700; }
+.dim-en{ font-size:11px; color:var(--sub); margin-top:1px; letter-spacing:.5px; }
+.dim-wt{ margin-left:auto; }
+.wt-badge{
+  font-size:12px; font-weight:700; color:var(--primary); background:var(--primary-soft);
+  padding:4px 10px; border-radius:999px;
+}
+.dim-sub{ flex:0 0 auto; }
+.dim-body{ display:flex; gap:0; }
+.dim-left{ flex:1 1 52%; padding:16px 18px; border-right:1px solid var(--line); min-width:0; }
+.dim-right{ flex:1 1 48%; padding:16px 18px; min-width:0; }
+@media (max-width:860px){
+  .dim-body{ flex-direction:column; }
+  .dim-left{ border-right:none; border-bottom:1px solid var(--line); }
+}
+
+/* ============ 细则速查表 ============ */
+.specs-wrap{ display:flex; gap:12px; flex-wrap:wrap; }
+.specs{ flex:1 1 200px; }
+.specs h4{
+  font-size:12px; font-weight:700; color:var(--sub); letter-spacing:1px;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.specs h4::before{ content:""; width:3px; height:12px; border-radius:2px; background:var(--gold); }
+table.spec{ width:100%; border-collapse:collapse; font-size:12px; }
+table.spec td{ padding:5px 6px; border-bottom:1px dashed var(--line); vertical-align:top; }
+table.spec tr:last-child td{ border-bottom:none; }
+table.spec td:first-child{ color:var(--ink); }
+table.spec td:last-child{ text-align:right; font-weight:700; color:var(--primary); white-space:nowrap; font-variant-numeric:tabular-nums; }
+table.spec td.emo{ color:var(--sub); font-weight:500; }
+.dim-note{ margin-top:12px; font-size:11px; color:var(--sub); line-height:1.6; }
+.dim-note b{ color:var(--warn); font-weight:700; }
+
+/* ============ 打分区 ============ */
+.score-item{ margin-bottom:14px; }
+.score-item:last-child{ margin-bottom:0; }
+.f-label{ font-size:12px; font-weight:600; color:var(--sub); margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; }
+.f-label .hint{ font-weight:400; color:var(--sub); opacity:.75; }
+.f-row{ display:flex; align-items:center; gap:8px; }
+.f-row .unit{ font-size:12px; color:var(--sub); flex:0 0 auto; }
+.f-row input[type=number]{ flex:1; }
+.bar{ margin-top:7px; height:6px; background:var(--track); border-radius:99px; overflow:hidden; }
+.bar .fill{ height:100%; width:0; border-radius:99px; transition:width .3s ease; }
+.chip{
+  flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center;
+  min-width:46px; padding:4px 9px; border-radius:999px; font-size:13px; font-weight:800;
+  color:#fff; font-variant-numeric:tabular-nums;
+}
+.chip.big{ font-size:15px; min-width:56px; padding:6px 12px; }
+.chip.gray{ background:var(--sub); opacity:.55; }
+.chip.gold{ background:var(--gold); } .chip.good{ background:var(--good); }
+.chip.teal{ background:var(--teal); } .chip.warn{ background:var(--warn); }
+.chip.bad{ background:var(--bad); }
+
+/* 主观项：滑块 */
+input[type=range]{
+  -webkit-appearance:none; appearance:none; flex:1; height:6px;
+  background:var(--track); border-radius:99px; outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none; width:17px; height:17px; border-radius:50%;
+  background:var(--primary); border:3px solid var(--sheet);
+  box-shadow:0 1px 4px rgba(0,0,0,.3); cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:13px; height:13px; border-radius:50%;
+  background:var(--primary); border:3px solid var(--sheet);
+  box-shadow:0 1px 4px rgba(0,0,0,.3); cursor:pointer;
+}
+.subj-val{ flex:0 0 34px; text-align:center; font-weight:800; font-size:14px; color:var(--primary); }
+.printline{ display:none; }
+
+/* ============ 底部：公式 & 等级 & 签字 ============ */
+.foot-grid{ display:flex; gap:16px; flex-wrap:wrap; margin-top:20px; }
+.foot-card{
+  flex:1 1 300px; border:1px solid var(--line); border-radius:14px;
+  background:var(--panel); padding:16px 18px;
+}
+.foot-card h4{ font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:7px; }
+.foot-card h4::before{ content:""; width:3px; height:13px; border-radius:2px; background:var(--primary); }
+.formula{
+  font-size:13px; background:var(--sheet); border:1px dashed var(--line);
+  border-radius:9px; padding:11px 13px; line-height:1.9; font-weight:600;
+}
+.formula .op{ color:var(--sub); font-weight:400; }
+.formula b{ color:var(--primary); }
+table.grade{ width:100%; border-collapse:collapse; font-size:12.5px; }
+table.grade td{ padding:4px 8px; border-bottom:1px dashed var(--line); }
+table.grade tr:last-child td{ border-bottom:none; }
+table.grade td:first-child{ font-weight:800; font-variant-numeric:tabular-nums; }
+table.grade td:last-child{ text-align:right; color:var(--sub); }
+.g-flag{ display:inline-block; padding:1px 8px; border-radius:5px; color:#fff; font-weight:800; font-size:11px; margin-right:6px; }
+.sign-row{ display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; }
+.sign-item{ flex:1 1 140px; }
+.sign-item label{ display:block; font-size:12px; color:var(--sub); margin-bottom:6px; }
+.footer-note{ margin-top:18px; text-align:center; font-size:11px; color:var(--sub); letter-spacing:1px; }
+.footer-note .sep{ margin:0 8px; opacity:.5; }
+
+/* ============ 打印 ============ */
+@media print{
+  @page{ size:A4 portrait; margin:10mm 11mm; }
+  html, html[data-theme="dark"]{
+    --bg:#ffffff; --sheet:#ffffff; --ink:#111827; --sub:#4b5563;
+    --line:#c9ced6; --panel:#f5f6f8; --input:#ffffff; --track:#e2e5e9;
+    --primary:#1e3a5f; --primary-soft:#eef2f7;
+    --gold:#b8860b; --gold-bg:#faf3e3;
+    --good:#1f8a5f; --teal:#0f8f8f; --warn:#c2701d; --bad:#c03a34;
+    --shadow:none;
+  }
+  body{ background:#fff !important; padding:0 !important; }
+  .sheet{ box-shadow:none !important; border:none !important; border-radius:0 !important; max-width:none !important; padding:0 !important; margin:0 !important; }
+  .no-print{ display:none !important; }
+  .dim-card, .summary-card, .meta-card, .foot-card{ break-inside:avoid; box-shadow:none; }
+  .dim-head{ background:#f2f4f7 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .dim-no, .chip, .wt-badge, .g-flag, .btn.primary, .total-box .t-grade{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .dim-no{ background:#1e3a5f !important; color:#fff !important; }
+  .wt-badge{ color:#1e3a5f !important; background:#e8edf4 !important; }
+  .bar .fill{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  /* 主观项打印为手写线 */
+  .subj input[type=range], .subj .bar, .subj .subj-val{ display:none !important; }
+  .subj .printline{ display:inline-block; font-size:14px; color:#111827; font-weight:700; letter-spacing:1px; }
+  .f-row input[type=number], input[type=text], select, textarea{ border:1px solid #b6bcc6; background:#fff !important; color:#111 !important; }
+  .meta-grid .meta-item input{ min-height:26px; }
+  .t-num{ color:#1e3a5f !important; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ======== 顶栏 ======== -->
+  <header class="topbar">
+    <div class="title-block">
+      <h1>电视画质百分制评分表<span class="ver">v1.0 · 5维加权</span></h1>
+      <div class="sub">TV Picture Quality Score — 硬件参数无损映射 0–100 · 总分 = <b>动态范围30%</b> + <b>色彩25%</b> + <b>面板20%</b> + <b>引擎15%</b> + <b>动态10%</b></div>
+    </div>
+    <div class="actions no-print">
+      <button class="btn" id="themeBtn" type="button">切换深色</button>
+      <button class="btn" id="resetBtn" type="button">重置</button>
+      <button class="btn primary" id="printBtn" type="button">🖨 打印 / 导出 PDF</button>
+    </div>
+  </header>
+
+  <!-- ======== 机型信息 ======== -->
+  <section class="meta-card">
+    <div class="cap">机型信息 · UNIT INFO</div>
+    <div class="meta-grid">
+      <div class="meta-item"><label>品牌</label><input type="text" id="brand" placeholder="如：索尼 / TCL / 小米"></div>
+      <div class="meta-item wide"><label>型号</label><input type="text" id="model" placeholder="如：X90L / Q10K Pro"></div>
+      <div class="meta-item"><label>面板类型</label>
+        <select id="panelType">
+          <option value="VA">VA 屏</option>
+          <option value="IPS">IPS 屏</option>
+          <option value="OLED">OLED / QD-OLED</option>
+          <option value="UNK">其他 / 未知</option>
+        </select>
+      </div>
+      <div class="meta-item"><label>尺寸（吋）</label><input type="number" id="size" min="0" step="1" placeholder="如 65"></div>
+      <div class="meta-item"><label>参考价格（元）</label><input type="number" id="price" min="0" step="100" placeholder="如 5999"></div>
+      <div class="meta-item"><label>评测日期</label><input type="text" id="date" placeholder="YYYY-MM-DD"></div>
+      <div class="meta-item"><label>评分人</label><input type="text" id="reviewer" placeholder="姓名 / 团队"></div>
+    </div>
+  </section>
+
+  <!-- ======== 总览 ======== -->
+  <section class="summary-card">
+    <div class="total-box">
+      <div class="t-label">综合得分</div>
+      <div class="t-num off" id="total">--</div>
+      <div class="t-grade gray" id="grade" style="background:var(--sub);opacity:.5;">待评</div>
+    </div>
+    <div class="w-right">
+      <div class="w-row"><span class="w-name">动态范围</span><span class="w-w">30%</span><div class="w-bar"><div class="fill" id="wb1"></div></div><span class="w-score off" id="ws1">--</span></div>
+      <div class="w-row"><span class="w-name">色彩表现</span><span class="w-w">25%</span><div class="w-bar"><div class="fill" id="wb2"></div></div><span class="w-score off" id="ws2">--</span></div>
+      <div class="w-row"><span class="w-name">面板素质</span><span class="w-w">20%</span><div class="w-bar"><div class="fill" id="wb3"></div></div><span class="w-score off" id="ws3">--</span></div>
+      <div class="w-row"><span class="w-name">处理引擎</span><span class="w-w">15%</span><div class="w-bar"><div class="fill" id="wb4"></div></div><span class="w-score off" id="ws4">--</span></div>
+      <div class="w-row"><span class="w-name">动态清晰度</span><span class="w-w">10%</span><div class="w-bar"><div class="fill" id="wb5"></div></div><span class="w-score off" id="ws5">--</span></div>
+    </div>
+  </section>
+
+  <!-- ======== 维度 1：动态范围与控光 ======== -->
+  <section class="dim-card">
+    <div class="dim-head">
+      <div class="dim-no">1</div>
+      <div>
+        <div class="dim-name">动态范围与控光</div>
+        <div class="dim-en">Dynamic Range &amp; Local Dimming</div>
+      </div>
+      <div class="dim-wt"><span class="wt-badge">权重 30%</span></div>
+      <div class="dim-sub"><span class="chip gray" id="d1">--</span></div>
+    </div>
+    <div class="dim-body">
+      <div class="dim-left">
+        <div class="specs-wrap">
+          <div class="specs">
+            <h4>峰值亮度（50%）</h4>
+            <table class="spec">
+              <tr><td>&lt; 100 nit</td><td>0</td></tr>
+              <tr><td>100 – 600 nit · HDR 入门线</td><td>0 – 60</td></tr>
+              <tr><td>600 – 2000 nit</td><td>60 – 90</td></tr>
+              <tr><td>&gt; 2000 nit（LCD 天花板约 4000–5000）</td><td>90 – 100</td></tr>
+            </table>
+          </div>
+          <div class="specs">
+            <h4>背光分区（50%）</h4>
+            <table class="spec">
+              <tr><td>无分区 / &lt; 50 区（侧入式）</td><td>0 – 40</td></tr>
+              <tr><td>50 – 300 区（入门 Mini LED）</td><td>40 – 70</td></tr>
+              <tr><td>300 – 1500 区（进阶 Mini LED）</td><td>70 – 90</td></tr>
+              <tr><td>&gt; 1500 区（旗舰 Mini LED）</td><td>90 – 100</td></tr>
+              <tr><td>OLED（像素级控光）</td><td class="emo">100 直给</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="dim-note">注：两指标各占 50%，取加权作为维度分。OLED 分区自动满分（像素级控光）。</div>
+      </div>
+      <div class="dim-right">
+        <div class="score-item">
+          <div class="f-label">峰值亮度 <span class="hint">旗舰 LCD 一般 1500–3000</span></div>
+          <div class="f-row">
+            <input type="number" id="peakNits" min="0" step="10" placeholder="如 800">
+            <span class="unit">nit</span>
+            <span class="chip gray" id="d1a">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b1a"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="f-label">背光分区数 <span class="hint">OLED 自动 100 分</span></div>
+          <div class="f-row">
+            <input type="number" id="zoneCount" min="0" step="10" placeholder="如 576">
+            <span class="unit">区</span>
+            <span class="chip gray" id="d1b">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b1b"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 维度 2：色彩表现 ======== -->
+  <section class="dim-card">
+    <div class="dim-head">
+      <div class="dim-no">2</div>
+      <div>
+        <div class="dim-name">色彩表现</div>
+        <div class="dim-en">Color Performance</div>
+      </div>
+      <div class="dim-wt"><span class="wt-badge">权重 25%</span></div>
+      <div class="dim-sub"><span class="chip gray" id="d2">--</span></div>
+    </div>
+    <div class="dim-body">
+      <div class="dim-left">
+        <div class="specs-wrap">
+          <div class="specs">
+            <h4>色域覆盖（70%）· DCI-P3</h4>
+            <table class="spec">
+              <tr><td>&lt; 85%</td><td>&lt; 60</td></tr>
+              <tr><td>85% – 93%</td><td>60 – 80</td></tr>
+              <tr><td>93% – 98%</td><td>80 – 95</td></tr>
+              <tr><td>&gt; 98% 或达 BT.2020</td><td>95 – 100</td></tr>
+            </table>
+          </div>
+          <div class="specs">
+            <h4>色准 ΔE（30%）</h4>
+            <table class="spec">
+              <tr><td>ΔE ≤ 1 · 不可分辨</td><td>100</td></tr>
+              <tr><td>ΔE ≤ 2 · 优秀</td><td>80</td></tr>
+              <tr><td>ΔE ≤ 3 · 普通</td><td>60</td></tr>
+              <tr><td>ΔE &gt; 3 · 偏色明显</td><td class="emo">&lt; 60</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="dim-note">注：色域 70% + 色准 30% 加权。ΔE 取出厂均值 / 专业校色后实测。</div>
+      </div>
+      <div class="dim-right">
+        <div class="score-item">
+          <div class="f-label">色域覆盖 <span class="hint">DCI-P3 实测覆盖 %</span></div>
+          <div class="f-row">
+            <input type="number" id="p3" min="0" max="100" step="0.5" placeholder="如 96">
+            <span class="unit">% P3</span>
+            <span class="chip gray" id="d2a">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b2a"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="f-label">色准 ΔE <span class="hint">越小越好</span></div>
+          <div class="f-row">
+            <input type="number" id="deltaE" min="0" step="0.1" placeholder="如 1.8">
+            <span class="unit">ΔE</span>
+            <span class="chip gray" id="d2b">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b2b"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 维度 3：面板素质 ======== -->
+  <section class="dim-card">
+    <div class="dim-head">
+      <div class="dim-no">3</div>
+      <div>
+        <div class="dim-name">面板素质</div>
+        <div class="dim-en">Panel Quality</div>
+      </div>
+      <div class="dim-wt"><span class="wt-badge">权重 20%</span></div>
+      <div class="dim-sub"><span class="chip gray" id="d3">--</span></div>
+    </div>
+    <div class="dim-body">
+      <div class="dim-left">
+        <div class="specs-wrap">
+          <div class="specs">
+            <h4>对比度（60%）</h4>
+            <table class="spec">
+              <tr><td>OLED（∞:1）</td><td>100</td></tr>
+              <tr><td>高端 VA（7000:1+）</td><td>85</td></tr>
+              <tr><td>普通 VA（5000:1）</td><td>70</td></tr>
+              <tr><td>IPS（约 1000:1）</td><td class="emo">≈ 40 附近</td></tr>
+            </table>
+          </div>
+          <div class="specs">
+            <h4>可视角度（20%）</h4>
+            <table class="spec">
+              <tr><td>OLED / IPS（广视角）</td><td>80 – 95</td></tr>
+              <tr><td>VA（视角窄，对比度补偿）</td><td>55 – 75</td></tr>
+            </table>
+            <h4 style="margin-top:10px;">均匀性 / DSE（20%）</h4>
+            <table class="spec">
+              <tr><td>边缘亮度衰减 &lt; 10%</td><td>≥ 85</td></tr>
+              <tr><td>衰减 10% – 20%</td><td>60 – 85</td></tr>
+              <tr><td>&gt; 20% 或明显 DSE / 脏屏</td><td class="emo">&lt; 60</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="dim-note">注：对比度 60% + 视角 20% + 均匀性 20%。IPS 视角优于 VA，但对比度低，此处已自然平衡。</div>
+      </div>
+      <div class="dim-right">
+        <div class="score-item">
+          <div class="f-label">对比度 <span class="hint">OLED 自动 100 分</span></div>
+          <div class="f-row">
+            <input type="number" id="contrast" min="0" step="100" placeholder="如 5000">
+            <span class="unit">: 1</span>
+            <span class="chip gray" id="d3a">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b3a"></div></div>
+        </div>
+        <div class="score-item subj">
+          <div class="f-label">可视角度 <span class="hint">OLED 90 / IPS 85 / VA 65 参考</span></div>
+          <div class="f-row">
+            <input type="range" id="viewAngle" min="0" max="100" value="70">
+            <span class="subj-val num" id="viewVal">70</span>
+            <span class="chip gray" id="d3b">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b3b"></div></div>
+          <div class="printline">评分：__________ / 100</div>
+        </div>
+        <div class="score-item subj">
+          <div class="f-label">均匀性 / DSE <span class="hint">实测：边缘衰减 &lt; 10% 得高分</span></div>
+          <div class="f-row">
+            <input type="range" id="uniformity" min="0" max="100" value="70">
+            <span class="subj-val num" id="uniVal">70</span>
+            <span class="chip gray" id="d3c">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b3c"></div></div>
+          <div class="printline">评分：__________ / 100</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 维度 4：处理引擎 ======== -->
+  <section class="dim-card">
+    <div class="dim-head">
+      <div class="dim-no">4</div>
+      <div>
+        <div class="dim-name">处理引擎</div>
+        <div class="dim-en">Picture Processor</div>
+      </div>
+      <div class="dim-wt"><span class="wt-badge">权重 15%</span></div>
+      <div class="dim-sub"><span class="chip gray" id="d4">--</span></div>
+    </div>
+    <div class="dim-body">
+      <div class="dim-left">
+        <div class="specs-wrap">
+          <div class="specs" style="flex:1 1 100%;">
+            <h4>画质芯片与算法</h4>
+            <table class="spec">
+              <tr><td>公版芯片，无独立画质引擎（入门机）</td><td>0 – 40</td></tr>
+              <tr><td>品牌自有基础算法（中端机）</td><td>40 – 70</td></tr>
+              <tr><td>独立画质芯片（X1 / Alpha 9 / 信芯等）+ AI 场景识别</td><td>70 – 90</td></tr>
+              <tr><td>旗舰芯片 + 专业级校准算法（如 BVM 同源技术）</td><td>90 – 100</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="dim-note">注：考察 SoC 算力、AI 场景识别 / 内容自适应、超分与降噪算法的完成度。</div>
+      </div>
+      <div class="dim-right">
+        <div class="score-item subj">
+          <div class="f-label">处理引擎综合分 <span class="hint">对照左表锚点</span></div>
+          <div class="f-row">
+            <input type="range" id="engine" min="0" max="100" value="55">
+            <span class="subj-val num" id="engVal">55</span>
+            <span class="chip gray" id="d4s">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b4"></div></div>
+          <div class="printline">评分：__________ / 100</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 维度 5：动态清晰度 ======== -->
+  <section class="dim-card">
+    <div class="dim-head">
+      <div class="dim-no">5</div>
+      <div>
+        <div class="dim-name">动态清晰度</div>
+        <div class="dim-en">Motion Clarity</div>
+      </div>
+      <div class="dim-wt"><span class="wt-badge">权重 10%</span></div>
+      <div class="dim-sub"><span class="chip gray" id="d5">--</span></div>
+    </div>
+    <div class="dim-body">
+      <div class="dim-left">
+        <div class="specs-wrap">
+          <div class="specs" style="flex:1 1 100%;">
+            <h4>刷新率 · 响应 · MEMC</h4>
+            <table class="spec">
+              <tr><td>60Hz 面板，无 / 弱 MEMC</td><td>0 – 60</td></tr>
+              <tr><td>120Hz 面板，基础 MEMC</td><td>60 – 80</td></tr>
+              <tr><td>120 / 144Hz 高刷 + 极速响应 + 高级 MEMC / VRR</td><td>80 – 100</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="dim-note">注：兼顾面板刷新率、灰阶响应时间、MEMC 插帧效果与 VRR/ALLM 游戏支持。</div>
+      </div>
+      <div class="dim-right">
+        <div class="score-item">
+          <div class="f-label">动态规格档位</div>
+          <div class="f-row" style="flex-wrap:wrap;">
+            <select id="motion" style="flex:1; min-width:200px;">
+              <option value="40">60Hz · 无 / 弱 MEMC</option>
+              <option value="55">60Hz · 基础 MEMC</option>
+              <option value="70" selected>120Hz · 基础 MEMC</option>
+              <option value="85">120Hz · 高级 MEMC</option>
+              <option value="95">144Hz+ · 高级 MEMC + VRR</option>
+            </select>
+            <span class="chip gray" id="d5s">--</span>
+          </div>
+          <div class="bar"><div class="fill" id="b5"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 底部：公式 + 等级 + 签字 ======== -->
+  <section class="foot-grid">
+    <div class="foot-card">
+      <h4>评分公式</h4>
+      <div class="formula">
+        总分 = <b>动态范围</b><span class="op">×30%</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>色彩表现</b><span class="op">×25%</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>面板素质</b><span class="op">×20%</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>处理引擎</b><span class="op">×15%</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>动态清晰度</b><span class="op">×10%</span>
+      </div>
+    </div>
+    <div class="foot-card">
+      <h4>等级评定</h4>
+      <table class="grade">
+        <tr><td><span class="g-flag" style="background:var(--gold);">S</span> 90 – 100</td><td>旗舰画质 · 顶级</td></tr>
+        <tr><td><span class="g-flag" style="background:var(--good);">A</span> 80 – 89</td><td>优秀 · 高端</td></tr>
+        <tr><td><span class="g-flag" style="background:var(--teal);">B</span> 70 – 79</td><td>良好 · 中高端</td></tr>
+        <tr><td><span class="g-flag" style="background:var(--warn);">C</span> 60 – 69</td><td>及格 · 中端</td></tr>
+        <tr><td><span class="g-flag" style="background:var(--bad);">D</span> &lt; 60</td><td>入门 · 不推荐 HDR</td></tr>
+      </table>
+    </div>
+    <div class="foot-card" style="flex:1 1 100%;">
+      <h4>评分与复核</h4>
+      <div class="sign-row">
+        <div class="sign-item"><label>评分人</label><input type="text" placeholder="签名"></div>
+        <div class="sign-item"><label>复核人</label><input type="text" placeholder="签名"></div>
+        <div class="sign-item"><label>复核日期</label><input type="text" placeholder="YYYY-MM-DD"></div>
+        <div class="sign-item" style="flex:3 1 260px;"><label>备注（样机固件版本 / 测试环境 / 特殊问题）</label><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">TV PICTURE QUALITY SCORE SHEET · 5-DIMENSION WEIGHTED MODEL · 打印后请复核锚点与实测数据<span class="sep">·</span>sop.rtings.com.cn</div>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---------- 评分映射函数 ---------- */
+  function clamp(x, a, b){ return Math.min(b, Math.max(a, x)); }
+
+  /* 峰值亮度：100→0分，600→60，2000→90，4000+→100 */
+  function scorePeak(n){
+    if(!n || n <= 0) return null;
+    n = clamp(n, 0, 99999);
+    if(n < 100) return 0;
+    if(n < 600) return (n - 100) / 500 * 60;
+    if(n < 2000) return 60 + (n - 600) / 1400 * 30;
+    return Math.min(100, 90 + (n - 2000) / 2000 * 10);
+  }
+  /* 分区数：50→40，300→70，1500→90，3000+→100；OLED 直给 100 */
+  function scoreZone(z, isOled){
+    if(isOled) return 100;
+    if(!z || z <= 0) return null;
+    z = clamp(z, 0, 99999);
+    if(z < 50) return z / 50 * 40;
+    if(z < 300) return 40 + (z - 50) / 250 * 30;
+    if(z < 1500) return 70 + (z - 300) / 1200 * 20;
+    return Math.min(100, 90 + (z - 1500) / 1500 * 10);
+  }
+  /* 色域 P3%：85→60，93→80，98→95，100→100 */
+  function scoreP3(p){
+    if(!p && p !== 0) return null;
+    p = clamp(p, 0, 100);
+    if(p === 0) return 0;
+    if(p < 85) return Math.max(0, 60 + (p - 85) * 4);
+    if(p < 93) return 60 + (p - 85) / 8 * 20;
+    if(p < 98) return 80 + (p - 93) / 5 * 15;
+    return 95 + (p - 98) / 2 * 5;
+  }
+  /* ΔE：≤1→100，≤2→80，≤3→60，>3 线性降 */
+  function scoreDE(de){
+    if(!de && de !== 0) return null;
+    de = clamp(de, 0, 99);
+    if(de === 0) return 0;
+    if(de <= 1) return 100;
+    if(de <= 2) return 100 - (de - 1) * 20;
+    if(de <= 3) return 80 - (de - 2) * 20;
+    return Math.max(0, 60 - (de - 3) * 20);
+  }
+  /* 对比度：1000→40，5000→70，7000→85，10000+→100；OLED 直给 100 */
+  function scoreContrast(c, isOled){
+    if(isOled) return 100;
+    if(!c || c <= 0) return null;
+    c = clamp(c, 0, 999999);
+    if(c < 1000) return 40 * c / 1000;
+    if(c < 5000) return 40 + (c - 1000) / 4000 * 30;
+    if(c < 7000) return 70 + (c - 5000) / 2000 * 15;
+    return Math.min(100, 85 + (c - 7000) / 3000 * 15);
+  }
+
+  /* ---------- 颜色分档 ---------- */
+  function gradeClass(s){
+    if(s === null || s === undefined || isNaN(s)) return 'gray';
+    if(s >= 90) return 'gold';
+    if(s >= 80) return 'good';
+    if(s >= 70) return 'teal';
+    if(s >= 60) return 'warn';
+    return 'bad';
+  }
+  var COLORS = {
+    gold:  getComputedStyle(document.documentElement).getPropertyValue('--gold').trim() || '#b8860b',
+    good:  getComputedStyle(document.documentElement).getPropertyValue('--good').trim() || '#1f8a5f',
+    teal:  getComputedStyle(document.documentElement).getPropertyValue('--teal').trim() || '#0f8f8f',
+    warn:  getComputedStyle(document.documentElement).getPropertyValue('--warn').trim() || '#c2701d',
+    bad:   getComputedStyle(document.documentElement).getPropertyValue('--bad').trim() || '#c03a34',
+    gray:  getComputedStyle(document.documentElement).getPropertyValue('--sub').trim() || '#5b6b7c'
+  };
+
+  /* 更新单个得分显示 */
+  function setScore(chipId, barId, score){
+    var chip = $(chipId), bar = $(barId);
+    if(score === null || isNaN(score)){
+      chip.textContent = '--';
+      chip.className = 'chip gray';
+      bar.style.width = '0';
+      return;
+    }
+    var s = Math.round(score);
+    var g = gradeClass(s);
+    chip.textContent = s;
+    chip.className = 'chip ' + g;
+    bar.style.width = Math.max(2, score) + '%';
+    bar.style.background = COLORS[g];
+  }
+
+  /* ---------- 主更新 ---------- */
+  function upd(){
+    var isOled = $('panelType').value === 'OLED';
+
+    /* 维度1 */
+    var s1a = scorePeak(parseFloat($('peakNits').value));
+    var s1b = scoreZone(parseFloat($('zoneCount').value), isOled);
+    setScore('d1a', 'b1a', s1a);
+    setScore('d1b', 'b1b', s1b);
+    var d1 = (s1a !== null || s1b !== null) ? ((s1a||0) * 0.5 + (s1b||0) * 0.5) : null;
+    setScore('d1', 'wb1', d1);
+
+    /* 维度2 */
+    var s2a = scoreP3(parseFloat($('p3').value));
+    var s2b = scoreDE(parseFloat($('deltaE').value));
+    setScore('d2a', 'b2a', s2a);
+    setScore('d2b', 'b2b', s2b);
+    var d2 = (s2a !== null || s2b !== null) ? ((s2a||0) * 0.7 + (s2b||0) * 0.3) : null;
+    setScore('d2', 'wb2', d2);
+
+    /* 维度3 */
+    var s3a = scoreContrast(parseFloat($('contrast').value), isOled);
+    var s3b = parseFloat($('viewAngle').value);
+    var s3c = parseFloat($('uniformity').value);
+    $('viewVal').textContent = Math.round(s3b);
+    $('uniVal').textContent = Math.round(s3c);
+    setScore('d3a', 'b3a', s3a);
+    setScore('d3b', 'b3b', s3b);
+    setScore('d3c', 'b3c', s3c);
+    var d3 = (s3a !== null) ? (s3a * 0.6 + s3b * 0.2 + s3c * 0.2) : null;
+    setScore('d3', 'wb3', d3);
+
+    /* 维度4 */
+    var s4 = parseFloat($('engine').value);
+    $('engVal').textContent = Math.round(s4);
+    setScore('d4s', 'b4', s4);
+    setScore('d4', 'wb4', s4);
+
+    /* 维度5 */
+    var s5 = parseFloat($('motion').value);
+    setScore('d5s', 'b5', s5);
+    setScore('d5', 'wb5', s5);
+
+    /* 总分 */
+    var total = d1 * 0.30 + d2 * 0.25 + d3 * 0.20 + s4 * 0.15 + s5 * 0.10;
+    var tEl = $('total'), gEl = $('grade');
+    if(d1 === null && d2 === null && d3 === null){
+      tEl.textContent = '--';
+      tEl.className = 't-num off';
+      gEl.textContent = '待评';
+      gEl.style.background = 'var(--sub)';
+      gEl.style.opacity = '.5';
+    } else {
+      var t = Math.round(total);
+      tEl.textContent = t;
+      tEl.className = 't-num';
+      var g = t >= 90 ? 'S' : t >= 80 ? 'A' : t >= 70 ? 'B' : t >= 60 ? 'C' : 'D';
+      var gname = t >= 90 ? '旗舰画质' : t >= 80 ? '优秀' : t >= 70 ? '良好' : t >= 60 ? '及格' : '入门';
+      gEl.textContent = g + ' · ' + gname;
+      var gc = gradeClass(t);
+      gEl.style.background = COLORS[gc];
+      gEl.style.opacity = '1';
+    }
+
+    /* 维度条 off 态 */
+    [['ws1', d1], ['ws2', d2], ['ws3', d3], ['ws4', s4], ['ws5', s5]].forEach(function(pair){
+      var el = $(pair[0]);
+      if(pair[1] === null || isNaN(pair[1])){
+        el.textContent = '--';
+        el.className = 'w-score off';
+      } else {
+        el.textContent = Math.round(pair[1]);
+        el.className = 'w-score';
+      }
+    });
+  }
+
+  /* ---------- 事件绑定 ---------- */
+  var inputs = document.querySelectorAll('input, select');
+  for(var i = 0; i < inputs.length; i++){
+    inputs[i].addEventListener('input', upd);
+    inputs[i].addEventListener('change', upd);
+  }
+
+  /* 打印 */
+  $('printBtn').addEventListener('click', function(){ window.print(); });
+
+  /* 重置 */
+  $('resetBtn').addEventListener('click', function(){
+    document.querySelectorAll('input[type=number], input[type=text]').forEach(function(el){ el.value = ''; });
+    $('viewAngle').value = 70; $('uniformity').value = 70; $('engine').value = 55;
+    $('motion').value = '70';
+    $('panelType').value = 'VA';
+    upd();
+  });
+
+  /* 主题 */
+  var themeBtn = $('themeBtn');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '切换浅色' : '切换深色';
+    try{ localStorage.setItem('tvscore-theme', t); }catch(e){}
+    /* 刷新颜色映射 */
+    COLORS.gold  = getComputedStyle(document.documentElement).getPropertyValue('--gold').trim();
+    COLORS.good  = getComputedStyle(document.documentElement).getPropertyValue('--good').trim();
+    COLORS.teal  = getComputedStyle(document.documentElement).getPropertyValue('--teal').trim();
+    COLORS.warn  = getComputedStyle(document.documentElement).getPropertyValue('--warn').trim();
+    COLORS.bad   = getComputedStyle(document.documentElement).getPropertyValue('--bad').trim();
+    COLORS.gray  = getComputedStyle(document.documentElement).getPropertyValue('--sub').trim();
+    upd();
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('tvscore-theme'); }catch(e){}
+  var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (sysDark ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+
+  upd();
+})();
+</script>
+</body>
+</html>
