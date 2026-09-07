@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能家居采购清单 · 三生态完整版</title>
+<style>
+  /* ============ 主题变量：浅色 / 深色 一键替换 ============ */
+  :root,
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --bg-soft: #f5f6f8;
+    --bg-card: #ffffff;
+    --ink: #111418;
+    --ink-2: #3d4450;
+    --gray: #5b6472;
+    --gray-2: #8b94a3;
+    --line: #e4e7ec;
+    --line-2: #eef1f5;
+    --th-bg: #eef1f5;
+    --row-alt: #fafbfc;
+    --star: #e8541e;
+    --star-bg: #fff3ee;
+    --opt: #2b5fb3;
+    --opt-bg: #eef3fb;
+    --warn: #b02a2a;
+    --warn-bg: #fff6f6;
+    --warn-line: #f0c9c9;
+    --tip: #7a5b00;
+    --tip-bg: #fffbe8;
+    --tip-line: #f2e3a8;
+    --best-bg: #e9f7ef;
+    --best-ink: #137a3c;
+    --shadow: 0 6px 24px rgba(20,30,60,.08), 0 1px 3px rgba(20,30,60,.06);
+    --shadow-sm: 0 2px 8px rgba(20,30,60,.06);
+    --header-bg: linear-gradient(135deg,#0f1729 0%,#1e293b 45%,#334155 100%);
+    --header-ink: #ffffff;
+    --header-sub: #aab4c5;
+    --header-meta: #7e8aa0;
+    --glow: 0 0 0 1px rgba(255,255,255,.06), 0 8px 30px rgba(15,23,41,.12);
+  }
+  [data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-soft: #151b24;
+    --bg-card: #131a23;
+    --ink: #e9edf3;
+    --ink-2: #c2cad6;
+    --gray: #9aa4b2;
+    --gray-2: #6f7988;
+    --line: #232c39;
+    --line-2: #1c2531;
+    --th-bg: #1c2531;
+    --row-alt: #141b24;
+    --star: #ff7a3d;
+    --star-bg: #2a1a12;
+    --opt: #6fa8ff;
+    --opt-bg: #16233a;
+    --warn: #ff8a8a;
+    --warn-bg: #2a1518;
+    --warn-line: #5a2a2e;
+    --tip: #f0d98a;
+    --tip-bg: #2a2410;
+    --tip-line: #5a4d20;
+    --best-bg: #122a1c;
+    --best-ink: #5fd99a;
+    --shadow: 0 8px 30px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,.35);
+    --header-bg: linear-gradient(135deg,#05080f 0%,#0b1220 50%,#111a2b 100%);
+    --header-ink: #ffffff;
+    --header-sub: #8a97ad;
+    --header-meta: #5f6c82;
+    --glow: 0 0 0 1px rgba(255,255,255,.05), 0 10px 40px rgba(0,0,0,.5);
+  }
+
+  /* 品牌强调色（与主题无关，用于标签） */
+  :root { --mi:#ff6700; --hw:#c7000b; --aq:#7b6cf6; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",system-ui,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.65;
+    font-size:14px; -webkit-font-smoothing:antialiased;
+    transition:background .35s ease,color .35s ease;
+  }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 22px; }
+
+  /* ============ 大气头部 ============ */
+  header {
+    position:relative; overflow:hidden;
+    background:var(--header-bg);
+    color:#fff; padding:54px 0 40px;
+    text-align:center;
+  }
+  header::before { /* 光晕 */
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(620px 300px at 18% 12%, rgba(255,103,0,.30), transparent 60%),
+      radial-gradient(560px 320px at 82% 88%, rgba(123,108,246,.28), transparent 60%),
+      radial-gradient(400px 400px at 50% 120%, rgba(199,0,11,.18), transparent 60%);
+  }
+  header::after { /* 底部品牌渐变条 */
+    content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
+    background:linear-gradient(90deg,var(--mi) 0%,#ff9d4d 25%,var(--hw) 50%,#ff6b6b 72%,var(--aq) 100%);
+  }
+  header .wrap { position:relative; z-index:2; }
+  .badge-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
+  .badge {
+    font-size:12px; font-weight:700; letter-spacing:.5px;
+    padding:5px 14px; border-radius:999px;
+    background:rgba(255,255,255,.10); color:#fff;
+    border:1px solid rgba(255,255,255,.22);
+    backdrop-filter:blur(6px);
+  }
+  header h1 {
+    font-size:34px; font-weight:850; letter-spacing:1.2px; line-height:1.25;
+    background:linear-gradient(90deg,#fff,#dfe7f2);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header h1 .em { color:#ff9d4d; -webkit-text-fill-color:#ff9d4d; }
+  header .sub { margin-top:12px; color:var(--header-sub); font-size:15px; font-weight:500; }
+  header .meta { margin-top:14px; font-size:12.5px; color:var(--header-meta); }
+  header .meta b { color:#c9d3e2; font-weight:700; }
+
+  /* 主题切换按钮 */
+  .theme-switch {
+    position:fixed; top:16px; right:16px; z-index:200;
+    display:flex; gap:6px; padding:5px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+    border-radius:999px; backdrop-filter:blur(10px);
+    box-shadow:var(--shadow-sm);
+  }
+  .theme-switch button {
+    width:38px; height:38px; border:none; border-radius:50%; cursor:pointer;
+    font-size:17px; line-height:1; display:flex; align-items:center; justify-content:center;
+    background:transparent; color:#fff; transition:all .2s;
+  }
+  .theme-switch button:hover { background:rgba(255,255,255,.22); transform:scale(1.08); }
+  .theme-switch button.active { background:#fff; color:#1e293b; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+
+  /* ============ 区块标题 ============ */
+  .sec-title {
+    font-size:21px; font-weight:800; margin:38px 0 6px;
+    padding-left:14px; border-left:5px solid var(--mi);
+    color:var(--ink); letter-spacing:.3px;
+  }
+  .sec-desc { color:var(--gray); font-size:13px; margin-bottom:16px; padding-left:15px; }
+
+  /* ============ 生态标签 ============ */
+  .tabs {
+    display:flex; gap:6px; margin:22px 0 4px; padding:6px;
+    border:1px solid var(--line); border-radius:14px;
+    background:var(--bg-card); box-shadow:var(--shadow-sm);
+    position:sticky; top:10px; z-index:80;
+  }
+  .tab {
+    flex:1; text-align:center; padding:13px 8px; cursor:pointer;
+    font-weight:800; font-size:15px; color:var(--gray-2);
+    border-radius:10px; transition:all .25s;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    user-select:none;
+  }
+  .tab .dot { width:10px; height:10px; border-radius:50%; flex:none; }
+  .dot-mi { background:var(--mi); }
+  .dot-hw { background:var(--hw); }
+  .dot-aq { background:var(--aq); }
+  .tab:hover { color:var(--ink); background:var(--bg-soft); }
+  .tab.active { color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.14); }
+  .tab.active .dot { box-shadow:0 0 0 2px rgba(255,255,255,.6); }
+  .tab-a.active { background:linear-gradient(135deg,var(--mi),#ff9d4d); }
+  .tab-b.active { background:linear-gradient(135deg,var(--hw),#ff5b5b); }
+  .tab-c.active { background:linear-gradient(135deg,#5a49d6,var(--aq)); }
+
+  /* 版本面板 */
+  .panel { display:none; animation:fade .4s ease; }
+  .panel.active { display:block; }
+  @keyframes fade { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:none;} }
+
+  /* 图例 */
+  .legend { display:flex; gap:14px 22px; margin:14px 0 2px; font-size:12.5px; flex-wrap:wrap; align-items:center; }
+  .tag-star { background:var(--star-bg); color:var(--star); border:1px solid color-mix(in srgb,var(--star) 25%,transparent); padding:3px 11px; border-radius:6px; font-weight:800; }
+  .tag-opt  { background:var(--opt-bg); color:var(--opt);  border:1px solid color-mix(in srgb,var(--opt) 25%,transparent); padding:3px 11px; border-radius:6px; font-weight:800; }
+  .tag-note { color:var(--gray); font-size:12px; }
+
+  .tip, .warn {
+    padding:12px 16px; border-radius:10px; margin:14px 0;
+    font-size:12.5px; line-height:1.7; border:1px solid;
+  }
+  .tip { background:var(--tip-bg); color:var(--tip); border-color:var(--tip-line); }
+  .warn { background:var(--warn-bg); color:var(--warn); border-color:var(--warn-line); }
+
+  /* ============ 统一 6 列表格（colgroup 固定列宽，跨生态完全对齐） ============ */
+  .tbl { width:100%; border-collapse:collapse; margin:12px 0 8px; font-size:13px; table-layout:fixed; }
+  .tbl col.c-space { width:12%; }
+  .tbl col.c-dev   { width:14%; }
+  .tbl col.c-model { width:34%; }
+  .tbl col.c-qty   { width:9%; }
+  .tbl col.c-price { width:11%; }
+  .tbl col.c-access{ width:20%; }
+  .tbl th, .tbl td {
+    border:1px solid var(--line); padding:10px 11px;
+    text-align:left; vertical-align:top; overflow:hidden;
+    word-break:break-word;
+  }
+  .tbl th {
+    background:var(--th-bg); color:var(--ink); font-weight:800;
+    font-size:12.5px; white-space:nowrap; letter-spacing:.3px;
+  }
+  .tbl th.c-qty, .tbl td.c-qty, .tbl th.c-price, .tbl td.c-price {
+    text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:700;
+  }
+  .tbl tbody tr:nth-child(even) td { background:var(--row-alt); }
+  .room-tag { display:inline-block; background:var(--bg-soft); color:var(--ink-2); font-size:11px; font-weight:700; padding:2px 7px; border-radius:4px; margin-right:5px; }
+
+  /* 预算汇总卡 */
+  .summary { margin:18px 0; padding:8px 4px; }
+  .summary > h4 { font-size:15px; margin:6px 0 4px 8px; color:var(--ink); }
+  .summary .tbl th { background:var(--th-bg); }
+  .summary .tbl td { background:transparent !important; border-color:var(--line); }
+  .summary .row-total td { border-top:2px solid var(--gray-2); font-weight:850; }
+  .summary .grand { color:var(--star); font-size:17px; }
+
+  /* 对比表 */
+  .compare .tbl td, .compare .tbl th { font-size:12.5px; }
+  .compare col.c-item { width:24%; }
+  .compare col.c-a { width:24.6%; }
+  .compare col.c-b { width:24.6%; }
+  .compare col.c-c { width:24.6%; }
+  .best { background:var(--best-bg) !important; color:var(--best-ink); font-weight:800; }
+
+  footer { margin-top:44px; padding:28px 0 40px; background:var(--bg-soft); border-top:1px solid var(--line); text-align:center; color:var(--gray-2); font-size:12px; }
+
+  /* ============ 响应式 ============ */
+  @media (max-width:760px) {
+    header { padding:40px 0 32px; }
+    header h1 { font-size:23px; }
+    .sec-title { font-size:18px; }
+    .tbl { font-size:11.5px; }
+    .tbl th, .tbl td { padding:7px 6px; }
+    .tbl col.c-model { width:28%; }
+    .tbl col.c-access{ width:26%; }
+    .tabs { top:4px; }
+    .tab { font-size:13px; padding:11px 4px; }
+  }
+
+  /* ============ 打印 ============ */
+  @media print {
+    .theme-switch, .tabs { display:none !important; }
+    .panel { display:block !important; }
+    header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body { font-size:12px; }
+    .tbl { page-break-inside:auto; }
+    .tbl tr { page-break-inside:avoid; }
+    .summary, .tip, .warn, .tabs { break-inside:avoid; }
+    :root, [data-theme="light"] { --shadow:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 深/浅色切换 -->
+<div class="theme-switch" role="group" aria-label="主题切换">
+  <button id="btn-light" class="active" title="浅色模式" aria-label="浅色">☀️</button>
+  <button id="btn-dark" title="深色模式" aria-label="深色">🌙</button>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="badge-row">
+      <span class="badge">🟠 米家</span>
+      <span class="badge">🔴 华为鸿蒙</span>
+      <span class="badge">🔵 Aqara + HomeKit</span>
+    </div>
+    <h1>智能家居采购清单 · <span class="em">三生态完整版</span></h1>
+    <div class="sub">120–144㎡ 三房 / 四房两卫户型 · 必要家电 + 选装家电 + 智能骨架</div>
+    <div class="meta">★ 必要家电 &nbsp;·&nbsp; ☆ 选装家电 &nbsp;·&nbsp; 价格为 2026 在售参考价，不含施工安装费 &nbsp;·&nbsp; 支持<span style="color:#c9d3e2;font-weight:700;"> 深 / 浅色切换</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="sec-title">选择你的智能家居生态</div>
+  <div class="sec-desc">点击下方标签切换查看 · 每个生态均按「必要家电 + 选装家电 + 智能骨架」三层拆解 · 表格统一 6 列结构，跨生态完全对齐 · 右上角可切换深 / 浅色</div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab tab-a active" data-t="A"><span class="dot dot-mi"></span>米家</div>
+    <div class="tab tab-b" data-t="B"><span class="dot dot-hw"></span>华为鸿蒙</div>
+    <div class="tab tab-c" data-t="C"><span class="dot dot-aq"></span>Aqara+HomeKit</div>
+  </div>
+
+  <!-- ===================== 版本A 米家 ===================== -->
+  <div class="panel active" id="pA">
+
+    <div class="legend">
+      <span class="tag-star">★ 必要家电</span>
+      <span class="tag-opt">☆ 选装家电</span>
+    </div>
+    <div class="sec-title">版本A｜米家（小米）—— 生态最全、预算最省</div>
+    <div class="sec-desc">120–144㎡ 三房舒适版设备裸价约 8,000–13,000 元</div>
+
+    <div class="sec-title" style="font-size:17px;margin-top:26px;">一、必要家电 ★</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐型号（2026在售）</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>★冰箱</td><td>米家冰箱十字 430L 2026款</td><td class="c-qty">1</td><td class="c-price">1,899</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★烟灶套装</td><td>米家智能烟灶套装（顶吸+灶）</td><td class="c-qty">1</td><td class="c-price">~2,500</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★电饭煲</td><td>米家智能快煮电饭煲 5L</td><td class="c-qty">1</td><td class="c-price">299</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>★热水器</td><td>米家智能热水器（或燃气款）</td><td class="c-qty">1</td><td class="c-price">~1,500</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">阳台</span></td><td>★洗衣机</td><td>米家洗衣机 10kg 滚筒 XQG100MJ108</td><td class="c-qty">1</td><td class="c-price">1,799</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">卧室×3</span></td><td>★空调挂机</td><td>米家空调巨省电Pro 1.5匹 35GW-PG15</td><td class="c-qty">3</td><td class="c-price">3,499</td><td>米家App直连</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>空调二选一</td><td>米家中央空调风管机 大3匹</td><td class="c-qty">1</td><td class="c-price">~6,199</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>★电视</td><td>小米电视 S Pro Mini LED 75"</td><td class="c-qty">1</td><td class="c-price">~5,000</td><td>米家+小爱</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">二、选装家电 ☆</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆洗碗机</td><td>西门子 SJ636X03JC 13套</td><td class="c-qty">1</td><td class="c-price">5,980</td><td>智能插座联动</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆蒸烤一体机</td><td>米家智能嵌入式蒸烤一体机 S1</td><td class="c-qty">1</td><td class="c-price">2,999</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆净水器</td><td>米家净水器 1000G Plus</td><td class="c-qty">1</td><td class="c-price">~1,500</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">阳台</span></td><td>☆热泵烘干机</td><td>米家热泵烘干机 Pro 12kg</td><td class="c-qty">1</td><td class="c-price">6,999</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>☆智能马桶</td><td>小米智能马桶 / 马桶盖</td><td class="c-qty">1</td><td class="c-price">~2,000</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>☆投影仪</td><td>小米投影仪 3 Pro</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>米家App</td></tr>
+        <tr><td><span class="room-tag">全屋</span></td><td>☆扫地机器人</td><td>米家扫地机器人 扫拖一体基站款</td><td class="c-qty">1</td><td class="c-price">~2,500</td><td>米家App</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">三、智能骨架（必要）</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>模块</th><th>设备</th><th>型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td>中枢网关</td><td>网关</td><td>小米中枢网关(399) + 多模网关2(199)</td><td class="c-qty">2</td><td class="c-price">598</td><td>本地自动化</td></tr>
+        <tr><td>路由器</td><td>组网</td><td>小米全屋路由 BE3600 Pro 套装（内置中枢）</td><td class="c-qty">1套</td><td class="c-price">699</td><td>Wi-Fi 6 Mesh</td></tr>
+        <tr><td>语音</td><td>音箱</td><td>小爱音箱 Pro</td><td class="c-qty">2</td><td class="c-price">598</td><td>米家生态</td></tr>
+        <tr><td>智能开关</td><td>开关</td><td>米家智能开关 零火版（单/双/三开）</td><td class="c-qty">10–12</td><td class="c-price">~800</td><td>Zigbee/Matter</td></tr>
+        <tr><td>窗帘电机</td><td>窗帘</td><td>米家智能窗帘电机 E1（含轨道）</td><td class="c-qty">4–5</td><td class="c-price">~2,000</td><td>Zigbee/Matter</td></tr>
+        <tr><td>门锁</td><td>门锁</td><td>小米智能门锁2 指静脉版</td><td class="c-qty">1</td><td class="c-price">1,100</td><td>米家App</td></tr>
+        <tr><td>存在/人体</td><td>传感</td><td>小米人在传感器(99) + 人体传感器2(59)</td><td class="c-qty">5</td><td class="c-price">~400</td><td>Zigbee/Matter</td></tr>
+        <tr><td>安防</td><td>传感</td><td>天然气/烟雾/水浸卫士套装</td><td class="c-qty">4</td><td class="c-price">~500</td><td>Zigbee/Matter</td></tr>
+        <tr><td>摄像机</td><td>摄像</td><td>小米智能摄像机4 云台版</td><td class="c-qty">1</td><td class="c-price">349</td><td>米家App</td></tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h4>📊 米家版本预算汇总</h4>
+      <table class="tbl"><colgroup><col><col class="c-price"></colgroup>
+        <tbody>
+          <tr><td>必要家电</td><td class="c-qty">23,700</td></tr>
+          <tr><td>智能设备（必要）</td><td class="c-qty">6,544</td></tr>
+          <tr><td>选装家电（全选）</td><td class="c-qty">24,978</td></tr>
+          <tr class="row-total"><td>入住刚需总预算</td><td class="c-qty grand">≈ 30,244 元</td></tr>
+          <tr class="row-total"><td>满配落地（含选装）</td><td class="c-qty">≈ 55,222 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===================== 版本B 华为 ===================== -->
+  <div class="panel" id="pB">
+    <div class="legend">
+      <span class="tag-star">★ 必要家电</span>
+      <span class="tag-opt">☆ 选装家电</span>
+      <span class="tag-note">核心规则：只买带「HarmonyOS Connect」标识的设备</span>
+    </div>
+    <div class="sec-title">版本B｜华为鸿蒙智家 —— 稳定性最强、面板颜值最高</div>
+    <div class="sec-desc">架构：1（中枢主机）+ 2（中控屏+组网）+ N（全屋设备）· PLC有线+星闪双协议，断网稳定</div>
+
+    <div class="sec-title" style="font-size:17px;margin-top:26px;">一、必要家电 ★</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐品牌型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>★冰箱</td><td>美的 606L 对开/十字 BCD-606WQ7FG1（鸿蒙智联）</td><td class="c-qty">1</td><td class="c-price">~4,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★烟灶</td><td>美的/方太 鸿蒙智联烟灶套装</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★电饭煲</td><td>美的 鸿蒙智联智能电饭煲</td><td class="c-qty">1</td><td class="c-price">~500</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>★热水器</td><td>美的 鸿蒙智联燃气热水器</td><td class="c-qty">1</td><td class="c-price">~2,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">阳台</span></td><td>★洗烘套装</td><td>小天鹅小乌梅3.0（10kg洗+热泵烘）</td><td class="c-qty">1套</td><td class="c-price">~6,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">卧室×3</span></td><td>★空调</td><td>美的空界M5 1.5匹（鸿蒙认证）</td><td class="c-qty">3</td><td class="c-price">2,499</td><td>鸿蒙原生</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>空调</td><td>鸿蒙智选 美的空气机 Pro / 全面风 Pro</td><td class="c-qty">1</td><td class="c-price">5,399</td><td>鸿蒙原生</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>★电视</td><td>华为智慧屏 V5 Pro / 或普通电视</td><td class="c-qty">1</td><td class="c-price">~6,000</td><td>鸿蒙分布式</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">二、选装家电 ☆</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆洗碗机</td><td>西门子 SJ636X03JC 13套（鸿蒙暂无，选独立款）</td><td class="c-qty">1</td><td class="c-price">5,980</td><td>智能插座联动</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆蒸烤箱</td><td>美的 鸿蒙智联蒸烤一体机</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆净水器</td><td>美的 鸿蒙智联 RO 净水器</td><td class="c-qty">1</td><td class="c-price">~2,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>☆智能马桶</td><td>恒洁/九牧 鸿蒙智联款</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>智慧生活App</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>☆投影仪</td><td>当贝/极米（接入有限，建议保留）</td><td class="c-qty">1</td><td class="c-price">~3,500</td><td>独立控制</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">三、智能设备（鸿蒙前装骨架）</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>模块</th><th>设备</th><th>型号（华为官网价）</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td>中枢</td><td>主机</td><td>智能主机 SE（支持128个PLC节点）</td><td class="c-qty">1</td><td class="c-price">5,999</td><td>PLC 有线</td></tr>
+        <tr><td>中控屏</td><td>屏</td><td>智能中控屏 S2 10.4"</td><td class="c-qty">1</td><td class="c-price">7,399</td><td>鸿蒙原生</td></tr>
+        <tr><td>中控屏</td><td>旋钮</td><td>智能MINI Pro 旋钮（床头/书桌）</td><td class="c-qty">2</td><td class="c-price">2,198</td><td>鸿蒙原生</td></tr>
+        <tr><td>智能开关</td><td>开关</td><td>奥斯陆3键(649) / 蒙德里安×2（内置OLED）</td><td class="c-qty">12</td><td class="c-price">~9,000</td><td>PLC 有线</td></tr>
+        <tr><td>窗帘电机</td><td>窗帘</td><td>华为智能窗帘电机（含轨道）</td><td class="c-qty">4–5</td><td class="c-price">~6,000</td><td>PLC 有线</td></tr>
+        <tr><td>门锁</td><td>门锁</td><td>华为智能门锁2（掌静脉/3D人脸）</td><td class="c-qty">1</td><td class="c-price">2,500</td><td>鸿蒙原生</td></tr>
+        <tr><td>传感器</td><td>传感</td><td>AI超感传感器（跌倒/睡眠检测）</td><td class="c-qty">2</td><td class="c-price">~3,398</td><td>星闪 PLC</td></tr>
+        <tr><td>传感器</td><td>传感</td><td>人在传感器（星闪）</td><td class="c-qty">4</td><td class="c-price">~636</td><td>星闪</td></tr>
+        <tr><td>摄像机</td><td>摄像</td><td>华为智能摄像机 Ultra</td><td class="c-qty">1</td><td class="c-price">699</td><td>鸿蒙原生</td></tr>
+        <tr><td>PLC布线</td><td>施工</td><td>前装PLC电力线组网（鸿蒙核心，需施工阶段部署）</td><td class="c-qty">—</td><td class="c-price">含套餐</td><td>PLC 有线</td></tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h4>📊 鸿蒙版本预算汇总</h4>
+      <table class="tbl"><colgroup><col><col class="c-price"></colgroup>
+        <tbody>
+          <tr><td>必要家电</td><td class="c-qty">30,896</td></tr>
+          <tr><td>智能设备（标准无线方案）</td><td class="c-qty">~20,000</td></tr>
+          <tr><td>选装家电（全选）</td><td class="c-qty">17,480</td></tr>
+          <tr class="row-total"><td>入住刚需总预算</td><td class="c-qty grand">≈ 50,896 元</td></tr>
+          <tr class="row-total"><td>满配前装（含主机+中控屏+PLC）</td><td class="c-qty">≈ 68,000+ 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">⚠️ 鸿蒙生态家电选择面比米家窄（尤其洗碗机、扫地机），部分品类功能可用但深度联动有限。省预算建议：客厅/玄关用蒙德里安（颜值），次卧/卫生间用奥斯陆（同性能更便宜），混搭性价比最高。</div>
+  </div>
+
+  <!-- ===================== 版本C Aqara ===================== -->
+  <div class="panel" id="pC">
+    <div class="legend">
+      <span class="tag-star">★ 必要家电</span>
+      <span class="tag-opt">☆ 选装家电</span>
+      <span class="tag-note">Aqara 不产大家电，定位「万能智能骨架 + Matter 桥接」，大家电走海尔/美的/西门子</span>
+    </div>
+    <div class="sec-title">版本C｜Aqara + HomeKit —— 苹果全家桶 / 跨平台混搭</div>
+    <div class="sec-desc">支持 Zigbee 3.0 + Thread + Matter 三协议，可桥接 HomeKit / Google Home / Alexa，断网全本地联动</div>
+
+    <div class="sec-title" style="font-size:17px;margin-top:26px;">一、必要家电 ★</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>★冰箱</td><td>海尔/卡萨帝 支持 HomeKit 款</td><td class="c-qty">1</td><td class="c-price">~3,500</td><td>Matter</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★烟灶</td><td>老板/方太 基础款（Aqara 红外遥控接入）</td><td class="c-qty">1</td><td class="c-price">~2,500</td><td>红外学习</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>★电饭煲</td><td>美的 美居App款</td><td class="c-qty">1</td><td class="c-price">~400</td><td>Matter</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>★热水器</td><td>海尔 燃气热水器（支持 HomeKit）</td><td class="c-qty">1</td><td class="c-price">~2,000</td><td>HomeKit</td></tr>
+        <tr><td><span class="room-tag">阳台</span></td><td>★洗烘套装</td><td>海尔 EG100HPLUSSL6U1 晶彩系列</td><td class="c-qty">1套</td><td class="c-price">~5,000</td><td>HomeKit/Matter</td></tr>
+        <tr><td><span class="room-tag">卧室×3</span></td><td>★空调</td><td>海尔/美的 支持 HomeKit 挂机</td><td class="c-qty">3</td><td class="c-price">~2,500</td><td>HomeKit</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>空调</td><td>美的空界M5（鸿蒙+HomeKit 双支持）</td><td class="c-qty">1</td><td class="c-price">2,499</td><td>HomeKit</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>★电视</td><td>Apple TV 4K + 任意电视</td><td class="c-qty">1</td><td class="c-price">1,299起</td><td>HomeKit中枢</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">二、选装家电 ☆</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>空间</th><th>设备</th><th>推荐型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆洗碗机</td><td>西门子 SJ636X03JC 13套</td><td class="c-qty">1</td><td class="c-price">5,980</td><td>智能插座联动</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆蒸烤箱</td><td>美的 蒸烤一体机（美居/Matter）</td><td class="c-qty">1</td><td class="c-price">~2,500</td><td>美居/Matter</td></tr>
+        <tr><td><span class="room-tag">厨房</span></td><td>☆净水器</td><td>小米/美的 RO 净水器</td><td class="c-qty">1</td><td class="c-price">~1,500</td><td>智能插座监测</td></tr>
+        <tr><td><span class="room-tag">阳台</span></td><td>☆独立烘干机</td><td>海尔热泵烘干机</td><td class="c-qty">1</td><td class="c-price">~4,000</td><td>HomeKit</td></tr>
+        <tr><td><span class="room-tag">卫浴</span></td><td>☆智能马桶</td><td>恒洁 HomeKit 款</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>HomeKit</td></tr>
+        <tr><td><span class="room-tag">客厅</span></td><td>☆扫地机器人</td><td>石头 Roborock（支持 HomeKit 快捷指令）</td><td class="c-qty">1</td><td class="c-price">~3,000</td><td>HomeKit</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:17px;margin-top:24px;">三、智能骨架（Aqara —— 全本地化核心）</div>
+    <table class="tbl">
+      <colgroup><col class="c-space"><col class="c-dev"><col class="c-model"><col class="c-qty"><col class="c-price"><col class="c-access"></colgroup>
+      <thead><tr><th>模块</th><th>设备</th><th>型号</th><th>数量</th><th>单价</th><th>接入方式</th></tr></thead>
+      <tbody>
+        <tr><td>中枢</td><td>中枢</td><td>Aqara 方舟智慧中枢 M3（Zigbee+Thread+Matter+HomeKit，本地自动化，京东1,107）</td><td class="c-qty">1</td><td class="c-price">1,107</td><td>本地自动化</td></tr>
+        <tr><td>中控</td><td>中控屏</td><td>集悦妙控屏 S1 Plus（Siri 版）</td><td class="c-qty">1</td><td class="c-price">~1,500</td><td>HomeKit</td></tr>
+        <tr><td>网关冗余</td><td>网关</td><td>Aqara 智能网关 M2（备选）</td><td class="c-qty">1</td><td class="c-price">~400</td><td>Zigbee/Thread</td></tr>
+        <tr><td>智能开关</td><td>开关</td><td>Aqara 智能开关 E1 零火版</td><td class="c-qty">10–12</td><td class="c-price">~1,400</td><td>Zigbee/Thread/Matter</td></tr>
+        <tr><td>窗帘电机</td><td>窗帘</td><td>Aqara 智能窗帘电机（含轨道）</td><td class="c-qty">4–5</td><td class="c-price">~3,000</td><td>Zigbee/Thread/Matter</td></tr>
+        <tr><td>门锁</td><td>门锁</td><td>Aqara 智能门锁（支持 HomeKit 家庭钥匙）</td><td class="c-qty">1</td><td class="c-price">~2,000</td><td>HomeKit</td></tr>
+        <tr><td>存在传感器</td><td>传感</td><td>Aqara FP2（60GHz 毫米波，跌倒/睡眠检测）</td><td class="c-qty">4</td><td class="c-price">~1,600</td><td>Thread/Matter</td></tr>
+        <tr><td>人体/门窗</td><td>传感</td><td>Aqara 人体传感器 + 门窗传感器</td><td class="c-qty">8</td><td class="c-price">~700</td><td>Zigbee/Thread/Matter</td></tr>
+        <tr><td>智能插座</td><td>插座</td><td>Aqara 智能插座（转传统家电为智能）</td><td class="c-qty">6</td><td class="c-price">~600</td><td>Zigbee/Thread/Matter</td></tr>
+        <tr><td>摄像机</td><td>摄像</td><td>Aqara 智能摄像机 G5 Pro（HomeKit Secure Video）</td><td class="c-qty">1</td><td class="c-price">~700</td><td>HomeKit Secure</td></tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h4>📊 Aqara + HomeKit 版本预算汇总</h4>
+      <table class="tbl"><colgroup><col><col class="c-price"></colgroup>
+        <tbody>
+          <tr><td>必要家电</td><td class="c-qty">22,598</td></tr>
+          <tr><td>智能设备（必要）</td><td class="c-qty">13,007</td></tr>
+          <tr><td>选装家电（全选）</td><td class="c-qty">20,980</td></tr>
+          <tr class="row-total"><td>入住刚需总预算</td><td class="c-qty grand">≈ 35,605 元</td></tr>
+          <tr class="row-total"><td>满配落地</td><td class="c-qty">≈ 56,585 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip">💡 Aqara 优势：断网仍全功能联动（M3 本地自动化）、苹果原生体验、可桥接第三方 Matter 设备；代价是大家电需自己拼装生态，同配置比米家贵约 1,000 元。</div>
+  </div>
+
+  <!-- ===================== 横向对比 ===================== -->
+  <div class="sec-title">三版本总预算横向对比</div>
+  <div class="sec-desc">120–144㎡ 三房 / 四卫两卫基准 · 价格为单台参考价，数量为建议配置</div>
+  <table class="tbl compare">
+    <colgroup><col class="c-item"><col class="c-a"><col class="c-b"><col class="c-c"></colgroup>
+    <thead><tr><th>项目</th><th>米家</th><th>华为鸿蒙</th><th>Aqara+HomeKit</th></tr></thead>
+    <tbody>
+      <tr><td>必要家电</td><td class="c-qty">23,700</td><td class="c-qty">30,896</td><td class="c-qty">22,598</td></tr>
+      <tr><td>智能骨架</td><td class="c-qty">6,544</td><td class="c-qty">20,000（无线）</td><td class="c-qty">13,007</td></tr>
+      <tr><td><strong>入住刚需合计</strong></td><td class="c-qty best">≈ 30,244</td><td class="c-qty">≈ 50,896</td><td class="c-qty best">≈ 35,605</td></tr>
+      <tr><td>满配（含选装）</td><td class="c-qty">≈ 55,222</td><td class="c-qty">68,000+</td><td class="c-qty">≈ 56,585</td></tr>
+      <tr><td>家电生态完整度</td><td class="c-qty best">★★★★★</td><td class="c-qty">★★★</td><td class="c-qty">★★★★</td></tr>
+      <tr><td>稳定性 / 断网可用</td><td class="c-qty">★★★</td><td class="c-qty best">★★★★★（PLC）</td><td class="c-qty best">★★★★★（本地）</td></tr>
+      <tr><td>苹果生态体验</td><td class="c-qty">★★</td><td class="c-qty">★★★</td><td class="c-qty best">★★★★★</td></tr>
+      <tr><td>跨品牌混搭能力</td><td class="c-qty">差</td><td class="c-qty">一般</td><td class="c-qty best">★★★★★（Matter）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="font-size:18px;">一句话决策</div>
+  <div class="summary" style="border-style:solid;border-color:var(--line);">
+    <table class="tbl"><colgroup><col><col></colgroup>
+      <tbody>
+        <tr><td><strong>🟢 预算有限 + 一站式搞定</strong></td><td>→ <strong>米家</strong>（约3万即可入住，家电全是自家的）</td></tr>
+        <tr><td><strong>🟡 华为全家桶 / 手机车都是华为</strong></td><td>→ <strong>鸿蒙</strong>（约5万起，PLC稳定性最强，但家电选择少）</td></tr>
+        <tr><td><strong>🔵 苹果全家桶 / 多品牌混搭 / 看重隐私</strong></td><td>→ <strong>Aqara+HomeKit</strong>（约3.5万起，骨架最贵但断网全可用）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">统一水电预埋点位（三生态都要照做）</div>
+  <table class="tbl">
+    <colgroup><col class="c-space"><col class="c-model"></colgroup>
+    <thead><tr><th>位置</th><th>预埋要求</th></tr></thead>
+    <tbody>
+      <tr><td>弱电箱</td><td>≥ 400×300mm，内留插座；网关放电视柜，勿塞弱电箱</td></tr>
+      <tr><td>全屋网络</td><td>超六类网线星型布线，每房间 ≥ 1 个网口</td></tr>
+      <tr><td>电视墙</td><td>2 组五孔 + 2 根六类网线 + 预留 HDMI 光纤线</td></tr>
+      <tr><td>每个开关底盒</td><td><strong>必留零线</strong>，底盒深 ≥ 5cm（推荐6cm），禁用金属底盒</td></tr>
+      <tr><td>窗帘盒</td><td>内侧/下方 40–50cm 处留五孔插座；单轨净宽 ≥ 15cm，双轨 ≥ 22cm</td></tr>
+      <tr><td>智能马桶位</td><td>侧后方离地 30cm 防溅插座</td></tr>
+      <tr><td>扫地机基站</td><td>低位插座 + Φ50 上下水管</td></tr>
+      <tr><td>玄关/厨房吊顶</td><td>人体/存在传感器电源（顶装雷达需 220V + 开 75mm 孔）</td></tr>
+      <tr><td>中央空调 / 新风</td><td>预埋屏蔽控制线 RS485 或网线</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    ⚠️ <strong>硬装阶段必读（70% 的坑在这）：</strong><br>
+    ① 软装房看不清底盒时，开关改买单火版（贵约20%，有"鬼火"风险）——<strong>下单前务必拆开旧开关确认是否只有火线</strong>；<br>
+    ② 三个生态都遵守"买带本地自动化的设备"，断外网时基础场景（开灯/窗帘/安防）仍要能跑；<br>
+    ③ 智能开关控制不了大功率浴霸和窗帘电机，它们要独立电源，开关走信号线或无线；<br>
+    ④ 生态别混搭太多：选一个主生态，其他靠 Matter 协议接入，避免手机装七八个 App。
+  </div>
+
+  <footer>
+    智能家居采购清单 · 三生态完整版 &nbsp;|&nbsp; 价格为 2026 在售参考价，实际以官方商城为准 &nbsp;|&nbsp; 支持深 / 浅色切换 &nbsp;|&nbsp; 建议打印 A4 归档
+  </footer>
+</div>
+
+<script>
+  // 生态标签切换
+  const tabs = document.getElementById('tabs');
+  tabs.addEventListener('click', e => {
+    const t = e.target.closest('.tab'); if(!t) return;
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('p'+t.dataset.t).classList.add('active');
+  });
+  // 深/浅色切换（存本地偏好）
+  const root = document.documentElement;
+  const bs = document.getElementById('btn-light'), bd = document.getElementById('btn-dark');
+  const save = v => { try{localStorage.setItem('sh-theme',v)}catch(e){} };
+  const apply = v => {
+    root.setAttribute('data-theme', v);
+    bs.classList.toggle('active', v==='light');
+    bd.classList.toggle('active', v==='dark');
+  };
+  bs.onclick = ()=>apply('light'), save('light');
+  bd.onclick = ()=>apply('dark'),  save('dark');
+  let init = 'light';
+  try{ init = localStorage.getItem('sh-theme') || 'light'; }catch(e){}
+  apply(init);
+</script>
+</body>
+</html>
