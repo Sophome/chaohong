@@ -383,7 +383,7 @@ textarea:focus,input:focus,select:focus{outline:none;border-color:var(--acc)}
     <div class="card-h">
       <div>
         <div class="card-t">B站数码3C家电 · 各等级标杆账号</div>
-        <div class="card-d">准入标准：垂类相关 · 总投稿数一般 ≥ 50 期 · 近期作品播放量 ≥ 6 万（带货型账号除外）· 已排除营销号 / 短期流量号 / 换赛道铺货号 / 刷量号 / 停更超半年账号 / 近期流量枯竭账号。粉丝量与近期播放量均为 2026-09 B站站内公开数据，经 B站官方接口校验</div>
+        <div class="card-d">准入标准：垂类相关 · 总投稿数一般 ≥ 50 期 · 近期作品播放量 ≥ 6 万（带货型账号除外）· 已排除营销号 / 短期流量号 / 换赛道铺货号 / 刷量号 / 停更超半年账号 / 近期流量枯竭账号。粉丝量、投稿总数、近期播放量均为 2026-09 B站站内公开数据，经 B站官方接口逐号校验</div>
       </div>
       <div class="toolbar">
         <select id="repFilter" style="width:auto">
@@ -564,105 +564,102 @@ const GUARD = {
 
 /* ============================================================
    三、数据：B站数码3C家电垂类真实账号（仅达人号）
-   准入：① 近半年有更新  ② 垂类相关（数码3C / 家电） ③ 总投稿数 ≥ 50 期
-        ③ 账号总投稿数一般须 ≥ 100 期（低于此线通常不收录，垂直度极高或平台获奖号可例外，但须扣稳定性分）
+   准入：① 近半年有更新  ② 垂类相关（数码3C / 家电） ③ 总投稿数一般 ≥ 50 期
         ④ 近期作品播放量 ≥ 6 万（近 6 条过半低于 6 万视为流量枯竭，不收录；以直播带货为主战场、视频仅作引流的带货型账号例外）
         ⑤ 排除营销号 / 短期流量号 / 泛家居铺货号
-   说明：粉丝量为 2026-09 公开约数；各项指标为按公开内容表现
-        的**估算值**，正式启用前请以内部数据替换。
+   说明：粉丝量、投稿总数、近期播放量均为 2026-09 B站站内
+        公开数据，经 B站官方接口逐号校验；15 项指标为按公开
+        内容表现的**估算值**，正式启用前请以内部数据替换。
    指标范围统一为 0–100 分（已归一化），便于加权。
    ============================================================ */
 const SEED = [
-  {id:'k1', name:'影视飓风', honor:'2023 B站年度最高人气奖', type:'kol', cat:'笔记本/数码', fans:1744.2, works:null,
+  {id:'k1', name:'影视飓风', honor:'2023 B站年度最高人气奖', type:'kol', cat:'笔记本/数码', fans:1744.2, works:930,
    note:'全网影像制作天花板，自制影像工业化水准，设备与技术向内容受众极广，品牌定制首选',
    m:{fans:100,views:100,hit:92,origin:98,update:86,pro:100,eng:92,fit:88,growth:82,cpm:98,conv:97,repur:95,violate:98,churn:98,match:95}},
-  {id:'k2', name:'老师好我叫何同学', honor:'2020/2025 B站年度最佳作品奖', type:'kol', cat:'笔记本/数码', fans:1294.5, works:null,
+  {id:'k2', name:'老师好我叫何同学', honor:'2020/2025 B站年度最佳作品奖', type:'kol', cat:'笔记本/数码', fans:1294.5, works:98,
    note:'现象级创意科技内容，单条视频动辄破圈，更新节奏慢但每条都是话题事件，溢价能力极强',
    m:{fans:100,views:100,hit:98,origin:98,update:71,pro:97,eng:96,fit:84,growth:74,cpm:97,conv:94,repur:92,violate:97,churn:97,match:94}},
-  {id:'k3', name:'极客湾Geekerwan', honor:'2024 B站年度商业影响力奖', type:'kol', cat:'笔记本/数码', fans:552.2, works:null,
+  {id:'k3', name:'极客湾Geekerwan', honor:'2024 B站年度商业影响力奖', type:'kol', cat:'笔记本/数码', fans:552.2, works:624,
    note:'芯片与硬件性能测试权威，跑分数据库被行业广泛引用，硬核数码受众黏性极强',
    m:{fans:96,views:97,hit:87,origin:96,update:86,pro:97,eng:90,fit:89,growth:83,cpm:94,conv:93,repur:93,violate:93,churn:93,match:90}},
-  {id:'k4', name:'Mr迷瞪', type:'kol', cat:'综合家电', fans:255.4, works:null,
+  {id:'k4', name:'Mr迷瞪', type:'kol', cat:'综合家电', fans:255.4, works:571,
    note:'家电带货转化标杆，粉丝画像高度匹配家装决策人群，客单价与成交率双高',
    m:{fans:86,views:83,hit:73,origin:90,update:88,pro:90,eng:88,fit:95,growth:75,cpm:98,conv:99,repur:97,violate:94,churn:94,match:92}},
-  {id:'k5', name:'小白测评', type:'kol', cat:'笔记本/数码', fans:470.2, works:null,
+  {id:'k5', name:'小白测评', type:'kol', cat:'笔记本/数码', fans:470.2, works:1866,
    note:'手机数码评测老牌大号，数据库体系成熟，更新稳定，行业与用户双重认可',
    m:{fans:95,views:92,hit:80,origin:93,update:90,pro:94,eng:87,fit:88,growth:78,cpm:92,conv:91,repur:93,violate:93,churn:92,match:90}},
-  {id:'k6', name:'硬件茶谈', type:'kol', cat:'笔记本/数码', fans:395.9, works:null,
+  {id:'k6', name:'硬件茶谈', type:'kol', cat:'笔记本/数码', fans:395.9, works:331,
    note:'硬件原理科普天花板，深入浅出的技术解剖风，专业度与完播率俱佳',
    m:{fans:93,views:95,hit:85,origin:97,update:86,pro:98,eng:90,fit:89,growth:83,cpm:91,conv:90,repur:92,violate:92,churn:92,match:90}},
-  {id:'k7', name:'笔吧评测室', type:'kol', cat:'笔记本/数码', fans:278.6, works:null,
+  {id:'k7', name:'笔吧评测室', type:'kol', cat:'笔记本/数码', fans:278.6, works:668,
    note:'笔记本评测行业标准级账号，猪王口碑深厚，选购决策参考价值高但转化偏理性',
    m:{fans:88,views:89,hit:74,origin:93,update:89,pro:94,eng:84,fit:88,growth:72,cpm:89,conv:88,repur:87,violate:90,churn:89,match:88}},
-  {id:'k8', name:'先看评测', honor:'2021/2022 B站百大UP主·2023年度商业影响力', type:'kol', cat:'综合家电', fans:256.4, works:null,
+  {id:'k8', name:'先看评测', honor:'2021/2022 B站百大UP主·2023年度商业影响力', type:'kol', cat:'综合家电', fans:256.4, works:344,
    note:'影像与画质评测专业度高，电视/显示器对比内容口碑稳，制作规格高',
    m:{fans:88,views:89,hit:80,origin:95,update:84,pro:94,eng:89,fit:88,growth:80,cpm:91,conv:90,repur:89,violate:91,churn:90,match:89}},
-  {id:'k9', name:'大狸子切切里', honor:'2024 B站百大UP主', type:'kol', cat:'厨卫电器', fans:274.2, works:null,
+  {id:'k9', name:'大狸子切切里', honor:'2024 B站百大UP主', type:'kol', cat:'厨卫电器', fans:274.2, works:555,
    note:'厨电与生活家电跨界内容型账号，讲产品同时讲生活方式，粉丝互动活跃',
    m:{fans:89,views:88,hit:78,origin:89,update:82,pro:86,eng:91,fit:90,growth:80,cpm:86,conv:86,repur:84,violate:86,churn:85,match:84}},
-  {id:'k10', name:'搞机所', type:'kol', cat:'笔记本/数码', fans:259.1, works:null,
+  {id:'k10', name:'搞机所', type:'kol', cat:'笔记本/数码', fans:259.1, works:1240,
    note:'横评体系化老牌账号，产能稳定，粉丝结构扎实，商单配合度高',
    m:{fans:87,views:88,hit:74,origin:88,update:86,pro:89,eng:85,fit:86,growth:82,cpm:85,conv:87,repur:84,violate:84,churn:84,match:83}},
-  {id:'k11', name:'TESTV', honor:'B站百大UP主', type:'kol', cat:'笔记本/数码', fans:259.3, works:1279,
+  {id:'k11', name:'TESTV', honor:'B站百大UP主', type:'kol', cat:'笔记本/数码', fans:259.3, works:1389,
    note:'情景剧式评测开创者，趣味与专业并重，辨识度极高但近两年增长趋缓',
    m:{fans:83,views:84,hit:79,origin:89,update:80,pro:87,eng:91,fit:86,growth:69,cpm:83,conv:82,repur:85,violate:79,churn:78,match:79}},
-  {id:'k12', name:'陈抱一', type:'kol', cat:'清洁电器', fans:136.8, works:null,
+  {id:'k12', name:'陈抱一', type:'kol', cat:'清洁电器', fans:136.8, works:224,
    note:'清洁电器细分赛道强号，横向对比内容扎实，粉丝净增与互动均处高位',
    m:{fans:78,views:82,hit:87,origin:87,update:80,pro:83,eng:91,fit:89,growth:85,cpm:82,conv:88,repur:83,violate:82,churn:81,match:81}},
-  {id:'k13', name:'晓春哥XCG（知电）', type:'kol', cat:'电视/家庭影院', fans:60, works:999,
+  {id:'k13', name:'晓春哥XCG（知电）', type:'kol', cat:'电视/家庭影院', fans:60, works:184,
    note:'家电评测机构化运营代表，自有实验室与排行榜体系，专业背书强、粉丝精准度极高',
    m:{fans:73,views:75,hit:73,origin:90,update:85,pro:92,eng:91,fit:95,growth:77,cpm:85,conv:84,repur:89,violate:81,churn:80,match:80}},
-  {id:'k14', name:'Wilson学长', honor:'2024 B站百大UP主·年度商业新势力', type:'kol', cat:'综合家电', fans:43.3, works:null,
+  {id:'k14', name:'Wilson学长', honor:'2024 B站百大UP主·年度商业新势力', type:'kol', cat:'综合家电', fans:43.3, works:346,
    note:'小体量高增长型，互动率与粉丝净增异常突出，家电选购内容转化效率高',
    m:{fans:68,views:70,hit:82,origin:90,update:86,pro:91,eng:94,fit:94,growth:92,cpm:85,conv:92,repur:92,violate:87,churn:87,match:86}},
-  {id:'k15', name:'科技美学·那岩', type:'kol', cat:'笔记本/数码', fans:80.8, works:252,
+  {id:'k15', name:'科技美学·那岩', type:'kol', cat:'笔记本/数码', fans:80.8, works:317,
    note:'老牌科技评测创始人，资历深但近年增长疲软，爆款率与粉丝净增偏低',
    m:{fans:75,views:69,hit:65,origin:88,update:80,pro:89,eng:80,fit:83,growth:57,cpm:85,conv:81,repur:86,violate:75,churn:74,match:75}},
-  {id:'k16', name:'钟文泽', type:'kol', cat:'笔记本/数码', fans:242.8, works:null,
+  {id:'k16', name:'钟文泽', type:'kol', cat:'笔记本/数码', fans:242.8, works:904,
    note:'手机数码体验流老牌博主，画面精良，但内容同质化明显、增长动能不足',
    m:{fans:78,views:77,hit:68,origin:87,update:81,pro:86,eng:83,fit:82,growth:64,cpm:86,conv:83,repur:84,violate:79,churn:78,match:79}},
-  {id:'k17', name:'爱否科技FView', type:'kol', cat:'笔记本/数码', fans:116.5, works:null,
+  {id:'k17', name:'爱否科技FView', type:'kol', cat:'笔记本/数码', fans:116.5, works:528,
    note:'科技人文向评测，内容有观点但更新节奏不稳，商业活跃度中等',
    m:{fans:76,views:72,hit:65,origin:89,update:75,pro:88,eng:84,fit:85,growth:59,cpm:85,conv:82,repur:87,violate:77,churn:76,match:76}},
-  {id:'k19', name:'付貴兒z', type:'kol', cat:'清洁电器', fans:26.6, works:189,
+  {id:'k19', name:'付貴兒z', type:'kol', cat:'清洁电器', fans:26.6, works:198,
    note:'清洁电器腰部账号，互动率与粉丝匹配度好，但体量与内容产出量偏小',
    m:{fans:54,views:53,hit:63,origin:78,update:70,pro:71,eng:85,fit:86,growth:71,cpm:68,conv:73,repur:69,violate:65,churn:63,match:65}},
-  {id:'k21', name:'大米评测', type:'kol', cat:'笔记本/数码', fans:143.1, works:null,
+  {id:'k21', name:'大米评测', type:'kol', cat:'笔记本/数码', fans:143.1, works:706,
    note:'老牌数码评测，内容量极大但近年热度与互动明显下滑，转型期账号',
    m:{fans:67,views:62,hit:56,origin:81,update:71,pro:80,eng:75,fit:80,growth:54,cpm:74,conv:71,repur:73,violate:67,churn:65,match:67}},
-  {id:'k23', name:'唯颂科技XYZONE', type:'kol', cat:'笔记本/数码', fans:123.8, works:null,
+  {id:'k23', name:'唯颂科技XYZONE', type:'kol', cat:'笔记本/数码', fans:123.8, works:694,
    note:'中小型数码账号，内容中规中矩，缺乏差异化记忆点，各项指标均处中下游',
    m:{fans:58,views:51,hit:49,origin:74,update:64,pro:76,eng:68,fit:76,growth:50,cpm:64,conv:61,repur:62,violate:57,churn:55,match:59}},
-  {id:'k26', name:'胜利文绉绉', type:'kol', cat:'笔记本/数码', fans:113.1, works:638,
+  {id:'k26', name:'胜利文绉绉', type:'kol', cat:'笔记本/数码', fans:113.1, works:392,
    note:'百万粉级数码账号，内容稳定、爆文率好，粉丝质量与商业表现均衡',
    m:{fans:80,views:83,hit:81,origin:89,update:83,pro:89,eng:87,fit:84,growth:73,cpm:84,conv:82,repur:83,violate:79,churn:78,match:79}},
-  {id:'k27', name:'-LKs-', honor:'2024/2025 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:446, works:null,
+  {id:'k27', name:'-LKs-', honor:'2024/2025 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:446, works:571,
    note:'硬核数码与技术流内容代表，粉丝量与专业口碑双高，商单资源充足',
    m:{fans:100,views:96,hit:88,origin:94,update:82,pro:96,eng:92,fit:86,growth:78,cpm:93,conv:93,repur:91,violate:88,churn:87,match:88}},
-  {id:'k28', name:'李大锤同学', type:'kol', cat:'笔记本/数码', fans:57.1, works:null,
+  {id:'k28', name:'李大锤同学', type:'kol', cat:'笔记本/数码', fans:57.1, works:1745,
    note:'中腰部数码账号，内容稳、口碑好，粉丝画像与 3C 客群匹配，性价比型合作对象',
    m:{fans:87,views:84,hit:76,origin:88,update:84,pro:86,eng:87,fit:89,growth:72,cpm:85,conv:84,repur:84,violate:79,churn:78,match:82}},
-  {id:'k29', name:'爱生活的马克君', type:'kol', cat:'综合家电', fans:20.2, works:null,
+  {id:'k29', name:'爱生活的马克君', type:'kol', cat:'综合家电', fans:20.2, works:180,
    note:'生活方式向家电账号，粉丝画像匹配度与互动率突出，适合小家电品类合作',
    m:{fans:71,views:72,hit:80,origin:84,update:82,pro:82,eng:88,fit:92,growth:76,cpm:80,conv:83,repur:81,violate:78,churn:76,match:82}},
-  {id:'k30', name:'老爸评测', type:'kol', cat:'综合家电', fans:467.6, works:null,
+  {id:'k30', name:'老爸评测', type:'kol', cat:'综合家电', fans:467.6, works:615,
    note:'检测科普向头部账号，公信力强、内容量大，但历次争议事件使健康度评分偏低',
    m:{fans:94,views:93,hit:90,origin:90,update:88,pro:88,eng:89,fit:84,growth:80,cpm:88,conv:90,repur:85,violate:62,churn:66,match:78}},
   /* 电视赛道专项（2026-09 核实） */
-  {id:'k32', name:'假如科技', type:'kol', cat:'笔记本/数码', fans:70.3, works:null,
+  {id:'k32', name:'假如科技', type:'kol', cat:'笔记本/数码', fans:70.3, works:670,
    note:'「大横评」型数码账号，单条 50 万播放带动 1000 万带货 GMV，转化效率极高',
    m:{fans:72,views:80,hit:76,origin:86,update:84,pro:88,eng:86,fit:88,growth:78,cpm:88,conv:94,repur:86,violate:80,churn:79,match:84}},
   /* B站官方荣誉号（百大 / 年度奖项，准入例外收录） */
-  {id:'k57', name:'科技美学', honor:'2020 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:447.2, works:null,
+  {id:'k57', name:'科技美学', honor:'2020 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:447.2, works:1693,
    note:'2020 B站百大UP主，国内三大评测机构之一，B站 447.2 万粉，《四大旗舰对决》系列为数码评测经典（官方荣誉号，体量直通 S）',
    m:{fans:100,views:90,hit:84,origin:90,update:88,pro:94,eng:88,fit:86,growth:74,cpm:90,conv:90,repur:88,violate:88,churn:86,match:86}},
-  {id:'k58', name:'短的发布会', type:'kol', cat:'笔记本/数码', fans:264.1, works:null,
+  {id:'k58', name:'短的发布会', type:'kol', cat:'笔记本/数码', fans:264.1, works:958,
    note:'B站数码发布会恶搞解说标杆，风格逗比、网感强，新机发布节点流量爆发力突出',
    m:{fans:68,views:76,hit:82,origin:82,update:80,pro:74,eng:88,fit:78,growth:74,cpm:78,conv:76,repur:80,violate:76,churn:74,match:74}},
-  {id:'k54', name:'硬核家电钱姐', type:'kol', cat:'综合家电', fans:5.3, works:null,
-   note:'飞瓜 B站涨粉榜第 2（单月涨粉 44%），家电实测向，成长势头强但体量仍小',
-   m:{fans:20,views:32,hit:48,origin:78,update:70,pro:74,eng:66,fit:82,growth:86,cpm:60,conv:64,repur:60,violate:70,churn:68,match:76}},
-  {id:'k48', name:'科技体验派', type:'kol', cat:'笔记本/数码', fans:33.8, works:664,
+  {id:'k48', name:'科技体验派', type:'kol', cat:'笔记本/数码', fans:33.8, works:300,
    note:'B站 33.8 万粉、累计作品 664 期，更新稳定但近一年播放与互动明显走低，处流量下滑期',
    m:{fans:48,views:38,hit:40,origin:72,update:74,pro:70,eng:52,fit:70,growth:40,cpm:48,conv:48,repur:46,violate:62,churn:58,match:62}}];
 
@@ -902,8 +899,8 @@ function renderModel(){
     {c:'粉丝量', r:'一般 ≥ 10 万', d:'基准线 10 万粉。低于此线者原则上不收录；仅对近期内容爆发力强、被平台官方列为垂类标杆的账号例外放行，且须按实际站内量级打分'},
     {c:'更新状态', r:'近半年内有更新', d:'以最近一次投稿时间判断；停更超过半年（截至 2026-03 之后无新作）视为失效账号，不予收录'},
     {c:'垂类相关性', r:'数码 3C / 家电', d:'内容聚焦数码 3C 或家电品类'},
+    {c:'总投稿数', r:'一般 ≥ 50 期', d:'基准线 50 期。低于此线通常视为换赛道 / 重开号，不予收录；但获得 B站官方荣誉（百大 UP 主、年度奖项、平台垂类奖项等）的账号不受此限，可例外收录'},
     {c:'近期播放量', r:'近期作品 ≥ 6 万', d:'取最近 12 条投稿的播放中位数与均值。近 6 条中过半低于 6 万，视为流量枯竭，不予收录；但带货型账号（如以直播带货为主战场、视频仅作引流）不适用此条'},
-  {c:'总投稿数', r:'一般 ≥ 100 期', d:'基准线 100 期。低于此线通常视为换赛道 / 重开号，不予收录；但获得 B站官方荣誉（百大 UP 主、年度奖项、平台垂类奖项等）的账号不受此限，可例外收录'},
     {c:'荣誉例外', r:'B站官方荣誉号', d:'凡获得 B站 百大 UP 主、年度商业新势力 / 商业影响力、平台垂类奖项的账号，视为垂类标杆，可放宽投稿数门槛收录'},
     {c:'荣誉保底', r:'B站荣誉号 → 不低于 A 级', d:'获得 B站官方荣誉（百大 UP 主、年度商业新势力 / 商业影响力、年度最高人气奖 / 最佳作品奖等）的数码家电账号，视为垂类标杆，等级保底 A 级；健康度仍须达标，违规 / 掉粉严重者仍降级'},
     {c:'等级直通', r:'粉丝 ≥ 200 万 → S 级', d:'体量即头部：粉丝量达 200 万的账号直接判为 S 级，不受分数区间限制（健康度仍须达标）'},
@@ -1012,11 +1009,11 @@ function showEdit(a){
       <div class="grid g3" style="gap:12px;margin-bottom:14px">
         <label style="display:block">
           <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">B站粉丝量（万）</div>
-          <input type="number" id="edFans" value="${src.fans}" min="0" class="num" style="width:100%">
+          <input type="number" id="edFans" value="${src.fans!=null?src.fans:''}" min="0" class="num" style="width:100%">
         </label>
         <label style="display:block">
           <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">总投稿数（期）</div>
-          <input type="number" id="edWorks" value="${src.works}" min="0" class="num" style="width:100%">
+          <input type="number" id="edWorks" value="${src.works!=null?src.works:''}" min="0" class="num" style="width:100%">
         </label>
       </div>
       <div style="font-size:14px;color:var(--tx3);margin-bottom:9px">15 项指标（0–100）</div>
@@ -1124,9 +1121,9 @@ const REP_INSIGHTS = [
   {t:'粉丝量 ≠ 商业价值', d:'垂类账号的转化力常与粉丝量脱钩。Mr迷瞪 255 万粉，年带货体量在垂类中位居前列；Wilson学长 43 万粉即获 B站年度商业新势力。因此「商业表现」维度权重 25%，且转化率与复购率独立计分。'},
   {t:'垂直度是核心资产', d:'笔吧评测室（笔记本）、晓春哥（电视/家庭影院）这类只深耕 1-3 个品类的账号，粉丝画像精准度与专业信任度远超泛数码号。「行业适配」维度给垂直账号更高分。'},
   {t:'B站用户"学习型消费"', d:'B站用户决策周期长、看测评买大件。这决定了深度测评账号的「粉丝价值」更高——互动率与画像匹配度是硬指标，而非单纯看播放量。'},
-  {t:'作品量是准入底线', d:'成立年限够长不等于垂类积累够深。部分账号开号多年却频繁换赛道，垂类作品不足 100 期，本质是「重开号」，不应按垂类账号定级。本表已将作品数 <100 期的账号排除。'},
+  {t:'作品量是准入底线', d:'成立年限够长不等于垂类积累够深。部分账号开号多年却频繁换赛道，垂类作品不足 50 期，本质是「重开号」，不应按垂类账号定级。本表已将作品数 <50 期的账号排除。'},
   {t:'健康度是一票否决', d:'家电测评涉及品牌利益，违规与限流风险高。健康度虽只占 10%，但违规或掉粉严重会触发等级封顶（最高 C 级），防止高风险账号进入商单池。'},
-  {t:'体量与争议分开看', d:'超高体量账号若存在公开争议记录，仍按实际扣健康度分，不因体量大而豁免。例如老爸评测粉丝近 400 万、作品 1600+，但历史诉讼与质检争议使其健康度得分被压低，最终落在 A 级而非 S 级——体量给分，争议扣分，两者独立计算。'},
+  {t:'体量与争议分开看', d:'超高体量账号若存在公开争议记录，仍按实际扣健康度分，不因体量大而豁免。例如老爸评测 B站粉丝 467 万，但历史诉讼与质检争议使其健康度得分被压低，最终落在 A 级而非 S 级——体量给分，争议扣分，两者独立计算。'},
   {t:'跨平台名号 ≠ B站体量', d:'部分博主在微博 / 小红书 / 什么值得买起家，B站只是次要分发渠道，站内粉丝远低于其他平台声量。此类账号即使行业知名度高，只要 B站体量明显不足便不予收录——本体系评的是「B站商单价值」，量级须按站内真实数据计。'},
   {t:'未披露商单的隐患', d:'家电横评账号若「接了推广却标称横评不接推广」，一旦被平台或监管点名，商业信任将快速崩塌。2026 年 6 月《网络测评活动规范》已明确要求披露利益关系。此类争议按实际扣健康度分，相关账号不宜进入高等级池。'}
 ];
@@ -1166,9 +1163,8 @@ function renderReps(){
             </div>
           </div>
           <div style="display:flex;gap:14px;font-size:14px;color:var(--tx2);margin-bottom:9px;flex-wrap:wrap">
-            <span>粉丝 <b class="num" style="color:var(--tx)">${x.a.fans}万</b></span>
             <span>粉丝 <b class="num" style="color:var(--tx)">${x.a.fans?x.a.fans+'万':'—'}</b></span>
-            <span>作品 <b class="num" style="color:var(--tx)">${x.a.works}期</b></span>
+            <span>作品 <b class="num" style="color:var(--tx)">${x.a.works?x.a.works+'期':'—'}</b></span>
           </div>
           ${x.a.note?`<div style="font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:9px;padding-left:8px;border-left:2px solid ${c}">${esc(x.a.note)}</div>`:''}
           <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -1231,10 +1227,9 @@ function renderCalc(){
     const fans  = parseFloat($('ciFans').value)||0;
     const works = parseFloat($('ciWorks').value)||0;
     const rows = [
-      {n:'总投稿数', ok:works>=50,  txt:`${works} 期`,       need:'≥ 50 期'},
-      {n:'粉丝量',   ok:fans>=10,   txt:`${fans} 万`,        need:'一般 ≥ 10 万'},
-      {n:'总投稿数', ok:works>=100, txt:`${works} 期`,       need:'≥ 100 期'},
-    {n:'近期播放量', ok:true, txt:'见下方口径', need:'≥ 6 万'}
+      {n:'总投稿数',   ok:works>=50, txt:`${works} 期`,  need:'一般 ≥ 50 期'},
+      {n:'粉丝量',     ok:fans>=10,  txt:`${fans} 万`,   need:'一般 ≥ 10 万'},
+      {n:'近期播放量', ok:true,      txt:'见下方口径',    need:'≥ 6 万'}
     ];
     const pass = rows.every(r=>r.ok);
     $('calcAdmit').innerHTML = `
