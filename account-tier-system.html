@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B站数码3C家电 · 账号定级体系</title>
+<style>
+:root{
+  --bg:#0d1017; --panel:#151a24; --panel2:#1a202c; --line:#242c3a;
+  --tx:#e8edf5; --tx2:#9aa7bd; --tx3:#63708a;
+  --acc:#4f9cf9; --purple:#9b7bff; --blue:#3d9bf5; --green:#3ecf8e;
+  --red:#f2555a; --amber:#f5a524; --gold:#f5c451;
+  --shadow:0 4px 20px rgba(0,0,0,.35);
+}
+html[data-theme="light"]{
+  --bg:#f5f7fb; --panel:#ffffff; --panel2:#f8fafc; --line:#e4e9f2;
+  --tx:#1a2233; --tx2:#5b6a85; --tx3:#8f9cb3;
+  --shadow:0 4px 20px rgba(20,30,60,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--tx); font-size:15px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit;font-size:14.5px}
+
+/* ---------- 头部 ---------- */
+header{
+  background:linear-gradient(120deg,rgba(79,156,249,.14),rgba(155,123,255,.10) 55%,transparent);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+}
+.hdr-inner{
+  max-width:1400px;margin:0 auto;padding:16px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+html[data-theme="light"] header{background:linear-gradient(120deg,rgba(79,156,249,.10),rgba(155,123,255,.07) 55%,transparent)}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{
+  width:38px;height:38px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--acc),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;font-weight:800;color:#fff;letter-spacing:-1px;
+}
+.brand-t{font-size:19px;font-weight:700;letter-spacing:-.2px}
+.brand-s{font-size:13.5px;color:var(--tx3);margin-top:2px}
+.hdr-right{display:flex;align-items:center;gap:9px}
+.icon-btn{
+  width:34px;height:34px;border-radius:9px;border:1px solid var(--line);
+  background:var(--panel);display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:var(--tx2);transition:.18s;
+}
+.icon-btn:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ---------- 导航 ---------- */
+nav{
+  border-bottom:1px solid var(--line);background:var(--panel);
+  position:sticky;top:71px;z-index:45;
+}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 22px;display:flex;gap:3px;overflow-x:auto}
+@media(max-width:760px){.hdr-inner{padding:12px 16px}.nav-inner{padding:0 16px}main{padding:16px 16px 52px}}
+.nav-inner::-webkit-scrollbar{height:0}
+
+.navtab{
+  padding:11px 18px;border-radius:10px 10px 0 0;font-size:15px;font-weight:600;
+  color:var(--tx3);white-space:nowrap;border-bottom:2px solid transparent;transition:.16s;
+}
+.navtab:hover{color:var(--tx2)}
+.navtab.on{color:var(--acc);border-bottom-color:var(--acc);background:rgba(79,156,249,.06)}
+
+/* ---------- 布局 ---------- */
+main{padding:20px 22px 60px;max-width:1400px;margin:0 auto}
+.page{display:none}
+.page.on{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:18px;margin-bottom:16px;
+}
+.card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.card-t{font-size:17px;font-weight:700;letter-spacing:-.2px}
+.card-d{font-size:14px;color:var(--tx3);margin-top:5px;line-height:1.7}
+
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g6{grid-template-columns:repeat(6,1fr)}
+@media(max-width:1050px){.g4,.g6{grid-template-columns:repeat(3,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.g2,.g3,.g4,.g6{grid-template-columns:1fr}}
+
+/* ---------- 组件 ---------- */
+.chip{
+  display:inline-flex;align-items:center;font-size:13px;font-weight:600;
+  padding:3px 9px;border-radius:6px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--tx2);white-space:nowrap;
+}
+.tag{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:13.5px;font-weight:800;padding:3px 11px;border-radius:7px;color:#fff;
+}
+.tag.S{background:linear-gradient(135deg,#f5a524,#f2555a)}
+.tag.A{background:linear-gradient(135deg,#9b7bff,#6b4fe0)}
+.tag.B{background:linear-gradient(135deg,#3d9bf5,#2b6fd4)}
+.tag.C{background:linear-gradient(135deg,#3ecf8e,#28a870)}
+.tag.D{background:linear-gradient(135deg,#63708a,#4a5568)}
+
+.stat{
+  background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;
+}
+.stat-l{font-size:13.5px;color:var(--tx3);margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.stat-v{font-size:30px;font-weight:800;letter-spacing:-.6px}
+.stat-s{font-size:13.5px;color:var(--tx3);margin-top:5px}
+
+.note{
+  font-size:14.5px;padding:15px 18px;border-radius:10px;line-height:1.75;
+  background:var(--panel2);border-left:3px solid var(--acc);color:var(--tx2);
+}
+.note.warn{border-left-color:var(--amber);background:rgba(245,165,36,.08)}
+.note.ok{border-left-color:var(--green);background:rgba(62,207,142,.08)}
+.note.danger{border-left-color:var(--red);background:rgba(242,85,90,.08)}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{
+  text-align:left;padding:14px 17px;font-size:13.5px;font-weight:700;letter-spacing:.3px;
+  color:var(--tx3);border-bottom:1px solid var(--line);white-space:nowrap;
+  position:sticky;top:0;background:var(--panel);
+}
+td{padding:14px 17px;border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.55}
+tbody tr{transition:.13s}
+tbody tr:hover{background:var(--panel2)}
+.table-wrap{overflow-x:auto;margin:0 -18px;padding:0 18px}
+.table-wrap::-webkit-scrollbar{height:6px}
+.table-wrap::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+
+/* 进度条 */
+.bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:3px;transition:width .5s ease}
+.bar>i.S{background:linear-gradient(90deg,#f5a524,#f2555a)}
+.bar>i.A{background:linear-gradient(90deg,#9b7bff,#6b4fe0)}
+.bar>i.B{background:linear-gradient(90deg,#3d9bf5,#2b6fd4)}
+.bar>i.C{background:linear-gradient(90deg,#3ecf8e,#28a870)}
+.bar>i.D{background:linear-gradient(90deg,#63708a,#4a5568)}
+
+/* 工具条 */
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+select,input[type=text],input[type=number]{
+  background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+  padding:9px 13px;color:var(--tx);outline:none;transition:.16s;
+}
+select:focus,input:focus{border-color:var(--acc)}
+.btn{
+  padding:9px 17px;border-radius:9px;font-size:14.5px;font-weight:600;
+  background:var(--panel2);border:1px solid var(--line);color:var(--tx2);transition:.16s;
+}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{opacity:.88;color:#fff}
+
+/* 维度评分行 */
+.dim-row{
+  display:grid;grid-template-columns:150px 1fr 64px;gap:14px;align-items:center;
+  padding:12px 0;border-bottom:1px solid var(--line);
+}
+.dim-row:last-child{border-bottom:none}
+
+/* 分级规则表 */
+.rule-row{
+  display:grid;grid-template-columns:70px 118px 1fr 104px;gap:16px;align-items:start;
+  padding:15px 0;border-bottom:1px solid var(--line);
+}
+.rule-row:last-of-type{border-bottom:none}
+.rule-tag{padding-top:3px}
+.rule-band{font-size:14.5px;color:var(--tx2);padding-top:6px;white-space:nowrap}
+.rule-feat{font-size:14.5px;color:var(--tx);line-height:1.65}
+.rule-list{margin:7px 0 0;padding-left:18px;font-size:13.5px;color:var(--tx3);line-height:1.85}
+.rule-num{text-align:right;padding-top:4px}
+.rule-num b{font-size:20px;display:block;line-height:1.2}
+.rule-num span{font-size:13px;color:var(--tx3)}
+@media(max-width:860px){
+  .rule-row{grid-template-columns:64px 1fr;gap:10px 14px}
+  .rule-band{grid-column:2}
+  .rule-body{grid-column:1/-1}
+  .rule-num{grid-column:2;text-align:left;display:flex;align-items:baseline;gap:6px;padding-top:0}
+  .rule-num b{display:inline;font-size:16px}
+}
+.dim-n{font-size:15px;font-weight:600}
+.dim-w{font-size:13px;color:var(--tx3)}
+
+.empty{text-align:center;padding:48px 20px;color:var(--tx3);font-size:15px}
+.empty-i{font-size:34px;opacity:.35;margin-bottom:10px}
+
+/* 弹层 */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(3px);
+}
+.modal{
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  max-width:640px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:var(--shadow);
+}
+.modal-h{
+  padding:17px 20px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;
+  background:var(--panel);border-radius:16px 16px 0 0;z-index:2;
+}
+.modal-b{padding:18px 20px}
+textarea{
+  font-family:inherit;
+}
+textarea:focus,input:focus,select:focus{outline:none;border-color:var(--acc)}
+
+.toast{
+  position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:13px 22px;font-size:15px;box-shadow:var(--shadow);z-index:200;
+  opacity:0;transition:.3s;pointer-events:none;
+}
+.toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-inner">
+    <div class="brand">
+      <div class="mark">B</div>
+      <div>
+        <div class="brand-t">B站数码3C家电 · 账号定级体系</div>
+        <div class="brand-s">六维加权评分 · S/A/B/C/D 五级 · 资源倾斜</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <button class="icon-btn" id="themeBtn" title="切换主题">◐</button>
+      <button class="icon-btn" id="resetBtn" title="重置数据">↺</button>
+    </div>
+  </div>
+</header>
+
+<nav id="navtabs">
+  <div class="nav-inner">
+    <button class="navtab on" data-p="overview">总览看板</button>
+    <button class="navtab" data-p="model">评分模型</button>
+    <button class="navtab" data-p="ledger">账号台账</button>
+    <button class="navtab" data-p="reps">标杆账号</button>
+    <button class="navtab" data-p="calc">定级计算器</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 总览 ============ -->
+<div class="page on" id="p-overview">
+  <div class="grid g4" id="statCards" style="margin-bottom:16px"></div>
+
+  <div class="card">
+    <div class="card-h">
+      <div>
+        <div class="card-t">分级规则</div>
+        <div class="card-d">总分落位决定等级，等级决定合作资源倾斜。粉丝量单独设「体量直通」与「健康度封顶」两条硬约束。</div>
+      </div>
+    </div>
+    <div id="tierRules"></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="card-t" style="margin-bottom:12px">六维得分雷达概览</div>
+      <div class="card-d" style="margin-bottom:14px">全部账号在各维度上的平均表现（0–100）</div>
+      <div id="dimAvg"></div>
+    </div>
+    <div class="card">
+      <div class="card-t" style="margin-bottom:12px">等级 × 维度 均值矩阵</div>
+      <div class="card-d" style="margin-bottom:14px">各等级账号在六个维度上的平均得分</div>
+      <div class="table-wrap"><table id="matrixTable"></table></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <div>
+        <div class="card-t">定级结果总表</div>
+        <div class="card-d" id="resultSub">全部账号按总分从高到低排列</div>
+      </div>
+      <div class="toolbar">
+        <input type="text" id="resSearch" placeholder="搜索账号…" style="width:130px">
+        <select id="resTier" style="width:auto">
+          <option value="all">全部等级</option>
+          <option value="S">S 级</option>
+          <option value="A">A 级</option>
+          <option value="B">B 级</option>
+          <option value="C">C 级</option>
+          <option value="D">D 级</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap"><table id="resultTable"></table></div>
+  </div>
+</div>
+
+<!-- ============ 评分模型 ============ -->
+<div class="page" id="p-model">
+  <div class="card">
+    <div class="card-t">一、定级核心维度（6 大指标）</div>
+    <div class="card-d" style="margin-bottom:14px">从流量规模、内容质量、粉丝价值、商业表现、账号健康度、行业适配六个维度综合评估，每个维度下设具体指标。</div>
+    <div class="table-wrap"><table id="dimsTable"></table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">二、量化评分模型（百分制）</div>
+    <div class="card-d" style="margin-bottom:14px">为每个维度分配权重，根据公司业务重点调整。以下为参考权重。</div>
+    <div class="grid g2" id="weightBlocks"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">三、评分方法</div>
+    <div class="card-d" style="margin-bottom:12px">三项并行规则</div>
+    <div class="grid g3" id="methodBlocks"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">四、收录准入标准</div>
+    <div class="card-d" style="margin-bottom:14px">只有同时满足以下条件的账号才进入定级台账，否则不予收录。</div>
+    <div class="table-wrap"><table id="admitTable"></table></div>
+  </div>
+</div>
+
+<!-- ============ 账号台账 ============ -->
+<div class="page" id="p-ledger">
+  <div class="card">
+    <div class="card-h">
+      <div>
+        <div class="card-t">账号台账</div>
+        <div class="card-d" id="ledgerSub">共 0 个账号</div>
+      </div>
+      <div class="toolbar">
+        <input type="text" id="qSearch" placeholder="搜索账号名…" style="width:150px">
+        <select id="qType">
+          <option value="all">全部类型</option>
+          <option value="kol">达人号</option>
+        </select>
+        <select id="qTier">
+          <option value="all">全部等级</option>
+          <option>S</option><option>A</option><option>B</option><option>C</option><option>D</option>
+        </select>
+        <select id="qCat"><option value="all">全部品类</option></select>
+        <button class="btn" id="exportBtn">导出数据</button>
+        <button class="btn" id="importBtn">导入数据</button>
+        <button class="btn pri" id="addBtn">+ 新增账号</button>
+      </div>
+    </div>
+    <div class="table-wrap"><table id="ledgerTable"></table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t" style="margin-bottom:6px">批量导入</div>
+    <div class="card-d" style="margin-bottom:12px">
+      每行一个账号，字段用 <b>|</b> 或 <b>Tab</b> 分隔，顺序固定：<br>
+      <span class="chip">账号名</span> <span class="chip">品类</span> <span class="chip">粉丝(万)</span> <span class="chip">作品数</span>
+      <span class="chip">15 项指标（0-100，可省略默认 70）</span><br>
+      <span style="color:var(--tx3)">指标顺序：粉丝总量, 均播, 爆文率, 原创度, 更新稳定性, 专业评分, 互动率, 画像匹配度, 粉丝净增, CPM, 转化率, 复购率, 违规扣分, 掉粉率, 领域匹配度</span>
+    </div>
+    <textarea id="batchInput" rows="5" placeholder="示例：
+晓春哥XCG|电视/家庭影院|5|16|90|80,84,82,90,80,93,88,90,74,86,93,84,84,83,88
+明明白白测评|清洁电器|4|10|500|54,58,60,76,74,78,80,82,70,72,76,70,76,74,80" style="width:100%;box-sizing:border-box;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--tx);font-size:14px;font-family:inherit;resize:vertical;line-height:1.6"></textarea>
+    <div style="display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap">
+      <button class="btn pri" id="batchAdd">批量加入台账</button>
+      <button class="btn" id="batchSample">填入示例</button>
+      <span id="batchMsg" style="font-size:14px"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 标杆账号 ============ -->
+<div class="page" id="p-reps">
+  <div class="card">
+    <div class="card-h">
+      <div>
+        <div class="card-t">B站数码3C家电 · 各等级标杆账号</div>
+        <div class="card-d">准入标准：垂类相关 · 总投稿数一般 ≥ 50 期 · 近期作品播放量 ≥ 6 万（带货型账号除外）· 已排除营销号 / 短期流量号 / 换赛道铺货号 / 刷量号 / 停更超半年账号 / 近期流量枯竭账号。粉丝量与近期播放量均为 2026-09 B站站内公开数据，经 B站官方接口校验</div>
+      </div>
+      <div class="toolbar">
+        <select id="repFilter" style="width:auto">
+          <option value="">全部等级</option>
+          <option value="S">仅看 S 级</option><option value="A">仅看 A 级</option>
+          <option value="B">仅看 B 级</option><option value="C">仅看 C 级</option><option value="D">仅看 D 级</option>
+        </select>
+      </div>
+    </div>
+    <div id="repContent"></div>
+  </div>
+  <div class="card">
+    <div class="card-t" style="margin-bottom:14px">垂类洞察</div>
+    <div class="grid g2" id="repInsights"></div>
+  </div>
+</div>
+
+<!-- ============ 定级计算器 ============ -->
+<div class="page" id="p-calc">
+  <div class="card">
+    <div class="card-h">
+      <div>
+        <div class="card-t">单账号定级工作台</div>
+        <div class="card-d">录入一个账号的基础信息与 15 项指标，实时算出总分、等级与差距诊断</div>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="calcSample">载入示例</button>
+        <button class="btn pri" id="calcSaveAcc">存入台账</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 基础信息 -->
+  <div class="card">
+    <div class="card-t" style="margin-bottom:14px">① 账号基础信息</div>
+    <div class="grid g4">
+      <label style="display:block">
+        <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">账号名称</div>
+        <input type="text" id="ciName" placeholder="如 晓春哥XCG" style="width:100%">
+      </label>
+      <label style="display:block">
+        <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">品类</div>
+        <select id="ciCat" style="width:100%">
+          <option>笔记本/数码</option>
+          <option>综合家电</option>
+          <option>电视/家庭影院</option>
+          <option>厨卫电器</option>
+          <option>清洁电器</option>
+        </select>
+      </label>
+      <label style="display:block">
+        <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">B站粉丝量（万）</div>
+        <input type="number" id="ciFans" value="10" min="0" class="num" style="width:100%">
+      </label>
+    </div>
+    <div style="margin-top:12px">
+      <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">总投稿数（期）— 用于准入校验</div>
+      <input type="number" id="ciWorks" value="100" min="0" class="num" style="width:140px">
+    </div>
+    <div id="calcAdmit" style="margin-top:12px"></div>
+  </div>
+
+  <!-- 粘贴解析 -->
+  <div class="card">
+    <div class="card-t" style="margin-bottom:6px">② 快速导入（可选）</div>
+    <div class="card-d" style="margin-bottom:12px">粘贴数据表格文本（每行 <b>指标名 = 数值</b> 或 <b>指标名,数值</b>），自动填入下方指标。</div>
+    <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
+      <input type="text" id="ciPaste" placeholder="如：粉丝总量=88，均播/阅读=76，互动率=82 …" style="flex:1;min-width:260px">
+      <button class="btn" id="calcParse">解析填入</button>
+    </div>
+    <div id="calcParseMsg" style="margin-top:9px"></div>
+  </div>
+
+  <!-- 指标录入 + 结果 -->
+  <div class="grid g2">
+    <div class="card" id="calcInputs"></div>
+    <div class="card" id="calcResult"></div>
+  </div>
+</div>
+
+
+</main>
+
+<script>
+/* ============================================================
+   一、定级核心维度（6 大维度 / 11 项指标）
+   ============================================================ */
+const DIMS = [
+  {k:'traffic',  name:'流量规模', w:20, desc:'基础曝光能力，需区分"活粉"与"死粉"',
+   items:[
+     {k:'fans',   name:'粉丝总量', w:8, desc:'账号整体体量，100万以上得满分，10万以下得基础分'},
+     {k:'views',  name:'均播/阅读', w:7, desc:'近30天单条内容的平均播放量'},
+     {k:'hit',    name:'爆文率',   w:5, desc:'阅读量 > 均值 2 倍的内容占比'}
+   ]},
+  {k:'content',  name:'内容质量', w:15, desc:'决定账号长期生命力和品牌调性匹配度',
+   items:[
+     {k:'origin', name:'原创度',   w:5, desc:'原创内容在全部内容中的占比'},
+     {k:'update', name:'更新稳定性', w:5, desc:'更新频率的规律性与持续性'},
+     {k:'pro',    name:'专业评分',  w:5, desc:'内容垂直度、视觉/文案专业度（可人工评分）'}
+   ]},
+  {k:'value',    name:'粉丝价值', w:25, desc:'粉丝越精准、越活跃，账号质量越高',
+   items:[
+     {k:'eng',    name:'互动率',   w:10, desc:'赞评比等互动指标综合'},
+     {k:'fit',    name:'画像匹配度', w:10, desc:'粉丝画像（年龄/性别/地域/消费层级）与目标客群匹配度'},
+     {k:'growth', name:'粉丝净增',  w:5,  desc:'粉丝净增趋势'}
+   ]},
+  {k:'biz',      name:'商业表现', w:25, desc:'内容与粉丝的商业转化效率',
+   items:[
+     {k:'cpm',    name:'CPM',     w:10, desc:'千次曝光成本水平'},
+     {k:'conv',   name:'转化率',   w:10, desc:'点击/下单/留资转化率'},
+     {k:'repur',  name:'复购率',   w:5,  desc:'品牌回头客比例'}
+   ]},
+  {k:'health',   name:'健康度',   w:10, desc:'高风险账号需降级或淘汰',
+   items:[
+     {k:'violate',name:'违规扣分',  w:5, desc:'违规记录、限流情况（分数越低风险越高）'},
+     {k:'churn',  name:'掉粉率',    w:5, desc:'掉粉比例（分数越低掉粉越严重）'}
+   ]},
+  {k:'industry', name:'行业适配', w:5,  desc:'垂直领域账号在特定行业价值更高',
+   items:[
+     {k:'match',  name:'领域匹配度', w:5, desc:'账号领域与热门行业（美妆、3C、汽车等）的匹配度、过往合作案例'}
+   ]}
+];
+
+/* 展平 11 项指标（用于录入与计算） */
+const INDICATORS = [];
+DIMS.forEach(d=>d.items.forEach(it=>{
+  if(it.w>0) INDICATORS.push({...it, dim:d.k, dimName:d.name});
+}));
+
+/* ============================================================
+   二、等级划分与标准
+   ============================================================ */
+const TIERS = [
+  {k:'S', min:87, max:100,
+   res:'专属运营、流量助推、品牌定制',
+   feat:'领域标杆级账号：或体量已过 200 万粉，或长期霸榜专业口碑'},
+  {k:'A', min:75, max:86,
+   res:'常规运营支持，偶尔流量扶持',
+   feat:'垂类头部/中坚：专业数据扎实，合作案例成熟稳定'},
+  {k:'B', min:60, max:74,
+   res:'基础运营，无额外流量',
+   feat:'腰部合作盘：内容基础合格，需按单挑品类合作'},
+  {k:'C', min:40, max:59,
+   res:'观察期，需整改',
+   feat:'数据偏弱：流量或互动明显不足，需先补齐再合作'},
+  {k:'D', min:0,  max:39,
+   res:'无',
+   feat:'无合作价值：长期违规、掉粉严重或已停更'}
+];
+/* 体量直通规则：粉丝量 ≥ 该值，直接判为 S 级（头部体量即头部等级） */
+const BULK_S = 200;
+/* 荣誉保底规则：获得 B站官方荣誉（百大 UP 主 / 年度奖项等）的账号，等级不低于 A 级 */
+const HONOR_FLOOR = 'A';
+
+function tierOf(total, fans, honor){
+  // 荣誉号按分数正常走档，保底由 calcAccount 统一处理（起步 A 级）
+  if(fans != null && fans >= BULK_S) return 'S';
+  for(const t of TIERS) if(total>=t.min) return t.k;
+  return 'D';
+}
+function tierMeta(k){ return TIERS.find(t=>t.k===k); }
+const TIER_ORDER = ['S','A','B','C','D'];
+
+/* 统一排序：先按等级 S→A→B→C→D，同等级内按总分从高到低 */
+function cmpRank(a, b){
+  const ra = rank(a.r.tier), rb = rank(b.r.tier);
+  if(ra !== rb) return ra - rb;
+  return b.r.total - a.r.total;
+}
+
+/* 硬性降级规则（健康度维度的一票否决） */
+const GUARD = {
+  violateBelow: 40,   // 违规扣分项 < 40 → 封顶 C
+  churnAbove:   35,   // 掉粉率项 < 35（即掉粉严重）→ 封顶 C
+  hardFloor:   'C'
+};
+
+
+/* ============================================================
+   三、数据：B站数码3C家电垂类真实账号（仅达人号）
+   准入：① 近半年有更新  ② 垂类相关（数码3C / 家电） ③ 总投稿数 ≥ 50 期
+        ③ 账号总投稿数一般须 ≥ 100 期（低于此线通常不收录，垂直度极高或平台获奖号可例外，但须扣稳定性分）
+        ④ 近期作品播放量 ≥ 6 万（近 6 条过半低于 6 万视为流量枯竭，不收录；以直播带货为主战场、视频仅作引流的带货型账号例外）
+        ⑤ 排除营销号 / 短期流量号 / 泛家居铺货号
+   说明：粉丝量为 2026-09 公开约数；各项指标为按公开内容表现
+        的**估算值**，正式启用前请以内部数据替换。
+   指标范围统一为 0–100 分（已归一化），便于加权。
+   ============================================================ */
+const SEED = [
+  {id:'k1', name:'影视飓风', honor:'2023 B站年度最高人气奖', type:'kol', cat:'笔记本/数码', fans:1744.2, works:null,
+   note:'全网影像制作天花板，自制影像工业化水准，设备与技术向内容受众极广，品牌定制首选',
+   m:{fans:100,views:100,hit:92,origin:98,update:86,pro:100,eng:92,fit:88,growth:82,cpm:98,conv:97,repur:95,violate:98,churn:98,match:95}},
+  {id:'k2', name:'老师好我叫何同学', honor:'2020/2025 B站年度最佳作品奖', type:'kol', cat:'笔记本/数码', fans:1294.5, works:null,
+   note:'现象级创意科技内容，单条视频动辄破圈，更新节奏慢但每条都是话题事件，溢价能力极强',
+   m:{fans:100,views:100,hit:98,origin:98,update:71,pro:97,eng:96,fit:84,growth:74,cpm:97,conv:94,repur:92,violate:97,churn:97,match:94}},
+  {id:'k3', name:'极客湾Geekerwan', honor:'2024 B站年度商业影响力奖', type:'kol', cat:'笔记本/数码', fans:552.2, works:null,
+   note:'芯片与硬件性能测试权威，跑分数据库被行业广泛引用，硬核数码受众黏性极强',
+   m:{fans:96,views:97,hit:87,origin:96,update:86,pro:97,eng:90,fit:89,growth:83,cpm:94,conv:93,repur:93,violate:93,churn:93,match:90}},
+  {id:'k4', name:'Mr迷瞪', type:'kol', cat:'综合家电', fans:255.4, works:null,
+   note:'家电带货转化标杆，粉丝画像高度匹配家装决策人群，客单价与成交率双高',
+   m:{fans:86,views:83,hit:73,origin:90,update:88,pro:90,eng:88,fit:95,growth:75,cpm:98,conv:99,repur:97,violate:94,churn:94,match:92}},
+  {id:'k5', name:'小白测评', type:'kol', cat:'笔记本/数码', fans:470.2, works:null,
+   note:'手机数码评测老牌大号，数据库体系成熟，更新稳定，行业与用户双重认可',
+   m:{fans:95,views:92,hit:80,origin:93,update:90,pro:94,eng:87,fit:88,growth:78,cpm:92,conv:91,repur:93,violate:93,churn:92,match:90}},
+  {id:'k6', name:'硬件茶谈', type:'kol', cat:'笔记本/数码', fans:395.9, works:null,
+   note:'硬件原理科普天花板，深入浅出的技术解剖风，专业度与完播率俱佳',
+   m:{fans:93,views:95,hit:85,origin:97,update:86,pro:98,eng:90,fit:89,growth:83,cpm:91,conv:90,repur:92,violate:92,churn:92,match:90}},
+  {id:'k7', name:'笔吧评测室', type:'kol', cat:'笔记本/数码', fans:278.6, works:null,
+   note:'笔记本评测行业标准级账号，猪王口碑深厚，选购决策参考价值高但转化偏理性',
+   m:{fans:88,views:89,hit:74,origin:93,update:89,pro:94,eng:84,fit:88,growth:72,cpm:89,conv:88,repur:87,violate:90,churn:89,match:88}},
+  {id:'k8', name:'先看评测', honor:'2021/2022 B站百大UP主·2023年度商业影响力', type:'kol', cat:'综合家电', fans:256.4, works:null,
+   note:'影像与画质评测专业度高，电视/显示器对比内容口碑稳，制作规格高',
+   m:{fans:88,views:89,hit:80,origin:95,update:84,pro:94,eng:89,fit:88,growth:80,cpm:91,conv:90,repur:89,violate:91,churn:90,match:89}},
+  {id:'k9', name:'大狸子切切里', honor:'2024 B站百大UP主', type:'kol', cat:'厨卫电器', fans:274.2, works:null,
+   note:'厨电与生活家电跨界内容型账号，讲产品同时讲生活方式，粉丝互动活跃',
+   m:{fans:89,views:88,hit:78,origin:89,update:82,pro:86,eng:91,fit:90,growth:80,cpm:86,conv:86,repur:84,violate:86,churn:85,match:84}},
+  {id:'k10', name:'搞机所', type:'kol', cat:'笔记本/数码', fans:259.1, works:null,
+   note:'横评体系化老牌账号，产能稳定，粉丝结构扎实，商单配合度高',
+   m:{fans:87,views:88,hit:74,origin:88,update:86,pro:89,eng:85,fit:86,growth:82,cpm:85,conv:87,repur:84,violate:84,churn:84,match:83}},
+  {id:'k11', name:'TESTV', honor:'B站百大UP主', type:'kol', cat:'笔记本/数码', fans:259.3, works:1279,
+   note:'情景剧式评测开创者，趣味与专业并重，辨识度极高但近两年增长趋缓',
+   m:{fans:83,views:84,hit:79,origin:89,update:80,pro:87,eng:91,fit:86,growth:69,cpm:83,conv:82,repur:85,violate:79,churn:78,match:79}},
+  {id:'k12', name:'陈抱一', type:'kol', cat:'清洁电器', fans:136.8, works:null,
+   note:'清洁电器细分赛道强号，横向对比内容扎实，粉丝净增与互动均处高位',
+   m:{fans:78,views:82,hit:87,origin:87,update:80,pro:83,eng:91,fit:89,growth:85,cpm:82,conv:88,repur:83,violate:82,churn:81,match:81}},
+  {id:'k13', name:'晓春哥XCG（知电）', type:'kol', cat:'电视/家庭影院', fans:60, works:999,
+   note:'家电评测机构化运营代表，自有实验室与排行榜体系，专业背书强、粉丝精准度极高',
+   m:{fans:73,views:75,hit:73,origin:90,update:85,pro:92,eng:91,fit:95,growth:77,cpm:85,conv:84,repur:89,violate:81,churn:80,match:80}},
+  {id:'k14', name:'Wilson学长', honor:'2024 B站百大UP主·年度商业新势力', type:'kol', cat:'综合家电', fans:43.3, works:null,
+   note:'小体量高增长型，互动率与粉丝净增异常突出，家电选购内容转化效率高',
+   m:{fans:68,views:70,hit:82,origin:90,update:86,pro:91,eng:94,fit:94,growth:92,cpm:85,conv:92,repur:92,violate:87,churn:87,match:86}},
+  {id:'k15', name:'科技美学·那岩', type:'kol', cat:'笔记本/数码', fans:80.8, works:252,
+   note:'老牌科技评测创始人，资历深但近年增长疲软，爆款率与粉丝净增偏低',
+   m:{fans:75,views:69,hit:65,origin:88,update:80,pro:89,eng:80,fit:83,growth:57,cpm:85,conv:81,repur:86,violate:75,churn:74,match:75}},
+  {id:'k16', name:'钟文泽', type:'kol', cat:'笔记本/数码', fans:242.8, works:null,
+   note:'手机数码体验流老牌博主，画面精良，但内容同质化明显、增长动能不足',
+   m:{fans:78,views:77,hit:68,origin:87,update:81,pro:86,eng:83,fit:82,growth:64,cpm:86,conv:83,repur:84,violate:79,churn:78,match:79}},
+  {id:'k17', name:'爱否科技FView', type:'kol', cat:'笔记本/数码', fans:116.5, works:null,
+   note:'科技人文向评测，内容有观点但更新节奏不稳，商业活跃度中等',
+   m:{fans:76,views:72,hit:65,origin:89,update:75,pro:88,eng:84,fit:85,growth:59,cpm:85,conv:82,repur:87,violate:77,churn:76,match:76}},
+  {id:'k19', name:'付貴兒z', type:'kol', cat:'清洁电器', fans:26.6, works:189,
+   note:'清洁电器腰部账号，互动率与粉丝匹配度好，但体量与内容产出量偏小',
+   m:{fans:54,views:53,hit:63,origin:78,update:70,pro:71,eng:85,fit:86,growth:71,cpm:68,conv:73,repur:69,violate:65,churn:63,match:65}},
+  {id:'k21', name:'大米评测', type:'kol', cat:'笔记本/数码', fans:143.1, works:null,
+   note:'老牌数码评测，内容量极大但近年热度与互动明显下滑，转型期账号',
+   m:{fans:67,views:62,hit:56,origin:81,update:71,pro:80,eng:75,fit:80,growth:54,cpm:74,conv:71,repur:73,violate:67,churn:65,match:67}},
+  {id:'k23', name:'唯颂科技XYZONE', type:'kol', cat:'笔记本/数码', fans:123.8, works:null,
+   note:'中小型数码账号，内容中规中矩，缺乏差异化记忆点，各项指标均处中下游',
+   m:{fans:58,views:51,hit:49,origin:74,update:64,pro:76,eng:68,fit:76,growth:50,cpm:64,conv:61,repur:62,violate:57,churn:55,match:59}},
+  {id:'k26', name:'胜利文绉绉', type:'kol', cat:'笔记本/数码', fans:113.1, works:638,
+   note:'百万粉级数码账号，内容稳定、爆文率好，粉丝质量与商业表现均衡',
+   m:{fans:80,views:83,hit:81,origin:89,update:83,pro:89,eng:87,fit:84,growth:73,cpm:84,conv:82,repur:83,violate:79,churn:78,match:79}},
+  {id:'k27', name:'-LKs-', honor:'2024/2025 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:446, works:null,
+   note:'硬核数码与技术流内容代表，粉丝量与专业口碑双高，商单资源充足',
+   m:{fans:100,views:96,hit:88,origin:94,update:82,pro:96,eng:92,fit:86,growth:78,cpm:93,conv:93,repur:91,violate:88,churn:87,match:88}},
+  {id:'k28', name:'李大锤同学', type:'kol', cat:'笔记本/数码', fans:57.1, works:null,
+   note:'中腰部数码账号，内容稳、口碑好，粉丝画像与 3C 客群匹配，性价比型合作对象',
+   m:{fans:87,views:84,hit:76,origin:88,update:84,pro:86,eng:87,fit:89,growth:72,cpm:85,conv:84,repur:84,violate:79,churn:78,match:82}},
+  {id:'k29', name:'爱生活的马克君', type:'kol', cat:'综合家电', fans:20.2, works:null,
+   note:'生活方式向家电账号，粉丝画像匹配度与互动率突出，适合小家电品类合作',
+   m:{fans:71,views:72,hit:80,origin:84,update:82,pro:82,eng:88,fit:92,growth:76,cpm:80,conv:83,repur:81,violate:78,churn:76,match:82}},
+  {id:'k30', name:'老爸评测', type:'kol', cat:'综合家电', fans:467.6, works:null,
+   note:'检测科普向头部账号，公信力强、内容量大，但历次争议事件使健康度评分偏低',
+   m:{fans:94,views:93,hit:90,origin:90,update:88,pro:88,eng:89,fit:84,growth:80,cpm:88,conv:90,repur:85,violate:62,churn:66,match:78}},
+  /* 电视赛道专项（2026-09 核实） */
+  {id:'k32', name:'假如科技', type:'kol', cat:'笔记本/数码', fans:70.3, works:null,
+   note:'「大横评」型数码账号，单条 50 万播放带动 1000 万带货 GMV，转化效率极高',
+   m:{fans:72,views:80,hit:76,origin:86,update:84,pro:88,eng:86,fit:88,growth:78,cpm:88,conv:94,repur:86,violate:80,churn:79,match:84}},
+  /* B站官方荣誉号（百大 / 年度奖项，准入例外收录） */
+  {id:'k57', name:'科技美学', honor:'2020 B站百大UP主', type:'kol', cat:'笔记本/数码', fans:447.2, works:null,
+   note:'2020 B站百大UP主，国内三大评测机构之一，B站 447.2 万粉，《四大旗舰对决》系列为数码评测经典（官方荣誉号，体量直通 S）',
+   m:{fans:100,views:90,hit:84,origin:90,update:88,pro:94,eng:88,fit:86,growth:74,cpm:90,conv:90,repur:88,violate:88,churn:86,match:86}},
+  {id:'k58', name:'短的发布会', type:'kol', cat:'笔记本/数码', fans:264.1, works:null,
+   note:'B站数码发布会恶搞解说标杆，风格逗比、网感强，新机发布节点流量爆发力突出',
+   m:{fans:68,views:76,hit:82,origin:82,update:80,pro:74,eng:88,fit:78,growth:74,cpm:78,conv:76,repur:80,violate:76,churn:74,match:74}},
+  {id:'k54', name:'硬核家电钱姐', type:'kol', cat:'综合家电', fans:5.3, works:null,
+   note:'飞瓜 B站涨粉榜第 2（单月涨粉 44%），家电实测向，成长势头强但体量仍小',
+   m:{fans:20,views:32,hit:48,origin:78,update:70,pro:74,eng:66,fit:82,growth:86,cpm:60,conv:64,repur:60,violate:70,churn:68,match:76}},
+  {id:'k48', name:'科技体验派', type:'kol', cat:'笔记本/数码', fans:33.8, works:664,
+   note:'B站 33.8 万粉、累计作品 664 期，更新稳定但近一年播放与互动明显走低，处流量下滑期',
+   m:{fans:48,views:38,hit:40,origin:72,update:74,pro:70,eng:52,fit:70,growth:40,cpm:48,conv:48,repur:46,violate:62,churn:58,match:62}}];
+
+/* ============================================================
+   四、计算
+   ============================================================ */
+function calcAccount(a){
+  const dims = {};
+  DIMS.forEach(d=>{
+    let sum=0, wsum=0;
+    d.items.forEach(it=>{
+      if(it.w<=0) return;
+      const v = clamp(a.m[it.k]);
+      sum += v*it.w; wsum += it.w;
+    });
+    dims[d.k] = wsum ? sum/wsum : 0;
+  });
+  const dimWeights = {};
+  DIMS.forEach(d=>dimWeights[d.k]=d.w);
+  let total = 0, tw = 0;
+  DIMS.forEach(d=>{ total += dims[d.k]*d.w; tw += d.w; });
+  total = tw ? total/tw : 0;
+  total = Math.round(total*10)/10;
+
+  let tier = tierOf(total, a.fans, a.honor);
+  const guards = [];
+  // 体量直通
+  if(tier==='S' && a.fans >= BULK_S && total < TIERS[0].min){
+    guards.push(`粉丝 ${a.fans} 万 ≥ ${BULK_S} 万，按体量直通 S 级`);
+  }
+  // 荣誉保底：B站官方荣誉号（百大 / 年度奖等），等级不低于 A
+  if(a.honor){
+    if(rank(tier) > rank(HONOR_FLOOR)){
+      tier = HONOR_FLOOR;
+      guards.push(`B站官方荣誉号（${a.honor}），按保底规则不低于 ${HONOR_FLOOR} 级`);
+    } else {
+      guards.push(`B站官方荣誉号：${a.honor}`);
+    }
+  }
+  // 健康度一票否决
+  if(a.m.violate < GUARD.violateBelow && rank(tier) < rank('C')){
+    tier='C'; guards.push(`违规指标 ${a.m.violate} 分（<${GUARD.violateBelow}），等级封顶 C`);
+  }
+  if(a.m.churn < GUARD.churnAbove && rank(tier) < rank('C')){
+    tier='C'; guards.push(`掉粉指标 ${a.m.churn} 分（<${GUARD.churnAbove}），等级封顶 C`);
+  }
+  return {total:total, dims:dims, tier:tier, guards:guards};
+}
+function clamp(v){ return Math.max(0, Math.min(100, Number(v)||0)); }
+function rank(k){ return TIER_ORDER.indexOf(k); }
+
+let ACCOUNTS = [];
+
+/* ============================================================
+   五、渲染
+   ============================================================ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function load(){
+  try{
+    const raw = localStorage.getItem('bili_tier_v2');
+    if(raw){
+      const d = JSON.parse(raw);
+      if(Array.isArray(d) && d.length) return d;
+    }
+  }catch(e){}
+  return JSON.parse(JSON.stringify(SEED));
+}
+function save(){
+  try{ localStorage.setItem('bili_tier_v2', JSON.stringify(ACCOUNTS)); }
+  catch(e){ toast('保存失败：本地存储不可用'); }
+}
+
+function toast(msg){
+  let el = document.querySelector('.toast');
+  if(!el){ el = document.createElement('div'); el.className='toast'; document.body.appendChild(el); }
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(el._t); el._t = setTimeout(()=>el.classList.remove('on'), 2200);
+}
+
+/* ---------- 总览 ---------- */
+function renderOverview(){
+  const rows = ACCOUNTS.map(a=>({a, r:calcAccount(a)}));
+  const tierCount = {};
+  TIER_ORDER.forEach(k=>tierCount[k]=0);
+  rows.forEach(x=>tierCount[x.r.tier]++);
+  const avgTotal = rows.length ? (rows.reduce((s,x)=>s+x.r.total,0)/rows.length) : 0;
+  const saCount = (tierCount.S||0)+(tierCount.A||0);
+  const saPct = rows.length ? Math.round(saCount/rows.length*100) : 0;
+  const needFix = rows.filter(x=>x.r.tier==='C'||x.r.tier==='D').length;
+  const bCount = tierCount.B || 0;
+
+  $('statCards').innerHTML = [
+    {l:'账号总数', v:rows.length, s:`S ${tierCount.S||0} · A ${tierCount.A||0} · B ${bCount} · C ${tierCount.C||0} · D ${tierCount.D||0}`},
+    {l:'平均总分', v:avgTotal.toFixed(1), s:'六维加权（百分制）'},
+    {l:'S+A 占比', v:saPct+'%', s:`${saCount} 个优质账号`},
+    {l:'B级（腰部盘）', v:bCount, s:`另有 ${needFix} 个 C/D 级待观察`}
+  ].map(c=>`<div class="stat">
+      <div class="stat-l">${c.l}</div>
+      <div class="stat-v num">${c.v}</div>
+      <div class="stat-s">${c.s}</div>
+    </div>`).join('');
+
+  // 分级规则：分数区间 + 等级判定 + 硬约束
+  const fRows = rows;
+  const fCount = {}; TIER_ORDER.forEach(k=>fCount[k]=0);
+  fRows.forEach(x=>fCount[x.r.tier]++);
+  const RULE_EXTRA = {
+    S: [`体量直通：B站粉丝 ≥ ${BULK_S} 万，可直接判 S`],
+    A: ['荣誉号保底：获 B站百大等官方荣誉，起步不低于 A'],
+    B: ['健康度封顶：履约分 < 70 或风险分 < 50，最高只能到 B'],
+    C: ['真实度封顶：粉丝真实度 < 50，最高只能到 C'],
+    D: ['无合作价值：长期违规、掉粉严重或已停更']
+  };
+  $('tierRules').innerHTML = TIER_ORDER.map(k=>{
+    const meta = tierMeta(k);
+    const n = fCount[k];
+    const extras = RULE_EXTRA[k] || [];
+    const band = `${meta.min}–${meta.max} 分`;
+    return `<div class="rule-row">
+      <div class="rule-tag"><span class="tag ${k}" style="font-size:14px;padding:4px 14px">${k}</span></div>
+      <div class="rule-band num">${band}</div>
+      <div class="rule-body">
+        <div class="rule-feat">${esc(meta.feat)}</div>
+        <ul class="rule-list">${extras.map(t=>`<li>${t}</li>`).join('')}</ul>
+      </div>
+      <div class="rule-num"><b class="num">${n}</b><span>个账号</span></div>
+    </div>`;
+  }).join('') + `<div class="note" style="margin-top:16px">
+    <b>定级顺序：</b>① 六维加权总分确定基础等级 → ② 命中「体量直通」直接升 S → ③ 命中健康度 / 真实度封顶则按上限下调 → ④ 荣誉号低于 A 时保底到 A。粉丝量仅作直通与封顶的边界条件，不直接决定等级。
+  </div>`;
+
+  // 六维均值
+  const dimAvg = {};
+  DIMS.forEach(d=>{
+    dimAvg[d.k] = fRows.length ? fRows.reduce((s,x)=>s+x.r.dims[d.k],0)/fRows.length : 0;
+  });
+  $('dimAvg').innerHTML = DIMS.map(d=>`
+    <div class="dim-row">
+      <div>
+        <div class="dim-n">${d.name}</div>
+        <div class="dim-w">权重 ${d.w}%</div>
+      </div>
+      <div class="bar"><i style="width:${dimAvg[d.k]}%;background:linear-gradient(90deg,var(--acc),var(--purple))"></i></div>
+      <div class="num" style="text-align:right;font-weight:700">${dimAvg[d.k].toFixed(1)}</div>
+    </div>`).join('');
+
+  // 定级结果总表
+  const rq = ($('resSearch') ? $('resSearch').value : '').trim().toLowerCase();
+  const rt = $('resTier') ? $('resTier').value : 'all';
+  let rRows = fRows.slice();
+  if(rq) rRows = rRows.filter(x=>x.a.name.toLowerCase().includes(rq));
+  if(rt!=='all') rRows = rRows.filter(x=>x.r.tier===rt);
+  rRows.sort(cmpRank);
+  if($('resultSub')) $('resultSub').textContent = `共 ${rRows.length} 个账号，按等级 S→D 排列，同等级内按总分从高到低`;
+
+  const unit = v => v>=10000 ? (v/10000).toFixed(2)+'亿' : v+'万';
+  let rHtml = `<thead><tr>
+    <th style="width:44px">名次</th><th>账号</th><th>品类</th>
+    <th style="text-align:right">B站粉丝</th><th style="text-align:right">作品数</th><th style="text-align:right">总分</th><th style="text-align:center">等级</th>
+    <th>账号特点</th></tr></thead><tbody>`;
+  if(!rRows.length){
+    rHtml += `<tr><td colspan="8"><div class="empty"><div class="empty-i">◌</div>没有符合条件的账号</div></td></tr>`;
+  } else {
+    rRows.forEach((x,i)=>{
+      rHtml += `<tr>
+        <td class="num" style="color:var(--tx3)">${i+1}</td>
+        <td><b style="font-size:14px">${esc(x.a.name)}</b>${x.a.fans>=BULK_S?'':''}${x.a.honor?'<span class="chip" style="color:var(--acc);border-color:var(--acc);margin-left:5px;font-size:14px">荣誉号</span>':''}</td>
+        <td style="font-size:14px;color:var(--tx2)">${esc(x.a.cat)}</td>
+        <td class="num" style="text-align:right;font-size:14px">${x.a.fans?unit(x.a.fans):'—'}</td>
+        <td class="num" style="text-align:right;font-size:14px;color:var(--tx2)">${x.a.works?x.a.works+'期':'—'}</td>
+        <td class="num" style="text-align:right;font-weight:700">${x.r.total}</td>
+        <td style="text-align:center"><span class="tag ${x.r.tier}">${x.r.tier}</span></td>
+        <td style="font-size:13px;color:var(--tx2);max-width:340px">${esc(x.a.note||'—')}${x.r.tier==='S'&&x.a.fans>=BULK_S&&x.r.total<TIERS[0].min?' <span class="chip" style="color:var(--amber);border-color:var(--amber)">体量直通</span>':''}</td>
+      </tr>`;
+    });
+  }
+  rHtml += '</tbody>';
+  $('resultTable').innerHTML = rHtml;
+
+  // 矩阵
+  let mHtml = '<thead><tr><th>等级</th><th>账号数</th>' + DIMS.map(d=>`<th>${d.name}</th>`).join('') + '</tr></thead><tbody>';
+  TIER_ORDER.forEach(k=>{
+    const list = fRows.filter(x=>x.r.tier===k);
+    mHtml += `<tr><td><span class="tag ${k}">${k}</span></td><td class="num">${list.length}</td>`;
+    DIMS.forEach(d=>{
+      const avg = list.length ? list.reduce((s,x)=>s+x.r.dims[d.k],0)/list.length : 0;
+      mHtml += `<td class="num">${list.length ? avg.toFixed(1) : '—'}</td>`;
+    });
+    mHtml += '</tr>';
+  });
+  mHtml += '</tbody>';
+  $('matrixTable').innerHTML = mHtml;
+}
+
+/* ---------- 评分模型页 ---------- */
+function renderModel(){
+  let h = '<thead><tr><th>维度</th><th>核心指标</th><th>说明</th></tr></thead><tbody>';
+  DIMS.forEach(d=>{
+    const items = d.items.filter(i=>i.w>0);
+    h += `<tr>
+      <td><b style="font-size:14px">${d.name}</b><div class="chip" style="margin-top:4px">权重 ${d.w}%</div></td>
+      <td>${items.map(i=>`<div style="margin:3px 0"><span class="chip">${i.w}%</span> ${i.name}</div>`).join('')}</td>
+      <td style="color:var(--tx2);font-size:14px">${d.desc}${d.items.filter(i=>i.w===0).map(i=>`<div style="color:var(--tx3);margin-top:4px;font-size:14px">· ${i.name}：${i.desc}</div>`).join('')}</td>
+    </tr>`;
+  });
+  h += '</tbody>';
+  $('dimsTable').innerHTML = h;
+
+  $('weightBlocks').innerHTML = DIMS.map(d=>`
+    <div style="border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--panel2)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+        <b style="font-size:13px">${d.name}</b>
+        <span class="chip" style="font-size:14px;background:var(--panel)">${d.w}%</span>
+      </div>
+      ${d.items.filter(i=>i.w>0).map(i=>`
+        <div style="display:flex;align-items:center;gap:9px;margin:6px 0;font-size:14px">
+          <span class="num" style="width:30px;text-align:right;color:var(--tx3)">${i.w}%</span>
+          <div class="bar" style="flex:1"><i style="width:${i.w/10*100}%;background:linear-gradient(90deg,var(--acc),var(--purple))"></i></div>
+          <span style="color:var(--tx2);min-width:64px">${i.name}</span>
+        </div>`).join('')}
+    </div>`).join('');
+
+  $('methodBlocks').innerHTML = [
+    {t:'分档打分', d:'每个指标按实际数据分档打分。例如粉丝量：100 万以上得满分，10 万以下得基础分。'},
+    {t:'归一化法', d:'将指标映射到 0–100 分，或使用排名百分位法，消除量纲差异。'},
+    {t:'加权总分', d:'最终加权得出总分（0–100），再按分数区间映射到 S/A/B/C/D 等级。'}
+  ].map(x=>`<div style="border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--panel2)">
+    <b style="font-size:14px;display:block;margin-bottom:6px">${x.t}</b>
+    <div style="font-size:14px;color:var(--tx2);line-height:1.7">${x.d}</div>
+  </div>`).join('');
+
+  // 收录准入标准
+  const ADMIT = [
+    {c:'平台阵地', r:'以 B站为主阵地', d:'B站须为主要内容阵地；仅把 B站当分发渠道、站内体量明显不足的账号不收录'},
+    {c:'粉丝量', r:'一般 ≥ 10 万', d:'基准线 10 万粉。低于此线者原则上不收录；仅对近期内容爆发力强、被平台官方列为垂类标杆的账号例外放行，且须按实际站内量级打分'},
+    {c:'更新状态', r:'近半年内有更新', d:'以最近一次投稿时间判断；停更超过半年（截至 2026-03 之后无新作）视为失效账号，不予收录'},
+    {c:'垂类相关性', r:'数码 3C / 家电', d:'内容聚焦数码 3C 或家电品类'},
+    {c:'近期播放量', r:'近期作品 ≥ 6 万', d:'取最近 12 条投稿的播放中位数与均值。近 6 条中过半低于 6 万，视为流量枯竭，不予收录；但带货型账号（如以直播带货为主战场、视频仅作引流）不适用此条'},
+  {c:'总投稿数', r:'一般 ≥ 100 期', d:'基准线 100 期。低于此线通常视为换赛道 / 重开号，不予收录；但获得 B站官方荣誉（百大 UP 主、年度奖项、平台垂类奖项等）的账号不受此限，可例外收录'},
+    {c:'荣誉例外', r:'B站官方荣誉号', d:'凡获得 B站 百大 UP 主、年度商业新势力 / 商业影响力、平台垂类奖项的账号，视为垂类标杆，可放宽投稿数门槛收录'},
+    {c:'荣誉保底', r:'B站荣誉号 → 不低于 A 级', d:'获得 B站官方荣誉（百大 UP 主、年度商业新势力 / 商业影响力、年度最高人气奖 / 最佳作品奖等）的数码家电账号，视为垂类标杆，等级保底 A 级；健康度仍须达标，违规 / 掉粉严重者仍降级'},
+    {c:'等级直通', r:'粉丝 ≥ 200 万 → S 级', d:'体量即头部：粉丝量达 200 万的账号直接判为 S 级，不受分数区间限制（健康度仍须达标）'},
+    {c:'排除项', r:'营销号 / 短期流量号 / 铺货号', d:'无实质垂类内容积累的账号不收录'}
+  ];
+  $('admitTable').innerHTML = '<thead><tr><th>准入项</th><th>要求</th><th>说明</th></tr></thead><tbody>' +
+    ADMIT.map(x=>`<tr>
+      <td><b style="font-size:14px">${x.c}</b></td>
+      <td><span class="chip">${x.r}</span></td>
+      <td style="color:var(--tx2);font-size:14px">${x.d}</td>
+    </tr>`).join('') + '</tbody>';
+}
+
+/* ---------- 台账 ---------- */
+function renderLedger(){
+  // 品类下拉
+  const cats = [...new Set(ACCOUNTS.map(a=>a.cat))].sort();
+  const catSel = $('qCat');
+  if(catSel.options.length<=1){
+    catSel.innerHTML = '<option value="all">全部品类</option>' + cats.map(c=>`<option>${esc(c)}</option>`).join('');
+  }
+
+  const q = $('qSearch').value.trim().toLowerCase();
+  const ft = $('qType').value, fT = $('qTier').value, fc = $('qCat').value;
+
+  let rows = ACCOUNTS.map(a=>({a, r:calcAccount(a)}));
+  if(q) rows = rows.filter(x=>x.a.name.toLowerCase().includes(q));
+  if(ft!=='all') rows = rows.filter(x=>x.a.type===ft);
+  if(fT!=='all') rows = rows.filter(x=>x.r.tier===fT);
+  if(fc!=='all') rows = rows.filter(x=>x.a.cat===fc);
+  rows.sort(cmpRank);
+
+  $('ledgerSub').textContent = `共 ${rows.length} 个账号${(q||ft!=='all'||fT!=='all'||fc!=='all')?'（已筛选）':''}`;
+
+  if(!rows.length){ $('ledgerTable').innerHTML = '<tbody><tr><td><div class="empty"><div class="empty-i">◌</div>没有符合条件的账号</div></td></tr></tbody>'; return; }
+
+  let h = `<thead><tr>
+    <th>账号</th><th>品类</th><th style="text-align:right">B站粉丝</th><th style="text-align:right">作品数</th>
+    ${DIMS.map(d=>`<th>${d.name.slice(0,2)}</th>`).join('')}
+    <th>总分</th><th>等级</th><th style="text-align:right">操作</th>
+  </tr></thead><tbody>`;
+  rows.forEach(x=>{
+    h += `<tr>
+      <td><b style="font-size:14px">${esc(x.a.name)}</b></td>
+      <td style="color:var(--tx2);font-size:14px">${esc(x.a.cat)}</td>
+      <td class="num">${x.a.fans?(x.a.fans>=10000?(x.a.fans/10000).toFixed(2)+'亿':x.a.fans+'万'):'—'}</td>
+      <td class="num" style="color:var(--tx2)">${x.a.works?x.a.works+'期':'—'}</td>
+      ${DIMS.map(d=>`<td class="num" style="color:var(--tx2)">${x.r.dims[d.k].toFixed(0)}</td>`).join('')}
+      <td><b class="num" style="font-size:13px">${x.r.total}</b></td>
+      <td><span class="tag ${x.r.tier}">${x.r.tier}</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="btn" style="padding:4px 9px;font-size:13px" data-detail="${x.a.id}">详情</button>
+        <button class="btn" style="padding:4px 9px;font-size:13px" data-edit="${x.a.id}">编辑</button>
+        <button class="btn" style="padding:4px 9px;font-size:13px;color:#d9534f;border-color:#d9534f55" data-del="${x.a.id}">删除</button>
+      </td>
+    </tr>`;
+  });
+  h += '</tbody>';
+  $('ledgerTable').innerHTML = h;
+
+  $('ledgerTable').querySelectorAll('[data-detail]').forEach(b=>{
+    b.onclick = ()=> showDetail(ACCOUNTS.find(a=>a.id===b.dataset.detail));
+  });
+  $('ledgerTable').querySelectorAll('[data-edit]').forEach(b=>{
+    b.onclick = ()=> showEdit(ACCOUNTS.find(a=>a.id===b.dataset.edit));
+  });
+  $('ledgerTable').querySelectorAll('[data-del]').forEach(b=>{
+    b.onclick = ()=>{
+      const a = ACCOUNTS.find(x=>x.id===b.dataset.del);
+      if(!a) return;
+      if(!confirm(`确定删除账号「${a.name}」？此操作不可撤销。`)) return;
+      ACCOUNTS = ACCOUNTS.filter(x=>x.id!==a.id);
+      save(); renderAll();
+syncNavTop(); toast(`已删除：${a.name}`);
+    };
+  });
+}
+
+/* ---------- 新增 / 编辑弹层 ---------- */
+function showEdit(a){
+  const isNew = !a;
+  const src = a || {name:'', cat:'笔记本/数码', fans:10, works:100, note:'', m:{}};
+  const val = k => clamp(src.m && src.m[k]!=null ? src.m[k] : 70);
+  const bg = document.createElement('div');
+  bg.className = 'modal-bg';
+  bg.innerHTML = `<div class="modal" style="max-width:560px" onclick="event.stopPropagation()">
+    <div class="modal-h">
+      <b style="font-size:14px">${isNew?'新增账号':'编辑账号'}</b>
+      <button class="icon-btn" data-close>✕</button>
+    </div>
+    <div class="modal-b">
+      <div class="grid g2" style="gap:12px;margin-bottom:12px">
+        <label style="display:block">
+          <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">账号名称</div>
+          <input type="text" id="edName" value="${esc(src.name)}" style="width:100%">
+        </label>
+        <label style="display:block">
+          <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">品类</div>
+          <input type="text" id="edCat" value="${esc(src.cat)}" list="catList" style="width:100%">
+          <datalist id="catList">
+            <option>笔记本/数码</option><option>综合家电</option><option>电视/家庭影院</option>
+            <option>厨卫电器</option><option>清洁电器</option>
+          </datalist>
+        </label>
+      </div>
+      <div class="grid g3" style="gap:12px;margin-bottom:14px">
+        <label style="display:block">
+          <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">B站粉丝量（万）</div>
+          <input type="number" id="edFans" value="${src.fans}" min="0" class="num" style="width:100%">
+        </label>
+        <label style="display:block">
+          <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">总投稿数（期）</div>
+          <input type="number" id="edWorks" value="${src.works}" min="0" class="num" style="width:100%">
+        </label>
+      </div>
+      <div style="font-size:14px;color:var(--tx3);margin-bottom:9px">15 项指标（0–100）</div>
+      <div style="max-height:320px;overflow:auto;padding-right:4px">
+        ${DIMS.map(d=>`
+          <div style="margin-bottom:11px">
+            <b style="font-size:14px;color:var(--tx2)">${d.name}</b>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px">
+              ${d.items.filter(i=>i.w>0).map(i=>`
+                <label style="display:block">
+                  <div style="font-size:14px;color:var(--tx3);margin-bottom:3px">${i.name}</div>
+                  <input type="number" min="0" max="100" class="num" data-edm="${i.k}" value="${val(i.k)}" style="width:100%;padding:4px 6px">
+                </label>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>
+      <label style="display:block;margin-top:12px">
+        <div style="font-size:13px;color:var(--tx3);margin-bottom:5px">账号特点（一句话，展示在总表与等级表）</div>
+        <textarea id="edNote" rows="2" style="width:100%;box-sizing:border-box;padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--tx);font-size:14px;font-family:inherit;resize:vertical">${esc(src.note||'')}</textarea>
+      </label>
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <button class="btn pri" id="edSave" style="flex:1">${isNew?'新增':'保存修改'}</button>
+        <button class="btn" data-close>取消</button>
+      </div>
+    </div>
+  </div>`;
+  bg.onclick = ()=> bg.remove();
+  bg.querySelectorAll('[data-close]').forEach(el=>el.onclick = ()=> bg.remove());
+  bg.querySelector('#edSave').onclick = ()=>{
+    const name = bg.querySelector('#edName').value.trim();
+    if(!name){ toast('请填写账号名称'); return; }
+    const m = {};
+    bg.querySelectorAll('[data-edm]').forEach(inp=>{ m[inp.dataset.edm] = clamp(parseFloat(inp.value)||0); });
+    const data = {
+      name,
+      cat: bg.querySelector('#edCat').value.trim() || '未分类',
+      fans: parseFloat(bg.querySelector('#edFans').value)||0,
+      works: parseFloat(bg.querySelector('#edWorks').value)||0,
+      m
+    };
+    if(isNew){
+      if(ACCOUNTS.some(x=>x.name===name)){ toast('已存在同名账号'); return; }
+      ACCOUNTS.push(Object.assign({id:'u'+Date.now(), type:'kol'}, data));
+    } else {
+      Object.assign(a, data);
+    }
+    save(); renderAll(); bg.remove();
+    toast(isNew?`已新增：${name}`:`已保存：${name}`);
+  };
+  document.body.appendChild(bg);
+}
+
+/* ---------- 详情弹层 ---------- */
+function showDetail(a){
+  if(!a) return;
+  const r = calcAccount(a);
+  const tier = tierMeta(r.tier);
+  const bg = document.createElement('div');
+  bg.className = 'modal-bg';
+  bg.innerHTML = `<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-h">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="tag ${r.tier}" style="font-size:14px;padding:4px 12px">${r.tier}</span>
+        <div>
+          <b style="font-size:14px">${esc(a.name)}</b>
+          <div style="font-size:13px;color:var(--tx3)">${esc(a.cat)} · ${a.fans?a.fans+'万粉':'粉丝数待补'} · ${a.works?a.works+'期作品':'作品数待补'}</div>
+        </div>
+      </div>
+      <button class="icon-btn" data-close>✕</button>
+    </div>
+    <div class="modal-b">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px">
+        <div class="num" style="font-size:36px;font-weight:800;letter-spacing:-1.5px;background:linear-gradient(135deg,var(--acc),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">${r.total}</div>
+        <div style="font-size:14px;color:var(--tx3)">/ 100 分<br><span class="tag ${r.tier}" style="margin-top:4px">${r.tier} 级</span></div>
+      </div>
+      ${a.note?`<div class="note" style="margin-bottom:14px"><b>账号特点：</b>${esc(a.note)}</div>`:''}
+      ${a.honor?`<div class="note" style="margin-bottom:14px;border-color:var(--acc)"><b>B站官方荣誉：</b>${esc(a.honor)} <span style="color:var(--tx3)">（荣誉号，等级保底 A 级）</span></div>`:''}
+      ${r.guards&&r.guards.length?`<div class="note warn" style="margin-bottom:14px"><b>定级说明：</b>${r.guards.map(esc).join('；')}</div>`:''}
+      ${DIMS.map(d=>{
+        const items = d.items.filter(i=>i.w>0);
+        return `<div style="margin-bottom:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+            <b style="font-size:14px">${d.name} <span style="color:var(--tx3);font-weight:400">权重 ${d.w}%</span></b>
+            <b class="num" style="font-size:14px;color:var(--acc)">${r.dims[d.k].toFixed(1)}</b>
+          </div>
+          <div class="bar" style="margin-bottom:8px"><i style="width:${r.dims[d.k]}%;background:linear-gradient(90deg,var(--acc),var(--purple))"></i></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            ${items.map(i=>`<span class="chip">${i.name} ${clamp(a.m[i.k]).toFixed(0)} <span style="color:var(--tx3)">×${i.w}%</span></span>`).join('')}
+          </div>
+        </div>`;
+      }).join('')}
+      ${r.guards.length?`<div class="note warn"><b>门槛修正已生效：</b><br>${r.guards.join('<br>')}</div>`:''}
+      <div class="note" style="margin-top:12px">
+        <b>资源支持：</b>${tier.res}
+      </div>
+    </div>
+  </div>`;
+  bg.onclick = ()=> bg.remove();
+  bg.querySelector('[data-close]').onclick = ()=> bg.remove();
+  document.body.appendChild(bg);
+}
+
+/* ---------- 标杆账号 ---------- */
+const REP_INSIGHTS = [
+  {t:'粉丝量 ≠ 商业价值', d:'垂类账号的转化力常与粉丝量脱钩。Mr迷瞪 255 万粉，年带货体量在垂类中位居前列；Wilson学长 43 万粉即获 B站年度商业新势力。因此「商业表现」维度权重 25%，且转化率与复购率独立计分。'},
+  {t:'垂直度是核心资产', d:'笔吧评测室（笔记本）、晓春哥（电视/家庭影院）这类只深耕 1-3 个品类的账号，粉丝画像精准度与专业信任度远超泛数码号。「行业适配」维度给垂直账号更高分。'},
+  {t:'B站用户"学习型消费"', d:'B站用户决策周期长、看测评买大件。这决定了深度测评账号的「粉丝价值」更高——互动率与画像匹配度是硬指标，而非单纯看播放量。'},
+  {t:'作品量是准入底线', d:'成立年限够长不等于垂类积累够深。部分账号开号多年却频繁换赛道，垂类作品不足 100 期，本质是「重开号」，不应按垂类账号定级。本表已将作品数 <100 期的账号排除。'},
+  {t:'健康度是一票否决', d:'家电测评涉及品牌利益，违规与限流风险高。健康度虽只占 10%，但违规或掉粉严重会触发等级封顶（最高 C 级），防止高风险账号进入商单池。'},
+  {t:'体量与争议分开看', d:'超高体量账号若存在公开争议记录，仍按实际扣健康度分，不因体量大而豁免。例如老爸评测粉丝近 400 万、作品 1600+，但历史诉讼与质检争议使其健康度得分被压低，最终落在 A 级而非 S 级——体量给分，争议扣分，两者独立计算。'},
+  {t:'跨平台名号 ≠ B站体量', d:'部分博主在微博 / 小红书 / 什么值得买起家，B站只是次要分发渠道，站内粉丝远低于其他平台声量。此类账号即使行业知名度高，只要 B站体量明显不足便不予收录——本体系评的是「B站商单价值」，量级须按站内真实数据计。'},
+  {t:'未披露商单的隐患', d:'家电横评账号若「接了推广却标称横评不接推广」，一旦被平台或监管点名，商业信任将快速崩塌。2026 年 6 月《网络测评活动规范》已明确要求披露利益关系。此类争议按实际扣健康度分，相关账号不宜进入高等级池。'}
+];
+
+function renderReps(){
+  const filt = $('repFilter').value;
+  const rows = ACCOUNTS.map(a=>({a, r:calcAccount(a)}));
+
+  let html = '';
+  TIER_ORDER.forEach(k=>{
+    if(filt && filt!==k) return;
+    const t = tierMeta(k);
+    const list = rows.filter(x=>x.r.tier===k).sort((a,b)=>b.r.total-a.r.total);
+    if(!list.length) return;
+
+    html += `<div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:11px;margin-bottom:6px;flex-wrap:wrap">
+        <span class="tag ${k}" style="font-size:14px;padding:4px 13px">${k}</span>
+        <b style="font-size:14px">${k==='S'?`${t.min}–${t.max} 分 / ≥ ${BULK_S} 万粉`:`${t.min}–${t.max} 分`}</b>
+        <span style="font-size:14px;color:var(--tx3)">${list.length} 个代表账号</span>
+      </div>
+      <div style="font-size:14px;color:var(--tx2);margin-bottom:12px;padding-left:2px">资源支持：${t.res}</div>
+      <div class="grid g2">
+      ${list.map(x=>{
+        const c = k==='S'?'var(--amber)':k==='A'?'var(--purple)':k==='B'?'var(--blue)':k==='C'?'var(--green)':'var(--tx3)';
+        return `<div style="border:1px solid var(--line);border-left:3px solid ${c};border-radius:11px;padding:14px;background:var(--panel2)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px">
+            <div style="min-width:0">
+              <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                <b style="font-size:14px">${esc(x.a.name)}</b>
+                <span class="chip">${esc(x.a.cat)}</span>
+              </div>
+            </div>
+            <div style="text-align:right;flex-shrink:0">
+              <div class="num" style="font-size:14px;color:${c}">${x.r.total}</div>
+              <div style="font-size:14px;color:var(--tx3)">总分</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;font-size:14px;color:var(--tx2);margin-bottom:9px;flex-wrap:wrap">
+            <span>粉丝 <b class="num" style="color:var(--tx)">${x.a.fans}万</b></span>
+            <span>粉丝 <b class="num" style="color:var(--tx)">${x.a.fans?x.a.fans+'万':'—'}</b></span>
+            <span>作品 <b class="num" style="color:var(--tx)">${x.a.works}期</b></span>
+          </div>
+          ${x.a.note?`<div style="font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:9px;padding-left:8px;border-left:2px solid ${c}">${esc(x.a.note)}</div>`:''}
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            ${DIMS.map(d=>`<span class="chip" style="font-size:14px">${d.name.slice(0,2)} ${x.r.dims[d.k].toFixed(0)}</span>`).join('')}
+          </div>
+        </div>`;
+      }).join('')}
+      </div>
+    </div>`;
+  });
+
+  $('repContent').innerHTML = html || '<div class="empty"><div class="empty-i">◌</div>该等级暂无代表账号</div>';
+  $('repInsights').innerHTML = REP_INSIGHTS.map(i=>`
+    <div style="border:1px solid var(--line);border-radius:11px;padding:15px;background:var(--panel2)">
+      <b style="font-size:13px;display:block;margin-bottom:7px">${i.t}</b>
+      <div style="font-size:14px;color:var(--tx2);line-height:1.7">${i.d}</div>
+    </div>`).join('');
+}
+
+/* ---------- 计算器 ---------- */
+function renderCalc(){
+  const fields = INDICATORS;
+  const DKEY = {}; DIMS.forEach(d=>d.items.forEach(it=>{ if(it.w>0) DKEY[it.k]=d.k; }));
+
+  $('calcInputs').innerHTML = `
+    <div class="card-t" style="margin-bottom:4px">③ 指标录入</div>
+    <div class="card-d" style="margin-bottom:14px">各指标 0–100 分，可拖动或直接输入数字</div>
+    ${DIMS.map(d=>`
+      <div style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <b style="font-size:14px">${d.name}</b>
+          <span class="chip" style="font-size:14px">权重 ${d.w}%</span>
+        </div>
+        ${d.items.filter(it=>it.w>0).map(it=>`
+          <div style="display:grid;grid-template-columns:96px 1fr 56px;gap:10px;align-items:center;margin-bottom:8px">
+            <div style="font-size:13px;color:var(--tx2)">${it.name}<span style="color:var(--tx3);font-size:14px"> ×${it.w}</span></div>
+            <input type="range" min="0" max="100" value="70" data-calc="${it.k}" style="width:100%">
+            <input type="number" min="0" max="100" value="70" data-calcn="${it.k}" class="num" style="width:56px;padding:4px 6px;text-align:center">
+          </div>`).join('')}
+      </div>`).join('')}
+    <div style="display:flex;gap:8px;margin-top:6px">
+      <button class="btn" id="calcReset">恢复默认 70 分</button>
+    </div>`;
+
+  const readVals = ()=>{
+    const v = {};
+    fields.forEach(f=>{ const n = document.querySelector(`[data-calcn="${f.k}"]`); v[f.k] = clamp(parseFloat(n.value)||0); });
+    return v;
+  };
+  const setVals = (v)=>{
+    fields.forEach(f=>{
+      const val = v[f.k]==null?70:clamp(v[f.k]);
+      document.querySelector(`[data-calc="${f.k}"]`).value = val;
+      document.querySelector(`[data-calcn="${f.k}"]`).value = val;
+    });
+  };
+
+  // 准入校验
+  const renderAdmit = ()=>{
+    const fans  = parseFloat($('ciFans').value)||0;
+    const works = parseFloat($('ciWorks').value)||0;
+    const rows = [
+      {n:'总投稿数', ok:works>=50,  txt:`${works} 期`,       need:'≥ 50 期'},
+      {n:'粉丝量',   ok:fans>=10,   txt:`${fans} 万`,        need:'一般 ≥ 10 万'},
+      {n:'总投稿数', ok:works>=100, txt:`${works} 期`,       need:'≥ 100 期'},
+    {n:'近期播放量', ok:true, txt:'见下方口径', need:'≥ 6 万'}
+    ];
+    const pass = rows.every(r=>r.ok);
+    $('calcAdmit').innerHTML = `
+      <div class="grid g3" style="gap:8px">
+        ${rows.map(r=>`<div style="border:1px solid ${r.ok?'var(--line)':'var(--line)'};border-left:3px solid ${r.ok?'#2e9e6b':'#d9822b'};border-radius:9px;padding:9px 11px;background:var(--panel2)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+            <b style="font-size:13px">${r.n}</b>
+            <span style="font-size:14px;color:${r.ok?'#2e9e6b':'#d9822b'};font-weight:700">${r.ok?'✓':'✕'}</span>
+          </div>
+          <div style="font-size:14px;margin-top:4px" class="num">${r.txt}</div>
+          <div style="font-size:14px;color:var(--tx3);margin-top:2px">要求 ${r.need}</div>
+        </div>`).join('')}
+      </div>
+      ${pass?'':`<div class="note warn" style="margin-top:10px">未达准入标准，该账号原则上不进入定级台账。</div>`}`;
+    return pass;
+  };
+
+  const update = ()=>{
+    const vals = readVals();
+    const fans  = parseFloat($('ciFans').value)||0;
+    const works = parseFloat($('ciWorks').value)||0;
+    const r = calcAccount({m:vals, fans});
+    const t = tierMeta(r.tier);
+
+    // 找上一档目标线
+    const ORDER = ['D','C','B','A','S'];
+    const idx = ORDER.indexOf(r.tier);
+    const nextK = idx<ORDER.length-1 ? ORDER[idx+1] : null;
+    const nextMin = nextK ? tierMeta(nextK).min : null;
+    const gap = (nextMin!=null && r.tier!=='S') ? Math.round((nextMin - r.total)*10)/10 : 0;
+    const bulkHit = r.tier==='S' && fans >= BULK_S && r.total < TIERS[0].min;
+
+    // 维度排序：找最弱维度
+    const dimArr = DIMS.map(d=>({k:d.k, name:d.name, w:d.w, v:r.dims[d.k]}))
+      .sort((a,b)=>a.v-b.v);
+    const weakest = dimArr[0];
+
+    $('calcResult').innerHTML = `
+      <div class="card-t" style="margin-bottom:6px">④ 实时结果</div>
+      <div class="card-d" style="margin-bottom:14px">${esc($('ciName').value.trim()||'当前账号')} · ${esc($('ciCat').value)}</div>
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+        <div class="num" style="font-size:44px;font-weight:800;letter-spacing:-2px;background:linear-gradient(135deg,var(--acc),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">${r.total}</div>
+        <div>
+          <span class="tag ${r.tier}" style="font-size:17px;padding:6px 16px">${r.tier}</span>
+          <div style="font-size:13px;color:var(--tx3);margin-top:6px">${t.feat}</div>
+        </div>
+      </div>
+
+      ${bulkHit ? `<div class="note ok" style="margin-bottom:12px"><b>体量直通 S 级</b>　—— 粉丝 ${fans} 万 ≥ ${BULK_S} 万，已按头部体量判为 S 级（分数 ${r.total}）</div>`
+        : nextK ? `<div class="note" style="margin-bottom:12px"><b>距 ${nextK} 级还差 ${gap} 分</b>${gap<=3?'　—— 已非常接近，优先补下面的短板':''}</div>`
+              : `<div class="note ok" style="margin-bottom:12px"><b>已为最高等级 S</b>，维持内容与商业表现即可稳固</div>`}
+
+      <div style="font-size:14px;color:var(--tx3);margin:14px 0 8px">六维得分</div>
+      ${DIMS.map(d=>`<div class="dim-row" style="grid-template-columns:104px 1fr 52px">
+        <div><div class="dim-n">${d.name}</div><div class="dim-w">权重 ${d.w}%</div></div>
+        <div class="bar"><i style="width:${r.dims[d.k]}%;background:linear-gradient(90deg,var(--acc),var(--purple))"></i></div>
+        <div class="num" style="text-align:right;font-weight:700">${r.dims[d.k].toFixed(1)}</div>
+      </div>`).join('')}
+
+      <div style="font-size:14px;color:var(--tx3);margin:16px 0 8px">差距诊断</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        ${dimArr.slice(0,3).map((d,i)=>`<div style="display:flex;align-items:center;gap:8px;font-size:14px">
+          <span style="width:16px;text-align:center;color:var(--tx3)">${i+1}</span>
+          <span style="min-width:66px">${d.name}</span>
+          <div class="bar" style="flex:1;max-width:110px"><i style="width:${d.v}%;background:${d.v<60?'#d9822b':'var(--acc)'}"></i></div>
+          <span class="num" style="font-weight:700;color:${d.v<60?'#d9822b':'var(--tx2)'}">${d.v.toFixed(1)}</span>
+        </div>`).join('')}
+      </div>
+      ${weakest.v<62?`<div class="note warn" style="margin-top:12px"><b>最短板：${weakest.name}（${weakest.v.toFixed(1)}）</b><br>该维度权重 ${weakest.w}%，是当前拉低总分的主因，建议优先补强。</div>`:''}
+
+      ${r.guards.length?`<div class="note danger" style="margin-top:12px">${r.guards.join('<br>')}</div>`:''}
+
+      <div class="note" style="margin-top:12px"><b>资源支持：</b>${t.res}</div>`;
+  };
+
+  // 事件绑定
+  fields.forEach(f=>{
+    const r = document.querySelector(`[data-calc="${f.k}"]`);
+    const n = document.querySelector(`[data-calcn="${f.k}"]`);
+    r.oninput = ()=>{ n.value = r.value; update(); };
+    n.oninput = ()=>{ r.value = n.value; update(); };
+  });
+  ['ciName','ciCat','ciFans','ciWorks'].forEach(id=>{
+    const el = $(id);
+    el.oninput = ()=>{ renderAdmit(); update(); };
+    el.onchange = ()=>{ renderAdmit(); update(); };
+  });
+  $('calcReset').onclick = ()=>{ setVals({}); renderAdmit(); update(); };
+
+  // 载入示例
+  $('calcSample').onclick = ()=>{
+    $('ciName').value = '晓春哥XCG（示例）';
+    $('ciCat').value = '电视/家庭影院';
+    $('ciFans').value = 16;
+    $('ciWorks').value = 90;
+    setVals({fans:80,views:84,hit:82,origin:90,update:80,pro:93,eng:88,fit:90,growth:74,
+             cpm:86,conv:93,repur:84,violate:84,churn:83,match:88});
+    renderAdmit(); update(); toast('已载入示例数据');
+  };
+
+  // 粘贴解析
+  $('calcParse').onclick = ()=>{
+    const raw = $('ciPaste').value.trim();
+    if(!raw){ $('calcParseMsg').innerHTML = '<span style="color:#d9822b;font-size:14px">请先粘贴数据</span>'; return; }
+    // 建立 名称/键 → key 映射
+    const map = {};
+    fields.forEach(f=>{ map[f.name]=f.k; map[f.k]=f.k; });
+    const nz = s=>String(s).replace(/[\s：:]/g,'');
+    const found = {}; let hit = 0;
+    raw.split(/[\n;；,，]+/).forEach(seg=>{
+      if(!seg.trim()) return;
+      const m = seg.split(/[=:：,，\t|]+/).map(s=>s.trim()).filter(Boolean);
+      if(m.length<2) return;
+      const name = nz(m[0]), num = parseFloat(m[1].replace(/[^\d.\-]/g,''));
+      if(isNaN(num)) return;
+      // 精确优先，其次包含匹配
+      let key = map[name];
+      if(!key){
+        for(const f of fields){ if(nz(f.name).includes(name)||name.includes(nz(f.name))){ key=f.k; break; } }
+      }
+      if(key){ found[key]=clamp(num); hit++; }
+    });
+    if(!hit){ $('calcParseMsg').innerHTML = '<span style="color:#d9822b;font-size:14px">未识别到有效指标，请检查格式（如：粉丝总量=88）</span>'; return; }
+    // 合并到当前值
+    const cur = readVals();
+    Object.assign(cur, found);
+    setVals(cur); renderAdmit(); update();
+    $('calcParseMsg').innerHTML = `<span style="color:#2e9e6b;font-size:14px">已识别并填入 ${hit} 项指标</span>`;
+    toast(`解析成功：${hit} 项`);
+  };
+
+  // 存入台账
+  $('calcSaveAcc').onclick = ()=>{
+    const name = $('ciName').value.trim();
+    if(!name){ toast('请先填写账号名称'); return; }
+    if(ACCOUNTS.some(a=>a.name===name)){ toast('台账中已存在同名账号'); return; }
+    const a = {
+      id:'u'+Date.now(),
+      name, type:'kol',
+      cat:$('ciCat').value,
+      fans:parseFloat($('ciFans').value)||0,
+      works:parseFloat($('ciWorks').value)||0,
+      m:readVals()
+    };
+    ACCOUNTS.push(a); save(); renderAll();
+    toast(`已存入台账：${name}`);
+  };
+
+  renderAdmit(); update();
+}
+
+/* ---------- 新增账号 ---------- */
+function addAccount(){
+  showEdit(null);
+}
+
+/* ---------- 导出 / 导入 / 批量 ---------- */
+function exportJSON(){
+  const payload = {
+    _meta: { app:'bili-tier', ver:2, exportedAt:new Date().toISOString(), count:ACCOUNTS.length },
+    accounts: ACCOUNTS
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `b站账号定级台账_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+    toast(`已导出 ${ACCOUNTS.length} 个账号`);
+  }catch(e){ toast('导出失败：'+e.message); }
+}
+
+function importJSON(){
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = '.json,application/json';
+  inp.onchange = ()=>{
+    const f = inp.files && inp.files[0]; if(!f) return;
+    const fr = new FileReader();
+    fr.onload = ()=>{
+      let data;
+      try{ data = JSON.parse(fr.result); }
+      catch(e){ toast('导入失败：不是合法的 JSON'); return; }
+      const list = Array.isArray(data) ? data : (data && Array.isArray(data.accounts) ? data.accounts : null);
+      if(!list || !list.length){ toast('导入失败：未找到账号数组'); return; }
+      const clean = list.filter(x=>x && x.name && x.m).map(x=>normalizeAcc(x));
+      if(!clean.length){ toast('导入失败：数据格式不符合要求'); return; }
+      const mode = ACCOUNTS.length
+        ? (confirm(`当前台账 ${ACCOUNTS.length} 个账号。\n\n【确定】= 合并（同名覆盖，新增补齐）\n【取消】= 整体替换`) ? 'merge' : 'replace')
+        : 'merge';
+      if(mode === 'replace'){
+        ACCOUNTS = clean;
+      } else {
+        const idx = {};
+        ACCOUNTS.forEach((a,i)=>idx[a.name]=i);
+        clean.forEach(x=>{
+          if(idx[x.name] != null) Object.assign(ACCOUNTS[idx[x.name]], x);
+          else { ACCOUNTS.push(x); idx[x.name] = ACCOUNTS.length-1; }
+        });
+      }
+      save(); renderAll();
+      toast(`导入成功：${mode==='replace'?'替换为':'合并'} ${clean.length} 条`);
+    };
+    fr.readAsText(f, 'utf-8');
+  };
+  inp.click();
+}
+
+/* 归一化一条外部数据，补齐缺省字段 */
+function normalizeAcc(x){
+  const m = {};
+  INDICATORS.forEach(i=>{
+    const iv = (x.m && x.m[i.k] != null) ? clamp(x.m[i.k]) : 70;
+    m[i.k] = iv;
+  });
+  return {
+    id: x.id || ('u'+Date.now()+Math.random().toString(36).slice(2,6)),
+    name: String(x.name).trim(),
+    type: x.type || 'kol',
+    cat: x.cat || '未分类',
+    fans: parseFloat(x.fans) || 0,
+    works: parseFloat(x.works) || 0,
+    m
+  };
+}
+
+/* 批量文本解析：每行 账号名|品类|粉丝|作品数|指标… */
+function parseBatch(text){
+  const out = [], errs = [];
+  text.split(/\r?\n/).forEach((line, li)=>{
+    const raw = line.trim();
+    if(!raw || raw.startsWith('#')) return;
+    const parts = raw.split(/\s*[|｜\t]\s*/);
+    if(parts.length < 2){ errs.push(`第 ${li+1} 行：字段不足`); return; }
+    const name = parts[0].trim();
+    if(!name) { errs.push(`第 ${li+1} 行：账号名为空`); return; }
+    const m = {};
+    INDICATORS.forEach(i=>m[i.k]=70);
+    const ind = (parts[5] || '').trim();
+    if(ind){
+      const nums = ind.split(/[,，;；\s]+/).map(s=>parseFloat(s.replace(/[^\d.\-]/g,''))).filter(n=>!isNaN(n));
+      INDICATORS.forEach((k, i)=>{ if(nums[i]!=null) m[k.k] = clamp(nums[i]); });
+    }
+    out.push({
+      id:'u'+Date.now()+Math.random().toString(36).slice(2,6),
+      name, type:'kol',
+      cat: (parts[1]||'未分类').trim(),
+      fans: parseFloat((parts[2]||'').replace(/[^\d.]/g,'')) || 0,
+      works: parseFloat((parts[3]||'').replace(/[^\d.]/g,'')) || 0,
+      m
+    });
+  });
+  return {list:out, errs};
+}
+
+/* ---------- 入口 ---------- */
+function renderAll(){
+  renderOverview(); renderModel(); renderLedger(); renderReps(); renderCalc();
+}
+
+/* 头部高度变化（窄屏换行）时同步导航条的吸顶偏移 */
+function syncNavTop(){
+  const hd = document.querySelector('header');
+  const nv = document.querySelector('nav');
+  if(hd && nv) nv.style.top = hd.offsetHeight + 'px';
+}
+window.addEventListener('resize', syncNavTop);
+
+$('navtabs').addEventListener('click', e=>{
+  const b = e.target.closest('.navtab'); if(!b) return;
+  document.querySelectorAll('.navtab').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  $('p-'+b.dataset.p).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+$('themeBtn').onclick = ()=>{
+  const cur = document.documentElement.getAttribute('data-theme');
+  const nx = cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme', nx);
+  try{ localStorage.setItem('bili_tier_theme', nx); }catch(e){}
+};
+$('resetBtn').onclick = ()=>{
+  if(!confirm('确定重置为初始示例数据？当前修改将丢失。')) return;
+  ACCOUNTS = JSON.parse(JSON.stringify(SEED));
+  save(); renderAll(); toast('已重置为初始数据');
+};
+
+// ovFilter 已随「等级分布」卡片移除
+$('repFilter').onchange = renderReps;
+$('qSearch').oninput = renderLedger;
+$('qType').onchange = renderLedger;
+$('qTier').onchange = renderLedger;
+$('qCat').onchange = renderLedger;
+$('addBtn').onclick = addAccount;
+$('resSearch').oninput = renderOverview;
+$('resTier').onchange = renderOverview;
+$('exportBtn').onclick = exportJSON;
+$('importBtn').onclick = importJSON;
+
+/* 批量导入 */
+const BATCH_SAMPLE = `晓春哥XCG|电视/家庭影院|5|16|90|80,84,82,90,80,93,88,90,74,86,93,84,84,83,88
+石头扫地机测评|清洁电器|4|10|500|54,58,60,76,74,78,80,82,70,72,76,70,76,74,80
+科技体验派|笔记本/数码|5|32|664|68,72,70,80,78,80,82,84,72,78,80,76,78,76,80`;
+$('batchSample').onclick = ()=>{ $('batchInput').value = BATCH_SAMPLE; $('batchMsg').innerHTML = ''; };
+$('batchAdd').onclick = ()=>{
+  const txt = $('batchInput').value.trim();
+  if(!txt){ $('batchMsg').innerHTML = '<span style="color:#d9822b">请先粘贴数据</span>'; return; }
+  const {list, errs} = parseBatch(txt);
+  if(!list.length){
+    $('batchMsg').innerHTML = `<span style="color:#d9822b">未解析到有效账号${errs.length?'（'+errs[0]+'）':''}</span>`;
+    return;
+  }
+  const idx = {}; ACCOUNTS.forEach((a,i)=>idx[a.name]=i);
+  let addN = 0, upN = 0;
+  list.forEach(x=>{
+    if(idx[x.name] != null){ Object.assign(ACCOUNTS[idx[x.name]], x); upN++; }
+    else { ACCOUNTS.push(x); idx[x.name] = ACCOUNTS.length-1; addN++; }
+  });
+  save(); renderAll();
+  $('batchMsg').innerHTML = `<span style="color:#2e9e6b">新增 ${addN} 个，更新 ${upN} 个${errs.length?`，跳过 ${errs.length} 行`:''}</span>`;
+  toast(`批量导入：新增 ${addN} / 更新 ${upN}`);
+};
+
+/* 启动 */
+try{
+  const th = localStorage.getItem('bili_tier_theme');
+  if(th) document.documentElement.setAttribute('data-theme', th);
+}catch(e){}
+ACCOUNTS = load();
+renderAll();
+syncNavTop();
+</script>
+</body>
+</html>
