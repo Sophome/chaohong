@@ -819,7 +819,7 @@ function renderOverview(){
 
   const unit = v => v>=10000 ? (v/10000).toFixed(2)+'亿' : v+'万';
   let rHtml = `<thead><tr>
-    <th style="width:44px">名次</th><th>账号</th><th>品类</th>
+    <th style="width:48px;text-align:center">名次</th><th style="text-align:left">账号</th><th style="text-align:left">品类</th>
     <th style="text-align:right">B站粉丝</th><th style="text-align:right">作品数</th><th style="text-align:right">总分</th><th style="text-align:center">等级</th>
     <th>账号特点</th></tr></thead><tbody>`;
   if(!rRows.length){
@@ -827,9 +827,9 @@ function renderOverview(){
   } else {
     rRows.forEach((x,i)=>{
       rHtml += `<tr>
-        <td class="num" style="color:var(--tx3)">${i+1}</td>
-        <td><b style="font-size:14px">${esc(x.a.name)}</b>${x.a.fans>=BULK_S?'':''}${x.a.honor?'<span class="chip" style="color:var(--acc);border-color:var(--acc);margin-left:5px;font-size:14px">荣誉号</span>':''}</td>
-        <td style="font-size:14px;color:var(--tx2)">${esc(x.a.cat)}</td>
+        <td class="num" style="text-align:center;color:var(--tx3)">${i+1}</td>
+        <td style="text-align:left"><b style="font-size:14px">${esc(x.a.name)}</b>${x.a.fans>=BULK_S?'':''}${x.a.honor?'<span class="chip" style="color:var(--acc);border-color:var(--acc);margin-left:5px;font-size:14px">荣誉号</span>':''}</td>
+        <td style="text-align:left;font-size:14px;color:var(--tx2)">${esc(x.a.cat)}</td>
         <td class="num" style="text-align:right;font-size:14px">${x.a.fans?unit(x.a.fans):'—'}</td>
         <td class="num" style="text-align:right;font-size:14px;color:var(--tx2)">${x.a.works?x.a.works+'期':'—'}</td>
         <td class="num" style="text-align:right;font-weight:700">${x.r.total}</td>
@@ -842,13 +842,13 @@ function renderOverview(){
   $('resultTable').innerHTML = rHtml;
 
   // 矩阵
-  let mHtml = '<thead><tr><th>等级</th><th>账号数</th>' + DIMS.map(d=>`<th>${d.name}</th>`).join('') + '</tr></thead><tbody>';
+  let mHtml = '<thead><tr><th style="text-align:center">等级</th><th style="text-align:right">账号数</th>' + DIMS.map(d=>`<th style="text-align:right">${d.name}</th>`).join('') + '</tr></thead><tbody>';
   TIER_ORDER.forEach(k=>{
     const list = fRows.filter(x=>x.r.tier===k);
-    mHtml += `<tr><td><span class="tag ${k}">${k}</span></td><td class="num">${list.length}</td>`;
+    mHtml += `<tr><td style="text-align:center"><span class="tag ${k}">${k}</span></td><td class="num" style="text-align:right">${list.length}</td>`;
     DIMS.forEach(d=>{
       const avg = list.length ? list.reduce((s,x)=>s+x.r.dims[d.k],0)/list.length : 0;
-      mHtml += `<td class="num">${list.length ? avg.toFixed(1) : '—'}</td>`;
+      mHtml += `<td class="num" style="text-align:right">${list.length ? avg.toFixed(1) : '—'}</td>`;
     });
     mHtml += '</tr>';
   });
@@ -938,19 +938,20 @@ function renderLedger(){
   if(!rows.length){ $('ledgerTable').innerHTML = '<tbody><tr><td><div class="empty"><div class="empty-i">◌</div>没有符合条件的账号</div></td></tr></tbody>'; return; }
 
   let h = `<thead><tr>
-    <th>账号</th><th>品类</th><th style="text-align:right">B站粉丝</th><th style="text-align:right">作品数</th>
-    ${DIMS.map(d=>`<th>${d.name.slice(0,2)}</th>`).join('')}
-    <th>总分</th><th>等级</th><th style="text-align:right">操作</th>
+    <th style="text-align:left">账号</th><th style="text-align:left">品类</th>
+    <th style="text-align:right">B站粉丝</th><th style="text-align:right">作品数</th>
+    ${DIMS.map(d=>`<th style="text-align:right">${d.name.slice(0,2)}</th>`).join('')}
+    <th style="text-align:right">总分</th><th style="text-align:center">等级</th><th style="text-align:right">操作</th>
   </tr></thead><tbody>`;
   rows.forEach(x=>{
     h += `<tr>
-      <td><b style="font-size:14px">${esc(x.a.name)}</b></td>
-      <td style="color:var(--tx2);font-size:14px">${esc(x.a.cat)}</td>
-      <td class="num">${x.a.fans?(x.a.fans>=10000?(x.a.fans/10000).toFixed(2)+'亿':x.a.fans+'万'):'—'}</td>
-      <td class="num" style="color:var(--tx2)">${x.a.works?x.a.works+'期':'—'}</td>
-      ${DIMS.map(d=>`<td class="num" style="color:var(--tx2)">${x.r.dims[d.k].toFixed(0)}</td>`).join('')}
-      <td><b class="num" style="font-size:13px">${x.r.total}</b></td>
-      <td><span class="tag ${x.r.tier}">${x.r.tier}</span></td>
+      <td style="text-align:left"><b style="font-size:14px">${esc(x.a.name)}</b></td>
+      <td style="text-align:left;color:var(--tx2);font-size:14px">${esc(x.a.cat)}</td>
+      <td class="num" style="text-align:right">${x.a.fans?(x.a.fans>=10000?(x.a.fans/10000).toFixed(2)+'亿':x.a.fans+'万'):'—'}</td>
+      <td class="num" style="text-align:right;color:var(--tx2)">${x.a.works?x.a.works+'期':'—'}</td>
+      ${DIMS.map(d=>`<td class="num" style="text-align:right;color:var(--tx2)">${x.r.dims[d.k].toFixed(0)}</td>`).join('')}
+      <td class="num" style="text-align:right"><b style="font-size:13px">${x.r.total}</b></td>
+      <td style="text-align:center"><span class="tag ${x.r.tier}">${x.r.tier}</span></td>
       <td style="text-align:right;white-space:nowrap">
         <button class="btn" style="padding:4px 9px;font-size:13px" data-detail="${x.a.id}">详情</button>
         <button class="btn" style="padding:4px 9px;font-size:13px" data-edit="${x.a.id}">编辑</button>
