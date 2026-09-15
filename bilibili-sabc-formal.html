@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>B站商单账号 SABC 分级体系与升级路径 · 正式版</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --bg2:#eceef2; --card:#ffffff; --card2:#fafbfc;
+    --text:#161b26; --text2:#5b6478; --text3:#868fa3; --line:#e4e8ef;
+    --brand:#3f4a8a; --brand2:#2f6f8f; --brand-soft:#eef1f8;
+    --s:#6d3ec7; --a:#2b5fd9; --b:#0b7f96; --c:#5b6478;
+    --ok:#1a7f4b; --warn:#a86b12; --bad:#b3261e;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 6px 22px rgba(16,24,40,.06);
+    --radius:14px;
+  }
+  html[data-theme="dark"]{
+    --bg:#0d1015; --bg2:#11151c; --card:#161a22; --card2:#1a1f28;
+    --text:#e6e9f0; --text2:#9aa3b5; --text3:#7c8598; --line:#242b36;
+    --brand:#8c96d8; --brand2:#57a6c4; --brand-soft:#1a1f2e;
+    --s:#a78bfa; --a:#6fa8f5; --b:#38bdd8; --c:#94a3b8;
+    --ok:#34d399; --warn:#fbbf24; --bad:#f87171;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);line-height:1.75;
+    -webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+
+  .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(12px);
+    background:color-mix(in srgb,var(--card) 82%,transparent);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:11px 22px}
+  .logo{font-weight:700;font-size:14.5px;letter-spacing:.2px;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+  .nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;margin-left:10px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{font-size:12.5px;color:var(--text2);padding:6px 10px;border-radius:7px;white-space:nowrap;transition:.2s}
+  .nav a:hover{background:var(--brand-soft);color:var(--brand)}
+  .theme-btn{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--text);
+    border-radius:8px;padding:6px 11px;font-size:12.5px;cursor:pointer}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:30px 22px 80px}
+
+  .hero{border-radius:18px;padding:34px 34px 30px;color:#fff;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#3f4a8a 0%,#4a3f8f 45%,#2f6f8f 100%);box-shadow:var(--shadow);margin-bottom:8px}
+  .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);border-radius:50%}
+  .hero .eyebrow{font-size:12px;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:9px}
+  .hero h1{margin:0 0 10px;font-size:27px;font-weight:700;letter-spacing:.3px}
+  .hero p{margin:0;max-width:740px;opacity:.92;font-size:14.5px}
+  .hero .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+  .hero .meta div{font-size:12.5px}
+  .hero .meta span{display:block;opacity:.7;font-size:11.5px;margin-bottom:2px;letter-spacing:.5px}
+
+  .sec{margin:36px 0 0}
+  .sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .sec-h .no{font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);
+    border-radius:6px;padding:3px 9px;letter-spacing:.5px}
+  .sec-h h2{font-size:20px;margin:0;font-weight:700}
+  .sec-sub{color:var(--text2);font-size:13.5px;margin:4px 0 18px;max-width:820px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px}
+  .card h3{margin:0 0 12px;font-size:15.5px;font-weight:700}
+  .card p{margin:8px 0;font-size:14px;color:var(--text2)}
+
+  .tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+  .tbl th,.tbl td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  .tbl thead th{background:var(--card2);font-weight:700;color:var(--text);font-size:12.5px;letter-spacing:.2px}
+  .tbl tbody tr:last-child td{border-bottom:none}
+  .tbl tbody tr:hover{background:var(--brand-soft)}
+  .tbl td b{color:var(--text)}
+  .tbl .dimname{font-weight:700;color:var(--text)}
+
+  .lvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .lvcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden}
+  .lvcard .hd{padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px}
+  .lvcard.s .hd{background:linear-gradient(120deg,var(--s),#8b5cf6)}
+  .lvcard.a .hd{background:linear-gradient(120deg,var(--a),#5b8def)}
+  .lvcard.b .hd{background:linear-gradient(120deg,var(--b),#2aa8c4)}
+  .lvcard.c .hd{background:linear-gradient(120deg,var(--c),#8a93a6)}
+  .lvcard .hd .tag{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.2);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+  .lvcard .hd .tt{font-weight:700;font-size:15px}
+  .lvcard .hd .sub{font-size:12px;opacity:.88;margin-top:1px}
+  .lvcard .bd{padding:14px 18px 16px}
+  .lvcard .bd dl{margin:0;font-size:13px}
+  .lvcard .bd dt{font-weight:700;color:var(--text);margin-top:10px;font-size:12.5px}
+  .lvcard .bd dt:first-child{margin-top:0}
+  .lvcard .bd dd{margin:3px 0 0;color:var(--text2)}
+  .lvcard .bd .use{margin-top:13px;padding-top:11px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--text2)}
+  .lvcard .bd .use b{color:var(--text)}
+
+  .path{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .path .hd{padding:13px 20px;color:#fff;font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:11px}
+  .path.cb .hd{background:linear-gradient(120deg,var(--c),#8a93a6)}
+  .path.ba .hd{background:linear-gradient(120deg,var(--b),#2aa8c4)}
+  .path.as .hd{background:linear-gradient(120deg,var(--a),#8b5cf6)}
+  .path .hd .ar{font-weight:700;opacity:.9;font-size:14px}
+  .path .bd{padding:16px 20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .path .col h4{margin:0 0 10px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .path .col h4 .t{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px;color:#fff;letter-spacing:.5px}
+  .path .col h4 .t.goal{background:var(--ok)}
+  .path .col h4 .t.act{background:var(--brand)}
+  .path ol{margin:0;padding-left:19px;font-size:13px;color:var(--text2)}
+  .path ol li{margin:6px 0}
+  .path ul{margin:0;padding-left:19px;font-size:13px;color:var(--text2)}
+  .path ul li{margin:6px 0}
+  .path .ms{margin:14px 20px 16px;padding:11px 14px;background:var(--card2);border-radius:9px;
+    border-left:3px solid var(--ok);font-size:12.5px;color:var(--text2)}
+  .path .ms b{color:var(--ok);font-weight:700}
+
+  .note{border-left:3px solid var(--brand);background:var(--brand-soft);
+    padding:13px 17px;border-radius:0 10px 10px 0;font-size:13.5px;margin:16px 0;color:var(--text2)}
+  .note b{color:var(--text)}
+  .warn{border-left:3px solid var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent);
+    padding:13px 17px;border-radius:0 10px 10px 0;font-size:13.5px;margin:16px 0;color:var(--text2)}
+  .warn b{color:var(--bad)}
+
+  .axes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .axis{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+  .axis .lbl{font-size:11.5px;letter-spacing:1px;color:var(--brand);font-weight:700;margin-bottom:6px}
+  .axis h4{margin:0 0 8px;font-size:15px}
+  .axis p{margin:6px 0;font-size:13.5px;color:var(--text2)}
+
+  .footer{color:var(--text3);font-size:12px;text-align:center;margin-top:44px;padding-top:20px;border-top:1px solid var(--line)}
+
+  @media (max-width:880px){
+    .lvgrid{grid-template-columns:1fr}
+    .axes{grid-template-columns:1fr}
+    .path .bd{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){ .hero{padding:26px 22px} .hero h1{font-size:22px} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="logo"><span class="dot"></span>SABC 分级体系 · 正式版</div>
+  <nav class="nav">
+    <a href="#s1">定级模型</a>
+    <a href="#s2">需求匹配</a>
+    <a href="#s3">四级定义</a>
+    <a href="#s4">升级路径</a>
+    <a href="#s5">出圈条件</a>
+    <a href="#s6">日常任务</a>
+    <a href="#s7">定级机制</a>
+  </nav>
+  <button class="theme-btn" id="themeBtn">🌙 深色</button>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Bilibili Commercial Account Grading</div>
+    <h1>B站商单账号 SABC 分级体系与升级路径</h1>
+    <p>以品牌方投放需求为定级出发点，围绕影响力规模与商业价值双轴，建立统一的账号价值评估标准与可执行的等级进阶路径。</p>
+    <div class="meta">
+      <div><span>适用范围</span>数码 / 家电 / 智能家居垂类</div>
+      <div><span>分级档位</span>S · A · B · C 四级</div>
+      <div><span>评估维度</span>五维加权</div>
+      <div><span>版本</span>正式版 v1.0</div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <section class="sec" id="s1">
+    <div class="sec-h"><span class="no">01</span><h2>定级模型</h2></div>
+    <p class="sec-sub">定级不以粉丝量为唯一标尺，而是由"影响力规模"与"商业价值"双轴共同决定。规模决定触达上限，价值决定说服力与转化效率，二者缺一即形成卡档。</p>
+    <div class="axes">
+      <div class="axis">
+        <div class="lbl">AXIS Ⅰ</div>
+        <h4>影响力规模（触达力）</h4>
+        <p>衡量账号能帮品牌"触达多少人"。核心指标包括粉丝量级、单条平均播放、爆款产出能力、近三个月净增粉趋势。</p>
+        <p>规模为入场条件，但非定级唯一依据——高粉丝量若伴随低转化或调性错配，仍将被限制在较低档位。</p>
+      </div>
+      <div class="axis">
+        <div class="lbl">AXIS Ⅱ</div>
+        <h4>商业价值（说服力）</h4>
+        <p>衡量账号能帮品牌"让多少人相信并行动"。核心指标包括垂类专业度、粉丝信任度、内容调性契合度、历史转化表现与履约能力。</p>
+        <p>在数码家电等高决策成本品类中，本轴权重显著高于泛娱乐品类，是 B→A→S 进阶的核心驱动项。</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>评估五维与权重</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:22%">评估维度</th><th style="width:10%">权重</th><th>核心观测指标</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">商业转化与履约</td><td><b>25%</b></td><td>历史商单数量、带货 / 挂链 ROI、优惠券核销率、品牌复投率、交付准时率</td></tr>
+          <tr><td class="dimname">粉丝质量与信任</td><td><b>22%</b></td><td>人群画像匹配度、收藏 / 投币率、互动质量与评论情绪、舆情与翻车记录</td></tr>
+          <tr><td class="dimname">内容专业度与调性</td><td><b>20%</b></td><td>垂类知识深度、测评严谨性、制作水准、品牌调性契合度、内容稳定性</td></tr>
+          <tr><td class="dimname">粉丝规模与稳定性</td><td><b>18%</b></td><td>粉丝量级、单条平均播放、爆款率、涨粉趋势、更新频率</td></tr>
+          <tr><td class="dimname">配合度与品牌安全</td><td><b>15%</b></td><td>响应时效、改稿接受度、档期弹性、合规与价值观风险</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-bottom:0">
+        <b>权重设计说明：</b>转化履约与粉丝信任合计占 47%，体现"能卖动、被信任"优先于"被看到"；数码家电品类决策周期长、客单价高，收藏率是强信任代理指标，故在粉丝质量维度中给予较高内部权重。
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="sec" id="s2">
+    <div class="sec-h"><span class="no">02</span><h2>品牌方需求与等级匹配</h2></div>
+    <p class="sec-sub">品牌投放目标不同，考察重点与适配等级存在显著差异。定级与配号均应以"需求—能力"匹配为原则，而非单纯追求高等级。</p>
+    <table class="tbl">
+      <thead><tr><th style="width:16%">投放目标</th><th style="width:22%">核心诉求</th><th style="width:14%">适配等级</th><th>重点考察事项</th></tr></thead>
+      <tbody>
+        <tr><td><b>曝光引爆</b></td><td>最大化触达与声量</td><td><b>S、A</b></td><td>播放体量、涨粉趋势、爆款产出能力、数据真实性</td></tr>
+        <tr><td><b>心智种草</b></td><td>建立品类偏好与购买意向</td><td><b>A</b>（S 级背书补强）</td><td>垂类专业度、互动质量、内容调性契合度、收藏 / 投币表现</td></tr>
+        <tr><td><b>效果转化</b></td><td>可量化的成交结果</td><td><b>S、A</b></td><td>历史 ROI、挂链转化率、优惠券核销、复投率</td></tr>
+        <tr><td><b>权威背书</b></td><td>信任转移与品牌形象提升</td><td><b>S</b>（垂类 A 补位）</td><td>行业心智占位、测评严谨性、品牌安全、舆情记录</td></tr>
+        <tr><td><b>规模铺量</b></td><td>性价比覆盖与长尾曝光</td><td><b>B、C</b></td><td>单条成本、内容稳定性、配合度、履约可靠性</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <b>配号原则：</b>高等级不等于高适配。以铺量为目标的预算应优先配置 B / C 级形成矩阵覆盖；以背书为目标的预算应集中于 S 级；种草与转化主战场则落在 A 级，由 A 级承担效率与规模的平衡点。
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="sec" id="s3">
+    <div class="sec-h"><span class="no">03</span><h2>四级定义与达标条件</h2></div>
+    <p class="sec-sub">满足以下条件即具备对应档位资格；最终档位由五维加权总分确认（详见 §07）。</p>
+
+    <div class="lvgrid">
+      <div class="lvcard s">
+        <div class="hd"><div class="tag">S</div><div><div class="tt">战略级</div><div class="sub">Strategic · 头部背书</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>粉丝规模与稳定性</dt>
+            <dd>粉丝量 ≥100 万（垂类强转化账号可放宽至 50–80 万）；近三个月净增粉保持正向；单条商单平均播放 ≥30 万，具备 100 万+ 爆款产出记录。</dd>
+            <dt>内容专业度与调性</dt>
+            <dd>垂类权威心智占位，内容制作精良、调性稳定，具备行业测评标准影响力。</dd>
+            <dt>粉丝质量与信任</dt>
+            <dd>核心人群与品牌目标人群高度重合，高线与高消费力占比突出；收藏 / 投币率行业领先；评论区情绪正向，无重大舆情记录。</dd>
+            <dt>商业转化与履约</dt>
+            <dd>具备可量化 ROI 的旗舰带货案例；有知名品牌 / 新品首发合作记录；复投率高；报价高但交付稳定。</dd>
+            <dt>配合度与品牌安全</dt>
+            <dd>流程成熟、品控严格；档期紧张需提前锁定；无虚假宣传与价值观风险。</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>品牌曝光引爆、权威背书、旗舰新品首发、大促主推位。</div>
+        </div>
+      </div>
+
+      <div class="lvcard a">
+        <div class="hd"><div class="tag">A</div><div><div class="tt">核心级</div><div class="sub">Core · 中坚种草</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>粉丝规模与稳定性</dt>
+            <dd>粉丝量 30–100 万；更新节奏稳定；单条平均播放 10–30 万，具备周期性爆款产出能力。</dd>
+            <dt>内容专业度与调性</dt>
+            <dd>内容质量稳定，具备清晰的选品 / 测评方法论；人设鲜明，调性契合主流家电品牌。</dd>
+            <dt>粉丝质量与信任</dt>
+            <dd>人群匹配良好；评论区活跃且信任度高；收藏 / 投币表现健康。</dd>
+            <dt>商业转化与履约</dt>
+            <dd>有商单转化案例，挂链 / 优惠券链路可跑通；配合度好、改稿响应及时、交付准时。</dd>
+            <dt>配合度与品牌安全</dt>
+            <dd>沟通顺畅，能接受合理修改；无重大舆情风险。</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>主力种草、深度测评、心智占领、转化承接。</div>
+        </div>
+      </div>
+
+      <div class="lvcard b">
+        <div class="hd"><div class="tag">B</div><div><div class="tt">成长级</div><div class="sub">Growth · 潜力铺量</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>粉丝规模与稳定性</dt>
+            <dd>粉丝量 5–30 万；单条平均播放 3–10 万；整体数据呈上升态势。</dd>
+            <dt>内容专业度与调性</dt>
+            <dd>内容具备亮点，但风格与质量稳定性待加强；有基础测评逻辑，尚未形成方法论标签。</dd>
+            <dt>粉丝质量与信任</dt>
+            <dd>粉丝黏性建设中；互动率尚可，信任度有待积累。</dd>
+            <dt>商业转化与履约</dt>
+            <dd>商单经验有限，转化效果待验证；需品牌方提供明确 brief 引导。</dd>
+            <dt>配合度与品牌安全</dt>
+            <dd>配合度可接受，交付偶有波动；适合以铺量 / 性价比方式合作。</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>矩阵铺量、长尾覆盖、性价比种草、潜力测试。</div>
+        </div>
+      </div>
+
+      <div class="lvcard c">
+        <div class="hd"><div class="tag">C</div><div><div class="tt">孵化级</div><div class="sub">Incubation · 储备池</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>粉丝规模与稳定性</dt>
+            <dd>粉丝量 ＜5 万或处于新号期；单条播放 ＜3 万；数据波动较大。</dd>
+            <dt>内容专业度与调性</dt>
+            <dd>具备成长潜力，但内容缺乏体系，制作水准待提升。</dd>
+            <dt>粉丝质量与信任</dt>
+            <dd>粉丝基础薄弱，信任关系尚未建立。</dd>
+            <dt>商业转化与履约</dt>
+            <dd>无稳定商单记录；转化能力未经验证。</dd>
+            <dt>配合度与品牌安全</dt>
+            <dd>需重点带教；适用于低成本试投与能力培养。</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>储备池、素人铺量、内部孵化、低成本试投。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="sec" id="s4">
+    <div class="sec-h"><span class="no">04</span><h2>升级路径与达成条件</h2></div>
+    <p class="sec-sub">等级进阶并非被动等待粉丝增长，而是主动补齐目标档位的能力短板。每个进阶阶段均由"达成条件（硬指标）+ 关键举措 + 里程碑"三部分构成。触发特殊出圈事件的账号，可走 <b>§05 跃迁通道</b> 实现跨档加速，无需等待完整评估周期。</p>
+
+    <div class="path cb">
+      <div class="hd"><span class="ar">C ➜ B</span> 孵化级 → 成长级</div>
+      <div class="bd">
+        <div class="col">
+          <h4><span class="t goal">达成条件</span> 进阶门槛</h4>
+          <ol>
+            <li>粉丝规模突破 <b>5 万</b>，近三个月保持正向增长</li>
+            <li>单条视频平均播放稳定达到 <b>3 万</b> 以上</li>
+            <li>累计完成 <b>3 个</b> 及以上商单合作，交付无重大事故</li>
+            <li>建立稳定的内容更新节奏</li>
+          </ol>
+        </div>
+        <div class="col">
+          <h4><span class="t act">关键举措</span> 执行动作</h4>
+          <ul>
+            <li>建立固定栏目与更新节奏，完成内容体系化</li>
+            <li>打磨一套可复用的内容生产模板</li>
+            <li>以置换 / 小额合作积累首批商单履约记录</li>
+            <li>搭建数据看板，沉淀选题与数据复盘机制</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ms"><b>里程碑：</b>粉丝 ≥5 万 · 单条均值 ≥3 万 · 商单记录 ≥3 单 · 更新频率稳定</div>
+    </div>
+
+    <div class="path ba">
+      <div class="hd"><span class="ar">B ➜ A</span> 成长级 → 核心级</div>
+      <div class="bd">
+        <div class="col">
+          <h4><span class="t goal">达成条件</span> 进阶门槛</h4>
+          <ol>
+            <li>粉丝规模突破 <b>30 万</b></li>
+            <li>单条平均播放稳定达到 <b>10 万</b> 以上</li>
+            <li>产出 <b>1–2 条</b> 具备代表性的爆款内容</li>
+            <li>完成挂链 / 优惠券转化闭环验证，形成可引用转化案例</li>
+          </ol>
+        </div>
+        <div class="col">
+          <h4><span class="t act">关键举措</span> 执行动作</h4>
+          <ul>
+            <li>集中资源打造标杆内容，形成代表作</li>
+            <li>建立差异化测评方法论，强化专业人设标签</li>
+            <li>提升收藏 / 投币等信任型互动指标</li>
+            <li>跑通一次完整商业转化链路并沉淀数据</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ms"><b>里程碑：</b>粉丝 ≥30 万 · 单条均值 ≥10 万 · 代表作 ≥1 条 · 可引用转化案例 ≥1 个</div>
+    </div>
+
+    <div class="path as">
+      <div class="hd"><span class="ar">A ➜ S</span> 核心级 → 战略级</div>
+      <div class="bd">
+        <div class="col">
+          <h4><span class="t goal">达成条件</span> 进阶门槛</h4>
+          <ol>
+            <li>粉丝规模达 <b>100 万</b>（垂类强转化账号达 50–80 万且转化数据显著优于同级）</li>
+            <li>单条平均播放 <b>≥30 万</b>，具备 <b>100 万+</b> 爆款产出记录</li>
+            <li>建立至少 <b>1 个品类</b> 的行业权威心智</li>
+            <li>完成知名品牌的旗舰 / 新品首发合作</li>
+            <li>沉淀可量化的 ROI 案例，复投率达标</li>
+          </ol>
+        </div>
+        <div class="col">
+          <h4><span class="t act">关键举措</span> 执行动作</h4>
+          <ul>
+            <li>占领品类心智，成为该品类的选购参考标准</li>
+            <li>争取头部品牌旗舰与新品首发资源</li>
+            <li>将转化成果标准化为可对外引用的商业案例</li>
+            <li>团队化 / 矩阵化运营，提升产能与抗风险能力</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ms"><b>里程碑：</b>粉丝 ≥100 万 · 100 万+ 爆款 ≥1 条 · 大牌首发合作 ≥1 次 · 可量化 ROI 案例 ≥2 个</div>
+    </div>
+
+    <div class="card">
+      <h3>S 级维持机制</h3>
+      <p>进入 S 级后需持续维护护城河，避免等级回落：持续输出行业级内容标准以巩固权威心智；维护头部客户与新品首发资源；建立严格的品牌安全与舆情管理机制；拓展新品类与跨平台矩阵以对冲单一平台风险。</p>
+    </div>
+
+    <div class="note">
+      <b>进阶核心判断：</b>数码家电垂类的进阶驱动项通常是<b>专业可信度</b>而非播放量。一条具备选购决策价值的严谨测评，其进阶贡献高于多条泛娱乐内容；反之，一旦出现数据造假或虚假宣传，信任资产将被击穿，等级可直接回落。
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="sec" id="s5">
+    <div class="sec-h"><span class="no">05</span><h2>快速出圈的特殊条件</h2></div>
+    <p class="sec-sub">常规升级依赖长期指标积累，周期较长。若账号触发下列出圈事件，可启动<b>专项评估通道</b>实现跨档跃迁或破格晋级，无需等待完整评估周期。</p>
+
+    <div class="card">
+      <h3>5.1 跃迁通道（触发即启动专项评估）</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:14%">跃迁通道</th><th style="width:30%">触发条件</th><th style="width:26%">跃迁效果</th><th>适用说明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dimname">爆款跃迁</td>
+            <td>单条视频播放 <b>≥100 万</b>，且带动净增粉 <b>≥1 万</b></td>
+            <td>获得上调一档评估资格（如 B → A）</td>
+            <td>须数据真实，剔除投流与自然增长以外的异常部分</td>
+          </tr>
+          <tr>
+            <td class="dimname">事件出圈</td>
+            <td>内容登上 B 站全站热门 / 每周必看，或被官媒、头部媒体转载引用</td>
+            <td>触发专项评估，专业度维度可评满分</td>
+            <td>事件须与所在品类相关；负面舆情不计入</td>
+          </tr>
+          <tr>
+            <td class="dimname">跨平台破圈</td>
+            <td>同一内容在抖音 / 小红书 / YouTube 任一平台达成 <b>10 万+ 互动</b></td>
+            <td>计入破圈加分，规模维度上调一档</td>
+            <td>须提供平台后台数据佐证</td>
+          </tr>
+          <tr>
+            <td class="dimname">品牌反向背书</td>
+            <td>头部品牌主动指定合作、独家首发，或签订年度框架协议</td>
+            <td>直接获得 <b>S 级</b> 评估资格</td>
+            <td>以合同或官方邀约函为准</td>
+          </tr>
+          <tr>
+            <td class="dimname">转化纪录</td>
+            <td>单条带货 GMV 或挂链转化进入品类同期 <b>Top</b></td>
+            <td>商业转化维度直接评满分</td>
+            <td>须提供可核验的转化数据</td>
+          </tr>
+          <tr>
+            <td class="dimname">行业权威</td>
+            <td>自研测评标准 / 榜单 / 测试工具被行业机构或媒体引用</td>
+            <td>内容专业度维度直接评满分</td>
+            <td>须提供引用来源与链接</td>
+          </tr>
+          <tr>
+            <td class="dimname">头部联动</td>
+            <td>与 S 级账号联合创作，或内容被 S 级账号引用推荐</td>
+            <td>计入破圈加分</td>
+            <td>须为实质性内容联动，非商业互推</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>5.2 破格晋级条件（不受常规粉丝门槛限制）</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:12%">当前等级</th><th style="width:44%">破格触发条件</th><th>破格结果</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">C 级</td><td>单条视频播放 <b>≥50 万</b>，且内容具备明确垂类属性</td><td>破格进入 <b>B 级</b> 评估，不受 5 万粉限制</td></tr>
+          <tr><td class="dimname">B 级</td><td>连续 <b>3 条</b> 视频播放均 <b>≥50 万</b>，且涨粉趋势持续正向</td><td>破格进入 <b>A 级</b> 评估，不受 30 万粉限制</td></tr>
+          <tr><td class="dimname">A 级</td><td>连续 <b>3 条</b> 视频播放均 <b>≥150 万</b>，且有 <b>1 次</b> 知名品牌首发合作</td><td>破格进入 <b>S 级</b> 评估，不受 100 万粉限制</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-bottom:0">
+        <b>有效期与复核：</b>跃迁通道触发后须在 <b>30 日内</b> 完成专项评估，逾期需重新触发。破格晋级设置 <b>6 个月观察期</b>，期间若核心指标回落至原档位区间，则退回原等级。所有出圈数据均须通过真实性核验，一经查实刷量或买量，立即取消跃迁资格并按 §07 一票否决处理。
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="sec" id="s6">
+    <div class="sec-h"><span class="no">06</span><h2>日常更新任务与目标</h2></div>
+    <p class="sec-sub">等级不仅是评估结果，更是日常运营的执行标准。各等级对应差异化的更新节奏、数据目标与运营任务，形成可考核的日常 SOP。</p>
+
+    <div class="card">
+      <h3>6.1 分级日常运营目标</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:22%">目标项</th><th style="width:19.5%">C 级</th><th style="width:19.5%">B 级</th><th style="width:19.5%">A 级</th><th>S 级</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">更新频率</td><td>周更 1 条</td><td>周更 1–2 条</td><td>周更 2 条</td><td>周更 2–3 条 + 矩阵号同步</td></tr>
+          <tr><td class="dimname">单条播放目标</td><td>≥3 万</td><td>≥10 万</td><td>≥30 万</td><td>≥30 万，爆款 100 万+</td></tr>
+          <tr><td class="dimname">月净增粉目标</td><td>0.3–0.5 万</td><td>0.5–1.5 万</td><td>1.5–5 万</td><td>≥5 万</td></tr>
+          <tr><td class="dimname">互动率目标</td><td>≥5%</td><td>≥6%</td><td>≥7%</td><td>≥8%</td></tr>
+          <tr><td class="dimname">收藏率目标</td><td>≥3%</td><td>≥4%</td><td>≥6%</td><td>≥8%</td></tr>
+          <tr><td class="dimname">商单承接量 / 月</td><td>1–2 单</td><td>2–4 单</td><td>4–8 单</td><td>8–15 单</td></tr>
+          <tr><td class="dimname">热点响应时效</td><td>48 小时内</td><td>24 小时内</td><td>12 小时内</td><td>6 小时内</td></tr>
+          <tr><td class="dimname">选题储备量</td><td>≥5 个</td><td>≥10 个</td><td>≥15 个</td><td>≥20 个</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-bottom:0">
+        <b>说明：</b>收藏率在数码家电品类中为强信任代理指标（用户"先收藏后购买"），其达标优先级高于点赞率；商单承接量应控制在内容总量的合理占比内，避免商业化过度稀释粉丝信任。
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>6.2 日常任务清单（日 / 周 / 月 SOP）</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:10%">周期</th><th style="width:20%">任务项</th><th>执行要求</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname" rowspan="3">每日</td><td>数据监控</td><td>核查前一日播放、互动、涨粉数据，识别异常波动并定位原因</td></tr>
+          <tr><td>互动维护</td><td>评论区置顶与高赞回复、清理引战内容、维护粉丝信任氛围</td></tr>
+          <tr><td>热点扫描</td><td>跟踪站内热榜、竞品动态、行业资讯，评估选题可行性</td></tr>
+          <tr><td class="dimname" rowspan="4">每周</td><td>选题会</td><td>确定下周选题排期，对齐商单档期与内容节奏</td></tr>
+          <tr><td>内容生产</td><td>完成脚本产出、拍摄、剪辑，打磨封面与标题</td></tr>
+          <tr><td>发布优化</td><td>定时发布，首小时完成互动引导与数据观察</td></tr>
+          <tr><td>周度复盘</td><td>对照 §6.1 目标核对完成度，输出下周改进项</td></tr>
+          <tr><td class="dimname" rowspan="5">每月</td><td>月度复盘</td><td>播放、互动、涨粉、转化四项对账，形成月度报告</td></tr>
+          <tr><td>画像分析</td><td>更新粉丝人群画像，校准与目标人群的匹配度</td></tr>
+          <tr><td>竞品监测</td><td>对标账号数据追踪、新品发布节奏监测、选题缺口分析</td></tr>
+          <tr><td>商单归档</td><td>完成商单结算，归档 brief、成片、数据与复盘结论</td></tr>
+          <tr><td>等级自评</td><td>按五维权重打分，更新账号等级档案与升级进度</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>6.3 内容资产建设目标（长期）</h3>
+      <table class="tbl">
+        <thead><tr><th style="width:22%">资产项</th><th>建设要求与用途</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">选题库 / 脚本库</td><td>沉淀可复用选题与脚本模板，缩短生产周期，保障更新稳定性</td></tr>
+          <tr><td class="dimname">测评数据库</td><td>积累产品参数、实测数据与对比基准，支撑专业度与可信度，是行业心智的核心资产</td></tr>
+          <tr><td class="dimname">商单案例库</td><td>每单归档 brief、成片、转化数据与复盘，用于品牌提案与等级佐证</td></tr>
+          <tr><td class="dimname">品牌合作名录</td><td>记录合作品牌、复投次数与履约评价，支撑复投率与商业价值评估</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-bottom:0">
+        <b>执行建议：</b>测评数据库与商单案例库是 A → S 进阶的两项关键资产——前者构建行业权威心智，后者提供可量化的商业价值证明，二者共同构成 S 级的护城河。
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="sec" id="s7">
+    <div class="sec-h"><span class="no">07</span><h2>定级与复盘机制</h2></div>
+    <div class="card">
+      <table class="tbl">
+        <thead><tr><th style="width:20%">机制项</th><th>规则说明</th></tr></thead>
+        <tbody>
+          <tr><td><b>评估周期</b></td><td>季度定期评估；大促节点、新品发布季增设专项评估。</td></tr>
+          <tr><td><b>定级原则</b></td><td>跨档指标并存时按<b>短板档位</b>暂定，资源优先投放于短板维度。</td></tr>
+          <tr><td><b>一票否决</b></td><td>数据造假、虚假宣传、重大负面舆情 —— 立即启动降级并冻结合作。</td></tr>
+          <tr><td><b>商单复盘</b></td><td>每单复盘播放、互动、转化、履约四项，结果纳入账号等级档案。</td></tr>
+          <tr><td><b>等级校验</b></td><td>加权总分映射：≥4.2=S · 3.6–4.19=A · 2.8–3.59=B · ＜2.8=C（满分 5.0）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>风险提示：</b>本体系为运营参考框架，粉丝量与播放阈值应随平台流量环境、品类竞争态势动态调整；具体定级须结合账号实时数据与历史商单复盘结果持续校准。
+    </div>
+  </section>
+
+  <div class="footer">
+    B站商单账号 SABC 分级体系与升级路径 · 正式版 v1.0<br/>
+    适用品类：数码 / 家电 / 智能家居 · 定级以品牌方需求与重点考察事项为核心
+  </div>
+</div>
+
+<script>
+  const root=document.documentElement,btn=document.getElementById('themeBtn');
+  function apply(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'☀️ 浅色':'🌙 深色';localStorage.setItem('sabc-formal-theme',t);}
+  apply(localStorage.getItem('sabc-formal-theme')||'light');
+  btn.onclick=()=>apply(root.getAttribute('data-theme')==='dark'?'light':'dark');
+</script>
+</body>
+</html>
