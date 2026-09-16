@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>超红传媒 · TCL 电视国内型号库（2021–2026）</title>
+<style>
+:root{
+  --gutter:22px;  /* 全站左右统一留白：刊头 / 筛选条 / 正文共用 */
+  --wrap:1800px;  /* 宽幅版心：大屏铺满，小屏按视口收 */
+  --bg:#f1f3f6;
+  --panel:#ffffff;
+  --panel-2:#f7f9fb;
+  --ink:#0a1020;
+  --ink-2:#46536a;
+  --ink-3:#7e8b9d;
+  --line:#dce2ea;
+  --line-2:#e9eef4;
+  --brand:#b3122f;
+  --brand-2:#dd5a18;
+  --accent:#b9820f;
+  --lv-king:#a97c0d; --lv-super:#c2410c; --lv-flag:#6d34d6; --lv-high:#166f96; --lv-main:#2b7f65; --lv-entry:#596b82;
+  --track:#e3e9f0;
+  --shadow:0 1px 2px rgba(10,16,32,.04),0 18px 44px rgba(10,16,32,.07);
+  --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#07080c;
+  --panel:#0f1218;
+  --panel-2:#141922;
+  --ink:#eef3fa;
+  --ink-2:#a9b6c8;
+  --ink-3:#75849a;
+  --line:#1e2530;
+  --line-2:#171d26;
+  --brand:#ff5a76;
+  --brand-2:#ff9a4d;
+  --accent:#e0ac3c;
+  --lv-king:#e2b13c; --lv-super:#f97316; --lv-flag:#a78bfa; --lv-high:#4da3ff; --lv-main:#45b48c; --lv-entry:#8fa3bd;
+  --track:#1a212b;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 20px 50px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Inter','HarmonyOS Sans SC','PingFang SC','Microsoft YaHei',system-ui,-apple-system,sans-serif;
+  font-size:15px;line-height:1.7;
+  transition:background .3s ease,color .3s ease;
+}
+.shell{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);}
+
+/* ================= HERO / 刊头 ================= */
+.hero{
+  position:relative;overflow:hidden;color:#f7ece9;
+  background:linear-gradient(118deg,#04070e 0%,#0a1729 40%,#360d1d 73%,#78260f 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 76%);
+}
+.hero-in{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2;}
+.hero-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:24px 0 0;}
+.kicker{
+  display:inline-flex;align-items:center;gap:11px;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:#f0bda9;
+}
+.kicker i{width:26px;height:2px;background:#ff5a2d;box-shadow:0 0 14px #ff5a2d;display:block;}
+.hero-theme{
+  margin-left:auto;display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+  padding:8px 16px;border-radius:2px;line-height:1.2;white-space:nowrap;
+  border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fbeee9;
+  font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  backdrop-filter:blur(8px);transition:.18s ease;
+}
+.hero-theme:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5);color:#fff;}
+.hero-theme .fab-ico{font-size:14px;line-height:1;}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);
+  gap:clamp(28px,4vw,76px);align-items:end;
+  padding:clamp(34px,4.4vw,74px) 0 clamp(26px,3vw,44px);
+}
+.hero-eyebrow{margin:0 0 12px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#eab0a1;}
+h1{margin:0;font-size:clamp(26px,2.9vw,46px);line-height:1.1;letter-spacing:-.9px;font-weight:800;color:#fff;}
+h1 em{font-style:normal;color:#ff9a6b;}
+.hero-years{
+  margin:8px 0 18px;font-family:var(--mono);font-weight:800;
+  font-size:clamp(46px,8.2vw,130px);line-height:.84;letter-spacing:-5px;
+  background:linear-gradient(96deg,#ffb347 0%,#ff5a3c 48%,#ff2d55 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;
+}
+.sub{margin:0;max-width:76ch;font-size:15px;line-height:1.78;color:#dfc6c0;}
+.hero-stats{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.2);}
+.hstat{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.hstat b{flex:0 0 78px;font-family:var(--mono);font-size:31px;font-weight:800;line-height:1;letter-spacing:-1.5px;color:#fff;}
+.hstat span{font-size:12.5px;color:#e2b8ad;line-height:1.5;}
+
+/* 年份导航轨 */
+.yearrail{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.18);}
+.yearrail a{
+  display:block;padding:16px 18px 18px;border-right:1px solid rgba(255,255,255,.1);
+  text-decoration:none;color:#e9cdc5;transition:background .2s ease,color .2s ease;
+}
+.yearrail a:last-child{border-right:0;}
+.yearrail a:hover{background:rgba(255,255,255,.08);color:#fff;}
+.yearrail b{display:block;font-family:var(--mono);font-size:27px;font-weight:800;line-height:1.1;letter-spacing:-1.2px;color:#fff;}
+.yearrail span{display:block;margin-top:4px;font-size:11.5px;opacity:.82;}
+
+/* ================= TOOLBAR ================= */
+.toolbar{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.toolbar-in{max-width:var(--wrap);margin:0 auto;padding:10px var(--gutter);display:flex;flex-direction:column;gap:9px;}
+.tb-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;}
+.tb-lbl{font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;margin-right:3px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;text-decoration:none;
+  padding:7px 14px;border-radius:2px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink-2);font-size:12.5px;font-weight:600;
+  font-family:inherit;transition:.18s ease;
+}
+.btn:hover{border-color:var(--brand-2);color:var(--brand-2);}
+.btn.chip{padding:5px 12px;border-radius:999px;font-size:12px;background:transparent;}
+.btn.chip.on{background:var(--ink);border-color:var(--ink);color:var(--bg);}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;}
+.btn.primary:hover{background:var(--brand-2);border-color:var(--brand-2);color:#fff;}
+.tb-input{
+  font-family:inherit;font-size:12.5px;color:var(--ink);background:var(--panel);
+  border:1px solid var(--line);border-radius:2px;padding:7px 14px;outline:none;
+  flex:1 1 200px;min-width:180px;max-width:400px;
+}
+.tb-input:focus{border-color:var(--brand-2);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand-2) 16%,transparent);}
+.tb-count{font-size:12px;color:var(--ink-3);white-space:nowrap;}
+.tb-count b{font-family:var(--mono);font-size:15px;color:var(--brand-2);}
+.spacer{flex:1 1 auto;}
+
+/* ---------- 电视工具导航 下拉菜单 ---------- */
+.tb-menu{position:relative;}
+.btn.menu-trigger{gap:9px;}
+.caret{width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;border-top:5px solid currentColor;transition:transform .2s ease;}
+.tb-menu.open .caret{transform:rotate(180deg);}
+.menu-list{
+  position:absolute;top:calc(100% + 10px);right:0;z-index:60;min-width:320px;
+  background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:6px;display:none;
+}
+.tb-menu.open .menu-list{display:block;}
+.menu-item{
+  display:flex;align-items:flex-start;gap:11px;padding:9px 11px;
+  text-decoration:none;color:var(--ink-2);font-size:13px;font-weight:600;transition:.15s ease;
+}
+a.menu-item:hover{background:var(--panel-2);color:var(--brand-2);}
+.menu-item .mi-no{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;padding-top:3px;}
+.menu-item .mi-txt{flex:1 1 auto;min-width:0;}
+.menu-item .mi-sub{display:block;font-size:11px;font-weight:400;color:var(--ink-3);margin-top:2px;line-height:1.45;}
+.menu-item.cur-tag{background:color-mix(in srgb,var(--brand) 10%,transparent);color:var(--brand);}
+.menu-item.cur-tag .mi-sub{color:var(--brand);opacity:.8;}
+.menu-item.cur-tag::after{content:"当前";font-size:10px;font-weight:600;border:1px solid currentColor;padding:1px 5px;margin-left:auto;}
+
+/* ================= BAND / 章节 ================= */
+.band{padding:clamp(30px,3.4vw,56px) 0 0;}
+.sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:13px;border-bottom:2px solid var(--ink);margin-bottom:16px;}
+.sec-no{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--brand);padding-bottom:3px;}
+.sec-head h2{margin:0;font-size:clamp(19px,1.6vw,27px);font-weight:800;letter-spacing:-.4px;line-height:1.2;}
+.sec-head .tag{
+  margin-left:auto;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  color:var(--ink-3);border:1px solid var(--line);padding:3px 10px;background:var(--panel);
+}
+.sec-note{margin:0 0 18px;font-size:13.5px;line-height:1.72;color:var(--ink-3);max-width:130ch;}
+.legend{font-size:12.5px;color:var(--ink-3);margin-top:14px;line-height:1.72;max-width:140ch;}
+.legend b{color:var(--ink-2);}
+
+/* ================= 总览 ================= */
+.ov{
+  display:grid;grid-template-columns:minmax(200px,.62fr) minmax(0,1.5fr) minmax(0,1fr);
+  gap:clamp(20px,2.6vw,48px);
+  background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--brand);
+  padding:clamp(20px,2.2vw,32px);
+}
+.ov-total{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;}
+#ovCount{font-family:var(--mono);font-size:clamp(52px,4.6vw,86px);font-weight:800;line-height:.82;letter-spacing:-4px;color:var(--brand-2);}
+.ov-total span{font-size:12.5px;color:var(--ink-3);padding-bottom:9px;}
+.ov-sub{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ink-3);margin:0 0 11px;}
+.ov-sub + .ov-sub{margin-top:20px;}
+.ov-note{
+  grid-column:1/-1;margin-top:4px;padding:12px 14px;border:1px dashed var(--line);
+  font-size:12.5px;line-height:1.68;color:var(--ink-2);background:var(--panel-2);
+}
+.ov-note b{color:var(--brand-2);}
+.lv-bars{display:flex;flex-direction:column;gap:9px;}
+.lv-bar{display:grid;grid-template-columns:78px minmax(0,1fr) 44px;align-items:center;gap:12px;}
+.lvb-name{font-size:12.5px;font-weight:600;color:var(--ink-2);}
+.lvb-track{height:12px;background:var(--track);overflow:hidden;border-radius:1px;}
+.lvb-track i{display:block;height:100%;transition:width .45s cubic-bezier(.22,.8,.28,1);}
+.lvb-val{font-family:var(--mono);font-size:13px;font-weight:700;text-align:right;color:var(--ink);}
+.bd-bars{display:flex;flex-direction:column;gap:11px;}
+.bd-row{display:grid;grid-template-columns:104px minmax(0,1fr) 44px;align-items:center;gap:12px;}
+.bd-k{font-size:12.5px;color:var(--ink-2);}
+.bd-track{height:12px;background:var(--track);overflow:hidden;border-radius:1px;}
+.bd-track i{display:block;height:100%;transition:width .45s cubic-bezier(.22,.8,.28,1);}
+.bd-v{font-family:var(--mono);font-size:13px;font-weight:700;text-align:right;color:var(--ink);}
+
+/* ================= 读图导引 ================= */
+.guide{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,2.6vw,46px);}
+.anchor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.anchor{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--ac,var(--brand-2));padding:16px 18px;}
+.anchor b{display:block;font-family:var(--mono);font-size:13px;margin-bottom:7px;letter-spacing:.02em;}
+.anchor span{font-size:12.8px;color:var(--ink-2);line-height:1.68;}
+.flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;counter-reset:f;}
+.flow-step{background:var(--panel-2);border:1px solid var(--line);padding:14px 16px;}
+.flow-step::before{
+  counter-increment:f;content:counter(f,decimal-leading-zero);
+  font-family:var(--mono);font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.16em;
+}
+.flow-step h4{margin:6px 0 4px;font-size:13.5px;}
+.flow-step p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.62;}
+
+/* ================= 表格（通用） ================= */
+.spec-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--panel);}
+.spec-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.spec-table th,.spec-table td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line-2);}
+.spec-table tbody tr:last-child td{border-bottom:0;}
+.spec-table thead th{
+  background:var(--panel-2);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+.spec-table tbody tr{transition:background .16s ease;}
+.spec-table tbody tr:hover td{background:color-mix(in srgb,var(--brand) 4%,transparent);}
+.spec-table td.k{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--ink);}
+.spec-table td.mono{font-family:var(--mono);white-space:nowrap;font-size:12.5px;color:var(--ink-2);}
+.spec-table td b{color:var(--ink);}
+
+/* ================= 年份骨架（与时间线同源） ================= */
+.tl-wrap{position:relative;display:flex;flex-direction:column;gap:clamp(26px,3vw,54px);}
+.tl-wrap::before{
+  content:"";position:absolute;left:118px;top:16px;bottom:16px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line) 1.5%,var(--line) 98.5%,transparent);
+}
+.tl-anchor{scroll-margin-top:96px;}   /* 年份导航跳转时避开粘性筛选条 */
+.tl-year{
+  position:relative;display:grid;grid-template-columns:230px minmax(0,1fr);
+  gap:clamp(20px,2.6vw,50px);
+}
+.tl-body{min-width:0;}
+.tl-dot{
+  position:absolute;left:113px;top:30px;width:11px;height:11px;border-radius:50%;z-index:2;
+  background:var(--yc,var(--brand-2));box-shadow:0 0 0 7px color-mix(in srgb,var(--yc) 16%,transparent);
+}
+.tl-rail{padding-top:12px;}
+.tl-yr{display:block;font-family:var(--mono);font-size:clamp(42px,4.4vw,86px);font-weight:800;line-height:.84;letter-spacing:-3.5px;color:var(--yc);}
+.yr-tag{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.14em;color:var(--ink-2);border:1px solid var(--line);padding:3px 9px;background:var(--panel);}
+.tl-stat{display:flex;align-items:baseline;gap:7px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
+.tl-stat b{font-family:var(--mono);font-size:30px;font-weight:800;line-height:1;}
+.tl-stat span{font-size:11.5px;color:var(--ink-3);}
+.tl-htext h3{margin:0 0 7px;font-size:clamp(17px,1.5vw,22px);font-weight:800;letter-spacing:-.3px;line-height:1.3;}
+.tl-htext p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.72;max-width:110ch;}
+.tl-tech{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--line);}
+.tchip{font-size:11.5px;color:var(--ink-3);background:var(--panel);border:1px solid var(--line);padding:3px 9px;white-space:nowrap;}
+.tchip.tech{
+  color:var(--yc);border-color:color-mix(in srgb,var(--yc) 42%,transparent);
+  background:color-mix(in srgb,var(--yc) 10%,transparent);font-weight:700;
+}
+
+/* ================= 型号库表 ================= */
+.ml-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--panel);}
+table.ml-tbl{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1080px;}
+table.ml-tbl th,table.ml-tbl td{
+  padding:13px 16px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line-2);
+}
+table.ml-tbl thead th{
+  background:var(--panel-2);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;
+  position:sticky;top:0;z-index:2;
+}
+table.ml-tbl tbody tr.ml-tr{transition:background .16s ease;}
+table.ml-tbl tbody tr.ml-tr:hover td{background:color-mix(in srgb,var(--brand) 4%,transparent);}
+table.ml-tbl tbody tr.ml-tr:last-child td{border-bottom:0;}
+
+/* 定位色：整行左侧色条，变量由属性选择器注入 */
+.ml-tr[data-t="king"]{--lc:var(--lv-king);}
+.ml-tr[data-t="super"]{--lc:var(--lv-super);}
+.ml-tr[data-t="flag"]{--lc:var(--lv-flag);}
+.ml-tr[data-t="high"]{--lc:var(--lv-high);}
+.ml-tr[data-t="main"]{--lc:var(--lv-main);}
+.ml-tr[data-t="entry"]{--lc:var(--lv-entry);}
+.ml-c-no{width:56px;border-left:3px solid var(--lc,var(--lv-entry));font-family:var(--mono);font-size:11.5px;color:var(--ink-3);}
+.ml-c-name{width:150px;font-family:var(--mono);font-size:15px;font-weight:800;letter-spacing:-.4px;color:var(--ink);}
+.ml-c-brand{width:86px;}
+.ml-c-lv{width:104px;}
+.ml-c-size{width:190px;font-family:var(--mono);font-size:12px;color:var(--ink-2);}
+.ml-c-price{width:230px;}
+.ml-c-tech{font-size:12.5px;color:var(--ink-2);line-height:1.62;}
+.badge-brand{
+  display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;white-space:nowrap;
+  border:1px solid var(--line);color:var(--ink-3);background:var(--panel-2);
+}
+.badge-brand.b-ffalcon{
+  color:#8b1fa8;border-color:color-mix(in srgb,#8b1fa8 42%,transparent);
+  background:color-mix(in srgb,#8b1fa8 9%,transparent);
+}
+html[data-theme="dark"] .badge-brand.b-ffalcon{
+  color:#e879f9;border-color:color-mix(in srgb,#e879f9 42%,transparent);
+  background:color-mix(in srgb,#e879f9 12%,transparent);
+}
+.lv-tag{
+  display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;white-space:nowrap;
+  color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 44%,transparent);
+  background:color-mix(in srgb,var(--lc) 12%,transparent);
+}
+.ml-price{display:flex;flex-direction:column;gap:2px;}
+.ml-price b{font-family:var(--mono);font-size:16px;font-weight:800;letter-spacing:-.5px;color:var(--brand-2);}
+.ml-price span{font-size:11px;color:var(--ink-3);line-height:1.55;}
+
+/* ================= 图表 ================= */
+.trend{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:clamp(18px,2vw,32px);}
+.chart-card{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2vw,28px);}
+.chart-title{margin:0 0 5px;font-size:14.5px;font-weight:800;letter-spacing:-.2px;}
+.chart-sub{margin:0 0 18px;font-size:11.5px;color:var(--ink-3);}
+.bars{display:flex;flex-direction:column;gap:11px;}
+.bar-row{display:grid;grid-template-columns:128px minmax(0,1fr) 94px;align-items:center;gap:12px;}
+.bar-key{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--ink-2);}
+.bar-track{height:24px;background:var(--track);overflow:hidden;border-radius:1px;}
+.bar-fill{height:100%;transition:width .6s cubic-bezier(.22,.8,.28,1);}
+.bar-val{font-family:var(--mono);font-size:12px;font-weight:700;text-align:right;color:var(--ink-2);}
+
+/* ================= 定位级别 ================= */
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px;}
+.grade{
+  display:flex;gap:16px;background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--gk);padding:16px 18px;
+}
+.g-badge{
+  flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;
+  font-size:20px;font-weight:800;color:#fff;background:var(--gk);
+}
+html[data-theme="dark"] .g-badge{color:#0b0d12;}
+.g-body{flex:1 1 auto;min-width:0;}
+.g-body h4{margin:0 0 4px;font-size:14.5px;}
+.g-body h4 em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:8px;font-weight:500;}
+.g-body p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.64;}
+.g-body p + p{margin-top:5px;}
+.g-body p b{color:var(--ink);}
+
+/* ================= 页脚 ================= */
+.foot{
+  margin-top:clamp(34px,4vw,64px);border-top:1px solid var(--line);
+  padding:22px 0 52px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
+  font-size:12px;color:var(--ink-3);line-height:1.7;
+}
+
+/* ================= PRINT-ONLY ================= */
+.print-only{display:none;}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:1400px){
+  .tl-year{grid-template-columns:190px minmax(0,1fr);}
+  .tl-wrap::before{left:98px;}
+  .tl-dot{left:93px;}
+  .ml-c-size{width:160px;}
+  .ml-c-price{width:200px;}
+  .ml-c-tech{font-size:12px;}
+}
+@media (max-width:1180px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:26px;align-items:start;}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;border-top:1px solid rgba(255,255,255,.2);}
+  .hstat b{flex:0 0 auto;font-size:26px;}
+  .ov{grid-template-columns:minmax(0,1fr);gap:22px;}
+  .guide{grid-template-columns:minmax(0,1fr);}
+  .anchor-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media (max-width:900px){
+  :root{--gutter:16px;}
+  .yearrail{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .yearrail a:nth-child(3n){border-right:0;}
+  .anchor-grid{grid-template-columns:minmax(0,1fr);}
+  .tl-year{grid-template-columns:minmax(0,1fr);gap:14px;}
+  .tl-wrap::before,.tl-dot{display:none;}
+  .tl-rail{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-top:0;}
+  .tl-yr{font-size:44px;}
+  .yr-tag{margin-top:0;}
+  .tl-stat{margin-top:0;padding-top:0;border-top:0;}
+  .tl-stat b{font-size:20px;}
+  .tl-htext p{max-width:none;}
+  .bar-row{grid-template-columns:104px minmax(0,1fr) 82px;}
+  .spec-table th,.spec-table td{padding:11px 13px;}
+  table.ml-tbl th,table.ml-tbl td{padding:11px 12px;}
+}
+@media (max-width:620px){
+  :root{--gutter:14px;}
+  .hero-top{padding:18px 0 0;}
+  .yearrail{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .yearrail a:nth-child(3n){border-right:1px solid rgba(255,255,255,.1);}
+  .yearrail a:nth-child(2n){border-right:0;}
+  .yearrail b{font-size:22px;}
+  .flow{grid-template-columns:minmax(0,1fr);}
+  .hero-stats{grid-template-columns:minmax(0,1fr);}
+  .ov-total{gap:6px;}
+  .tb-menu{position:static;}
+  .menu-list{min-width:0;width:calc(100vw - 40px);max-width:320px;}
+  .tb-input{max-width:none;}
+  .bar-row{grid-template-columns:86px minmax(0,1fr) 72px;}
+  .spec-table{font-size:11.5px;}
+}
+
+/* ================= PRINT ================= */
+@media print{
+  @page{size:A4 landscape;margin:9mm 8mm 8mm;}
+  :root,html[data-theme="dark"]{
+    --bg:#fff; --panel:#fff; --panel-2:#f7f8fa; --ink:#111; --ink-2:#333; --ink-3:#666;
+    --line:#b9c2cc; --line-2:#d6dde5; --track:#e4e8ee; --shadow:none;
+  }
+  html,body{background:#fff!important;color:#111!important;font-size:9.5pt;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  .screen-only{display:none!important;}
+  .print-only{display:block!important;}
+  .shell,.hero-in,.toolbar-in{max-width:none;padding:0;}
+  .hero{background:#fff!important;color:#111!important;padding:0 0 8px;border-bottom:2px solid #111;}
+  .hero-in{padding:0!important;}
+  .hero::after,.yearrail{display:none!important;}
+  .hero-grid{display:block;padding:0 0 6px;}
+  .hero-top{padding:0;}
+  h1{color:#111!important;font-size:18pt;line-height:1.15;}
+  h1 em{color:#b3122f;}
+  .hero-years{font-size:24pt;letter-spacing:-1px;margin:4px 0 8px;background:none;color:#b3122f!important;-webkit-text-fill-color:#b3122f;}
+  .hero-eyebrow{color:#444!important;}
+  .kicker{color:#333!important;} .kicker i{background:#333;box-shadow:none;}
+  .sub{color:#333!important;font-size:9pt;max-width:none;}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #999;}
+  .hstat{border-bottom:0;padding:4px 0;display:block;}
+  .hstat b{display:block;color:#111!important;font-size:13pt;}
+  .hstat span{color:#444!important;font-size:8.5pt;}
+  .band{padding:9px 0 0;}
+  .sec-head{border-bottom:1.5px solid #111;padding-bottom:6px;margin-bottom:9px;}
+  .sec-head h2{font-size:13pt;}
+  .sec-note,.legend{font-size:8.6pt;max-width:none;}
+  .ov{display:block;border:1px solid #97a1ac;border-top:3px solid #666;padding:9px 11px;}
+  .ov-total{margin-bottom:7px;}
+  #ovCount{font-size:24pt;color:#111!important;}
+  .ov-note{margin-top:8px;background:#fff;border:1px dashed #aaa;}
+  .guide{display:block;}
+  .anchor-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:9px;}
+  .anchor{border:1px solid #97a1ac;border-top:2px solid #666;padding:7px 9px;background:#fff;}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+  .flow-step{background:#fff;border:1px solid #97a1ac;}
+  .tl-wrap{display:block;}
+  .tl-wrap::before,.tl-dot{display:none;}
+  .tl-year{display:block;margin-bottom:9px;page-break-inside:auto;}
+  .tl-rail{display:flex;align-items:baseline;gap:10px;padding-top:0;}
+  .tl-yr{font-size:17pt;}
+  .yr-tag{margin-top:0;}
+  .tl-stat{margin:0;padding:0;border:0;}
+  .tl-stat b{font-size:11pt;}
+  .tl-htext h3{font-size:11.5pt;}
+  .tl-htext p{max-width:none;font-size:8.6pt;}
+  .tl-tech{margin:7px 0 8px;padding-bottom:7px;}
+  .ml-wrap{border:1px solid #97a1ac;overflow:visible;}
+  table.ml-tbl{font-size:8.2pt;min-width:0;}
+  table.ml-tbl th,table.ml-tbl td{padding:5px 7px;border-bottom:1px solid #d6dde5;}
+  table.ml-tbl thead th{background:#eef1f4!important;position:static;font-size:7.4pt;}
+  .ml-c-no{width:32px;}
+  .ml-c-name{width:82px;font-size:9pt;}
+  .ml-c-brand{width:52px;}
+  .ml-c-lv{width:62px;}
+  .ml-c-size{width:96px;}
+  .ml-c-price{width:104px;}
+  .ml-price b{font-size:9.5pt;}
+  .ml-price span,.ml-c-tech{font-size:7.6pt;line-height:1.45;}
+  .badge-brand,.lv-tag,.tchip{font-size:7.2pt;padding:1px 4px;}
+  .ml-tr{page-break-inside:avoid;}
+  .trend,.levels{display:block;}
+  .chart-card{border:1px solid #97a1ac;padding:9px 11px;margin-bottom:8px;}
+  .bar-track{background:#e4e8ee!important;}
+  .bar-row{grid-template-columns:100px minmax(0,1fr) 74px;}
+  .grade{border:1px solid #97a1ac;border-left:3px solid #666;padding:8px 10px;margin-bottom:6px;}
+  .foot{border-top:1px solid #999;padding:8px 0 0;margin-top:10px;font-size:8.5pt;}
+  .btn{display:none!important;}
+  .toolbar{display:none!important;}
+  .spec-table{font-size:8.6pt;}
+  .spec-table th,.spec-table td{padding:4px 6px;}
+  .spec-table thead th{background:#eef1f4!important;}
+  .print-foot{margin-top:10px;padding-top:8px;border-top:1px solid #999;font-size:8.5pt;color:#555;display:flex;justify-content:space-between;gap:12px;}
+  a{color:#111;text-decoration:none;}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div class="hero-top">
+      <div class="kicker"><i></i>TCL CHINA MODEL LIBRARY · 2021–2026</div>
+      <button class="hero-theme screen-only" id="btnTheme" type="button" aria-label="切换深色 / 浅色主题">
+        <span class="fab-ico" id="fabIco">☾</span><span id="fabTxt">深色</span>
+      </button>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">国内上市机型速查 · 按年份排名</p>
+        <h1>TCL 电视 <em>国内型号库</em></h1>
+        <div class="hero-years">2021—2026</div>
+        <p class="sub">只收录在中国大陆正式上市的机型，按年份倒序排、年内按定位从高到低排。每台都给出产品定位标签、在售尺寸、参考价格与核心技术点，TCL 主品牌与子品牌雷鸟同表并列 —— 想比价就按年份翻，想挑机就按定位筛。</p>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><b>55</b><span>国内上市机型</span></div>
+        <div class="hstat"><b>6</b><span>年跨度 · 2021–2026</span></div>
+        <div class="hstat"><b>2</b><span>品牌（含子品牌雷鸟）</span></div>
+        <div class="hstat"><b>6</b><span>级产品定位标签</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-in screen-only">
+    <nav class="yearrail" aria-label="按年份跳转">
+      <a href="#y2026"><b>2026</b><span>SQD 全价位落地 · 15 款</span></a>
+      <a href="#y2025"><b>2025</b><span>极景无黑边 · 13 款</span></a>
+      <a href="#y2024"><b>2024</b><span>万象分区登场 · 9 款</span></a>
+      <a href="#y2023"><b>2023</b><span>XDR 5000 nits · 6 款</span></a>
+      <a href="#y2022"><b>2022</b><span>黄金分区 · 8 款</span></a>
+      <a href="#y2021"><b>2021</b><span>QD-Mini LED 开山 · 4 款</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="toolbar screen-only">
+  <div class="toolbar-in">
+    <div class="tb-row" id="fYearRow">
+      <span class="tb-lbl">年份</span>
+      <button class="btn chip on" type="button" data-y="all">全部</button>
+      <button class="btn chip" type="button" data-y="2026">2026</button>
+      <button class="btn chip" type="button" data-y="2025">2025</button>
+      <button class="btn chip" type="button" data-y="2024">2024</button>
+      <button class="btn chip" type="button" data-y="2023">2023</button>
+      <button class="btn chip" type="button" data-y="2022">2022</button>
+      <button class="btn chip" type="button" data-y="2021">2021</button>
+      <div class="spacer"></div>
+      <span class="tb-lbl">品牌</span>
+      <button class="btn chip on" type="button" data-b="all">全部</button>
+      <button class="btn chip" type="button" data-b="tcl">TCL 主品牌</button>
+      <button class="btn chip" type="button" data-b="ffalcon">子品牌 雷鸟</button>
+    </div>
+    <div class="tb-row" id="fTierRow">
+      <span class="tb-lbl">定位</span>
+      <button class="btn chip on" type="button" data-t="all">全部</button>
+      <button class="btn chip" type="button" data-t="king">机皇</button>
+      <button class="btn chip" type="button" data-t="super">超旗舰</button>
+      <button class="btn chip" type="button" data-t="flag">旗舰</button>
+      <button class="btn chip" type="button" data-t="high">高端</button>
+      <button class="btn chip" type="button" data-t="main">主流</button>
+      <button class="btn chip" type="button" data-t="entry">入门</button>
+      <div class="spacer"></div>
+      <input class="tb-input" id="fq" type="search" placeholder="搜索型号 / 技术关键词，如 Q10M、万象分区、雷鸟、300Hz…" autocomplete="off">
+      <span class="tb-count">显示 <b id="fCount">55</b> / 55</span>
+      <button class="btn" id="btnReset" type="button">重置</button>
+      <div class="tb-menu" id="tbMenu">
+        <button class="btn menu-trigger" id="btnMenu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuList">电视工具导航<span class="caret"></span></button>
+        <div class="menu-list" id="menuList" role="menu">
+          <a class="menu-item" role="menuitem" href="./tv-picture-scorecard.html"><span class="mi-no">01</span><span class="mi-txt">画质评分表<span class="mi-sub">亮度 · 色彩 · 高刷 · 抗反射</span></span></a>
+          <a class="menu-item" role="menuitem" href="./tv-audio-scorecard.html"><span class="mi-no">02</span><span class="mi-txt">音质评分表<span class="mi-sub">声学硬件 · 保真 · 沉浸 · 扩展</span></span></a>
+          <a class="menu-item" role="menuitem" href="./tv-system-scorecard.html"><span class="mi-no">03</span><span class="mi-txt">系统评分表<span class="mi-sub">易用性 · 语音 · 菜单 · 开放解码</span></span></a>
+          <a class="menu-item" role="menuitem" href="./tv-chip-scorecard.html"><span class="mi-no">04</span><span class="mi-txt">芯片评分表<span class="mi-sub">画质引擎 · 控光控色 · AI · 算法</span></span></a>
+          <a class="menu-item" role="menuitem" href="./tv-game-scorecard.html"><span class="mi-no">05</span><span class="mi-txt">游戏评分表<span class="mi-sub">输入延迟 · 高刷 · VRR · HDR 游戏</span></span></a>
+          <span class="menu-item cur-tag" aria-current="page"><span class="mi-no">06</span><span class="mi-txt">TCL 型号库<span class="mi-sub">按年份 · 按定位速查 55 个机型</span></span></span>
+          <a class="menu-item" role="menuitem" href="./tcl-timeline.html"><span class="mi-no">07</span><span class="mi-txt">TCL 时间线<span class="mi-sub">突破技术 · 子品牌 · 定位级别</span></span></a>
+        </div>
+      </div>
+      <button class="btn primary" id="btnPrint" type="button">打印 / 导出 PDF</button>
+    </div>
+  </div>
+</div>
+
+<main class="shell">
+
+  <div class="print-only" style="margin-bottom:10px;font-size:10pt;">
+    <strong>文档：</strong><span>TCL 电视国内型号库（2021–2026）</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>纳入机型：</strong><span id="pCount">55</span> 个
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>品牌：</strong><span>TCL 主品牌 + 子品牌雷鸟</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>日期：</strong><span id="pDate">—</span>
+  </div>
+
+  <section class="band" style="padding-top:24px">
+    <div class="ov">
+      <div>
+        <div class="ov-sub">当前视图机型数</div>
+        <div class="ov-total"><b id="ovCount">55</b><span>/ 55 个国内机型</span></div>
+      </div>
+      <div>
+        <div class="ov-sub">按产品定位标签分布</div>
+        <div class="lv-bars">
+          <div class="lv-bar" data-lv="king">
+            <span class="lvb-name">机皇</span>
+            <span class="lvb-track"><i style="background:var(--lv-king)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+          <div class="lv-bar" data-lv="super">
+            <span class="lvb-name">超旗舰</span>
+            <span class="lvb-track"><i style="background:var(--lv-super)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+          <div class="lv-bar" data-lv="flag">
+            <span class="lvb-name">旗舰</span>
+            <span class="lvb-track"><i style="background:var(--lv-flag)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+          <div class="lv-bar" data-lv="high">
+            <span class="lvb-name">高端</span>
+            <span class="lvb-track"><i style="background:var(--lv-high)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+          <div class="lv-bar" data-lv="main">
+            <span class="lvb-name">主流</span>
+            <span class="lvb-track"><i style="background:var(--lv-main)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+          <div class="lv-bar" data-lv="entry">
+            <span class="lvb-name">入门</span>
+            <span class="lvb-track"><i style="background:var(--lv-entry)"></i></span>
+            <span class="lvb-val">0</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ov-sub">按品牌分布</div>
+        <div class="bd-bars">
+          <div class="bd-row">
+            <span class="bd-k">TCL 主品牌</span>
+            <span class="bd-track"><i id="barTcl" style="background:var(--brand-2)"></i></span>
+            <span class="bd-v" id="bdTcl">39</span>
+          </div>
+          <div class="bd-row">
+            <span class="bd-k">子品牌 雷鸟</span>
+            <span class="bd-track"><i id="barFf" style="background:#a21caf"></i></span>
+            <span class="bd-v" id="bdFf">16</span>
+          </div>
+        </div>
+        <div class="ov-sub" style="margin-top:20px">时间跨度</div>
+        <div class="bd-bars">
+          <div class="bd-row">
+            <span class="bd-k">2021 → 2026</span>
+            <span class="bd-track"><i style="width:100%;background:linear-gradient(90deg,var(--lv-entry),var(--brand-2))"></i></span>
+            <span class="bd-v">6 年</span>
+          </div>
+        </div>
+      </div>
+      <div class="ov-note" id="ovNote"><b>口径：</b>只收录在中国大陆正式上市的机型；海外专属支线与未在国内开售的型号不计入。价格取发布期官方零售价、首发价或当期国补后到手价，仅作横向比较，实际成交价随渠道与促销波动。</div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>型号命名解码</h2>
+      <span class="tag">NAMING</span>
+    </div>
+    <p class="sec-note">例：<b style="font-family:var(--mono)">65 Q10M Pro</b> ＝ 65 吋 · Q 系列 · 2026 款 · 高配版。三段式读法：先尺寸、再系列、最后看代际与配置。</p>
+    <div class="guide">
+      <div>
+        <div class="anchor-grid">
+          <div class="anchor" style="--ac:var(--lv-high)">
+          <b>① 尺寸</b>
+          <span>数字前缀即对角线英寸。主销 55 / 65 / 75 / 85 / 98 吋，机皇线另有 115 吋与 Micro LED 巨幕。</span>
+          </div>
+          <div class="anchor" style="--ac:var(--lv-king)">
+          <b>② 系列</b>
+          <span><b>X</b> 机皇 · <b>C</b> 高端进阶 · <b>Q</b> 影音旗舰 · <b>T</b> 家用主力 · <b>V</b> 线上入门。首字母直接对应预算段。</span>
+          </div>
+          <div class="anchor" style="--ac:var(--lv-flag)">
+          <b>③ 后缀</b>
+          <span>数字后字母是代际：<b>M</b> 2026 / <b>L</b> 2025 / <b>K</b> 2024 / <b>H</b> 2023 / <b>G</b> 2022；Pro 均衡升级，Ultra 极限堆料，-C 抗光版。</span>
+          </div>
+      </div>
+        <div class="legend">代际字母是判断购买时机的最短路径：<b>M</b> 结尾是当年最新技术；同价位想省钱就找 <b>L</b> 结尾的清库存机型，通常能多买一档尺寸。</div>
+      </div>
+      <div>
+        <div class="ov-sub">这张表怎么用</div>
+        <div class="flow">
+          <div class="flow-step"><h4>按年份翻</h4><p>六个年份自上而下是 2026 → 2021，与上方年份轨道一一对应。</p></div>
+          <div class="flow-step"><h4>年内看排名</h4><p>同年机型按定位从高到低排，行首色条与「定位」列同色，一眼分出档位。</p></div>
+          <div class="flow-step"><h4>横向比价</h4><p>价格列给首发价 / 零售价，括号内补该机型的高尺寸档位，避免只看起售价误判。</p></div>
+          <div class="flow-step"><h4>筛出目标</h4><p>顶部按年份 / 品牌 / 定位三级联筛，叠加关键词搜索，右侧实时汇总分布。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>机型总览 · 按年份排名</h2>
+      <span class="tag">MODEL LIBRARY · 2026 → 2021</span>
+    </div>
+    <p class="sec-note">每个年份一张表，年内按定位从高到低排。顶部色条与「定位」列颜色一致；紫色徽标表示该机型来自子品牌雷鸟。价格为发布期官方零售价、首发价或当期国补后到手价。</p>
+    <div class="tl-wrap" id="tlWrap">
+
+      <div class="tl-anchor" id="y2026">
+        <section class="tl-year" data-year="2026" style="--yc:var(--lv-super)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2026</span>
+            <span class="yr-tag">· 后缀 M</span>
+            <div class="tl-stat"><b>15</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>SQD-Mini LED 铺满全价位</h3>
+              <p>1 月 Q10M 把 SQD 拉进万元内、3 月 Q9M Pro / T7M Pro 杀到 5000 元档，7 月 Micro LED 巨幕与第三代艺术电视补齐两端；子品牌雷鸟 4 月一次性换代四条线，把 SQD 与万象分区带到 3799 元起。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">SQD-Mini LED 万元内落地</span>
+              <span class="tchip tech">100% BT.2020 全局高色域普及</span>
+              <span class="tchip tech">4K 150Hz 原生 / 最高 300Hz</span>
+              <span class="tchip tech">TSR AI 光色同控芯片</span>
+              <span class="tchip tech">Micro LED 巨幕落地</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">Max 163M</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇</span></td>
+                    <td class="ml-c-size">163 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥249,999 起</b><span>2026-07 旗舰发布会</span></div></td>
+                    <td class="ml-c-tech">Micro LED 巨幕，TCL 国内在售尺寸上限；面向独立影音室与别墅客厅。</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">Q10M Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥11,999 起</b><span>65 吋 · 75 吋 ¥16,999 · 85 吋 ¥21,999 · 98 吋 ¥31,999</span></div></td>
+                    <td class="ml-c-tech">万象分区 3528 / 4608 / 5832 / 8052 · 绚彩 XDR 最高 8500 nits · 100% BT.2020 全局高色域 · 超级蝶翼华曜屏（内外双低反）· B&amp;O 音响 · 灵控系统 3.0</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">Q10M</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥9,999 起</b><span>65 吋 · 75 吋 ¥12,999 · 85 吋 ¥15,999 · 98 吋 ¥24,999</span></div></td>
+                    <td class="ml-c-tech">与 Q10M Pro 同源 SQD-Mini LED · 100% BT.2020 全局高色域 · 超级量子点 + 超级蝶翼华曜屏，把 SQD 门槛一次性拉进万元内</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">C12L</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>—</b><span>官方零售价待公布</span></div></td>
+                    <td class="ml-c-tech">C 系列（高端进阶线）首次采用 SQD-Mini LED，定位介于 Q10M 与 Q9M Pro 之间，延续音画一体路线</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="flag">
+                    <td class="ml-c-no">05</td>
+                    <td class="ml-c-name">鹤7 Pro 26款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,599 起</b><span>65 吋 · 75 吋 ¥7,499 · 85 吋 ¥9,499 · 98 吋 ¥13,499</span></div></td>
+                    <td class="ml-c-tech">无黑边旗舰 · 蝶翼华曜屏 · 万象分区 · 2.2.2 声道安桥音响 · 全通道 300Hz 疾速高刷，雷鸟线画质上限</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">06</td>
+                    <td class="ml-c-name">Q9M Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,000 档起</b><span>2026-03-17 发布 · 98 吋国补参考价约 ¥18,499</span></div></td>
+                    <td class="ml-c-tech">最高 3552 个万象分区 · 绚彩 XDR 5000 nits · 55 吋版本是当前小尺寸 SQD 顶配，SQD 矩阵化下沉的主力</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">07</td>
+                    <td class="ml-c-name">鹤7 26款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,799 起</b><span>65 吋 · 75 吋 ¥4,799 · 85 吋 ¥6,199 · 98 吋 ¥8,999</span></div></td>
+                    <td class="ml-c-tech">雷鸟首款 SQD-Mini LED · 2200 nits · 1152 万象分区 · 联发科 MT9655 + 4GB/128GB · 4 路满血 HDMI 2.1 · 安桥 2.1.2 · 全通道 300Hz · 灵控系统 3.0，2026-04-10 开售</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">08</td>
+                    <td class="ml-c-name">鹤6 Ultra 26款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,299 起</b><span>65 吋 · 75 吋 ¥4,799 · 85 吋 ¥6,399 · 98 吋 ¥9,999</span></div></td>
+                    <td class="ml-c-tech">蝶翼星曜屏 · 98% DCI-P3 量子点广色域 · 万象分区 · 全通道 300Hz，影音与游戏双兼顾的水桶机</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">09</td>
+                    <td class="ml-c-name">鹤6 Ultra 竞技款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,999 起</b><span>国补到手价 · 75 吋 ¥4,599 · 85 吋 ¥5,999 · 98 吋 ¥8,999</span></div></td>
+                    <td class="ml-c-tech">万象分区 QD-Mini LED 电竞线 · 蝶翼星曜屏 · 2.1 声道安桥 · 98% DCI-P3 · 全通道 300Hz，2026-09 新品日首发</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">10</td>
+                    <td class="ml-c-name">A300 Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">—</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>—</b><span>2026-07-27 旗舰发布会推出 · 艺术线</span></div></td>
+                    <td class="ml-c-tech">第三代艺术电视，主打艺术显示与家居融合，不参与主力型号的价格带竞争</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">11</td>
+                    <td class="ml-c-name">T7M Ultra</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥8,489</b><span>75 吋 · 98 吋国补参考价约 ¥14,499（2026-03-17 发布）</span></div></td>
+                    <td class="ml-c-tech">2176 个万象分区 · 绚彩 XDR 3000 nits · 100% BT.2020 · 安桥 2.1.2 Hi-Fi · 4 路 HDMI 2.1 · 4K 150Hz 原生（加速 300Hz）</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">12</td>
+                    <td class="ml-c-name">鹤6 Plus 26款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,499 起</b><span>65 吋 · 75 吋 ¥4,499 · 85 吋 ¥5,199 · 98 吋 ¥6,599</span></div></td>
+                    <td class="ml-c-tech">万象分区量子点广色域 · 全通道 360Hz 疾速高刷，面向重度游戏玩家的高性价比档</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">13</td>
+                    <td class="ml-c-name">T7M Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,269</b><span>65 吋国补后 · 98 吋国补参考价约 ¥13,499</span></div></td>
+                    <td class="ml-c-tech">1056 个万象分区 · 绚彩 XDR 2500 nits · 100% BT.2020 全局高色域，SQD 的最低价格入场券</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">14</td>
+                    <td class="ml-c-name">鹏7 26款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,799</b><span>65 吋 · 鹏系列中端走量线</span></div></td>
+                    <td class="ml-c-tech">高阶 VA 面板 · 全通道 288Hz 高刷 · HDMI 2.1 · 94% DCI-P3 · 灵控系统无开机广告</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2026" data-b="tcl" data-t="entry">
+                    <td class="ml-c-no">15</td>
+                    <td class="ml-c-name">V8M</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-entry)">入门</span></td>
+                    <td class="ml-c-size">43 / 50 / 55 / 65 / 75 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,640</b><span>75 吋促销到手价 · 线上入门线</span></div></td>
+                    <td class="ml-c-tech">2026 款线上走量机 · 主打高刷与护眼，无分区背光，适合次卧 / 出租房 / 备用屏</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="legend">口径提示：<b>Q10M Ultra</b> 走 RGB-Mini LED 支线、以海外与超大尺寸为主，国内上市信息未确认，本页不收录。</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tl-anchor" id="y2025">
+        <section class="tl-year" data-year="2025" style="--yc:var(--lv-king)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2025</span>
+            <span class="yr-tag">· 后缀 L</span>
+            <div class="tl-stat"><b>13</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>第四代液晶 · 极景无黑边 · SQD 首秀</h3>
+              <p>3 月 Q10L Pro / Q10L / Q9L / T7L 全线换代，把无黑边与万象分区铺到主流档；9 月 X11L 以全球首款 SQD-Mini LED 的姿态登场，机皇规格被抬到 20736 分区、10000 nits。子品牌雷鸟同期用鹤 6 / 鹤 7 系列守住 3000–5000 元档。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">极景无黑边</span>
+              <span class="tchip tech">SQD-Mini LED 全球首发</span>
+              <span class="tchip tech">20736 万象分区 / 10000 nits</span>
+              <span class="tchip tech">蝶翼华曜屏（低反）</span>
+              <span class="tchip tech">子品牌雷鸟鹤 6 / 鹤 7 换代</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">X11L</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇</span></td>
+                    <td class="ml-c-size">75 / 85 / 98 / 115 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>5 万级</b><span>98 吋 · 2025-09 发布</span></div></td>
+                    <td class="ml-c-tech">全球首款 SQD-Mini LED · 98 吋 20736 个万象分区 · 绚彩 XDR 10000 nits · 100% BT.2020 全局高色域 · 2 cm 机身 · 第四代液晶无黑边设计</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">Q10L Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥10,499</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">极景 QD-Mini LED · 75 吋 4032 万象分区 · 峰值亮度 6500 nits · 极景无黑边 + 蝶翼华曜屏</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">Q10L</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥7,599</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">75 吋 2176 万象分区 · 峰值亮度 5000 nits · 2025 年高端走量主力，Q 系列分水岭机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="ffalcon" data-t="flag">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">鹤7 Pro 25款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,639</b><span>75 吋补贴后 · 2025-04</span></div></td>
+                    <td class="ml-c-tech">2176 分区 · 4200 nits · 雷鸟线画质天花板，价格约为同规格主品牌机型的七成</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">05</td>
+                    <td class="ml-c-name">Q9L Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,599</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">75 吋 2176 万象分区（与 Q10L 同分区数）· 峰值亮度 4500 nits，差价换亮度的高性价比档</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">06</td>
+                    <td class="ml-c-name">Q9L</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,039</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">75 吋 2176 万象分区 · 峰值亮度 4500 nits · 2025 年 5000 元档爆款</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">07</td>
+                    <td class="ml-c-name">Q9L-C</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端 · 抗光</span></td>
+                    <td class="ml-c-size">85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥13,799</b><span>98 吋标准版</span></div></td>
+                    <td class="ml-c-tech">蝶翼玄晶屏主打抗环境光 · 98 吋 2000–3000 级分区 · 3000–4000 nits · B&amp;O 专业音响 · 4 路 HDMI 2.1，适合落地窗客厅</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">08</td>
+                    <td class="ml-c-name">鹤7 25款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">75 / 85 / 100 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,239</b><span>75 吋补贴后 · 100 吋另计</span></div></td>
+                    <td class="ml-c-tech">1248 分区 · 2400 nits · 100 吋款配 2.1 声道 7 单元 60W 音响，支持杜比全景声与 DTS 双解码</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">09</td>
+                    <td class="ml-c-name">鹤6 Ultra 25款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,599</b><span>75 吋补贴后 · 2025-04</span></div></td>
+                    <td class="ml-c-tech">1152 分区 · 2000 nits · 鹤 6 系列的中高配版本，分区数高于同代鹤6 Pro</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">10</td>
+                    <td class="ml-c-name">T7L Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,399</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">75 吋 720 万象分区 · 峰值亮度 2200 nits · 蝶翼星曜低反屏，客厅主力机价位段的画质底线</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">11</td>
+                    <td class="ml-c-name">T7L</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,839</b><span>75 吋补贴后 · 2025-03 发布</span></div></td>
+                    <td class="ml-c-tech">75 吋 720 万象分区 · 峰值亮度 2200 nits · 2025 年 Mini LED 的入门门槛</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">12</td>
+                    <td class="ml-c-name">鹤6 Pro 25款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,499 起</b><span>65 吋零售 · 75 吋 ¥4,599 · 85 吋 ¥6,199；国补后 2,799 / 3,679 / 4,959</span></div></td>
+                    <td class="ml-c-tech">512 分区 · 2000 nits · 95% DCI-P3 · 2.1.2 声道 5 单元 Hi-Fi · 全通道 288Hz · 4 路满血 HDMI 2.1 · 0.5% LR 低反膜（整机反射率 1.8%）· 灵控系统 3.0，2025-04-09 发布</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2025" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">13</td>
+                    <td class="ml-c-name">鹤6 25款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,821</b><span>75 吋补贴后 · 2025-01</span></div></td>
+                    <td class="ml-c-tech">300 分区 · 1300 nits · 3000 元以内拿到分区背光的最低门槛</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tl-anchor" id="y2024">
+        <section class="tl-year" data-year="2024" style="--yc:var(--lv-flag)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2024</span>
+            <span class="yr-tag">· 后缀 K</span>
+            <div class="tl-stat"><b>9</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>万象分区登场 · 尺寸下沉</h3>
+              <p>X11H 把 98 吋做到 14112 分区与 6500 nits，「万象分区」系统级控光方案首次落地；Q9K / T7K 把千级分区打到 4000 元与 3000 元档。子品牌雷鸟的鹤 7 / 鹤 6 在这一年进入国内零售主力位。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">万象分区（系统级控光）</span>
+              <span class="tchip tech">98 吋 14112 分区 / 6500 nits</span>
+              <span class="tchip tech">千级分区下探 4000 元档</span>
+              <span class="tchip tech">子品牌雷鸟进入国内主力位</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">X11H</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇</span></td>
+                    <td class="ml-c-size">85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥29,999</b><span>85 吋 · 98 吋 ¥49,999 · 2024-03 发布</span></div></td>
+                    <td class="ml-c-tech">85 / 98 吋 10368 / 14112 分区 · XDR 6500 nits · 全域光晕控制 · 领曜芯片 M2 + TXR 独立画质引擎，「万象分区」的落地机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">Q10K Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥7,999 起</b><span>65 吋 · 75 吋 ¥10,999 · 85 吋 ¥14,999 · 98 吋 ¥23,999</span></div></td>
+                    <td class="ml-c-tech">3024 / 4032 / 5184 / 5184 分区 · 峰值亮度 5500 nits · 全域光晕控制 + 蝶翼星曜屏，X11H 技术下放的第一站</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">Q10K</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥6,499 起</b><span>65 吋 · 75 吋 ¥8,499 · 85 吋 ¥10,999 · 98 吋 ¥19,999</span></div></td>
+                    <td class="ml-c-tech">1512 / 2160 / 2304 / 2592 分区 · 峰值亮度 3800 nits · 2024 年高端走量的中坚机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">C12H</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰 · 影音一体</span></td>
+                    <td class="ml-c-size">75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥14,999 起</b><span>75 吋 · 85 吋 ¥21,999 · 98 吋 ¥33,999</span></div></td>
+                    <td class="ml-c-tech">2160 / 2340 / 2160 分区 · 安桥 Hi-Fi 音响系统，C 系列一贯的音画一体路线，适合不外接回音壁的中高端用户</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">05</td>
+                    <td class="ml-c-name">Q9K</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,499 起</b><span>55 吋 · 65 吋 ¥5,599 · 75 吋 ¥7,499 · 85 吋 ¥9,999 · 98 吋 ¥18,999</span></div></td>
+                    <td class="ml-c-tech">720 / 1008 / 1248 / 1536 / 1536 分区 · XDR 2400 nits · QLED 量子点 · 4 路 HDMI 2.1 · 四核 A73 + 4GB/64–128GB，4000 元档分区数屠榜机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">06</td>
+                    <td class="ml-c-name">鹤7 24款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,999 起</b><span>65 吋 · 75 吋 ¥6,499 · 85 吋 ¥8,499（补贴后约 ¥5,919）</span></div></td>
+                    <td class="ml-c-tech">960 / 1248 / 1536 分区 · 2400 nits · 144Hz（可提至 240Hz）· 双 HDMI 2.1 · 5 单元 60W 音响 · 与 TCL Q9K 同级别控光规格、更低定价</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">07</td>
+                    <td class="ml-c-name">T7K</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,299 起</b><span>55 吋 · 65 吋 ¥4,299 · 75 吋 ¥5,999 · 85 吋 ¥7,999 · 98 吋 ¥13,999</span></div></td>
+                    <td class="ml-c-tech">384 / 512 / 640 / 800 / 960 分区 · 峰值亮度 1600 nits · 全通道 144 Hz，3000 元档把 Mini LED 拉进客厅</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">08</td>
+                    <td class="ml-c-name">鹤6 Pro 24款</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,759</b><span>75 吋补贴后 · Mini LED + 75 吋的低价组合</span></div></td>
+                    <td class="ml-c-tech">75 吋 640 分区 · 峰值亮度 1300 nits，分辨率、刷新率、色域与接口配置不弱于同代高阶机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2024" data-b="tcl" data-t="entry">
+                    <td class="ml-c-no">09</td>
+                    <td class="ml-c-name">V8K</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-entry)">入门</span></td>
+                    <td class="ml-c-size">43 / 50 / 55 / 65 / 75 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,000 档起</b><span>线上走量线</span></div></td>
+                    <td class="ml-c-tech">QLED 高色域 · 全通道 144 Hz · 2+32GB / 3+64GB 存储，无分区背光，次卧 / 出租房 / 备用屏首选</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tl-anchor" id="y2023">
+        <section class="tl-year" data-year="2023" style="--yc:var(--lv-high)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2023</span>
+            <span class="yr-tag">· 后缀 H</span>
+            <div class="tl-stat"><b>6</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>万级分区 · XDR 5000 nits</h3>
+              <p>X11G 的 98 吋做到 5184 分区与 XDR 5000 nits，配安桥 4.2.2 Hi-Fi；领曜芯片 M2 与 TXR 独立画质引擎成为后续控光控色的共用算力底座，4K 144Hz 全通道高刷下放到 Q10G Pro / T7H。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">XDR 5000 nits</span>
+              <span class="tchip tech">领曜芯片 M2 + TXR</span>
+              <span class="tchip tech">安桥 4.2.2 Hi-Fi</span>
+              <span class="tchip tech">4K 144Hz 全通道下放</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">X11G Max</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇 · 巨幕</span></td>
+                    <td class="ml-c-size">115 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥79,999</b><span>2023 年国内在售最大机型之一</span></div></td>
+                    <td class="ml-c-tech">20000+ 分区 · 当年全球最大尺寸 Mini LED 电视之一，面向别墅客厅与私人影院场景</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">X11G</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇</span></td>
+                    <td class="ml-c-size">75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥23,999 起</b><span>75 吋 · 85 吋 ¥31,999 · 98 吋 ¥49,999 · 2023-04 发布</span></div></td>
+                    <td class="ml-c-tech">3024 / 5184 / 5184 分区 · 量子点点控光 Pro · XDR 5000 nits · A++ 蝶翼星曜屏 · 安桥 4.2.2 Hi-Fi · 领曜芯片 M2 + TXR · 灵控桌面</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">Q10H</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥7,699 起</b><span>65 吋 · 75 吋 ¥10,999 · 85 吋 ¥14,999 · 98 吋 ¥25,999 · 2023-08 发布</span></div></td>
+                    <td class="ml-c-tech">1080 / 1920 / 2304 / 2304 分区 · 峰值亮度 3000 nits · 双向精细控光 · A++ 蝶翼星曜屏 · 2.1 声道，追剧与游戏双修的热门机型</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">C11G Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰 · 典藏</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥8,399 起</b><span>65 吋 · 75 吋 ¥10,099 · 85 吋 ¥13,799</span></div></td>
+                    <td class="ml-c-tech">512 / 640 / 880 分区 · XDR 1500 nits · 157% 超高色域值 · A++ 蝶翼星耀屏 · 4K 144 Hz · 领曜芯片 M2，典藏级影像定位</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">05</td>
+                    <td class="ml-c-name">Q10G Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,499 起</b><span>55 吋 · 65 吋 ¥6,499 · 75 吋 ¥8,499 · 85 吋 ¥10,989 · 98 吋 ¥21,999</span></div></td>
+                    <td class="ml-c-tech">480 / 576 / 720 / 896 / 1344 分区 · XDR 2200 nits · 全通道 4K 144 Hz · 领曜芯片 M2 · 灵控桌面（无开机广告 + 桌面自定义），当年 Mini LED 的甜点价位定义者</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2023" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">06</td>
+                    <td class="ml-c-name">T7H</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥5,999 起</b><span>75 吋 · 85 吋 ¥7,999 · 98 吋 ¥15,999</span></div></td>
+                    <td class="ml-c-tech">672 分区 · HDR 1200 nits · 95% 电影级原色高色域 · A++ 广角超显屏 · 4K 144 Hz · 领曜芯片 M2 · 2.1 声道</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="legend">口径提示：子品牌雷鸟自 2022 年起才以雀 / 鹏 / 鹤系列进入国内公开零售，2021–2023 年其国内在售机型多以型号代号（如 S545C）出现，本页只收录有明确国内上市信息的机型，故这两年的子品牌条目为空。</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tl-anchor" id="y2022">
+        <section class="tl-year" data-year="2022" style="--yc:var(--lv-super)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2022</span>
+            <span class="yr-tag">· 后缀 G</span>
+            <div class="tl-stat"><b>8</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>第三代 QD-Mini LED 与「黄金分区」</h3>
+              <p>3 月第三代 QD-Mini LED 三连发（X11 / C12E / 98X9C Pro）；5 月 Q10G 以 4499 元起把 Mini LED 拉进主流预算，「黄金分区」概念由此确立。子品牌雷鸟以鹤 5 Plus、鹏 6 SE、雀 5 三条线同时进场。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">第三代 QD-Mini LED</span>
+              <span class="tchip tech">黄金分区概念</span>
+              <span class="tchip tech">Mini LED 进入 4500 元档</span>
+              <span class="tchip tech">雷鸟国内三线并进</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2022" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">X11</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥13,999 起</b><span>65 吋 · 75 吋 ¥17,999 · 85 吋 ¥27,999 · 2022-03 发布</span></div></td>
+                    <td class="ml-c-tech">1080 / 1920 / 2304 分区 · 第三代 QD-Mini LED 技术首发旗舰 · 领曜芯片 M1 · 安桥 Hi-Fi 音响</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">98X9C Pro</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰 · 巨幕</span></td>
+                    <td class="ml-c-size">98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>—</b><span>98 吋 QD-Mini LED 巨幕 · 2022-03 发布</span></div></td>
+                    <td class="ml-c-tech">与 X11 / C12E 同期发布的巨幕版本，面向大客厅与影音室的 98 吋选择</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="tcl" data-t="flag">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">C12E</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-flag)">旗舰 · 灵悉</span></td>
+                    <td class="ml-c-size">65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥11,999 起</b><span>65 吋 · 75 吋 ¥14,999 · 85 吋 ¥21,999 · 2022-03 发布</span></div></td>
+                    <td class="ml-c-tech">448 分区 · 峰值亮度 1400 nits · 157% BT.709 量子点广色域 · 60W 安桥 2.2 Hi-Fi · 杜比全景声 · 领曜芯片 M1 · 全功能 HDMI 2.1</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">Q10G</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端 · 爆款</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 / 98 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥4,499 起</b><span>55 吋 · 98 吋首发 ¥21,999 · 2022-05 发布</span></div></td>
+                    <td class="ml-c-tech">「黄金分区」240 / 288 / 360 / 448 / 672 分区 · XDR 1600 nits · 95% DCI-P3 电影级原色 · 微透镜控光灯塔（98 吋）· 全通道 4K 120 Hz · 2.1 声道安桥音响</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="ffalcon" data-t="high">
+                    <td class="ml-c-no">05</td>
+                    <td class="ml-c-name">鹤5 Plus</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥7,999</b><span>85 吋 · 券后约 ¥7,698</span></div></td>
+                    <td class="ml-c-tech">192 分区 · 峰值亮度 1100 nits · 杜比视界 IQ · 雷鸟进入国内中高端档的首款口碑机型，S545C 的升级款</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="tcl" data-t="main">
+                    <td class="ml-c-no">06</td>
+                    <td class="ml-c-name">T7G</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流 · 游戏</span></td>
+                    <td class="ml-c-size">55 / 65 / 75 / 85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,000 档起</b><span>55 吋起</span></div></td>
+                    <td class="ml-c-tech">80 / 90 / 120 背光分区 · 峰值亮度 1000 nits · 96% DCI-P3 · 144 Hz 高刷 + HDMI 2.1，当年入门游戏电视首选</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="ffalcon" data-t="main">
+                    <td class="ml-c-no">07</td>
+                    <td class="ml-c-name">鹏6 SE</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-main)">主流</span></td>
+                    <td class="ml-c-size">43 / 55 / 65 / 75 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,499</b><span>65 吋 · 券后约 ¥2,299 · 2022-06 上市</span></div></td>
+                    <td class="ml-c-tech">四核 A55 + T982 · 2GB/32GB · 支持 MEMC 动态补偿 · 75 吋版 90% DCI-P3 · 7.4 ms 低延迟游戏模式 · 四单元音响 + 4 mic 远场语音</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2022" data-b="ffalcon" data-t="entry">
+                    <td class="ml-c-no">08</td>
+                    <td class="ml-c-name">雀5</td>
+                    <td class="ml-c-brand"><span class="badge-brand b-ffalcon">雷鸟</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-entry)">入门</span></td>
+                    <td class="ml-c-size">43 / 65 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥1,499</b><span>43 吋 · 65 吋 ¥2,293</span></div></td>
+                    <td class="ml-c-tech">144 Hz 高刷 · 2GB/32GB · 四核 A35 · STR 快速开机 · 自定义遥控器按键，无分区背光</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tl-anchor" id="y2021">
+        <section class="tl-year" data-year="2021" style="--yc:var(--lv-entry)">
+          <span class="tl-dot"></span>
+          <div class="tl-rail">
+            <span class="tl-yr">2021</span>
+            <span class="yr-tag">· 代际起点</span>
+            <div class="tl-stat"><b>4</b><span>个机型</span></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-htext">
+              <h3>QD-Mini LED 开山</h3>
+              <p>3 月第一代 QD-Mini LED 电视 C12 发布，8 月 8K 机皇 X12 以 9.9 mm 机身、1920 分区、2000 nits 树起此后 X 系列的形态标准。量子点首次与 Mini LED 背光叠加，成为此后六年的技术主线。</p>
+            </div>
+            <div class="tl-tech">
+              <span class="tchip tech">第一代 QD-Mini LED</span>
+              <span class="tchip tech">8K + 9.9mm 机身</span>
+              <span class="tchip tech">X 系列形态标准确立</span>
+            </div>
+            <div class="ml-wrap">
+              <table class="ml-tbl">
+                <colgroup><col class="ml-c-no"><col class="ml-c-name"><col class="ml-c-brand"><col class="ml-c-lv"><col class="ml-c-size"><col class="ml-c-price"><col></colgroup>
+                <thead>
+                  <tr><th>#</th><th>型号</th><th>品牌</th><th>定位</th><th>在售尺寸</th><th>参考价格</th><th>核心技术点</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="ml-tr" data-y="2021" data-b="tcl" data-t="king">
+                    <td class="ml-c-no">01</td>
+                    <td class="ml-c-name">X12</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-king)">机皇 · 8K</span></td>
+                    <td class="ml-c-size">85 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥99,999</b><span>2021-08 发布</span></div></td>
+                    <td class="ml-c-tech">8K QD-Mini LED · 1920 个物理分区 · 96000 颗 LED · 2000 nits · 10000000:1 对比度 · 9.9 mm 超薄机身 · 魅丽珑调色芯片 + AI 级调色</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2021" data-b="tcl" data-t="super">
+                    <td class="ml-c-no">02</td>
+                    <td class="ml-c-name">C12</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-super)">超旗舰</span></td>
+                    <td class="ml-c-size">65 / 75 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥12,999</b><span>65 吋 · 75 吋 ¥16,999 · 2021-03 发布</span></div></td>
+                    <td class="ml-c-tech">第一代 QD-Mini LED 电视 · 量子点点控光 · 160 / 240 背光分区，Mini LED 在国内从概念走向量产的开端</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2021" data-b="tcl" data-t="high">
+                    <td class="ml-c-no">03</td>
+                    <td class="ml-c-name">Q9 / Q7D</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-high)">高端 · 高色域</span></td>
+                    <td class="ml-c-size">55 吋为主</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥3,499 起</b><span>55Q7D ¥3,499 · 55Q9 ¥3,799</span></div></td>
+                    <td class="ml-c-tech">Q9：136% 高色域 + 哈曼卡顿音响 + MEMC 防抖；Q7D：130% 色域社交电视 + 分体式摄像头 · 3GB/32GB · AI 声控</td>
+                  </tr>
+                  <tr class="ml-tr" data-y="2021" data-b="tcl" data-t="entry">
+                    <td class="ml-c-no">04</td>
+                    <td class="ml-c-name">V6 / V8</td>
+                    <td class="ml-c-brand"><span class="badge-brand">TCL</span></td>
+                    <td class="ml-c-lv"><span class="lv-tag" style="--lc:var(--lv-entry)">入门</span></td>
+                    <td class="ml-c-size">55 / 65 吋</td>
+                    <td class="ml-c-price"><div class="ml-price"><b>¥2,599 起</b><span>55V6 ¥2,599 · 65V8 ¥3,899</span></div></td>
+                    <td class="ml-c-tech">4K 超高清 · 超薄全面屏 · 免遥控 AI 声控 · 杜比 + DTS 双解码 · 2GB/8–16GB 存储 · 支持 8K 解码</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>98 吋旗舰 · 控光与亮度演进</h2>
+      <span class="tag">TREND · 5 YEARS</span>
+    </div>
+    <p class="sec-note">取每年 98 吋主力量产机的分区数与峰值亮度，看六年里「堆料」的方向发生了什么变化。</p>
+    <div class="trend">
+      <div class="chart-card">
+        <h3 class="chart-title">背光分区数</h3>
+        <p class="chart-sub">条形长度按最大值 20736 归一化</p>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-key">2022 Q10G</span>
+            <div class="bar-track"><div class="bar-fill" style="width:3.2%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">672</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2023 X11G</span>
+            <div class="bar-track"><div class="bar-fill" style="width:25%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">5184</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2024 X11H</span>
+            <div class="bar-track"><div class="bar-fill" style="width:68.1%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">14112</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2025 X11L</span>
+            <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">20736</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2026 Q10M Pro</span>
+            <div class="bar-track"><div class="bar-fill" style="width:38.8%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">8052</span>
+          </div>
+        </div>
+        <div class="legend">2026 年 Q10M Pro 分区数低于 X11L，是因为成本让给了 SQD 的单灯纯白背光 —— 分区数与控光效果在 SQD 路线下不再等价。</div>
+      </div>
+      <div class="chart-card">
+        <h3 class="chart-title">峰值亮度（nits）</h3>
+        <p class="chart-sub">条形长度按最大值 10000 nits 归一化</p>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-key">2022 Q10G</span>
+            <div class="bar-track"><div class="bar-fill" style="width:16%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">1600</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2023 X11G</span>
+            <div class="bar-track"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">5000</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2024 X11H</span>
+            <div class="bar-track"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">6500</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2025 X11L</span>
+            <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">10000</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-key">2026 Q10M Pro</span>
+            <div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,var(--lv-super),var(--lv-king))"></div></div>
+            <span class="bar-val">8500</span>
+          </div>
+        </div>
+        <div class="legend">峰值亮度四年提升约 6.3 倍，分区数提升约 30 倍。亮度对 HDR 观感的影响更直接；分区数在 SQD 单灯方案下的边际效益明显下降 —— 这也是 2026 年不再拼分区数的原因。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">04</span>
+      <h2>产品定位标签</h2>
+      <span class="tag">GRADE · 6 LEVELS</span>
+    </div>
+    <p class="sec-note">级别不按价格划分，而按「在当年产品序列里承担什么角色」划分 —— 同一档在不同年份的价格可以差三倍。型号库表内的「定位」列与行首色条用的就是这套标签。</p>
+    <div class="levels">
+      <div class="grade" style="--gk:var(--lv-king)">
+        <div class="g-badge">皇</div>
+        <div class="g-body">
+          <h4>机皇 <em>X 系列 / 巨幕</em></h4>
+          <p><b>每年的技术宣言。</b>分辨率、分区数与亮度上限都在这一档首发，不承担走量任务。</p>
+          <p>X12 · X11 / X11G / X11G Max · X11H · X11L · Max 163M</p>
+        </div>
+      </div>
+      <div class="grade" style="--gk:var(--lv-super)">
+        <div class="g-badge">超</div>
+        <div class="g-body">
+          <h4>超旗舰 <em>Pro / 巨幕版本</em></h4>
+          <p><b>机皇技术的下放第一站。</b>同代核心规格减一档，价格腰斩，是「想要顶配但预算有限」的答案。</p>
+          <p>C12 · 98X9C Pro · Q10H · Q10K Pro · Q10L Pro · Q10M Pro</p>
+        </div>
+      </div>
+      <div class="grade" style="--gk:var(--lv-flag)">
+        <div class="g-badge">旗</div>
+        <div class="g-body">
+          <h4>旗舰 <em>Q / C 主销线</em></h4>
+          <p><b>高端走量主力。</b>当年的分水岭机型，技术成熟、价格稳定，销量集中在这一档；子品牌顶级档位（鹤 7 Pro）也落在这一级。</p>
+          <p>C12E · C11G Pro · Q10G Pro · Q10K · C12H · Q10L · Q10M · C12L · 鹤7 Pro 25 / 26款</p>
+        </div>
+      </div>
+      <div class="grade" style="--gk:var(--lv-high)">
+        <div class="g-badge">高</div>
+        <div class="g-body">
+          <h4>高端 <em>Q9 档 / 子品牌主力</em></h4>
+          <p><b>画质的分水岭。</b>分区背光在这档做到够用，是「画质明显比普通电视好」的起步价位。</p>
+          <p>Q9 / Q7D · Q10G · Q9K · Q9L / Q9L Pro / Q9L-C · Q9M Pro · A300 Pro · 鹤5 Plus · 鹤7 24 / 25 / 26款 · 鹤6 Ultra 各代</p>
+        </div>
+      </div>
+      <div class="grade" style="--gk:var(--lv-main)">
+        <div class="g-badge">主</div>
+        <div class="g-body">
+          <h4>主流 <em>T 系列 / 子品牌中端</em></h4>
+          <p><b>客厅主力机。</b>Mini LED 在这档成为标配，看这一档就能判断「这个价位现在能拿到什么」。</p>
+          <p>T7G · T7H · T7K · T7L / T7L Pro · T7M Pro / T7M Ultra · 鹏6 SE · 鹏7 26款 · 鹤6 Pro / 鹤6 / 鹤6 Plus</p>
+        </div>
+      </div>
+      <div class="grade" style="--gk:var(--lv-entry)">
+        <div class="g-badge">入</div>
+        <div class="g-body">
+          <h4>入门 <em>V 系列 / 子品牌入门</em></h4>
+          <p><b>线上走量线。</b>无分区背光，主打高色域与高刷，适合次卧、出租房与备用屏，不必追求 HDR。</p>
+          <p>V6 / V8 · V8K · V8M · 雷鸟雀5</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">05</span>
+      <h2>按预算对号入座（2026 年视角）</h2>
+      <span class="tag">BUDGET · 6 TIERS</span>
+    </div>
+    <p class="sec-note">以 65 吋价格为主锚点。价格随渠道与国补波动，这里只给「这个预算当期能落到哪一档」。</p>
+    <div class="spec-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr><th>预算（65 吋）</th><th>首选系列</th><th>典型机型</th><th>这一档能拿到什么</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="k">¥1,500–3,000</td>
+            <td>V 系列 / 雷鸟 雀・鹏</td>
+            <td class="mono">V8M · 雀5 · 鹏7 26款</td>
+            <td>无分区背光，靠高刷与广色域撑体验。次卧、出租房、备用屏。这一档不必追求 HDR。</td>
+          </tr>
+          <tr>
+            <td class="k">¥3,000–5,500</td>
+            <td>雷鸟 鹤 6 / 鹤 7</td>
+            <td class="mono">鹤6 Plus 26款 · 鹤6 Ultra 26款 · 鹤7 26款</td>
+            <td>千级万象分区 + 2000–2200 nits，2026 年这一档已能拿到 SQD-Mini LED。子品牌用主品牌约七成价格给到同级控光。</td>
+          </tr>
+          <tr>
+            <td class="k">¥5,000–9,000</td>
+            <td>T 系列 / Q9M Pro</td>
+            <td class="mono">T7M Pro · T7M Ultra · Q9M Pro</td>
+            <td>1056–3552 个万象分区 + 100% BT.2020 全局高色域，2026 年「SQD 画质铁三角」的最低入场线。</td>
+          </tr>
+          <tr>
+            <td class="k">¥9,000–18,000</td>
+            <td>Q 系列</td>
+            <td class="mono">Q10M · Q10M Pro 75 吋</td>
+            <td>万元档画质标杆。Q10M 起手 65 吋 ¥9,999，与 Q10M Pro 同源 SQD，配 B&amp;O 音响与极景无黑边。</td>
+          </tr>
+          <tr>
+            <td class="k">¥18,000–35,000</td>
+            <td>Q / X 系列大尺寸</td>
+            <td class="mono">Q10M Pro 85 / 98 吋 · X11L</td>
+            <td>85 吋 5832 分区、98 吋 8052 分区 + XDR 8500 nits；再往上 X11L 给到 20736 分区与 10000 nits。</td>
+          </tr>
+          <tr>
+            <td class="k">¥35,000+</td>
+            <td>X 系列 / 巨幕</td>
+            <td class="mono">X11L 115 吋 · Max 163M</td>
+            <td>Micro LED 与万级分区巨幕，属于独立影音室与别墅客厅的配置，追求「买完不用再想」。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sec-head">
+      <span class="sec-no">06</span>
+      <h2>用这张表之前，先记住四件事</h2>
+      <span class="tag">NOTES · 4</span>
+    </div>
+    <div class="ov-note" style="margin-top:0"><b>后缀就是购买时机。</b>2026 年新款后缀是 M，2025 款是 L。想买最新 SQD 技术选 M；预算敏感、能接受上一代 QD-Mini LED 方案，清库存的 L 结尾机型（T7L / Q9L / Q10L）在同价位往往能多买一档尺寸。</div>
+    <div class="ov-note" style="margin-top:10px"><b>Pro 与 Ultra 的差价怎么算。</b>Pro 是均衡升级版，同尺寸通常贵 300–800 元，对九成家庭够用；Ultra 只针对控光与峰值亮度做大额堆料，差价通常 2000 元以上 —— 只有当 HDR 片源占比高、环境光强、或观看距离 3 米以上时，这笔钱才值。</div>
+    <div class="ov-note" style="margin-top:10px"><b>SQD 与 RGB-Mini LED 不是同一件事。</b>SQD 保持纯白背光 + 量子点滤色，从发光原理上解决传统 Mini LED 的混色串色；RGB-Mini LED 用红绿蓝三色直发光，色彩饱和度更高但白场控制更难。2026 年 TCL 双线并行，SQD 是主推且机型最全，RGB 集中在超大尺寸与海外线。</div>
+    <div class="ov-note" style="margin-top:10px"><b>子品牌雷鸟怎么用。</b>同规格下雷鸟通常比 TCL 主品牌便宜三成，代价是画质调校风格与售后网点密度略有差异。预算卡在 3000–5500 元时，先看雷鸟鹤 6 / 鹤 7，再回头看同价位 T 系列。</div>
+  </section>
+
+  <div class="foot">
+    <span>超红传媒 &nbsp;·&nbsp; TCL 电视国内型号库 &nbsp;·&nbsp; 2021–2026 &nbsp;·&nbsp; 55 个机型（TCL 主品牌 39 + 子品牌雷鸟 16）</span>
+    <span>口径：只收录在中国大陆正式上市的机型 · 价格为发布期官方价 / 首发价或补贴后价，实际成交价随渠道波动</span>
+  </div>
+
+  <div class="print-only print-foot">
+    <span>口径：只收录在中国大陆正式上市的机型 · 价格为发布期官方价 / 首发价或补贴后价，实际成交价随渠道波动</span>
+    <span>TCL 电视国内型号库 v2.1</span>
+  </div>
+
+</main>
+
+<script>
+var LV_KEYS = ['king','super','flag','high','main','entry'];
+
+(function(){
+  var rows    = Array.prototype.slice.call(document.querySelectorAll('.ml-tr'));
+  var years   = Array.prototype.slice.call(document.querySelectorAll('.tl-year'));
+  var q       = document.getElementById('fq');
+  var fCount  = document.getElementById('fCount');
+  var ovCount = document.getElementById('ovCount');
+  var ovNote  = document.getElementById('ovNote');
+  var barTcl  = document.getElementById('barTcl');
+  var barFf   = document.getElementById('barFf');
+  var bdTcl   = document.getElementById('bdTcl');
+  var bdFf    = document.getElementById('bdFf');
+  var TOTAL   = rows.length;
+
+  var bars = {};
+  LV_KEYS.forEach(function(k){ bars[k] = document.querySelector('.lv-bar[data-lv="'+k+'"]'); });
+
+  document.getElementById('pCount').textContent = TOTAL;
+  rows.forEach(function(c){
+    c.dataset.hay = (c.textContent || '').replace(/\s+/g,'').toLowerCase();
+  });
+
+  var state = { year:'all', brand:'all', tier:'all' };
+
+  var NOTE_DEFAULT = '<b>口径：</b>只收录在中国大陆正式上市的机型；海外专属支线与未在国内开售的型号不计入。价格取发布期官方零售价、首发价或当期国补后到手价，仅作横向比较，实际成交价随渠道与促销波动。';
+  var NOTE_EMPTY   = '<b>没有匹配的机型</b> —— 换个关键词，或把年份 / 品牌 / 定位任一项切回「全部」。';
+
+  function apply(){
+    var kw = (q.value || '').trim().replace(/\s+/g,'').toLowerCase();
+    var n = 0, hitYear = {}, lv = {}, brand = { tcl:0, ffalcon:0 };
+
+    rows.forEach(function(c){
+      var ok = (state.year  === 'all' || c.dataset.y === state.year)
+            && (state.brand === 'all' || c.dataset.b === state.brand)
+            && (state.tier  === 'all' || c.dataset.t === state.tier)
+            && (!kw || c.dataset.hay.indexOf(kw) !== -1);
+      c.style.display = ok ? '' : 'none';
+      if(!ok){ return; }
+      n++;
+      hitYear[c.dataset.y] = (hitYear[c.dataset.y] || 0) + 1;
+      lv[c.dataset.t]      = (lv[c.dataset.t]      || 0) + 1;
+      brand[c.dataset.b]   = (brand[c.dataset.b]   || 0) + 1;
+    });
+
+    years.forEach(function(s){
+      var box = s.parentNode && s.parentNode.classList && s.parentNode.classList.contains('tl-anchor') ? s.parentNode : s;
+      box.style.display = hitYear[s.dataset.year] ? '' : 'none';
+    });
+
+    fCount.textContent  = n;
+    ovCount.textContent = n;
+
+    var lvMax = 1;
+    LV_KEYS.forEach(function(k){ if((lv[k] || 0) > lvMax){ lvMax = lv[k]; } });
+    LV_KEYS.forEach(function(k){
+      var box = bars[k]; if(!box){ return; }
+      var v = lv[k] || 0;
+      box.querySelector('i').style.width = (v / lvMax * 100) + '%';
+      box.querySelector('.lvb-val').textContent = v;
+    });
+
+    var bMax = Math.max(brand.tcl || 0, brand.ffalcon || 0, 1);
+    barTcl.style.width = ((brand.tcl || 0) / bMax * 100) + '%';
+    barFf.style.width  = ((brand.ffalcon || 0) / bMax * 100) + '%';
+    bdTcl.textContent  = brand.tcl || 0;
+    bdFf.textContent   = brand.ffalcon || 0;
+
+    ovNote.innerHTML = n === 0 ? NOTE_EMPTY : NOTE_DEFAULT;
+  }
+
+  function bindRow(row, attr, key){
+    if(!row){ return; }
+    row.addEventListener('click', function(e){
+      var b = e.target && e.target.closest ? e.target.closest('button['+attr+']') : null;
+      if(!b){ return; }
+      state[key] = b.getAttribute(attr);
+      Array.prototype.slice.call(row.querySelectorAll('button['+attr+']')).forEach(function(x){
+        x.classList.toggle('on', x === b);
+      });
+      apply();
+    });
+  }
+
+  bindRow(document.getElementById('fYearRow'), 'data-y', 'year');
+  bindRow(document.getElementById('fYearRow'), 'data-b', 'brand');
+  bindRow(document.getElementById('fTierRow'), 'data-t', 'tier');
+
+  document.getElementById('btnReset').addEventListener('click', function(){
+    state = { year:'all', brand:'all', tier:'all' };
+    q.value = '';
+    ['fYearRow','fTierRow'].forEach(function(id){
+      var row = document.getElementById(id);
+      Array.prototype.slice.call(row.querySelectorAll('.btn.chip')).forEach(function(x){
+        var k = x.dataset.y || x.dataset.b || x.dataset.t;
+        x.classList.toggle('on', k === 'all');
+      });
+    });
+    apply();
+  });
+
+  var timer = null;
+  q.addEventListener('input', function(){
+    if(timer){ clearTimeout(timer); }
+    timer = setTimeout(apply, 120);
+  });
+
+  apply();
+})();
+
+/* ---------- 主题 ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  var txt = document.getElementById('fabTxt'), ico = document.getElementById('fabIco');
+  if(txt){ txt.textContent = t === 'dark' ? '浅色' : '深色'; }
+  if(ico){ ico.textContent = t === 'dark' ? '☀' : '☾'; }
+  try{ localStorage.setItem('chaohong-theme', t); }catch(e){}
+}
+(function(){
+  var btn = document.getElementById('btnTheme');
+  if(btn){
+    btn.addEventListener('click', function(){
+      var cur = document.documentElement.getAttribute('data-theme');
+      setTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('chaohong-theme'); }catch(e){}
+  setTheme(saved === 'dark' ? 'dark' : 'light');
+})();
+
+/* ---------- 电视工具导航 下拉菜单 ---------- */
+(function(){
+  var menu = document.getElementById('tbMenu'), trigger = document.getElementById('btnMenu');
+  if(!menu || !trigger){ return; }
+  function setOpen(open){
+    if(open){ menu.classList.add('open'); } else { menu.classList.remove('open'); }
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function close(){ setOpen(false); }
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', function(e){
+    if(!menu.contains(e.target)){ close(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' || e.keyCode === 27){ close(); }
+  });
+  menu.addEventListener('click', function(e){
+    var node = e.target;
+    if(node && node.closest && node.closest('a.menu-item')){ close(); }
+  });
+})();
+
+document.getElementById('pDate').textContent = new Date().toLocaleDateString('zh-CN');
+document.getElementById('btnPrint').addEventListener('click', function(){ window.print(); });
+</script>
+
+
+
+
+
+</body>
+</html>

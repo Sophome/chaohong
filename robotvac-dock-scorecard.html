@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>扫地机器人「基站能力」五维百分制评分表</title>
+<style>
+:root{
+  --gutter:22px;  /* 全站左右统一留白：header 与主体共用 */
+  --bg:#eef4f9;
+  --panel:#ffffff;
+  --panel-2:#f6fafd;
+  --ink:#08161f;
+  --ink-2:#3d5866;
+  --ink-3:#7391a0;
+  --line:#d7e4ed;
+  --line-2:#e9f1f7;
+  --brand:#0d3f5c;
+  --brand-2:#1478a8;
+  --accent:#b8791a;
+  --g1:#c9971b; --g2:#cf5327; --g3:#1a7fa8; --g4:#2e8b6e; --g5:#71829a; --g6:#a0563f;
+  --track:#dee9f1;
+  --shadow:0 1px 2px rgba(8,22,31,.05), 0 10px 28px rgba(8,22,31,.07);
+  --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#040d14;
+  --panel:#081a26;
+  --panel-2:#0c2331;
+  --ink:#e3f2fb;
+  --ink-2:#a3bed0;
+  --ink-3:#6a8ba0;
+  --line:#11303f;
+  --line-2:#0d2431;
+  --brand:#6cc0ff;
+  --brand-2:#3fa8e0;
+  --accent:#e0a33a;
+  --g1:#e2b13c; --g2:#f0703f; --g3:#4da3ff; --g4:#45b48c; --g5:#8b9cb4; --g6:#c97258;
+  --track:#102938;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 12px 34px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Inter','HarmonyOS Sans SC','PingFang SC','Microsoft YaHei',system-ui,-apple-system,sans-serif;
+  font-size:14px; line-height:1.65;
+  transition:background .35s ease,color .35s ease;
+}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter) 70px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;margin-bottom:26px;padding:38px 0 34px;
+  background:
+    radial-gradient(1100px 320px at 9% -30%, rgba(90,200,255,.28), transparent 62%),
+    radial-gradient(900px 340px at 94% 140%, rgba(70,230,220,.24), transparent 60%),
+    linear-gradient(135deg,#041c2c 0%,#0a4a6e 48%,#0f7aa8 100%);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  color:#eefcf5;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 82%);
+}
+.hero-in{max-width:1240px;margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2;}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:#a8ddf5;border:1px solid rgba(168,221,245,.35);border-radius:999px;padding:5px 13px;
+}
+.kicker i{width:6px;height:6px;border-radius:50%;background:#54d0ff;box-shadow:0 0 10px #54d0ff;display:block;}
+h1{margin:16px 0 8px;font-size:clamp(23px,3.4vw,34px);line-height:1.25;letter-spacing:-.4px;font-weight:700;color:#fff;}
+h1 em{font-style:normal;color:#7fdcff;}
+.sub{margin:0;max-width:880px;color:#bcd6e4;font-size:14.5px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.meta-chip{
+  display:flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:8px 13px;backdrop-filter:blur(6px);
+}
+.meta-chip b{font-size:16px;font-family:var(--mono);color:#fff;}
+.meta-chip span{font-size:11.5px;color:#a6c4d6;letter-spacing:.04em;}
+
+/* ---------- TOOLBAR ---------- */
+.toolbar{
+  position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin:0 0 22px;padding:11px 14px;
+  background:color-mix(in srgb,var(--panel) 88%,transparent);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
+}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;cursor:pointer;user-select:none;text-decoration:none;
+  padding:7px 14px;border-radius:8px;border:1px solid var(--line);
+  background:var(--panel-2);color:var(--ink-2);font-size:13px;font-weight:600;
+  font-family:inherit;transition:.18s ease;
+}
+.btn:hover{border-color:var(--brand-2);color:var(--brand-2);transform:translateY(-1px);}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;color:#fff;}
+html[data-theme="light"] .btn.primary{background:linear-gradient(135deg,#062c44,#0f6a94);}
+html[data-theme="dark"] .btn.primary{color:#04141d;}
+.btn.sibling{border-style:dashed;padding:7px 11px;font-size:12.5px;}
+.tb-sep{width:1px;height:22px;background:var(--line);margin:0 3px;}
+.tb-field{display:flex;align-items:center;gap:7px;}
+.tb-field label{font-size:12px;color:var(--ink-3);white-space:nowrap;}
+.tb-field input{
+  font-family:inherit;font-size:13px;color:var(--ink);background:var(--panel-2);
+  border:1px solid var(--line);border-radius:7px;padding:6px 10px;outline:none;min-width:120px;
+}
+.tb-field input:focus{border-color:var(--brand-2);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand-2) 18%,transparent);}
+.spacer{flex:1 1 auto;}
+
+/* ---------- 评测工具 下拉菜单 ---------- */
+.tb-menu{position:relative;}
+.btn.menu-trigger{gap:9px;}
+.caret{width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;border-top:5px solid currentColor;transition:transform .2s ease;}
+.tb-menu.open .caret{transform:rotate(180deg);}
+.menu-list{
+  position:absolute;top:calc(100% + 9px);right:0;z-index:60;min-width:262px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
+  padding:7px;display:none;max-height:min(74vh,580px);overflow-y:auto;
+}
+.tb-menu.open .menu-list{display:block;}
+.menu-item{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;
+  text-decoration:none;color:var(--ink-2);font-size:13px;font-weight:600;transition:.15s ease;
+}
+a.menu-item:hover{background:var(--panel-2);color:var(--brand-2);}
+.menu-item .mi-no{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;padding-top:2px;}
+.menu-item .mi-txt{flex:1 1 auto;min-width:0;}
+.menu-item .mi-sub{display:block;font-size:11px;font-weight:400;color:var(--ink-3);margin-top:2px;line-height:1.45;}
+.menu-item.cur-tag{background:color-mix(in srgb,var(--brand-2) 13%,transparent);color:var(--brand-2);}
+.menu-item.cur-tag .mi-sub{color:var(--brand-2);opacity:.85;}
+.menu-item.cur-tag::after{content:"当前";font-size:10px;font-weight:600;border:1px solid currentColor;border-radius:5px;padding:1px 5px;margin-left:auto;}
+.menu-sep{margin:6px 5px 2px;padding:8px 10px 0;border-top:1px solid var(--line-2);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:700;}
+
+/* ---------- 头部右上：主题切换按键 ---------- */
+.hero-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;}
+.hero-theme{
+  margin-left:auto;display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+  padding:7px 15px;border-radius:999px;line-height:1.25;white-space:nowrap;
+  border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);color:#eaf3fb;
+  font-family:inherit;font-size:12.5px;font-weight:700;backdrop-filter:blur(8px);transition:.18s ease;
+}
+.hero-theme:hover{background:rgba(255,255,255,.20);border-color:rgba(255,255,255,.48);color:#fff;transform:translateY(-1px);}
+.hero-theme:active{transform:translateY(0);}
+.hero-theme .fab-ico{font-size:14px;line-height:1;}
+
+/* ---------- LAYOUT ---------- */
+.layout{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start;}
+.col-main{flex:1 1 620px;min-width:0;display:flex;flex-direction:column;gap:18px;}
+.col-side{flex:0 0 348px;position:sticky;top:74px;display:flex;flex-direction:column;gap:18px;}
+
+.panel{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);padding:20px 20px 18px;
+}
+.panel-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;flex-wrap:wrap;}
+.panel-head h2{margin:0;font-size:15.5px;letter-spacing:.2px;font-weight:700;}
+.panel-head .tag{
+  font-size:11px;font-weight:700;letter-spacing:.1em;padding:3px 9px;border-radius:999px;
+  background:color-mix(in srgb,var(--brand-2) 16%,transparent);color:var(--brand-2);
+}
+.panel-head p{margin:0;font-size:12.5px;color:var(--ink-3);flex:1 1 220px;}
+
+/* ---------- SPEC TABLE ---------- */
+.spec-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.spec-table th,.spec-table td{padding:8px 10px;border:1px solid var(--line);text-align:left;vertical-align:top;}
+.spec-table thead th{
+  background:var(--panel-2);font-weight:700;font-size:11.5px;letter-spacing:.04em;color:var(--ink-2);white-space:nowrap;
+}
+.spec-table td.k{font-family:var(--mono);font-weight:700;font-size:12px;min-width:150px;}
+.spec-table td.b{color:var(--g4);font-weight:600;}
+.spec-table td.w{color:var(--g6);font-weight:600;}
+.spec-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--panel-2) 60%,transparent);}
+.spec-wrap{overflow-x:auto;}
+
+/* ---------- DIM CARD ---------- */
+.dim{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;break-inside:avoid;
+}
+.dim-top{display:flex;align-items:flex-start;gap:14px;padding:16px 18px 14px;border-bottom:1px solid var(--line-2);}
+.dim-no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:15px;font-weight:700;color:#fff;
+  background:linear-gradient(140deg,var(--brand),var(--brand-2));
+}
+html[data-theme="dark"] .dim-no{color:#04141d;}
+.dim-title{flex:1 1 auto;min-width:0;}
+.dim-title h3{margin:0 0 2px;font-size:14.5px;font-weight:700;}
+.dim-title .en{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-family:var(--mono);}
+.dim-title p{margin:6px 0 0;font-size:12.5px;color:var(--ink-2);}
+.dim-score{flex:0 0 auto;text-align:right;}
+.dim-score b{display:block;font-family:var(--mono);font-size:26px;line-height:1;font-weight:700;}
+.dim-score span{font-size:11px;color:var(--ink-3);}
+.dim-weight{
+  display:inline-block;margin-top:5px;font-family:var(--mono);font-size:11px;font-weight:700;
+  padding:2px 7px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line);color:var(--ink-2);
+}
+.dim-body{padding:8px 18px 14px;}
+.dim-bar{height:5px;border-radius:99px;background:var(--track);overflow:hidden;margin:4px 0 12px;}
+.dim-bar i{display:block;height:100%;border-radius:99px;transition:width .38s cubic-bezier(.22,.8,.28,1);}
+
+.item{padding:9px 0;border-bottom:1px dashed var(--line-2);}
+.item:last-child{border-bottom:0;}
+.item-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+.item-name{font-size:13.2px;font-weight:650;}
+.item-max{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:0 6px;}
+.item-hint{font-size:11.5px;color:var(--ink-3);margin:3px 0 7px;line-height:1.5;}
+.item-ctl{display:flex;align-items:center;gap:12px;}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1 1 auto;height:22px;background:transparent;cursor:pointer;outline:none;
+}
+input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:99px;background:var(--track);}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;margin-top:-5.5px;border-radius:50%;
+  background:var(--panel);border:3px solid var(--brand-2);box-shadow:0 1px 4px rgba(0,0,0,.22);transition:.15s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.14);}
+input[type=range]::-moz-range-track{height:5px;border-radius:99px;background:var(--track);}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--panel);border:3px solid var(--brand-2);}
+.item-val{
+  flex:0 0 96px;text-align:right;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);
+}
+.item-val b{color:var(--ink);font-weight:700;}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px;}
+.quick button{
+  cursor:pointer;font-family:inherit;font-size:11.5px;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel-2);color:var(--ink-2);transition:.15s;
+}
+.quick button:hover{border-color:var(--brand-2);color:var(--brand-2);}
+
+/* ---------- ANCHOR / GRADE ---------- */
+.anchor-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.anchor{
+  flex:1 1 168px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--panel-2);
+  border-left:3px solid var(--brand-2);
+}
+.anchor b{display:block;font-family:var(--mono);font-size:13px;margin-bottom:3px;}
+.anchor span{font-size:12px;color:var(--ink-2);line-height:1.5;}
+.anchor.a4{border-left-color:var(--g1);} .anchor.a3{border-left-color:var(--g3);}
+.anchor.a2{border-left-color:var(--g4);} .anchor.a1{border-left-color:var(--g5);}
+
+.grade-list{display:flex;flex-direction:column;gap:9px;}
+.grade{
+  display:flex;align-items:flex-start;gap:13px;padding:12px 14px;border-radius:11px;
+  border:1px solid var(--line);background:var(--panel-2);transition:.2s;
+}
+.grade.on{border-color:var(--gk);box-shadow:0 0 0 2px color-mix(in srgb,var(--gk) 22%,transparent);background:var(--panel);}
+.g-badge{
+  flex:0 0 auto;width:52px;height:52px;border-radius:11px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:19px;font-weight:700;color:#fff;background:var(--gk);
+  letter-spacing:-.5px;
+}
+.g-body{flex:1 1 auto;min-width:0;}
+.g-body h4{margin:0 0 3px;font-size:13.5px;}
+.g-body h4 em{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-left:7px;font-weight:500;}
+.g-body p{margin:0;font-size:12px;color:var(--ink-2);line-height:1.55;}
+.g-body p + p{margin-top:4px;}
+.g-body p b{color:var(--ink);}
+
+/* ---------- RESULT ---------- */
+.result{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+.res-top{padding:20px 20px 18px;background:linear-gradient(150deg,color-mix(in srgb,var(--rk) 16%,var(--panel)),var(--panel));border-bottom:1px solid var(--line);}
+.res-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:700;}
+.res-total{display:flex;align-items:flex-end;gap:10px;margin:6px 0 10px;}
+.res-total b{font-family:var(--mono);font-size:56px;line-height:.9;font-weight:700;color:var(--rk);letter-spacing:-2px;}
+.res-total span{font-size:12px;color:var(--ink-3);padding-bottom:7px;}
+.res-grade{display:flex;align-items:center;gap:11px;}
+.res-grade .g-badge{width:46px;height:46px;font-size:17px;}
+.res-grade h4{margin:0;font-size:14px;}
+.res-grade p{margin:2px 0 0;font-size:12px;color:var(--ink-2);}
+.res-advice{margin:14px 0 0;padding:11px 13px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;line-height:1.6;color:var(--ink-2);}
+.res-advice b{color:var(--ink);}
+.res-body{padding:16px 20px 18px;}
+.radar-box{display:grid;place-items:center;padding:2px 0 8px;}
+.res-dims{display:flex;flex-direction:column;gap:9px;margin-top:6px;}
+.rd{display:flex;align-items:center;gap:9px;}
+.rd-name{flex:0 0 88px;font-size:12px;color:var(--ink-2);}
+.rd-track{flex:1 1 auto;height:7px;border-radius:99px;background:var(--track);overflow:hidden;position:relative;}
+.rd-track i{display:block;height:100%;border-radius:99px;transition:width .38s cubic-bezier(.22,.8,.28,1);}
+.rd-track u{
+  position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink-3);opacity:.55;border-radius:2px;
+  text-decoration:none;
+}
+.rd-val{flex:0 0 42px;text-align:right;font-family:var(--mono);font-size:12.5px;font-weight:700;}
+.gap-note{margin-top:13px;padding:11px 13px;border-radius:10px;border:1px dashed var(--line);background:var(--panel-2);font-size:12px;color:var(--ink-2);line-height:1.6;}
+.gap-note b{color:var(--g6);}
+.gap-note.ok b{color:var(--g4);}
+
+/* ---------- FLOW ---------- */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:f;}
+.flow-step{border:1px solid var(--line);border-radius:11px;padding:13px 14px;background:var(--panel-2);position:relative;min-width:0;}
+.flow-step::before{
+  counter-increment:f;content:counter(f,decimal-leading-zero);
+  font-family:var(--mono);font-size:11px;font-weight:700;color:var(--brand-2);letter-spacing:.1em;
+}
+.flow-step h4{margin:5px 0 4px;font-size:13px;}
+.flow-step p{margin:0;font-size:12px;color:var(--ink-2);line-height:1.55;}
+
+.legend{font-size:11.5px;color:var(--ink-3);margin-top:12px;line-height:1.6;}
+
+/* ---------- PRINT-ONLY ---------- */
+.print-only{display:none;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1200px){
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:1080px){
+  .col-side{flex:1 1 100%;position:static;}
+}
+@media (max-width:640px){
+  :root{--gutter:14px;}
+  .wrap{padding:0 var(--gutter) 50px;}
+  .hero{padding:28px 0 26px;}
+  .col-main{flex:1 1 100%;}
+  .flow{grid-template-columns:1fr;}
+  .tb-menu{position:static;}
+  .menu-list{min-width:0;width:calc(100vw - 44px);max-width:300px;}
+  .dim-score b{font-size:22px;}
+  .item-val{flex:0 0 78px;font-size:11.5px;}
+  .rd-name{flex:0 0 74px;}
+  .spec-table{font-size:11.5px;}
+}
+
+/* ---------- PRINT ---------- */
+@media print{
+  @page{size:A4 portrait;margin:11mm 9mm 10mm;}
+  :root,html[data-theme="dark"]{
+    --bg:#fff; --panel:#fff; --panel-2:#f7f8fa; --ink:#111; --ink-2:#333; --ink-3:#666;
+    --line:#b9c2cc; --line-2:#d6dde5; --track:#e4e8ee; --shadow:none;
+  }
+  html,body{background:#fff!important;color:#111!important;font-size:11pt;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  .screen-only{display:none!important;}
+  .print-only{display:block!important;}
+  .wrap{max-width:none;padding:0;}
+  .hero{background:#fff!important;color:#111!important;padding:0 0 8px;border-bottom:2px solid #111;margin-bottom:12px;}
+  .hero-in{padding:0!important;}
+  .hero::after{display:none;}
+  .hero h1{color:#111!important;font-size:19pt;margin:0 0 5px;}
+  .hero h1 em{color:#0d4a70;}
+  .kicker{color:#333!important;border-color:#999;}
+  .kicker i{background:#333;box-shadow:none;}
+  .sub{color:#333!important;font-size:9.5pt;}
+  .meta-row{margin-top:8px;gap:7px;}
+  .meta-chip{background:#fff!important;border:1px solid #bbb;}
+  .meta-chip b{color:#111!important;} .meta-chip span{color:#444!important;}
+  .layout{display:block!important;}
+  .col-main,.col-side{display:block!important;}
+  .col-side{position:static!important;margin-top:12px;}
+  .panel,.dim,.result{box-shadow:none!important;border:1px solid #97a1ac!important;border-radius:8px;margin-bottom:10px;page-break-inside:avoid;break-inside:avoid;}
+  .panel{padding:12px 14px 10px;}
+  .dim-top{padding:10px 13px 9px;}
+  .dim-body{padding:4px 13px 10px;}
+  .dim-no{width:30px;height:30px;font-size:12pt;color:#fff!important;}
+  .dim-score b{font-size:17pt;}
+  .dim-bar i,.rd-track i{box-shadow:none;}
+  .spec-table{font-size:8.5pt;}
+  .spec-table th,.spec-table td{padding:4px 6px;}
+  .spec-table thead th{background:#eef1f4!important;}
+  .spec-table tbody tr:nth-child(even) td{background:#fff!important;}
+  input[type=range]{display:none!important;}
+  .quick{display:none!important;}
+  .btn{display:none!important;}
+  .toolbar{display:none!important;}
+  .item{padding:5px 0;border-bottom:1px dotted #ccc;}
+  .item-hint{display:none;}
+  .item-max{border-color:#999;}
+  .item-ctl{gap:8px;}
+  .item-val{flex:0 0 130px;font-size:9.5pt;}
+  .item-val::after{content:" 分";color:#666;}
+  .res-top{padding:13px 15px 12px;}
+  .res-total b{font-size:38pt;}
+  .grade{padding:8px 11px;}
+  .g-badge{width:42px;height:42px;font-size:13pt;}
+  .flow-step{flex:1 1 46%;}
+  .print-foot{margin-top:10px;padding-top:8px;border-top:1px solid #999;font-size:8.5pt;color:#555;display:flex;justify-content:space-between;gap:12px;}
+  a{color:#111;text-decoration:none;}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div class="hero-top">
+      <div class="kicker"><i></i>ROBOT VACUUM DOCK MODEL · v1.0</div>
+      <button class="hero-theme screen-only" id="btnTheme" type="button" aria-label="切换深色 / 浅色主题">
+        <span class="fab-ico" id="fabIco">☾</span><span id="fabTxt">深色</span>
+      </button>
+    </div>
+    <h1>扫地机器人 <em>「基站能力」</em> 五维百分制评分表</h1>
+    <p class="sub">把「要不要人伺候它」拆成可测量的五件事：洗拖布与自清洁、烘干与防霉、集尘系统、上下水与自补给、卫生与除菌除臭；满分 100，产出 S / A / B / C 四档（旗舰 / 高端 / 主流 / 入门）结论与「多久需要人工介入一次」的决策建议。</p>
+    <div class="meta-row">
+      <div class="meta-chip"><b>5</b><span>评分维度</span></div>
+      <div class="meta-chip"><b>20</b><span>细分评分项</span></div>
+      <div class="meta-chip"><b>100</b><span>加权总分</span></div>
+      <div class="meta-chip"><b>8</b><span>实测口径项</span></div>
+      <div class="meta-chip"><b>A4</b><span>打印归档</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ PRINT HEADER ============ -->
+  <div class="print-only" style="margin-bottom:10px;font-size:10pt;">
+    <strong>评测对象：</strong><span id="pModel">—</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>评测人：</strong><span id="pBy">—</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>日期：</strong><span id="pDate">—</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>等级：</strong><span id="pGrade">—</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;<strong>总分：</strong><span id="pTotal">—</span>
+  </div>
+
+  <!-- ============ TOOLBAR ============ -->
+  <div class="toolbar screen-only">
+    <div class="tb-field"><label>机型</label><input id="fModel" placeholder="例：X40 Ultra 全能基站（热水洗 + 自动上下水）" maxlength="40"></div>
+    <div class="tb-field"><label>评测人</label><input id="fBy" placeholder="姓名" maxlength="16"></div>
+    <div class="tb-sep"></div>
+    <button class="btn" id="btnEntry">入门档</button>
+    <button class="btn" id="btnMain">主流档</button>
+    <button class="btn" id="btnHigh">高端档</button>
+    <button class="btn" id="btnFlag">旗舰档</button>
+    <div class="tb-sep"></div>
+    <button class="btn" id="btnReset">重置</button>
+    <div class="spacer"></div>
+    <div class="tb-menu" id="tbMenu">
+      <button class="btn menu-trigger" id="btnMenu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuList">评测工具<span class="caret"></span></button>
+      <div class="menu-list" id="menuList" role="menu">
+        <div class="menu-sep">电视 · TV</div>
+        <a class="menu-item" role="menuitem" href="./tv-picture-scorecard.html"><span class="mi-no">01</span><span class="mi-txt">画质评分表<span class="mi-sub">亮度 · 色彩 · 高刷 · 抗反射</span></span></a>
+        <a class="menu-item" role="menuitem" href="./tv-audio-scorecard.html"><span class="mi-no">02</span><span class="mi-txt">音质评分表<span class="mi-sub">声学硬件 · 保真 · 沉浸 · 扩展</span></span></a>
+        <a class="menu-item" role="menuitem" href="./tv-system-scorecard.html"><span class="mi-no">03</span><span class="mi-txt">系统评分表<span class="mi-sub">易用性 · 语音 · 菜单 · 开放解码</span></span></a>
+        <a class="menu-item" role="menuitem" href="./tv-chip-scorecard.html"><span class="mi-no">04</span><span class="mi-txt">芯片评分表<span class="mi-sub">画质引擎 · 控光控色 · AI · 算法</span></span></a>
+        <a class="menu-item" role="menuitem" href="./tv-game-scorecard.html"><span class="mi-no">05</span><span class="mi-txt">游戏评分表<span class="mi-sub">输入延迟 · 高刷 · VRR · HDR 游戏</span></span></a>
+        <div class="menu-sep">清洁电器 · CLEANING</div>
+        <a class="menu-item" role="menuitem" href="./robotvac-avoid-scorecard.html"><span class="mi-no">06</span><span class="mi-txt">避障评分表<span class="mi-sub">感知硬件 · 识别分类 · 规划脱困 · 动态响应</span></span></a>
+        <a class="menu-item" role="menuitem" href="./robotvac-clean-scorecard.html"><span class="mi-no">07</span><span class="mi-txt">清洁评分表<span class="mi-sub">吸尘风道 · 滚刷防缠 · 地毯 · 湿拖去污</span></span></a>
+        <a class="menu-item" role="menuitem" href="./robotvac-pass-scorecard.html"><span class="mi-no">08</span><span class="mi-txt">通过评分表<span class="mi-sub">垂直越障 · 低矮空间 · 边角覆盖 · 脱困自救</span></span></a>
+        <span class="menu-item cur-tag" aria-current="page"><span class="mi-no">09</span><span class="mi-txt">基站评分表<span class="mi-sub">洗布自烘 · 集尘 · 上下水 · 除菌除臭</span></span></span>
+        <a class="menu-item" role="menuitem" href="./robotvac-app-scorecard.html"><span class="mi-no">10</span><span class="mi-txt">软件评分表<span class="mi-sub">导航建图 · 地图编辑 · App · AI 自动化</span></span></a>
+      </div>
+    </div>
+    <button class="btn primary" id="btnPrint">打印 / 导出 PDF</button>
+  </div>
+
+  <div class="layout">
+    <!-- ============ LEFT: SCORING ============ -->
+    <div class="col-main">
+
+      <section class="panel screen-only">
+        <div class="panel-head">
+          <h2>使用流程</h2>
+          <span class="tag">HOW TO USE</span>
+        </div>
+        <div class="flow">
+          <div class="flow-step"><h4>填写评测信息</h4><p>录入机型与评测人，打印时自动生成归档表头。</p></div>
+          <div class="flow-step"><h4>连跑 7 天标准工况</h4><p>按「基站实测口径」在同一户型连续作业 7 天，逐日记录集尘、洗烘、补水排污次数与人工介入原因。</p></div>
+          <div class="flow-step"><h4>读取结论</h4><p>右侧实时汇总加权总分、等级徽章、短板项与「多久需人工介入一次」的判断。</p></div>
+          <div class="flow-step"><h4>打印归档</h4><p>一键输出单色优化版 PDF / 纸质表单，含明细与结论。</p></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>基站实测口径</h2>
+          <span class="tag">SPEC REFERENCE</span>
+          <p>基站能力只能靠长期连续使用暴露（右侧四列按 S / A / B / C 四档判读，即旗舰 / 高端 / 主流 / 入门）；建议连续作业 7 天并逐日记录人工介入次数、拖布与污水箱气味、集尘与补水中断情况 —— 单次开机测试无法反映基站的真实水平。</p>
+        </div>
+        <div class="spec-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr><th>实测项</th><th>S 旗舰 ≥90</th><th>A 高端 80–89</th><th>B 主流 65–79</th><th>C 入门 30–64</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="k">洗拖布洗净率<br>（酱油 / 咖啡模拟污布）</td>
+              <td class="b">≥ 98%，拖布无残留色差</td><td>92–98%</td><td>85–92%，边角有残留</td><td class="w">&lt; 85%，反复洗仍有污渍</td>
+            </tr>
+            <tr>
+              <td class="k">洗布水温与热水增益</td>
+              <td class="b">≥ 75℃，油污明显软化</td><td>55–75℃</td><td>45–55℃，仅常温偏上</td><td class="w">常温水洗，对油污基本无效</td>
+            </tr>
+            <tr>
+              <td class="k">烘干彻底度<br>（出仓即时含水率）</td>
+              <td class="b">全干，无霉味无硬结</td><td>基本干，边缘略潮</td><td>表面干、内部潮</td><td class="w">不干，隔夜返味</td>
+            </tr>
+            <tr>
+              <td class="k">烘干耗时与能耗</td>
+              <td class="b">≤ 2 h，能耗可控</td><td>2–4 h</td><td>4–6 h</td><td class="w">&gt; 6 h 或需二次烘干</td>
+            </tr>
+            <tr>
+              <td class="k">集尘效率与堵塞率（7 天）</td>
+              <td class="b">无堵塞，尘袋利用率 ≥ 90%</td><td>偶有轻度堵塞</td><td>需手动清理风道</td><td class="w">频繁堵塞，需人工干预</td>
+            </tr>
+            <tr>
+              <td class="k">尘袋 / 尘盒更换周期</td>
+              <td class="b">≥ 60 天</td><td>45–60 天</td><td>30–45 天</td><td class="w">&lt; 30 天</td>
+            </tr>
+            <tr>
+              <td class="k">上下水自动化程度</td>
+              <td class="b">全自动补水排污，零人工</td><td>需定期手动换水</td><td>无上下水，全靠手动</td><td class="w">需每次作业前人工加水</td>
+            </tr>
+            <tr>
+              <td class="k">7 天人工介入总次数</td>
+              <td class="b">0–1 次</td><td>2–3 次</td><td>4–6 次</td><td class="w">≥ 7 次，几乎每日需处理</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+                <div class="legend">建议以 7 天为一轮完整记录，逐日填写人工介入原因（倒尘、换水、清拖布、擦基站、除臭），7 天后统计总次数 —— 这是基站能力最直观的输出。洗净率测试要用统一规格与统一污渍（酱油 5 ml + 咖啡 5 ml 静置 12 h），不同污渍之间不可比。烘干判定要在出仓后立即测边缘与中心含水率，放置 10 分钟后表面会自然挥发，判定会失真。气味判定建议在密闭 4 ㎡ 空间静置 8 h 后开箱闻，通风环境会掩盖返味问题。</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>评分锚点</h2>
+          <span class="tag">SCORE ANCHOR</span>
+          <p>所有细分项与加权总分共用同一套百分制四档标尺（S 旗舰 ≥90 / A 高端 80–89 / B 主流 65–79 / C 入门 30–64），避免跨维度松紧不一；单项与总分同尺，可互相印证。</p>
+        </div>
+        <div class="anchor-grid">
+          <div class="anchor a4"><b>S · 90–100 旗舰</b><span>该价位段公认最好水平，无明显可挑剔项。</span></div>
+          <div class="anchor a3"><b>A · 80–89 高端</b><span>优于同级多数机型，仅个别场景有妥协。</span></div>
+          <div class="anchor a2"><b>B · 65–79 主流</b><span>达到同级平均水准，够用但不出彩。</span></div>
+          <div class="anchor a1"><b>C · 30–64 入门</b><span>低于同级平均，基站反而会增加人工负担（洗不净、烘不干、频繁倒水）。</span></div>
+        </div>
+                <div class="legend">权重设计：洗拖布与自清洁 22% · 烘干与防霉 18% · 集尘系统 20% · 上下水与自补给 18% · 卫生与除菌除臭 22%。洗拖布与卫生并列最高 —— 这两项直接决定基站会不会变成「细菌培养皿」，也是用户投诉最集中的环节；集尘排第二，因为它是基站最早普及、用户预期最刚性的功能；上下水虽然体验增益极大，但受安装条件硬约束，故权重居中而不拔高。</div>
+      </section>
+
+      <div id="dims"></div>
+    </div>
+
+    <!-- ============ RIGHT: RESULT ============ -->
+    <div class="col-side">
+      <section class="result" id="resultPanel">
+        <div class="res-top">
+          <div class="res-label">Weighted Total</div>
+          <div class="res-total"><b id="rTotal">—</b><span>/ 100</span></div>
+          <div class="res-grade">
+            <div class="g-badge" id="rBadge">—</div>
+            <div>
+              <h4 id="rGradeName">—</h4>
+              <p id="rGradeRange">—</p>
+            </div>
+          </div>
+          <div class="res-advice" id="rAdvice">—</div>
+        </div>
+        <div class="res-body">
+          <div class="radar-box" id="rRadar"></div>
+          <div class="res-dims" id="rDims"></div>
+          <div class="gap-note" id="rGap">—</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>等级体系</h2>
+          <span class="tag">GRADE</span>
+        </div>
+        <div class="grade-list" id="gradeList"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ============ PRINT FOOTER ============ -->
+  <div class="print-only print-foot">
+    <span>评分基线：同价位段横向对比 · 单项 0–100 分 · 加权总分满分 100</span>
+    <span>扫地机器人基站能力评估表 v1.0</span>
+  </div>
+</div>
+<script>
+/* =========================================================
+   数据模型
+   ========================================================= */
+var DIMS = [
+  {
+    id:'d1', no:'01', name:'洗拖布与自清洁', en:'Mop Washing', weight:22,
+    goal:'洗不干净，等于每次都在用脏布拖地。',
+    color:'var(--g3)',
+    items:[
+      {id:'d1i1', name:'洗净率与洗后状态', max:30, hint:'洗后拖布的残留污渍与色差、是否需要人工二次搓洗。'},
+      {id:'d1i2', name:'洗布水温与加热', max:25, hint:'是否支持热水洗、最高温度、热水对油污与细菌的实际增益。'},
+      {id:'d1i3', name:'拖布自清洁与免维护', max:25, hint:'基站底盘的自动冲洗与排污能力、是否积泥需人工刷洗。'},
+      {id:'d1i4', name:'拖布结构与寿命', max:20, hint:'拖布材质与更换周期、洗后变形与掉毛情况、耗材成本。'}
+    ]
+  },
+  {
+    id:'d2', no:'02', name:'烘干与防霉', en:'Drying & Anti-mold', weight:18,
+    goal:'不干就会返味，还会让下次拖地带着细菌上地板。',
+    color:'var(--g1)',
+    items:[
+      {id:'d2i1', name:'烘干彻底度', max:30, hint:'出仓后拖布中心与边缘的含水率、有无硬结与霉斑。'},
+      {id:'d2i2', name:'烘干温度与时长', max:25, hint:'烘干温度与所需时长、是否支持多档或预约烘干。'},
+      {id:'d2i3', name:'能耗与噪音', max:25, hint:'单次烘干耗电量、夜间烘干噪音是否影响休息。'},
+      {id:'d2i4', name:'防霉与通风设计', max:20, hint:'基站是否有通风结构、长期停用后是否返味。'}
+    ]
+  },
+  {
+    id:'d3', no:'03', name:'集尘系统', en:'Dust Collection', weight:20,
+    goal:'基站最早普及的功能，也是用户预期最刚性的一项。',
+    color:'var(--g2)',
+    items:[
+      {id:'d3i1', name:'集尘效率与堵塞率', max:30, hint:'集尘过程中的泄漏、扬尘与风道堵塞频率。'},
+      {id:'d3i2', name:'尘袋容量与更换周期', max:25, hint:'尘袋 / 尘盒容积与实际可撑天数、更换是否方便。'},
+      {id:'d3i3', name:'集尘噪音与时长', max:25, hint:'单次集尘的分贝与持续时间、是否可预约到非休息时段。'},
+      {id:'d3i4', name:'尘袋密封与二次污染', max:20, hint:'取出尘袋时是否扬尘、密封结构与更换体验。'}
+    ]
+  },
+  {
+    id:'d4', no:'04', name:'上下水与自补给', en:'Water Supply & Drainage', weight:18,
+    goal:'体验增益最大，但受安装条件硬约束。',
+    color:'var(--g4)',
+    items:[
+      {id:'d4i1', name:'自动补水与排污', max:30, hint:'是否支持接自来水与下水、是否需人工换水、管路防堵设计。'},
+      {id:'d4i2', name:'清水与污水箱容量', max:25, hint:'无上下水条件下单次可作业面积与换水频率。'},
+      {id:'d4i3', name:'安装门槛与适配', max:25, hint:'对水电位、地面排水与柜体空间的要求、是否需专业安装。'},
+      {id:'d4i4', name:'水量管理与防溢', max:20, hint:'水位检测准确度、防溢流设计、长期使用是否漏水。'}
+    ]
+  },
+  {
+    id:'d5', no:'05', name:'卫生与除菌除臭', en:'Hygiene & Odor Control', weight:22,
+    goal:'基站最容易从「帮手」变成「污染源」。',
+    color:'var(--g5)',
+    items:[
+      {id:'d5i1', name:'除菌方案与效果', max:30, hint:'银离子 / UV / 电解水 / 高温 等方案的覆盖范围与实际除菌率。'},
+      {id:'d5i2', name:'污水箱与拖布防臭', max:25, hint:'污水箱密封与除臭设计、静置 8 h 后的返味程度。'},
+      {id:'d5i3', name:'基站自清洁与积污', max:25, hint:'底盘、滤网、管路的自动清洁能力与人工清理频率。'},
+      {id:'d5i4', name:'耗材与维护成本', max:20, hint:'尘袋、拖布、清洁液与除菌模块的年化成本。'}
+    ]
+  }
+];
+
+var GRADES = [
+  {key:'S', name:'旗舰级', min:90, color:'var(--g1)', range:'90 – 100',
+     tag:'全自动免维护，一周内无需人工介入',
+     desc:'热水洗布洗净率极高，烘干彻底无返味，集尘无堵塞，支持全自动上下水，除菌方案完整，7 天人工介入 ≤ 1 次。',
+     advice:'<b>可做到全自动免维护</b>，接好上下水后一周内基本无需人工介入；适合不想碰污水与尘袋的用户，代价是安装条件与耗材成本较高。'},
+  {key:'A', name:'高端级', min:80, color:'var(--g3)', range:'80 – 89',
+     tag:'每 2–3 天一次轻量维护',
+     desc:'洗烘扎实，集尘与除臭可靠，但上下水或除菌方案存在一项妥协，需定期换水或清理基站。',
+     advice:'<b>轻度维护即可</b>（换水、清底盘、倒尘袋，每 2–3 天一次）；建议预留水电位以便后续接上下水，长期体验会明显改善。'},
+  {key:'B', name:'主流级', min:65, color:'var(--g4)', range:'65 – 79',
+     tag:'每 1–2 天需人工处理一次',
+     desc:'洗布与烘干仅达及格线，污水箱与拖布有返味风险，集尘需定期手动清理风道。',
+     advice:'<b>需把基站维护纳入日常</b>：每次作业后倒污水、每周清底盘与风道；不建议把基站放在卧室或密闭柜内，返味影响会被放大。'},
+  {key:'C', name:'入门级', min:30, color:'var(--g5)', range:'30 – 64',
+     tag:'基站反而增加负担',
+     desc:'洗不净、烘不干，拖布与污水箱易发臭，集尘频繁堵塞，需频繁换水。',
+     advice:'<b>基站会成为额外负担</b>；建议每次作业后立即清洗拖布并开盖通风，或考虑改用无基站的轻量机型，把预算放在主机清洁能力上。'}
+];
+
+var PRESETS = {
+  entry:   { d1:[56,55,57,58], d2:[57,56,58,57], d3:[58,56,58,57], d4:[55,56,57,57], d5:[56,55,57,57] },
+  main:   { d1:[74,73,74,75], d2:[74,73,75,74], d3:[75,74,75,74], d4:[73,74,74,73], d5:[74,73,74,75] },
+  high:   { d1:[85,84,85,86], d2:[85,84,86,85], d3:[86,85,86,85], d4:[84,85,85,84], d5:[85,84,85,86] },
+  flag:   { d1:[96,95,96,96], d2:[96,95,96,96], d3:[96,95,96,96], d4:[95,96,96,95], d5:[96,95,96,96] }
+};
+
+/* =========================================================
+   状态
+   ========================================================= */
+var state = {};
+DIMS.forEach(function(d){ d.items.forEach(function(it){ state[it.id] = 65; }); });
+
+var el = function(id){ return document.getElementById(id); };
+
+/* =========================================================
+   渲染：维度卡片
+   ========================================================= */
+function renderDims(){
+  var html = '';
+  DIMS.forEach(function(d){
+    var quick = '';
+    [['S',95],['A',85],['B',70],['C',50]].forEach(function(q){
+      quick += '<button data-dim="'+d.id+'" data-val="'+q[1]+'">'+q[0]+' '+q[1]+'</button>';
+    });
+    var items = d.items.map(function(it){
+      return ''+
+      '<div class="item">'+
+        '<div class="item-head">'+
+          '<span class="item-name">'+it.name+'</span>'+
+          '<span class="item-max">满分 '+it.max+'</span>'+
+        '</div>'+
+        '<div class="item-hint">'+it.hint+'</div>'+
+        '<div class="item-ctl">'+
+          '<input type="range" min="0" max="100" step="1" value="'+state[it.id]+'" data-item="'+it.id+'" aria-label="'+it.name+'">'+
+          '<span class="item-val" id="v-'+it.id+'">—</span>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+
+    html += ''+
+    '<section class="dim" id="card-'+d.id+'">'+
+      '<div class="dim-top">'+
+        '<div class="dim-no">'+d.no+'</div>'+
+        '<div class="dim-title">'+
+          '<h3>'+d.name+'</h3>'+
+          '<div class="en">'+d.en+'</div>'+
+          '<p>'+d.goal+'</p>'+
+        '</div>'+
+        '<div class="dim-score">'+
+          '<b class="num" id="s-'+d.id+'">—</b>'+
+          '<span>维度得分 / 100</span>'+
+          '<div><span class="dim-weight">权重 '+d.weight+'%</span></div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="dim-body">'+
+        '<div class="dim-bar"><i id="bar-'+d.id+'" style="width:0%;background:'+d.color+'"></i></div>'+
+        items+
+        '<div class="quick screen-only">'+quick+'</div>'+
+      '</div>'+
+    '</section>';
+  });
+  el('dims').innerHTML = html;
+
+  el('dims').querySelectorAll('input[type=range]').forEach(function(r){
+    r.addEventListener('input', function(){
+      state[this.dataset.item] = +this.value;
+      compute();
+    });
+  });
+  el('dims').querySelectorAll('.quick button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var dim = DIMS.filter(function(x){ return x.id === this.dataset.dim; }.bind(this))[0];
+      var val = +this.dataset.val;
+      dim.items.forEach(function(it){
+        state[it.id] = val;
+        var r = el('dims').querySelector('input[data-item="'+it.id+'"]');
+        if(r) r.value = val;
+      });
+      compute();
+    });
+  });
+}
+
+/* =========================================================
+   渲染：等级列表
+   ========================================================= */
+function renderGrades(){
+  el('gradeList').innerHTML = GRADES.map(function(g){
+    return ''+
+    '<div class="grade" id="g-'+g.key.replace('+','p')+'" style="--gk:'+g.color+'">'+
+      '<div class="g-badge">'+g.key+'</div>'+
+      '<div class="g-body">'+
+        '<h4>'+g.name+'<em>'+g.range+'</em></h4>'+
+        '<p>'+g.desc+'</p>'+
+        '<p><b>基站决策：</b>'+g.tag+'</p>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+/* =========================================================
+   计算 + 汇总
+   ========================================================= */
+function gradeOf(score){
+  for(var i=0;i<GRADES.length;i++){ if(score >= GRADES[i].min) return GRADES[i]; }
+  return GRADES[GRADES.length-1];
+}
+
+function compute(){
+  var total = 0, dimScores = [];
+
+  DIMS.forEach(function(d){
+    var sum = 0;
+    d.items.forEach(function(it){
+      var v = state[it.id];
+      var got = it.max * v / 100;
+      sum += got;
+      var lv = el('v-'+it.id);
+      if(lv) lv.innerHTML = '<b>'+fmt(got,1)+'</b> / '+it.max+' <span style="color:var(--ink-3)">('+v+')</span>';
+    });
+    sum = Math.round(sum*10)/10;
+    dimScores.push({dim:d, score:sum});
+
+    var s = el('s-'+d.id); if(s) s.textContent = fmt(sum,1);
+    var bar = el('bar-'+d.id); if(bar) bar.style.width = Math.max(0,Math.min(100,sum))+'%';
+    total += sum * d.weight / 100;
+  });
+
+  total = Math.round(total*10)/10;
+  var g = gradeOf(total);
+
+  el('rTotal').textContent = total.toFixed(1);
+  el('resultPanel').style.setProperty('--rk', g.color);
+  el('rBadge').textContent = g.key;
+  el('rBadge').style.background = g.color;
+  el('rGradeName').textContent = g.name;
+  el('rGradeRange').textContent = '区间 ' + g.range + ' · 加权总分';
+  el('rAdvice').innerHTML = '<b>基站建议：</b>' + g.advice.replace(/<\/?b>/g,'');
+
+  el('pTotal').textContent = total.toFixed(1) + ' / 100';
+  el('pGrade').textContent = g.key + ' · ' + g.name;
+  el('pDate').textContent = new Date().toLocaleDateString('zh-CN');
+
+  renderRadar(dimScores);
+  renderResDims(dimScores);
+  renderGap(dimScores, total);
+  highlightGrade(g);
+}
+
+function fmt(n,d){ return (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toFixed(d); }
+
+function shortName(n){
+  return n.replace('洗拖布与自清洁','洗布自清')
+          .replace('烘干与防霉','烘干防霉')
+          .replace('集尘系统','集尘系统')
+          .replace('上下水与自补给','上下水')
+          .replace('卫生与除菌除臭','卫生除菌');
+}
+
+function renderResDims(ds){
+  el('rDims').innerHTML = ds.map(function(x){
+    return ''+
+    '<div class="rd">'+
+      '<span class="rd-name">'+shortName(x.dim.name)+'</span>'+
+      '<span class="rd-track"><i style="width:'+x.score+'%;background:'+x.dim.color+'"></i><u style="left:'+x.dim.weight+'%"></u></span>'+
+      '<span class="rd-val">'+fmt(x.score,1)+'</span>'+
+    '</div>';
+  }).join('');
+}
+
+function renderGap(ds, total){
+  var weak = ds.filter(function(x){ return x.score < 65; });
+  var box = el('rGap');
+  if(weak.length === 0){
+    box.className = 'gap-note ok';
+    box.innerHTML = '<b>无短板项</b> —— 五个维度均不低于 65 分（C 入门档线），基站链路不存在结构性瓶颈。';
+  }else{
+    box.className = 'gap-note';
+    box.innerHTML = '<b>短板项 '+weak.length+' 个：</b>'+
+      weak.map(function(x){ return x.dim.name+'（'+fmt(x.score,1)+' 分）'; }).join('、')+
+      '。<span style="color:var(--ink-3)">建议针对该环节调整使用方式（每次作业后倒污水、定期清理基站底盘与风道、缩短拖布更换周期），不要用「加大吸力」硬补基站短板。</span>';
+  }
+}
+
+function highlightGrade(g){
+  GRADES.forEach(function(x){
+    var node = el('g-'+x.key.replace('+','p'));
+    if(node) node.classList.toggle('on', x.key === g.key);
+  });
+}
+
+/* =========================================================
+   雷达图（SVG，打印友好）
+   ========================================================= */
+function renderRadar(ds){
+  var W = 320, H = 300, cx = 160, cy = 148, R = 96;
+  var n = 5, labels = ['洗布自清','烘干防霉','集尘系统','上下水','卫生除菌'];
+  var pt = function(i, r){
+    var a = -Math.PI/2 + i * 2*Math.PI/n;
+    return [cx + Math.cos(a)*r, cy + Math.sin(a)*r];
+  };
+  var svg = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="max-width:320px;height:auto;overflow:visible" role="img" aria-label="五维雷达图">';
+
+  [20,40,60,80,100].forEach(function(lv){
+    var r = R*lv/100;
+    var pts = [];
+    for(var i=0;i<n;i++){ var p = pt(i,r); pts.push(p[0].toFixed(1)+','+p[1].toFixed(1)); }
+    svg += '<polygon points="'+pts.join(' ')+'" fill="none" stroke="var(--line)" stroke-width="'+(lv%40===0?1.2:0.8)+'" '+(lv%40===0?'':'stroke-dasharray="3 3"')+'/>';
+  });
+  for(var i=0;i<n;i++){
+    var p = pt(i,R);
+    svg += '<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="var(--line)" stroke-width="0.9"/>';
+    var lp = pt(i, R+20);
+    var anchor = Math.abs(lp[0]-cx) < 6 ? 'middle' : (lp[0] > cx ? 'start' : 'end');
+    var base = lp[1] > cy + 4 ? 'hanging' : (lp[1] < cy - 4 ? 'auto' : 'middle');
+    svg += '<text x="'+lp[0].toFixed(1)+'" y="'+lp[1].toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="'+base+'" font-size="10.5" fill="var(--ink-2)" font-family="inherit">'+labels[i]+'</text>';
+  }
+  var dpts = [], dots = '';
+  for(var j=0;j<n;j++){
+    var r2 = R * Math.max(0, Math.min(100, ds[j].score)) / 100;
+    var q = pt(j, r2);
+    dpts.push(q[0].toFixed(1)+','+q[1].toFixed(1));
+    dots += '<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="3.1" fill="var(--rk)" stroke="var(--panel)" stroke-width="1.4"/>';
+  }
+  svg += '<polygon points="'+dpts.join(' ')+'" fill="var(--rk)" fill-opacity="0.20" stroke="var(--rk)" stroke-width="2" stroke-linejoin="round"/>';
+  svg += dots;
+  svg += '<circle cx="'+cx+'" cy="'+cy+'" r="2" fill="var(--ink-3)"/>';
+  svg += '</svg>';
+  el('rRadar').innerHTML = svg;
+}
+
+/* =========================================================
+   交互
+   ========================================================= */
+function applyPreset(key){
+  var p = PRESETS[key];
+  DIMS.forEach(function(d){
+    var arr = p[d.id];
+    d.items.forEach(function(it, i){
+      state[it.id] = arr[i];
+      var r = el('dims').querySelector('input[data-item="'+it.id+'"]');
+      if(r) r.value = arr[i];
+    });
+  });
+  compute();
+}
+function reset(){
+  DIMS.forEach(function(d){ d.items.forEach(function(it){
+    state[it.id] = 65;
+    var r = el('dims').querySelector('input[data-item="'+it.id+'"]');
+    if(r) r.value = 65;
+  });});
+  compute();
+}
+function syncPrintMeta(){
+  el('pModel').textContent = el('fModel').value.trim() || '—';
+  el('pBy').textContent = el('fBy').value.trim() || '—';
+}
+
+el('btnEntry').addEventListener('click', function(){ applyPreset('entry'); });
+el('btnMain').addEventListener('click', function(){ applyPreset('main'); });
+el('btnHigh').addEventListener('click', function(){ applyPreset('high'); });
+el('btnFlag').addEventListener('click', function(){ applyPreset('flag'); });
+el('btnReset').addEventListener('click', reset);
+el('fModel').addEventListener('input', syncPrintMeta);
+el('fBy').addEventListener('input', syncPrintMeta);
+el('btnPrint').addEventListener('click', function(){ syncPrintMeta(); window.print(); });
+
+/* 主题 */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  var txt = el('fabTxt'), ico = el('fabIco');
+  if(txt){ txt.textContent = t === 'dark' ? '浅色' : '深色'; }
+  if(ico){ ico.textContent = t === 'dark' ? '☀' : '☾'; }
+  try{ localStorage.setItem('robotvac-dock-theme', t); }catch(e){}
+  compute();
+}
+el('btnTheme').addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  setTheme(cur === 'dark' ? 'light' : 'dark');
+});
+
+/* 评测工具 下拉菜单 */
+(function(){
+  var menu = el('tbMenu'), trigger = el('btnMenu');
+  if(!menu || !trigger){ return; }
+  function setOpen(open){
+    if(open){ menu.classList.add('open'); } else { menu.classList.remove('open'); }
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function close(){ setOpen(false); }
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', function(e){
+    if(!menu.contains(e.target)){ close(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' || e.keyCode === 27){ close(); }
+  });
+  menu.addEventListener('click', function(e){
+    var node = e.target;
+    if(node && node.closest && node.closest('a.menu-item')){ close(); }
+  });
+})();
+
+/* 初始化 */
+renderDims();
+renderGrades();
+syncPrintMeta();
+var saved = null;
+try{ saved = localStorage.getItem('robotvac-dock-theme'); }catch(e){}
+setTheme(saved === 'dark' ? 'dark' : 'light');
+applyPreset('main');
+el('pDate').textContent = new Date().toLocaleDateString('zh-CN');
+</script>
+</body>
+</html>

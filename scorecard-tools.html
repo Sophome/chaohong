@@ -230,6 +230,7 @@
     .cat-pill.active { background:#ea580c; color:#fff; border-color:#ea580c; pointer-events:none; font-weight:700; }
 
       .d-scorecard .sec-dot { background:#0ea5e9; }
+    .d-robotvac  .sec-dot { background:#14b8a6; }
     .note-bar { background:var(--card-2); border:1px solid var(--line); border-left:3px solid #0ea5e9; border-radius:10px; padding:12px 16px; margin:0 0 22px; font-size:0.82rem; color:var(--tx2); line-height:1.75; }
     .note-bar b { color:var(--tx1); }
     .note-bar code { background:var(--card); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:0.78rem; }
@@ -246,8 +247,8 @@
     <h1>超红传媒 · 测评工具</h1>
     <p>五维百分制评分卡 · 按品类分组归档</p>
     <div class="header-meta">
-      <span class="header-badge">🧪 5 个评分卡</span>
-      <span class="header-badge">📺 1 个品类分组</span>
+      <span class="header-badge">🧪 10 个评分卡</span>
+      <span class="header-badge">📺🤖 2 个品类分组</span>
       <span class="header-badge">🖨️ 打印归档友好</span>
     </div>
   </div>
@@ -260,20 +261,23 @@
     <a class="nav-pill" href="test-tools.html">🧪 测试工具</a>
     <span class="nav-pill active">📐 测评工具</span>
     <a class="nav-pill" href="category-tv.html">📺 电视类目</a>
+    <a class="nav-pill" href="category-robot-vacuum.html">🤖 扫地机类目</a>
   </div>
 
   <!-- 🧭 品类跳转 -->
   <div class="cat-links">
-    <span class="cat-pill active">📺 电视</span>
+    <a class="cat-pill" href="#tv">📺 电视</a>
+    <a class="cat-pill" href="#robotvac">🤖 扫地机</a>
   </div>
 
   <div class="note-bar">
     <b>统一评测口径</b>：每张评分卡均为 <b>5 大维度 × 4 个细分项 = 20 项</b>，加权满分 <code>100</code>，
     产出 <code>S / A / B / C</code> 四档（旗舰 / 高端 / 主流 / 入门）结论与选购决策建议。
-    建议按「画质 → 画质芯片 → 音质 → 游戏 → 系统」顺序逐张填写，最后汇总为一台机器的完整体检报告。
+    电视建议按「画质 → 画质芯片 → 音质 → 游戏 → 系统」顺序逐张填写；
+    扫地机建议按「清洁 → 避障 → 通过 → 基站 → 软件」顺序填写，最后汇总为一台机器的完整体检报告。
   </div>
 
-  <div class="sec d-scorecard">
+  <div class="sec d-scorecard" id="tv">
     <div class="sec-head">
       <div class="sec-dot"></div>
       <span class="sec-title">电视</span>
@@ -323,7 +327,57 @@
     </div>
   </div>
 
-  <div class="foot">超红传媒 &nbsp;·&nbsp; 测评工具 &nbsp;·&nbsp; 电视分组 &nbsp;·&nbsp; 5 个评分卡 &nbsp;·&nbsp; 2026</div>
+  <div class="sec d-robotvac" id="robotvac">
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <span class="sec-title">扫地机</span>
+      <span class="sec-count">5 个评分卡</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="robotvac-clean-scorecard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">🧹</span>
+          <span class="card-name">扫地机器人「清洁能力」评分表</span>
+        </div>
+        <div class="card-desc">吸尘与风道 · 滚刷与毛发防缠绕 · 地毯清洁 · 湿拖去污 · 边角覆盖与水渍控制</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="robotvac-avoid-scorecard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">🚧</span>
+          <span class="card-name">扫地机器人「避障能力」评分表</span>
+        </div>
+        <div class="card-desc">感知硬件与传感系统 · 障碍识别分类 · 路径规划与脱困 · 动态避障 · 场景适配与算法迭代</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="robotvac-pass-scorecard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">🪜</span>
+          <span class="card-name">扫地机器人「通过能力」评分表</span>
+        </div>
+        <div class="card-desc">垂直跨越 · 低矮与狭窄通过 · 边角与沿边覆盖 · 脱困与自救 · 防跌落与姿态安全</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="robotvac-dock-scorecard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">🏠</span>
+          <span class="card-name">扫地机器人「基站能力」评分表</span>
+        </div>
+        <div class="card-desc">洗拖布与自清洁 · 烘干与防霉 · 集尘系统 · 上下水与自补给 · 卫生与除菌除臭</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+      <a class="card" href="robotvac-app-scorecard.html" target="_blank">
+        <div class="card-row">
+          <span class="card-icon">📱</span>
+          <span class="card-name">扫地机器人「软件体验」评分表</span>
+        </div>
+        <div class="card-desc">导航与建图 · 地图编辑与分区控制 · App 与连接稳定性 · 智能识别与自动化 · 语音生态与维护</div>
+        <div class="card-arr">打开 →</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="foot">超红传媒 &nbsp;·&nbsp; 测评工具 &nbsp;·&nbsp; 电视 / 扫地机分组 &nbsp;·&nbsp; 10 个评分卡 &nbsp;·&nbsp; 2026</div>
 
 </div><!-- /page -->
 
