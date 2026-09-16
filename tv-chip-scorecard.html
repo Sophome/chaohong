@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>电视机「画质芯片与算法」五维百分制评分表</title>
+<title>电视机「核心芯片」五维百分制评分表</title>
 <style>
 :root{
   --gutter:22px;  /* 全站左右统一留白：header 与主体共用 */
@@ -113,7 +113,7 @@ html[data-theme="dark"] .btn.primary{color:#140716;}
 .tb-field input:focus{border-color:var(--brand-2);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand-2) 18%,transparent);}
 .spacer{flex:1 1 auto;}
 
-/* ---------- 电视测评工具 下拉菜单 ---------- */
+/* ---------- 评测工具 下拉菜单 ---------- */
 .tb-menu{position:relative;}
 .btn.menu-trigger{gap:9px;}
 .caret{width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;border-top:5px solid currentColor;transition:transform .2s ease;}
@@ -121,7 +121,7 @@ html[data-theme="dark"] .btn.primary{color:#140716;}
 .menu-list{
   position:absolute;top:calc(100% + 9px);right:0;z-index:60;min-width:252px;
   background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
-  padding:7px;display:none;
+  padding:7px;display:none;max-height:min(74vh,580px);overflow-y:auto;
 }
 .tb-menu.open .menu-list{display:block;}
 .menu-item{
@@ -135,6 +135,7 @@ a.menu-item:hover{background:var(--panel-2);color:var(--brand-2);}
 .menu-item.cur-tag{background:color-mix(in srgb,var(--brand-2) 13%,transparent);color:var(--brand-2);}
 .menu-item.cur-tag .mi-sub{color:var(--brand-2);opacity:.85;}
 .menu-item.cur-tag::after{content:"当前";font-size:10px;font-weight:600;border:1px solid currentColor;border-radius:5px;padding:1px 5px;margin-left:auto;}
+.menu-sep{margin:6px 5px 2px;padding:8px 10px 0;border-top:1px solid var(--line-2);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:700;}
 
 /* ---------- 头部右上：主题切换按键 ---------- */
 .hero-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;}
@@ -389,13 +390,13 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 <header class="hero">
   <div class="hero-in">
     <div class="hero-top">
-      <div class="kicker"><i></i>TV PICTURE ENGINE &amp; ALGORITHM MODEL · v1.0</div>
+      <div class="kicker"><i></i>TV CORE SILICON MODEL · v1.0</div>
       <button class="hero-theme screen-only" id="btnTheme" type="button" aria-label="切换深色 / 浅色主题">
         <span class="fab-ico" id="fabIco">☾</span><span id="fabTxt">深色</span>
       </button>
     </div>
-    <h1>电视机 <em>「画质芯片与算法」</em> 五维百分制评分表</h1>
-    <p class="sub">评的不是画面结果，而是画面背后的底座：画质引擎架构、控光控色芯片、AI 芯片与内置算法的真实体验表现；满分 100，产出 S / A / B / C 四档（旗舰 / 高端 / 主流 / 入门）结论与「算法是否可信 / 是否需要外置视频处理器」的决策建议。</p>
+    <h1>电视机 <em>「核心芯片」</em> 五维百分制评分表</h1>
+    <p class="sub">评的不是画面结果，而是整机算力的底座：SoC 主控平台、AI / NPU 算力、画质引擎与算法、解码与接口带宽、扩展与长期支持；满分 100，产出 S / A / B / C 四档（旗舰 / 高端 / 主流 / 入门）结论与「是否需要另配电视盒子 / 播放器补算力」的决策建议。</p>
     <div class="meta-row">
       <div class="meta-chip"><b>5</b><span>评分维度</span></div>
       <div class="meta-chip"><b>20</b><span>细分评分项</span></div>
@@ -430,13 +431,19 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="btn" id="btnReset">重置</button>
     <div class="spacer"></div>
     <div class="tb-menu" id="tbMenu">
-      <button class="btn menu-trigger" id="btnMenu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuList">电视测评工具<span class="caret"></span></button>
+      <button class="btn menu-trigger" id="btnMenu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuList">评测工具<span class="caret"></span></button>
       <div class="menu-list" id="menuList" role="menu">
+        <div class="menu-sep">电视 · TV</div>
         <a class="menu-item" role="menuitem" href="./tv-picture-scorecard.html"><span class="mi-no">01</span><span class="mi-txt">画质评分表<span class="mi-sub">亮度 · 色彩 · 高刷 · 抗反射</span></span></a>
         <a class="menu-item" role="menuitem" href="./tv-audio-scorecard.html"><span class="mi-no">02</span><span class="mi-txt">音质评分表<span class="mi-sub">声学硬件 · 保真 · 沉浸 · 扩展</span></span></a>
         <a class="menu-item" role="menuitem" href="./tv-system-scorecard.html"><span class="mi-no">03</span><span class="mi-txt">系统评分表<span class="mi-sub">易用性 · 语音 · 菜单 · 开放解码</span></span></a>
-        <span class="menu-item cur-tag" aria-current="page"><span class="mi-no">04</span><span class="mi-txt">芯片评分表<span class="mi-sub">画质引擎 · 控光控色 · AI · 算法</span></span></span>
+        <span class="menu-item cur-tag" aria-current="page"><span class="mi-no">04</span><span class="mi-txt">芯片评分表<span class="mi-sub">SoC · AI算力 · 画质引擎 · 解码接口</span></span></span>
         <a class="menu-item" role="menuitem" href="./tv-game-scorecard.html"><span class="mi-no">05</span><span class="mi-txt">游戏评分表<span class="mi-sub">输入延迟 · 高刷 · VRR · HDR 游戏</span></span></a>
+        <div class="menu-sep">清洁电器 · CLEANING</div>
+        <a class="menu-item" role="menuitem" href="./robotvac-clean-scorecard.html"><span class="mi-no">06</span><span class="mi-txt">清洁评分表<span class="mi-sub">吸尘风道 · 滚刷防缠 · 地毯 · 湿拖去污</span></span></a>
+        <a class="menu-item" role="menuitem" href="./robotvac-pass-scorecard.html"><span class="mi-no">07</span><span class="mi-txt">通过评分表<span class="mi-sub">垂直越障 · 低矮空间 · 边角覆盖 · 脱困自救</span></span></a>
+        <a class="menu-item" role="menuitem" href="./robotvac-dock-scorecard.html"><span class="mi-no">08</span><span class="mi-txt">基站评分表<span class="mi-sub">洗布自烘 · 集尘 · 上下水 · 除菌除臭</span></span></a>
+        <a class="menu-item" role="menuitem" href="./robotvac-app-scorecard.html"><span class="mi-no">09</span><span class="mi-txt">软件评分表<span class="mi-sub">导航建图 · 地图编辑 · App · AI 自动化</span></span></a>
       </div>
     </div>
     <button class="btn primary" id="btnPrint">打印 / 导出 PDF</button>
@@ -453,17 +460,17 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
         </div>
         <div class="flow">
           <div class="flow-step"><h4>填写评测信息</h4><p>录入机型与评测人，打印时自动生成归档表头。</p></div>
-          <div class="flow-step"><h4>芯片 + 算法双向打分</h4><p>先用「实测口径参考」验证芯片能力，再用标准片源检验算法的增益与副作用。</p></div>
-          <div class="flow-step"><h4>读取结论</h4><p>右侧实时汇总加权总分、等级徽章、短板项与算法可信度判断。</p></div>
+          <div class="flow-step"><h4>SoC + 能力双向核验</h4><p>先按「实测口径参考」核验 SoC、解码与接口的硬能力，再用同一组片源检验 AI 与画质算法的增益与副作用。</p></div>
+          <div class="flow-step"><h4>读取结论</h4><p>右侧实时汇总加权总分、等级徽章、短板项与「要不要另配盒子」的判断。</p></div>
           <div class="flow-step"><h4>打印归档</h4><p>一键输出单色优化版 PDF / 纸质表单，含明细与结论。</p></div>
         </div>
       </section>
 
       <section class="panel">
         <div class="panel-head">
-          <h2>芯片与算法实测口径</h2>
+          <h2>核心芯片实测口径</h2>
           <span class="tag">SPEC REFERENCE</span>
-          <p>芯片参数常被宣传话术包裹，以下为可当场复现的判读口径（右侧四列按 S / A / B / C 四档判读，即旗舰 / 高端 / 主流 / 入门）；测试片源建议固定为同一组（含黑底白点、渐变天空、24p 电影、1080p 综艺）。</p>
+          <p>SoC 与 AI 参数最容易被话术包装，以下为可当场复现的判读口径（右侧四列按 S / A / B / C 四档判读，即旗舰 / 高端 / 主流 / 入门）；测试建议固定为同一组条件（含 AV1 与 H.265 的 4K 素材、4K120 信号源、5 个常用应用冷启动记录）。</p>
         </div>
         <div class="spec-wrap">
         <table class="spec-table">
@@ -472,41 +479,41 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
           </thead>
           <tbody>
             <tr>
-              <td class="k">处理位深链路</td>
-              <td class="b">12bit 内部运算，全程无降采样</td><td>10bit 全程无损</td><td>10bit 末端抖动</td><td class="w">8bit 链路，灰阶可见断层</td>
+              <td class="k">SoC 平台与制程</td>
+              <td class="b">4 核 A73 级 + 6nm 以下制程</td><td>大小核混合 + 8–12nm</td><td>4 核 A55 + 12nm</td><td class="w">老架构双核，制程落后</td>
             </tr>
             <tr>
-              <td class="k">分区控光响应（阶梯测试）</td>
-              <td class="b">≤ 1 帧跟随，无背光拖尾</td><td>≤ 2 帧</td><td>≤ 3 帧，可感知延迟</td><td class="w">&gt; 3 帧，黑白跳变可见亮暗滞后</td>
+              <td class="k">内存与可装应用数</td>
+              <td class="b">4GB+ 内存 / 128GB 存储，30+ 应用仍流畅</td><td>3GB / 64GB，20+ 应用</td><td>2GB / 32GB，10 应用后变慢</td><td class="w">≤ 1.5GB，装几个就满</td>
             </tr>
             <tr>
-              <td class="k">光晕抑制（黑底白点）</td>
-              <td class="b">光晕不可见，星点干净</td><td>轻微，需凑近可见</td><td>明显但可接受</td><td class="w">大面积溢出，字幕周围一片灰</td>
+              <td class="k">NPU 与 AI 算力</td>
+              <td class="b">独立 NPU，超分与降噪同开不掉帧</td><td>独立 NPU，单项 AI 功能可用</td><td>借用 GPU 通用算力</td><td class="w">无 AI 单元，仅传统算法</td>
             </tr>
             <tr>
-              <td class="k">MEMC 插帧质量</td>
-              <td class="b">几乎无伪影，且可逐档单独关闭</td><td>偶发伪影</td><td>运动物体边缘明显破损</td><td class="w">不可关闭，24p 被强制插帧</td>
+              <td class="k">视频解码覆盖</td>
+              <td class="b">AV1 / H.265 / VP9 全硬解，8K 可解</td><td>AV1 硬解 + 4K120</td><td>仅 H.265 / H.264</td><td class="w">部分格式需软解，明显卡顿</td>
             </tr>
             <tr>
-              <td class="k">AI 超分副作用（1080p→4K）</td>
-              <td class="b">细节自然增益，无涂抹与振铃</td><td>轻微涂抹</td><td>塑料感明显，皮肤纹理丢失</td><td class="w">严重失真，出现凭空生成的纹理</td>
+              <td class="k">HDMI 带宽与高刷</td>
+              <td class="b">多口 HDMI 2.1 满血 48Gbps，4K120</td><td>单口 4K120，带宽打折</td><td>4K60 限速</td><td class="w">4K30 或降到 1080p</td>
             </tr>
             <tr>
-              <td class="k">后处理全关闭能力</td>
-              <td class="b">一键创作者模式，且关闭彻底</td><td>需 3–5 项手动关闭</td><td>部分算法无法关闭</td><td class="w">强制后处理，无关闭途径</td>
+              <td class="k">端到端延迟（游戏模式）</td>
+              <td class="b">≤ 10ms</td><td>11–18ms</td><td>19–30ms</td><td class="w">> 30ms，可感知滞后</td>
             </tr>
             <tr>
-              <td class="k">专业调试参数开放度</td>
-              <td class="b">20 点白平衡 + CMS + 伽马全开放</td><td>2 点白平衡 + 伽马</td><td>仅亮度 / 对比度 / 色温档位</td><td class="w">无调试入口</td>
+              <td class="k">外设与扩展接口</td>
+              <td class="b">USB 3.0 ×2 + 有线网口 + 外接存储可用</td><td>USB 3.0 ×1</td><td>USB 2.0，仅键鼠</td><td class="w">无可用扩展口</td>
             </tr>
             <tr>
-              <td class="k">OTA 算法迭代实效</td>
-              <td class="b">一年 ≥ 3 次带来可测量的画质改善</td><td>1–2 次有效改善</td><td>仅修 bug</td><td class="w">几乎不更新，或更新后变差</td>
+              <td class="k">OTA 与能力下放</td>
+              <td class="b">一年 ≥ 3 次，带来新格式或新功能</td><td>1–2 次有效更新</td><td>仅修 bug</td><td class="w">几乎不更新</td>
             </tr>
-          </tbody>
+          
         </table>
         </div>
-        <div class="legend">「算法增益」须与「算法副作用」同时记录：凡增益伴随可见伪影、涂抹或强制的后处理，都不应获得高分。所有测试需在关闭节能模式、固定背光等级、同一环境光条件下完成。</div>
+        <div class="legend">「芯片规格」须与「实际表现」同时对照：标称算力、分区数与解码格式若不体现在可复现的响应与观感上，都不应获得高分。所有测试需在关闭节能模式、固定背光等级、同一环境光条件下完成。</div>
       </section>
 
       <section class="panel">
@@ -521,7 +528,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
           <div class="anchor a2"><b>B · 65–79 主流</b><span>达到同级平均水准，够用但不出彩。</span></div>
           <div class="anchor a1"><b>C · 30–64 入门</b><span>低于同级平均，需靠关算法或外置处理绕行。</span></div>
         </div>
-        <div class="legend">权重设计：画质引擎架构 20% · 控光与控色芯片 25% · AI 芯片与智能增强 20% · 内置算法与调校 25% · 可调性与实测验证 10%。控光控色与内置算法并列最高 —— 前者是 Mini LED 时代真正的分水岭，后者决定这块屏在播放任何片源时是「修」还是「毁」；可调性与验证权重最低，但对评测可信度而言是必要项，故单列保留。</div>
+        <div class="legend">权重设计：SoC 主控平台 24% · AI 算力与智能处理 22% · 画质引擎与算法 24% · 解码与接口带宽 16% · 扩展与长期支持 14%。SoC 与画质引擎并列最高 —— SoC 决定这台机器三年后还流不流畅，画质引擎决定它当下好不好看；解码与接口是「关键时刻会不会降级」的守门项；扩展与长期支持权重最低，但它决定前四项的能力能不能被外部设备用上，故单列保留。</div>
       </section>
 
       <div id="dims"></div>
@@ -562,7 +569,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <!-- ============ PRINT FOOTER ============ -->
   <div class="print-only print-foot">
     <span>评分基线：同价位段横向对比 · 单项 0–100 分 · 加权总分满分 100</span>
-    <span>电视画质芯片与算法评估表 v1.0</span>
+    <span>电视核心芯片评估表 v1.0</span>
   </div>
 </div>
 
@@ -572,86 +579,86 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
    ========================================================= */
 var DIMS = [
   {
-    id:'d1', no:'01', name:'画质引擎架构', en:'Picture Engine Architecture', weight:20,
-    goal:'决定所有算法能跑多快、算多准的底座。',
+    id:'d1', no:'01', name:'SoC 主控平台', en:'SoC Platform & Performance', weight:24,
+    goal:'决定整机流畅度上限与长期可用性的通用算力底座。',
     color:'var(--g3)',
     items:[
-      {id:'d1i1', name:'处理位深与色彩管线', max:25, hint:'内部运算位深（10bit / 12bit）、是否全链路无降采样、是否靠抖动伪装高色深。'},
-      {id:'d1i2', name:'带宽与帧率处理能力', max:25, hint:'4K120 全链路是否打折、背光与像素驱动带宽、多窗口与画中画时的降级策略。'},
-      {id:'d1i3', name:'分区与像素驱动架构', max:30, hint:'直下式分区数量级、Mini LED 驱动 IC 方案、是否采用双层面板或分区倍增技术。'},
-      {id:'d1i4', name:'算力储备与散热', max:20, hint:'画质算力余量、长时间高负载是否降频、复杂算法叠加时是否掉帧或自动降级。'}
+      {id:'d1i1', name:'CPU 架构与性能', max:30, hint:'核心数量与架构代次（A53 / A55 / A73 / A76 级）、大核主频、多任务与系统响应时的降频策略。'},
+      {id:'d1i2', name:'GPU 图形能力', max:25, hint:'GPU 型号与性能、UI 渲染与动画是否掉帧、轻量游戏与投屏画面的实际渲染表现。'},
+      {id:'d1i3', name:'内存与存储配置', max:25, hint:'RAM 容量与类型（2GB / 3GB / 4GB+）、机身存储（32 / 64 / 128GB）、可装应用数量与缓存余量。'},
+      {id:'d1i4', name:'制程与持续性能', max:20, hint:'制程工艺（12nm / 8nm / 6nm）、长时间高负载是否降频、复杂场景叠加时是否掉帧或降级。'}
     ]
   },
   {
-    id:'d2', no:'02', name:'控光与控色芯片', en:'Dimming & Color Control', weight:25,
-    goal:'背光与色彩的第一性控制能力，Mini LED 时代的分水岭。',
+    id:'d2', no:'02', name:'AI 算力与智能处理', en:'AI Compute & Intelligence', weight:22,
+    goal:'有没有真 NPU、算力量级多少，以及 AI 是在修内容还是在造内容。',
     color:'var(--g1)',
     items:[
-      {id:'d2i1', name:'分区控光算法精度', max:30, hint:'分区映射与背光响应速度、光晕抑制、暗场星点与字幕边缘的干净程度。'},
-      {id:'d2i2', name:'亮部滚降与高光保护', max:25, hint:'色调映射曲线策略、高光是否直接切顶、持续高亮场景的亮度保持能力。'},
-      {id:'d2i3', name:'色域映射与色准管理', max:25, hint:'3D LUT 与 CMS 管理、多色域（sRGB / P3 / BT.2020）切换是否准确、白点管理能力。'},
-      {id:'d2i4', name:'动态对比与黑位管理', max:20, hint:'全局 / 局部动态对比的介入程度、暗部是否被压死、黑位是否被抬升成灰。'}
+      {id:'d2i1', name:'NPU 算力与专用性', max:30, hint:'独立 NPU 还是借用 GPU 通用算力、标称 TOPS 量级、能否支撑实时推理而不掉帧。'},
+      {id:'d2i2', name:'AI 超分与细节重建', max:25, hint:'低分辨率内容的重建质量、纹理细节生成是否自然、有无过度锐化与振铃。'},
+      {id:'d2i3', name:'AI 降噪与压缩伪影修复', max:25, hint:'蚊噪 / 块效应 / 色带的修复程度，以及是否把噪点与胶片颗粒一并抹掉。'},
+      {id:'d2i4', name:'AI 场景识别与自适应', max:20, hint:'场景与内容类型识别准确度、切换参数时是否可见跳变、能否完全手动关闭。'}
     ]
   },
   {
-    id:'d3', no:'03', name:'AI 芯片与智能增强', en:'AI / NPU Enhancement', weight:20,
-    goal:'有没有真 NPU，以及 AI 到底在修画面还是在造画面。',
+    id:'d3', no:'03', name:'画质引擎与算法', en:'Picture Engine & Algorithms', weight:24,
+    goal:'画面背后的底座：控光控色精度与算法增益的真实表现。',
     color:'var(--g2)',
     items:[
-      {id:'d3i1', name:'NPU 算力与专用性', max:25, hint:'独立 AI 单元还是借用 GPU 通用算力、是否有可支撑实时推理的算力量级。'},
-      {id:'d3i2', name:'AI 超分与细节重建', max:30, hint:'低分辨率内容的重建质量、细节纹理生成是否自然、有无过度锐化与振铃。'},
-      {id:'d3i3', name:'AI 降噪与压缩伪影修复', max:25, hint:'蚊噪 / 块效应 / 色带的修复程度，以及是否把噪点与胶片颗粒一并抹掉。'},
-      {id:'d3i4', name:'AI 场景识别与自适应', max:20, hint:'场景与内容类型识别准确度、切换参数时是否可见跳变、能否完全手动关闭。'}
+      {id:'d3i1', name:'分区控光与光晕抑制', max:30, hint:'分区映射与背光响应速度、黑底白点与字幕边缘的光晕表现、暗部是否被压死。'},
+      {id:'d3i2', name:'色彩管理与色域映射', max:25, hint:'3D LUT 与 CMS 管理、多色域（sRGB / P3 / BT.2020）切换是否准确、白点管理能力。'},
+      {id:'d3i3', name:'MEMC 插帧与运动处理', max:25, hint:'插帧自然度、边缘伪影与肥皂剧效应、对原生 24p 的尊重程度与逐档可关性。'},
+      {id:'d3i4', name:'处理位深与专业可调性', max:20, hint:'内部运算位深（10bit / 12bit）、专业调试入口（白平衡 / CMS / 伽马）完整度、后处理能否彻底关闭。'}
     ]
   },
   {
-    id:'d4', no:'04', name:'内置算法与调校', en:'Built-in Algorithms', weight:25,
-    goal:'逐项检验算法的增益与副作用。',
+    id:'d4', no:'04', name:'解码与接口带宽', en:'Decoding & Connectivity', weight:16,
+    goal:'什么片源能硬解、什么信号能满血进来 —— 决定关键时刻会不会降级。',
     color:'var(--g4)',
     items:[
-      {id:'d4i1', name:'MEMC 插帧算法质量', max:30, hint:'插帧自然度、边缘伪影与肥皂剧效应、对原生 24p 的尊重程度与逐档可关性。'},
-      {id:'d4i2', name:'清晰度增强与边缘处理', max:25, hint:'锐化是否产生白边与光晕、皮肤与织物纹理是否保留自然质感。'},
-      {id:'d4i3', name:'降噪与去色带', max:25, hint:'噪点抑制力度与颗粒保留的平衡、渐变天空是否出现色带、暗场是否被涂抹成块。'},
-      {id:'d4i4', name:'创作者意图还原', max:20, hint:'Filmmaker / 导演模式支持、能否彻底关闭全部后处理、伽马与色温是否回归标准。'}
+      {id:'d4i1', name:'视频解码格式覆盖', max:30, hint:'H.264 / H.265 / AV1 / VP9 硬解能力、4K120 与 8K 解码、杜比视界与 HDR10+ 支持完整度。'},
+      {id:'d4i2', name:'HDMI 带宽与协议支持', max:25, hint:'HDMI 2.1 端口数量与带宽（是否满血 48Gbps）、eARC、ALLM、VRR 的支持完整度。'},
+      {id:'d4i3', name:'高刷与 VRR 处理', max:25, hint:'4K120 是否全链路不降采样、VRR 生效帧率范围与低帧率补偿、游戏模式下的处理延迟。'},
+      {id:'d4i4', name:'音视频同步与低延迟', max:20, hint:'解码到显示的端到端延迟、外接音响时的音画同步与次世代音轨透传能力。'}
     ]
   },
   {
-    id:'d5', no:'05', name:'可调性与实测验证', en:'Tunability & Verification', weight:10,
-    goal:'参数是否开放、标称是否属实、算法是否持续进化。',
+    id:'d5', no:'05', name:'扩展与长期支持', en:'Expansion & Longevity', weight:14,
+    goal:'芯片能力能不能被外部设备用上，以及这台机器的算力寿命有多长。',
     color:'var(--g5)',
     items:[
-      {id:'d5i1', name:'专业模式与参数开放度', max:30, hint:'白平衡点数、CMS、伽马曲线、色域切换等专业调试入口的完整度与生效程度。'},
-      {id:'d5i2', name:'算法可关闭性与出厂默认', max:25, hint:'每项算法能否独立关闭、出厂默认是否过度增强、重置后是否回到同样状态。'},
-      {id:'d5i3', name:'标称与实测一致性', max:25, hint:'分区数、峰值亮度、色域等标称值与实测值的吻合度，以及批次间一致性。'},
-      {id:'d5i4', name:'OTA 迭代与长期维护', max:20, hint:'固件更新频率、更新是否带来可测量的画质改善、是否引入新的算法副作用。'}
+      {id:'d5i1', name:'系统开放性与侧载', max:30, hint:'能否自由安装第三方应用、系统是否锁死、投屏与互联协议的开放程度。'},
+      {id:'d5i2', name:'接口数量与规格', max:25, hint:'USB 版本与数量、是否支持外接存储与有线网络、光纤 / 耳机等扩展口的完整度。'},
+      {id:'d5i3', name:'固件与算法迭代', max:25, hint:'OTA 更新频率、芯片新能力是否下放、更新是否带来可测量的功能或画质提升。'},
+      {id:'d5i4', name:'生态兼容与协议支持', max:20, hint:'主流投屏与智能家居协议支持、外设（键鼠 / 摄像头 / 游戏手柄）的兼容度。'}
     ]
   }
 ];
 
 var GRADES = [
   {key:'S', name:'旗舰级', min:90, color:'var(--g1)', range:'90 – 100',
-     tag:'引擎可信，可直接用于审片',
-     desc:'芯片架构、控光控色与算法调校全面领先，算法增益明确且副作用几乎不可见。',
-     advice:'<b>无需外置视频处理器</b>，默认设置下画面即可信；可直接承担内容审片与画质判断工作。'},
+     tag:'算力冗余，无需外接任何设备',
+     desc:'SoC、AI 算力、画质引擎与解码接口全面领先，任何片源与信号都能本地满血处理。',
+     advice:'<b>无需另配电视盒子或播放器</b>，本机即可承担内容审片与全格式播放；三年内不存在算力焦虑。'},
   {key:'A', name:'高端级', min:80, color:'var(--g3)', range:'80 – 89',
-     tag:'默认即好画面，微调即可',
-     desc:'引擎成熟、控光扎实，算法在多数片源上都带来正向增益。',
-     advice:'<b>内置引擎完全够用</b>；只需按片源在「导演模式」与「动态模式」之间切换，无需外接处理器。'},
+     tag:'内置算力完全够用',
+     desc:'平台成熟、解码与接口规格齐全，AI 与画质算法在多数片源上都带来正向增益。',
+     advice:'<b>内置芯片完全够用</b>，无需外接设备；仅在个别冷门格式或单口带宽上做取舍，可通过更换输入源解决。'},
   {key:'B', name:'主流级', min:65, color:'var(--g4)', range:'65 – 79',
-     tag:'依赖手动调校',
-     desc:'硬件架构达标，但算法调校粗糙，默认设置下画质被自家后处理拖累。',
-     advice:'<b>建议按专业校准参数手动调校</b>，并关闭绝大部分后处理；追求原盘品质可考虑外置视频处理。'},
+     tag:'靠外接设备补齐解码与算力',
+     desc:'SoC 性能或解码覆盖达标但不出彩，装应用多、播高码率片源时会暴露短板。',
+     advice:'<b>建议搭配一台电视盒子或播放器</b>承担解码与流媒体，本机专注显示；同时精简常驻应用以维持系统流畅。'},
   {key:'C', name:'入门级', min:30, color:'var(--g5)', range:'30 – 64',
-     tag:'算法劣化大于增益',
-     desc:'既有算法难以带来有效提升，且关闭不彻底，画面干净度受限于后处理链路。',
-     advice:'<b>建议全关后处理并仅作显示终端</b>；重要内容建议由外接设备完成解码与画质处理，该机器不可用于画质对比。'}
+     tag:'仅适合当显示终端',
+     desc:'SoC 老旧、解码覆盖窄、无 AI 单元，系统与播放在高负载下明显吃力。',
+     advice:'<b>建议只作显示器使用</b>：全部解码、流媒体与画质处理交给外接设备，本机不要安装额外应用，也不要用于性能对比。'}
 ];
 
 var PRESETS = {
-  entry:{ d1:[62,60,64,60], d2:[58,60,58,60], d3:[60,56,58,60], d4:[58,60,58,62], d5:[56,58,60,58] },
-  main: { d1:[78,76,78,74], d2:[74,76,74,76], d3:[76,72,74,76], d4:[74,76,74,78], d5:[72,74,76,74] },
-  high: { d1:[86,86,88,84], d2:[84,86,84,86], d3:[86,84,84,86], d4:[84,86,84,88], d5:[84,86,86,84] },
-  flag: { d1:[96,96,97,95], d2:[95,96,95,96], d3:[96,95,95,96], d4:[95,96,95,97], d5:[94,95,96,95] }
+  entry:{ d1:[62,60,62,58], d2:[60,56,58,58], d3:[58,60,58,60], d4:[60,58,60,58], d5:[56,58,60,58] },
+  main: { d1:[78,76,78,74], d2:[76,72,74,76], d3:[74,76,74,78], d4:[76,74,76,74], d5:[72,74,76,74] },
+  high: { d1:[86,86,88,84], d2:[86,84,84,86], d3:[84,86,84,88], d4:[86,84,86,84], d5:[84,86,86,84] },
+  flag: { d1:[96,96,97,95], d2:[96,95,95,96], d3:[95,96,95,97], d4:[96,95,96,95], d5:[94,95,96,95] }
 };
 
 /* =========================================================
@@ -742,7 +749,7 @@ function renderGrades(){
       '<div class="g-body">'+
         '<h4>'+g.name+'<em>'+g.range+'</em></h4>'+
         '<p>'+g.desc+'</p>'+
-        '<p><b>引擎决策：</b>'+g.tag+'</p>'+
+        '<p><b>芯片决策：</b>'+g.tag+'</p>'+
       '</div>'+
     '</div>';
   }).join('');
@@ -785,7 +792,7 @@ function compute(){
   el('rBadge').style.background = g.color;
   el('rGradeName').textContent = g.name;
   el('rGradeRange').textContent = '区间 ' + g.range + ' · 加权总分';
-  el('rAdvice').innerHTML = '<b>引擎建议：</b>' + g.advice.replace(/<\/?b>/g,'');
+  el('rAdvice').innerHTML = '<b>芯片建议：</b>' + g.advice.replace(/<\/?b>/g,'');
 
   el('pTotal').textContent = total.toFixed(1) + ' / 100';
   el('pGrade').textContent = g.key + ' · ' + g.name;
@@ -800,11 +807,11 @@ function compute(){
 function fmt(n,d){ return (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toFixed(d); }
 
 function shortName(n){
-  return n.replace('画质引擎架构','引擎架构')
-          .replace('控光与控色芯片','控光控色')
-          .replace('AI 芯片与智能增强','AI芯片')
-          .replace('内置算法与调校','内置算法')
-          .replace('可调性与实测验证','可调验证');
+  return n.replace('SoC 主控平台','SoC 主控')
+          .replace('AI 算力与智能处理','AI 算力')
+          .replace('画质引擎与算法','画质引擎')
+          .replace('解码与接口带宽','解码接口')
+          .replace('扩展与长期支持','扩展支持');
 }
 
 function renderResDims(ds){
@@ -823,12 +830,12 @@ function renderGap(ds, total){
   var box = el('rGap');
   if(weak.length === 0){
     box.className = 'gap-note ok';
-    box.innerHTML = '<b>无短板项</b> —— 五个维度均不低于 65 分（C 入门档线），画质引擎不存在结构性缺陷。';
+    box.innerHTML = '<b>无短板项</b> —— 五个维度均不低于 65 分（C 入门档线），核心芯片不存在结构性短板。';
   }else{
     box.className = 'gap-note';
     box.innerHTML = '<b>短板项 '+weak.length+' 个：</b>'+
       weak.map(function(x){ return x.dim.name+'（'+fmt(x.score,1)+' 分）'; }).join('、')+
-      '。<span style="color:var(--ink-3)">建议针对该环节关闭对应算法或交由外置处理，不要依赖机身调音式「补救」。</span>';
+      '。<span style="color:var(--ink-3)">建议针对该环节关闭对应算法，或把这类负载交由外接盒子 / 播放器承担，不要指望机身「后来补上」。</span>';
   }
 }
 
@@ -844,7 +851,7 @@ function highlightGrade(g){
    ========================================================= */
 function renderRadar(ds){
   var W = 320, H = 300, cx = 160, cy = 148, R = 96;
-  var n = 5, labels = ['引擎架构','控光控色','AI芯片','内置算法','可调验证'];
+  var n = 5, labels = ['SoC 主控','AI 算力','画质引擎','解码接口','扩展支持'];
   var pt = function(i, r){
     var a = -Math.PI/2 + i * 2*Math.PI/n;
     return [cx + Math.cos(a)*r, cy + Math.sin(a)*r];
@@ -930,7 +937,7 @@ el('btnTheme').addEventListener('click', function(){
   setTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-/* 电视测评工具 下拉菜单 */
+/* 评测工具 下拉菜单 */
 (function(){
   var menu = el('tbMenu'), trigger = el('btnMenu');
   if(!menu || !trigger){ return; }
