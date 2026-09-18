@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>B站商单内容分级 SOP · SABC 内容形态与投入</title>
+<title>B站商单内容分级 SOP · 行业站位版（S/A/B/C）</title>
 <style>
 :root{
   --bg:#f5f6f8; --bg2:#eceef2; --card:#ffffff; --card2:#fafbfc;
@@ -73,7 +73,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
 .tbl td b{color:var(--text)}
 .tbl .dimname{font-weight:700;color:var(--text)}
 .tbl-wrap{overflow-x:auto;border-radius:12px}
-.tbl-wrap .tbl{min-width:720px}
+.tbl-wrap .tbl{min-width:760px}
 
 .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;
   letter-spacing:.4px;color:#fff;vertical-align:middle}
@@ -123,9 +123,8 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
 
 .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
 .kpi .k{background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:14px 15px}
-.kpi .k .n{font-size:22px;font-weight:800;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
-.kpi .k .t{font-size:11.5px;color:var(--text3);letter-spacing:.5px;margin-bottom:2px}
-.kpi .k .d{font-size:12.5px;color:var(--text2);margin-top:3px}
+.kpi .k .t{font-size:11.5px;color:var(--text3);letter-spacing:.5px;margin-bottom:4px}
+.kpi .k .d{font-size:12.8px;color:var(--text2)}
 
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -140,6 +139,21 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
   border:1.5px solid var(--brand);border-radius:3px;opacity:.55}
 .chk li b{color:var(--text)}
 
+/* 阶梯轴 */
+.stair{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:6px 0 0}
+.stair .st{background:var(--card2);border:1px solid var(--line);border-radius:11px;
+  padding:14px 14px 16px;position:relative;overflow:hidden}
+.stair .st::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px}
+.stair .st.s::before{background:var(--s)}
+.stair .st.ap::before{background:var(--a)}
+.stair .st.b::before{background:var(--b)}
+.stair .st.c::before{background:var(--c)}
+.stair .st .lv{font-size:19px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px}
+.stair .st.s .lv{color:var(--s)} .stair .st.ap .lv{color:var(--a)}
+.stair .st.b .lv{color:var(--b)} .stair .st.c .lv{color:var(--c)}
+.stair .st .nm{font-size:12.5px;font-weight:700;margin-bottom:7px}
+.stair .st .ds{font-size:12px;color:var(--text2);line-height:1.65}
+
 .footer{color:var(--text3);font-size:12px;text-align:center;margin-top:44px;padding-top:20px;border-top:1px solid var(--line)}
 
 @media (max-width:900px){
@@ -147,6 +161,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
   .two{grid-template-columns:1fr}
   .three{grid-template-columns:1fr}
   .kpi{grid-template-columns:repeat(2,1fr)}
+  .stair{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .hero{padding:26px 22px} .hero h1{font-size:22px}
@@ -156,23 +171,25 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
 @media print{
   .topbar{display:none}
   body{background:#fff}
-  .card,.lvcard,.tbl{box-shadow:none}
+  .card,.lvcard,.tbl,.stair .st{box-shadow:none}
   .sec{break-inside:avoid}
 }
 </style>
 </head>
 <body>
 <div class="topbar"><div class="topbar-in">
-  <div class="logo"><span class="dot"></span>商单内容分级 SOP</div>
+  <div class="logo"><span class="dot"></span>商单内容分级 SOP · 行业站位版</div>
   <nav class="nav">
-    <a href="#s1">分级总表</a>
-    <a href="#s2">四级定义</a>
-    <a href="#s3">需求匹配</a>
-    <a href="#s4">报价锚点</a>
-    <a href="#s5">说服力体系</a>
-    <a href="#s6">产能配比</a>
-    <a href="#s7">执行清单</a>
-    <a href="#s8">设计说明</a>
+    <a href="#s1">站位模型</a>
+    <a href="#s2">分级总表</a>
+    <a href="#s3">五档定义</a>
+    <a href="#s4">影响力四层</a>
+    <a href="#s5">白皮书模块</a>
+    <a href="#s6">需求匹配</a>
+    <a href="#s7">合作模式</a>
+    <a href="#s8">产能配比</a>
+    <a href="#s9">升级里程碑</a>
+    <a href="#s10">执行清单</a>
   </nav>
   <button class="theme-btn" id="themeBtn">🌙 深色</button>
 </div></div>
@@ -180,126 +197,149 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
 <div class="wrap">
 
   <div class="hero">
-    <div class="eyebrow">Bilibili Commercial Content Tiering</div>
-    <h1>B站商单内容分级 SOP</h1>
-    <p>以「品牌方买到了什么」为定级出发点，重新定义 S / A+ / A / B / C 五档的内容形态、交付物、制作周期与人力投入，并配套报价锚点、需求匹配与产能配比，作为商单接单与排期的执行标准。</p>
+    <div class="eyebrow">Bilibili Commercial Content Tiering · Industry Positioning</div>
+    <h1>B站商单内容分级 SOP · 行业站位版</h1>
+    <p>不以「一条视频做成什么样」定级，而以「在行业里站在哪个位置」定级。S 级不是最贵的视频，是<b>能被别人引用的行业参照物</b> —— 白皮书、方法学、产业数据库、被行业采纳的标准。内容形态只是站位的表现，不是定义本身。</p>
     <div class="meta">
       <div><span>适用范围</span>数码 / 家电 / 智能家居垂类</div>
       <div><span>分级档位</span>S · A+ · A · B · C 五档</div>
-      <div><span>定级依据</span>交付物 + 硬门槛 + 投入量</div>
-      <div><span>版本</span>v1.0 · 2026-09-18</div>
+      <div><span>定级依据</span>行业站位 + 资产厚度 + 被引用记录</div>
+      <div><span>版本</span>v2.0 · 2026-09-18</div>
     </div>
   </div>
 
   <!-- 1 -->
   <section class="sec" id="s1">
-    <div class="sec-h"><span class="no">01</span><h2>分级总表</h2></div>
-    <p class="sec-sub">商单分级不看「内容好不好」，看<b>品牌方买到的是什么</b>。S = 买权威背书，A+ = 买转化，A = 买结论，B = 买曝光，C = 买排期。</p>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr>
-          <th style="width:6%">级别</th>
-          <th style="width:12%">品牌方买到什么</th>
-          <th style="width:24%">内容形态</th>
-          <th style="width:20%">交付物</th>
-          <th style="width:9%">制作周期</th>
-          <th style="width:8%">人力</th>
-          <th style="width:8%">报价锚点</th>
-          <th>适合客户</th>
-        </tr></thead>
-        <tbody>
-          <tr><td><span class="pill s">S</span></td><td><b>权威背书<br>+ 长期资产</b></td><td>品类年度横评 · 自建测试数据库冠名 · 独家拆机双测 · 长周期盲测 · 品类权威榜</td><td>20–40min 正片 + 数据公开页 + 可复用测试资产 + 全平台分发</td><td class="dimname">3–4 周</td><td>4–6 人</td><td><b>顶格</b></td><td>行业预算 / 旗舰首发</td></tr>
-          <tr><td><span class="pill ap">A+</span></td><td><b>深度种草<br>+ 强转化</b></td><td>单品深度评测 · 同价位盲测对比 · 竞品参数横表 · 30 天使用复盘</td><td>10–18min 正片 + 参数对比图 + 分档推荐表 + 挂车 + 私域承接</td><td class="dimname">10–15 天</td><td>3–4 人</td><td><b>高</b></td><td>主推机型 / 大促主推位</td></tr>
-          <tr><td><span class="pill a">A</span></td><td><b>明确结论<br>+ 转化</b></td><td>价位段选购指南 · 常规单品评测 · 品类避坑 · 新旧款对比</td><td>6–12min 正片 + 分档结论表 + 挂车链接</td><td class="dimname">5–8 天</td><td>2–3 人</td><td><b>中高</b></td><td>中端机型 / 节点投放</td></tr>
-          <tr><td><span class="pill b">B</span></td><td><b>曝光<br>+ 认知种草</b></td><td>新品速览 · 参数解读 / 术语科普 · 场景演示 · 行业新闻速评</td><td>3–8min 正片 + 信息卡 + 品牌露出</td><td class="dimname">2–3 天</td><td>1–2 人</td><td><b>中</b></td><td>新品造势 / 铺量</td></tr>
-          <tr><td><span class="pill c">C</span></td><td><b>排期<br>+ 热度插入</b></td><td>一句话短评 · 大促促销清单 · 资讯口播 · 动态 / 图文</td><td>短视频 / 图文动态 + 挂车链接</td><td class="dimname">＜1 天</td><td>1 人</td><td><b>低</b></td><td>平台活动 / KPI 填量</td></tr>
-        </tbody>
-      </table>
+    <div class="sec-h"><span class="no">01</span><h2>行业站位模型</h2></div>
+    <p class="sec-sub">五档的本质是五种<b>行业身份</b>。从「排期占位」到「行业参照物」，每一级跨越的不是制作预算，而是<b>别人对你的依赖程度</b>：从不需要你，到必须引你。</p>
+    <div class="stair">
+        <div class="st s"><div class="lv">S</div><div class="nm">行业参照物</div><div class="ds">你的数据被同行引用，你的标准被当作口径</div></div>
+        <div class="st ap"><div class="lv">A+</div><div class="nm">品类专家</div><div class="ds">主导品类话语权，结论被消费者当购买依据</div></div>
+        <div class="st a"><div class="lv">A</div><div class="nm">可靠信源</div><div class="ds">稳定产出可引用结论，进入品牌常规投放清单</div></div>
+        <div class="st b"><div class="lv">B</div><div class="nm">传播节点</div><div class="ds">信息通达、更新及时，被算法与观众同时需要</div></div>
+        <div class="st c"><div class="lv">C</div><div class="nm">排期占位</div><div class="ds">维持账号活跃度，承接活动与节点</div></div>
     </div>
     <div class="note">
-      <b>为什么插入 A+ 档：</b>原 S → A 跨度覆盖了 3 倍成本差。单品深度评测（10–15 天）与价位段选购指南（5–8 天）投入差异显著，混在同一档会导致报价与排期双重失真。A+ 承担「深度转化」职能，是商单现金流主力。
+      <b>关键分野在 A+ 与 S 之间：</b>A+ 是「你在这个品类里最有话语权」，S 是「你的话语本身就是这个品类的口径」。前者靠作品积累，后者靠<b>标准与数据资产</b> —— 这也是为什么 S 级的交付物是白皮书，而不是一条更长的视频。
     </div>
   </section>
 
   <!-- 2 -->
   <section class="sec" id="s2">
-    <div class="sec-h"><span class="no">02</span><h2>四级（五档）定义与达标条件</h2></div>
-    <p class="sec-sub">每档由「内容形态 + 硬门槛 + 交付物 + 投入」四要素定义。硬门槛不满足则可降档承接，但<b>不得向上宣称</b>。</p>
+    <div class="sec-h"><span class="no">02</span><h2>分级总表</h2></div>
+    <p class="sec-sub">五档 × 行业站位 / 内容形态 / 交付物 / 制作周期 / 人力 / 报价锚点 / 客户类型。周期与人力按「产业级交付物」口径测算。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:6%">级别</th>
+          <th style="width:11%">行业站位</th>
+          <th style="width:26%">内容形态 / 交付形态</th>
+          <th style="width:19%">交付物</th>
+          <th style="width:8%">周期</th>
+          <th style="width:9%">投入</th>
+          <th style="width:7%">报价锚点</th>
+          <th>适合客户</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><span class="pill s">S</span></td><td><b>行业级资产</b></td><td>年度品类白皮书 · 自研测评标准与方法学 · 产业数据库（规格 / 价格 / 出货）· 行业评测联盟发起 · 产业峰会主讲 · 权威榜单发布</td><td>白皮书 60–150 页 + 数据开放页 + 标准文档 + 榜单 + 发布会 + 全平台分发</td><td class="dimname">1 个季度</td><td>8–12 人<br>+ 外部协作</td><td><b>战略级</b></td><td>头部品牌年度框架 / 行业协会 / 平台官方</td></tr>
+          <tr><td><span class="pill ap">A+</span></td><td><b>品类级结论</b></td><td>品类年度横评 · 价位段权威榜 · 联合品牌发布测评报告 · 深度产业解读（面板 / 芯片 / 供应链）· 粉丝众测数据集</td><td>正片 15–30min + 品类报告 PDF + 榜单 + 数据表 + 挂车</td><td class="dimname">3–4 周</td><td>4–6 人</td><td><b>顶格</b></td><td>主流品牌旗舰 / 大促主推 / 品牌方联合发布</td></tr>
+          <tr><td><span class="pill a">A</span></td><td><b>产品级结论</b></td><td>单品深度评测 · 同价位盲测对比 · 竞品横评 · 长周期耐用测试</td><td>正片 8–15min + 参数对比表 + 明确结论 + 挂车</td><td class="dimname">10–15 天</td><td>3–4 人</td><td><b>中高</b></td><td>中端机型 / 节点投放 / 效果转化</td></tr>
+          <tr><td><span class="pill b">B</span></td><td><b>信息级服务</b></td><td>新品速览 · 参数解读与术语科普 · 场景演示 · 行业动态速评 · 价格监测简报</td><td>正片 3–8min + 信息卡 + 品牌露出</td><td class="dimname">2–3 天</td><td>1–2 人</td><td><b>中</b></td><td>新品造势 / 铺量 / 搜索占位</td></tr>
+          <tr><td><span class="pill c">C</span></td><td><b>排期级填充</b></td><td>一句话短评 · 大促促销清单 · 资讯口播 · 动态 / 图文</td><td>短视频 / 图文动态 + 挂车链接</td><td class="dimname">＜1 天</td><td>1 人</td><td><b>低</b></td><td>平台活动 / KPI 填量</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>与 v1 的最大差别：</b>v1 的 S 级交付物是「20–40min 正片 + 数据图表集」，本质仍是<b>一条更重的视频</b>；v2 的 S 级交付物是<b>白皮书 + 方法学 + 数据库 + 榜单</b>，视频只是发布载体之一。这个差别决定了 S 级不可能按月出，也决定了它不能按「条」报价。
+    </div>
+  </section>
 
+  <!-- 3 -->
+  <section class="sec" id="s3">
+    <div class="sec-h"><span class="no">03</span><h2>五档定义与达标条件</h2></div>
+    <p class="sec-sub">每档由「行业站位 + 内容形态 + 硬门槛 + 交付物 + 投入」定义。<b>行业站位是首要判据</b>：站位不到，交付物再重也不算该档。</p>
     <div class="lvgrid">
       <div class="lvcard s">
-        <div class="hd"><div class="tag">S</div><div><div class="tt">战略级 · 权威资产型</div><div class="sub">Strategic Asset</div></div></div>
+        <div class="hd"><div class="tag">S</div><div><div class="tt">行业级 · 定义者</div><div class="sub">Industry Standard Setter</div></div></div>
         <div class="bd">
           <dl>
+            <dt>行业站位</dt>
+            <dd>你是这个品类的<b>参照物</b>。同行做选题先看你的结论，媒体写稿引你的数据，品牌做产品对标你的评测口径。</dd>
             <dt>内容形态</dt>
-            <dd>① 品类年度横评（覆盖 10+ 机型）② 自建测试数据库冠名 ③ 独家拆机 + 仪器双测 ④ 长周期盲测（30 / 60 天）⑤ 品类权威榜发布</dd>
+            <dd>① 年度品类白皮书（60–150 页：市场规模 / 技术路线 / 价格带 / 产品力基准 / 消费者行为 / 趋势预判）② 自研测评标准与方法学（公开发布、可复现）③ 产业数据库（规格库 / 价格监测 / 出货追踪）④ 行业评测联盟发起 ⑤ 产业峰会主讲 ⑥ 权威榜单发布</dd>
             <dt>硬门槛</dt>
-            <dd>全程留证可复现 + 有自研度量体系（色准 / 亮度 / 噪声 / 功耗曲线）+ 引用行业权威数据源 + 结论可被第三方引用</dd>
+            <dd>有<b>可被外部引用的独立标准</b>（方法学文档公开）+ 数据库持续更新 ≥ 2 个季度 + 结论被行业机构 / 媒体 / 品牌方正式引用 + 白皮书有可核验的署名</dd>
             <dt>交付物</dt>
-            <dd>正片 20–40min · 数据图表集 · 测试方法论文档 · 素材授权（品牌可二次使用）</dd>
+            <dd>白皮书 PDF（可下载）+ 数据开放页 + 标准文档 + 榜单 + 发布会 + 正片 + 素材授权</dd>
             <dt>投入</dt>
-            <dd>3–4 周 · 4–6 人 · 需固定测试台与仪器（一次性搭建，全年复用）</dd>
+            <dd>1 个季度 · 8–12 人 + 外部协作（行业协会 / 数据机构 / 高校实验室）</dd>
             <dt>不可替代性</dt>
-            <dd>高 — 别人短期抄不出来，是唯一能撑起长期报价的档位</dd>
+            <dd><b>极高</b> — 标准一旦立住，后来者只能引用，不能推翻</dd>
             <dt>风险</dt>
-            <dd>周期长、档期难排；结论若不利会牵动商单关系 → <b>接单须保留结论独立性条款</b></dd>
+            <dd>周期长、投入重；结论若被证伪，权威资产一次性归零 → 必须建立内部复核机制</dd>
           </dl>
-          <div class="use"><b>品牌应用场景：</b>头部品牌年度预算 · 旗舰新品首发 · 需要行业背书的场景</div>
+          <div class="use"><b>合作场景：</b>头部品牌年度框架 · 行业协会合作 · 平台官方背书 · 产业峰会</div>
         </div>
       </div>
 
       <div class="lvcard ap">
-        <div class="hd"><div class="tag">A+</div><div><div class="tt">核心级 · 深度转化型</div><div class="sub">Deep Conversion</div></div></div>
+        <div class="hd"><div class="tag">A+</div><div><div class="tt">品类级 · 权威结论</div><div class="sub">Category Authority</div></div></div>
         <div class="bd">
           <dl>
+            <dt>行业站位</dt>
+            <dd>你是这个<b>品类的结论出口</b>。消费者买之前搜你的横评，品牌方上新品先问你测不测。</dd>
             <dt>内容形态</dt>
-            <dd>① 单品深度评测（≥3 组一手实测数据）② 同价位盲测对比（3–5 台撕标签）③ 竞品参数横表 + 明确推荐 ④ 30 天使用复盘</dd>
+            <dd>① 品类年度横评（覆盖 15+ 机型）② 价位段权威榜 ③ 联合品牌发布测评报告（白皮书轻量版 20–40 页）④ 深度产业解读（面板 / 芯片 / 供应链 / 成本结构）⑤ 粉丝众测数据集</dd>
             <dt>硬门槛</dt>
-            <dd>一手实测数据 + 结论明确指向「买 / 不买」+ 挂车链路跑通 + 私域承接路径完整</dd>
+            <dd>跨 15+ 机型的一手实测数据库 + 统一测试基准 + 报告可被消费者引用作购买依据 + 具备<b>年度连续性</b>（不是一次性）</dd>
             <dt>交付物</dt>
-            <dd>正片 10–18min · 参数对比图 · 分档推荐表 · 挂车 · 简介关键词布局</dd>
+            <dd>正片 15–30min + 品类报告 PDF + 权威榜 + 数据表 + 挂车 + 素材授权</dd>
             <dt>投入</dt>
-            <dd>10–15 天 · 3–4 人</dd>
+            <dd>3–4 周 · 4–6 人</dd>
             <dt>不可替代性</dt>
-            <dd>中高 — 拼的是实测深度与结论清晰度</dd>
+            <dd>高 — 拼的是样本量、基准统一性与年度连续性</dd>
             <dt>转化价值</dt>
-            <dd><b>最高</b> — 商单的现金流主力档，大促前集中投放</dd>
+            <dd><b>最高</b> — 单价最高的可复制档位，现金流主力</dd>
           </dl>
-          <div class="use"><b>品牌应用场景：</b>主流品牌主推机型 · 大促前集中投放</div>
+          <div class="use"><b>合作场景：</b>主流品牌旗舰 · 大促主推 · 品牌方联合发布报告</div>
         </div>
       </div>
 
       <div class="lvcard a">
-        <div class="hd"><div class="tag">A</div><div><div class="tt">标准级 · 结论导向型</div><div class="sub">Conclusion Driven</div></div></div>
+        <div class="hd"><div class="tag">A</div><div><div class="tt">产品级 · 明确结论</div><div class="sub">Product Verdict</div></div></div>
         <div class="bd">
           <dl>
+            <dt>行业站位</dt>
+            <dd>你是<b>可靠的购买信源</b>。观众看完知道买哪台，品牌方把你列进常规投放位。</dd>
             <dt>内容形态</dt>
-            <dd>① 价位段选购指南 ② 常规单品评测（数据较少）③ 品类避坑 ④ 新旧款横向对比</dd>
-            <dt>门槛</dt>
-            <dd>有 1–2 组实测或可靠数据源 + 结论可执行 + 挂车</dd>
+            <dd>① 单品深度评测（≥3 组一手实测）② 同价位盲测对比（3–5 台撕标签）③ 竞品参数横表 ④ 长周期耐用测试（30 / 60 天回访）</dd>
+            <dt>硬门槛</dt>
+            <dd>一手实测数据 + 结论明确指向「买 / 不买」+ 挂车链路跑通 + 全程留证</dd>
             <dt>交付物</dt>
-            <dd>正片 6–12min · 分档结论表 · 挂车链接</dd>
+            <dd>正片 8–15min + 参数对比表 + 结论卡 + 挂车 + 简介关键词布局</dd>
             <dt>投入</dt>
-            <dd>5–8 天 · 2–3 人</dd>
+            <dd>10–15 天 · 3–4 人</dd>
             <dt>不可替代性</dt>
-            <dd>中 — 同题竞争多，靠结论清晰度与结构取胜</dd>
+            <dd>中高 — 同题竞争多，靠实测深度与结论清晰度取胜</dd>
             <dt>转化价值</dt>
-            <dd>高 — 商单的稳定产能档</dd>
+            <dd>高 — 稳定产能档</dd>
           </dl>
-          <div class="use"><b>品牌应用场景：</b>中端机型 · 季节点位投放</div>
+          <div class="use"><b>合作场景：</b>中端机型 · 节点投放 · 效果转化</div>
         </div>
       </div>
 
       <div class="lvcard b">
-        <div class="hd"><div class="tag">B</div><div><div class="tt">成长级 · 曝光认知型</div><div class="sub">Awareness</div></div></div>
+        <div class="hd"><div class="tag">B</div><div><div class="tt">信息级 · 服务型</div><div class="sub">Information Service</div></div></div>
         <div class="bd">
           <dl>
+            <dt>行业站位</dt>
+            <dd>你是<b>信息节点</b>。观众靠你了解新品，品牌靠你占搜索词与触达。</dd>
             <dt>内容形态</dt>
-            <dd>① 新品速览 ② 参数解读 / 术语科普 ③ 场景演示 ④ 行业新闻速评</dd>
-            <dt>门槛</dt>
-            <dd>信息准确、结构清晰即可，无一手数据要求</dd>
+            <dd>① 新品速览 ② 参数解读 / 术语科普 ③ 场景演示 ④ 行业动态速评 ⑤ 价格监测简报</dd>
+            <dt>硬门槛</dt>
+            <dd>信息准确及时、结构清晰，无一手数据要求</dd>
             <dt>交付物</dt>
-            <dd>正片 3–8min · 简要信息卡 · 品牌露出</dd>
+            <dd>正片 3–8min + 信息卡 + 品牌露出</dd>
             <dt>投入</dt>
             <dd>2–3 天 · 1–2 人</dd>
             <dt>不可替代性</dt>
@@ -307,17 +347,19 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
             <dt>转化价值</dt>
             <dd>中低</dd>
           </dl>
-          <div class="use"><b>品牌应用场景：</b>新品造势期 · 需要铺量的品牌</div>
+          <div class="use"><b>合作场景：</b>新品造势期 · 需要铺量的品牌</div>
         </div>
       </div>
 
       <div class="lvcard c">
-        <div class="hd"><div class="tag">C</div><div><div class="tt">孵化级 · 排期填充型</div><div class="sub">Scheduling Filler</div></div></div>
+        <div class="hd"><div class="tag">C</div><div><div class="tt">排期级 · 填充型</div><div class="sub">Scheduling Filler</div></div></div>
         <div class="bd">
           <dl>
+            <dt>行业站位</dt>
+            <dd>你维持<b>账号活跃度与算法权重</b>，承接活动与节点，不承担建立行业认知的职能。</dd>
             <dt>内容形态</dt>
             <dd>① 一句话短评 ② 大促促销清单 ③ 资讯口播 ④ 动态 / 图文</dd>
-            <dt>门槛</dt>
+            <dt>硬门槛</dt>
             <dd>要素齐全即可，无实测要求</dd>
             <dt>交付物</dt>
             <dd>短视频或图文动态 · 挂车链接</dd>
@@ -328,175 +370,214 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
             <dt>转化价值</dt>
             <dd>低 — 但边际成本极低，可批量复制</dd>
           </dl>
-          <div class="use"><b>品牌应用场景：</b>平台活动 · 促销节点 · KPI 填量</div>
+          <div class="use"><b>合作场景：</b>平台活动 · 促销节点 · KPI 填量</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 3 -->
-  <section class="sec" id="s3">
-    <div class="sec-h"><span class="no">03</span><h2>品牌需求与档位匹配</h2></div>
-    <p class="sec-sub">品牌投放目标不同，考察重点与适配档位差异显著。配号应以「需求—能力」匹配为原则，而非单纯追求高档位。</p>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th style="width:15%">投放目标</th><th style="width:26%">核心诉求</th><th style="width:22%">适配档位</th><th>重点考察事项</th></tr></thead>
-        <tbody>
-          <tr><td class="dimname">曝光引爆</td><td>最大化触达与声量</td><td><b>B · C</b> 为主，A 补强</td><td>播放体量、爆款率、单条成本、数据真实性</td></tr>
-          <tr><td class="dimname">心智种草</td><td>建立品类偏好与购买意向</td><td><b>A+ · A</b></td><td>垂类专业度、互动质量、内容调性契合度、收藏率</td></tr>
-          <tr><td class="dimname">效果转化</td><td>可量化的成交结果</td><td><b>A+</b> 主力，S 背书</td><td>挂车转化率、优惠券核销、复投率、可引用 ROI 案例</td></tr>
-          <tr><td class="dimname">权威背书</td><td>信任转移与品牌形象提升</td><td><b>S</b></td><td>行业心智占位、测评严谨性、自研标准影响力、品牌安全</td></tr>
-          <tr><td class="dimname">规模铺量</td><td>性价比覆盖与长尾曝光</td><td><b>C · B</b></td><td>单条成本、内容稳定性、配合度、履约可靠性</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note">
-      <b>配号原则：</b>高等级不等于高适配。铺量预算应优先配置 B / C 形成矩阵覆盖；背书预算集中于 S；种草与转化主战场落在 A+ / A。用 S 的产能做铺量、用 C 的内容去谈背书，都是双向亏损。
     </div>
   </section>
 
   <!-- 4 -->
   <section class="sec" id="s4">
-    <div class="sec-h"><span class="no">04</span><h2>报价锚点与承接规则</h2></div>
-    <p class="sec-sub">报价锚点按「交付物密度」而非「视频时长」确定。时长可短、资产可重 —— 交付物清单才是报价的真实依据。</p>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th style="width:7%">级别</th><th style="width:22%">价值定位</th><th style="width:17%">典型客户场景</th><th style="width:26%">报价锚点</th><th>承接规则</th></tr></thead>
-        <tbody>
-          <tr><td><span class="pill s">S</span></td><td><b>行业权威背书 + 长期资产</b></td><td>年度框架 / 旗舰首发</td><td>一次性最高，且带资产复用溢价</td><td>结论不可预设；档期需提前 1 个月锁定</td></tr>
-          <tr><td><span class="pill ap">A+</span></td><td><b>深度种草 + 强转化</b></td><td>主推机型 / 大促</td><td>单价高，ROI 可量化支撑溢价</td><td>现金流主力，产能优先保障</td></tr>
-          <tr><td><span class="pill a">A</span></td><td><b>明确结论 + 转化</b></td><td>中端机型 / 节点</td><td>中高，按挂车链路计</td><td>稳定产能，可批量排期</td></tr>
-          <tr><td><span class="pill b">B</span></td><td><b>曝光 + 认知</b></td><td>新品造势</td><td>中，按曝光体量计</td><td>单条便宜但需量堆</td></tr>
-          <tr><td><span class="pill c">C</span></td><td><b>排期 + 热度</b></td><td>活动 / 填量</td><td>低，可打包计</td><td>禁止用 S / A 的产能去填</td></tr>
-        </tbody>
-      </table>
+    <div class="sec-h"><span class="no">04</span><h2>行业影响力四层模型</h2></div>
+    <p class="sec-sub">判断一个账号是否够 S 级，看这四层是否咬合。四层是递进关系：<b>没有 L1 的标准，L2 的数据就没有口径；没有 L2 的数据，L3 的引用无从发生。</b></p>
+    <div class="two">
+      <div class="mini"><h4>L1 自有标准</h4><p>方法学文档 · 测试基准 · 评分体系 · 术语定义</p><p style="margin-top:6px"><b>你定规矩</b> —— 把「怎么测」公开成文档，别人引用即承认你的口径。</p></div>
+      <div class="mini"><h4>L2 数据资产</h4><p>自建规格库 · 价格监测 · 出货追踪 · 实测数据库</p><p style="margin-top:6px"><b>你有底牌</b> —— 持续更新 ≥ 2 个季度的数据库，是唯一别人抄不走的资产。</p></div>
+      <div class="mini"><h4>L3 行业引用</h4><p>被媒体 / 机构 / 品牌方 / 同行引用</p><p style="margin-top:6px"><b>外面认你</b> —— 引用来源可核验 —— 这是 S 级的<b>验真条件</b>。</p></div>
+      <div class="mini"><h4>L4 消费者依赖</h4><p>搜索先看 · 购买前必查 · 评论区自发引用</p><p style="margin-top:6px"><b>用户找你</b> —— 最终落到行为：观众「先收藏再购买」。</p></div>
     </div>
-    <div class="warn">
-      <b>三条铁律：</b>
-    </div>
-    <div class="three" style="margin-top:-6px">
-      <div class="mini"><h4>1. S 级不接「结论预设」的单</h4><p>一旦被要求保证好评，S 就废了 —— 权威背书是长期资产，一次失信归零，且不可逆。</p></div>
-      <div class="mini"><h4>2. A+ 是现金流主力</h4><p>产能应占商单总量的 30–40%。不要全押 S：S 一年出不了几条，押满了现金流会断。</p></div>
-      <div class="mini"><h4>3. C 级不是「降级」，是「排期工具」</h4><p>用极低成本维持周更频率与算法活跃度。禁止用 S / A 的产能去填 C 的坑，那是净亏损。</p></div>
+    <div class="ok-note">
+      <b>自检方法：</b>问三个问题 —— ① 我们的测试方法有没有公开文档？② 我们的数据库连续更新了几个季度？③ 过去 12 个月，有哪个外部主体（媒体 / 机构 / 品牌 / 同行）正式引用过我们的结论？三个都答不上来，说明还没到 S 级，应先在 A+ 档把数据资产做厚。
     </div>
   </section>
 
   <!-- 5 -->
   <section class="sec" id="s5">
-    <div class="sec-h"><span class="no">05</span><h2>说服力论据体系</h2></div>
-    <p class="sec-sub">说服力不等于「多做一个内容形态」。市场调研报告、行业数据这类内容属于<b>论据层</b>，作用是给实测结论装上权威底座，不是单独一条视频。</p>
+    <div class="sec-h"><span class="no">05</span><h2>白皮书六模块清单</h2></div>
+    <p class="sec-sub">年度品类白皮书是 S 级的主交付物（60–150 页）。以下六模块构成完整结构，逐模块列出数据来源 —— 数据来源的权威度直接决定白皮书能否被行业引用。</p>
     <div class="tbl-wrap">
       <table class="tbl">
-        <thead><tr><th style="width:14%">层级</th><th style="width:28%">论据类型</th><th style="width:32%">来源</th><th>作用</th></tr></thead>
+        <thead><tr><th style="width:20%">模块</th><th style="width:42%">内容</th><th>数据来源</th></tr></thead>
         <tbody>
-          <tr><td class="dimname">L1 一手实测</td><td>仪器读数 · 盲测 · 拆机 · 长周期耐久</td><td>自建测试台与数据入库</td><td>唯一别人抄不走的壁垒</td></tr>
-          <tr><td class="dimname">L2 权威外部</td><td>市场调研报告 · 行业白皮书 · 公开财报 · 供应链 / 专利信息</td><td>IDC · 奥维云网 · 群智咨询 · TrendForce · 品牌年报 · RTINGS</td><td>给结论背书，撑起「行业视角」</td></tr>
-          <tr><td class="dimname">L3 用户实证</td><td>评论区众测 · 粉丝返图 · 电商评价大数据 · 私域问卷</td><td>自有社区与私域池</td><td>证明「不是我一个人测出来」</td></tr>
+          <tr><td class="dimname">市场规模与结构</td><td>出货量 / 均价 / 价位段分布 / 渠道占比</td><td>IDC · 奥维云网 · 群智咨询 · 洛图科技</td></tr>
+          <tr><td class="dimname">技术路线图</td><td>面板 / 芯片 / 背光 / 算法 / 接口标准的演进与分歧</td><td>官方技术白皮书 · 展会发布 · 专利公开信息</td></tr>
+          <tr><td class="dimname">产品力基准</td><td>自研测试方法与各机型实测结果矩阵</td><td>自建测试台 —— <b>本页最重的自有资产</b></td></tr>
+          <tr><td class="dimname">价格与成本</td><td>价格带分布 · 成本结构拆解 · 降价节奏追踪</td><td>面板报价 · 品牌年报 · 电商价格监测（自采）</td></tr>
+          <tr><td class="dimname">消费者行为</td><td>决策路径 · 关注点排序 · 差评关键词分布</td><td>私域问卷 · 评论众测 · 电商评价爬取</td></tr>
+          <tr><td class="dimname">趋势预判</td><td>下一年度技术走向与产品形态判断</td><td>综合上述 —— 可直接用于品牌提案与选题规划</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="card" style="margin-top:14px">
-      <h3>三层论据如何嵌入视频结构</h3>
-      <p>不要单开一期「市场调研报告」（无人观看）。正确做法是把调研当论据穿插：</p>
-      <ul class="chk">
-        <li><b>开头 30 秒</b> —「这个价位上季度占全市场 XX% 出货（IDC 数据）→ 所以今天我们测这 5 台」</li>
-        <li><b>结论之前</b> —「从产业链看，这块面板成本约 XX → 所以它敢卖这个价」</li>
-        <li><b>结尾收束</b> —「结合 XX 名粉丝反馈，翻车点集中在 XX」</li>
-      </ul>
-      <div class="ok-note" style="margin-bottom:0">
-        <b>一条 S 级横评的标准结构：</b>行业格局（L2）→ 统一测试标准（方法论）→ 一手实测（L1）→ 用户实证（L3）→ 分级结论。这样交付的是<b>行业报告级评测</b>，而不是「我又测了一台电视」。
-      </div>
-    </div>
-    <div class="card">
-      <h3>建议引入的外部数据源</h3>
-      <div class="kpi">
-        <div class="k"><div class="t">行业出货 / 份额</div><div class="d">IDC · 奥维云网 · 群智咨询 · TrendForce · Counterpoint</div></div>
-        <div class="k"><div class="t">海外评测对标</div><div class="d">RTINGS · Consumer Reports · AVForums（「外网怎么评」是 B站观众心智刚需）</div></div>
-        <div class="k"><div class="t">产业链 / 成本</div><div class="d">面板厂产能与报价 · 品牌年报 · 专利公开信息 · 代工体系</div></div>
-        <div class="k"><div class="t">用户实证</div><div class="d">私域问卷 · 评论区众测 · 电商评价差评关键词爬取</div></div>
-      </div>
+    <div class="note">
+      <b>引用源清单（长期订阅，一次性投入）：</b>IDC · 奥维云网（AVC）· 群智咨询（Sigmaintell）· 洛图科技（RUNTO）· TrendForce · Counterpoint · Canalys —— 覆盖出货 / 份额 / 均价 / 面板报价；海外测评对标 RTINGS · Consumer Reports · AVForums。
     </div>
   </section>
 
   <!-- 6 -->
   <section class="sec" id="s6">
-    <div class="sec-h"><span class="no">06</span><h2>产能配比与收入结构</h2></div>
-    <p class="sec-sub">分档的意义在于配比，而不只是标签。以下为建议的商单产能与收入结构，用于季度排期校准。</p>
-    <div class="two">
-      <div class="card" style="margin:0">
-        <h3>数量占比</h3>
-        <div class="bars">
-        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:5%"></span></span><span class="bv">5%</span></div>
-        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:30%"></span></span><span class="bv">30%</span></div>
-        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:30%"></span></span><span class="bv">30%</span></div>
-        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:20%"></span></span><span class="bv">20%</span></div>
-        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:15%"></span></span><span class="bv">15%</span></div>
-        </div>
-        <div class="note" style="margin-bottom:0">数量上以 A+ / A 为主体（合计 60%），S 控制在 5% —— S 是资产投入，不是产能投入。</div>
-      </div>
-      <div class="card" style="margin:0">
-        <h3>收入占比</h3>
-        <div class="bars">
-        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:20%"></span></span><span class="bv">20%</span></div>
-        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:40%"></span></span><span class="bv">40%</span></div>
-        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:25%"></span></span><span class="bv">25%</span></div>
-        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:10%"></span></span><span class="bv">10%</span></div>
-        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:5%"></span></span><span class="bv">5%</span></div>
-        </div>
-        <div class="note" style="margin-bottom:0">A+ 贡献 40% 收入，是真正的现金流主力；S 以 5% 的数量贡献 20% 收入，靠的是单条溢价与资产复用。</div>
-      </div>
+    <div class="sec-h"><span class="no">06</span><h2>品牌需求与档位匹配</h2></div>
+    <p class="sec-sub">品牌投放目标不同，考察重点与适配档位差异显著。v2 新增「行业发声 / 标准共建」这一最高层需求 —— 这是只有 S 级能承接的场景。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th style="width:19%">投放目标</th><th style="width:27%">核心诉求</th><th style="width:19%">适配档位</th><th>重点考察事项</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">行业发声 / 标准共建</td><td>进入行业话语体系，抢占技术路线定义权</td><td><b>S</b></td><td>标准影响力、数据资产厚度、被引用记录、协会与平台关系</td></tr>
+          <tr><td class="dimname">权威背书</td><td>信任转移与品牌形象提升</td><td><b>S · A+</b></td><td>行业心智占位、测评严谨性、品牌安全、报告署名能力</td></tr>
+          <tr><td class="dimname">大促冲量</td><td>可量化的成交结果</td><td><b>A+ · A</b></td><td>挂车转化率、优惠券核销、复投率、可引用 ROI 案例</td></tr>
+          <tr><td class="dimname">心智种草</td><td>建立品类偏好与购买意向</td><td><b>A+ · A</b></td><td>垂类专业度、互动质量、调性契合度、收藏率</td></tr>
+          <tr><td class="dimname">曝光引爆</td><td>最大化触达与声量</td><td><b>B</b> 为主，A 补强</td><td>播放体量、爆款率、单条成本、数据真实性</td></tr>
+          <tr><td class="dimname">规模铺量 / 节点填充</td><td>性价比覆盖与持续活跃</td><td><b>C · B</b></td><td>单条成本、内容稳定性、配合度、履约可靠性</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="ok-note">
-      <b>结构健康度判断：</b>若 A+ 收入占比低于 30%，说明价目表整体偏低或被挤在低价档；若 S 数量占比长期高于 10%，说明产能在被长周期项目拖住，现金流存在风险。
+    <div class="note">
+      <b>最高层需求是「标准共建」：</b>头部品牌现在最缺的不是曝光，是<b>技术路线的定义权</b>。谁能联合一个可信的第三方把「什么算好」定义下来，谁就拿到了下一个周期的定价依据。这正是 S 级账号的真正商业价值 —— 卖的不是流量，是口径。
     </div>
   </section>
 
   <!-- 7 -->
   <section class="sec" id="s7">
-    <div class="sec-h"><span class="no">07</span><h2>接单与执行清单</h2></div>
-    <p class="sec-sub">以下为标准动作，每单开工前逐条核对。</p>
-    <div class="card">
-      <ul class="chk">
-        <li>接单前判定 <b>档位与产能匹配</b>：S 一季 1 条、A+ 月 2–3 条，超出即拒或改档。</li>
-        <li>S / A 档 <b>必须签「结论独立性」条款</b>：不接受预设好评，不接受删改实测数据。</li>
-        <li>所有实测内容 <b>全程留证</b>：购买凭证、拆机过程、仪器读数画面入库归档。</li>
-        <li>每条 S / A+ 视频 <b>挂测试方法论链接</b>（自研标准公开页），建立可复现印象。</li>
-        <li>结论 <b>前置到前 30 秒</b>：先给「买不买」，再展开论证 —— 完播率是 B站算法第一权重。</li>
-        <li>论据三层交叉：<b>L1 实测 + L2 权威数据 + L3 用户实证</b>，缺一层说服力就掉一档。</li>
-        <li>固定 <b>3 个栏目</b>（S / A / B 各一），形成观众追更预期与报价锚点。</li>
-        <li>每单归档 <b>brief · 成片 · 转化数据 · 复盘结论</b> 四件套，进商单案例库。</li>
-        <li>每季度按 <b>产能配比</b>（S 5% / A+ 30% / A 30% / B 20% / C 15%）校准排期。</li>
-        <li>数据造假、虚假宣传、重大负面舆情 → <b>一票否决</b>，立即降级并冻结合作。</li>
-      </ul>
+    <div class="sec-h"><span class="no">07</span><h2>合作模式与报价口径</h2></div>
+    <p class="sec-sub">S / A+ 档走<b>项目制与框架制</b>，不再按「条」计价 —— 因为交付物是报告、标准与数据资产，可被品牌方二次使用与对外引用。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th style="width:6%">级别</th><th style="width:23%">合作模式</th><th style="width:26%">签约形态</th><th style="width:19%">报价口径</th><th>承接红线</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill s">S</span></td><td><b>年度战略框架 / 联合发布白皮书 / 标准共建</b></td><td>按年签约 · 三方署名（我方 + 品牌 + 协会 / 平台 / 高校）· 联合发布会</td><td>年度框架费 + 成果署名权 + 数据共享</td><td>结论独立性条款；白皮书方法学须经我方复核</td></tr>
+          <tr><td><span class="pill ap">A+</span></td><td><b>品类联合报告 / 年度横评冠名 / 权威榜</b></td><td>按项目签约 · 报告联合署名 · 榜单不售位</td><td>项目费 + 素材授权费</td><td><b>榜单排名不可售</b> —— 售位即失去权威性</td></tr>
+          <tr><td><span class="pill a">A</span></td><td><b>单品深度评测 / 盲测对比 / 长测</b></td><td>按条签约 · 保留结论方向</td><td>单条费 + 挂车分佣</td><td>不接受改写实测数据</td></tr>
+          <tr><td><span class="pill b">B</span></td><td><b>新品速览 / 科普 / 场景演示</b></td><td>按条或打包签约</td><td>单条费</td><td>信息必须准确，不接受虚假参数</td></tr>
+          <tr><td><span class="pill c">C</span></td><td><b>促销清单 / 短评 / 动态</b></td><td>按条或结算包</td><td>低单价 / 佣金结算</td><td>禁止用 S / A+ / A 产能承接 C</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn"><b>四条铁律</b></div>
+    <div class="two" style="margin-top:-6px">
+      <div class="mini"><h4>1. 权威不可售</h4><p>榜单排名、白皮书结论、测试基准一律不售。售出一次，全部引用价值归零 —— 这是 S 级唯一的存在理由。</p></div>
+      <div class="mini"><h4>2. 标准必须公开</h4><p>方法学与测试基准要公开成文档。不公开的标准只是「自家规矩」，无法被引用，也就构不成行业站位。</p></div>
+      <div class="mini"><h4>3. A+ 供养 S</h4><p>A+ 收入占比 35%、产能占比 22%。S 一年出不了几个，全押 S 现金流会断 —— 行业地位靠 A+ 供养。</p></div>
+      <div class="mini"><h4>4. 禁止跨档承接</h4><p>禁止用 S / A+ 的产能接 C 级活；也禁止在没有数据资产时对外宣称 S 级站位。错配一次，报价体系即崩。</p></div>
     </div>
   </section>
 
   <!-- 8 -->
   <section class="sec" id="s8">
-    <div class="sec-h"><span class="no">08</span><h2>设计说明与风险提示</h2></div>
+    <div class="sec-h"><span class="no">08</span><h2>产能配比与收入结构</h2></div>
+    <p class="sec-sub">行业级资产投入重、周期长，因此 S 的数量占比必须压得比 v1 更低，产能让位给能供养现金流的 A / A+。</p>
+    <div class="two">
+      <div class="card" style="margin:0">
+        <h3>数量占比</h3>
+        <div class="bars">
+        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:3%"></span></span><span class="bv">3%</span></div>
+        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:22%"></span></span><span class="bv">22%</span></div>
+        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:35%"></span></span><span class="bv">35%</span></div>
+        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:25%"></span></span><span class="bv">25%</span></div>
+        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:15%"></span></span><span class="bv">15%</span></div>
+        </div>
+        <div class="note" style="margin-bottom:0">S 仅 3%（一年 1 个）。<b>用 3% 的数量撬动 25% 的收入</b>，靠的是单项目溢价与资产复用，而不是产能堆叠。</div>
+      </div>
+      <div class="card" style="margin:0">
+        <h3>收入占比</h3>
+        <div class="bars">
+        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:25%"></span></span><span class="bv">25%</span></div>
+        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:35%"></span></span><span class="bv">35%</span></div>
+        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:25%"></span></span><span class="bv">25%</span></div>
+        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:10%"></span></span><span class="bv">10%</span></div>
+        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:5%"></span></span><span class="bv">5%</span></div>
+        </div>
+        <div class="note" style="margin-bottom:0">A+ 与 A 合计贡献 60% 收入，是供养 S 级资产投入的现金流基础。</div>
+      </div>
+    </div>
+    <div class="ok-note">
+      <b>结构健康度判断：</b>若 S 数量占比长期高于 8%，说明产能在被长周期项目拖住，现金流存在风险；若 A+ 收入占比低于 25%，说明价目表整体偏低或被挤在 A 档以下，行业站位上不去。
+    </div>
+    <div class="note">
+      <b>与 v1 的配比变化：</b>S 5% → <b>3%</b>、A+ 30% → <b>22%</b>、A 30% → <b>35%</b>、B 20% → 25%、C 15% → 15%。方向是<b>把产能往下沉一档</b>：行业级项目吃产能最凶，必须让 A / B 承担产出量与现金流。
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="sec" id="s9">
+    <div class="sec-h"><span class="no">09</span><h2>升级里程碑（资产积累路径）</h2></div>
+    <p class="sec-sub">每一级跃迁都对应一项<b>必须新建的资产</b>，而不是单纯的产量累积。没有资产，等级上不去；有了资产却不维护，等级会回落。</p>
+      <div class="mini" style="margin-bottom:12px">
+        <h4><span class="pill s">C → B</span> &nbsp;升级里程碑</h4>
+        <ul class="chk" style="margin-top:8px">
+          <li>内容形态从「填充」升级为「服务」：固定栏目、稳定节奏</li>
+          <li>信息准确率与更新时效达标</li>
+          <li>建立基础测评逻辑，脱离纯搬运</li>
+        </ul>
+      </div>
+      <div class="mini" style="margin-bottom:12px">
+        <h4><span class="pill ap">B → A</span> &nbsp;升级里程碑</h4>
+        <ul class="chk" style="margin-top:8px">
+          <li>搭建固定测试台，产出 ≥ 3 组一手实测数据</li>
+          <li>形成明确结论能力（买 / 不买）</li>
+          <li>跑通一次完整挂车转化链路</li>
+        </ul>
+      </div>
+      <div class="mini" style="margin-bottom:12px">
+        <h4><span class="pill a">A → A+</span> &nbsp;升级里程碑</h4>
+        <ul class="chk" style="margin-top:8px">
+          <li>实测样本跨 15+ 机型，形成统一测试基准</li>
+          <li>发布品类报告（白皮书轻量版 20–40 页）</li>
+          <li>报告被媒体或品牌方主动引用 ≥ 1 次</li>
+          <li>具备年度连续性（连续 2 年出品类横评）</li>
+        </ul>
+      </div>
+      <div class="mini" style="margin-bottom:12px">
+        <h4><span class="pill c">A+ → S</span> &nbsp;升级里程碑</h4>
+        <ul class="chk" style="margin-top:8px">
+          <li>方法学文档公开发布，成为可复现的行业口径</li>
+          <li>产业数据库连续更新 ≥ 2 个季度</li>
+          <li>被行业协会 / 头部媒体 / 品牌方正式引用</li>
+          <li>发起或参与行业评测联盟</li>
+          <li>年度白皮书发布并举行发布会</li>
+        </ul>
+      </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="sec" id="s10">
+    <div class="sec-h"><span class="no">10</span><h2>接单与执行清单</h2></div>
+    <p class="sec-sub">以下为标准动作，每单开工前逐条核对。</p>
     <div class="card">
-      <h3>相对通用分级表的 5 处结构性调整</h3>
       <ul class="chk">
-          <li><b>插入 A+ 档</b> — 原 S→A 跨度太大：单品深测（10–15 天）与价位段指南（5–8 天）成本差 3 倍，混同会误判投入产出。</li>
-          <li><b>S 级加「自研度量」硬门槛</b> — B站数码区能立住的 S 不是「测了」，而是「别人没法反驳你的测法」。删掉「全网唯一结论」这类不成立的标准。</li>
-          <li><b>补「留证」维度</b> — 购买凭证、拆机过程、仪器读数全程入镜。这不是加分项，是 S / A 的准入线，也是平台推流加分项。</li>
-          <li><b>C 级重定义为短内容</b> — 原「开箱图集 / 参数搬运」在 B站已被判定为低质搬运，影响推流与商单报价；健康的 C 是资讯口播 + 促销清单。</li>
-          <li><b>显式标注周期 · 人力 · 报价锚点</b> — 让分档从「评价标签」变成「产能配比工具」，可直接指导排期与报价。</li>
+        <li>接单前判定 <b>行业站位与产能匹配</b>：S 一季度 1 个、A+ 月度 1 个，超出即拒或改档。</li>
+        <li>S / A+ 项目 <b>必须签「结论独立性」条款</b>：不接受预设结论，不接受删改实测数据，<b>榜单排名不可售</b>。</li>
+        <li>所有实测内容 <b>全程留证</b>：购买凭证、拆机过程、仪器读数画面入库归档。</li>
+        <li><b>公开发布方法学文档</b>（测试基准 / 评分体系 / 术语定义），挂到每条 S / A+ 作品的简介。</li>
+        <li>建设并持续更新 <b>产业数据库</b>（规格库 / 价格监测 / 实测数据），更新周期不低于季度。</li>
+        <li>白皮书与报告 <b>争取三方署名</b>（我方 + 品牌 + 协会 / 平台 / 高校实验室），提升引用权重。</li>
+        <li>结论 <b>前置到前 30 秒</b>：先给「买不买」，再展开论证 —— 完播率是 B站算法第一权重。</li>
+        <li>论据三层交叉：<b>一手实测 + 权威外部数据 + 用户实证</b>，缺一层说服力就掉一档。</li>
+        <li>固定 <b>3 个栏目</b>（S / A+ / A 各一），形成追更预期与报价锚点。</li>
+        <li>每单归档 <b>brief · 成片 · 转化数据 · 复盘结论</b> 四件套，进商单案例库。</li>
+        <li>每季度按产能配比（S 3% / A+ 22% / A 35% / B 25% / C 15%）校准排期。</li>
+        <li>数据造假、虚假宣传、重大负面舆情 → <b>一票否决</b>，立即降级并冻结合作。</li>
       </ul>
     </div>
     <div class="card">
-      <h3>与账号分级体系的关系</h3>
-      <p>本 SOP 解决的是<b>「一条商单内容应该做成什么样」</b>；账号分级（SABC 账号体系 / 商单评级体系）解决的是<b>「一个账号值多少」</b>。两者配合使用：账号等级决定档位天花板与报价区间，本 SOP 决定单条内容的形态与投入下限。</p>
-      <p>举例：A 级账号承接 S 级内容时，需先补齐「自研度量 + 全程留证」两项硬门槛，否则应降档为 A+ 承接 —— 形式上是 S，实质没有 S 的资产支撑，会损伤长期权威心智。</p>
+      <h3>相对 v1 的 8 处结构性调整</h3>
+      <ul class="chk">
+          <li><b>定级依据从「内容形态」升级为「行业站位」</b> — v1 问「这条视频做成什么样」，v2 问「你在行业里站在哪个位置」。内容形态降级为站位的<b>表现</b>，不再是定义本身。</li>
+          <li><b>S 级引入白皮书与标准制定</b> — 年度品类白皮书（60–150 页）、自研测评方法学、产业数据库、行业评测联盟。这是产业级交付物，不再是一条视频。</li>
+          <li><b>新增行业影响力四层模型</b> — 自有标准 → 数据资产 → 行业引用 → 消费者依赖。缺任一层，S 级站位都不成立。</li>
+          <li><b>新增「被引用」验真条件</b> — S / A+ 门槛不再是自我声明，而是外部引用记录（媒体 / 机构 / 品牌方 / 同行），须可核验。</li>
+          <li><b>新增白皮书六模块清单</b> — 市场规模 / 技术路线 / 产品力基准 / 价格成本 / 消费者行为 / 趋势预判，逐模块列出数据来源。</li>
+          <li><b>升级路径改写为「资产积累」路径</b> — C→B→A→A+→S 每一级对应一项资产：测试台 → 统一基准 → 品类报告 → 方法学与数据库。</li>
+          <li><b>合作模式与报价改为产业级口径</b> — 年度战略框架 / 联合发布 / 标准共建；并明确「榜单排名不可售」底线。</li>
+          <li><b>产能配比与 v1 分化</b> — S 压到 3%、A+ 降到 22%、A 提到 35%。行业级资产投入重，产能必须让位给能供养现金流的 A / A+。</li>
+      </ul>
     </div>
     <div class="warn">
-      <b>风险提示：</b>分档的周期与人力投入基于数码 / 家电垂类中长视频制作条件测算，应随团队规模、品类复杂度与平台规则变化动态校准；报价锚点仅作内部排期与议价参考，不构成对外标准。
+      <b>风险提示：</b>本 SOP 的周期、人力与配比基于数码 / 家电垂类「中长视频 + 自建测评体系」的生产条件测算，应随团队规模、品类复杂度与平台规则变化动态校准；报价口径仅作内部排期与议价参考，不构成对外标准。<b>白皮书与榜单的公信力是本体系全部价值的前提 —— 一旦出现售位、改数、预设结论，整个体系即刻失效且不可逆。</b>
     </div>
   </section>
 
   <div class="footer">
-    B站商单内容分级 SOP · v1.0 · 2026-09-18<br/>
-    适用品类：数码 / 家电 / 智能家居 · 定级依据：交付物 + 硬门槛 + 投入量
+    B站商单内容分级 SOP · 行业站位版 v2.0 · 2026-09-18<br/>
+    适用品类：数码 / 家电 / 智能家居 · 定级依据：行业站位 + 资产厚度 + 被引用记录
   </div>
 </div>
 
