@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>B站商单内容分级 SOP · SABC 内容形态与投入</title>
+<style>
+:root{
+  --bg:#f5f6f8; --bg2:#eceef2; --card:#ffffff; --card2:#fafbfc;
+  --text:#161b26; --text2:#5b6478; --text3:#868fa3; --line:#e4e8ef;
+  --brand:#3f4a8a; --brand2:#2f6f8f; --brand-soft:#eef1f8;
+  --s:#6d3ec7; --a:#2b5fd9; --b:#0b7f96; --c:#5b6478;
+  --ok:#1a7f4b; --warn:#a86b12; --bad:#b3261e;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 6px 22px rgba(16,24,40,.06);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#0d1015; --bg2:#11151c; --card:#161a22; --card2:#1a1f28;
+  --text:#e6e9f0; --text2:#9aa3b5; --text3:#7c8598; --line:#242b36;
+  --brand:#8c96d8; --brand2:#57a6c4; --brand-soft:#1a1f2e;
+  --s:#a78bfa; --a:#6fa8f5; --b:#38bdd8; --c:#94a3b8;
+  --ok:#34d399; --warn:#fbbf24; --bad:#f87171;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);line-height:1.75;
+  -webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(12px);
+  background:color-mix(in srgb,var(--card) 82%,transparent);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:11px 22px}
+.logo{font-weight:700;font-size:14.5px;letter-spacing:.2px;display:flex;align-items:center;gap:9px}
+.logo .dot{width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+.nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;margin-left:10px}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:12.5px;color:var(--text2);padding:6px 10px;border-radius:7px;white-space:nowrap;transition:.2s;text-decoration:none}
+.nav a:hover{background:var(--brand-soft);color:var(--brand)}
+.theme-btn{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--text);
+  border-radius:8px;padding:6px 11px;font-size:12.5px;cursor:pointer}
+
+.wrap{max-width:1060px;margin:0 auto;padding:30px 22px 80px}
+
+.hero{border-radius:18px;padding:34px 34px 30px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#3f4a8a 0%,#4a3f8f 45%,#2f6f8f 100%);box-shadow:var(--shadow);margin-bottom:8px}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);border-radius:50%}
+.hero .eyebrow{font-size:12px;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:9px}
+.hero h1{margin:0 0 10px;font-size:27px;font-weight:700;letter-spacing:.3px}
+.hero p{margin:0;max-width:760px;opacity:.92;font-size:14.5px}
+.hero .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.hero .meta div{font-size:12.5px}
+.hero .meta span{display:block;opacity:.7;font-size:11.5px;margin-bottom:2px;letter-spacing:.5px}
+
+.sec{margin:36px 0 0}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.sec-h .no{font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);
+  border-radius:6px;padding:3px 9px;letter-spacing:.5px}
+.sec-h h2{font-size:20px;margin:0;font-weight:700}
+.sec-sub{color:var(--text2);font-size:13.5px;margin:4px 0 18px;max-width:860px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px}
+.card h3{margin:0 0 12px;font-size:15.5px;font-weight:700}
+.card p{margin:8px 0;font-size:14px;color:var(--text2)}
+
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.tbl th,.tbl td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tbl thead th{background:var(--card2);font-weight:700;color:var(--text);font-size:12.5px;letter-spacing:.2px}
+.tbl tbody tr:last-child td{border-bottom:none}
+.tbl tbody tr:hover{background:var(--brand-soft)}
+.tbl td b{color:var(--text)}
+.tbl .dimname{font-weight:700;color:var(--text)}
+.tbl-wrap{overflow-x:auto;border-radius:12px}
+.tbl-wrap .tbl{min-width:720px}
+
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;
+  letter-spacing:.4px;color:#fff;vertical-align:middle}
+.pill.s{background:var(--s)} .pill.ap{background:var(--a)} .pill.a{background:var(--a)}
+.pill.b{background:var(--b)} .pill.c{background:var(--c)}
+
+.lvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lvcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.lvcard .hd{padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px}
+.lvcard.s .hd{background:linear-gradient(120deg,var(--s),#8b5cf6)}
+.lvcard.ap .hd{background:linear-gradient(120deg,var(--a),#5b8def)}
+.lvcard.b .hd{background:linear-gradient(120deg,var(--b),#2aa8c4)}
+.lvcard.c .hd{background:linear-gradient(120deg,var(--c),#8a93a6)}
+.lvcard .hd .tag{width:44px;height:38px;border-radius:9px;background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0}
+.lvcard .hd .tt{font-weight:700;font-size:15px}
+.lvcard .hd .sub{font-size:12px;opacity:.88;margin-top:1px}
+.lvcard .bd{padding:14px 18px 16px}
+.lvcard .bd dl{margin:0;font-size:13px}
+.lvcard .bd dt{font-weight:700;color:var(--text);margin-top:10px;font-size:12.5px}
+.lvcard .bd dt:first-child{margin-top:0}
+.lvcard .bd dd{margin:3px 0 0;color:var(--text2)}
+.lvcard .bd .use{margin-top:13px;padding-top:11px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--text2)}
+.lvcard .bd .use b{color:var(--text)}
+
+.note{border-left:3px solid var(--brand);background:var(--brand-soft);
+  padding:13px 17px;border-radius:0 10px 10px 0;font-size:13.5px;margin:16px 0;color:var(--text2)}
+.note b{color:var(--text)}
+.warn{border-left:3px solid var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent);
+  padding:13px 17px;border-radius:0 10px 10px 0;font-size:13.5px;margin:16px 0;color:var(--text2)}
+.warn b{color:var(--bad)}
+.ok-note{border-left:3px solid var(--ok);background:color-mix(in srgb,var(--ok) 9%,transparent);
+  padding:13px 17px;border-radius:0 10px 10px 0;font-size:13.5px;margin:16px 0;color:var(--text2)}
+.ok-note b{color:var(--ok)}
+
+.bars{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.bar{display:grid;grid-template-columns:104px 1fr 92px;align-items:center;gap:12px;font-size:12.5px}
+.bar .bl{color:var(--text2);font-weight:700;text-align:right}
+.bar .bt{height:22px;background:var(--bg2);border-radius:4px;overflow:hidden;position:relative}
+.bar .bf{height:100%;border-radius:4px}
+.bar .bv{color:var(--text2);font-variant-numeric:tabular-nums}
+.bf.s{background:linear-gradient(90deg,var(--s),#a78bfa)}
+.bf.ap{background:linear-gradient(90deg,var(--a),#8ab4f8)}
+.bf.b{background:linear-gradient(90deg,var(--b),#4dd0e1)}
+.bf.c{background:linear-gradient(90deg,var(--c),#b0b8c6)}
+
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
+.kpi .k{background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:14px 15px}
+.kpi .k .n{font-size:22px;font-weight:800;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.kpi .k .t{font-size:11.5px;color:var(--text3);letter-spacing:.5px;margin-bottom:2px}
+.kpi .k .d{font-size:12.5px;color:var(--text2);margin-top:3px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mini{background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:15px 16px}
+.mini h4{margin:0 0 7px;font-size:13.5px}
+.mini p{margin:0;font-size:12.8px;color:var(--text2)}
+
+.chk{margin:0;padding:0;list-style:none;font-size:13.5px}
+.chk li{position:relative;padding:7px 0 7px 26px;color:var(--text2);border-bottom:1px dashed var(--line)}
+.chk li:last-child{border-bottom:none}
+.chk li::before{content:"";position:absolute;left:0;top:13px;width:13px;height:13px;
+  border:1.5px solid var(--brand);border-radius:3px;opacity:.55}
+.chk li b{color:var(--text)}
+
+.footer{color:var(--text3);font-size:12px;text-align:center;margin-top:44px;padding-top:20px;border-top:1px solid var(--line)}
+
+@media (max-width:900px){
+  .lvgrid{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .three{grid-template-columns:1fr}
+  .kpi{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .hero{padding:26px 22px} .hero h1{font-size:22px}
+  .bar{grid-template-columns:74px 1fr 74px;gap:8px}
+  .kpi{grid-template-columns:1fr}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  .card,.lvcard,.tbl{box-shadow:none}
+  .sec{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="logo"><span class="dot"></span>商单内容分级 SOP</div>
+  <nav class="nav">
+    <a href="#s1">分级总表</a>
+    <a href="#s2">四级定义</a>
+    <a href="#s3">需求匹配</a>
+    <a href="#s4">报价锚点</a>
+    <a href="#s5">说服力体系</a>
+    <a href="#s6">产能配比</a>
+    <a href="#s7">执行清单</a>
+    <a href="#s8">设计说明</a>
+  </nav>
+  <button class="theme-btn" id="themeBtn">🌙 深色</button>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Bilibili Commercial Content Tiering</div>
+    <h1>B站商单内容分级 SOP</h1>
+    <p>以「品牌方买到了什么」为定级出发点，重新定义 S / A+ / A / B / C 五档的内容形态、交付物、制作周期与人力投入，并配套报价锚点、需求匹配与产能配比，作为商单接单与排期的执行标准。</p>
+    <div class="meta">
+      <div><span>适用范围</span>数码 / 家电 / 智能家居垂类</div>
+      <div><span>分级档位</span>S · A+ · A · B · C 五档</div>
+      <div><span>定级依据</span>交付物 + 硬门槛 + 投入量</div>
+      <div><span>版本</span>v1.0 · 2026-09-18</div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <section class="sec" id="s1">
+    <div class="sec-h"><span class="no">01</span><h2>分级总表</h2></div>
+    <p class="sec-sub">商单分级不看「内容好不好」，看<b>品牌方买到的是什么</b>。S = 买权威背书，A+ = 买转化，A = 买结论，B = 买曝光，C = 买排期。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:6%">级别</th>
+          <th style="width:12%">品牌方买到什么</th>
+          <th style="width:24%">内容形态</th>
+          <th style="width:20%">交付物</th>
+          <th style="width:9%">制作周期</th>
+          <th style="width:8%">人力</th>
+          <th style="width:8%">报价锚点</th>
+          <th>适合客户</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><span class="pill s">S</span></td><td><b>权威背书<br>+ 长期资产</b></td><td>品类年度横评 · 自建测试数据库冠名 · 独家拆机双测 · 长周期盲测 · 品类权威榜</td><td>20–40min 正片 + 数据公开页 + 可复用测试资产 + 全平台分发</td><td class="dimname">3–4 周</td><td>4–6 人</td><td><b>顶格</b></td><td>行业预算 / 旗舰首发</td></tr>
+          <tr><td><span class="pill ap">A+</span></td><td><b>深度种草<br>+ 强转化</b></td><td>单品深度评测 · 同价位盲测对比 · 竞品参数横表 · 30 天使用复盘</td><td>10–18min 正片 + 参数对比图 + 分档推荐表 + 挂车 + 私域承接</td><td class="dimname">10–15 天</td><td>3–4 人</td><td><b>高</b></td><td>主推机型 / 大促主推位</td></tr>
+          <tr><td><span class="pill a">A</span></td><td><b>明确结论<br>+ 转化</b></td><td>价位段选购指南 · 常规单品评测 · 品类避坑 · 新旧款对比</td><td>6–12min 正片 + 分档结论表 + 挂车链接</td><td class="dimname">5–8 天</td><td>2–3 人</td><td><b>中高</b></td><td>中端机型 / 节点投放</td></tr>
+          <tr><td><span class="pill b">B</span></td><td><b>曝光<br>+ 认知种草</b></td><td>新品速览 · 参数解读 / 术语科普 · 场景演示 · 行业新闻速评</td><td>3–8min 正片 + 信息卡 + 品牌露出</td><td class="dimname">2–3 天</td><td>1–2 人</td><td><b>中</b></td><td>新品造势 / 铺量</td></tr>
+          <tr><td><span class="pill c">C</span></td><td><b>排期<br>+ 热度插入</b></td><td>一句话短评 · 大促促销清单 · 资讯口播 · 动态 / 图文</td><td>短视频 / 图文动态 + 挂车链接</td><td class="dimname">＜1 天</td><td>1 人</td><td><b>低</b></td><td>平台活动 / KPI 填量</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>为什么插入 A+ 档：</b>原 S → A 跨度覆盖了 3 倍成本差。单品深度评测（10–15 天）与价位段选购指南（5–8 天）投入差异显著，混在同一档会导致报价与排期双重失真。A+ 承担「深度转化」职能，是商单现金流主力。
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="sec" id="s2">
+    <div class="sec-h"><span class="no">02</span><h2>四级（五档）定义与达标条件</h2></div>
+    <p class="sec-sub">每档由「内容形态 + 硬门槛 + 交付物 + 投入」四要素定义。硬门槛不满足则可降档承接，但<b>不得向上宣称</b>。</p>
+
+    <div class="lvgrid">
+      <div class="lvcard s">
+        <div class="hd"><div class="tag">S</div><div><div class="tt">战略级 · 权威资产型</div><div class="sub">Strategic Asset</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>内容形态</dt>
+            <dd>① 品类年度横评（覆盖 10+ 机型）② 自建测试数据库冠名 ③ 独家拆机 + 仪器双测 ④ 长周期盲测（30 / 60 天）⑤ 品类权威榜发布</dd>
+            <dt>硬门槛</dt>
+            <dd>全程留证可复现 + 有自研度量体系（色准 / 亮度 / 噪声 / 功耗曲线）+ 引用行业权威数据源 + 结论可被第三方引用</dd>
+            <dt>交付物</dt>
+            <dd>正片 20–40min · 数据图表集 · 测试方法论文档 · 素材授权（品牌可二次使用）</dd>
+            <dt>投入</dt>
+            <dd>3–4 周 · 4–6 人 · 需固定测试台与仪器（一次性搭建，全年复用）</dd>
+            <dt>不可替代性</dt>
+            <dd>高 — 别人短期抄不出来，是唯一能撑起长期报价的档位</dd>
+            <dt>风险</dt>
+            <dd>周期长、档期难排；结论若不利会牵动商单关系 → <b>接单须保留结论独立性条款</b></dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>头部品牌年度预算 · 旗舰新品首发 · 需要行业背书的场景</div>
+        </div>
+      </div>
+
+      <div class="lvcard ap">
+        <div class="hd"><div class="tag">A+</div><div><div class="tt">核心级 · 深度转化型</div><div class="sub">Deep Conversion</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>内容形态</dt>
+            <dd>① 单品深度评测（≥3 组一手实测数据）② 同价位盲测对比（3–5 台撕标签）③ 竞品参数横表 + 明确推荐 ④ 30 天使用复盘</dd>
+            <dt>硬门槛</dt>
+            <dd>一手实测数据 + 结论明确指向「买 / 不买」+ 挂车链路跑通 + 私域承接路径完整</dd>
+            <dt>交付物</dt>
+            <dd>正片 10–18min · 参数对比图 · 分档推荐表 · 挂车 · 简介关键词布局</dd>
+            <dt>投入</dt>
+            <dd>10–15 天 · 3–4 人</dd>
+            <dt>不可替代性</dt>
+            <dd>中高 — 拼的是实测深度与结论清晰度</dd>
+            <dt>转化价值</dt>
+            <dd><b>最高</b> — 商单的现金流主力档，大促前集中投放</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>主流品牌主推机型 · 大促前集中投放</div>
+        </div>
+      </div>
+
+      <div class="lvcard a">
+        <div class="hd"><div class="tag">A</div><div><div class="tt">标准级 · 结论导向型</div><div class="sub">Conclusion Driven</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>内容形态</dt>
+            <dd>① 价位段选购指南 ② 常规单品评测（数据较少）③ 品类避坑 ④ 新旧款横向对比</dd>
+            <dt>门槛</dt>
+            <dd>有 1–2 组实测或可靠数据源 + 结论可执行 + 挂车</dd>
+            <dt>交付物</dt>
+            <dd>正片 6–12min · 分档结论表 · 挂车链接</dd>
+            <dt>投入</dt>
+            <dd>5–8 天 · 2–3 人</dd>
+            <dt>不可替代性</dt>
+            <dd>中 — 同题竞争多，靠结论清晰度与结构取胜</dd>
+            <dt>转化价值</dt>
+            <dd>高 — 商单的稳定产能档</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>中端机型 · 季节点位投放</div>
+        </div>
+      </div>
+
+      <div class="lvcard b">
+        <div class="hd"><div class="tag">B</div><div><div class="tt">成长级 · 曝光认知型</div><div class="sub">Awareness</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>内容形态</dt>
+            <dd>① 新品速览 ② 参数解读 / 术语科普 ③ 场景演示 ④ 行业新闻速评</dd>
+            <dt>门槛</dt>
+            <dd>信息准确、结构清晰即可，无一手数据要求</dd>
+            <dt>交付物</dt>
+            <dd>正片 3–8min · 简要信息卡 · 品牌露出</dd>
+            <dt>投入</dt>
+            <dd>2–3 天 · 1–2 人</dd>
+            <dt>不可替代性</dt>
+            <dd>低 — 同质内容多，主要买曝光与搜索占位</dd>
+            <dt>转化价值</dt>
+            <dd>中低</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>新品造势期 · 需要铺量的品牌</div>
+        </div>
+      </div>
+
+      <div class="lvcard c">
+        <div class="hd"><div class="tag">C</div><div><div class="tt">孵化级 · 排期填充型</div><div class="sub">Scheduling Filler</div></div></div>
+        <div class="bd">
+          <dl>
+            <dt>内容形态</dt>
+            <dd>① 一句话短评 ② 大促促销清单 ③ 资讯口播 ④ 动态 / 图文</dd>
+            <dt>门槛</dt>
+            <dd>要素齐全即可，无实测要求</dd>
+            <dt>交付物</dt>
+            <dd>短视频或图文动态 · 挂车链接</dd>
+            <dt>投入</dt>
+            <dd>＜1 天 · 1 人</dd>
+            <dt>不可替代性</dt>
+            <dd>无</dd>
+            <dt>转化价值</dt>
+            <dd>低 — 但边际成本极低，可批量复制</dd>
+          </dl>
+          <div class="use"><b>品牌应用场景：</b>平台活动 · 促销节点 · KPI 填量</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="sec" id="s3">
+    <div class="sec-h"><span class="no">03</span><h2>品牌需求与档位匹配</h2></div>
+    <p class="sec-sub">品牌投放目标不同，考察重点与适配档位差异显著。配号应以「需求—能力」匹配为原则，而非单纯追求高档位。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th style="width:15%">投放目标</th><th style="width:26%">核心诉求</th><th style="width:22%">适配档位</th><th>重点考察事项</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">曝光引爆</td><td>最大化触达与声量</td><td><b>B · C</b> 为主，A 补强</td><td>播放体量、爆款率、单条成本、数据真实性</td></tr>
+          <tr><td class="dimname">心智种草</td><td>建立品类偏好与购买意向</td><td><b>A+ · A</b></td><td>垂类专业度、互动质量、内容调性契合度、收藏率</td></tr>
+          <tr><td class="dimname">效果转化</td><td>可量化的成交结果</td><td><b>A+</b> 主力，S 背书</td><td>挂车转化率、优惠券核销、复投率、可引用 ROI 案例</td></tr>
+          <tr><td class="dimname">权威背书</td><td>信任转移与品牌形象提升</td><td><b>S</b></td><td>行业心智占位、测评严谨性、自研标准影响力、品牌安全</td></tr>
+          <tr><td class="dimname">规模铺量</td><td>性价比覆盖与长尾曝光</td><td><b>C · B</b></td><td>单条成本、内容稳定性、配合度、履约可靠性</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>配号原则：</b>高等级不等于高适配。铺量预算应优先配置 B / C 形成矩阵覆盖；背书预算集中于 S；种草与转化主战场落在 A+ / A。用 S 的产能做铺量、用 C 的内容去谈背书，都是双向亏损。
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="sec" id="s4">
+    <div class="sec-h"><span class="no">04</span><h2>报价锚点与承接规则</h2></div>
+    <p class="sec-sub">报价锚点按「交付物密度」而非「视频时长」确定。时长可短、资产可重 —— 交付物清单才是报价的真实依据。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th style="width:7%">级别</th><th style="width:22%">价值定位</th><th style="width:17%">典型客户场景</th><th style="width:26%">报价锚点</th><th>承接规则</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill s">S</span></td><td><b>行业权威背书 + 长期资产</b></td><td>年度框架 / 旗舰首发</td><td>一次性最高，且带资产复用溢价</td><td>结论不可预设；档期需提前 1 个月锁定</td></tr>
+          <tr><td><span class="pill ap">A+</span></td><td><b>深度种草 + 强转化</b></td><td>主推机型 / 大促</td><td>单价高，ROI 可量化支撑溢价</td><td>现金流主力，产能优先保障</td></tr>
+          <tr><td><span class="pill a">A</span></td><td><b>明确结论 + 转化</b></td><td>中端机型 / 节点</td><td>中高，按挂车链路计</td><td>稳定产能，可批量排期</td></tr>
+          <tr><td><span class="pill b">B</span></td><td><b>曝光 + 认知</b></td><td>新品造势</td><td>中，按曝光体量计</td><td>单条便宜但需量堆</td></tr>
+          <tr><td><span class="pill c">C</span></td><td><b>排期 + 热度</b></td><td>活动 / 填量</td><td>低，可打包计</td><td>禁止用 S / A 的产能去填</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>三条铁律：</b>
+    </div>
+    <div class="three" style="margin-top:-6px">
+      <div class="mini"><h4>1. S 级不接「结论预设」的单</h4><p>一旦被要求保证好评，S 就废了 —— 权威背书是长期资产，一次失信归零，且不可逆。</p></div>
+      <div class="mini"><h4>2. A+ 是现金流主力</h4><p>产能应占商单总量的 30–40%。不要全押 S：S 一年出不了几条，押满了现金流会断。</p></div>
+      <div class="mini"><h4>3. C 级不是「降级」，是「排期工具」</h4><p>用极低成本维持周更频率与算法活跃度。禁止用 S / A 的产能去填 C 的坑，那是净亏损。</p></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="sec" id="s5">
+    <div class="sec-h"><span class="no">05</span><h2>说服力论据体系</h2></div>
+    <p class="sec-sub">说服力不等于「多做一个内容形态」。市场调研报告、行业数据这类内容属于<b>论据层</b>，作用是给实测结论装上权威底座，不是单独一条视频。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th style="width:14%">层级</th><th style="width:28%">论据类型</th><th style="width:32%">来源</th><th>作用</th></tr></thead>
+        <tbody>
+          <tr><td class="dimname">L1 一手实测</td><td>仪器读数 · 盲测 · 拆机 · 长周期耐久</td><td>自建测试台与数据入库</td><td>唯一别人抄不走的壁垒</td></tr>
+          <tr><td class="dimname">L2 权威外部</td><td>市场调研报告 · 行业白皮书 · 公开财报 · 供应链 / 专利信息</td><td>IDC · 奥维云网 · 群智咨询 · TrendForce · 品牌年报 · RTINGS</td><td>给结论背书，撑起「行业视角」</td></tr>
+          <tr><td class="dimname">L3 用户实证</td><td>评论区众测 · 粉丝返图 · 电商评价大数据 · 私域问卷</td><td>自有社区与私域池</td><td>证明「不是我一个人测出来」</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>三层论据如何嵌入视频结构</h3>
+      <p>不要单开一期「市场调研报告」（无人观看）。正确做法是把调研当论据穿插：</p>
+      <ul class="chk">
+        <li><b>开头 30 秒</b> —「这个价位上季度占全市场 XX% 出货（IDC 数据）→ 所以今天我们测这 5 台」</li>
+        <li><b>结论之前</b> —「从产业链看，这块面板成本约 XX → 所以它敢卖这个价」</li>
+        <li><b>结尾收束</b> —「结合 XX 名粉丝反馈，翻车点集中在 XX」</li>
+      </ul>
+      <div class="ok-note" style="margin-bottom:0">
+        <b>一条 S 级横评的标准结构：</b>行业格局（L2）→ 统一测试标准（方法论）→ 一手实测（L1）→ 用户实证（L3）→ 分级结论。这样交付的是<b>行业报告级评测</b>，而不是「我又测了一台电视」。
+      </div>
+    </div>
+    <div class="card">
+      <h3>建议引入的外部数据源</h3>
+      <div class="kpi">
+        <div class="k"><div class="t">行业出货 / 份额</div><div class="d">IDC · 奥维云网 · 群智咨询 · TrendForce · Counterpoint</div></div>
+        <div class="k"><div class="t">海外评测对标</div><div class="d">RTINGS · Consumer Reports · AVForums（「外网怎么评」是 B站观众心智刚需）</div></div>
+        <div class="k"><div class="t">产业链 / 成本</div><div class="d">面板厂产能与报价 · 品牌年报 · 专利公开信息 · 代工体系</div></div>
+        <div class="k"><div class="t">用户实证</div><div class="d">私域问卷 · 评论区众测 · 电商评价差评关键词爬取</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="sec" id="s6">
+    <div class="sec-h"><span class="no">06</span><h2>产能配比与收入结构</h2></div>
+    <p class="sec-sub">分档的意义在于配比，而不只是标签。以下为建议的商单产能与收入结构，用于季度排期校准。</p>
+    <div class="two">
+      <div class="card" style="margin:0">
+        <h3>数量占比</h3>
+        <div class="bars">
+        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:5%"></span></span><span class="bv">5%</span></div>
+        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:30%"></span></span><span class="bv">30%</span></div>
+        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:30%"></span></span><span class="bv">30%</span></div>
+        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:20%"></span></span><span class="bv">20%</span></div>
+        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:15%"></span></span><span class="bv">15%</span></div>
+        </div>
+        <div class="note" style="margin-bottom:0">数量上以 A+ / A 为主体（合计 60%），S 控制在 5% —— S 是资产投入，不是产能投入。</div>
+      </div>
+      <div class="card" style="margin:0">
+        <h3>收入占比</h3>
+        <div class="bars">
+        <div class="bar"><span class="bl">S</span><span class="bt"><span class="bf s" style="width:20%"></span></span><span class="bv">20%</span></div>
+        <div class="bar"><span class="bl">A+</span><span class="bt"><span class="bf ap" style="width:40%"></span></span><span class="bv">40%</span></div>
+        <div class="bar"><span class="bl">A</span><span class="bt"><span class="bf a" style="width:25%"></span></span><span class="bv">25%</span></div>
+        <div class="bar"><span class="bl">B</span><span class="bt"><span class="bf b" style="width:10%"></span></span><span class="bv">10%</span></div>
+        <div class="bar"><span class="bl">C</span><span class="bt"><span class="bf c" style="width:5%"></span></span><span class="bv">5%</span></div>
+        </div>
+        <div class="note" style="margin-bottom:0">A+ 贡献 40% 收入，是真正的现金流主力；S 以 5% 的数量贡献 20% 收入，靠的是单条溢价与资产复用。</div>
+      </div>
+    </div>
+    <div class="ok-note">
+      <b>结构健康度判断：</b>若 A+ 收入占比低于 30%，说明价目表整体偏低或被挤在低价档；若 S 数量占比长期高于 10%，说明产能在被长周期项目拖住，现金流存在风险。
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="sec" id="s7">
+    <div class="sec-h"><span class="no">07</span><h2>接单与执行清单</h2></div>
+    <p class="sec-sub">以下为标准动作，每单开工前逐条核对。</p>
+    <div class="card">
+      <ul class="chk">
+        <li>接单前判定 <b>档位与产能匹配</b>：S 一季 1 条、A+ 月 2–3 条，超出即拒或改档。</li>
+        <li>S / A 档 <b>必须签「结论独立性」条款</b>：不接受预设好评，不接受删改实测数据。</li>
+        <li>所有实测内容 <b>全程留证</b>：购买凭证、拆机过程、仪器读数画面入库归档。</li>
+        <li>每条 S / A+ 视频 <b>挂测试方法论链接</b>（自研标准公开页），建立可复现印象。</li>
+        <li>结论 <b>前置到前 30 秒</b>：先给「买不买」，再展开论证 —— 完播率是 B站算法第一权重。</li>
+        <li>论据三层交叉：<b>L1 实测 + L2 权威数据 + L3 用户实证</b>，缺一层说服力就掉一档。</li>
+        <li>固定 <b>3 个栏目</b>（S / A / B 各一），形成观众追更预期与报价锚点。</li>
+        <li>每单归档 <b>brief · 成片 · 转化数据 · 复盘结论</b> 四件套，进商单案例库。</li>
+        <li>每季度按 <b>产能配比</b>（S 5% / A+ 30% / A 30% / B 20% / C 15%）校准排期。</li>
+        <li>数据造假、虚假宣传、重大负面舆情 → <b>一票否决</b>，立即降级并冻结合作。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="sec" id="s8">
+    <div class="sec-h"><span class="no">08</span><h2>设计说明与风险提示</h2></div>
+    <div class="card">
+      <h3>相对通用分级表的 5 处结构性调整</h3>
+      <ul class="chk">
+          <li><b>插入 A+ 档</b> — 原 S→A 跨度太大：单品深测（10–15 天）与价位段指南（5–8 天）成本差 3 倍，混同会误判投入产出。</li>
+          <li><b>S 级加「自研度量」硬门槛</b> — B站数码区能立住的 S 不是「测了」，而是「别人没法反驳你的测法」。删掉「全网唯一结论」这类不成立的标准。</li>
+          <li><b>补「留证」维度</b> — 购买凭证、拆机过程、仪器读数全程入镜。这不是加分项，是 S / A 的准入线，也是平台推流加分项。</li>
+          <li><b>C 级重定义为短内容</b> — 原「开箱图集 / 参数搬运」在 B站已被判定为低质搬运，影响推流与商单报价；健康的 C 是资讯口播 + 促销清单。</li>
+          <li><b>显式标注周期 · 人力 · 报价锚点</b> — 让分档从「评价标签」变成「产能配比工具」，可直接指导排期与报价。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>与账号分级体系的关系</h3>
+      <p>本 SOP 解决的是<b>「一条商单内容应该做成什么样」</b>；账号分级（SABC 账号体系 / 商单评级体系）解决的是<b>「一个账号值多少」</b>。两者配合使用：账号等级决定档位天花板与报价区间，本 SOP 决定单条内容的形态与投入下限。</p>
+      <p>举例：A 级账号承接 S 级内容时，需先补齐「自研度量 + 全程留证」两项硬门槛，否则应降档为 A+ 承接 —— 形式上是 S，实质没有 S 的资产支撑，会损伤长期权威心智。</p>
+    </div>
+    <div class="warn">
+      <b>风险提示：</b>分档的周期与人力投入基于数码 / 家电垂类中长视频制作条件测算，应随团队规模、品类复杂度与平台规则变化动态校准；报价锚点仅作内部排期与议价参考，不构成对外标准。
+    </div>
+  </section>
+
+  <div class="footer">
+    B站商单内容分级 SOP · v1.0 · 2026-09-18<br/>
+    适用品类：数码 / 家电 / 智能家居 · 定级依据：交付物 + 硬门槛 + 投入量
+  </div>
+</div>
+
+<script>
+  var root=document.documentElement,btn=document.getElementById('themeBtn');
+  function apply(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'☀️ 浅色':'🌙 深色';localStorage.setItem('chaohong-theme',t);}
+  apply(localStorage.getItem('chaohong-theme')||'light');
+  btn.onclick=function(){apply(root.getAttribute('data-theme')==='dark'?'light':'dark');};
+</script>
+</body>
+</html>
