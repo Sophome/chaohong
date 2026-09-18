@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小米电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#ff6900; --accent-soft:#fff0e3;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ffa259; --accent-soft:#3a2415;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#ff6900}
+  .sqd i:nth-child(2){background:#333333}
+  .sqd i:nth-child(3){background:#f2f2f2}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html" class="on" aria-current="page">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>Redmi 线与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "XIAOMI TV · 2026 LAUNCH TIMELINE",
+  "title": "小米电视 2026 新品发布年表",
+  "subtitle": "3月亮相 → 4月 S Pro Mini LED 2026 冲高端（5700nits / 330Hz）→ 全年 Redmi 补 100″ 巨幕与千元档",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "S Pro Mini LED 2026 往高端冲（5200–5700nits、330Hz），S Mini LED 与 Redmi 走量",
+      "s": "双线并行"
+    },
+    {
+      "k": "画质天花板",
+      "v": "S Pro Mini LED 2026 98″：5700nits · 3864 分区 · 330Hz · 广视角低反屏（0.5% LR）",
+      "s": "已开售"
+    },
+    {
+      "k": "技术栈",
+      "v": "MT9655 + XM9000 独立画质芯片 + 大师画质引擎；澎湃 OS 3 + 毫米波雷达护眼",
+      "s": "软硬配套"
+    },
+    {
+      "k": "价格锚点",
+      "v": "S Pro 65″ 6499 → 98″ 19999（国补到手 13499）；S MiniLED 4199 起；Redmi MAX 100″ 8799",
+      "s": "三档"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "科技家电集中亮相（AWE 期间）",
+      "meta": "预热",
+      "items": [
+        {
+          "time": "03.14",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "小米电视 S Pro Mini LED 2026 首次公开亮相",
+          "desc": "作为小米目前<b>最高端</b>的电视系列出现在科技家电展区：<b>5700nits</b> 峰值亮度、广视角低反屏，配合大师画质引擎。同场展示 Xiaomi Sound 2 Max 音响（三分频、MTM 架构、降低失真）。现场同步强调小米全球 AIoT 连接设备数已突破 10 亿台、覆盖 200+ 品类，电视作为「未来家」的中枢之一。",
+          "price": "—（展示，价格 4 月公布）"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "S Pro Mini LED 2026 发布 · 4/3 发布 4/21 开售",
+      "meta": "全年重点",
+      "items": [
+        {
+          "time": "04.03",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "小米电视 S Pro Mini LED 2026（65 / 75 / 85 / 98″）",
+          "desc": "华星光电 WHVA 屏 + 广视角低反屏：<b>0.5% LR 低反膜</b>，整机反射率低至 1.8%，白天强光下也不怕反光。分区与亮度按尺寸分档——85″ 为 <b>2880 分区 / 5200nits</b>，98″ 为 <b>3864 分区 / 5700nits</b>；ΔE≈1 专业色准、10.7 亿色、95% DCI-P3。刷新率 4K 165Hz、开启竞技模式可到 <b>330Hz</b>。芯片为联发科 MT9655（四核 A73）+ 自研 <b>XM9000</b> 画质芯片与大师画质引擎，4GB+64GB，跑<b>澎湃 OS 3</b>（HyperOS 3），支持全双工小爱同学、连续对话与多方言识别；内置<b>毫米波雷达</b>实时监测观看距离做护眼提醒。音频为 2.1.2 声道 61W、哈曼大师调音、带两个向上发声单元支持杜比全景声。外观 0.9mm BM 黑边 + 约 4.35mm 金属边框，配双高度金属底座。",
+          "price": "65″ <b>6499</b> · 75″ <b>8199</b> · 85″ <b>10499</b> · 98″ <b>19999</b> 元（98″ 国补到手约 <b>13499</b>）"
+        },
+        {
+          "time": "04月",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "小米电视 S Mini LED 2026（55–85″）",
+          "desc": "主力走量段，延续「低反屏 + 高刷 + 分区」三件套：S75 为 <b>1008 分区</b>、288Hz 高刷、低反屏；S65 为 760 分区、288Hz。定位比 S Pro 低一档，亮度与分区规模相应收敛，但保留高刷与低反这两个体感最强的卖点。4 月上市。",
+          "price": "S 系列 <b>4199</b> 元起｜S75 常卖约 5399，S65 常卖约 5599（促销价更低）"
+        }
+      ]
+    },
+    {
+      "m": "年内",
+      "label": "Redmi 补巨幕与入门",
+      "meta": "两头拉伸",
+      "items": [
+        {
+          "time": "年内",
+          "tag": "id",
+          "tagText": "巨幕",
+          "st": "已开售",
+          "title": "Redmi 电视 MAX 100″ 2026 + 85″",
+          "desc": "把 100 英寸往更低价位压：4K <b>144Hz</b>、亮度 400–600nits、30W 扬声器、HDMI 2.1、五核 A55 + 4GB+64GB、450W 功耗。85″ 版本 4899 元、亮度略低、20W 扬声器、3GB 内存。",
+          "price": "100″ <b>8799</b> 元｜85″ <b>4899</b> 元"
+        },
+        {
+          "time": "年内",
+          "tag": "id",
+          "tagText": "入门",
+          "st": "已开售",
+          "title": "Redmi A Pro 系列 + Redmi X 2026",
+          "desc": "<b>A Pro</b> 覆盖 43–75″，多数型号 4K 144Hz（基础版为 60Hz），最高 94% DCI-P3，四核 / 五核 A55，最高 3GB+64GB，扬声器 16–20W。<b>Redmi X 2026</b> 主打高刷：X75 为 512 分区 Mini LED、288Hz 超高刷。",
+          "price": "A Pro 43″ <b>1799</b> 起 → 75″ <b>3599</b> 元｜Redmi X 2026 <b>2999</b> 元起｜REDMI MAX 4999 元起"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>S Pro Mini LED 2026</b>：65″ 6499 / 75″ 8199 / 85″ 10499 / 98″ 19999 元（国补后 98″ 约 13499）",
+    "<b>S Mini LED 2026</b>：4199 元起（55–85″，288Hz + 低反屏）",
+    "<b>Redmi MAX</b>：4999 元起，100″ 旗舰型号 8799 元",
+    "<b>Redmi X 2026</b>：2999 元起｜<b>Redmi A Pro</b>：1749 元起（43–75″）｜<b>Redmi A 2025</b>：899 元起",
+    "<b>软件栈</b>：澎湃 OS 3 / HyperOS 3 + 小爱同学 + 米家全屋互联，与华为鸿蒙生态正面对位"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：观察者网 / 中关村在线 / 百度百科（小米电视 S Pro 65 Mini LED 2026）/ Gizmochina / Droid Tools / 小米官网 / 天猫小米官方旗舰店"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

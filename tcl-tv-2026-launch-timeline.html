@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCL 电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0f6cbd; --accent-soft:#e8f1fb;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题（海外线） */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5fa8ee; --accent-soft:#1b2b3d;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block}
+  .sqd i:nth-child(1){background:#2563eb}.sqd i:nth-child(2){background:#22d3ee}.sqd i:nth-child(3){background:#cbd5e1}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html" class="on" aria-current="page">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>海外 2026 SQD 线</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰(蓝) / te=高端 / pu=形态·巨幕 / id=主流·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   注：原「先看结论 · 观察与待验证」模块已从页面移除，
+       内容保留在 PAGE.notes（不渲染）；需要恢复时在
+       #months 前插入 .sec > .plain > ul（id 用 notes），
+       并放开渲染区最后一行的注释即可。
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  eyebrow:  "TCL TV · 2026 LAUNCH TIMELINE",
+  title:    "TCL 电视 2026 新品发布年表",
+  subtitle: "1月国内首发 → 9月 IFA / CEDIA · SQD-Mini LED 从 3 万档一路下放到 9999 · 含 163″ Micro LED 巨幕与海外线",
+  badge:    "V1 · 09-18",
+
+  keyInfo: [
+    { k:"年度主线", v:"SQD-Mini LED（2025.9 首发）全年三次下放：旗舰 → 万元档 → 5 千档", s:"技术普惠" },
+    { k:"技术站队", v:"不走 RGB 三色背光，用「蓝灯珠 + 超级量子点 + 晶粹高色阻」做全局高色域、正面硬刚串色", s:"SQD vs RGB" },
+    { k:"画质天花板", v:"X11L：20736 精确控光分区 · 10000nits · 100% BT.2020 · WHVA 2.0 Ultra", s:"全球旗舰" },
+    { k:"资本动作", v:"1/20 索尼意向备忘录 → 3/31 最终协议：TCL 51% / 索尼 49% 组建合资公司，2027 年 4 月运营", s:"TCL×SONY" }
+  ],
+
+  months: [
+    { m:"01月", label:"国内首发 + CES 2026", meta:"一年两次大发", items:[
+      { time:"01.05", tag:"", tagText:"旗舰", st:"已开售",
+        title:"Q10M Pro / Q10M（国内 SQD-Mini LED 新品发布会）",
+        desc:"SQD-Mini LED 首次下放到主流价位：超级量子点 + 超级蝶翼华曜屏，100% BT.2020 全局高色域、5000nits 级亮度；Q10M Pro 配 B&O 音响、灵控系统 3.0、隐藏式集线、4+64GB、4× HDMI 2.1、300Hz 高刷模式。官方口径：比同尺寸高端 RGB-Mini LED 便宜 30%–50%。",
+        price:"Q10M Pro 65/75/85/98″ <b>11999 / 16999 / 21999 / 31999</b>｜Q10M 同尺寸 <b>9999 / 12999 / 15999 / 24999</b> 元｜1/5 预售，<b>1/15</b> 开售" },
+      { time:"01.05", tag:"", tagText:"机皇", st:"海外",
+        title:"X11L 北美首展（CES 2026 · LVCC Central Hall #18604，展位 2453㎡）",
+        desc:"全球首款 SQD-Mini LED 电视：CSOT WHVA 2.0 Ultra 面板（原生对比度 7000:1、ZeroBorder、抗反射层）+ Deep Color System（超级量子点 / UltraColor 滤光片 / 色彩纯度算法）；最高 <b>20736 精确控光分区</b>、<b>10000nits</b> 峰值、26-bit 背光控制器、TSR AI 处理器、Audio by Bang & Olufsen、Virtually ZeroBorder 极窄边、最薄处约 2cm。支持 Gemini for Google TV、Dolby Vision 2（后续 OTA 推送至 X / C 系列）。",
+        price:"75 / 85 / 98 英寸｜美国率先上市，年内铺全球" },
+      { time:"01.06", tag:"pu", tagText:"形态", st:"展出",
+        title:"CES 同场：印刷 OLED 车载屏 / 雷鸟 X3 Pro Project eSIM / NXTPAPER",
+        desc:"TCL 实业与 TCL 科技联合参展「屏宇宙 + AI 生活」两条线：TCL 华星全球首款印刷 OLED 车载屏（材料利用率 &gt;90%）；雷鸟 X3 Pro Project eSIM 全球首展，内置 eSIM 可独立通话与实时 AI 翻译；同期展示 NXTPAPER 护眼显示与 AiMe 陪伴机器人。",
+        price:"—（展会技术展示）" },
+      { time:"01.20", tag:"pu", tagText:"资本", st:"海外",
+        title:"与索尼签署家庭娱乐战略合作意向备忘录",
+        desc:"索尼公司与 TCL 电子宣布签署意向备忘录：拟设立一家承接索尼家庭娱乐业务的合资公司，<b>TCL 持股 51%、索尼持股 49%</b>，在全球范围内开展电视机与家庭音响从产品开发、设计、制造、销售、物流到客户服务的一体化运营。双方计划于 2026 年 3 月底前订立最终协议，取得监管批准后新公司预计 2027 年 4 月开始运营，产品继续使用「Sony」与「BRAVIA」品牌。索尼总裁兼 CEO 槙公雄、TCL 电子董事会主席杜娟出席表态。",
+        price:"—（意向阶段，未披露对价）" }
+    ]},
+
+    { m:"03月", label:"春季新品发布会「当技术站上巅峰 普惠才有力量」", meta:"全线覆盖", items:[
+      { time:"03.17", tag:"te", tagText:"轻旗舰", st:"已开售",
+        title:"Q9M Pro",
+        desc:"最高 <b>3552 个万象分区</b>，官方称「一区顶多区」、控光等效 10656 分区的 RGB 电视；超级量子点 + 超级蝶翼星曜屏，100% BT.2020，色点准确性较上代 +69%，比上代多呈现 30% 色彩；TSR AI 光色同控芯片逐帧优化；4K 150Hz 原生，可开 300Hz 模式；灵控系统 3.0（行业唯一「蓝光级」导航 + 自动刮削海报墙）。",
+        price:"55–98 英寸全尺寸覆盖" },
+      { time:"03.17", tag:"te", tagText:"高端", st:"已开售",
+        title:"T7M Ultra",
+        desc:"家庭普惠场景主推：最高 2176 个万象分区、峰值亮度 3000nits，画质表现针对同价位普通 Mini LED 做对标升级。",
+        price:"65–98 英寸｜国补后进入主流价位" },
+      { time:"03.17", tag:"id", tagText:"主流", st:"已开售",
+        title:"T7M Pro",
+        desc:"普及先锋：1152 个万象分区 + 2200nits，安桥 2.1.2 声道 Hi-Fi 音响（天空声道 + 超重低音），集成伏羲 AI 大模型的 18+N 智能体。TCL 称其为「满级配置」的主流换代机。",
+        price:"<b>国补后入门价直达 5 千元档</b>，把 SQD-Mini LED 拉到前所未有的亲民区间" },
+      { time:"03.17", tag:"pu", tagText:"巨幕", st:"已发布",
+        title:"Max163M Pro / Max163M（163″ Micro LED 双曜系列，压轴）",
+        desc:"2488 万多颗无机自发光芯片、<b>真 4K 实像素</b>；Max163M Pro 峰值亮度 <b>XDR 10000+nits</b>，显示精度与色彩对专业影视制作标准对齐。标志超大尺寸 Micro LED 正式进入家庭应用阶段。",
+        price:"Max163M <b>249999</b> 元｜Max163M Pro 价格未单独公布" },
+      { time:"03.31", tag:"pu", tagText:"资本", st:"海外",
+        title:"与索尼签署最终协议：合资公司落地，TCL 51% 控股",
+        desc:"TCL 电子港交所公告，双方已签署<b>具有法律约束力</b>的最终协议。索尼设立全资「筹备公司」承接家庭娱乐业务，TCL 电子全资附属 TTE Corporation 认购部分股份，组建新公司：<b>TCL 51% / 索尼 49%</b>。承接范围包括消费级电视（BRAVIA）、B2B 平板显示器（B2B BRAVIA）、B2B LED 显示屏、投影机与家庭音响的研发设计、制造、销售、物流及客户服务，全球运营。索尼制造子公司 <b>SOEM（马来西亚）100% 股权</b>转予 TCL；上海索广映像（SSVE）股权转让仍在磋商。交易企业价值约 <b>1028 亿日元</b>（约 52 亿港元），TCL 应付对价预计约 <b>754 亿日元</b>（约 38 亿港元），交割时按净债务与营运资金调整。新公司预计 2027 年 4 月运营，将成为 TCL 电子的合并子公司、索尼的权益法联营企业。",
+        price:"索尼家庭娱乐业务 2025 年除税前净利约 <b>8973.5 万日元</b>，资产净值约 710 亿日元｜交易仍需监管批准" }
+    ]},
+
+    { m:"05–06月", label:"海外铺货（中东 / 欧洲）", meta:"SQD 出海", items:[
+      { time:"05.15", tag:"", tagText:"旗舰", st:"海外",
+        title:"阿联酋发布 C7L / C8L / X11L 三档",
+        desc:"迪拜媒体发布会，SQD-Mini LED 2026 线中东首秀：X11L 为旗舰（10000nits / 20000+ 分区 / B&O / Virtually ZeroBorder，75·85·98″）；C8L 用 WHVA 2.0 Ultra 面板 + B&O；C7L 为入门档，144Hz 原生 + 288Hz VRR Game Accelerator。",
+        price:"65–98 英寸｜阿联酋线上线下渠道" },
+      { time:"06.09", tag:"te", tagText:"高端", st:"海外",
+        title:"土耳其发布 C8L / C7L / Q7D Pro",
+        desc:"C8L：WHVA 2.0 Ultra 面板、最高 <b>4032 分区</b>、6000nits、B&O 音响、Virtually ZeroBorder，65/75/85/98″。C7L：最高 2176 分区、3000nits、144Hz 原生 + 288Hz VRR。Q7D Pro：100% BT.2020、2000nits、144Hz/288Hz VRR、ONKYO 2.1 声道，55/65/75″。",
+        price:"欧洲分批上市，价格按区域公布" }
+    ]},
+
+    { m:"08月", label:"壁纸艺术电视 + 东南亚铺货", meta:"形态补位", items:[
+      { time:"08.15", tag:"pu", tagText:"壁纸", st:"已开售",
+        title:"C10M 真壁纸 SQD-Mini LED",
+        desc:"主打「艺术电视不再牺牲画质」：<b>65/75″ 机身 3.99cm、85″ 4.19cm</b>，整机平整无「小书包」凸起，可真正贴墙；无黑边蝶翼华曜屏 + 0.5% LR 低反射膜，待机如壁画。画质上给到 <b>2304 个万象分区</b>「一珠一区」精准控光 + TSR AI 光色同控芯片，100% BT.2020，峰值 3600nits。安桥多声道 Hi-Fi（杜比全景声 + DTS:X）、灵控系统 3.0（无开机广告）融合 DeepSeek 伏羲大模型、4K 150Hz、4× HDMI 2.1、4GB+64GB。",
+        price:"65″ <b>12999</b> · 75″ <b>15999</b> · 85″ <b>19999</b> 元" },
+      { time:"08月", tag:"id", tagText:"海外", st:"海外",
+        title:"菲律宾：C7L + G64/G54 电竞显示器 + TP300K/TP200K 派对音响",
+        desc:"C7L 走 HVA 2.0 Pro 面板，1352 分区 / 3000nits / 100% BT.2020 / 144Hz 原生 + 288Hz VRR / B&O + 杜比全景声 / Google TV，55·65·75·85″。同期把 Mini LED 能力下放到桌面：G64（QD-Mini LED，300Hz，HDR600，97% DCI-P3）与 G54。",
+        price:"菲律宾官方价见 tcl.com/ph" }
+    ]},
+
+    { m:"09月", label:"IFA 2026 柏林 + CEDIA 2026 丹佛", meta:"海外主场", items:[
+      { time:"09.03", tag:"", tagText:"旗舰", st:"展出",
+        title:"IFA 2026：X11L 领衔「Inspiration Habitat」",
+        desc:"柏林 Messe Berlin 21A 馆（9/3–9/8）。X11L 作为展台中心（20736 分区 / 10000nits / 100% BT.2020 / B&O）；同场发布 Q95K 旗舰回音壁（11.1.4 声道，B&O 参与）、X3A OLED+ 电竞显示器（双模式超高刷）。确认 Gemini for Google TV 已在英国、法国、意大利、西班牙上线。同期借 FIBA 女篮世界杯在柏林办篮球主题体验（TCL 为 FIBA 全球合作伙伴）。",
+        price:"—（展会 + 区域上市节奏）" },
+      { time:"09.02", tag:"te", tagText:"渠道", st:"展出",
+        title:"CEDIA 2026：SQD-Mini LED 首次进入北美定制安装渠道",
+        desc:"丹佛（9/2–9/4，Booth #3200）首次向定制安装商展示三系列：<b>X11L</b>（旗舰）、<b>QM8L</b>（次旗舰，性价比替代）、<b>QM7L</b>（同价位色彩准确度见长）。配套 Z100 无线音箱系统（Dolby Atmos FlexConnect，支持无线低音炮扩展）与 Q-Class 回音壁、Designer Series 超薄装饰电视。",
+        price:"北美定制安装渠道，9 月起铺" }
+    ]}
+  ],
+
+  overseas: [
+    "<b>X11L</b>：20736 分区 / 10000nits / 100% BT.2020 / WHVA 2.0 Ultra / B&O / 约 2cm 极薄，75·85·98″，全球旗舰",
+    "<b>C8L</b>：WHVA 2.0 Ultra，4032 分区 / 6000nits / B&O / ZeroBorder，65–98″",
+    "<b>C7L</b>：2176 分区（菲律宾版 1352）/ 3000nits / 144Hz 原生 + 288Hz VRR / B&O，55–98″",
+    "<b>Q7D Pro</b>：100% BT.2020 / 2000nits / 144Hz+288Hz VRR / ONKYO 2.1，55·65·75″",
+    "<b>QM8L / QM7L</b>：北美定制渠道新增的 SQD 次旗舰与高色准档（CEDIA 2026 首秀）",
+    "<b>生态位</b>：欧洲 Google TV + Gemini；国内灵控系统 3.0 + 伏羲 / DeepSeek，两条软件栈并行"
+  ],
+
+  notes: [
+    "<b>TCL 今年打的不是参数，是价格</b>：同一套 SQD-Mini LED 在 12 个月内从 Q10M Pro 的 3 万档 → Q9M Pro 轻旗舰 → T7M Pro 国补后 5 千档，下放速度比海信 RGB 路线激进得多。做横评时「同技术不同价位」的对比素材非常充足。",
+    "<b>路线之争是今年最好的选题</b>：TCL 明确用「全局高色域 + 不串色」打 RGB-Mini LED 的串色 / 色晕问题（官方口径：分区数 3552 等效 RGB 的 10656）。但这是厂商自测口径，<b>等效关系没有第三方验证</b>，写稿时要标注来源。",
+    "<b>形态线比海信更完整</b>：C10M 真壁纸（3.99cm 整机平整）对标 A6Q 的 5.5cm，且 C10M 强调「不牺牲画质」——2304 分区 + 3600nits 确实高于同价位艺术电视。这条可以直接做 A/B 对比。",
+    "<b>待验证</b>：X11L 的 20736 分区与 10000nits 均为官方标称，海外媒体（FlatpanelsHD、HDTVTest）实测尚未广泛流出；Max163M Pro 价格未公布；Q9M Pro / T7M 系列官方未公布完整定价表。",
+    "<b>数据口径</b>：国内价为官方零售价或国补后到手价，实际成交随渠道浮动；海外价为区域建议零售价或展会公布值。"
+  ],
+
+  footL: "整理于 2026-09-18 · 来源：新华网 / 光明网 / 深圳新闻网 / 深圳晚报 / 中国质量新闻网 / TCL 官方新闻室（us·gulf·tr·levant）/ IFA·CEDIA 现场报道"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+/* 恢复「先看结论」模块时，同时加回 DOM 与下面这行：
+   document.getElementById('notes').innerHTML = PAGE.notes.map(x => 小于号li大于号${x}小于号/li大于号).join(''); */
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

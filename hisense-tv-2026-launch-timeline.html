@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海信电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0f6cbd; --accent-soft:#e8f1fb;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题（海外线） */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5fa8ee; --accent-soft:#1b2b3d;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .rgb{display:inline-flex;gap:3px}
+  .rgb i{width:7px;height:7px;border-radius:2px;display:block}
+  .rgb i:nth-child(1){background:#e04b4b}.rgb i:nth-child(2){background:#3fae63}.rgb i:nth-child(3){background:#3f74d6}.rgb i:nth-child(4){background:#3fb6c9}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html" class="on" aria-current="page">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="rgb"><i></i><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>海外 2026 线（S 后缀）</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰(蓝) / te=高端 / pu=激光 / id=主流·海外 / wa=预告
+   st:   已开售 · 预售中 · 已发布 · 待发布 · 海外
+   注：原「先看结论 · 观察与待验证」模块已从页面移除，
+       内容保留在 PAGE.notes（不渲染）；需要恢复时在
+       #months 前插入 .sec > .plain > ul（id 用 notes），
+       并放开渲染区最后一行的注释即可。
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  eyebrow:  "HISENSE TV · 2026 LAUNCH TIMELINE",
+  title:    "海信电视 2026 新品发布年表",
+  subtitle: "1月 CES → 9月秋季发布会 · RGB-Mini LED 全线下放 · 含激光电视与海外线",
+  badge:    "9/23 待发布",
+
+  keyInfo: [
+    { k:"年度主线", v:"RGB-Mini LED 从旗舰下放到 55″，全年 4 次升级（evo 四原色 → 玲珑真彩 2.0）", s:"技术主线" },
+    { k:"画质天花板", v:"UX2026：43008 控色分区 · 10000nits · 110% BT.2020 · 134bits", s:"已开售" },
+    { k:"国内已发", v:"UX2026 / E8Q / E8Q Pro / E7S Pro / 小墨E5S Pro / U7S Pro / 探索X1 Pro / 星光S2 Pro", s:"8 款" },
+    { k:"赛事绑定", v:"2026 FIFA 世界杯全球官方赞助商，UX2026 与探索X1 Pro 均为官方定制", s:"营销主线" }
+  ],
+
+  months: [
+    { m:"01月", label:"CES 2026 · 拉斯维加斯（1/5–1/9）", meta:"海外首发", items:[
+      { time:"01.05", tag:"", tagText:"旗舰", st:"海外",
+        title:"116UXS · RGB Mini-LED evo 四原色旗舰",
+        desc:"全球首创 RGB + 天青色四原色架构，补齐 480–520nm 青色断层；110% BT.2020，Hi-View AI Engine RGB 管理数万控色分区；Devialet Opéra de Paris 6.2.2 声道，机身 1.57 英寸近乎无边框。",
+        price:"北美 / 欧洲，年内上市" },
+      { time:"01.05", tag:"te", tagText:"高端", st:"海外",
+        title:"UR9 / UR8（UR9S、UR8S）系列",
+        desc:"RGB-Mini LED 首次下沉到主流尺寸段 55–100 英寸；100% BT.2020，4K 180Hz 原生（PC 1080p 可 300Hz），Dolby Vision 2，Devialet 调音，45mm 一体机身。欧洲 Vidaa / 美国 Google TV。",
+        price:"UR9S 美元 3500/5000/6000/9000（65/75/85/100″）；欧洲 €2199 起，5–7 月陆续上市" },
+      { time:"01.05", tag:"id", tagText:"形态", st:"海外",
+        title:"S6 FollowMe / CanvasTV S7 / DecoTV S5",
+        desc:"生活方式线：S6 为 32″ 触控移动屏带电池（约 10 小时）；CanvasTV S7 走画框艺术路线（55/65″）；DecoTV S5 白色机身装饰向（32/43″）。",
+        price:"S6 €1499 · CanvasTV €1199/1399 · 均 Q4 2026" }
+    ]},
+
+    { m:"03月", label:"中国主场 · 一周三发 + AWE", meta:"全年最密集", items:[
+      { time:"03.05", tag:"", tagText:"超旗舰", st:"已开售",
+        title:"UX2026 款 RGB-Mini LED（青岛 · 世界杯营销暨定制产品发布会）",
+        desc:"玲珑 4 芯真彩背光（RGB + 天青）· 信芯 AI 画质芯片 H7 Pro（四芯同控，134bits）· 黑曜屏 Ultra（反射率 1.28%、黑位 4 倍）· 4K 180Hz 原生 · 帝瓦雷 6.2.2 + 全球首创对冲式低音舱 · WiFi 7 / 8GB+128GB / Dolby Vision 2 · AI 全景世界杯观赛 · 支持 Mac 原彩显示。",
+        price:"85″ <b>34999</b> · 100″ <b>54999</b> · 116″ <b>119999</b> 元｜3/5 预售，<b>4/18</b> 开售" },
+      { time:"03.09", tag:"te", tagText:"高端", st:"已开售",
+        title:"E8Q / E8Q Pro（「巅峰画质，影游旗舰」发布会）",
+        desc:"E8Q：信芯 H6 · 黑曜屏 Pro · 330Hz 系统级高刷 · 帝瓦雷影院音响 · U+ Mini LED 光晕控制系统。E8Q Pro：全球首发信芯 H7 · 黑曜屏 Ultra · 26bits 灰阶控制 · 15680 点高精色彩 · 原生 90% BT.2020 立体色域 · 178° 广视角（画面立体感 +54.4%）。",
+        price:"E8Q 65/75/85/100″ <b>7499 / 9999 / — / 22999</b>；E8Q Pro 75/85/100″ <b>13599 / 17999 / 27999</b> 元" },
+      { time:"03.10", tag:"te", tagText:"高端", st:"已开售",
+        title:"E7S Pro（RGB-Mini LED 性能旗舰）",
+        desc:"玲珑真彩背光 + 信芯 H7：7560 控色分区 · 5100nits · 100% BT.2020 · ΔE&lt;0.7 · 微纳级匀光透镜 + RGB 非对称光源旋转阵列（光晕降低 60%）· 108bits 控色 · 53mm 超薄贴墙 · 硬件级低蓝光 + 无镉制造。",
+        price:"65/75/85/100″ 首发到手 <b>6999 / 8499 / 11499 / 18499</b> 元｜3/10 预售，3/25 开售" },
+      { time:"03月中", tag:"pu", tagText:"激光", st:"已发布",
+        title:"AWE 2026 · 探索 X1 Pro 亮相并获艾普兰创新奖",
+        desc:"100″ 激光电视旗舰在 AWE 首发曝光即获奖，为探索 X1 系列连续第二年摘得艾普兰；5 月正式上市。同期海信在 AWE 展出 E7S Pro 等 RGB-Mini LED 全家桶。",
+        price:"—（展会亮相）" }
+    ]},
+
+    { m:"04月", label:"全球上市 + 旗舰开售", meta:"世界杯前哨", items:[
+      { time:"04.15", tag:"", tagText:"旗舰", st:"海外",
+        title:"RGB-Mini LED 2026 系列 · 瑞士 FIFA 总部全球发布",
+        desc:"在 FIFA 总部面向全球推出 2026 系列，尺寸首次覆盖 55–116 英寸全段；亚太 / 美国 / 欧洲 / 日本同步上市。自 2025 年量产以来该系列已获 40 余项国际奖项。",
+        price:"全球市场，按区域分批" },
+      { time:"04.18", tag:"", tagText:"旗舰", st:"已开售",
+        title:"UX2026 国内正式开售",
+        desc:"预售一个半月后正式开售，定位 2026 体育 / 影音 / 游戏顶配大屏。",
+        price:"85 / 100 / 116 英寸三规格" },
+      { time:"04月", tag:"id", tagText:"海外", st:"海外",
+        title:"欧洲 2026 全系公布（U7S Pro / U7SE / E8S / E7S Pro / E7S / A7S / A6S）",
+        desc:"2026 年欧洲线以 S 后缀取代去年的 Q：U7S Pro 为主流段唯一带 Dolby Vision 2 的机型（3000nits / 165Hz / 4× HDMI 2.1，MediaTek Pentonic 800）；全系 Vidaa 平台 + Devialet 调音，Q2 起陆续上市。",
+        price:"U7S Pro 6 月上市 · UR8S 7 月上市" }
+    ]},
+
+    { m:"05月", label:"激光电视年度旗舰", meta:"客厅影院", items:[
+      { time:"05.20", tag:"pu", tagText:"激光", st:"已开售",
+        title:"探索 X1 Pro（「客厅影院 · 新答案」线上发布会）",
+        desc:"CineCore 院线光引擎：与 IMAX 放映机同源的 MCL39 工业级三色激光器 + DLP 架构 + 800 万颗 DMD 控光微镜，光通量 +12%、光路效率 +20%；110% BT.2020 · ΔE≈0.6 · 纳米光谱选择屏（环境光遮蔽 83%）。声场首创 6.1.2 声道澎湃分布式音响（主机 + 屏幕发声 + 哈曼卡顿低音炮，声场中心上移 40cm，低音下潜 33Hz）。全球首款云台一体化激光电视，隐翼悬浮云台 · 投射比 0.2（距墙 34cm 投百吋）· 屏幕厚 3cm。莱茵 TÜV 眼舒适五星 + 0 有害蓝光。",
+        price:"100″ <b>34999</b>（国补后 27999）· 120″ <b>49999</b>（国补后 42999）元｜4GB+128GB，优酷 8000+ 部 4K MAX 片源" }
+    ]},
+
+    { m:"06–07月", label:"RGB-Mini LED 走量段补位", meta:"下沉", items:[
+      { time:"06月", tag:"te", tagText:"走量", st:"已开售",
+        title:"小墨 E5S Pro（RGB-Mini LED 爆款）",
+        desc:"把 RGB-Mini LED 拉进 5–9 千元段：玲珑真彩背光 + 信芯芯片 + 墨晶屏 2.0，2000–3000nits、100% BT.2020、4× HDMI 2.1、65W 音响。75 / 85 英寸成为今年线上走量主力。",
+        price:"55″（1536 分区）约 <b>5292</b> 起 · 85″（3024 分区）常卖 <b>9999</b>，大促 8300–9600 区间" },
+      { time:"06–07月", tag:"te", tagText:"高端", st:"已开售",
+        title:"U7S Pro（国内 · 影像旗舰，业内称「小 UX」）",
+        desc:"沿用 UX 旗舰全套核心画质技术，主攻专业观影 / 游戏 / 摄影后期；行业唯一同时拿下潘通色彩 + IMAX Enhanced 认证，支持爱奇艺帧绮映画 MAX、腾讯臻彩 MAX+；支持 NFS / WebDAV 家庭私有云直读高码率片源。与国产游戏《影之刃零》联名。",
+        price:"75/85/100″ 首发 <b>15499 / 19469 / 27999</b> 元｜<b>专供线下</b>" },
+      { time:"07月", tag:"id", tagText:"海外", st:"海外",
+        title:"UR8S 欧洲上市",
+        desc:"55–100 英寸五档，€1499 / €1799 / €2499 / €3299 / €3999，Dolby Vision 2 + Devialet 2.1.2，7 月铺货。",
+        price:"€1499 起" }
+    ]},
+
+    { m:"08月", label:"激光电视第二弹", meta:"护眼 + 全景声", items:[
+      { time:"08.28", tag:"pu", tagText:"激光", st:"已开售",
+        title:"星光 S2 Pro（抖音直播间线上发布）",
+        desc:"定位「全景声家庭影院 + 硬件级专业护眼」：一体免布线设计，电影院同源技术；哈曼卡顿全链路原厂定制 4.1.2 声道澎湃分布式音响；莱茵双认证（EyeComfort 五星 + 0 有害蓝光），从光源端避开 415–455nm 有害蓝光波段，反射成像、屏幕不通电无辐射。",
+        price:"100 / 88 / 80 英寸｜8/28–8/31 直播间 100 元抵 500 元代金券" },
+      { time:"08月", tag:"id", tagText:"艺术", st:"已开售",
+        title:"A6Q 超薄艺术电视",
+        desc:"机身压缩到 5.5cm，贴墙挂装仅 3mm 缝隙，适配内嵌家装；搭载 Mini LED + 星海 AI 大模型，是行业首个接入 DeepSeek 智能体的电视；前出音声场 + 双流道通风，深嵌柜体不闷音、不积热。",
+        price:"内嵌 / 壁挂场景主推" }
+    ]},
+
+    { m:"09月", label:"秋季新品发布会（定档）", meta:"待发布", items:[
+      { time:"09.23", tag:"wa", tagText:"预告", st:"待发布", next:true,
+        title:"U7T Pro · 新一代 RGB-Mini LED 影像旗舰",
+        desc:"沿用 U7 经典名号（该系列覆盖全球 75 国，长期居国内线下高端销量榜首）。搭载<b>玲珑真彩背光 2.0</b>，升级重心从静态色域 / 峰值亮度转向<b>动态影像色彩体系</b>，解决高速运动画面的色彩漂移；首发<b>真彩黑曜屏</b>（为 RGB-Mini LED 深度定制，在保留抗反光的同时还原原生色彩）。官方口径「静见本真、动守真彩」。",
+        price:"分区规模 / 亮度 / 芯片 / 价格<b>官方尚未公布</b>，发布会当天揭晓" }
+    ]}
+  ],
+
+  overseas: [
+    "<b>UR9S</b>：65/75/85″，4000nits，Devialet 4.1.2，180Hz（65″ 为 170Hz），€2199 / €2699 / €3699，5 月上市",
+    "<b>UR8S</b>：55–100″ 五档，3500nits，Devialet 2.1.2，170Hz，€1499 起，7 月上市",
+    "<b>U7S Pro</b>：Mini LED，3000nits，165Hz，Dolby Vision 2，4× HDMI 2.1，6 月上市",
+    "<b>U7SE / E8S</b>：中端 Mini LED（1400 / 600nits），E8S 为 2026 最便宜的 Mini LED 机型",
+    "<b>E7S Pro / E7S / A7S / A6S</b>：直下式背光入门线，43–100″ 全覆盖",
+    "<b>命名规律</b>：2026 年后缀统一为 <b>S</b>（2025 年为 Q），海外用 UR / U / E / A 分层"
+  ],
+
+  notes: [
+    "<b>技术节奏很清楚</b>：CES 抛概念（evo 四原色）→ 3 月国内落地（玲珑 4 芯）→ 4 月全球铺 → 9 月转向调校（玲珑 2.0）。全年从「堆分区」转到「拼动态调校」，这是今年最值得写的一条叙事线。",
+    "<b>价格断层明显</b>：UX 系列 3.5 万起，E7S Pro / 小墨 E5S Pro 把 RGB-Mini LED 打到 5–7 千，中间 E8Q 系列靠 330Hz 高刷+信芯 H7 卡位 1–2 万。做选购内容时按「预算档位」切比按技术切更实用。",
+    "<b>待验证</b>：U7T Pro 的分区 / 亮度 / 芯片全部保密；「动态影像色彩体系」目前只有官方话术，没有可量化指标，建议发布会后实测再下结论。",
+    "<b>激光电视独立成线</b>：5 月探索 X1 Pro 冲顶、8 月星光 S2 Pro 走护眼家庭向，两条腿；国补后价差 7000 元，是内容里最容易出对比数据的地方。",
+    "<b>数据口径</b>：国内价格为发布时官方价 / 首发到手价，实际成交随国补与渠道浮动；海外价为欧洲建议零售价。"
+  ],
+
+  footL: "整理于 2026-09-18 · 来源：新华网 / 光明网 / 环球网 / IT之家 / 凤凰网 / 中关村在线 / 证券时报 / FlatpanelsHD / Hisense 官方新闻室"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+/* 恢复「先看结论」模块时，同时加回 DOM 与下面这行：
+   document.getElementById('notes').innerHTML = PAGE.notes.map(x => 小于号li大于号${x}小于号/li大于号).join(''); */
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

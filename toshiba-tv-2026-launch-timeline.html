@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>东芝电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#b01030; --accent-soft:#fbe7ea;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff7286; --accent-soft:#381620;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#b01030}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#c9a227}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html" class="on" aria-current="page">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>日本 REGZA 2026 线与全球市场</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "TOSHIBA REGZA · 2026 LAUNCH TIMELINE",
+  "title": "东芝电视 2026 新品发布年表",
+  "subtitle": "1月 CES 亮技术 → 3/26 中国「真实音画」发布会（REGZA 品牌 20 周年）· 原色 RGB Mini LED + 音画双芯架构",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "原色 RGB Mini LED 全面落地：三原色背光芯片 + ZRα 光色同控（三维控色）+ 日本专家逐款调校",
+      "s": "真实音画"
+    },
+    {
+      "k": "画质天花板",
+      "v": "REGZA ZX：110% BT.2020 · 最高 43008 控色分区 · 134bits 光色同控 · 音画双芯 ZRα + BRα",
+      "s": "全球高定"
+    },
+    {
+      "k": "技术差异",
+      "v": "「音画双芯」架构——画质与音质各用一颗独立芯片专芯专控，是东芝今年最强调的结构性优势",
+      "s": "双芯"
+    },
+    {
+      "k": "品牌节点",
+      "v": "2026 恰逢 REGZA 品牌创立 20 周年；东芝电视深耕视听 74 年",
+      "s": "20 周年"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES 2026 · REGZA 最新技术发布",
+      "meta": "技术预热",
+      "items": [
+        {
+          "time": "01月",
+          "tag": "te",
+          "tagText": "技术",
+          "st": "展出",
+          "title": "CES 2026：REGZA 公布 RGB Mini LED 最新技术",
+          "desc": "日本 REGZA 官网以「CES2026 发表的最新技术」为主线预热，同期日本市场已开始铺 RGB Mini LED 机型：<b>ZX1 series</b>（ZX1R 带时间移机 / ZX1S）、<b>ZX2 series</b>（ZX2S）、<b>ZX3 series</b>（ZX3S）以及带时间移机的 4K Mini LED <b>Z8 series Z890S</b>。中国市场的正式发布放在 3 月。",
+          "price": "—（技术发布）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "中国：2026 真实音画暨原色 RGB Mini LED 旗舰新品发布会",
+      "meta": "年度主场",
+      "items": [
+        {
+          "time": "03.26",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "REGZA ZX 系列 / REGZA 700 系列 / 芝士 600 系列三系齐发",
+          "desc": "REGZA 品牌 20 周年之际的一次系统性更新，核心是<b>原色 RGB Mini LED</b>，走「硬件底层 + 算法引擎 + 专家调校」三位一体：硬件上由单色芯片升级为<b>多晶三原色背光芯片</b>，红 / 绿 / 蓝纯度分别达 <b>99% / 92% / 100%</b>，色域最高 <b>110% BT.2020</b>（官方称较普通 Mini LED 提升近 30%、较 OLED 提升近 10%）；算法上是全新 <b>ZRα AI 光色同控芯片</b>，从二维控光跨到<b>三维光色同控</b>，控色精度最高 <b>134bits</b>、最高<b>四万级控色分区</b>，官方称色调 / 饱和度 / 亮度控制力较普通 SOC 提升 400%+，色彩视角 +50%、均匀性 +30%、光晕 -60%；调校上沿用 70 余年色彩管理档案，由日本专家逐款精调。",
+          "price": "ZX / Z700SF PRO / R700SF / Z600SF PRO / R600SF 全阵容，3/26 起线下预售 + 线上预约"
+        },
+        {
+          "time": "03.26",
+          "tag": "",
+          "tagText": "超旗舰",
+          "st": "已发布",
+          "title": "REGZA ZX：定位「真实音画 全球高定」",
+          "desc": "东芝今年的顶格机型——最大尺寸、最高技术、最顶服务。110% BT.2020、最高 <b>43008 控色分区</b>与 134bits 光色同控精度；行业独家<b>音画双芯 ZRα + BRα</b> 架构，专芯专控让画质与音质同步拉满；<b>火箭炮 SOUND Ultra</b> 配对冲低音炮与 5.1.2 声道，做 360° 环幕剧院声场；REGZA Intelligence 场景自适应；Art Vision 艺术视听设计。服务上 116″ 用户享免费勘测、送货安装、专业调试、特殊墙体打孔、吊装入户<b>五项专属交付</b>；100″ 与 85″ 享四维「零操心」入户与 180 天只换不修 + 整机 3 年质保。",
+          "price": "116 / 100 / 85″ 三档，官方按尺寸分级定价"
+        },
+        {
+          "time": "03.26",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "REGZA Z7 PRO 与芝士 Z6 PRO",
+          "desc": "<b>Z7 PRO</b> 定位原色 RGB Mini LED AI 音画旗舰：最高 <b>6864 控色分区</b>、音画双芯 ZRα + BRα、火箭炮 SOUND Ultra + 真杜比 5.1.2、原生 4K <b>180Hz</b> 配黑瀑屏（抗反光防眩光同时兼顾竞技流畅度）。<b>芝士 Z6 PRO</b> 定位升级焕新的原色 RGB Mini LED，面向品质生活家庭。700 系列（Z700SF PRO / R700SF）控色精度为 <b>108bits</b>、色彩准确度提升 68%、100% BT.2020，硬件级原生低蓝光降低 42% 有害蓝光，三原色独立控光让整机功耗降低 30%。",
+          "price": "Z700SF PRO 3/26 线下预售｜R700SF 同步线上预约"
+        }
+      ]
+    },
+    {
+      "m": "年内",
+      "label": "区域首发与市场数据",
+      "meta": "渠道",
+      "items": [
+        {
+          "time": "年内",
+          "tag": "id",
+          "tagText": "渠道",
+          "st": "已发布",
+          "title": "重庆新品首发会：三大系列落地区域市场",
+          "desc": "以「原色入画 声动山城」为主题的区域首发，把 ZX（全球高定）、Z7 PRO（品质标杆）、芝士 Z6 PRO（升级焕新）三个定位一次性铺到渠道端，构建原色 RGB Mini LED 产品矩阵。",
+          "price": "—（渠道活动）"
+        },
+        {
+          "time": "2025 数据",
+          "tag": "id",
+          "tagText": "市场",
+          "st": "海外",
+          "title": "日本连续四年市占第一，海外多处高增长",
+          "desc": "东芝电视在日本市场连续四年份额第一，2025 年以 <b>29.2%</b> 稳居榜首。海外方面 2025 年东盟增长 <b>45.8%</b>、加拿大 44.6%、亚太 39.0%、印度 28.2%。这组数据是判断「东芝今年为什么敢在中国押 RGB」的背景——它在本土与新兴市场都在涨。",
+          "price": "—（市场数据）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>日本 REGZA 2026 春夏机型</b>：ZX1 series（ZX1R 带时间移机 / ZX1S）、ZX2 series（ZX2S）、ZX3 series（ZX3S）均为 RGB Mini LED",
+    "<b>Z8 series Z890S</b>：带时间移机的 4K Mini LED 高端机型",
+    "<b>中国市场</b>：ZX 系列（全球高定）/ REGZA 700 系列（Z700SF PRO、R700SF）/ 芝士 600 系列（Z600SF PRO、R600SF）",
+    "<b>市场表现</b>：日本连续四年第一（2025 年 29.2%）；2025 年东盟 +45.8%、加拿大 +44.6%、亚太 +39.0%、印度 +28.2%",
+    "<b>关系提示</b>：东芝电视品牌自 2017 年起由海信体系运营，做国内对比内容时可与海信 RGB 路线并看"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：经济参考报（新华网）/ 中国经济新闻网 / 中国商报网 / 中国网 / REGZA 日本官网"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

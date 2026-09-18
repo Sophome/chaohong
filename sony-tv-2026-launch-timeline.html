@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>索尼电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#2b2b2b; --accent-soft:#eeeeef;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#c9c9cd; --accent-soft:#2c2c30;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#e04b4b}
+  .sqd i:nth-child(2){background:#3fae63}
+  .sqd i:nth-child(3){background:#3f74d6}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html" class="on" aria-current="page">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>2026 BRAVIA 全系产品线</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "SONY BRAVIA · 2026 LAUNCH TIMELINE",
+  "title": "索尼电视 2026 新品发布年表",
+  "subtitle": "1/20 与 TCL 签意向 → 3/31 最终协议（TCL 51%） → 5/27 发布 True RGB 的 BRAVIA 9 II / 7 II → 6 月全球上市",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "True RGB 背光首次落到 9 系 / 7 系二代，RGB 电视第一次出现 50 英寸",
+      "s": "True RGB"
+    },
+    {
+      "k": "资本动作",
+      "v": "1/20 意向备忘录 → 3/31 最终协议：TCL 51% / 索尼 49%，新公司 2027 年 4 月运营",
+      "s": "TCL×SONY"
+    },
+    {
+      "k": "画质天花板",
+      "v": "BRAVIA 9 II：RGB Backlight Master Drive Pro + 全黑抗反光屏，实测 Professional 模式 3990nits",
+      "s": "超旗舰"
+    },
+    {
+      "k": "关键变化",
+      "v": "产品继续用 Sony / BRAVIA 品牌；索尼退守影像技术与品质定义，制造与渠道交给 TCL",
+      "s": "分工"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "与 TCL 签署战略合作意向备忘录",
+      "meta": "格局转折",
+      "items": [
+        {
+          "time": "01.20",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "海外",
+          "title": "索尼 × TCL：拟设合资公司，TCL 51% 控股",
+          "desc": "索尼公司与 TCL 电子签署意向备忘录：拟设立承接索尼家庭娱乐业务的合资公司，<b>TCL 持股 51%、索尼持股 49%</b>，在全球范围开展电视机与家庭音响从开发、设计、制造、销售、物流到客服的一体化运营。双方计划 2026 年 3 月底前签最终协议，取得监管批准后新公司预计 <b>2027 年 4 月</b>开始运营，产品继续用「Sony」与「BRAVIA」品牌。索尼总裁兼 CEO 槙公雄、TCL 电子董事会主席杜娟相继表态。这是继海信收购东芝之后，日系电视品牌再次把运营权交给中国厂商。",
+          "price": "—（意向阶段，未披露对价）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "最终协议签署",
+      "meta": "落地",
+      "items": [
+        {
+          "time": "03.31",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "海外",
+          "title": "最终协议签署：51 / 49 敲定，1028 亿日元企业价值",
+          "desc": "索尼设立全资「筹备公司」承接家庭娱乐业务，TCL 电子全资附属 TTE Corporation 认购部分股份组建新公司。承接范围：消费级电视（BRAVIA）、B2B 平板显示器、B2B LED 显示屏、投影机与家庭音响。索尼制造子公司 <b>SOEM（马来西亚）100% 股权</b>转予 TCL；上海索广映像（SSVE）仍在磋商。企业价值约 <b>1028 亿日元</b>（约 52 亿港元），TCL 应付对价约 <b>754 亿日元</b>（约 38 亿港元）。新公司为 TCL 电子合并子公司、索尼权益法联营企业。索尼家庭娱乐业务 2025 年除税前净利约 8973.5 万日元、资产净值约 710 亿日元。",
+          "price": "交易仍需监管批准｜新公司 2027 年 4 月开始运营"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "2026 BRAVIA 发布：True RGB 来了",
+      "meta": "年度主角",
+      "items": [
+        {
+          "time": "05.27",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "BRAVIA 9 II / 7 II 发布，首搭 True RGB 背光",
+          "desc": "索尼把 RGB 背光正式命名为 <b>True RGB</b>：Mini-LED QLED + Two-Diode RGB + True RGB Three Diode 组合，红绿蓝独立控光以求更高色量与更纯色彩。核心是 <b>XR 处理器</b>（交叉分析、AI 场景识别、XR Clear Image 升频、景深映射）。<b>9 II</b> 追加 RGB Backlight Master Drive Pro、Luminance Booster Pro、RGB Triluminos Max、Smooth Colour Gradation，以及「<b>全黑抗反光</b>」的 Immersive Black Screen Pro 面板；TechRadar 实测 Professional 模式达 <b>3990nits</b>。<b>7 II</b> 规格接近但为标准 Luminance Booster、<b>无抗反光涂层</b>，实测 2078nits。7 II 提供 <b>50″</b>，是市面上第一台 50 英寸 RGB 电视。两系均配 Voice Zoom 3（AI 分离人声）、跑 Google TV，后续 OTA 升级 Google TV with Gemini。",
+          "price": "美国：9 II 65″ <b>$3,599.99</b> · 75″ $4,599.99 · 85″ $6,499.99 · 115″ <b>$30,999.99</b>｜7 II 50″ $1,599.99 → 98″ $8,999.99"
+        },
+        {
+          "time": "05.29",
+          "tag": "te",
+          "tagText": "音频",
+          "st": "已发布",
+          "title": "BRAVIA Theatre Trio 家庭影院系统",
+          "desc": "三件式设计：两只音箱 + 一条回音壁，可另加无线后置与低音炮；支持 Dolby Atmos、DTS:X 与 IMAX Enhanced。今年索尼在音频上的重点是与电视联动的简化操作——新 <b>My Cinema</b> 界面可一键在「导演剪辑版 / 日间 / 对白」三种模式间切换，电视与 Soundbar 参数自动联动。",
+          "price": "Trio <b>$2,199</b> 美元 / CAD $2,799｜国行 14,990 元（套装 29,990 元）"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "全球上市 · 国行定价",
+      "meta": "最新",
+      "items": [
+        {
+          "time": "06月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "9 系 / 7 系二代国行上市，8 系二代 QD-OLED 同步",
+          "desc": "国行定价：<b>9 系二代</b> 65″ 19,999 / 75″ 24,999 / 85″ 34,999 / 115″ <b>149,999</b> 元；<b>7 系二代</b> 50″ 10,999 → 98″ 34,999 元；<b>8 系二代</b>（QD-OLED）55″ 15,999 / 65″ 21,999 元。港版 9 II 115″ 为 HK$328,099、85″ HK$109,999，6 月下旬陆续出货。值得注意的是命名体系：今年 BRAVIA 分三层——True RGB Mini-LED（9 II / 7 II）> OLED（8 II 为 QD-OLED、8 为 W-OLED）> LED（5 / 3 II / 2 II），数字越大越高端，但「8 与 8 II 并存、没有 5 II」这点对消费者并不友好。",
+          "price": "国行 9 II 115″ <b>149,999</b> 元｜7 II 98″ <b>34,999</b> 元｜8 II 65″ <b>21,999</b> 元"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>True RGB Mini-LED</b>：BRAVIA 9 II（65 / 75 / 85 / 115″）、BRAVIA 7 II（50 / 55 / 65 / 75 / 85 / 98″）",
+    "<b>OLED</b>：BRAVIA 8 II（QD-OLED，55 / 65″）、BRAVIA 8（W-OLED，55 / 65″，美国另有 77″）",
+    "<b>LED</b>：BRAVIA 5（Mini-LED，55–85″）、BRAVIA 3 II（43–100″）、BRAVIA 2 II（43–75″）",
+    "<b>音频</b>：BRAVIA Theatre Trio（$2,199 / 国行 14,990 元），My Cinema 一键联动电视与 Soundbar",
+    "<b>软件栈</b>：Google TV，2026 机型后续 OTA 升级 Google TV with Gemini"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：索尼中国官网 / 索尼 IR 新闻稿（3/31）/ A9VG / 香港网络 internet.com.hk / TheCanadianTechie / TechRadar / 三创生活"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

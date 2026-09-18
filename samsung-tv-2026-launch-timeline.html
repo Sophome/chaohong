@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三星电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#1428a0; --accent-soft:#e7eaf7;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#7d92ff; --accent-soft:#1a1f3d;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#1428a0}
+  .sqd i:nth-child(2){background:#00a3e0}
+  .sqd i:nth-child(3){background:#a0a4ad}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html" class="on" aria-current="page">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>2026 全系价格（美国）</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "SAMSUNG TV · 2026 LAUNCH TIMELINE",
+  "title": "三星电视 2026 新品发布年表",
+  "subtitle": "1月 CES 全系首发（Micro RGB / Neo QLED / OLED / The Frame）→ 3月 Mini LED 定价 → Q2 OLED 与 Frame Pro 开售",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "四条线并行：Micro RGB 冲顶、Neo QLED 主力、OLED 补尺寸、The Frame 吃生活方式",
+      "s": "四线并进"
+    },
+    {
+      "k": "格式之争",
+      "v": "发布 HDR10+ Advanced（动态元数据、最高 10000nits 规格），正面对抗 Dolby Vision 2",
+      "s": "HDR10+ ADV"
+    },
+    {
+      "k": "画质天花板",
+      "v": "S95H：OLED HDR Pro + FloatLayer Design 金属边框贴墙 + NQ4 AI Gen3 + Glare Free",
+      "s": "OLED 旗舰"
+    },
+    {
+      "k": "尺寸极限",
+      "v": "115″ Neo QLED（8K / 3000nits / 144Hz）与 98″ The Frame 亮相 CES",
+      "s": "超大屏"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES 2026 · 2026 全系首发",
+      "meta": "海外主场",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "2026 全系发布：Micro RGB / Neo QLED / OLED / The Frame",
+          "desc": "一次性铺开四条产品线：<b>Micro RGB</b>（R90H / R95H，背光改用微型 RGB LED）、<b>Neo QLED</b>（QN80H / QN990H）、<b>OLED</b>（S85H / S90H / S95H）、生活方式线 <b>The Frame 2026</b>（LS03H）与 <b>The Frame Pro</b>（LS03HW）。超大尺寸上推出 115″ Neo QLED 与 98″ The Frame——前者面向影音室 / 派对场景，后者靠哑光屏、可换边框与 2500+ 幅 Art Store 作品走「电视即画」。",
+          "price": "—（CES 首发，价格分批公布）"
+        },
+        {
+          "time": "01.07",
+          "tag": "pu",
+          "tagText": "格式",
+          "st": "海外",
+          "title": "HDR10+ Advanced 公布，首批机型覆盖 Micro RGB / Neo QLED / OLED / The Frame",
+          "desc": "HDR10+ Technologies 开始认证支持 <b>HDR10+ Advanced</b> 的电视，首批即三星这批 CES 新机。新格式带<b>动态元数据</b>、规格上探到 <b>10000nits</b>，直接对标 Dolby Vision 2。这是三星今年最值得注意的一个「非画质」动作：在 HDR 格式上继续绕开杜比。",
+          "price": "—（格式认证）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "Mini LED 系列定价与上市",
+      "meta": "第一批开卖",
+      "items": [
+        {
+          "time": "03月",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "海外",
+          "title": "Neo QLED 与 Micro RGB 公布美国价",
+          "desc": "首批拿到价格的 Neo QLED：QN80H <b>$1,500</b>、QN990H <b>$3,000</b>；Micro RGB：R90H <b>$2,500</b>、R95H <b>$3,500</b>。这批机器也是 HDR10+ Advanced 的首批认证机型。",
+          "price": "QN80H $1,500 · QN990H $3,000 · R90H $2,500 · R95H $3,500"
+        }
+      ]
+    },
+    {
+      "m": "Q2",
+      "label": "OLED 与 The Frame Pro 开放订购",
+      "meta": "第二批",
+      "items": [
+        {
+          "time": "Q2",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "海外",
+          "title": "S95H / S90H / S85H 三线 OLED 定价，48″ 首次进入入门线",
+          "desc": "<b>S95H</b> 为旗舰：全新「<b>FloatLayer Design</b>」——细金属边框让屏幕几乎贴墙，配 Wireless One Connect；OLED HDR Pro 面板 + Glare Free 抗反光涂层；NQ4 AI Gen3 处理器做 4K 升频与 AI 画质；支持 NVIDIA G-Sync 与 AMD FreeSync Premium Pro。<b>S90H</b> 用更亮的 OLED HDR+ 面板 + 抗反光处理，尺寸覆盖 42–83″。<b>S85H</b> 入门线今年新增 <b>48″</b>，起步 $1,200，把 OLED 门槛再往下压一档。",
+          "price": "S95H 55″ <b>$2,500</b> · 65″ $3,400 · 77″ $4,500 · 83″ $6,500｜S90H 42″ $1,400 → 83″ $5,300｜S85H 48″ <b>$1,200</b> → $4,500"
+        },
+        {
+          "time": "Q2",
+          "tag": "te",
+          "tagText": "艺术",
+          "st": "海外",
+          "title": "The Frame Pro 2026 上市（新增 55″）",
+          "desc": "画框电视的高配版，用 <b>Neo QLED</b>（量子点 Mini LED）而非普通 QLED，亮度与背光规格更高。保留 Wireless One Connect Box 做无线集线；今年新增 <b>Micro HDMI 接口带 eARC</b>，可直连高端回音壁；刷新率电视模式最高 144Hz、接 PC 可达 <b>240Hz</b>。",
+          "price": "65″ <b>$2,000</b> · 75″ $2,800 · 85″ $4,000｜新增 55″ 暂未公布价格与上市"
+        }
+      ]
+    },
+    {
+      "m": "年内",
+      "label": "The Frame 标准版（LS03HE）美国上市",
+      "meta": "走量",
+      "items": [
+        {
+          "time": "年内",
+          "tag": "id",
+          "tagText": "艺术",
+          "st": "已开售",
+          "title": "The Frame 2026（LS03HE）四尺寸开售",
+          "desc": "生活方式线的走量款，55 / 65 / 75 / 85″ 四档。可选 Modern Brown、Modern Teak、Modern White、Sand Gold 四种可换边框，另购价 $199.99–$299.99。标准版 Frame 与 Pro 版的价格差，是今年「艺术电视要不要为画质加钱」最直接的一组对比素材。",
+          "price": "55″ <b>$1,199.99</b> · 65″ $1,499.99 · 75″ $1,999.99 · 85″ $2,999.99（边框另购）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>Micro RGB</b>：R90H $2,500 / R95H $3,500 —— 三星今年最高端的新背光路线",
+    "<b>Neo QLED</b>：QN80H $1,500 / QN990H $3,000；115″ 机型为超大屏旗舰",
+    "<b>OLED</b>：S95H（$2,500 起，FloatLayer + HDR Pro）> S90H（$1,400 起，HDR+）> S85H（$1,200 起，新增 48″）",
+    "<b>The Frame</b>：标准版 LS03HE（$1,199.99 起）与 Pro LS03HW（$2,000 起，Neo QLED + 240Hz PC）",
+    "<b>软件栈</b>：Tizen；今年重点是 HDR10+ Advanced 生态，与杜比阵营（海信 / TCL / LG 部分机型）正面对位"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：Techritual / How-To Geek / Times Tribune / SamMobile / XTHE / TechRadar / HDR10+ Technologies"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

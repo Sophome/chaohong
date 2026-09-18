@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华为智慧屏 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#d0021b; --accent-soft:#fde8ea;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff7a85; --accent-soft:#3a1a1f;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#e60012}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html" class="on" aria-current="page">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售系列与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "HUAWEI VISION · 2026 LAUNCH TIMELINE",
+  "title": "华为智慧屏 2026 新品发布年表",
+  "subtitle": "3月 Vision 6 系列 → 4月 S7 Pro → 5月 S7 → 8月首款 RGB-MiniLED · 全年不打参数战，主打抗反光黑晶屏与护眼",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "黑晶屏抗反光 + 全链路护眼 + 鸿蒙交互三条实用线；8 月才补上 RGB-MiniLED",
+      "s": "实用创新"
+    },
+    {
+      "k": "画质天花板",
+      "v": "Vision 智慧屏 6 SE RGB：105% BT.2020 · 94bits 控色 · 自研光色同控芯片 · 300Hz",
+      "s": "首款 RGB"
+    },
+    {
+      "k": "品牌站位",
+      "v": "全系无开机广告，靠鸿蒙生态绑定：超级桌面、一碰投、门锁联动、灵犀手写笔",
+      "s": "生态位"
+    },
+    {
+      "k": "价格带",
+      "v": "6 SE 3899 起 · S7 / S7 RGB 3999 起 · S7 Pro 7999 起 · MateTV Max 110″ 64999 起",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "鸿蒙智家技术沟通会",
+      "meta": "开年",
+      "items": [
+        {
+          "time": "03.11",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "Vision 智慧屏 6 / 6 SE 发布，即日预售",
+          "desc": "首次<b>全尺寸</b>搭载自研「黑晶屏」：双层纳米低反镀膜把整机反射率压到 <b>1.72%</b>，配合第六代高穿透液晶与 Super MiniLED，强光下也能出黑位。全链路 4K 144Hz，游戏模式可倍频到 288Hz。AI 侧深度集成鸿蒙大模型——「小艺聊球」支持语音模糊搜赛事、识别球员、分析战局，「观影大师」可按剧情 / 角色 / 台词搜片；儿童关爱模式用 AI 视觉芯片实时监测坐姿与观看距离，过莱茵 Youth Care 认证。外观整机厚度压到 <b>4.9cm</b> 以下、背板离墙 0.5cm 实现「零贴墙」，99% 屏占比 + 四面等宽边框，可选晨光白桦 / 烟色胡桃艺术画框。交互上首次支持<b>灵犀手写笔</b>（仅 Vision 6），配毫米级触控与全局批注。",
+          "price": "Vision 智慧屏 6 <b>6499</b> 元起｜6 SE <b>3899</b> 元起｜6 Pro <b>7458</b> 元起"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "Pura 系列及全场景新品发布会",
+      "meta": "护眼向",
+      "items": [
+        {
+          "time": "04.20",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "智慧屏 S7 Pro 发布",
+          "desc": "明确跳出「分辨率 / 分区 / 亮度」的参数军备竞赛，转向家庭真实痛点。核心是<b>全尺寸</b>应用的双层纳米级 <b>0.5% LR 低反膜</b>，从根源削弱环境光干扰——官方直接把卖点写成「白天观影不必拉帘」；全新高穿透液晶层让光效比前代提升 20%，配 Super MiniLED 精准控光。护眼走全链路：护眼模式全程纯 DC 调光从源头消除频闪，亮度输出贴合自然光特性，通过莱茵低蓝光 + 无频闪双认证。交互配灵犀手写笔，内容侧给儿童教育专区。",
+          "price": "65″ <b>7999</b> 起 · 75″ <b>10999</b> · 85″ <b>19992</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "S7 系列走量",
+      "meta": "主力",
+      "items": [
+        {
+          "time": "05.10",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "智慧屏 S7 发布并开售（同日上 S7 RGB）",
+          "desc": "搭载全新自研<b>鸿鹄芯片</b> + Super MiniLED，最高 300Hz 刷新（98″ 为 288Hz），55 / 65 / 75 / 85 / 98″ 五档全尺寸。55″ 与 65″ 峰值 1200nits，75″ / 85″ 为 1500nits；55–85″ 为 120Hz 面板 + 300Hz 倍频，98″ 为 144Hz + 240/288Hz 倍频。4GB+64GB，HarmonyOS 4.3，支持 MEMC 与鸿蒙 AI。音频按尺寸分档：85″ 为 2.1 声道（2×25W 全频 + 2×25W 高频 + 1×44W 低频）。同期上市的 <b>S7 RGB</b> 把 RGB 背光下放到 3999 元档。",
+          "price": "S7 55″ <b>3999</b> 起 · 65″ <b>4999</b> · 75″ <b>6999</b> 元｜S7 RGB <b>3999</b> 元起（55 / 65 / 75″）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "尊界时代旗舰 MPV 及全场景新品发布会（深圳）",
+      "meta": "最新",
+      "items": [
+        {
+          "time": "08.05",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "Vision 智慧屏 6 SE RGB — 华为首款 RGB-MiniLED",
+          "desc": "<b>8/3 余承东预热</b>，8/5 正式发布：从底层重构光源方案，红绿蓝三色芯片独立发光，每颗灯珠升级为 <b>24 核发光芯片</b>，实现 <b>105% BT.2020</b> 与 <b>94bits</b> 控色精度，配自研<b>光色同控芯片</b>。芯片为新一代自研鸿鹄（双 A73 + 双 A53），应用响应速度提升 15%，存储 (3+1)+64GB。机身金属材质 + 极窄边框，背照式封装让光效 +10%、散热 +21%、能耗 -10%，达一级能效。300Hz 刷新 + MEMC，莱茵低蓝光与无频闪双认证；音响 100W，支持 Histen 自研算法（低频增强 / 人声增强 / 声场扩展）。系统侧 HarmonyOS：鸿蒙 AI 搜片、家有 KTV、4K 超级投屏、NFC 一碰投、门锁联动、智慧画廊。",
+          "price": "55″ <b>3599</b> 起 · 65″ 约 <b>3995–4699</b> · 75″ <b>5699–6130</b> 元（渠道价随促销浮动）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>MateTV / MateTV Max</b>：最高端线，MateTV 65″ 8599 · 75″ 11999 · 85″ 15999 · 98″ 24999 元；MateTV Max 110″ <b>64999</b> 元起",
+    "<b>Vision 智慧屏 6 系列</b>：6（6499 起）/ 6 Pro（7458 起）/ 6 SE（3899 起）/ 6 SE RGB（3599 起）",
+    "<b>智慧屏 S 系列</b>：S7 Pro（7999 起）/ S7 RGB（3999 起）/ S7（3999 起）/ S6 Pro（6999 起）",
+    "<b>上一代仍在售</b>：Vision 智慧屏 5 系列（5 5499 起 / 5 Pro 6499 起 / 5 SE）",
+    "<b>生态差异点</b>：全系无开机广告；鸿蒙超级桌面、一碰投、多设备流转是华为相对小米 / 雷鸟的核心溢价来源"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：环球网科技 / 齐鲁壹点 / A9VG / 华为官网 visions 页 / 京东华为官方旗舰店 / 新浪"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

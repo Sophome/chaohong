@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雷鸟电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#c2410c; --accent-soft:#fdece2;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#7c3aed; --warn-soft:#efe9fd;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题（海外线） */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#f08a5c; --accent-soft:#33201a;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#b294fb; --warn-soft:#241d3f; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block}
+  .sqd i:nth-child(1){background:#2563eb}.sqd i:nth-child(2){background:#22d3ee}.sqd i:nth-child(3){background:#f59e0b}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html" class="on" aria-current="page">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>海外 2026 iFFALCON 线</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰(橘) / te=高端 / pu=形态·AR / id=主流·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   注：原「先看结论 · 观察与待验证」模块已从页面移除，
+       内容保留在 PAGE.notes（不渲染）；需要恢复时在
+       #months 前插入 .sec > .plain > ul（id 用 notes），
+       并放开渲染区最后一行的注释即可。
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  eyebrow:  "FFALCON TV · 2026 LAUNCH TIMELINE",
+  title:    "雷鸟电视 2026 新品发布年表",
+  subtitle: "3月鹤7 Pro 开年旗舰 → 4月鹤系三款齐发 → 9月黄鹤楼 27 款换代 · 万象分区 QD-Mini LED 一年内两代、从 12999 打到 2634",
+  badge:    "V1 · 09-18",
+
+  keyInfo: [
+    { k:"年度主线", v:"万象分区 QD-Mini LED 一年两代：26 款覆盖 55–98″ 全尺寸，27 款把 2448 分区 / 6000nits 打到 6999", s:"两代并进" },
+    { k:"品牌站位", v:"TCL 子品牌，背靠华星「屏厂自研自产」，主打技术平权 + 全系无开机广告，走质价比而非高端溢价", s:"屏厂红利" },
+    { k:"画质天花板", v:"鹤7 Pro 26款：蝶翼华曜屏 · 7000:1 静态对比度 · 1.8% 双低反 · 98″ 3840 分区 · 75″+ 5000nits · 安桥 2.2.2", s:"开年旗舰" },
+    { k:"国内已发", v:"鹤7 Pro 26款 / 鹤7 26款 / 鹤6 Ultra 26款 / 鹤6 Plus 26款 / 鹤6 26款 / 鹤6 Ultra 27款 / 鹤6 27款", s:"7 款" }
+  ],
+
+  months: [
+    { m:"01月", label:"入门线铺货 + CES 2026 首秀", meta:"开局", items:[
+      { time:"01月", tag:"id", tagText:"入门", st:"已开售",
+        title:"鹤6 26款（QD-Mini LED 普及线持续走量）",
+        desc:"把万象分区第一次压到 3 千元内：华星高阶 VA 屏 + 1.3% 内低反、75″ <b>312 个万象分区</b>、1300nits 峰值、96% DCI-P3（量子点 Pro 2025）、4K 144Hz 原生 + 全通道 288Hz 动态加速、安桥 2.1 双 20W 低音炮、TSR AI 画质芯片、灵控系统 3.0 无开机广告。实测 25% 窗口峰值约 <b>1527nits</b>、平均 ΔE <b>0.90</b>。",
+        price:"65″ 国补后约 <b>2837</b> · 75″ 约 <b>3447</b> 元（渠道促销价，随活动浮动）" },
+      { time:"01.06", tag:"pu", tagText:"AR", st:"展出",
+        title:"CES 2026：雷鸟 X3 Pro Project eSIM 全球首展",
+        desc:"拉斯维加斯 TCL 展台，雷鸟带着 AR 眼镜线参展：X3 Pro Project eSIM 内置 eSIM，可脱离手机独立通话、联网，并支持实时 AI 翻译。同场 TCL 华星展出全球首款印刷 OLED 车载屏。这是雷鸟今年唯一一次在国际展台露脸。",
+        price:"—（展会技术展示）" }
+    ]},
+
+    { m:"03月", label:"开年旗舰「第四代液晶电视再升级」", meta:"技术平权", items:[
+      { time:"03.06", tag:"", tagText:"旗舰", st:"已开售",
+        title:"鹤7 Pro 26款（R79A Pro）发布会",
+        desc:"以直播对聊形式开发布会，首席产品官褚继发对谈达人「河马来电」，核心叙事是<b>技术平权</b>。硬件：蝶翼华曜屏 + 万象分区 QD-Mini LED、<b>7000:1 静态对比度</b>、1.8% 内外双低反、「极景·无黑边」近 100% 屏占比；65/75/85/98″ 分别为 <b>1680 / 2176 / 2880 / 3840</b> 个万象分区，75″ 及以上峰值 <b>5000nits</b>，配 TSR AI 画质芯片。音频跳到安桥 <b>2.2.2</b> 八单元（2 天空声道 + 2 独立重低音炮 + 4 颗独立音质芯片）。原生 4K 150Hz、VRR 至 300Hz、MEMC、<b>4× 满血 HDMI 2.1</b>。系统侧灵控无开机广告 + 伏羲 AI。",
+        price:"国补 + 首发体验金后：65″ <b>5099</b> · 75″ <b>6374</b> · 85″ <b>8074</b> · 98″ <b>12999</b> 元｜3/12 20:00 开售" }
+    ]},
+
+    { m:"04月", label:"鹤系三款齐发 · 百位达人「验货式」品鉴", meta:"一年最密", items:[
+      { time:"04.10", tag:"te", tagText:"品鉴会", st:"已发布",
+        title:"「鹤鹤有名 天下共鉴」品鉴会：不开发布会，让 100 位博主替它验货",
+        desc:"没有主讲人、没有 PPT，直接请百位抖音达人同步开播，把新品第一印象交给不可控的直播镜头——达人现场拿鹤7 26款跟自家老电视同屏对比暗场与光晕、跑高帧率游戏测动态。同晚三款新品首发。这是今年电视圈少见的一次「放弃后期美化权」的营销动作。",
+        price:"—（渠道活动）" },
+      { time:"04.10", tag:"", tagText:"旗舰", st:"已开售",
+        title:"鹤7 26款：首发 SQD-Mini LED，雷鸟第一台 SQD 机型",
+        desc:"蝶翼星曜屏 + 万象分区，98″ <b>1152 分区</b>；峰值 2000nits（65″）/ 2200nits（75·85·98″）；量子点 Pro 2026、98% DCI-P3；原生 4K 150Hz + 全通道 300Hz；安桥 <b>2.1.2</b> 五单元（2 天空声道 + 独立重低音炮）；联发科 MT9655、4GB+128GB（65″ 为 64GB）、Wi-Fi 6、<b>4× 满血 HDMI 2.1 FRL</b>；灵控系统 3.0 无广告、支持 130Mbps 高码率播放。",
+        price:"国补后 <b>5099</b> 元起，被认为是当时能买到的最便宜 SQD-Mini LED｜4/10 开售" },
+      { time:"04.22", tag:"te", tagText:"高端", st:"已开售",
+        title:"鹤6 Ultra 26款 + 鹤6 Plus 26款（4/10 预售，4/22 20:00 开售）",
+        desc:"<b>鹤6 Ultra 26款</b>走「全能水桶」：蝶翼星曜屏、7000:1、1.8% 内外双低反、98″ <b>1152 分区</b>、2000nits（65″）/2200nits（75·85·98″）、98% DCI-P3、原生 4K 150Hz + 全通道 300Hz、安桥 2.1.2。<b>鹤6 Plus 26款</b>走「年轻人的第一台高刷电视」：高阶 VA、7000:1、1.3% 内低反、98/85/75/65/55″ 分别 <b>512/420/312/242/180</b> 分区、1500nits、96% DCI-P3、原生 4K <b>180Hz</b> + 全通道 360Hz（55″ 288Hz）、安桥 2.1、超能芯片 T5、3GB+64GB、64mm 一体化超薄机身。",
+        price:"鹤6 Plus 补贴后：55″ <b>2634</b> · 65″ <b>3569</b> · 75″ <b>4249</b> · 85″ <b>5694</b> · 98″ <b>7399</b> 元" }
+    ]},
+
+    { m:"06月", label:"海外 U75A 落地菲律宾", meta:"出海", items:[
+      { time:"06月", tag:"id", tagText:"海外", st:"海外",
+        title:"iFFALCON U75A 4K QLED Google TV（菲律宾）",
+        desc:"4K QLED、量子点 93% DCI-P3、原生 144Hz + MEMC + VRR、AiPQ Pro 处理器实时调校、Dolby Vision / Atmos、32GB、Google TV + Google Assistant，55/65/75/85″。主打「把 144Hz 与量子点压进更亲民价位」。",
+        price:"55″ PHP <b>27,199</b> · 65″ PHP <b>36,099</b> · 75″ PHP <b>49,999</b>（闪购更低）" }
+    ]},
+
+    { m:"08月", label:"iFFALCON 进入巴基斯坦", meta:"新市场", items:[
+      { time:"08.24", tag:"id", tagText:"海外", st:"海外",
+        title:"拉合尔发布会：U95A + U85A，第 43+ 个市场",
+        desc:"<b>U95A</b> 为旗舰：QD-Mini LED + QLED、原生 144Hz、93% DCI-P3、安桥 2.1 Hi-Fi，50/55/65/75/85/98″，其中 85/98″ 用<b>雾面屏</b>抗反光。<b>U85A</b> 为次档：QD-Mini LED、最高 <b>384 分区</b>、144Hz、安桥 2.1，55–85″。iFFALCON 成立于 2017 年，现已进入 43+ 国家和地区，定位年轻、联网、游戏人群。",
+        price:"巴基斯坦区域价未公开；通过零售 + 电商渠道铺" }
+    ]},
+
+    { m:"09月", label:"黄鹤楼秋季发布会 · 27 款换代", meta:"最新", items:[
+      { time:"09.16", tag:"", tagText:"旗舰", st:"已发布", next:true,
+        title:"「鹤鹤有名 天下共鉴」武汉黄鹤楼：鹤6 Ultra 27款 + 鹤6 27款",
+        desc:"把发布会搬进黄鹤楼，请古风 KOL「被贬白白」扮李白站台，用「崔颢题诗、李白搁笔」对位「卷王」叙事。<b>鹤6 Ultra 27款（大卷王）</b>：华星蝶翼星曜屏、98% DCI-P3（量子点 Pro 2026）、7000:1 静态对比度、1.8% 内外双低反、85″ <b>2448 个万象分区</b>（75″ 2176 / 65″ 1680）、<b>6000nits</b> 峰值（官方称可持续 10 秒以上）、原生 4K 150Hz + DRG 300Hz、安桥 <b>4.1.2 七单元 80W 额定功率</b>、TSR AI 画质芯片、Dolby Vision IQ、自定义蓝牙遥控。<b>鹤6 27款（小卷王）</b>：抗反防眩屏、<b>420 分区</b>、1500nits、4K 180Hz + 360Hz 动态加速、96% DCI-P3、安桥 2.1。发布会上另公开「分区 / 亮度 / 功率」三类参数虚标套路，并自定 Mini LED 及格线：分区≥100、亮度≥1000nits。",
+        price:"鹤6 Ultra 27款 85″ <b>6999</b>；鹤6 27款 85″ <b>5399</b> · 98″ <b>6999</b> 元｜<b>9/27 20:00</b> 开售，全系保价双十一" }
+    ]}
+  ],
+
+  overseas: [
+    "<b>U95A</b>：巴基斯坦旗舰，QD-Mini LED + QLED、144Hz 原生、93% DCI-P3、安桥 2.1，50–98″，85/98″ 雾面屏",
+    "<b>U85A</b>：次档，QD-Mini LED、最高 384 分区、144Hz、安桥 2.1，55–85″",
+    "<b>U75A</b>：菲律宾，4K QLED、144Hz + MEMC + VRR、93% DCI-P3、AiPQ Pro、Google TV，55–85″",
+    "<b>X3 Pro Project eSIM</b>：CES 2026 全球首展的 AR 眼镜，内置 eSIM 可独立通话 + 实时 AI 翻译",
+    "<b>生态位</b>：iFFALCON 走海外 Google TV + AiPQ Pro；国内走灵控系统 3.0 + 伏羲 / DeepSeek 大模型，两条软件栈并行"
+  ],
+
+  /* 暂不渲染 —— 原「先看结论」模块内容，需要恢复时见文件顶部注释 */
+  notes: [
+    "<b>一年两代，换代节奏比 TCL / 海信快一档</b>：3 月发 26 款旗舰、4 月补三款、9 月就上 27 款。做内容时要注意「26 款 vs 27 款」在终端同时在线，价格带会重叠，写选购建议必须点明年款。",
+    "<b>今年最好写的选题：从「卷参数」转向「反虚标」</b>。9/16 发布会直接公开行业三类虚标（分区按灯珠数乘系数、亮度只标瞬时峰值、音响标峰值功率），并自定 Mini LED 及格线（分区≥100、亮度≥1000nits）。但要注意：<b>这条线是雷鸟自己定的，不是行业标准</b>，写稿必须标注来源，否则变成替厂商背书。",
+    "<b>分区口径是最大争议点</b>：万象分区「一区顶多区」，官方称 2448 个分区胜过普通 5000 级分区产品。同样无第三方验证，和 TCL 的「3552 等效 10656」是同一个话术体系，只是雷鸟把价格打到更低。",
+    "<b>价格锚点值得单独做一期</b>：85″ 6000nits + 2448 分区卖 6999，98″ Mini LED（鹤6 27款）也卖 6999——这是今年同价位最激进的一刀，直接压到小米 / 红米 98″ 的腹地。",
+    "<b>待核实</b>：第三方行业盘点提到雷鸟 8 月推出 98″ Mini LED「Super 98」（1536 分区），官方渠道未见相关发布，暂不入主线，需核。",
+    "<b>数据口径</b>：国内价为官方零售价或国补 / 补贴后到手价，随渠道与促销活动浮动；海外价为区域建议零售价。"
+  ],
+
+  footL: "整理于 2026-09-18 · 来源：中国经济新闻网 / 中国日报网 / 中国发展网 / 中国产业经济信息网 / 中关村在线 / TechBeatPH / Daily Pakistan / GIZGUIDE / hifi.fan"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+/* 恢复「先看结论」模块时，同时加回 DOM 与下面这行：
+   document.getElementById('notes').innerHTML = PAGE.notes.map(x => 小于号li大于号${x}小于号/li大于号).join(''); */
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

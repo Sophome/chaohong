@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>创维电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#6b4fd8; --accent-soft:#efeafd;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#a12ba8; --purple-soft:#f8e9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题（海外线） */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#a694f5; --accent-soft:#251f3d;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#e07ae6; --purple-soft:#3a1a3e; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#e04b4b}.sqd i:nth-child(2){background:#3fae63}.sqd i:nth-child(3){background:#3f74d6}.sqd i:nth-child(4){background:#fbfbfd}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html" class="on" aria-current="page">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>海外 2026 多品牌矩阵</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰(紫) / te=高端 / pu=形态·生态 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   注：原「先看结论 · 观察与待验证」模块已从页面移除（与同系列另三份一致），
+       内容保留在 PAGE.notes（不渲染）；需要恢复时在 #months 前插入
+       .sec > .plain > ul（id 用 notes），并放开渲染区最后一行的注释即可。
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  eyebrow:  "SKYWORTH TV · 2026 LAUNCH TIMELINE",
+  title:    "创维电视 2026 新品发布年表",
+  subtitle: "1月壁纸电视开年 → 2月接手松下欧美 → 3月 A10H 系列 + AWE → 7月全场景发布会 · 全年五款壁纸机型迭代，走美学而非参数战",
+  badge:    "V1 · 09-18",
+
+  keyInfo: [
+    { k:"年度主线", v:"第十代壁纸电视：A7H Pro → A9H → A10H / A10H Pro → Q9H，全年五款迭代「极致薄 + 无缝贴墙 + 艺术屏」", s:"壁纸电视" },
+    { k:"品牌站位", v:"不卷 RGB vs SQD 的技术路线之争，打「设计美学 + 家居融合」差异化；2025 年中国艺术电视销量第一", s:"美学位" },
+    { k:"画质天花板", v:"A10H Pro：27.9mm 四面无边 · 11520 乾坤分区 · 6mm 超微距 OD · 10000nits · 103% BT.2020 · 哈曼 6.2.2 380W", s:"超旗舰" },
+    { k:"全球化转折", v:"2 月接手松下电视欧美运营，IFA 携 SKYWORTH / METZ / STRONG 三品牌，从产品出海走向品牌生态出海", s:"出海升级" }
+  ],
+
+  months: [
+    { m:"01月", label:"第十代壁纸电视开年", meta:"走量主力", items:[
+      { time:"01.07", tag:"te", tagText:"走量", st:"已开售",
+        title:"壁纸电视 A7H Pro 全网开售（1/7 20:00）",
+        desc:"第十代创维壁纸电视的开年主力：<b>3.9cm</b> 机身 + 100% 无缝贴墙（墙面间隙约 0.1cm），90° 直角画框 + 包豪斯极简线条；99% DCI-P3、峰值 3800nits、10mm 超微距控光，画境屏反射率降至 2.0%；哈曼 7.1.2 全景声、200W 峰值功率、四向发声；最高 300Hz；莱茵低蓝光 + 无频闪双认证。上市后长期位列国产品牌畅销榜前列。",
+        price:"55″ 约 <b>4255</b> · 65″ <b>5199</b> · 75″ <b>6599</b> · 85″ <b>8599</b> · 100″ <b>12999</b> 元（渠道到手价口径，随促销浮动）" }
+    ]},
+
+    { m:"02月", label:"慕尼黑 · 与松下达成全球战略合作", meta:"出海分水岭", items:[
+      { time:"02.23", tag:"pu", tagText:"战略", st:"海外",
+        title:"松下品牌大会（德国慕尼黑）：创维全面接手松下电视欧美业务",
+        desc:"当地时间 2/23，创维集团与松下宣布达成全球战略合作伙伴关系。创维依托制造、研发、全球渠道能力，全面负责松下品牌电视在<b>欧洲、北美</b>市场的生产、销售、营销与渠道拓展；松下专注核心影像技术研发、产品定义与品质把控，双方联合开发高端 OLED 机型。据群智咨询，松下计划自 2026 年 4 月起移交日本以外的电视业务，<b>日本本土仍由松下自主运营</b>。这是继 TCL 拟控股索尼电视业务之后，日系品牌向中国制造转移的第二个标志性事件。",
+        price:"2025 年创维全球自有品牌出货 <b>824 万台</b>（市占 3.7%）｜预计 2026 年随该合作提升至 4.0%，排名维持全球第六" }
+    ]},
+
+    { m:"03月", label:"上海「薄有乾坤 万色归真」+ AWE 2026", meta:"全年主场", items:[
+      { time:"03.11", tag:"", tagText:"超旗舰", st:"已发布",
+        title:"壁纸电视 A10H 系列发布会（上海）",
+        desc:"第十代壁纸电视超旗舰，核心是「薄」与「色」两条线：<b>27.9mm</b> 机身（2026 年迄今最薄的超旗舰）、90° 直角画框、纯平背板 + 内凹走线实现 100% 无缝贴墙，行业首发<b>四面无边</b>设计；设计语言对标博朗美学（Less, but better）。画质上与 BOE 联合全球首发「画界屏」，首发 SQD-Pro 全浓度超级量子点 + SQD-MiniLED 背光方案，<b>103% BT.2020</b>、双层 AG33 防眩 + 双层 LR（0.7%）低反 + STW 全视角补偿；超微距乾坤架构把 OD 压到 6mm。音响为哈曼 <b>6.2.2</b> 影院系统 380W 峰值功率。",
+        price:"A10H 75″ <b>10999</b> · 85″ <b>15999</b> · 100″ <b>23999</b> 元｜A10H Pro 定位超旗舰，官方未单独公布价格" },
+      { time:"03.12", tag:"te", tagText:"高端", st:"展出",
+        title:"AWE 2026（上海 W2 馆）：13 款旗舰电视 + 120 余款全品类",
+        desc:"展出 13 款旗舰电视，尺寸覆盖 24–163 英寸：<b>QX 超大屏壁纸 163″</b> 行业首展（MicroLED 玻璃基 COG）；<b>双璧</b> 85″ 可横竖屏自由切换、高定面板可更换；<b>Breath 呼吸</b> 镂空设计；<b>the Master 100″</b> 大平层专属（落地底座带可旋转音响、声随人动，屏体共用 A10H Pro 顶级音画配置）；同期亮相 A8H、A7H 系列及分体款 Q10H / Q9H。官方数据：2025 年 1–12 月创维获中国彩电市场<b>艺术电视销量第一</b>，深耕壁纸电视 10 年，累计申请 418 项超薄散热专利。",
+        price:"—（3/12–3/15 展会）" }
+    ]},
+
+    { m:"04月", label:"RGB-Mini LED 壁纸 A9H 上市", meta:"技术下沉", items:[
+      { time:"04.29", tag:"te", tagText:"高端", st:"已开售",
+        title:"壁纸电视 A9H 正式开售（4/29 20:00）",
+        desc:"把 RGB-Mini LED 装进 3.9cm 壁纸机身：<b>75″ 3168 分区 / 85″ 4350 分区</b>，峰值亮度 <b>4500nits</b>，103% BT.2020、ΔE&lt;0.6、色体积 140%，最高 300Hz 刷新；搭载变色龙 AI 画质芯片 S7 做实时 AI 控光；双层 AG25 + 双层 LR 抗反光、STW 全视角补偿；哈曼 <b>7.1.2</b> 全景声双回音壁 270W；4GB+64GB；有害蓝光降低 75%、无频闪。100% 无缝贴墙并支持内嵌安装。",
+        price:"75″ <b>10499</b>（国补到手 8999）· 85″ <b>11499</b>（国补到手 9999）元" }
+    ]},
+
+    { m:"07月", label:"深圳全场景新品发布会「AI 普及年」", meta:"年度最大", items:[
+      { time:"07.22", tag:"", tagText:"超旗舰", st:"已发布",
+        title:"A10H Pro 亮相 + 独立主机款 Q9H 全新发布",
+        desc:"<b>A10H Pro</b>：27.9mm 机身 + 行业首发四面无边，<b>11520 个乾坤分区</b> + 6mm 超微距精准控光，峰值 <b>10000nits</b>，哈曼 6.2.2 影院系统 380W（内置双回音壁结构、五向发声定位）；哑光屏显 Ultra + AI 原画显示 3.0，内置千幅世界名画终身免费，画作处理精细度提升 43%。<b>Q9H</b>：独立主机形态，R 角 G3 连续曲面工艺；超微距 OD-MiniLED 把光学距离压到 6mm；峰值 <b>10000nits</b>；搭载画境屏 Ultra + 行业首发「<b>双重 RGB 滤色层</b>」全场景高色域方案，规避传统高色域背光的串色问题；哈曼 4.2.2 峰值 410W。",
+        price:"Q9H 未公布官方价；秋季起成为高端壁纸主推（渠道订货会重点机型）" },
+      { time:"07.22", tag:"pu", tagText:"生态", st:"已发布",
+        title:"Youdoo Box 悦动元气机 + 酷开 AI 智能体矩阵 / HomeAgent",
+        desc:"<b>Youdoo Box</b>：零穿戴纯体感 AV 设备，「观妙」3.0 AI 视觉运动追踪引擎 + 135° 超广角摄像头，支持 1–4 人同屏互动，获奥维云网 × 弗若斯特沙利文「中国 AI 体感成长品类引领者」。<b>软件底座</b>：酷开发布覆盖影音 / 教育 / 健康 / 创作 / 生活 / 设备六大维度的智能体矩阵，以及 HomeAgent 家庭管家平台——从「被动等指令」转向主动理解家庭并组织设备、内容与能源。同场还有空调睡梦风系列、AI 闺蜜机 F3 Ultra（32″ 4K 类纸屏、140W 三分频、30000mAh 续航 24 小时）、K 影机 Q6K、工商业光伏「E企省」。",
+        price:"—（全场景发布，跨六大品类）" }
+    ]},
+
+    { m:"08–09月", label:"海外三线齐发：南非 / 北美 / 南非 60″", meta:"出海落地", items:[
+      { time:"08.06", tag:"id", tagText:"海外", st:"海外",
+        title:"南非约翰内斯堡：2026 Mini LED 新品发布会，WRGB Mini-LED 首秀",
+        desc:"主题「Mini-LED Universe · ALL IN SKYWORTH」。主打 <b>WRGB Mini-LED</b> 南非首发：RGB LED + 全光谱白光 LED 的背光结构，四路光源可独立控制，提供 Eye-Friendly / RGB Vivid / True Nature 三种画面模式，在色域、亮度与观看舒适之间做切换。同步铺开 Super QD-Mini LED、RGB Mini LED、QD-Mini LED 三条产品线。",
+        price:"南非全国零售渠道，按系列分档" },
+      { time:"08.31", tag:"te", tagText:"艺术", st:"海外",
+        title:"北美：C2 Canvas Art TV（55 / 65 / 75″）",
+        desc:"把旗舰 Canvas Elite 的核心技术下放到标准艺术电视线：True QD-Mini LED + OmniView Matte Screen，<b>400+ 全阵列分区</b>、<b>1000nits</b>、144Hz、HDR10+ 与 Dolby Vision、内置低音炮支持 Dolby Atmos。与 hydroframes 合作提供黑 / 银 / 金 / 白 / 胡桃木及任意定制色画框，一步卡装。官方口径：让 QD-Mini LED 成为艺术电视的<b>入门底线</b>而非高端选配。",
+        price:"CEDIA Expo 2026（Booth 2923）首展，经定制安装渠道销售，价格届时公布" },
+      { time:"09.10", tag:"id", tagText:"海外", st:"海外",
+        title:"南非：60X6620K — 南非首款 60″ Mini LED",
+        desc:"量子点 + Mini LED 背光，SKYWORTH 16 晶 LED 芯片降低高光物体周围的光晕；Google TV、Dolby Vision / HDR10+、120Hz、Dolby Atmos + Total Sonics、量子点色彩 10 年保持；带 Find My Remote。相比 55″ 显示面积增加约 20%（约等于 15.5 个手机屏）。9/10 起在 Takealot 与 Amazon 上架。",
+        price:"—（区域定价未公开）" }
+    ]},
+
+    { m:"09月", label:"IFA 2026 柏林 · 三品牌矩阵", meta:"最新", items:[
+      { time:"09.05", tag:"pu", tagText:"全球化", st:"展出", next:true,
+        title:"IFA 2026：SKYWORTH / METZ 美兹 / STRONG 集体参展",
+        desc:"第 102 届柏林 IFA，创维携三品牌覆盖高端视听、智能家居、白电、个护、新能源。<b>METZ</b>（德国百年品牌，2014 年被创维收购）以主场姿态展出 Primus / Aurus / Sirius OLED 系列、Taris / Cubus UHD 系列，以及 A9H（RGB Mini LED + 画境屏 Ultra）、Q10H（SQD-Mini LED，103% BT.2020）。<b>STRONG</b>（2026 年成立四十周年，已从机顶盒厂商转型欧洲智能家居方案商）带来 LEAP 音响套组、LYRA / MIRA 投影、Google TV 机顶盒与 4G+/5G 宽带设备。<b>关键看点</b>：创维与松下首批联合开发的 OLED、Mini LED 电视首次公开亮相，搭载 Glare Free Ultra 防眩光与 Vivid QLED+ 技术，标志着 2 月宣布的合作进入产品落地阶段。",
+        price:"—（9/5–9/9 展会）" }
+    ]}
+  ],
+
+  overseas: [
+    "<b>METZ 美兹（德国）</b>：2014 年收购，Primus / Aurus / Sirius OLED + Taris / Cubus UHD + A9H / Q10H Mini LED，欧洲高端视听载体",
+    "<b>Panasonic 松下（欧洲 / 北美）</b>：2026 年 4 月起由创维负责生产、销售与渠道，联合开发高端 OLED；日本本土仍由松下自主运营",
+    "<b>STRONG（欧洲）</b>：收购十余年，2026 年四十周年，从机顶盒转型智能家居方案商（音响 / 投影 / Google TV / 宽带）",
+    "<b>南非</b>：WRGB Mini-LED 首秀（RGB + 全光谱白光四光源独立控制）；60X6620K 为该国首款 60″ Mini LED",
+    "<b>北美</b>：C2 Canvas Art TV 走定制安装渠道，支持 Control4 / Crestron 集成"
+  ],
+
+  /* 暂不渲染 —— 原「先看结论」模块内容，需要恢复时见文件顶部注释 */
+  notes: [
+    "<b>创维今年没打技术路线之争</b>：海信押 RGB、TCL 押 SQD、雷鸟卷价格，创维整年只讲一件事——壁纸形态与家居美学。参数同样堆到顶（11520 分区 / 10000nits），但叙事始终落在「薄、贴墙、不反光、是电视也是画」。做横向对比时，它是最容易做出「同一价位不同取向」内容的一家。",
+    "<b>2 月接手松下是最值得单独做一期的事件</b>：全球彩电格局从「中日韩三方」走向「中韩对决」，日系品牌退守本土与技术高地。这条线比任何一台新机都更有选题价值，而且有群智咨询 / 奥维睿沃的第三方数据可引用。",
+    "<b>注意参数口径打架</b>：A10H 与 A10H Pro 的亮度（8000 / 10000nits）、分区（6120 / 11520）在不同稿子里混用，且 10000nits 同时出现在 A10H Pro 与 Q9H 的宣传中。官方未发布统一规格表，引用时务必标清机型与尺寸。",
+    "<b>价格数据偏弱</b>：A7H Pro 各尺寸价来自导购类文章而非官方，只能作参考区间；Q9H、A10H Pro、C2 的官方价未公布。写稿若要用价格，建议以电商实时价为准。",
+    "<b>待验证</b>：创维今年 CES 2026 未见官方发布信息；WRGB Mini-LED 是否为全球首发还是仅南非首发，官方表述含糊。"
+  ],
+
+  footL: "整理于 2026-09-18 · 来源：经济日报 / 正观新闻 / 中国周刊 / 中国质量新闻网 / 央广网 / 每日经济新闻 / 中国经营报 / 深圳晚报 / IT之家 / PR Newswire / Gizmochina / SABuzz / The Vibe ZA"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+/* 恢复「先看结论」模块时，同时加回 DOM 与下面这行：
+   document.getElementById('notes').innerHTML = PAGE.notes.map(x => 小于号li大于号${x}小于号/li大于号).join(''); */
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>
