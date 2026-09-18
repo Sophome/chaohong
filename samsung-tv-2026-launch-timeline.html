@@ -83,13 +83,13 @@
 
   footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
-
-
   .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
   .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
   .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
   .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
   @media (max-width:680px){
     :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
     .wrap{padding:18px 14px 56px}
@@ -108,7 +108,6 @@
   @media print{
     body{background:#fff}
     .toggle{display:none}
-
     .brandnav{display:none}
     .wrap{max-width:none;padding:0}
     .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
@@ -165,8 +164,8 @@
 const PAGE = {
   "eyebrow": "SAMSUNG TV · 2026 LAUNCH TIMELINE",
   "title": "三星电视 2026 新品发布年表",
-  "subtitle": "1月 CES 全系首发（Micro RGB / Neo QLED / OLED / The Frame）→ 3月 Mini LED 定价 → Q2 OLED 与 Frame Pro 开售",
-  "badge": "V1 · 09-18",
+  "subtitle": "1月 CES 全系首发（Micro RGB / Neo QLED / OLED / The Frame）→ 3月 Mini LED 定价 → 5/6 官宣停止在中国大陆销售含电视在内的所有家电 → Q2 OLED 与 Frame Pro 开售",
+  "badge": "V2 · 09-18",
   "keyInfo": [
     {
       "k": "年度主线",
@@ -184,9 +183,9 @@ const PAGE = {
       "s": "OLED 旗舰"
     },
     {
-      "k": "尺寸极限",
-      "v": "115″ Neo QLED（8K / 3000nits / 144Hz）与 98″ The Frame 亮相 CES",
-      "s": "超大屏"
+      "k": "中国市场",
+      "v": "5/6 官宣：停止在中国大陆销售电视、显示器等所有家电，仅保留售后；手机业务不受影响",
+      "s": "退出大陆"
     }
   ],
   "months": [
@@ -228,6 +227,32 @@ const PAGE = {
           "title": "Neo QLED 与 Micro RGB 公布美国价",
           "desc": "首批拿到价格的 Neo QLED：QN80H <b>$1,500</b>、QN990H <b>$3,000</b>；Micro RGB：R90H <b>$2,500</b>、R95H <b>$3,500</b>。这批机器也是 HDR10+ Advanced 的首批认证机型。",
           "price": "QN80H $1,500 · QN990H $3,000 · R90H $2,500 · R95H $3,500"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "三星官宣：停止在中国大陆销售所有家电产品",
+      "meta": "市场变局",
+      "items": [
+        {
+          "time": "05.06",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "已发布",
+          "next": true,
+          "title": "三星（中国）官网公告：中国大陆停售电视、显示器在内的一切家电",
+          "desc": "三星（中国）投资有限公司在官网发布《三星家电产品业务调整通知》：为应对急剧变化的市场环境，决定<b>在中国大陆市场停止销售含电视、显示器在内的所有家电产品</b>，范围涵盖电视、显示器、大型商用显示器、空调、冰箱、洗衣机、干衣机、衣物护理机、音响、投影仪、吸尘器、空气净化器等。官方明确：已售产品照旧按三包与消法提供售后，服务中心、400 热线、微信小程序「三星服务」继续运转，包外维修费用不变；<b>手机业务正常销售不受影响</b>。渠道端早在 4 月已有预兆——三星显示器全国总代翰林汇停止出货、冻结库存，三星今年 AWE 亦缺席。",
+          "price": "—（业务调整）｜中国市场存量产品仍可在终端渠道买到，以实际出货为准"
+        },
+        {
+          "time": "05月",
+          "tag": "id",
+          "tagText": "市场",
+          "st": "已发布",
+          "title": "为什么撤：本土化不足 + 中国品牌挤压 + 面板自供退出",
+          "desc": "中国电子视像行业协会秘书长董敏给出的四点原因：管理与产品本土化不足（产品定义与决策权集中在韩国总部）；中国制造强势崛起，同类配置下三星已难维持品牌溢价；新一代用户对外资品牌迷恋度下降；三星淡出液晶面板制造后，彩电业务反过来依赖中国面板厂供货。财务上同样指向这一步——三星电子 2026 Q1 营业利润 57.2 万亿韩元、同比 +756%，其中半导体（53.7 万亿韩元）占 <b>93.4%</b>；视觉显示与家电业务营业利润仅 <b>0.2 万亿韩元、同比 -33.3%</b>。行业分析师刘步尘判断：三星电视撤出对中国企业与消费者均无明显影响，其份额已很小。",
+          "price": "外资电视在中国：索尼 / 飞利浦 / 夏普 7 月合计出货不足 5 万台（洛图 / 奥维口径）"
         }
       ]
     },
@@ -278,9 +303,11 @@ const PAGE = {
     "<b>Neo QLED</b>：QN80H $1,500 / QN990H $3,000；115″ 机型为超大屏旗舰",
     "<b>OLED</b>：S95H（$2,500 起，FloatLayer + HDR Pro）> S90H（$1,400 起，HDR+）> S85H（$1,200 起，新增 48″）",
     "<b>The Frame</b>：标准版 LS03HE（$1,199.99 起）与 Pro LS03HW（$2,000 起，Neo QLED + 240Hz PC）",
-    "<b>软件栈</b>：Tizen；今年重点是 HDR10+ Advanced 生态，与杜比阵营（海信 / TCL / LG 部分机型）正面对位"
+    "<b>软件栈</b>：Tizen；今年重点是 HDR10+ Advanced 生态，与杜比阵营（海信 / TCL / LG 部分机型）正面对位",
+    "<b>中国市场（重要）</b>：2026-05-06 起停止在中国大陆销售电视与显示器等全部家电，仅保留售后；<b>本页所有价格均为美国价，不适用于国内购机参考</b>。国内做三星选题时，主线应从「新品参数」转向「外资退出中国」这条产业叙事",
+    "<b>口径提示</b>：三星全球业务并未退出——欧洲斯洛伐克电视工厂关停、马来西亚微波炉厂关闭，产能向越南集中，属全球家电业务结构性改革的一环"
   ],
-  "footL": "整理于 2026-09-18 · 来源：Techritual / How-To Geek / Times Tribune / SamMobile / XTHE / TechRadar / HDR10+ Technologies"
+  "footL": "整理于 2026-09-18 · 来源：三星（中国）官网《三星家电产品业务调整通知》/ 人民网财经 / 南都湾财社 / 中国电子视像行业协会 / Techritual / How-To Geek / SamMobile / TechRadar / HDR10+ Technologies"
 };
 
 /* ═══════════════════════════════════════════════════
