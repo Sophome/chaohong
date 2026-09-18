@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vidda 电视 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0f8b8d; --accent-soft:#e3f4f4;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#4fd1c5; --accent-soft:#12322f;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0f8b8d}
+  .sqd i:nth-child(2){background:#e02f6d}
+  .sqd i:nth-child(3){background:#1c2024}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="tv-brand-2026-launch-timeline.html">总表</a>
+      <a href="hisense-tv-2026-launch-timeline.html">海信</a>
+      <a href="tcl-tv-2026-launch-timeline.html">TCL</a>
+      <a href="ffalcon-tv-2026-launch-timeline.html">雷鸟</a>
+      <a href="skyworth-tv-2026-launch-timeline.html">创维</a>
+      <a href="huawei-vision-2026-launch-timeline.html">华为</a>
+      <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
+      <a href="samsung-tv-2026-launch-timeline.html">三星</a>
+      <a href="lg-tv-2026-launch-timeline.html">LG</a>
+      <a href="sony-tv-2026-launch-timeline.html">索尼</a>
+      <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
+      <a href="vidda-tv-2026-launch-timeline.html" class="on" aria-current="page">Vidda</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>2026 产品线结构与价格口径</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "VIDDA · 2026 LAUNCH TIMELINE",
+  "title": "Vidda 电视 2026 新品发布年表",
+  "subtitle": "3/23 超级玩家发布会（大玩家 G7）→ 4/7 小钢炮 S Mini → 5/8 全场景发布会 · 海信系年轻品牌，今年主攻游戏电视与全场景 3C",
+  "badge": "V1 · 09-18",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "三场发布会定全年：3/23 游戏电视 G7 → 4/7 千元 Mini LED 小钢炮 → 5/8 全场景 3C（投影 / 显示器 / 闺蜜机）",
+      "s": "游戏 + 全场景"
+    },
+    {
+      "k": "画质天花板",
+      "v": "大玩家 G7：85″ 3264 分区 · 7300nits 持续高亮 · 黑曜屏 Pro 反射率 1.8% · 灵狮游戏魔方 4K 180Hz / 2K 330Hz 双模",
+      "s": "G+Mini LED"
+    },
+    {
+      "k": "走量主力",
+      "v": "发现X 2027：黑曜屏 Pro、1536 分区、6000nits、330Hz 模式；618 期间 85″ 登顶线上 330Hz 市场 TOP1",
+      "s": "卷王"
+    },
+    {
+      "k": "品牌站位",
+      "v": "海信旗下年轻科技品牌，讲「技术平权」；但 5 月媒体质疑其定位模糊、口碑承压（2025-05 与小米商业诋毁案终审败诉）",
+      "s": "定位待解"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "AWE 亮相 → 北京「超级玩家」发布会",
+      "meta": "年度首场",
+      "items": [
+        {
+          "time": "03.13",
+          "tag": "id",
+          "tagText": "展出",
+          "st": "展出",
+          "title": "AWE 2026：大玩家 G7 游戏电视首次公开亮相",
+          "desc": "Vidda 今年的第一枪放在 AWE。G7 定位<b>高端巨幕游戏电视</b>，主打「为 3A 大作而生」，先展后发，十天后在北京单独开发布会。",
+          "price": "—（展会亮相）"
+        },
+        {
+          "time": "03.23",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "北京双井京东 MALL「超级玩家」发布会：大玩家 G7 正式发布",
+          "desc": "行业首发 <b>G+Mini LED 3A 游戏光学架构</b>：以 85″ 为例 <b>3264 个独立控光分区</b>、<b>7300nits 持久高亮</b>、100% DCI-P3、ΔE&lt;1；自研一体聚光灯芯 + 定制微距聚光结构，OD 缩短 40%、光晕减少 92%，配 26bit 动态调光。屏幕用<b>黑曜屏 Pro</b>，0.5% LR 低反膜把整机反射率压到 <b>1.8%</b>。延迟方面是<b>信芯 AI 游戏画质芯片 + MT9655 双芯</b>方案，算力提升 131%，背光响应压到 <b>4.8ms</b>，官方主打「不靠游戏模式砍画质」；灵狮游戏魔方支持 4K 180Hz / 2K 330Hz 双模高刷，3 路全带宽 HDMI 2.1，千兆网口 + WiFi 7。音频为帝瓦雷 4.1.2 前置回音壁 + 下潜 40Hz 无线低音炮。",
+          "price": "75″ <b>8734</b> 元｜85″ <b>10499</b> 元｜100″ <b>15499</b> 元（首发 75/85″ 立减 500、100″ 立减 1000），3 月底海信与 Vidda 京东自营店开售"
+        },
+        {
+          "time": "03.23",
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "已开售",
+          "title": "同场发布 Vidda G11 AI 音频眼镜",
+          "desc": "26.5g 机身，6 麦拾音，支持一键录音、2 小时离线录音、录音转文字、AI 总结与同声传译；续航按真实场景标注（轻度 48h / 中度 30–36h / 重度 25h），磁吸快充 10 分钟至 50%。眼镜与 G7 一起构成「客厅 + 随身」的全场景组合。",
+          "price": "钛框 2 款首发 <b>1599</b> 元（国补后 1359）｜非钛框 <b>1399 / 1299</b> 元（国补后 1189 / 1104）"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "小钢炮 S Mini：把 Mini LED 打到 1999 元",
+      "meta": "技术普惠",
+      "items": [
+        {
+          "time": "04.07",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "Vidda 小钢炮 S Mini 系列发布，1999 元起",
+          "desc": "把 Mini LED 拉进千元区间的走量线：<b>180Hz</b> 高刷 + MEMC、96% DCI-P3、峰值亮度 <b>600nits</b>、AG 抗光层 + LR 低反射膜、六重护眼与 RGB 智能光感；音频为 3 单元扬声器 + 1.2L 独立低音炮共 <b>120W</b>，支持 Dolby / DTS 双解码；接口 HDMI 2.1、蓝牙 5.4、WiFi 6。官方定位「同价高配、技术普惠」，靠海信自研技术与供应链压成本。",
+          "price": "55″ <b>1999</b> 元（128 分区）｜65″ <b>2799</b> 元（160 分区）｜75″ <b>3599</b> 元（180 分区）；4/7 20:00 预售，4/17 开售"
+        },
+        {
+          "time": "04.29",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "已发布",
+          "title": "背景：海信家电 Q1 营收 230.60 亿元，同比 -7.16%",
+          "desc": "母公司一季度营收与利润双降，是理解 Vidda 5 月那场「声势浩大」发布会的背景——子品牌被寄望于用新品攻势提振盘子。",
+          "price": "—（财报）"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "全场景新品发布会 + 发现X 2027 上市",
+      "meta": "全年最重",
+      "items": [
+        {
+          "time": "05.08",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "海信 & Vidda 全场景新品发布会：贴贴壁纸电视 + 六大 3C 潮品",
+          "desc": "一场以投影、显示器、闺蜜机、智能硬件为主角的发布会，电视线的新形态是<b>贴贴壁纸电视</b>（65V7Q / 85″）：<b>35mm 超薄贴墙</b>、300Hz、极黑低反屏，侧入式背光、95% DCI-P3、400–600nits、6 单元 90W、4×HDMI 2.1，含 NFC 标贴可贴墙互动。同场发布的非电视线更抢戏：<b>C5 系列投影</b> 4 款（ProMax 7999 / Ultra 10499 / UltraMax 12999 / Master 14999，全系 MCL 3A 激光器 + 千山 AI 影像，ΔE&lt;0.4）、<b>LightGo 流光派</b>户外三色激光投影 3999、<b>海信 3A 原画显示器</b>（GX Ultra 6999 / G7 Ultra 3299 / G7 Pro 2499）、<b>大白闺蜜机 X8 Ultra</b> 7999（5/30 预售）、画框音响 M5（Q3）、140W 充电宝 C1（7 月）。",
+          "price": "贴贴壁纸电视 65″ 京东前台约 <b>5467</b> 元、国补后到手约 <b>2813–3401</b> 元｜85″ 天猫原价 13999、国补 + 晒单后到手约 <b>5414</b> 元"
+        },
+        {
+          "time": "05月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "发现X 2027 系列上市（75 / 85 / 100″）",
+          "desc": "Vidda 今年的真正走量旗舰。自研一体聚光灯芯 + 微棱镜结构 + 高透光面板，发光效率提升 54%，峰值亮度 <b>6000nits</b>；蓝宝石聚光架构<b>一灯一区 1536 分区</b>、定制微距 OD 把光晕减少 92%，配 20bit 自适应调光；<b>黑曜屏 Pro</b> 内外双 LR 低反，整机反射率 <b>1.8%</b>；100% 全浓度臻彩量子点实现 100% DCI-P3；原生 4K <b>180Hz</b>、最高 <b>330Hz</b> 模式，四路满血 HDMI 2.1（48Gbps）、VRR + ALLM；超旗舰<b>灵狮 AI 画质芯片</b>（算力 +26%、响应 +64%、图像处理 +119%）。机身 5.3cm，官方称同档最薄。",
+          "price": "75″ 页面 <b>6469</b> 元（历史低 5028）｜85″ 页面 <b>7410</b> 元、国补后约 <b>5755</b> 元｜100″ 页面 <b>12499</b> 元、国补后到手约 <b>9699</b> 元"
+        },
+        {
+          "time": "05.08",
+          "tag": "wa",
+          "tagText": "观察",
+          "st": "已发布",
+          "title": "媒体质疑：新品救得了销量，救不了品牌定位",
+          "desc": "同期评论指出 Vidda「背靠海信却定位模糊」：线上销量冲高的同时，黑屏、卡顿、音频故障与售后推诿等投诉集中爆发；叠加 2025 年 5 月与小米的商业诋毁案终审（北京知识产权法院维持一审，认定 2021 年双十一「米【mei】有问题」等海报文案构成商业诋毁，判公开致歉七日并赔偿 <b>55 万元</b>），品牌心智仍在重建期。做选题时这条比参数更有讨论度。",
+          "price": "—（舆情）"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "618：330Hz 榜单登顶，投影反超当贝",
+      "meta": "战报",
+      "items": [
+        {
+          "time": "06月",
+          "tag": "id",
+          "tagText": "市场",
+          "st": "已开售",
+          "title": "618 战报：发现X 2027 85″ 登顶线上 330Hz TOP1",
+          "desc": "奥维云网线上监测：促销期前四周 144Hz 以上高刷产品销量份额从去年同期 33.1% 升至 <b>45.6%</b>；<b>发现X 2027 85″ 在第 26W20 以 13.4% 份额居线上 330Hz 市场首位，618 首周登顶 330Hz 热销 TOP1</b>。京东平板电视竞速榜上，Vidda 稳定在第 6–7 位（5/13 首期第 6，5/21 第 7）。投影侧洛图数据：618 线上零售量 28.3 万台（-22.6%）、销额 5.5 亿元（-12.2%），Vidda 凭激光线反超当贝升至 <b>TOP3</b>，C5 Master 拿下万元 + 投影销量销额双第一（京东商智 + 洛图）。",
+          "price": "—（市场数据）"
+        }
+      ]
+    },
+    {
+      "m": "08–09月",
+      "label": "价格持续下探，G7 内容投放",
+      "meta": "后半年",
+      "items": [
+        {
+          "time": "08.03",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "发现X Mini（VX3S）与发现X 2027 进入促销深水区",
+          "desc": "发现X Mini 主打「同档唯一墨晶屏 300Hz 高刷 Mini LED」：65″ 1100–1500nits、96% DCI-P3、200–300 级分区、4×HDMI 2.1、120W 音响。价格端波动极大——75″ 页面价 9999，叠加满减与国补后到手约 <b>4499</b>；65″ 京东常卖 <b>4447</b>、30 天最低 <b>3797.8</b>。发现X 2027 85″ 8 月降至 <b>6999</b> 档，9/8 京东叠加券与国补到手 <b>5755</b>（前 30 分钟赠 499 元低音炮）。",
+          "price": "发现X Mini 65″ <b>3892–4447</b> 元｜75″ 到手约 <b>4499</b> 元｜发现X 2027 85″ <b>5755–6999</b> 元"
+        },
+        {
+          "time": "09月",
+          "tag": "te",
+          "tagText": "传播",
+          "st": "已开售",
+          "title": "G7 进入长文种草周期：「万元内满血旗舰」",
+          "desc": "9 月起 IT 之家等媒体集中投放 G7 深度稿，卖点集中在「通透不输 OLED、速度比肩电竞屏」「Switch / PS5 专用电视」「阳光客厅不拉窗帘」三个场景，配合「游戏模式不再砍画质」的技术叙事。这是 Vidda 今年唯一一条有持续内容预算的电视线。",
+          "price": "—（传播投放）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>电视线</b>：大玩家 G7（游戏旗舰，75 / 85 / 100″）· 发现X 2027（走量旗舰，75 / 85 / 100″）· 发现X Mini VX3S（墨晶屏 300Hz）· 小钢炮 S Mini（55 / 65 / 75″ 千元 Mini LED）· 贴贴壁纸电视 65V7Q / 85″（35mm 超薄）· R Pro 2026（100″ 巨幕走量）",
+    "<b>命名坑 · 务必注意</b>：「发现X <b>2026 款</b>」是 <b>2025 年 3 月</b>上市的旧机型（65VX5Q / 85VX5Q，1248 分区 / 2000nits / 帝瓦雷 2.1.2 150W）；2026 年真正的新旗舰叫「发现X <b>2027</b>」（VX5S，1536 分区 / 6000nits / 330Hz 模式）。Vidda 用产品年命名，不等于日历年，写稿时极易搞混",
+    "<b>价格坑</b>：Vidda 页面价与实际到手价差距极大（发现X Mini 75″ 页面 9999 → 到手约 4499；贴贴壁纸 65″ 页面 5467 → 国补后 2813）。引用价格必须写明是「页面价」还是「国补/券后到手价」，并标注时间",
+    "<b>海外</b>：Vidda 基本不做海外独立产品线，出海由海信主品牌与东芝 REGZA 承接；本页不做海外线",
+    "<b>口径提示</b>：3264 分区 / 7300nits 为 85″ 版本数据，75″ 与 100″ 的分区与亮度官方未逐档公布，引用需标尺寸"
+  ],
+  "footL": "整理于 2026-09-18 · 来源：Vidda 官网 / 搜狐（3/23 发布会）/ 中关村在线 / 今日头条（4/7 小钢炮）/ 微博 @繁繁_leon（5/8 价格）/ 腾讯新闻（5/8 品牌分析）/ 什么值得买 + 奥维云网 AVC / 洛图科技 / 京东商智 / IT 之家"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

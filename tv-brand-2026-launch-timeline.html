@@ -6,124 +6,53 @@
 <title>电视品牌 2026 新品时间表 · 超红传媒</title>
 <style>
   :root{
-    --bg:#f5f6f8; --card:#fff; --ink:#16191d; --ink2:#5a636e; --ink3:#8c949e;
-    --line:#e4e7ec; --line2:#eef0f3; --brand:#c8102e; --brand-soft:#fdeef0;
-    --shadow:0 1px 2px rgba(16,24,40,.05), 0 10px 28px rgba(16,24,40,.055);
-    --r:6px;
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --line2:#f1f3f6; --brand:#c8102e; --shadow:0 1px 2px rgba(20,30,45,.05), 0 6px 18px rgba(20,30,45,.05);
+    --r:8px;
   }
   html[data-theme="dark"]{
-    --bg:#121417; --card:#1a1d21; --ink:#e9ebee; --ink2:#a6aeb8; --ink3:#767e88;
-    --line:#282c32; --line2:#22262b; --brand:#f0556d; --brand-soft:#2a1a1e;
-    --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.3);
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --line2:#22262b; --brand:#f0556d; --shadow:0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    -webkit-font-smoothing:antialiased;line-height:1.6;font-variant-numeric:tabular-nums}
-  .wrap{max-width:1800px;margin:0 auto;padding:34px 44px 72px}
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 24px 72px}
 
-  /* ---------- 刊头 ---------- */
-  .masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:26px}
-  .mh-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  .mh-kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:10px}
-  .mh-title{font-size:56px;line-height:1.04;letter-spacing:-.025em;font-weight:800;margin:0}
-  .mh-title em{font-style:normal;color:var(--brand)}
-  .mh-sub{margin:12px 0 0;font-size:15px;color:var(--ink2);max-width:960px}
-  .mh-stats{display:flex;gap:34px;flex-wrap:wrap}
-  .mstat{text-align:right}
-  .mstat b{display:block;font-size:40px;line-height:1;font-weight:800;letter-spacing:-.03em}
-  .mstat span{font-size:12px;color:var(--ink3);letter-spacing:.1em}
-  .theme-btn{position:fixed;right:22px;top:22px;z-index:60;height:38px;padding:0 15px;border-radius:999px;
+  header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:34px}
+  .kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:10px}
+  h1{margin:0;font-size:38px;line-height:1.15;letter-spacing:-.022em;font-weight:800}
+  h1 em{font-style:normal;color:var(--brand)}
+  .sub{margin:12px 0 0;font-size:14px;color:var(--ink2)}
+
+  .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .brand{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;box-shadow:var(--shadow);
+    border-left:3px solid var(--bc);
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .brand:hover{transform:translateX(3px);box-shadow:0 2px 4px rgba(20,30,45,.07), 0 12px 26px rgba(20,30,45,.1)}
+  .b-flag{font-size:20px;line-height:1;flex-shrink:0}
+  .b-name{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+  .b-name b{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .b-name i{font-style:normal;font-size:10.5px;letter-spacing:.13em;color:var(--ink3);text-transform:uppercase}
+  .b-go{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--bc);white-space:nowrap;flex-shrink:0}
+
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
+
+  .theme-btn{position:fixed;right:20px;top:20px;z-index:60;height:36px;padding:0 14px;border-radius:999px;
     border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:13px;box-shadow:var(--shadow)}
 
-  /* ---------- 布局 ---------- */
-  .layout{display:grid;grid-template-columns:212px minmax(0,1fr);gap:38px;align-items:start}
-  .side{position:sticky;top:22px}
-  .side-h{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);font-weight:700;
-    padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:10px}
-  .idx-item{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:var(--r);
-    text-decoration:none;color:var(--ink2);font-size:13.5px;transition:background .14s,color .14s}
-  .idx-item:hover{background:var(--line2);color:var(--ink)}
-  .idx-dot{width:8px;height:8px;border-radius:50%;background:var(--bc);flex-shrink:0}
-  .idx-cn{font-weight:600}
-  .idx-cnt{margin-left:auto;font-size:11px;color:var(--ink3)}
-
-  /* ---------- 品牌网格 ---------- */
-  .sec-h{display:flex;align-items:baseline;gap:14px;margin:0 0 18px;flex-wrap:wrap}
-  .sec-h h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin:0}
-  .sec-h .cnt{font-size:12px;color:var(--ink3)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(344px,1fr));gap:18px}
-
-  .bcard{position:relative;display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
-    padding:20px 22px 18px;text-decoration:none;color:inherit;box-shadow:var(--shadow);
-    border-top:3px solid var(--bc);overflow:hidden;
-    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-  .bcard:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(16,24,40,.06),0 16px 36px rgba(16,24,40,.11)}
-  .bc-top{display:flex;align-items:center;gap:11px}
-  .bc-flag{font-size:20px;line-height:1}
-  .bc-name{display:flex;flex-direction:column;line-height:1.25}
-  .bc-name b{font-size:20px;letter-spacing:-.02em}
-  .bc-name i{font-style:normal;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
-  .bc-tag{margin-left:auto;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;
-    background:var(--brand-soft);color:var(--brand);white-space:nowrap}
-  .bc-pos{margin-top:13px;font-size:14px;font-weight:600;color:var(--ink)}
-  .bc-anchor{margin-top:5px;font-size:12.5px;color:var(--bc);font-weight:600}
-  .bc-nums{display:flex;gap:14px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line2);
-    font-size:11.5px;color:var(--ink3);flex-wrap:wrap}
-  .bc-nums b{color:var(--ink);font-size:14px;font-weight:700}
-  .bc-kvs{margin-top:11px}
-  .bc-kv{display:flex;gap:9px;font-size:12px;color:var(--ink2);margin-bottom:6px;align-items:baseline}
-  .bc-k{flex-shrink:0;min-width:62px;font-size:11px;color:var(--ink3);letter-spacing:.04em}
-  .bc-v{line-height:1.5}
-  .bc-months{display:flex;flex-wrap:wrap;gap:4px;margin-top:12px}
-  .bc-m{font-size:10.5px;padding:2px 7px;border-radius:3px;background:var(--line2);color:var(--ink2);
-    font-variant-numeric:tabular-nums}
-  .bc-go{margin-top:15px;font-size:12.5px;font-weight:600;color:var(--bc);display:flex;align-items:center;gap:5px}
-  .bc-go span{transition:transform .16s}
-  .bcard:hover .bc-go span{transform:translateX(4px)}
-
-  /* ---------- 节奏矩阵 ---------- */
-  .matrix-sec{margin-top:46px}
-  .matrix{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
-    border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-  .matrix th,.matrix td{padding:11px 6px;text-align:center;font-size:12px;border-bottom:1px solid var(--line2)}
-  .matrix thead th{font-weight:600;color:var(--ink3);font-size:11px;letter-spacing:.08em;background:var(--line2)}
-  .matrix tbody th{text-align:left;padding-left:18px;font-weight:600;white-space:nowrap;font-size:13px}
-  .matrix td{color:var(--ink3);font-size:15px;line-height:1}
-  .matrix td.on{color:var(--bc,var(--brand));font-weight:700;background:var(--brand-soft)}
-  .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
-  .mx-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:9px;vertical-align:middle}
-  .mx-note{margin-top:13px;font-size:12.5px;color:var(--ink3)}
-
-  /* ---------- 页脚 ---------- */
-  footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
-    font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-
-  @media (max-width:1180px){
-    .layout{grid-template-columns:1fr;gap:24px}
-    .side{position:static}
-    .idx-list{display:flex;flex-wrap:wrap;gap:6px}
-    .idx-item{border:1px solid var(--line);border-radius:999px;padding:5px 12px}
-    .idx-cnt{margin-left:4px}
-  }
-  @media (max-width:760px){
-    .wrap{padding:22px 16px 56px}
-    .mh-title{font-size:34px}
-    .mstat b{font-size:28px}
-    .mh-stats{gap:22px}
-    .grid{grid-template-columns:1fr}
-    .matrix{font-size:10px}
-    .matrix th,.matrix td{padding:8px 3px}
-    .matrix tbody th{padding-left:10px}
+  @media (max-width:640px){
+    .wrap{padding:26px 16px 56px}
+    h1{font-size:26px}
+    .list{grid-template-columns:1fr}
     .theme-btn{right:12px;top:12px}
   }
   @media print{
-    body{background:#fff}
-    .theme-btn,.side{display:none}
-    .layout{grid-template-columns:1fr}
+    body{background:#fff}.theme-btn{display:none}
     .wrap{max-width:none;padding:0}
-    .bcard,.matrix{box-shadow:none;break-inside:avoid}
-    .bc-card{break-inside:avoid}
+    .brand{box-shadow:none;break-inside:avoid}
   }
 </style>
 </head>
@@ -131,279 +60,111 @@
 <button class="theme-btn" id="tg">◐ 深色</button>
 <div class="wrap">
 
-  <header class="masthead">
-    <div class="mh-top">
-      <div>
-        <div class="mh-kicker">TV BRANDS · 2026 LAUNCH SCHEDULE</div>
-        <h1 class="mh-title">电视品牌 <em>2026</em> 新品时间表</h1>
-        <p class="mh-sub">十家主流电视品牌 2026 全年新品发布节奏速查 —— 每条年表收录发布会时间、产品型号、核心规格与官方价格。用于横评选题、竞品对标与发布时间窗口判断。</p>
-      </div>
-      <div class="mh-stats">
-        <div class="mstat"><b>10</b><span>品牌</span></div>
-        <div class="mstat"><b>84</b><span>发布记录</span></div>
-        <div class="mstat"><b>46</b><span>月份组</span></div>
-      </div>
-    </div>
+  <header>
+    <div class="kicker">TV BRANDS · 2026 LAUNCH SCHEDULE</div>
+    <h1>电视品牌 <em>2026</em> 新品时间表</h1>
+    <p class="sub">十一家主流电视品牌 2026 全年新品发布年表，共 95 条发布记录。点击进入对应品牌。</p>
   </header>
 
-  <div class="layout">
-    <aside class="side">
-      <div class="side-h">品牌索引</div>
-      <nav class="idx-list">
-<a class="idx-item" href="#hisense" style="--bc:#c8102e"><span class="idx-dot"></span><span class="idx-cn">海信</span><span class="idx-cnt">17</span></a><a class="idx-item" href="#tcl" style="--bc:#d0021b"><span class="idx-dot"></span><span class="idx-cn">TCL</span><span class="idx-cnt">15</span></a><a class="idx-item" href="#ffalcon" style="--bc:#e8620c"><span class="idx-dot"></span><span class="idx-cn">雷鸟</span><span class="idx-cnt">9</span></a><a class="idx-item" href="#skyworth" style="--bc:#1a7f6b"><span class="idx-dot"></span><span class="idx-cn">创维</span><span class="idx-cnt">11</span></a><a class="idx-item" href="#huawei" style="--bc:#c7000b"><span class="idx-dot"></span><span class="idx-cn">华为智慧屏</span><span class="idx-cnt">4</span></a><a class="idx-item" href="#xiaomi" style="--bc:#ff6900"><span class="idx-dot"></span><span class="idx-cn">小米</span><span class="idx-cnt">5</span></a><a class="idx-item" href="#samsung" style="--bc:#1428a0"><span class="idx-dot"></span><span class="idx-cn">三星</span><span class="idx-cnt">6</span></a><a class="idx-item" href="#lg" style="--bc:#a50034"><span class="idx-dot"></span><span class="idx-cn">LG</span><span class="idx-cnt">6</span></a><a class="idx-item" href="#sony" style="--bc:#0f3d8c"><span class="idx-dot"></span><span class="idx-cn">索尼</span><span class="idx-cnt">5</span></a><a class="idx-item" href="#toshiba" style="--bc:#d71920"><span class="idx-dot"></span><span class="idx-cn">东芝</span><span class="idx-cnt">6</span></a>
-      </nav>
-    </aside>
-
-    <main>
-      <div class="sec-h">
-        <h2>品牌年表</h2>
-        <span class="cnt">点击进入各品牌完整时间轴</span>
-      </div>
-      <div class="grid">
-      <a class="bcard" href="hisense-tv-2026-launch-timeline.html" style="--bc:#c8102e">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>海信</b>
-            <i>Hisense</i>
-          </div>
-          <span class="bc-tag">赛事绑定</span>
-        </div>
-        <div class="bc-pos">RGB-Mini LED 下放到 55″</div>
-        <div class="bc-anchor">世界杯官方赞助商</div>
-        <div class="bc-nums">
-          <span><b>17</b> 条发布</span>
-          <span><b>7</b> 个月份组</span>
-          <span>01月–09月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">RGB-Mini LED 从旗舰下放到 55″，全年 4 次升级（evo 四原色 → 玲珑真彩 2.0）</span></div><div class="bc-kv"><span class="bc-k">画质天花板</span><span class="bc-v">UX2026：43008 控色分区 · 10000nits · 110% BT.2020 · 134bits</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">04月</span><span class="bc-m">05月</span><span class="bc-m">06–07月</span><span class="bc-m">08月</span><span class="bc-m">09月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+  <div class="list">
+      <a class="brand" id="hisense" href="hisense-tv-2026-launch-timeline.html" target="_blank" style="--bc:#c8102e">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>海信</b>
+          <i>Hisense</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="tcl-tv-2026-launch-timeline.html" style="--bc:#d0021b">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>TCL</b>
-            <i>TCL</i>
-          </div>
-          <span class="bc-tag">价格普惠</span>
-        </div>
-        <div class="bc-pos">SQD-Mini LED 三次下放</div>
-        <div class="bc-anchor">3 万档 → 9999</div>
-        <div class="bc-nums">
-          <span><b>15</b> 条发布</span>
-          <span><b>5</b> 个月份组</span>
-          <span>01月–09月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">SQD-Mini LED（2025.9 首发）全年三次下放：旗舰 → 万元档 → 5 千档</span></div><div class="bc-kv"><span class="bc-k">技术站队</span><span class="bc-v">不走 RGB 三色背光，用「蓝灯珠 + 超级量子点 + 晶粹高色阻」做全局高色域、正面硬刚串色</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">05–06月</span><span class="bc-m">08月</span><span class="bc-m">09月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="tcl" href="tcl-tv-2026-launch-timeline.html" target="_blank" style="--bc:#d0021b">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>TCL</b>
+          <i>TCL</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="ffalcon-tv-2026-launch-timeline.html" style="--bc:#e8620c">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>雷鸟</b>
-            <i>FFALCON</i>
-          </div>
-          <span class="bc-tag">质价比</span>
-        </div>
-        <div class="bc-pos">万象分区 QD-Mini LED 一年两代</div>
-        <div class="bc-anchor">12999 → 2634</div>
-        <div class="bc-nums">
-          <span><b>9</b> 条发布</span>
-          <span><b>6</b> 个月份组</span>
-          <span>01月–09月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">万象分区 QD-Mini LED 一年两代：26 款覆盖 55–98″ 全尺寸，27 款把 2448 分区 / 6000nits 打到 6999</span></div><div class="bc-kv"><span class="bc-k">品牌站位</span><span class="bc-v">TCL 子品牌，背靠华星「屏厂自研自产」，主打技术平权 + 全系无开机广告，走质价比而非高端溢价</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">04月</span><span class="bc-m">06月</span><span class="bc-m">08月</span><span class="bc-m">09月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="ffalcon" href="ffalcon-tv-2026-launch-timeline.html" target="_blank" style="--bc:#e8620c">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>雷鸟</b>
+          <i>FFALCON</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="skyworth-tv-2026-launch-timeline.html" style="--bc:#1a7f6b">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>创维</b>
-            <i>Skyworth</i>
-          </div>
-          <span class="bc-tag">设计美学</span>
-        </div>
-        <div class="bc-pos">第十代壁纸电视，全年五款迭代</div>
-        <div class="bc-anchor">27.9mm 无缝贴墙</div>
-        <div class="bc-nums">
-          <span><b>11</b> 条发布</span>
-          <span><b>7</b> 个月份组</span>
-          <span>01月–09月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">第十代壁纸电视：A7H Pro → A9H → A10H / A10H Pro → Q9H，全年五款迭代「极致薄 + 无缝贴墙 + 艺术屏」</span></div><div class="bc-kv"><span class="bc-k">品牌站位</span><span class="bc-v">不卷 RGB vs SQD 的技术路线之争，打「设计美学 + 家居融合」差异化；2025 年中国艺术电视销量第一</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">02月</span><span class="bc-m">03月</span><span class="bc-m">04月</span><span class="bc-m">07月</span><span class="bc-m">08–09月</span><span class="bc-m">09月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="vidda" href="vidda-tv-2026-launch-timeline.html" target="_blank" style="--bc:#00a0a0">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>Vidda</b>
+          <i>Vidda</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="huawei-vision-2026-launch-timeline.html" style="--bc:#c7000b">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>华为智慧屏</b>
-            <i>HUAWEI VISION</i>
-          </div>
-          <span class="bc-tag">实用创新</span>
-        </div>
-        <div class="bc-pos">黑晶屏抗反光 + 全链路护眼</div>
-        <div class="bc-anchor">8 月补 RGB-MiniLED</div>
-        <div class="bc-nums">
-          <span><b>4</b> 条发布</span>
-          <span><b>4</b> 个月份组</span>
-          <span>03月–08月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">黑晶屏抗反光 + 全链路护眼 + 鸿蒙交互三条实用线；8 月才补上 RGB-MiniLED</span></div><div class="bc-kv"><span class="bc-k">画质天花板</span><span class="bc-v">Vision 智慧屏 6 SE RGB：105% BT.2020 · 94bits 控色 · 自研光色同控芯片 · 300Hz</span></div></div>
-        <div class="bc-months"><span class="bc-m">03月</span><span class="bc-m">04月</span><span class="bc-m">05月</span><span class="bc-m">08月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="skyworth" href="skyworth-tv-2026-launch-timeline.html" target="_blank" style="--bc:#1a7f6b">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>创维</b>
+          <i>Skyworth</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="xiaomi-tv-2026-launch-timeline.html" style="--bc:#ff6900">
-        <div class="bc-top">
-          <span class="bc-flag">🇨🇳</span>
-          <div class="bc-name">
-            <b>小米</b>
-            <i>Xiaomi</i>
-          </div>
-          <span class="bc-tag">双线并行</span>
-        </div>
-        <div class="bc-pos">S Pro 往高端冲 + Redmi 走量</div>
-        <div class="bc-anchor">5700nits / 330Hz</div>
-        <div class="bc-nums">
-          <span><b>5</b> 条发布</span>
-          <span><b>3</b> 个月份组</span>
-          <span>03月–年内</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">S Pro Mini LED 2026 往高端冲（5200–5700nits、330Hz），S Mini LED 与 Redmi 走量</span></div><div class="bc-kv"><span class="bc-k">画质天花板</span><span class="bc-v">S Pro Mini LED 2026 98″：5700nits · 3864 分区 · 330Hz · 广视角低反屏（0.5% LR）</span></div></div>
-        <div class="bc-months"><span class="bc-m">03月</span><span class="bc-m">04月</span><span class="bc-m">年内</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="huawei" href="huawei-vision-2026-launch-timeline.html" target="_blank" style="--bc:#c7000b">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>华为智慧屏</b>
+          <i>HUAWEI VISION</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="samsung-tv-2026-launch-timeline.html" style="--bc:#1428a0">
-        <div class="bc-top">
-          <span class="bc-flag">🇰🇷</span>
-          <div class="bc-name">
-            <b>三星</b>
-            <i>Samsung</i>
-          </div>
-          <span class="bc-tag">四线并进</span>
-        </div>
-        <div class="bc-pos">Micro RGB / Neo QLED / OLED / Frame</div>
-        <div class="bc-anchor">HDR10+ Advanced</div>
-        <div class="bc-nums">
-          <span><b>6</b> 条发布</span>
-          <span><b>4</b> 个月份组</span>
-          <span>01月–年内</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">四条线并行：Micro RGB 冲顶、Neo QLED 主力、OLED 补尺寸、The Frame 吃生活方式</span></div><div class="bc-kv"><span class="bc-k">格式之争</span><span class="bc-v">发布 HDR10+ Advanced（动态元数据、最高 10000nits 规格），正面对抗 Dolby Vision 2</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">Q2</span><span class="bc-m">年内</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="xiaomi" href="xiaomi-tv-2026-launch-timeline.html" target="_blank" style="--bc:#ff6900">
+        <span class="b-flag">🇨🇳</span>
+        <span class="b-name">
+          <b>小米</b>
+          <i>Xiaomi</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="lg-tv-2026-launch-timeline.html" style="--bc:#a50034">
-        <div class="bc-top">
-          <span class="bc-flag">🇰🇷</span>
-          <div class="bc-name">
-            <b>LG</b>
-            <i>LG</i>
-          </div>
-          <span class="bc-tag">OLED 13 年</span>
-        </div>
-        <div class="bc-pos">OLED evo G6 / C6 + Wallpaper W6</div>
-        <div class="bc-anchor">97″ · 165Hz</div>
-        <div class="bc-nums">
-          <span><b>6</b> 条发布</span>
-          <span><b>3</b> 个月份组</span>
-          <span>01月–年内</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">OLED evo 双线（G6 旗舰 / C6 走量）+ Wallpaper W6；Alpha 11 AI Gen3 全系下放</span></div><div class="bc-kv"><span class="bc-k">画质天花板</span><span class="bc-v">G6：Hyper Radiant Colour + Brightness Booster Ultimate（最高 3.9 倍亮度）、Perfect Black / Colour</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">年内</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="samsung" href="samsung-tv-2026-launch-timeline.html" target="_blank" style="--bc:#1428a0">
+        <span class="b-flag">🇰🇷</span>
+        <span class="b-name">
+          <b>三星</b>
+          <i>Samsung</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="sony-tv-2026-launch-timeline.html" style="--bc:#0f3d8c">
-        <div class="bc-top">
-          <span class="bc-flag">🇯🇵</span>
-          <div class="bc-name">
-            <b>索尼</b>
-            <i>Sony BRAVIA</i>
-          </div>
-          <span class="bc-tag">格局转折</span>
-        </div>
-        <div class="bc-pos">True RGB 首次落到 9 / 7 系二代</div>
-        <div class="bc-anchor">TCL 51% 控股</div>
-        <div class="bc-nums">
-          <span><b>5</b> 条发布</span>
-          <span><b>4</b> 个月份组</span>
-          <span>01月–06月</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">True RGB 背光首次落到 9 系 / 7 系二代，RGB 电视第一次出现 50 英寸</span></div><div class="bc-kv"><span class="bc-k">资本动作</span><span class="bc-v">1/20 意向备忘录 → 3/31 最终协议：TCL 51% / 索尼 49%，新公司 2027 年 4 月运营</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">05月</span><span class="bc-m">06月</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="lg" href="lg-tv-2026-launch-timeline.html" target="_blank" style="--bc:#a50034">
+        <span class="b-flag">🇰🇷</span>
+        <span class="b-name">
+          <b>LG</b>
+          <i>LG</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      <a class="bcard" href="toshiba-tv-2026-launch-timeline.html" style="--bc:#d71920">
-        <div class="bc-top">
-          <span class="bc-flag">🇯🇵</span>
-          <div class="bc-name">
-            <b>东芝</b>
-            <i>Toshiba REGZA</i>
-          </div>
-          <span class="bc-tag">20 周年</span>
-        </div>
-        <div class="bc-pos">原色 RGB Mini LED + 音画双芯</div>
-        <div class="bc-anchor">43008 控色分区</div>
-        <div class="bc-nums">
-          <span><b>6</b> 条发布</span>
-          <span><b>3</b> 个月份组</span>
-          <span>01月–年内</span>
-        </div>
-        <div class="bc-kvs"><div class="bc-kv"><span class="bc-k">年度主线</span><span class="bc-v">原色 RGB Mini LED 全面落地：三原色背光芯片 + ZRα 光色同控（三维控色）+ 日本专家逐款调校</span></div><div class="bc-kv"><span class="bc-k">画质天花板</span><span class="bc-v">REGZA ZX：110% BT.2020 · 最高 43008 控色分区 · 134bits 光色同控 · 音画双芯 ZRα + BRα</span></div></div>
-        <div class="bc-months"><span class="bc-m">01月</span><span class="bc-m">03月</span><span class="bc-m">年内</span></div>
-        <div class="bc-go">查看年表 <span>→</span></div>
+      <a class="brand" id="sony" href="sony-tv-2026-launch-timeline.html" target="_blank" style="--bc:#0f3d8c">
+        <span class="b-flag">🇯🇵</span>
+        <span class="b-name">
+          <b>索尼</b>
+          <i>Sony BRAVIA</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
       </a>
-      </div>
-
-      <section class="matrix-sec">
-        <div class="sec-h">
-          <h2>全年发布节奏</h2>
-          <span class="cnt">● 该月有发布动作</span>
-        </div>
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th style="text-align:left;padding-left:18px">品牌</th>
-<th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th><th>12</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row"><span class="mx-dot" style="background:#c8102e"></span>海信</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#d0021b"></span>TCL</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#e8620c"></span>雷鸟</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#1a7f6b"></span>创维</th><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#c7000b"></span>华为智慧屏</th><td class="">·</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#ff6900"></span>小米</th><td class="">·</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#1428a0"></span>三星</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#a50034"></span>LG</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#0f3d8c"></span>索尼</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-            <tr><th scope="row"><span class="mx-dot" style="background:#d71920"></span>东芝</th><td class="on">●</td><td class="">·</td><td class="on">●</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td><td class="">·</td></tr>
-          </tbody>
-        </table>
-        <p class="mx-note">读法：<b>1 月 CES</b> 与 <b>3 月 AWE / 春季发布会</b> 是国际品牌的两大主场；国产品牌 3–4 月集中发力，9 月则是 IFA / CEDIA 的海外补位窗口。做横评时按「同期对标」取素材，比按品牌逐个收集更省事。</p>
-      </section>
-    </main>
+      <a class="brand" id="toshiba" href="toshiba-tv-2026-launch-timeline.html" target="_blank" style="--bc:#d71920">
+        <span class="b-flag">🇯🇵</span>
+        <span class="b-name">
+          <b>东芝</b>
+          <i>Toshiba REGZA</i>
+        </span>
+        <span class="b-go">查看年表 →</span>
+      </a>
   </div>
 
-  <footer>
-    <span>超红传媒 &nbsp;·&nbsp; 电视品牌 2026 新品时间表 &nbsp;·&nbsp; 整理于 2026-09-18</span>
-    <span>数据口径：官方发布会 / 官方新闻室 / 展会现场报道 &nbsp;·&nbsp; 价格随渠道浮动</span>
-  </footer>
+  <footer>超红传媒 &nbsp;·&nbsp; 电视品牌 2026 新品时间表 &nbsp;·&nbsp; 整理于 2026-09-18</footer>
 </div>
 
 <script>
   (function(){
     var saved = localStorage.getItem("chaohong-theme") || "light";
     document.documentElement.setAttribute("data-theme", saved);
-    var b = document.getElementById("tg");
-    b.textContent = saved === "dark" ? "◑ 浅色" : "◐ 深色";
+    document.getElementById("tg").textContent = saved === "dark" ? "◑ 浅色" : "◐ 深色";
   })();
   document.getElementById("tg").onclick = function(){
     var cur = document.documentElement.getAttribute("data-theme");
