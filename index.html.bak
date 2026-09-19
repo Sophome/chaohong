@@ -480,83 +480,7 @@
   </div>
 
 <!-- ② 选购指南 -->
-<!-- 1 -->
-  <div class="section s12" id="tools">
-    <div class="section-header">
-      <div class="section-dot" style="background:#0891b2"></div>
-      <span class="section-title">🧰 工具与专题</span>
-      <span class="section-count">16 篇</span>
-      <div class="section-divider"></div>
-    </div>
-    <div class="link-list">
-      <a class="row" href="car-brand-2026-launch-timeline.html" target="_blank">
-        <span class="row-d">2026-09-19</span>
-        <span class="row-t">🚗 新车总表 2026</span>
-      </a>
-      <a class="row" href="digital-launch-timeline.html" target="_blank">
-        <span class="row-d">2026-09-19</span>
-        <span class="row-t">📷 数码新品表</span>
-      </a>
-      <a class="row" href="tv-brand-2026-launch-timeline.html" target="_blank">
-        <span class="row-d">2026-09-18</span>
-        <span class="row-t">🗓️ 电视年表 2026</span>
-      </a>
-      <a class="row" href="scorecard-tools.html" target="_blank">
-        <span class="row-d">2026-09-16</span>
-        <span class="row-t">📐 测评工具 · 电视 / 扫地机评分卡体系</span>
-      </a>
-      <a class="row" href="tv-picture-quality-score.html" target="_blank">
-        <span class="row-d">2026-08-21</span>
-        <span class="row-t">📺 电视画质百分制评分表</span>
-      </a>
-      <a class="row" href="ai-wave-astock-20260814.html" target="_blank">
-        <span class="row-d">2026-08-14</span>
-        <span class="row-t">两代红利人群 × A股产业链映射｜2026-08-14</span>
-      </a>
-      <a class="row" href="internet-vs-ai-dividend.html" target="_blank">
-        <span class="row-d">2026-08-14</span>
-        <span class="row-t">从"连接"到"智能" · 两代红利归属对照</span>
-      </a>
-      <a class="row" href="ai-traffic-monetization-20-cases.html" target="_blank">
-        <span class="row-d">2026-08-14</span>
-        <span class="row-t">AI 流量变现 · 四大渠道 20 案例</span>
-      </a>
-      <a class="row" href="ai-affiliate-marketing.html" target="_blank">
-        <span class="row-d">2026-08-14</span>
-        <span class="row-t">AI 联盟营销 · 超级个体的被动收入管道</span>
-      </a>
-      <a class="row" href="checklist-tv-2026.html" target="_blank">
-        <span class="row-d">2026-08-12</span>
-        <span class="row-t">2026 电视机测评清单｜国内在售逐台打分</span>
-      </a>
-      <a class="row" href="checklist-robot-floor-washer-2026.html" target="_blank">
-        <span class="row-d">2026-08-12</span>
-        <span class="row-t">2026 扫地机 · 洗地机测评清单｜国内在售逐台打分</span>
-      </a>
-      <a class="row" href="tool-rank-tv.html" target="_blank">
-        <span class="row-d">2026-08-06</span>
-        <span class="row-t">📺 电视 · 评测排行榜工具</span>
-      </a>
-      <a class="row" href="tool-rank-robot-vacuum.html" target="_blank">
-        <span class="row-d">2026-08-06</span>
-        <span class="row-t">🤖 扫地机器人 · 评测排行榜工具</span>
-      </a>
-      <a class="row" href="tool-rank-floor-washer.html" target="_blank">
-        <span class="row-d">2026-08-06</span>
-        <span class="row-t">🧹 洗地机 · 评测排行榜工具</span>
-      </a>
-      <a class="row" href="tv-video-membership-fees-2026.html" target="_blank">
-        <span class="row-d">2026-07-31</span>
-        <span class="row-t">2026年电视视频会员年费一览</span>
-      </a>
-      <a class="row" href="media-source-grading-guide.html" target="_blank">
-        <span class="row-d">2026-07-31</span>
-        <span class="row-t">电视优质片源科学分级｜杜比视界 Profile 对照 · 文件大小 · 六级金字塔</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- 2 -->
+  <!-- 1 -->
   <div class="section s7" id="buying-guides">
     <div class="section-header">
       <div class="section-dot"></div>
@@ -568,6 +492,54 @@
       <a class="row" href="buying-guide-smart-home.html" target="_blank">
         <span class="row-d">2026-09-07</span>
         <span class="row-t">智能家居采购清单 · 三生态完整版｜米家 / HomeKit / 华为鸿蒙</span>
+      </a>
+      <a class="row" href="buying-guide-tv-china-market.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">中国市场电视机科学选购指南｜Mini LED、OLED、RGB Mini LED 与核心配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-tv-scientific.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">电视机科学选购指南｜Mini LED、OLED、大屏、HDR 与游戏电视配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-tv-picture-quality.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">电视选购指南｜画质与智能舒适配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-projector.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">中国市场投影仪科学选购指南｜2025-2026版</span>
+      </a>
+      <a class="row" href="buying-guide-fridge.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">冰箱选购指南｜保鲜与智能化配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-aircon.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">空调选购指南｜制冷制热与智能舒适配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-dishwasher.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">洗碗机选购指南｜容量洗净与烘干除菌配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-gas-stove.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">燃气灶选购指南｜火力热效与安全安装配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-range-hood.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">吸油烟机选购指南｜风量风压与拢烟排烟配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-robot-vacuum.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">扫地机器人选购指南｜清洁避障与智能基站配置优先级</span>
+      </a>
+      <a class="row" href="buying-guide-smart-toilet.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">智能马桶选购指南｜智能化与舒适化选购标准</span>
+      </a>
+      <a class="row" href="buying-guide-steam-oven.html" target="_blank">
+        <span class="row-d">2026-06-17</span>
+        <span class="row-t">嵌入式蒸烤箱选购指南｜蒸烤性能与安装配置优先级</span>
       </a>
       <a class="row" href="smart-lock-sop-guide.html" target="_blank">
         <span class="row-d">2026-08-04</span>
@@ -633,59 +605,11 @@
         <span class="row-d">2026-07-29</span>
         <span class="row-t">2026 旗舰投影仪科学选购指南｜Vidda C5 无界 Master、极米 X50 Ultra Max、当贝 S7 Ultra Max、坚果 O3 Ultra</span>
       </a>
-      <a class="row" href="buying-guide-tv-china-market.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">中国市场电视机科学选购指南｜Mini LED、OLED、RGB Mini LED 与核心配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-tv-scientific.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">电视机科学选购指南｜Mini LED、OLED、大屏、HDR 与游戏电视配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-tv-picture-quality.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">电视选购指南｜画质与智能舒适配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-projector.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">中国市场投影仪科学选购指南｜2025-2026版</span>
-      </a>
-      <a class="row" href="buying-guide-fridge.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">冰箱选购指南｜保鲜与智能化配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-aircon.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">空调选购指南｜制冷制热与智能舒适配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-dishwasher.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">洗碗机选购指南｜容量洗净与烘干除菌配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-gas-stove.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">燃气灶选购指南｜火力热效与安全安装配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-range-hood.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">吸油烟机选购指南｜风量风压与拢烟排烟配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-robot-vacuum.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">扫地机器人选购指南｜清洁避障与智能基站配置优先级</span>
-      </a>
-      <a class="row" href="buying-guide-smart-toilet.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">智能马桶选购指南｜智能化与舒适化选购标准</span>
-      </a>
-      <a class="row" href="buying-guide-steam-oven.html" target="_blank">
-        <span class="row-d">2026-06-17</span>
-        <span class="row-t">嵌入式蒸烤箱选购指南｜蒸烤性能与安装配置优先级</span>
-      </a>
     </div>
   </div>
 
 
-<!-- 3 -->
+<!-- 1 -->
   <div class="section s9" id="topic-planning">
     <div class="section-header">
       <div class="section-dot" style="background:#e11d48"></div>
@@ -717,119 +641,7 @@
     </div>
   </div>
 
-<!-- 4 -->
-  <div class="section s1" id="sop">
-    <div class="section-header">
-      <div class="section-dot"></div>
-      <span class="section-title">SOP 指南</span>
-      <span class="section-count">25 篇</span>
-      <div class="section-divider"></div>
-    </div>
-    <div class="link-list">
-      <a class="row" href="bilibili-viral-analysis-methodology.html" target="_blank">
-        <span class="row-d">2026-08-15</span>
-        <span class="row-t">爆款B站视频分析方法论报告 · 选题/标题/封面/数据全链路</span>
-      </a>
-      <a class="row" href="sop-floor-washer-report.html" target="_blank">
-        <span class="row-d">2026-08-06</span>
-        <span class="row-t">洗地机测评内容 SOP 与商务开发报告</span>
-      </a>
-      <a class="row" href="bilibili-floor-washer-sop.html" target="_blank">
-        <span class="row-d">2026-08-05</span>
-        <span class="row-t">洗地机 B站运营SOP · 爆款尝试方案 + 全流程操作手册</span>
-      </a>
-      <a class="row" href="bilibili-water-purifier-sop.html" target="_blank">
-        <span class="row-d">2026-08-05</span>
-        <span class="row-t">净水器 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
-      </a>
-      <a class="row" href="bilibili-projector-sop.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">投影仪 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
-      </a>
-      <a class="row" href="bilibili-tv-sop.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">智能电视 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
-      </a>
-      <a class="row" href="bilibili-robot-vacuum-sop-boom.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">扫地机器人 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
-      </a>
-      <a class="row" href="bilibili-fridge-sop.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">冰箱 B站运营SOP · 信任建立 + 同质化破局 + 全流程操作手册</span>
-      </a>
-      <a class="row" href="bilibili-smart-toilet-sop.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">智能马桶 B站运营SOP · 信任建立 + 同质化破局 + 全流程操作手册</span>
-      </a>
-      <a class="row" href="bilibili-robot-vacuum-sop.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">扫地机器人 B站运营SOP · 物料清单 + 全流程操作手册</span>
-      </a>
-      <a class="row" href="bilibili-robot-vacuum-strategy.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">扫地机器人 B站攻略 · 增长黑客视角 × 稀缺形式 × 高搜索量词 × 涨粉带货（含内容SEO）</span>
-      </a>
-      <a class="row" href="bilibili-projector-strategy.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">投影仪 B站攻略 · 稀缺形式 × 高搜索量词 × 涨粉带货（含内容SEO模块）</span>
-      </a>
-      <a class="row" href="bilibili-smart-lock-strategy.html" target="_blank">
-        <span class="row-d">2026-08-04</span>
-        <span class="row-t">智能门锁 B站攻略 · 稀缺形式 × SEO高搜索量词 × 涨粉带货全案</span>
-      </a>
-      <a class="row" href="sop-feishu-delivery.html" target="_blank">
-        <span class="row-d">2026-06-18</span>
-        <span class="row-t">超红传媒飞书交付SOP 2.0</span>
-      </a>
-      <a class="row" href="commerce-execution-dashboard.html" target="_blank">
-        <span class="row-d">2026-06-16</span>
-        <span class="row-t">结果导向带货与商单执行看板</span>
-      </a>
-      <a class="row" href="bilibili-content-competitiveness-action-table.html" target="_blank">
-        <span class="row-d">2026-06-15</span>
-        <span class="row-t">B站内容竞争力提升行动总表</span>
-      </a>
-      <a class="row" href="bilibili-video-competitiveness-sop.html" target="_blank">
-        <span class="row-d">2026-06-15</span>
-        <span class="row-t">B站视频竞争力提升 SOP 与周/月目标规划</span>
-      </a>
-      <a class="row" href="bilibili-video-competitiveness-dashboard.html" target="_blank">
-        <span class="row-d">2026-06-15</span>
-        <span class="row-t">B站视频竞争力 SOP 看板</span>
-      </a>
-      <a class="row" href="sop-longvideo-yt-bilibili.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">家电数码长视频 SOP</span>
-      </a>
-      <a class="row" href="sop-tv-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">电视机测评 SOP + 商务开发材料</span>
-      </a>
-      <a class="row" href="sop-fridge-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">冰箱测评 SOP + 商务开发报告</span>
-      </a>
-      <a class="row" href="sop-aircon-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">空调测评 SOP + 商务开发报告</span>
-      </a>
-      <a class="row" href="sop-robot-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">扫地机器人测评 SOP + 商务开发报告</span>
-      </a>
-      <a class="row" href="sop-hometheater-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">家庭影院测评 SOP + 商务开发报告</span>
-      </a>
-      <a class="row" href="bilibili-workflow-report.html" target="_blank">
-        <span class="row-d">2026-06-13</span>
-        <span class="row-t">B站数码家电博主标准执行流程报告</span>
-      </a>
-    </div>
-  </div>
-
-<!-- 5 -->
+<!-- 2 -->
   <div class="section s11" id="market-research">
     <div class="section-header">
       <div class="section-dot" style="background:#22c55e"></div>
@@ -937,7 +749,119 @@
     </div>
   </div>
 
-<!-- 6 -->
+<!-- 3 -->
+  <div class="section s1" id="sop">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">SOP 指南</span>
+      <span class="section-count">25 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="link-list">
+      <a class="row" href="bilibili-floor-washer-sop.html" target="_blank">
+        <span class="row-d">2026-08-05</span>
+        <span class="row-t">洗地机 B站运营SOP · 爆款尝试方案 + 全流程操作手册</span>
+      </a>
+      <a class="row" href="bilibili-water-purifier-sop.html" target="_blank">
+        <span class="row-d">2026-08-05</span>
+        <span class="row-t">净水器 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
+      </a>
+      <a class="row" href="bilibili-projector-sop.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">投影仪 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
+      </a>
+      <a class="row" href="bilibili-tv-sop.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">智能电视 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
+      </a>
+      <a class="row" href="bilibili-robot-vacuum-sop-boom.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">扫地机器人 B站运营SOP · 引爆角度 + 信任建立 + 全流程手册</span>
+      </a>
+      <a class="row" href="bilibili-fridge-sop.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">冰箱 B站运营SOP · 信任建立 + 同质化破局 + 全流程操作手册</span>
+      </a>
+      <a class="row" href="bilibili-smart-toilet-sop.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">智能马桶 B站运营SOP · 信任建立 + 同质化破局 + 全流程操作手册</span>
+      </a>
+      <a class="row" href="bilibili-robot-vacuum-sop.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">扫地机器人 B站运营SOP · 物料清单 + 全流程操作手册</span>
+      </a>
+      <a class="row" href="bilibili-robot-vacuum-strategy.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">扫地机器人 B站攻略 · 增长黑客视角 × 稀缺形式 × 高搜索量词 × 涨粉带货（含内容SEO）</span>
+      </a>
+      <a class="row" href="bilibili-projector-strategy.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">投影仪 B站攻略 · 稀缺形式 × 高搜索量词 × 涨粉带货（含内容SEO模块）</span>
+      </a>
+      <a class="row" href="bilibili-smart-lock-strategy.html" target="_blank">
+        <span class="row-d">2026-08-04</span>
+        <span class="row-t">智能门锁 B站攻略 · 稀缺形式 × SEO高搜索量词 × 涨粉带货全案</span>
+      </a>
+      <a class="row" href="sop-floor-washer-report.html" target="_blank">
+        <span class="row-d">2026-08-06</span>
+        <span class="row-t">洗地机测评内容 SOP 与商务开发报告</span>
+      </a>
+      <a class="row" href="sop-feishu-delivery.html" target="_blank">
+        <span class="row-d">2026-06-18</span>
+        <span class="row-t">超红传媒飞书交付SOP 2.0</span>
+      </a>
+      <a class="row" href="commerce-execution-dashboard.html" target="_blank">
+        <span class="row-d">2026-06-16</span>
+        <span class="row-t">结果导向带货与商单执行看板</span>
+      </a>
+      <a class="row" href="bilibili-content-competitiveness-action-table.html" target="_blank">
+        <span class="row-d">2026-06-15</span>
+        <span class="row-t">B站内容竞争力提升行动总表</span>
+      </a>
+      <a class="row" href="sop-longvideo-yt-bilibili.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">家电数码长视频 SOP</span>
+      </a>
+      <a class="row" href="sop-tv-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">电视机测评 SOP + 商务开发材料</span>
+      </a>
+      <a class="row" href="sop-fridge-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">冰箱测评 SOP + 商务开发报告</span>
+      </a>
+      <a class="row" href="sop-aircon-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">空调测评 SOP + 商务开发报告</span>
+      </a>
+      <a class="row" href="sop-robot-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">扫地机器人测评 SOP + 商务开发报告</span>
+      </a>
+      <a class="row" href="sop-hometheater-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">家庭影院测评 SOP + 商务开发报告</span>
+      </a>
+      <a class="row" href="bilibili-workflow-report.html" target="_blank">
+        <span class="row-d">2026-06-13</span>
+        <span class="row-t">B站数码家电博主标准执行流程报告</span>
+      </a>
+      <a class="row" href="bilibili-video-competitiveness-sop.html" target="_blank">
+        <span class="row-d">2026-06-15</span>
+        <span class="row-t">B站视频竞争力提升 SOP 与周/月目标规划</span>
+      </a>
+      <a class="row" href="bilibili-video-competitiveness-dashboard.html" target="_blank">
+        <span class="row-d">2026-06-15</span>
+        <span class="row-t">B站视频竞争力 SOP 看板</span>
+      </a>
+      <a class="row" href="bilibili-viral-analysis-methodology.html" target="_blank">
+        <span class="row-d">2026-08-15</span>
+        <span class="row-t">爆款B站视频分析方法论报告 · 选题/标题/封面/数据全链路</span>
+      </a>
+    </div>
+  </div>
+
+<!-- 4 -->
   <div class="section s5" id="kol-reports">
     <div class="section-header">
       <div class="section-dot"></div>
@@ -973,6 +897,82 @@
       <a class="row" href="bilibili-workflow-report.html" target="_blank">
         <span class="row-d">2026-06-13</span>
         <span class="row-t">B站数码家电博主标准执行流程报告</span>
+      </a>
+    </div>
+  </div>
+
+<!-- 5 -->
+  <div class="section s12" id="tools">
+    <div class="section-header">
+      <div class="section-dot" style="background:#0891b2"></div>
+      <span class="section-title">🧰 工具与专题</span>
+      <span class="section-count">16 篇</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="link-list">
+      <a class="row" href="tv-brand-2026-launch-timeline.html" target="_blank">
+        <span class="row-d">2026-09-18</span>
+        <span class="row-t">🗓️ 电视年表 2026</span>
+      </a>
+      <a class="row" href="car-brand-2026-launch-timeline.html" target="_blank">
+        <span class="row-d">2026-09-19</span>
+        <span class="row-t">🚗 新车总表 2026</span>
+      </a>
+      <a class="row" href="digital-launch-timeline.html" target="_blank">
+        <span class="row-d">2026-09-19</span>
+        <span class="row-t">📷 数码新品表</span>
+      </a>
+      <a class="row" href="scorecard-tools.html" target="_blank">
+        <span class="row-d">2026-09-16</span>
+        <span class="row-t">📐 测评工具 · 电视 / 扫地机评分卡体系</span>
+      </a>
+      <a class="row" href="tool-rank-tv.html" target="_blank">
+        <span class="row-d">2026-08-06</span>
+        <span class="row-t">📺 电视 · 评测排行榜工具</span>
+      </a>
+      <a class="row" href="tool-rank-robot-vacuum.html" target="_blank">
+        <span class="row-d">2026-08-06</span>
+        <span class="row-t">🤖 扫地机器人 · 评测排行榜工具</span>
+      </a>
+      <a class="row" href="tool-rank-floor-washer.html" target="_blank">
+        <span class="row-d">2026-08-06</span>
+        <span class="row-t">🧹 洗地机 · 评测排行榜工具</span>
+      </a>
+      <a class="row" href="tv-picture-quality-score.html" target="_blank">
+        <span class="row-d">2026-08-21</span>
+        <span class="row-t">📺 电视画质百分制评分表</span>
+      </a>
+      <a class="row" href="checklist-tv-2026.html" target="_blank">
+        <span class="row-d">2026-08-12</span>
+        <span class="row-t">2026 电视机测评清单｜国内在售逐台打分</span>
+      </a>
+      <a class="row" href="checklist-robot-floor-washer-2026.html" target="_blank">
+        <span class="row-d">2026-08-12</span>
+        <span class="row-t">2026 扫地机 · 洗地机测评清单｜国内在售逐台打分</span>
+      </a>
+      <a class="row" href="ai-wave-astock-20260814.html" target="_blank">
+        <span class="row-d">2026-08-14</span>
+        <span class="row-t">两代红利人群 × A股产业链映射｜2026-08-14</span>
+      </a>
+      <a class="row" href="internet-vs-ai-dividend.html" target="_blank">
+        <span class="row-d">2026-08-14</span>
+        <span class="row-t">从"连接"到"智能" · 两代红利归属对照</span>
+      </a>
+      <a class="row" href="ai-traffic-monetization-20-cases.html" target="_blank">
+        <span class="row-d">2026-08-14</span>
+        <span class="row-t">AI 流量变现 · 四大渠道 20 案例</span>
+      </a>
+      <a class="row" href="ai-affiliate-marketing.html" target="_blank">
+        <span class="row-d">2026-08-14</span>
+        <span class="row-t">AI 联盟营销 · 超级个体的被动收入管道</span>
+      </a>
+      <a class="row" href="tv-video-membership-fees-2026.html" target="_blank">
+        <span class="row-d">2026-07-31</span>
+        <span class="row-t">2026年电视视频会员年费一览</span>
+      </a>
+      <a class="row" href="media-source-grading-guide.html" target="_blank">
+        <span class="row-d">2026-07-31</span>
+        <span class="row-t">电视优质片源科学分级｜杜比视界 Profile 对照 · 文件大小 · 六级金字塔</span>
       </a>
     </div>
   </div>
