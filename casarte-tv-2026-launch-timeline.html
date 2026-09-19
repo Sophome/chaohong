@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>东芝电视 2026 新品发布年表</title>
+<title>卡萨帝电视 2026 新品发布年表</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
-    --line:#e6e9ee; --accent:#b01030; --accent-soft:#fbe7ea;
+    --line:#e6e9ee; --accent:#8b5e3c; --accent-soft:#f6ece3;
     --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
     --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
     --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
@@ -18,7 +18,7 @@
   }
   html[data-theme="dark"]{
     --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
-    --line:#2a2f36; --accent:#ff7286; --accent-soft:#381620;
+    --line:#2a2f36; --accent:#d2a679; --accent-soft:#332217;
     --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
     --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -33,9 +33,9 @@
   .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .sqd{display:inline-flex;gap:3px}
   .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
-  .sqd i:nth-child(1){background:#b01030}
-  .sqd i:nth-child(2){background:#1c2024}
-  .sqd i:nth-child(3){background:#c9a227}
+  .sqd i:nth-child(1){background:#8b5e3c}
+  .sqd i:nth-child(2){background:#d4af37}
+  .sqd i:nth-child(3){background:#1c2024}
   h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
   .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
   .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
@@ -83,13 +83,13 @@
 
   footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
-
-
   .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
   .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
   .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
   .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
   @media (max-width:680px){
     :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
     .wrap{padding:18px 14px 56px}
@@ -108,7 +108,6 @@
   @media print{
     body{background:#fff}
     .toggle{display:none}
-
     .brandnav{display:none}
     .wrap{max-width:none;padding:0}
     .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
@@ -129,14 +128,14 @@
   <a href="coocaa-tv-2026-launch-timeline.html">酷开</a>
   <a href="changhong-tv-2026-launch-timeline.html">长虹</a>
   <a href="haier-tv-2026-launch-timeline.html">海尔</a>
-  <a href="casarte-tv-2026-launch-timeline.html">卡萨帝</a>
+  <a href="casarte-tv-2026-launch-timeline.html" class="on">卡萨帝</a>
   <a href="huawei-vision-2026-launch-timeline.html">华为</a>
   <a href="xiaomi-tv-2026-launch-timeline.html">小米</a>
   <a href="vidda-tv-2026-launch-timeline.html">Vidda</a>
   <a href="samsung-tv-2026-launch-timeline.html">三星</a>
   <a href="lg-tv-2026-launch-timeline.html">LG</a>
   <a href="sony-tv-2026-launch-timeline.html">索尼</a>
-  <a href="toshiba-tv-2026-launch-timeline.html" class="on">东芝</a>
+  <a href="toshiba-tv-2026-launch-timeline.html">东芝</a>
 </nav>
     <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
     <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
@@ -148,7 +147,7 @@
   <div id="months"></div>
 
   <div class="sec">
-    <h2>日本 REGZA 2026 线与全球市场</h2>
+    <h2>2026 高端线与品牌节点</h2>
     <div class="plain"><ul id="overseas"></ul></div>
   </div>
 
@@ -167,117 +166,126 @@
    st:   已开售 · 已发布 · 海外 · 展出
    ═══════════════════════════════════════════════════ */
 const PAGE = {
-  "eyebrow": "TOSHIBA REGZA · 2026 LAUNCH TIMELINE",
-  "title": "东芝电视 2026 新品发布年表",
-  "subtitle": "1月 CES 亮技术 → 3/26 中国「真实音画」发布会（REGZA 品牌 20 周年）· 原色 RGB Mini LED + 音画双芯架构",
+  "eyebrow": "CASARTE TV · 2026 LAUNCH TIMELINE",
+  "title": "卡萨帝电视 2026 新品发布年表",
+  "subtitle": "5月致境 M50D（SQD-Mini LED MAX）→ 6月指挥家 M70D（20 周年盛典）→ 8月帧享 M30D（RGB-Mini LED 首发）· 一年三台旗舰",
   "badge": "V1 · 09-18",
   "keyInfo": [
     {
       "k": "年度主线",
-      "v": "原色 RGB Mini LED 全面落地：三原色背光芯片 + ZRα 光色同控（三维控色）+ 日本专家逐款调校",
-      "s": "真实音画"
+      "v": "一年三台旗舰：5 月致境 M50D（SQD-Mini LED MAX）→ 6 月指挥家 M70D（全屋指挥中枢）→ 8 月帧享 M30D（RGB-Mini LED）",
+      "s": "三旗舰"
     },
     {
       "k": "画质天花板",
-      "v": "REGZA ZX：110% BT.2020 · 最高 43008 控色分区 · 134bits 光色同控 · 音画双芯 ZRα + BRα",
-      "s": "全球高定"
+      "v": "帧享 M30D：SR 超感芯片 + AI 帧享控色算法、最高 2160 分区 RGB 三色直出、100% BT.2020、ΔE≈0.88",
+      "s": "帧享 M30D"
     },
     {
-      "k": "技术差异",
-      "v": "「音画双芯」架构——画质与音质各用一颗独立芯片专芯专控，是东芝今年最强调的结构性优势",
-      "s": "双芯"
+      "k": "差异化",
+      "v": "KEF 联名音频（金标 / Total Sonics）+ 壁画艺术形态（39.9mm、零贴墙）+ 接入 10000+ 海尔智家设备的全屋智控",
+      "s": "声 · 形 · 控"
     },
     {
       "k": "品牌节点",
-      "v": "2026 恰逢 REGZA 品牌创立 20 周年；东芝电视深耕视听 74 年",
+      "v": "2026 年卡萨帝 20 周年：6/26 重庆思享荟，品牌大使朱珠与指挥家 M70D 同台",
       "s": "20 周年"
     }
   ],
   "months": [
     {
-      "m": "01月",
-      "label": "CES 2026 · REGZA 最新技术发布",
-      "meta": "技术预热",
+      "m": "03月",
+      "label": "AWE 2026 · 107″ 21:9 智家屏与 163″ Micro LED",
+      "meta": "技术展示",
       "items": [
         {
-          "time": "01月",
-          "tag": "te",
-          "tagText": "技术",
+          "time": "03月",
+          "tag": "",
+          "tagText": "超旗舰",
           "st": "展出",
-          "title": "CES 2026：REGZA 公布 RGB Mini LED 最新技术",
-          "desc": "日本 REGZA 官网以「CES2026 发表的最新技术」为主线预热，同期日本市场已开始铺 RGB Mini LED 机型：<b>ZX1 series</b>（ZX1R 带时间移机 / ZX1S）、<b>ZX2 series</b>（ZX2S）、<b>ZX3 series</b>（ZX3S）以及带时间移机的 4K Mini LED <b>Z8 series Z890S</b>。中国市场的正式发布放在 3 月。",
-          "price": "—（技术发布）"
+          "title": "卡萨帝 107″ 21:9 AI 全画幅智家屏 + 163″ Micro LED 藏家电视",
+          "desc": "AWE 上卡萨帝秀的是两块「不按常规比例」的巨幕：<b>107″ 21:9 AI 全画幅智家屏</b>适配电影原生画幅、避免上下黑边裁切，主打还原本真色彩；<b>163″ Micro LED 藏家电视</b>做像素级精准控光与超高对比度，配英国殿堂级 <b>KEF Hi-Fi</b> 音响多声道环绕声场，官方对标 IMAX 级巨幕音画。这两台是品牌高度，走量靠后面的 M 系列。",
+          "price": "—（展会展示，未公布零售价）"
         }
       ]
     },
     {
-      "m": "03月",
-      "label": "中国：2026 真实音画暨原色 RGB Mini LED 旗舰新品发布会",
-      "meta": "年度主场",
+      "m": "05月",
+      "label": "致境 M50D 上市 + 壁画电视 K85E8 Pro 促销",
+      "meta": "上半年主力",
       "items": [
         {
-          "time": "03.26",
+          "time": "05.12",
           "tag": "",
           "tagText": "旗舰",
           "st": "已开售",
-          "title": "REGZA ZX 系列 / REGZA 700 系列 / 芝士 600 系列三系齐发",
-          "desc": "REGZA 品牌 20 周年之际的一次系统性更新，核心是<b>原色 RGB Mini LED</b>，走「硬件底层 + 算法引擎 + 专家调校」三位一体：硬件上由单色芯片升级为<b>多晶三原色背光芯片</b>，红 / 绿 / 蓝纯度分别达 <b>99% / 92% / 100%</b>，色域最高 <b>110% BT.2020</b>（官方称较普通 Mini LED 提升近 30%、较 OLED 提升近 10%）；算法上是全新 <b>ZRα AI 光色同控芯片</b>，从二维控光跨到<b>三维光色同控</b>，控色精度最高 <b>134bits</b>、最高<b>四万级控色分区</b>，官方称色调 / 饱和度 / 亮度控制力较普通 SOC 提升 400%+，色彩视角 +50%、均匀性 +30%、光晕 -60%；调校上沿用 70 余年色彩管理档案，由日本专家逐款精调。",
-          "price": "ZX / Z700SF PRO / R700SF / Z600SF PRO / R600SF 全阵容，3/26 起线下预售 + 线上预约"
+          "title": "卡萨帝致境电视 M50D 上市：画质 / 音效 / AI / 外观四项创新",
+          "desc": "画质用 <b>SQD-Mini LED MAX</b> 电影旗舰画质系统（超级量子点 + 进阶背光架构），标配<b>生态爱眼屏 Pro</b>（纳米微晶蚀刻、抗反光无倒影）并拿下四重权威护眼认证。音效是与 <b>KEF</b> 欧洲实验室专家团队联合调校的<b>金标</b>方案，国内首发 <b>Total Sonics</b> 声学大师调音技术并适配杜比全景声。外观为 <b>3.99cm</b> 超薄机身支持纯平无缝贴墙、可 <b>15°</b> 轻盈开合，2mm 天工玫瑰金线 + 伯爵褐喷砂边框 + 侧边奢定铭牌。交互为 AI 灵动交互系统（所指即达，操作如鼠标点击）+ 内置<b>知源大模型 2.0</b>（202 种方言混合识别、多轮对话），可接入 <b>10000+</b> 款海尔智家设备。",
+          "price": "—（官方未公布统一首发价，以渠道页面为准）"
         },
         {
-          "time": "03.26",
-          "tag": "",
-          "tagText": "超旗舰",
-          "st": "已发布",
-          "title": "REGZA ZX：定位「真实音画 全球高定」",
-          "desc": "东芝今年的顶格机型——最大尺寸、最高技术、最顶服务。110% BT.2020、最高 <b>43008 控色分区</b>与 134bits 光色同控精度；行业独家<b>音画双芯 ZRα + BRα</b> 架构，专芯专控让画质与音质同步拉满；<b>火箭炮 SOUND Ultra</b> 配对冲低音炮与 5.1.2 声道，做 360° 环幕剧院声场；REGZA Intelligence 场景自适应；Art Vision 艺术视听设计。服务上 116″ 用户享免费勘测、送货安装、专业调试、特殊墙体打孔、吊装入户<b>五项专属交付</b>；100″ 与 85″ 享四维「零操心」入户与 180 天只换不修 + 整机 3 年质保。",
-          "price": "116 / 100 / 85″ 三档，官方按尺寸分级定价"
-        },
-        {
-          "time": "03.26",
+          "time": "05.25",
           "tag": "te",
-          "tagText": "高端",
-          "st": "已发布",
-          "title": "REGZA Z7 PRO 与芝士 Z6 PRO",
-          "desc": "<b>Z7 PRO</b> 定位原色 RGB Mini LED AI 音画旗舰：最高 <b>6864 控色分区</b>、音画双芯 ZRα + BRα、火箭炮 SOUND Ultra + 真杜比 5.1.2、原生 4K <b>180Hz</b> 配黑瀑屏（抗反光防眩光同时兼顾竞技流畅度）。<b>芝士 Z6 PRO</b> 定位升级焕新的原色 RGB Mini LED，面向品质生活家庭。700 系列（Z700SF PRO / R700SF）控色精度为 <b>108bits</b>、色彩准确度提升 68%、100% BT.2020，硬件级原生低蓝光降低 42% 有害蓝光，三原色独立控光让整机功耗降低 30%。",
-          "price": "Z700SF PRO 3/26 线下预售｜R700SF 同步线上预约"
+          "tagText": "壁画",
+          "st": "已开售",
+          "title": "揽光艺术电视 K85E8 Pro：3024 分区壁画电视",
+          "desc": "85″ 壁画线的高配款，<b>3024 个独立控光分区</b> + Mini LED 背光，超薄一体化壁画设计、无缝贴墙，伯爵褐金属边框配哑光质感，灵动指向遥控支持隔空手势操作。这条线是卡萨帝「电视即艺术陈设」叙事的载体。",
+          "price": "京东活动价 <b>10499</b> 元，叠加满减、PLUS 立减与政府补贴后实付约 <b>7996</b> 元"
         }
       ]
     },
     {
-      "m": "年内",
-      "label": "区域首发与市场数据",
-      "meta": "渠道",
+      "m": "06月",
+      "label": "20 周年思享荟：指挥家 M70D 定义「一屏控全家」",
+      "meta": "品牌节点",
       "items": [
         {
-          "time": "年内",
-          "tag": "id",
-          "tagText": "渠道",
+          "time": "06.26",
+          "tag": "pu",
+          "tagText": "品牌",
           "st": "已发布",
-          "title": "重庆新品首发会：三大系列落地区域市场",
-          "desc": "以「原色入画 声动山城」为主题的区域首发，把 ZX（全球高定）、Z7 PRO（品质标杆）、芝士 Z6 PRO（升级焕新）三个定位一次性铺到渠道端，构建原色 RGB Mini LED 产品矩阵。",
-          "price": "—（渠道活动）"
+          "next": true,
+          "title": "重庆思享荟暨卡萨帝 20 周年品牌盛典，指挥家电视 M70D 亮相",
+          "desc": "品牌大使朱珠与海尔智家副总裁、视听产业总经理刘峻光同台体验 M70D 的「一屏控全家」场景。核心能力：AI 灵动交互 + <b>知源大模型 2.0</b>（202 种方言），说一句「打开智家界面」全屋设备一目了然；门口有人按铃，电视自动弹出门口画面并可一键开门；接入 <b>10000+</b> 智能设备，问「冰箱里有什么」即返回食材清单、存储时间与保鲜状态。外观用<b>「金玉合鸣」</b>东方美学——鎏金边框环抱墨玉屏，内置<b>住居美术馆</b>艺术壁纸系统，息屏时作墙面艺术画。",
+          "price": "—（品牌活动）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "帧享 M30D 首发：卡萨帝首台 RGB-Mini LED",
+      "meta": "年度技术",
+      "items": [
+        {
+          "time": "08.31",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "帧享 RGB-Mini LED 电视 M30D 首发",
+          "desc": "卡萨帝今年真正的技术旗舰。<b>帧享 RGB-Mini LED</b> 由 <b>SR 超感芯片 + AI 帧享控色算法</b>实时动态调校红绿蓝三色原生光配比，配高色域滤光层对杂光二次提纯，实时修正高光溢色与暗场杂色；最高 <b>2160 个三色直出独立分区</b>。结果为 <b>100% BT.2020</b> 色域、色准 <b>ΔE≈0.88</b>、原生对比度 <b>7000:1</b>、<b>240Hz</b> 原生高刷 + 运动补偿。形态为高端壁画艺术电视：最薄处 <b>39.9mm</b>、纯平一体背板支持零贴墙壁挂、三边极窄边框；<b>灵境桌面</b>开机无广告，内置世界名画艺术屏保。音频联合 <b>KEF</b> 做 360° 全景环绕声，<b>2.1.2</b> 前置全景声架构 + AI-AQ 智能音效场景识别。",
+          "price": "—（首发价未公开统一口径，以渠道页面为准）"
         },
         {
-          "time": "2025 数据",
+          "time": "08月",
           "tag": "id",
           "tagText": "市场",
-          "st": "海外",
-          "title": "日本连续四年市占第一，海外多处高增长",
-          "desc": "东芝电视在日本市场连续四年份额第一，2025 年以 <b>29.2%</b> 稳居榜首。海外方面 2025 年东盟增长 <b>45.8%</b>、加拿大 44.6%、亚太 39.0%、印度 28.2%。这组数据是判断「东芝今年为什么敢在中国押 RGB」的背景——它在本土与新兴市场都在涨。",
+          "st": "已发布",
+          "title": "背景：2026 上半年 RGB-Mini LED 在 75″+ 高端占比突破 30%",
+          "desc": "奥维云网数据：2026 上半年 Mini LED 电视零售量同比增长超 <b>120%</b>，其中 <b>RGB-Mini LED 在 75″ 及以上高端市场占比已突破 30%</b>，成为画质升级的主流选择。这是卡萨帝在 8 月跟进 RGB-Mini LED 的直接动因——海信、TCL、长虹、东芝在 3–4 月已把 RGB 铺到主流价位，卡萨帝用 M30D 补齐高端段。",
           "price": "—（市场数据）"
         }
       ]
     }
   ],
   "overseas": [
-    "<b>日本 REGZA 2026 春夏机型</b>：ZX1 series（ZX1R 带时间移机 / ZX1S）、ZX2 series（ZX2S）、ZX3 series（ZX3S）均为 RGB Mini LED",
-    "<b>Z8 series Z890S</b>：带时间移机的 4K Mini LED 高端机型",
-    "<b>中国市场</b>：ZX 系列（全球高定）/ REGZA 700 系列（Z700SF PRO、R700SF）/ 芝士 600 系列（Z600SF PRO、R600SF）",
-    "<b>市场表现</b>：日本连续四年第一（2025 年 29.2%）；2025 年东盟 +45.8%、加拿大 +44.6%、亚太 +39.0%、印度 +28.2%",
-    "<b>关系提示</b>：东芝电视品牌自 2017 年起由海信体系运营，做国内对比内容时可与海信 RGB 路线并看"
+    "<b>年度三旗舰</b>：致境 M50D（5/12，SQD-Mini LED MAX + KEF 金标 + 3.99cm 贴墙）· 指挥家 M70D（6/26，金玉合鸣设计 + 全屋智控）· 帧享 M30D（8/31，RGB-Mini LED + 2160 分区 + 100% BT.2020）",
+    "<b>壁画艺术线</b>：揽光 K85E8 Pro（85″，3024 分区，10499 / 实付约 7996）· 揽光系列其它尺寸",
+    "<b>展示级巨幕</b>：107″ 21:9 AI 全画幅智家屏 · 163″ Micro LED 藏家电视（KEF Hi-Fi 多声道）",
+    "<b>生态能力</b>：知源大模型 2.0（202 种方言）· AI 灵动交互（所指即达）· 接入 10000+ 海尔智家设备（门铃联动、食材管理）· 住居美术馆艺术壁纸 · 灵境桌面开机无广告",
+    "<b>口径提示</b>：M50D / M70D / M30D 官方均未公布统一首发零售价，可查到的多为电商活动价与补贴后实付价；ΔE≈0.88、2160 分区、7000:1 为厂商口径，未见第三方实测；「L4 级 / 全画幅 / 帧享」等均为品牌自定义术语"
   ],
-  "footL": "整理于 2026-09-18 · 来源：经济参考报（新华网）/ 中国经济新闻网 / 中国商报网 / 中国网 / REGZA 日本官网"
+  "footL": "整理于 2026-09-18 · 来源：卡萨帝官网品牌资讯（6/30）/ 中国日报网科技（5/12 致境 M50D）/ 今日头条 + 百姓家电网（8/31 帧享 M30D）/ 中关村在线（5/25 K85E8 Pro）/ 新浪（AWE2026 海尔电视三款新品）/ 奥维云网"
 };
 
 /* ═══════════════════════════════════════════════════
