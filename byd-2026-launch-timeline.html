@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>比亚迪集团 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#c8102e; --accent-soft:#fdeaed;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff6b7a; --accent-soft:#3a151b;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#c8102e}
+  .sqd i:nth-child(2){background:#0d4f8b}
+  .sqd i:nth-child(3){background:#0f7b53}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html" class="on" aria-current="page">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>全年主线 · 技术底座 · 出海节奏</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "BYD GROUP · 2026 LAUNCH TIMELINE",
+  "title": "比亚迪集团 2026 新品发布年表",
+  "subtitle": "3月二代刀片+闪充发布11车 → 4月汉L唐L → 5月智能化战略 → 6月大唐EV → 8月秦MAX/大汉 → 9月海狮08/方程S/腾势Z9S · 全年以「闪充+天神之眼5.0」双技术轴推进",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "年度技术主轴",
+      "v": "第二代刀片电池 + 全域闪充（5分钟10→70%、9分钟10→97%、-30℃仅多3分钟），3月起逐步落地全系",
+      "s": "闪充元年"
+    },
+    {
+      "k": "智能化主轴",
+      "v": "5月28日「敢为」发布会：中国首款4nm车规智驾芯片璇玑A3 + 天神之眼5.0 + 城市领航安全兜底",
+      "s": "双兜底"
+    },
+    {
+      "k": "产品节奏",
+      "v": "五大品牌全线铺开：王朝/海洋走量+旗舰、腾势冲高端、方程豹做个性、仰望守豪华；纯电续航全面破 700km，旗舰破千",
+      "s": "五品牌"
+    },
+    {
+      "k": "产销里程碑",
+      "v": "7月8日第1700万辆新能源车下线（全球首家，1600→1700万仅82天）· 上半年销量180.85万辆 · 海外78.94万辆同比+68%",
+      "s": "全球第一"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "王朝网新车设计发布会：汉L / 唐L 全球首秀",
+      "meta": "开年",
+      "items": [
+        {
+          "time": "01.17",
+          "tag": "te",
+          "tagText": "设计",
+          "st": "已发布",
+          "title": "汉L / 唐L 设计发布，「Dragon Face」升级为「Loong Face」",
+          "desc": "王朝网在深圳举行新车设计发布会，两款旗舰完成全球首秀，并宣布「龙颜美学」英文名从 <b>Dragon Face</b> 改为 <b>Loong Face</b>——王朝网总经理路天称这是「文化自信的体现」，全球设计总监沃尔夫冈·艾格阐释其「传承、共鸣、平衡」三原则，灵感取自屋脊、竹子、书法、瓷器。尺寸：汉L <b>5050/1960/1505mm</b>、轴距 2970mm；唐L <b>5040/1996/1760mm</b>、轴距 2950mm（无人机舱版车高 1970mm）。两车均提供 EV / DM 双动力，纯电两驱单电机峰值 500kW、四驱双电机 230/580kW；插混 1.5T（115kW）+ 200/400kW 电机。均可选装激光雷达。",
+          "price": "—（设计发布，未公布价格）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "第二代刀片电池暨闪充技术发布会（深圳大运中心）",
+      "meta": "年度技术",
+      "items": [
+        {
+          "tag": "",
+          "tagText": "技术",
+          "st": "已发布",
+          "title": "① 第二代刀片电池 + 全域闪充技术发布",
+          "desc": "全年最重要的一场发布会（长达 3 小时）的技术核心。常温 <b>5 分钟</b>从 10% 充至 70%、<b>9 分钟</b>充至 97%，<b>-30℃</b> 低温下仅多 3 分钟——官方口径「5 分钟充好，9 分钟充饱」，直接针对「充电慢」与「低温补能难」两大痛点。闪充桩功率达 <b>1500kW</b>，全球首创「滑轨悬吊式 T 型桩」，支持即插即充无感支付。官方称该技术将逐步普及至四大品牌多款在售及规划车型。",
+          "price": "—（技术发布）",
+          "time": "03月"
+        },
+        {
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "② 海狮06EV / 海豹07EV 正式上市",
+          "desc": "同场直接上市两款海洋网车型：<b>海狮06EV</b> 与 <b>海豹07EV</b>，闪充技术首批落地车型。",
+          "price": "海狮06EV <b>15.99–17.99 万</b> · 海豹07EV <b>16.99 / 18.99 万</b>",
+          "time": "03月"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "③ 宋Ultra EV 开启预售",
+          "desc": "王朝网新车，同场开启预售，为 2026 年主力走量 SUV 之一。",
+          "price": "预售 <b>15.5–18.5 万</b>",
+          "time": "03月"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "④ 新款腾势Z9GT 上市",
+          "desc": "腾势品牌旗舰旅行轿车年度改款，同场公布售价并上市。",
+          "price": "<b>26.98–36.98 万</b>",
+          "time": "03月"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "⑤ 王朝旗舰「大唐」首发亮相",
+          "desc": "王朝网全新旗舰 SUV 首次亮相：车长超 <b>5.2m</b>、轴距超 <b>3.1m</b>、7 座布局、纯电续航最高 <b>950km</b>。（该车后于 06.17 以「大唐EV」之名正式上市，售价 23.99–30.99 万）",
+          "price": "价格待公布",
+          "time": "03月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "新品",
+          "st": "展出",
+          "title": "⑥ 海豹08 首秀",
+          "desc": "海洋网大型旗舰家轿首次亮相。（该车后于 07.02 正式上市，售价 19.69–23.99 万）",
+          "price": "价格待公布",
+          "time": "03月"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "汉L / 唐L 正式上市",
+      "meta": "旗舰",
+      "items": [
+        {
+          "time": "04.09",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "汉L / 唐L 上市，超级e平台首搭，兆瓦闪充「油电同速」",
+          "desc": "王朝网双旗舰正式上市。汉L 售价 <b>20.98–27.98万</b>（汉L EV 21.98–27.98 万 / 汉L DM 20.98–25.98 万）；唐L 售价 <b>22.98–28.98万</b>（唐L EV 23.98–28.98 万 / 唐L DM 22.98–28.58 万）。均搭载<b>超级e平台</b>全域千伏高压架构，创造 <b>16 项全球第一</b>：汉L EV 拥有 <b>10C</b> 全球量产最大充电倍率、唐L EV 8.4C，两者峰值充电功率均达 <b>1000kW</b>——汉L 闪充 5 分钟补能 400km、唐L 370km，「服务区从人等车变车等人」。汉L EV 四驱版整车功率 <b>810kW</b>，实测零百 <b>2.7s</b>、极速 305km/h。全系标配智能底盘、<b>天神之眼B</b> 高阶智驾激光版（DiPilot 300，30 传感器 + Orin X）与 DiLink 150 高阶智舱。唐L 首发搭载比亚迪与大疆联合打造的<b>灵鸢智能车载无人机系统</b>。上市同步启用首批 <b>500 座兆瓦闪充站</b>，规划全国超 4000 座。",
+          "price": "汉L <b>20.98–27.98万</b> · 唐L <b>22.98–28.98万</b>（首销期至高 1.5 万置换补贴，截至 6/30）"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "「敢为」智能化战略发布会（深圳）",
+      "meta": "年度战略",
+      "items": [
+        {
+          "tag": "pu",
+          "tagText": "战略",
+          "st": "已发布",
+          "title": "① 智能化战略定调：三大目标 + 千亿投入",
+          "desc": "比亚迪智能化下半场的定调之战。三大目标：实现<b>「零交通事故」</b>、让辅助驾驶成为<b>「超级司机」</b>、让 AI 成为<b>「超级秘书」</b>；承诺持续投入超 <b>1000 亿元</b>研发资金。底气：超 <b>315 万辆</b>智驾车型保有量、日均 <b>2 亿公里</b>数据、超 <b>5000 名</b>智驾工程师。",
+          "price": "—（战略发布）",
+          "time": "05月"
+        },
+        {
+          "tag": "",
+          "tagText": "芯片",
+          "st": "已发布",
+          "title": "② 发布中国首款 4nm 车规级智驾芯片「璇玑A3」",
+          "desc": "已规模化量产，三芯协同输出超 <b>2100TOPS</b>，单位算力功耗较同级低 <b>20%</b>，支持 L3 / L4。",
+          "price": "—",
+          "time": "05月"
+        },
+        {
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "③ 天神之眼B 全系可选装，开启「全民城市领航」",
+          "desc": "全系车型均可选装 <b>天神之眼B</b> 辅助驾驶激光版，把高阶城市领航拉进主流价格带。",
+          "price": "选装 <b>12000 元</b>",
+          "time": "05月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "承诺",
+          "st": "已发布",
+          "title": "④ 行业首推「城市领航一年安全兜底」",
+          "desc": "合规使用下发生有责事故，车辆维修、第三方财产与人身伤害损失由比亚迪赔付——<b>免费、无赔付上限、不影响商业险保费</b>，成为全球首个智能泊车 + 城市领航<b>「双兜底」</b>车企。此前智能泊车兜底使使用率从 <b>21% 升至 93%</b>，事故率近乎归零。",
+          "price": "—（免费承诺）",
+          "time": "05月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "已发布",
+          "title": "⑤ 天神之眼四大升级 + 智能体「迪迪虾」",
+          "desc": "天神之眼四大升级：璇玑架构 2.0（舱驾电三合一中央大脑）、卫星架构传感器、物理 AI 大模型算法、行业最大数据底座。同步推出超级智能体<b>「迪迪虾」</b>赋能 DiLink AI 智能座舱。",
+          "price": "—",
+          "time": "05月"
+        },
+        {
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "待发布",
+          "title": "⑥ 预告：天神之眼自动驾驶版（L3/L4）· 天神之眼C 12 月 OTA",
+          "desc": "预告将推 <b>天神之眼自动驾驶版（L3/L4）</b>，全球首搭超千线激光雷达、闪拍摄像头、双远红外摄像头。<b>天神之眼C</b> 将于 12 月完成 OTA 重大升级。",
+          "price": "待公布",
+          "next": true,
+          "time": "05月"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "大唐EV 上市 + 智能化产能落地",
+      "meta": "旗舰",
+      "items": [
+        {
+          "time": "06.03",
+          "tag": "id",
+          "tagText": "市场",
+          "st": "已发布",
+          "title": "背景：王朝旗舰大唐EV 自北京车展预售 53 天，订单破 15 万辆",
+          "desc": "大唐EV 是比亚迪首款订单突破 <b>10 万台</b>级别的车型，预售 53 天订单破 <b>15 万辆</b>。这条数据为 6 月的正式上市铺垫，也说明「全尺寸 + 闪充 + 25 万级」的组合击中了市场空白——此前理想 L9、问界 M9、蔚来 ES8 把 9 系 SUV 价格锁在 40–60 万区间。",
+          "price": "—（预售订单数据）"
+        },
+        {
+          "time": "06.17",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "全尺寸闪充旗舰 SUV 大唐EV 上市（西安永宁门）",
+          "desc": "王朝网 D 级全尺寸旗舰，售价 <b>23.99–30.99万</b>（较预售价 25–32 万全系下调 1 万元）。四款车型：800KM 后驱激光雷达尊荣型、950KM 后驱激光雷达旗舰型、850KM 四驱激光雷达旗舰型、大唐盛世版。车长 <b>5263mm</b>、轴距 <b>3130mm</b>。首发搭载第二代刀片电池，CLTC 纯电续航最高 <b>950km</b>，刷新全球全尺寸纯电 SUV 续航纪录（官方实测市区工况达成率 99.61%、85% 快速路 97%）。全系标配<b>天神之眼B</b> 激光版 + <b>天神之眼5.0</b>、后轮转向（单侧 7°、最小转弯半径 5.2m、支持蟹行模式）。首创中国品牌全尺寸 SUV <b>「2+2+3」</b>座椅布局，得房率 <b>89.3%</b>，全车 47 处储物空间 + 252L 电动前备箱；前排双零重力座椅与二排独立零压航空座椅均标配通风、加热与 10 点式按摩，二排靠背最大 146°。首搭自研<b>灵动按键</b>（一按一扭控车、一碰一贴手车互联）。车头 2.41m 飞檐破晓一体式贯穿日行灯，提供 3 款双拼 + 5 款单色车色。",
+          "price": "<b>23.99–30.99万</b>（预售价 25–32 万，全系下调 1 万元）"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "1700 万辆下线 + 海豹08 上市",
+      "meta": "里程碑",
+      "items": [
+        {
+          "time": "07.02",
+          "tag": "te",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "海洋网大型旗舰家轿 海豹08 上市",
+          "desc": "车长 <b>5150mm</b>、轴距 <b>3030mm</b>，售价 <b>19.69–23.99万</b>，共 6 款（插混 / 纯电）。纯电版 CLTC 续航达 <b>905km</b>；插混版 CLTC 纯电 400km、满油满电综合 <b>1660km</b>、NEDC 亏电油耗 3.6L。全系原生闪充平台，第二代刀片电池，十横七纵笼式车身、高强钢与铝合金占比 <b>86.3%</b>、关键区域 2000MPa TRB 热成型钢、海洋网首款全铝前后防撞梁、11 安全气囊。底盘为云辇-A 闭式双腔空悬 + 路面预瞄 + 前双叉臂后五连杆，后轮转向 + 蟹行模式使 5 米级车身转弯半径仅 <b>4.95m</b>。DM 四驱零百 3.8s，EV 四驱零百 3.3s。C 柱无遮挡设计，84.4% 得房率。",
+          "price": "<b>19.69–23.99万</b>（6 款：插混/纯电双动力）"
+        },
+        {
+          "time": "07.08",
+          "tag": "pu",
+          "tagText": "里程碑",
+          "st": "已发布",
+          "title": "第 1700 万辆新能源汽车下线（西安基地），全球首家",
+          "desc": "下线车型为刚上市的海豹08。比亚迪成为<b>全球首家</b>达成 1700 万辆新能源汽车下线的车企。加速度惊人：从第 1 辆到第 100 万辆用了 <b>13 年</b>，而从 1600 万到 1700 万辆仅用 <b>82 天</b>。选在西安工厂有特殊意义——2003 年比亚迪第一台整车在此下线，2008 年全球首款量产插混车亦诞生于此。同期数据：上半年累计销量 <b>180.85 万辆</b>，乘用车与皮卡海外累计 <b>78.94 万辆</b>（同比 +68%，占总销量超四成）；1–7 月累计销量 222.7 万辆（国内 125.8 万、海外 96.9 万）。",
+          "price": "—（产销里程碑）"
+        },
+        {
+          "time": "07.23",
+          "tag": "id",
+          "tagText": "基建",
+          "st": "已发布",
+          "title": "大唐EV 第 10000 辆交付 · 「千里画廊」闪充大道揭幕",
+          "desc": "比亚迪在西藏举行大唐EV 第 10000 辆交车仪式，同步揭幕「千里画廊」闪充大道。这是「闪充中国」战略从城市向长途旅游线路延伸的标志性动作——官方目标 2026 年底建成 <b>20000 座</b>闪充站，8 月 28 日已达 1 万座。同期发布会还透露，闪充车型自 3 月起逐步落地。",
+          "price": "—（品牌活动）"
+        },
+        {
+          "time": "07.28",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "已发布",
+          "title": "《财富》世界 500 强第 91 位，唯一闯入百强的中国车企",
+          "desc": "连续第五年上榜，从 2022 年 436 位一路攀升至 2026 年<b>第 91 位</b>，是本届榜单唯一进入全球百强的中国汽车企业。基本面：2025 年营收 8040 亿元、净利润 326 亿元，460 万辆新能源车包揽全球与国内双料销冠；2025 年研发支出 <b>634 亿元</b>（同比 +17%），连续两年居 A 股首位，累计研发投入超 2500 亿元。海外业务覆盖 <b>121 个</b>国家及地区。",
+          "price": "—（榜单数据）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "秦MAX 上市 · 大汉预售 · 第 10000 座闪充站",
+      "meta": "走量+旗舰",
+      "items": [
+        {
+          "time": "08.13",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "秦MAX 上市，9.99 万起，秦 IP 年轻化关键落子",
+          "desc": "王朝网 B 级轿车，售价 <b>9.99–14.39万</b>，EV 与 DM-i 双动力。尺寸 <b>4866×1880×1495mm</b>、轴距 2820mm。搭载第二代刀片电池与闪充，纯电续航达 <b>630km</b>（常温 5 分钟 10→70%、9 分钟 10→97%）。DM-i 版纯电续航 <b>320km</b>、综合续航 <b>2370km</b>、NEDC 亏电油耗低至 <b>2.59L</b>。EV 版 240kW 电机、零百 5.9s，27 处储物空间含 115L 前备箱。可选装天神之眼B 激光版，天神之眼5.0 新增强化学习能力，并率先承诺城市领航安全兜底。座舱由 AI 超级智能体<b>「迪迪虾」</b>赋能 DiLink。「秦家族累计销量突破 290 万辆」——王朝网总经理路天称秦MAX 是「秦 IP 年轻化的关键落子」。",
+          "price": "EV/DM-i 双动力 <b>9.99–14.39万</b>（EV 最长 630km / DM-i 纯电 320km）"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "① 大汉EV 开启预售（王朝网 D+ 级旗舰轿车）",
+          "desc": "三款配置全压 30 万内，CLTC 续航 <b>1008km</b>——产业首次把 D+ 级纯电轿车续航拉进四位数。车长 <b>5256mm</b>、轴距 <b>3130mm</b>，风阻系数低至 <b>0.197Cd</b>、百公里电耗 11.5kWh。四驱版零百 <b>3.3s</b>、极速 270km/h、百零制动 32.83m。",
+          "price": "预售 <b>24.99–29.99 万</b>（1008km 后驱尊享 24.99 / 1008km 后驱旗舰 26.99 / 880km 四驱旗舰 29.99）",
+          "time": "08.13"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "② 第三代唐 全球首秀（大五座旗舰 SUV）",
+          "desc": "车长 5045mm、轴距 2950mm，纯电续航最高 <b>850km</b>，首发<b>「星际双屏」</b>（35.4 英寸一体远端星环屏 + 30 英寸无缝全景巨幕屏），二排腿部空间突破 <b>1000mm</b>、靠背最大 130°。路天透露还留了一项「杀手锏」待单独发布。",
+          "price": "价格待四季度公布",
+          "time": "08.13"
+        },
+        {
+          "tag": "pu",
+          "tagText": "新品",
+          "st": "展出",
+          "title": "③ 腾势Z 硬顶版国内首秀 · 方程豹钛9 全球首秀",
+          "desc": "腾势Z 硬顶版国内首次亮相；方程豹钛9 全球首秀，为全尺寸大六座方盒子，预计四季度上市。",
+          "price": "钛9 约 <b>40 万</b>（预计）",
+          "time": "08.13"
+        },
+        {
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "④ 方程S 系列开启预订",
+          "desc": "方程豹首款轿跑系列同场开启预订。（该车后于 09.16 正式上市）",
+          "price": "预订开启",
+          "time": "08.13"
+        },
+        {
+          "time": "08.28",
+          "tag": "id",
+          "tagText": "基建",
+          "st": "已发布",
+          "title": "第 10000 座闪充站落成，年底目标 20000 座",
+          "desc": "比亚迪在深圳举行第 10000 座闪充站落成仪式。截至 8 月 28 日已建成 <b>1 万座</b>，覆盖全国多城；官方规划 2026 年底达 <b>2 万座</b>。补能密度目标：一二线城市 3 公里、三四线 5 公里、五六线 6 公里范围可找到闪充站，高速服务区平均每百公里一座，城区 90% 区域实现 5 公里闪充覆盖。这是「闪充中国」战略落地的关键节点，也是纯电长续航车型能否兑现体验的前提。",
+          "price": "—（基建里程碑）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "海狮08 · 方程S · 腾势Z9S 密集上市",
+      "meta": "最新",
+      "items": [
+        {
+          "time": "09.02",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "海洋网旗舰 SUV 海狮08 上市，22.99 万起",
+          "desc": "中大型科技旗舰 SUV，售价 <b>22.99–27.99万</b>，共 8 款（纯电/插混 × 五座/六座 × 两驱/四驱）。尺寸 <b>5115×1999×1800mm</b>、轴距 <b>3030mm</b>。纯电版 CLTC 最高 <b>900km</b>；插混版纯电 400km、综合续航 <b>1650km</b>、NEDC 亏电油耗 4.6L。全系标配<b>天神之眼B</b> 激光版、<b>云辇-A 闭式双腔空悬</b>、后轮转向（±7°、转弯半径 4.95m）、第二代刀片电池与原生闪充。五座纯电版 943L 后备箱 + 201L 电动前备箱；六座版得房率 89.2%、支持超 140 种座椅组合、21.4 英寸后排吸顶屏 + 25 扬声器帝瓦雷。车身九纵十三横笼式结构、2000MPa 热成型钢、11 安全气囊。上市 24 小时大定突破 <b>1.2 万台</b>。",
+          "price": "<b>22.99–27.99万</b>（插混 22.99 万起 / 纯电 23.99 万起，全系标配云辇-A + 后轮转向）"
+        },
+        {
+          "time": "09.16",
+          "tag": "pu",
+          "tagText": "个性",
+          "st": "已开售",
+          "next": true,
+          "title": "方程豹首款轿跑 方程S / S GT 上市，首发云辇-M 磁流变悬架",
+          "desc": "方程豹品牌首款轿车，轿跑版方程S 指导价 <b>18.99–22.99万</b>、猎装版 S GT <b>21.99–23.99万</b>——较 23–28 万的预售价下调约 <b>4 万元</b>。首发搭载<b>云辇-M 智能磁流变悬架</b>（支持路面预瞄、可 OTA 升级底盘算法），配激光雷达与闪充，CLTC 最长续航 <b>900km</b>。双电机四驱综合功率 490kW（666 匹），零百 <b>3.6s</b>。风阻系数：方程S 0.22、S GT 0.25。搭载<b>智慧生态 2.0</b>，通过 PIN 口 / 磁吸 / 螺纹三类开放接口支持加装配件（如运动相机），新增 Diva 智能表盘与百变按键。配有漂移模式与辅助漂移模式，明确定位「正面硬钢小米 SU7」。",
+          "price": "方程S <b>18.99–22.99万</b> · 方程S GT <b>21.99–23.99万</b>"
+        },
+        {
+          "time": "09.23",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "待发布",
+          "title": "腾势Z9S 上市在即，续航 1100km，预售 31.98 万起",
+          "desc": "腾势行政级轿跑，预售价 <b>31.98–38.98万</b>，三款配置：EV 920km 闪充尊荣型 31.98 万 / EV <b>1100km</b> 闪充旗舰型 34.98 万 / EV 780km 易三方闪充性能型 38.98 万。尺寸 <b>5090×1980×1490mm</b>、轴距 3025mm。旗舰版 CLTC 续航 1100km（全球领先，磷酸铁锂路线），顶配三电机综合功率 <b>890kW</b>（1210 匹）、零百 <b>2.68s</b>。全系标配云辇-A 空悬、后轮转向（顶配最小转弯半径 4.75m）、天神之眼B 激光雷达方案、第二代刀片电池与全域闪充。开发「新手漂移模式」。背景：腾势 2026 年 8 月销售 16001 辆、同比 +33.4%，但销量主力仍是 MPV D9，Z9S 是轿车线破局的关键补充。",
+          "price": "预售 <b>31.98–38.98万</b>（9/23 正式上市，价格以官方为准）"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "四季度待发布：第三代唐 · 腾势Z · 钛9 · 大汉",
+      "meta": "待验证",
+      "items": [
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "next": true,
+          "title": "第三代唐上市（大五座旗舰 SUV）",
+          "desc": "8 月 21 日成都车展全球首秀，官方明确「第四季度上市」，价格待公布。车长 5045mm、轴距 2950mm，纯电续航最高 <b>850km</b>，首发「星际双屏」（35.4 英寸 + 30 英寸），二排腿部空间破 1000mm。云辇-A 双腔空悬 + 前双叉臂后五连杆 + 智能四驱。路天称还留了一项「杀手锏」技术待单独发布。市场预期定价低于大唐EV（23.99–30.99 万），合理区间或在 20 万上下——<b>此为媒体推测，非官方口径</b>。",
+          "price": "未公布（待四季度上市时揭晓）"
+        },
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "大汉EV 正式上市（预售 24.99–29.99 万）",
+          "desc": "8 月 21 日开启预售，官方口径为「9 月上市」（据 8 月 28 日媒体汇总），具体日期待确认。D+ 级旗舰轿车，CLTC 续航 <b>1008km</b>，四驱零百 3.3s，全系后轮转向 + 云辇-A 双腔空悬（升降范围 100mm），帝瓦雷 31 扬声器，后排黑色 PDLC 可调玻璃（1 秒切换透明 / 不透明，此前仅仰望 U8L 使用）。",
+          "price": "预售 <b>24.99–29.99万</b>（正式售价待官方公布）"
+        },
+        {
+          "time": "Q4",
+          "tag": "pu",
+          "tagText": "高端",
+          "st": "待发布",
+          "title": "腾势Z 上市（纯电旗舰超跑，预售 68–118 万）",
+          "desc": "双门四座纯电超跑，此前在英国古德伍德全球首发，成都车展硬顶版国内首秀、敞篷版带来新色「洱海蓝」。三版本：硬顶版 <b>68 万</b>、敞篷版 <b>78 万</b>、赛道版 <b>118 万</b>。易三方三电机四驱，综合 <b>1605 匹</b>马力、峰值扭矩 1240N·m；赛道版零百 <b>1.96s</b>、极速 350km/h，配云辇-M 磁流变悬架。已开启全国预售，预计四季度上市。定位「代表中国纯电超跑冲击全球高端市场」。",
+          "price": "预售 <b>68 / 78 / 118 万</b>（硬顶 / 敞篷 / 赛道版）"
+        },
+        {
+          "time": "Q4",
+          "tag": "id",
+          "tagText": "越野",
+          "st": "待发布",
+          "title": "方程豹钛9 上市（全尺寸大六座方盒子）",
+          "desc": "8 月 21 日成都车展全球首秀，预计四季度上市。5270mm 车身、2+2+2 大六座布局，配仰望 U8L 同款<b>天地尾门</b>、最高 2000kg 拖挂能力。搭载 DMS 全新混动平台，兼顾家庭出行与户外越野。媒体口径综合续航约 <b>1600km</b>，预计售价 <b>40 万左右</b>——<b>均为媒体预测，非官方口径</b>。",
+          "price": "未公布（媒体预计约 <b>40 万</b>，待官方确认）"
+        },
+        {
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "① 第三代唐上市（大五座旗舰 SUV）",
+          "desc": "已于 08.21 成都车展全球首秀，车长 5045mm、轴距 2950mm，纯电续航最高 850km，首发「星际双屏」，二排腿部空间突破 1000mm。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "② 大汉EV 正式上市（预售 24.99–29.99 万）",
+          "desc": "王朝网 D+ 级旗舰轿车，已于 08.21 开启预售，CLTC 续航 1008km、风阻 0.197Cd、四驱零百 3.3s。",
+          "price": "预售 <b>24.99–29.99 万</b>",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "③ 腾势Z 上市（纯电旗舰超跑，预售 68–118 万）",
+          "desc": "腾势品牌纯电旗舰超跑，硬顶版已于 08.21 成都车展国内首秀。",
+          "price": "预售 <b>68–118 万</b>",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "④ 方程豹钛9 上市（全尺寸大六座方盒子）",
+          "desc": "方程豹全尺寸大六座方盒子 SUV，已于 08.21 成都车展全球首秀，预计四季度上市。",
+          "price": "约 <b>40 万</b>（预计）",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "⑤ 其他待发布：大海鸥 · 海洋网 MPV · 天神之眼C OTA",
+          "desc": "大海鸥与海洋网 MPV 等待发布车型；天神之眼C 将于 12 月完成 OTA 重大升级。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>技术双轴</b>：第二代刀片电池 + 全域闪充（3/5 发布，5 分钟 10→70%、9 分钟 10→97%、-30℃ 仅多 3 分钟，闪充桩 1500kW）；天神之眼5.0 + 璇玑A3 芯片（5/28 发布，4nm 车规、三芯超 2100TOPS）+ 城市领航与智能泊车双兜底",
+    "<b>产品矩阵（全年新上市/预售）</b>：汉L（20.98–27.98万）· 唐L（22.98–28.98万）· 宋Ultra EV（15.19–17.99万）· 海狮06EV（15.99–17.99万）· 海豹07EV（16.99/18.99万）· 大唐EV（23.99–30.99万）· 海豹08（19.69–23.99万）· 秦MAX（9.99–14.39万）· 海狮08（22.99–27.99万）· 方程S（18.99–22.99万）· 大汉EV（预售 24.99–29.99万）· 腾势Z9S（预售 31.98–38.98万）· 腾势Z（预售 68–118万）",
+    "<b>闪充网络</b>：3/5 首批 500 座兆瓦闪充站启用 · 6 月 6682 座（321 城）· 7 月 7018 座（325 城）· 8/28 第 <b>10000 座</b>落成 · 年底目标 <b>20000 座</b>（规划海内外合计 2.6 万座）",
+    "<b>产销与出海</b>：7/8 第 <b>1700 万辆</b>新能源汽车下线（全球首家，1600→1700 万仅 82 天）· 上半年销量 180.85 万辆 · 上半年海外 78.94 万辆（同比 +68%、占比超四成）· 1–7 月 222.7 万辆（海外 96.9 万）· 业务覆盖 121 个国家及地区 · 《财富》世界 500 强第 91 位",
+    "<b>口径提示</b>：① 续航均为 CLTC 标称值，实际达成率受工况影响（媒体实测 CLTC 1036km 的腾势Z9GT 高速巡航约 700km，达成率约 67.6%）；② 钛9 综合续航 1600km、约 40 万售价、第三代唐 20 万区间、大海鸥与海洋网 MPV 参数均属<b>媒体推测，未见官方确认</b>；③ 逗号分档为厂商宣传口径（如「16 项全球第一」「29 项全球第一」），未获第三方验证；④ 部分车款存在同价不同配置（如方程S 900km 有云辇A/M 两版同价 20.99 万），下订前须核对具体版本"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：比亚迪官方直播列表与新闻稿 · 新华网 · 人民网 · 央广网 · 中国经济网 · 每日经济新闻 · 国联民生证券研报 · 汽车之家 / 易车 / 凤凰网汽车"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

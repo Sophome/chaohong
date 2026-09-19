@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理想汽车 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0b7a5b; --accent-soft:#e6f5ef;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#4ec8a0; --accent-soft:#12302a;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0b7a5b}
+  .sqd i:nth-child(2){background:#111827}
+  .sqd i:nth-child(3){background:#c8102e}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html" class="on" aria-current="page">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售矩阵 · 全年主线 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "LI AUTO · 2026 LAUNCH TIMELINE",
+  "title": "理想汽车 2026 新品发布年表",
+  "subtitle": "5月15日全新L9 → 8月6日i8后驱长续航 → 9月26日i6发布 → 10月i6巴黎车展欧洲首发 · 增程守盘 + 纯电三车（MEGA / i8 / i6）补完",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "纯电三车矩阵补齐（MEGA · i8 · i6），i6 被官方定调为「最有望走量的纯电车型」、理想家族最适合年轻人的车型",
+      "s": "纯电补完"
+    },
+    {
+      "k": "增程旗舰",
+      "v": "全新理想 L9（5/15，45.98–50.98 万）· 全新 L8（36.98–42.98 万）· L6（24.98–27.98 万）",
+      "s": "增程守盘"
+    },
+    {
+      "k": "纯电三车",
+      "v": "MEGA（52.98–55.98 万）· i8（30.98–33.98 万）· i6（24.98–26.98 万）——i6 是理想首款五座纯电 SUV",
+      "s": "三车矩阵"
+    },
+    {
+      "k": "出海节奏",
+      "v": "i6 于 10 月巴黎车展（10/12–10/18）欧洲首发，成为理想首款进入欧洲的纯电产品；L9 9 月进入迪拜",
+      "s": "首次入欧"
+    }
+  ],
+  "months": [
+    {
+      "m": "05月",
+      "label": "全新理想 L9 上市",
+      "meta": "旗舰换代",
+      "items": [
+        {
+          "time": "05.15",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "全新理想 L9 上市，45.98 万起，定位「具身智能旗舰 SUV」",
+          "desc": "理想增程旗舰换代上市，售价 <b>45.98–50.98 万元</b>（Ultra 版 45.98 万、顶配 Livis 版 50.98 万）。动力为第三代 <b>1.5L 增程器</b> + 双电机四驱，综合功率 <b>420kW</b>（563 匹）、峰值扭矩 710N·m，零百 <b>4.9s</b>。搭载 <b>72.7kWh</b> 电池，纯电续航 <b>420km</b>、综合续航 <b>1650km</b>，支持 <b>5C</b> 超充（10%–80% 约 10 分钟）。这是理想「增程守盘」的核心车型，官方定位为「具身智能旗舰 SUV」。",
+          "price": "Ultra <b>45.98 万</b> · Livis <b>50.98 万</b>"
+        },
+        {
+          "time": "05月",
+          "tag": "id",
+          "tagText": "在售",
+          "st": "已开售",
+          "title": "全新理想 L8 在售：36.98–42.98 万，定位「五座旗舰 SUV」",
+          "desc": "全新 L8 定位五座旗舰 SUV，售价区间 <b>36.98–42.98 万元</b>。理想 2026 年在售的增程矩阵为：L6（家庭五座豪华 SUV，24.98–27.98 万）· 全新 L8（五座旗舰 SUV，36.98–42.98 万）· 全新 L9（具身智能旗舰 SUV，45.98–50.98 万）。",
+          "price": "全新 L8 <b>36.98–42.98 万</b> · L6 <b>24.98–27.98 万</b>"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "理想 i8 后驱长续航版上市",
+      "meta": "纯电旗舰",
+      "items": [
+        {
+          "time": "08.06",
+          "tag": "te",
+          "tagText": "纯电",
+          "st": "已开售",
+          "next": true,
+          "title": "理想 i8 新增后驱长续航版，30.98 万，纯电续航 780km",
+          "desc": "理想 i8 车系首次推出<b>单电机后驱</b>车型，进一步下探入门门槛。定位中大型六座纯电 SUV，售价 <b>30.98 万元</b>。后置 250kW 单电机 + <b>97.8kWh 5C 三元锂电池</b>，CLTC 续航 <b>780km</b>，支持 10 分钟补能 500km，标配双腔空气悬架，新增<b>电动前备箱</b>。车身尺寸 5085/1960/1740mm、轴距 3050mm，风阻系数 <b>0.218</b>。升级为半隐藏式门把手、双色车身。全系标配激光雷达、高通 8295P 芯片与 MindVLA 智能驾驶大模型，基础城市 NOA 免费开放。车内 5 门六座布局，配前排车载冰箱与 3K 分辨率 21.4 英寸后排娱乐屏。限时权益（8/6–8/31）总价值最高 <b>35750 元</b>，含 3 年 0 息 / 5 年低息金融、免费升级主副驾全尺寸零重力按摩座椅（16 点揉捏）、老车主复购 10000 元现金抵扣。",
+          "price": "<b>30.98 万</b>（i8 车系 30.98–33.98 万）"
+        },
+        {
+          "time": "08.26",
+          "tag": "pu",
+          "tagText": "战略",
+          "st": "已发布",
+          "title": "二季度财报会：i6 将于 10 月巴黎车展欧洲首发，L9 9 月进迪拜",
+          "desc": "CEO 李想在二季度财报电话会上宣布，<b>i6 将在 10 月巴黎车展（Mondial de l'Auto，10/12–10/18）发布</b>，这是理想首次参加顶级欧洲车展；总裁马东辉表示计划 <b>9 月</b>开始在迪拜销售 L9。理想已在慕尼黑设立研发中心，专门负责车型的欧洲法规与驾驶习惯适配；2026 年 2 月加入中国欧盟商会。管理层称「今后每一款新车型都会在开发阶段就完成海外法规适配」。背景：截至 5 月，比亚迪、奇瑞、上汽、小鹏四家中国车企合计已占西欧纯电市场 <b>14.2%</b> 份额（约 17.18 万辆），理想入欧较晚。",
+          "price": "—（战略与出海规划）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "理想 i6 正式发布（理想首款五座纯电 SUV）",
+      "meta": "纯电走量",
+      "items": [
+        {
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "① 全新理想 i6 发布：24.98 万起，「第三种」五座纯电 SUV",
+          "desc": "李想称 i6 是「理想家族最适合年轻人的车型」，并指出当前五座纯电 SUV 市场以 Model Y 和小米 YU7 为代表，i6 要做「<b>第三种</b>」。定位 25–30 万区间「新形态五座 SUV」，基于原生纯电架构。售价与 2025 款指导价完全一致，但升级了 5C 电池、马赫芯片并标配后排娱乐屏与冰箱（「加量不加价」）。官方确认<b>没有理想 i7</b>，i6 在产品定义之初即明确「一步到位」。",
+          "price": "两驱标准版 <b>24.98 万</b> · 四驱版 <b>26.98 万</b>",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "空间",
+          "st": "已发布",
+          "title": "② i6 空间与车身：轴距 3 米，扭转刚度同级最高",
+          "desc": "车长 <b>4.95 米</b>、轴距 <b>3 米</b>，车内纵向可用空间超 <b>3.3 米</b>；「一体式鲨鱼形态」与上下双色车身带来低风阻；车身扭转刚度达同级最高的 <b>52,014 N·m/度</b>；同级最大后备厢 + 规整前备箱。",
+          "price": "—",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "补能",
+          "st": "已发布",
+          "title": "③ i6 补能与续航：5C 超充 11 分钟，两驱 720km",
+          "desc": "5C 超充电池，10%–80% 约 <b>11 分钟</b>，充电 5 分钟增加 200km；理想 4C 超充桩峰值功率可达 <b>410kW</b>、10 分钟补能 600km。续航：两驱 <b>720km</b>、四驱 <b>660km</b>。",
+          "price": "—",
+          "time": "09月"
+        },
+        {
+          "tag": "id",
+          "tagText": "节奏",
+          "st": "已发布",
+          "title": "④ i6 节奏与车色：9.26 发布，11 月初交付",
+          "desc": "9 月 26 日 15:00 发布并上市、展车与试驾车当天进店，9 月底开启预订，<b>11 月初</b>开始交付。颜色：珍珠白、深空黑免费，小灰鲨、云朵黄加价 6000 元。",
+          "price": "车色选装 6000 元",
+          "time": "09月"
+        },
+        {
+          "time": "08月",
+          "tag": "id",
+          "tagText": "市场",
+          "st": "已发布",
+          "title": "背景：8 月理想交付 37,679 辆，历史累计交付超 180 万辆",
+          "desc": "2026 年 8 月理想交付 <b>37,679 辆</b>，历史累计交付超 <b>180 万辆</b>。i6 上市将进一步夯实理想的纯电产品矩阵，也是其冲刺销量的关键车型。",
+          "price": "—（产销数据）"
+        }
+      ]
+    },
+    {
+      "m": "10月",
+      "label": "i6 巴黎车展欧洲首发",
+      "meta": "出海",
+      "items": [
+        {
+          "time": "10.12",
+          "tag": "pu",
+          "tagText": "出海",
+          "st": "待发布",
+          "next": true,
+          "title": "理想 i6 于巴黎车展（10/12–10/18）欧洲首发，Q4 起在欧洲销售",
+          "desc": "理想计划于 <b>2026 年第四季度</b>开始在欧洲销售 i6，并选择<b>巴黎车展</b>作为首发舞台，官方称这是理想「首次亮相顶级欧洲车展」。i6 将成为理想进入欧洲的<b>主力产品</b>——这与理想在其他海外市场主推增程技术的策略不同，欧洲以纯电切入。中国市场价格为 <b>249,800 元</b>起（约 3.72 万美元），双电机四驱版 277,800 元（约 4.13 万美元）；后驱版 87.3kWh 宁德时代 LFP 电池、CLTC 续航 720km，5C 充电 10 分钟补 500km。理想前序出海动作：7 月 24 日 L9 在哈萨克斯坦上市（与当地 Allur 集团合作在科斯塔奈工厂组装，为理想首个海外生产基地）；2025 年 10 月进入乌兹别克斯坦；9 月起在迪拜销售 L9（中东版针对高温环境对充电性能与空调热管理做了额外硬件与软件调校）。",
+          "price": "—（欧洲售价待公布；国内 i6 24.98 万起）"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待发布与持续交付",
+      "meta": "待验证",
+      "items": [
+        {
+          "tag": "pu",
+          "tagText": "出海",
+          "st": "待发布",
+          "title": "① i6 欧洲销售启动（Q4 起）",
+          "desc": "官方口径为 2026 年第四季度开始在欧洲销售，具体国家顺序与售价待公布。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "id",
+          "tagText": "交付",
+          "st": "待发布",
+          "title": "② 理想 i6 国内交付：11 月初开始",
+          "desc": "官方口径，11 月初开始交付。",
+          "price": "—",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "未披露",
+          "st": "待发布",
+          "title": "③ 2026 Q4 之后的新车规划未披露",
+          "desc": "截至整理日，理想官方未披露 2026 年 Q4 之后的完整新车计划；媒体此前多次提及的纯电新车（如 i 系列后续）<b>均未获官方确认</b>，此处不作罗列以免误导。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>在售矩阵</b>：纯电三车 —— MEGA（家庭科技旗舰 MPV，52.98–55.98 万）· i8（家庭六座纯电 SUV，30.98–33.98 万）· i6（新形态五座 SUV，24.98–26.98 万）；增程三车 —— L6（24.98–27.98 万）· 全新 L8（36.98–42.98 万）· 全新 L9（45.98–50.98 万）",
+    "<b>全年主线</b>：纯电补完（i8 下探 30.98 万 → i6 落地 24.98 万）· 增程换代守盘（全新 L9 5/15 上市）· 出海启动（i6 10 月巴黎车展欧洲首发、L9 9 月进迪拜）",
+    "<b>技术要点</b>：5C 超充电池（i6 10–80% 约 11 分钟 / i8 10 分钟补 500km / L9 10–80% 约 10 分钟）· 全线标配激光雷达 · 高通 8295P 芯片 · MindVLA 智能驾驶大模型 · 双腔空气悬架 · 原生纯电架构（i8 / i6）",
+    "<b>出海链路</b>：慕尼黑研发中心（欧洲法规适配）· 2026 年 2 月加入中国欧盟商会 · 哈萨克斯坦科斯塔奈工厂（首个海外生产基地，合作方 Allur）· 阿联酋 Al Fahim Motors / 沙特 Mohamed Yousuf Naghi Motors 经销商伙伴 · 前序已进入哈萨克斯坦、乌兹别克斯坦",
+    "<b>口径提示</b>：① i6 国内售价 24.98–26.98 万已在发布时明确，欧洲售价<b>待公布</b>，勿将国内价直接当欧洲价引用；② i6 欧洲首发为官方口径（二季度财报会），最终上市时间与覆盖国家以官方后续披露为准；③ 四驱版 i6 续航缩短至 660km（相比两驱 720km），选车时须注意；④ 理想 2026 年 Q4 之后的新车规划<b>官方尚未披露</b>，媒体提及的车型不作采信"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：理想汽车官网 · 理想汽车二季度财报电话会 · 新浪汽车 · 太平洋汽车 · GlobalChinaEV / CnEVPost 等行业媒体"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

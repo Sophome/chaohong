@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小米汽车 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#ff6900; --accent-soft:#fff0e6;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff9a4d; --accent-soft:#3a2413;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#ff6900}
+  .sqd i:nth-child(2){background:#111827}
+  .sqd i:nth-child(3){background:#2563eb}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html" class="on" aria-current="page">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售矩阵 · 全年主线 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "XIAOMI EV · 2026 LAUNCH TIMELINE",
+  "title": "小米汽车 2026 新品发布年表",
+  "subtitle": "1月新一代SU7小订 → 3月SU7上市 → 7月首款增程昆仑N3 → 9月昆仑N1 → 10月SU7L + 昆仑N2 · 六车齐发，从单品爆款转体系化作战",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "纯电巩固 + 首次切入增程（昆仑系列），全年 6 款新车、覆盖 20–55 万，纯电与增程双线",
+      "s": "六车齐发"
+    },
+    {
+      "k": "已落地车型",
+      "v": "新一代 SU7（3/19，21.99–30.39 万）· YU7 GT（高性能纯电 SUV）· SU7 Ultra 在售",
+      "s": "纯电阵营"
+    },
+    {
+      "k": "增程重头戏",
+      "v": "昆仑 N3（YU9，全尺寸 6/7 座）· 昆仑 N1（中型 5 座）· 昆仑 N2（中大型 6 座）——对标理想 L 系列",
+      "s": "增程三车"
+    },
+    {
+      "k": "交付目标",
+      "v": "2026 年目标 55 万辆（较 2025 年 41 万辆 +34%）· 累计交付已超 60 万辆，其中 SU7 交付 38 万辆",
+      "s": "冲量"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "新一代 SU7 开启小订，外观车色公布",
+      "meta": "开年",
+      "items": [
+        {
+          "time": "01.07",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "新一代小米 SU7 开启小订，预售价 22.99 万起",
+          "desc": "小米官宣新一代 SU7 开启小订，三版本预售价：标准版 <b>22.99 万</b>、Pro 版 <b>25.99 万</b>、Max 版 <b>30.99 万</b>。对比老款 SU7，标准版与 Pro 版上涨 1.4 万元、Max 版上涨 1 万元。雷军当时表示新一代 SU7 预计 <b>4 月</b>上市。全系标配激光雷达，辅助驾驶芯片算力升级至 <b>700TOPS</b>，Pro 版 CLTC 续航达 <b>902km</b>。安全上升级 2200MPa 超强钢防滚架、新增后排侧气囊。",
+          "price": "预售 <b>22.99 / 25.99 / 30.99 万</b>（标准 / Pro / Max）"
+        },
+        {
+          "time": "01.15",
+          "tag": "id",
+          "tagText": "配置",
+          "st": "已发布",
+          "title": "新一代 SU7 外观车色公布：9 种可选，含 3 种新色",
+          "desc": "小米公布新一代 SU7 的完整配色与选装体系：外饰颜色 <b>9 款</b>（含 3 种新颜色）、内饰颜色 5 款、轮毂设计 6 款。这一节奏延续了小米「上市前分批释放信息、持续制造话题」的惯用手法。",
+          "price": "—（配置公布）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "新一代 SU7 正式上市（春季新品发布会）",
+      "meta": "走量主力",
+      "items": [
+        {
+          "time": "03.16",
+          "tag": "id",
+          "tagText": "预告",
+          "st": "已发布",
+          "title": "雷军官宣新一代 SU7 于 3 月 19 日晚发布，上市时间较预期提前",
+          "desc": "雷军通过个人微博官宣新一代 SU7 将于 <b>3 月 19 日晚</b>正式发布，较年初预期的 4 月<b>提前</b>。他称新车「在第一代 SU7 基础上，再潜心打磨两年，安全、驾控、智能体验、豪华质感，都有了巨大的提升」，并回应「新 SU7 乍一看似乎变化不大」的质疑：公司设计顾问认为「一款成功的车型，千万不要乱改，尤其是外观」。雷军透露新一代 SU7 主要改动了<b>电驱、高压平台、电子电气架构</b>，并重新设计了内饰；同时预告「肯定会涨价」。",
+          "price": "—（预告）"
+        },
+        {
+          "time": "03.19",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "next": true,
+          "title": "新一代小米 SU7 上市，21.99 万起，售价较预售价下调",
+          "desc": "「新一代驾驶者之车」正式发布。三版本售价：标准版 <b>21.99 万</b>、Pro 版 <b>24.99 万</b>、Max 版 <b>30.39 万</b>——较预售价（22.99 / 25.99 / 30.99 万）各下调 1 万元。19 日 21:30 开启下定，定金 5000 元、3 天内未锁单可退。产品力：延续 5 米车长 / 2 米车宽 / 3 米轴距的 C 级比例，保留水滴大灯与光环尾灯。续航标准版 <b>720km</b>、Pro 版 <b>902km</b>、Max 版 <b>835km</b>；基于碳化硅高压平台，Max 版支持 <b>5.2C</b> 充电倍率、10%–80% 最快 <b>12 分钟</b>。全系搭载小米超级电机 <b>V6s Plus</b>，Max 版零百 <b>3.08s</b>、最高时速 265km/h。操控采用小米蛟龙底盘，前双叉臂 + 后五连杆，Pro 与 Max 版可选装闭式双腔空气弹簧 + CDC 阻尼可变减振器。安全采用车外机械拉手（碰撞后自动解锁）、1500MPa 防刮底横梁 + 底部「防弹涂层」。",
+          "price": "标准 <b>21.99 万</b> · Pro <b>24.99 万</b> · Max <b>30.39 万</b>"
+        },
+        {
+          "time": "03.23",
+          "tag": "id",
+          "tagText": "交付",
+          "st": "已开售",
+          "title": "新一代 SU7 开启交付",
+          "desc": "上市 4 天后开启交付，成为小米汽车史上交付启动最快的一次之一。截至 <b>4 月 24 日</b>累计交付 <b>2.6 万台</b>；截至 <b>5 月 6 日</b>——上市 48 天，锁单已超 <b>8 万台</b>。",
+          "price": "—（交付节奏）"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "车展首秀 + 交付爬坡",
+      "meta": "渠道",
+      "items": [
+        {
+          "time": "04.09",
+          "tag": "id",
+          "tagText": "展出",
+          "st": "展出",
+          "title": "新一代 SU7 国内车展首秀（2026 齐鲁春季车展）",
+          "desc": "新一代 SU7 在山东国际会展中心举行的 2026 齐鲁春季车展（第 53 届）亮相，这是上市之后国内车展<b>首次</b>公开亮相。同一时期小米汽车累计交付已超 <b>60 余万辆</b>，其中 SU7 累计交付 <b>38 万辆</b>。",
+          "price": "—（车展）"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "YU7 GT / Ultra 高性能纯电 SUV",
+      "meta": "性能线",
+      "items": [
+        {
+          "time": "05月",
+          "tag": "te",
+          "tagText": "性能",
+          "st": "已开售",
+          "title": "小米 YU7 GT / YU7 Ultra 高性能纯电 SUV 登场",
+          "desc": "小米高性能纯电 SUV 线落地，定位运动旗舰，三电机高性能底盘，主打年轻用户与驾控爱好者，对标特斯拉 Model Y Performance 等高端性能 SUV。媒体口径售价区间约 <b>35–40 万元</b>。小米官网同期在售阵容为「YU7 | YU7 GT」与「SU7 Ultra | YU7 GT」——YU7 GT 是当前小米性能线的核心在售车型。",
+          "price": "约 <b>35–40 万</b>（媒体口径，以官方为准）"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "首款增程：昆仑 N3（YU9）全尺寸 SUV",
+      "meta": "增程首发",
+      "items": [
+        {
+          "time": "07月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "待发布",
+          "next": true,
+          "title": "昆仑 N3（YU9）全尺寸增程 SUV 亮相，对标理想 L9",
+          "desc": "小米<b>首款增程车型</b>，内部代号昆仑 N3，车长超 <b>5.2 米</b>，提供<b>六座 / 七座</b>布局，直接对标理想 L9、问界 M9。媒体曝光参数：搭载小米自研 <b>1.5T 四缸增程器</b>（热效率 44.3%），纯电续航突破 <b>400km</b>，满油满电综合续航最高 <b>1500–1600km</b>（不同稿件口径不一，须以官方为准）；双电机四驱、零百 5 秒级，全系标配后轮转向、高配空悬。座舱配 15.6 英寸中控屏、70 英寸 AR-HUD、7.5L 冷暖冰箱，尾门集成折叠桌板与电磁炉接口。媒体口径售价 <b>45–55 万</b>。这是小米从纯电转向「纯电 + 增程」双线战略的关键一步，也是全年最受关注的新车。",
+          "price": "媒体口径约 <b>45–55 万</b>（官方未公布，待确认）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "昆仑 N1 中型增程 SUV",
+      "meta": "增程走量",
+      "items": [
+        {
+          "time": "09月",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "待发布",
+          "title": "昆仑 N1（或命名 YU5）中型增程 SUV",
+          "desc": "增程走量款，五座实用布局，主打「城市通勤 + 长途无焦虑」，拉低小米增程的入门门槛，抢占主流家用市场。媒体口径起步价约 <b>25 万元</b>，定位 25–30 万区间。与昆仑 N3、N2 形成类似理想 L 系列的价格梯次。",
+          "price": "媒体口径约 <b>25 万起</b>（官方未公布）"
+        }
+      ]
+    },
+    {
+      "m": "10月",
+      "label": "SU7L 行政加长版 + 昆仑 N2 中大型增程 SUV",
+      "meta": "双车齐发",
+      "items": [
+        {
+          "time": "10月",
+          "tag": "te",
+          "tagText": "行政",
+          "st": "待发布",
+          "title": "SU7L 行政加长版：车长破 5.2 米，轴距超 3.1 米",
+          "desc": "被称为「对标帕梅（Panamera）的豪华行政级纯电轿车」。车长突破 <b>5.2 米</b>、轴距超 <b>3.1 米</b>，通过加长 B 柱后车身大幅优化后排空间，配备零重力座椅等豪华配置，瞄准高端商务行政市场。早期谍照显示其主要目的就是改善 SU7 后排空间的短板。媒体口径售价 <b>30–35 万元</b>。与 SU7 Ultra 形成「一个主打行政舒适、一个主打运动性能」的组合。",
+          "price": "媒体口径约 <b>30–35 万</b>（官方未公布）"
+        },
+        {
+          "time": "10月",
+          "tag": "te",
+          "tagText": "增程",
+          "st": "待发布",
+          "title": "昆仑 N2（或命名 YU8）中大型增程 SUV，六座布局",
+          "desc": "中大型增程 SUV，六座舒适布局，配置看齐旗舰、价格下探，对标理想 L8 / 问界 M8，补齐 35–40 万增程核心价格段。与 SU7L 同期发布。媒体口径售价 <b>35–40 万元</b>。至此小米增程「三车矩阵」（N3 全尺寸 / N2 中大型 / N1 中型）成型。",
+          "price": "媒体口径约 <b>35–40 万</b>（官方未公布）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>全年节奏</b>：1/7 新一代 SU7 小订（22.99 万起预售价）→ 3/19 上市（21.99–30.39 万）→ 3/23 交付 → 4/9 车展首秀 → 5 月 YU7 GT/Ultra → 7 月昆仑 N3 → 9 月昆仑 N1 → 10 月 SU7L + 昆仑 N2",
+    "<b>两套动力</b>：纯电阵营（新一代 SU7 · YU7 GT/Ultra · SU7 Ultra · SU7L）；增程阵营（昆仑 N3 / N2 / N1）——2026 年小米首次切入增程，目标直指理想验证过的家庭市场",
+    "<b>技术要点</b>：新一代 SU7 碳化硅高压平台 + Max 5.2C（10–80% 12 分钟）· 超级电机 V6s Plus · 蛟龙底盘（前双叉臂后五连杆）· 全系激光雷达 + 700TOPS 算力 · Pro 版 CLTC 902km",
+    "<b>销量目标</b>：2026 年交付目标 <b>55 万辆</b>（2025 年实际 41 万辆，同比 +34%）· 累计交付已超 60 万辆（SU7 占 38 万辆）· 北京工厂双班制保守年产能可破 60 万辆",
+    "<b>口径提示</b>：① 昆仑 N3 / N1 / N2 的命名、参数与价格均来自媒体曝光与内部 PPT 流传，<b>未见小米官方完整确认</b>，须以官方发布为准；② 综合续航在不同稿件中为 1500km 与 1600km 两个口径，此处并列呈现；③ 小米部分车型仍采用 400V 架构，补能效率与 800V 车型存在差距；④ YU7 GT 售价为媒体推测区间"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：小米汽车官网 · 雷军个人微博 · 小米汽车官方发布 · 21 世纪经济报道 · 新华网 · 中国汽车报 · 汽车之家 / 有驾 / 木仓科技"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

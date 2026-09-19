@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蔚来公司 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#1d4ed8; --accent-soft:#e6ecfd;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#7ea3ff; --accent-soft:#161d38;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#1d4ed8}
+  .sqd i:nth-child(2){background:#111827}
+  .sqd i:nth-child(3){background:#0b7a5b}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html" class="on" aria-current="page">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>三品牌矩阵 · 全年主线 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "NIO · ONVO · FIREFLY · 2026 LAUNCH TIMELINE",
+  "title": "蔚来公司 2026 新品发布年表",
+  "subtitle": "4月21日2026款乐道L90 → 4月28日乐道L80预售 → 5月27日蔚来ES9上市（49.8万起）→ 北京车展三品牌11车同台 · 蔚来/乐道/萤火虫三线并进，冲刺全年盈利",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "蔚来（高端旗舰 ES9）· 乐道（走量 L90 / L80）· firefly 萤火虫（10 万级精品小车）三品牌并进，覆盖 10–63 万价格带",
+      "s": "三品牌"
+    },
+    {
+      "k": "年度黑科技",
+      "v": "自研全球首颗 5nm 车规级智驾芯片「神玑 NX9031」（546GB/s 内存带宽）+ 蔚来世界模型 NWM + SkyOS·天枢操作系统",
+      "s": "三大件"
+    },
+    {
+      "k": "旗舰双塔",
+      "v": "蔚来 ES9（5/27 上市，49.8–62.8 万，中国体量最大纯电 SUV）· 全新 ES8（在售，玄金特别版 45.68 万）",
+      "s": "高端"
+    },
+    {
+      "k": "财务目标",
+      "v": "2026 年规划全年销量同比增长 40%–50%，维持全年 Non-GAAP 口径盈利；2025 Q4 已实现成立以来首次经营盈利",
+      "s": "冲盈利"
+    }
+  ],
+  "months": [
+    {
+      "m": "04月",
+      "label": "2026 北京车展：三品牌 11 款车型 + 12 项全栈技术",
+      "meta": "集中亮相",
+      "items": [
+        {
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "① 2026 款乐道 L90 上市：增配不加价",
+          "desc": "乐道 L90 智能焕新发布会在杭州举行。官方指导价 <b>26.58 万元起</b>；采用 BaaS 电池租用方式购买，起售价 <b>17.98 万元</b>。新车带来<b>八大板块、超 70 项软硬件升级</b>，成为 30 万级别唯一集齐顶尖智能科技「三大件」的技术旗舰：蔚来自研全球首颗 <b>5nm 车规级智驾芯片「神玑 NX9031」</b>（546GB/s 行业最高内存带宽）、中国首个面向自动驾驶的<b>蔚来世界模型 NWM</b>、行业唯一面向 AI 的整车全域操作系统 <b>SkyOS·天枢</b>。版型：六座 / 七座，Pro / Max+ / Ultra+ 三个版型。",
+          "price": "整车 <b>26.58 万起</b> / BaaS <b>17.98 万起</b>",
+          "time": "04.21"
+        },
+        {
+          "tag": "id",
+          "tagText": "版型",
+          "st": "已开售",
+          "title": "② 六座版价格与配置（Pro / Max+ / Ultra+）",
+          "desc": "<b>六座 Pro</b> 标配 85kWh 长续航电池包 + 超大行程智能空气悬架 + Nappa 真皮主题豪华内饰套装，采用英伟达 Orin X 芯片 + 纯视觉智驾方案；<b>六座 Max+</b> 标配二排 17.3 英寸 3K 天空娱乐屏、二排右侧零重力座椅、全新高精度激光雷达、神玑 NX9031、蔚来世界模型；<b>六座 Ultra+</b> 标配四驱（440kW / 535N·m、零百 4.7s）与「步步高升」展翼电动踏板。",
+          "price": "Pro 26.58 万起 / BaaS 17.98 万起 · Max+ 27.98 万起 / BaaS 19.38 万起 · Ultra+ 29.98 万起 / BaaS 21.38 万起",
+          "time": "04.21"
+        },
+        {
+          "tag": "id",
+          "tagText": "版型",
+          "st": "已开售",
+          "title": "③ 七座版价格与配置（Max+ / Ultra+）",
+          "desc": "七座版提供 Max+ 与 Ultra+ 两个版型，配置与六座对应版型一致。",
+          "price": "Max+ 28.58 万起 / BaaS 19.98 万起 · Ultra+ 29.98 万起 / BaaS 21.38 万起",
+          "time": "04.21"
+        },
+        {
+          "tag": "pu",
+          "tagText": "空间",
+          "st": "已开售",
+          "title": "④ 空间：81.5% 空间效率 + 240L 前备舱 + 30L 车载冰柜",
+          "desc": "整车可用空间效率 <b>81.5%</b>（同级最优），中国市场最大 <b>240L</b> 智能电动前备舱（96% 周使用率超过后备箱），前备舱 + 后备箱总储物 <b>670L</b>，新增同级唯一原生 <b>30L</b> 后备箱隐藏式大冰柜。",
+          "price": "—",
+          "time": "04.21"
+        },
+        {
+          "tag": "pu",
+          "tagText": "续航",
+          "st": "已开售",
+          "title": "⑤ 续航与能耗：后驱 600km / 四驱 570km，同级最轻",
+          "desc": "后驱版 CLTC <b>600km</b>、四驱版 <b>570km</b>；后驱整备质量 2250kg（同级最轻），百公里能耗 <b>14.6kWh</b>（同级最低）。",
+          "price": "—",
+          "time": "04.21"
+        },
+        {
+          "tag": "",
+          "tagText": "安全",
+          "st": "已开售",
+          "title": "⑥ 安全：中汽中心五星大满贯 + 9 安全气囊",
+          "desc": "唯一获中汽中心五星认证大满贯的大型 SUV，钢铝混合超固三舱车身、扭转刚度 <b>38150Nm/Deg</b>、铝合金 + 高强度钢占比 <b>84%</b>、全系 <b>9 安全气囊</b>。",
+          "price": "—",
+          "time": "04.21"
+        },
+        {
+          "tag": "pu",
+          "tagText": "换电",
+          "st": "已开售",
+          "title": "⑦ 换电网络：乐道可用换电站 2443 座",
+          "desc": "截至 4 月 21 日乐道可用换电站达 <b>2443 座</b>，高速换电站超 1000 座、平均 180km 一座，3 分钟极速加电。",
+          "price": "—",
+          "time": "04.21"
+        },
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "① 蔚来 ES9 首次亮相（科技行政旗舰 SUV）",
+          "desc": "超 <b>40 项行业首创技术</b>、近 40 项同级领先技术。李斌现场宣布将于 <b>5 月下旬</b>正式上市并交付（小米雷军也到展台体验）。",
+          "price": "价格待公布",
+          "time": "04.21"
+        },
+        {
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "② 全新 ES8 车展首日上新：玄金特别版",
+          "desc": "在 6 座签名版基础上采用极夜黑车色与全新雅丹橙内饰，增加专属黑铬外饰套件、22 英寸锻造玄金星耀轮辋与曙光金卡钳。（全新 ES8 已连续四个月领跑、交付量超 10 万辆）",
+          "price": "整车 <b>45.68 万</b> / 租电 <b>34.88 万</b>",
+          "time": "04.21"
+        },
+        {
+          "tag": "pu",
+          "tagText": "新品",
+          "st": "已发布",
+          "title": "③ 乐道 L80 官宣 4 月 28 日开启预售",
+          "desc": "李斌现场宣布定位「智能双舱大五座旗舰 SUV」的 <b>乐道 L80</b> 将于 <b>4 月 28 日</b>举行产品技术发布会并开启预售。",
+          "price": "待公布",
+          "time": "04.21"
+        },
+        {
+          "tag": "pu",
+          "tagText": "品牌",
+          "st": "展出",
+          "title": "④ firefly 萤火虫焕新升级款 + 三辆设计改装作品",
+          "desc": "新增美拉德专属车色搭配全新「星轨」双色合金轮辋。萤火虫曾获 2026 年「世界城市车」荣誉。",
+          "price": "待公布",
+          "time": "04.21"
+        },
+        {
+          "time": "04.22",
+          "tag": "pu",
+          "tagText": "回应",
+          "st": "已发布",
+          "title": "李斌、沈斐回应乐道 L90 改款争议：迭代快是智能电动车的困境",
+          "desc": "因 2026 款乐道 L90「增配不加价」引发 2025 款老车主不满（不少车主发帖称感到「背刺」），蔚来创始人李斌与乐道总裁沈斐出席媒体沟通会回应。李斌坦言，这次焕新版上市准备中「最纠结的，也是花了非常多时间去讨论的，就是现有用户的利益和情绪」，「每次产品迭代，从企业付出的角度来讲是巨大的，但这就是今天智能电动汽车市场发展的一个困境——更新得越快，意味着开发费用越高、沉没成本越多。以前汽车主要是发动机、变速箱定义代际，但现在的智能电动汽车在智能化维度上的迭代非常快」，「如果我们不把最新的技术，或者我们不去更新迭代，我们确实没法参与这个市场的竞争」。沈斐称「原来的系统还在持续升级，大家可以放心」，并预告 <b>7 月</b>乐道整车操作系统 Coconut 会有一次大的迭代升级。补偿方面：所有 2025 款 L90 首任车主可享 10,000 元新款 L90 专属焕新礼金券（有效期 5 年）+ 30,000 积分红包。",
+          "price": "—（品牌沟通会）"
+        },
+        {
+          "time": "04.28",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "乐道 L80 产品技术发布会并开启预售",
+          "desc": "李斌于北京车展现场宣布，定位「智能双舱大五座旗舰 SUV」的乐道 L80 于 <b>4 月 28 日</b>举行产品技术发布会并开启预售，展车同日亮相北京车展并陆续抵达全国门店。在售版本（后续上市）：615km 后驱 Pro 85kWh <b>24.28 万</b>、615km 后驱 Max+ 85kWh <b>25.98 万</b>、570km 四驱 Ultra+ 85kWh <b>27.98 万</b>；BaaS 电池租用方式购买起售价 <b>15.68 万元</b>。整车标配 85 度电池。L80 的推出进一步拓宽乐道产品矩阵，定位低于 L90，主打大五座家庭市场。",
+          "price": "整车 <b>24.28–27.98 万</b> / BaaS <b>15.68 万起</b>（整车标配 85 度电池）"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "蔚来 ES9 上市并交付",
+      "meta": "年度旗舰",
+      "items": [
+        {
+          "time": "05.27",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "蔚来 ES9 上市，49.8 万起，「中国体量最大的纯电 SUV」",
+          "desc": "蔚来十一年体系创新的集大成之作，定位「科技行政旗舰 SUV」。整车购买价格 <b>49.8–62.8 万元</b>，电池租用方案 <b>39–52 万元</b>起。三版本：行政豪华版整车 <b>49.8 万</b>起 / 租电 <b>39 万</b>起；行政签名版整车 <b>55.8 万</b>起 / 租电 <b>45 万</b>起；地平线特别版整车 <b>62.8 万</b>起 / 租电 <b>52 万</b>起。车身 <b>5365×2029×1870mm</b>、轴距 <b>3250mm</b>——官方称「中国体量最大的纯电 SUV」。技术：最新一代<b>全域 900V 高压架构</b>，峰值功率 520kW、峰值扭矩 700N·m；自研高性能六活塞制动卡钳，100–0km/h 制动距离 35.3m；标配 <b>102kWh</b> 长续航电池，CLTC 续航 <b>620km</b>；搭载国内唯一量产交付的<b>线控转向系统</b>、全主动悬架的<b>天行智能底盘</b>，并标配<b>后轮转向</b>（转弯半径 5.4 米）。",
+          "price": "整车 <b>49.8–62.8 万</b> / 租电 <b>39–52 万</b>起"
+        },
+        {
+          "time": "05.28",
+          "tag": "id",
+          "tagText": "交付",
+          "st": "已开售",
+          "title": "蔚来 ES9 开启交付",
+          "desc": "上市次日开启交付。随后于 <b>8 月 8 日</b>——交付历时 <b>73 天</b>达成第 <b>20,000 台</b>新车交付里程碑，刷新中国乘用车市场 <b>50 万级</b>高端纯电车型的交付速度纪录。",
+          "price": "—（交付节奏）"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "乐道操作系统 Coconut 迭代 · 乐道产品线扩充",
+      "meta": "软件",
+      "items": [
+        {
+          "time": "07月",
+          "tag": "id",
+          "tagText": "OTA",
+          "st": "已发布",
+          "title": "乐道整车操作系统 Coconut 大版本迭代升级",
+          "desc": "乐道总裁沈斐在 4 月媒体沟通会上预告，<b>7 月</b>乐道整车操作系统 Coconut 将有一次大的迭代升级。2026 款乐道 L90 已搭载全新 <b>Coconut 3.0</b> 与 Coconut+ 3.0 智能系统，覆盖从激光雷达硬件到全场景智驾、从神玑影像到「小乐」智慧场景。其中 AI 家庭伙伴「小乐」搭载蔚来自研 NOMI Intelligence 4.0 全场景情感智能架构，升级为 Agent-Native 原生座舱智能体，掌握超 <b>500 项</b>精细车控技能、覆盖 98% 以上用户车控需求，可精准记忆 20 位家人的人脸信息，联动全车 <b>830+</b> 原子能力。Pro 版纯视觉智驾方案也预计在 7 月迎来一次大的迭代升级。",
+          "price": "—（OTA）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "蔚来 ES9 交付破 2 万台 + 换电网络持续扩张",
+      "meta": "里程碑",
+      "items": [
+        {
+          "time": "08.08",
+          "tag": "pu",
+          "tagText": "里程碑",
+          "st": "已发布",
+          "title": "蔚来 ES9 交付 2 万台，创 50 万级高端纯电交付速度纪录",
+          "desc": "蔚来官方宣布，自 2026 年 5 月 28 日开启交付以来，ES9 历时 <b>73 天</b>达成第 <b>20,000 台</b>新车交付里程碑，刷新中国乘用车市场 <b>50 万级</b>高端纯电车型的交付纪录。ES9 是蔚来在高端纯电市场的旗舰支柱，也是其冲击 2026 年全年盈利目标的重要销量来源。",
+          "price": "—（交付里程碑）"
+        },
+        {
+          "time": "08月",
+          "tag": "id",
+          "tagText": "体系",
+          "st": "已发布",
+          "title": "三品牌体系与销量基本面",
+          "desc": "蔚来公司 2025 年全年累计交付同比增长 <b>46.9%</b> 至 <b>32.6 万台</b>（创历史新高）：蔚来品牌 17.88 万台、乐道品牌 10.78 万台、萤火虫品牌 3.94 万台。四季度单季 12.48 万辆、12 月单月突破 4.8 万辆，均为历史新高。财务：2025 年四季度汽车销售毛利率升至 <b>18.1%</b>、整体毛利率 17.5%，季度 Non-GAAP 核心经营利润约 12.5 亿元，GAAP 口径净利润 2.83 亿元——为蔚来成立以来<b>首次经营盈利</b>。2026 年 1 月交付 2.72 万辆、2 月 2.08 万辆，一季度销量同比增长约 <b>98%</b>。蔚来 2026 年规划全年销量同比增长 <b>40%–50%</b>，维持全年 Non-GAAP 口径下全年盈利。截至整理日，蔚来已建成 <b>8766 座</b>充换电站，210 个地级市三品牌门店全覆盖。",
+          "price": "—（体系与财务数据）"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待发布与持续交付",
+      "meta": "待验证",
+      "items": [
+        {
+          "tag": "pu",
+          "tagText": "品牌",
+          "st": "待发布",
+          "title": "① 三品牌全线焕新（官方口径：第二季度起）",
+          "desc": "李斌在北京车展表示「今年第二季度，三大品牌将迎来全线焕新与进化」，截至整理日蔚来与萤火虫品牌的焕新节奏官方尚未完整披露。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "pu",
+          "tagText": "新品",
+          "st": "待发布",
+          "title": "② firefly 萤火虫焕新升级款上市时间待公布",
+          "desc": "焕新升级款已在 2026 北京车展展出（新增美拉德车色 + 「星轨」双色合金轮辋），后续上市时间待官方公布。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "未披露",
+          "st": "待发布",
+          "title": "③ 2026 Q4 之后的新车型规划未披露",
+          "desc": "蔚来品牌新平台车型、乐道后续车型等，<b>官方尚未披露</b>；媒体提及的相关车型不作采信。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "待发布",
+          "title": "④ 换电体系目标：电池寿命 8 年 → 12 年",
+          "desc": "持续扩张换电网络，维持「3 分钟极速加电」体验并延长电池寿命（官方称通过集中科学体检与均衡养护，将电池寿命从行业平均 8 年延长至 <b>12 年</b>）。",
+          "price": "—",
+          "next": true,
+          "time": "Q4"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>三品牌在售矩阵</b>：蔚来 —— 全新 ES8（含玄金特别版 45.68 万 / 租电 34.88 万）· ES9（49.8–62.8 万 / 租电 39–52 万起）· ET / EC 系列；乐道 —— L80（整车 24.28–27.98 万 / BaaS 15.68 万起）· 2026 款 L90（整车 26.58 万起 / BaaS 17.98 万起）；firefly 萤火虫 —— 焕新升级款（10 万级精品城市小车，2026「世界城市车」）",
+    "<b>全年主线</b>：4/21 2026 款乐道 L90 上市 → 4/24 北京车展三品牌 11 车同台 → 4/28 乐道 L80 预售 → 5/27 蔚来 ES9 上市 → 5/28 ES9 交付 → 7 月 Coconut 大版本迭代 → 8/8 ES9 交付破 2 万台",
+    "<b>技术底座（三大件）</b>：自研全球首颗 5nm 车规级智驾芯片「神玑 NX9031」（546GB/s 内存带宽）· 中国首个面向自动驾驶的世界模型「蔚来世界模型 NWM」· 行业唯一面向 AI 的整车全域操作系统「SkyOS·天枢」；另有全域 900V 高压架构、天行智能底盘（全主动悬架 + 线控转向）、NOMI Intelligence 4.0",
+    "<b>能源体系</b>：已建成 8766 座充换电站 · 乐道可用换电站 2443 座 · 高速换电站超 1000 座（平均 180km 一座）· 3 分钟极速换电 · 电池寿命从行业平均 8 年延长至 12 年 · 210 个地级市三品牌门店全覆盖",
+    "<b>口径提示</b>：① 蔚来销售价格普遍存在「整车购买」与「BaaS 电池租用」两套口径，价差可达 8–10 万元，引用时<b>必须写明口径</b>，不可混用；② 「中国体量最大的纯电 SUV」「同级最优空间效率」「同级最低能耗」等为<b>蔚来官方口径</b>，未见第三方验证；③ 「全球首颗 5nm 车规级智驾芯片」「行业唯一面向 AI 的整车全域操作系统」为厂商宣传定语，属品牌自定义表述；④ 2026 年 Q4 之后的新车规划官方未披露，媒体报道不作采信"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：蔚来汽车官网 · 乐道汽车官网 · 蔚来官方发布 · 南方都市报 · IT之家 · 凤凰网汽车 · 腾讯新闻 · 易车 / BitAuto 公开资料"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

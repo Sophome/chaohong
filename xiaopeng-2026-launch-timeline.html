@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小鹏汽车 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#00a8a8; --accent-soft:#e0f6f6;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#4fd6d6; --accent-soft:#0f2e2e;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#00a8a8}
+  .sqd i:nth-child(2){background:#111827}
+  .sqd i:nth-child(3){background:#7c3aed}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html" class="on" aria-current="page">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售矩阵 · 全年主线 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "XPENG · 2026 LAUNCH TIMELINE",
+  "title": "小鹏汽车 2026 新品发布年表",
+  "subtitle": "1月8日四车齐发（P7+/G7超级增程/G6/G9）→ 9月17日G9L上市（23.18万起）→ 10月12日G9L巴黎全球上市 · 全部主力「一车双能」化，鲲鹏超级增程 + 第二代VLA",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "「一车双能」全面铺开——纯电 + 超级增程同车提供；何小鹏宣布 2026 年将推出七款「一车双能」车型",
+      "s": "双能化"
+    },
+    {
+      "k": "技术底座",
+      "v": "800V 高压 SiC 平台 + 5C 超充 AI 电池（12 分钟 10–80%）· 鲲鹏超级增程 · 自研图灵 AI 芯片 · 第二代 VLA 大模型",
+      "s": "全栈自研"
+    },
+    {
+      "k": "年度旗舰",
+      "v": "小鹏 G9L（9/17，23.18 万起）——黄金大五座科技旗舰，全系后轮转向 + 双腔空悬 + DCC，麋鹿测试 80km/h+",
+      "s": "9系下放"
+    },
+    {
+      "k": "出海",
+      "v": "G9L 于 10 月 12 日巴黎车展全球上市，中国广州工厂与奥地利格拉茨工厂同步生产（全球生产布局）",
+      "s": "全球生产"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "2026 小鹏全球新品发布会（广州 + 布鲁塞尔双城）",
+      "meta": "开年四车",
+      "items": [
+        {
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "① 四车齐发总览：广州发布 + 布鲁塞尔同步欧洲",
+          "desc": "小鹏在<b>广州</b>举办「2026 小鹏全球新品发布会」（1 月 9 日在比利时<b>布鲁塞尔</b>同步欧洲发布），一口气推出四款新车：<b>小鹏 G7 超级增程</b>、<b>2026 款小鹏 P7+</b>、<b>小鹏 G6</b>、<b>小鹏 G9</b> 三款主力车型的年度改款升级。两个关键词概括四款新车：<b>长续航</b>与<b>新芯片</b>。",
+          "price": "最低 <b>17.68 万</b>起（小鹏 G6）",
+          "time": "01月"
+        },
+        {
+          "tag": "",
+          "tagText": "增程",
+          "st": "已开售",
+          "title": "② 小鹏 G7 超级增程：1704km 全球续航最长 SUV",
+          "desc": "搭载小鹏最新「鲲鹏超级增程」技术，<b>55.8kWh</b> 电池组 + <b>60L</b> 油箱，综合续航达 <b>1704km</b>——官方称其为「全球续航最长 SUV」。同平台搭载 800V 高压 SiC 碳化硅平台、5C 超充 AI 电池。G7 是小鹏首款搭载自研<b>图灵 AI 芯片</b>的车型，算力最高达 2250 TOPS。",
+          "price": "—（G7 车系在售）",
+          "time": "01月"
+        },
+        {
+          "tag": "te",
+          "tagText": "轿车",
+          "st": "已开售",
+          "title": "③ 2026 款小鹏 P7+：纯电 + 超级增程双动力",
+          "desc": "P7+ 确认同时提供<b>超级增程</b>与<b>纯电</b>两套动力（「一车双能」）。超级增程版纯电续航 <b>430km</b>——官方称「全球纯电续航最长的增程轿车」，综合续航 <b>1550km</b>（工信部实测 CLTC：纯电 441km、综合 1571km）。纯电版 CLTC 续航至高 <b>725km</b>，综合电耗低至 <b>10.9kWh/100km</b>——官方称全球同级最低（低于特斯拉 Model 3 约 0.1kWh）。",
+          "price": "—（P7+ 车系在售）",
+          "time": "01月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "技术",
+          "st": "已开售",
+          "title": "④ P7+ 底盘与补能：全系 AI 底盘 + 800V 5C 超充",
+          "desc": "底盘全系标配 <b>AI 底盘</b>：前双叉臂 + 后五连杆、智能可变阻尼减振器、太极液压衬套矩阵（缓冲能力 +35%、过坎舒适性 +27%、转向灵活性 +17%）；全系升级 <b>6D 防晕车智能算法</b>；AI 智能预瞄最远 30 米、最多提前 300 毫秒调节。补能：全系 800V 高压 SiC 碳化硅平台（电驱综合效率 92.5%、SiC 电控最高效率 99%）+ 5C 超充 AI 电池，12 分钟补能 10%–80%，纯电版充 10 分钟增 420km、增程版增 277km。热管理为 X-HP 3.5 系统（春秋季空调能耗降 30–50%、冬季续航 +15%）。增程器为第三代 1.5T 高效增压中冷发动机（热效率行业第一，一升油发电超 3.6 度），ENC 主动降噪使噪音降低 50%、启停振动下降 60%。",
+          "price": "—",
+          "time": "01月"
+        },
+        {
+          "tag": "id",
+          "tagText": "销量",
+          "st": "已发布",
+          "title": "⑤ 背景：X9 超级增程 12 月交付 5424 辆，同比 +289.1%",
+          "desc": "何小鹏在发布会期间宣布，小鹏首款增程车型 <b>X9 超级增程</b>在 12 月交付 <b>5424 辆</b>，同比增长 <b>289.1%</b>。这验证了「一车双能」策略的可行性——增程动力精准击中北方用户的续航痛点。何小鹏在广州车展期间宣布，2026 年将推出<b>七款</b>「一车双能」车型。",
+          "price": "—（前序车型销量）",
+          "time": "01月"
+        },
+        {
+          "time": "01.08",
+          "tag": "",
+          "tagText": "增程",
+          "st": "已开售",
+          "title": "小鹏 G7 超级增程：1704km 综合续航，全球续航最长 SUV",
+          "desc": "搭载小鹏最新「鲲鹏超级增程」技术，<b>55.8kWh</b> 电池组 + <b>60L</b> 油箱，综合续航达 <b>1704km</b>——官方称其为「全球续航最长 SUV」。同平台搭载 800V 高压 SiC 碳化硅平台、5C 超充 AI 电池。G7 是小鹏首款搭载自研<b>图灵 AI 芯片</b>的车型，算力最高达 2250 TOPS。",
+          "price": "—（G7 车系在售）"
+        },
+        {
+          "time": "01.08",
+          "tag": "te",
+          "tagText": "轿车",
+          "st": "已开售",
+          "title": "2026 款小鹏 P7+：纯电 + 超级增程双动力，10.9kWh 全球同级最低能耗",
+          "desc": "P7+ 确认同时提供<b>超级增程</b>与<b>纯电</b>两套动力（「一车双能」）。超级增程版纯电续航 <b>430km</b>——官方称其为「全球纯电续航最长的增程轿车」，综合续航 <b>1550km</b>（工信部实测 CLTC：纯电 441km、综合 1571km）。纯电版 CLTC 续航至高 <b>725km</b>，综合电耗低至 <b>10.9kWh/100km</b>——官方称全球同级最低（低于特斯拉 Model 3 约 0.1kWh）。底盘全系标配 <b>AI 底盘</b>：前双叉臂 + 后五连杆、智能可变阻尼减振器、太极液压衬套矩阵（缓冲能力 +35%、过坎舒适性 +27%、转向灵活性 +17%）；全系升级 <b>6D 防晕车智能算法</b>；AI 智能预瞄最远 30 米、最多提前 300 毫秒调节。补能：全系标配 800V 高压 SiC 碳化硅平台（电驱综合效率 92.5%、SiC 电控最高效率 99%）+ 5C 超充 AI 电池，12 分钟补能 10%–80%，纯电版充 10 分钟增 420km、增程版增 277km。热管理为 X-HP 3.5 系统（春秋季空调能耗降 30–50%、冬季续航 +15%）。增程器为第三代 1.5T 高效增压中冷发动机（热效率行业第一，一升油发电超 3.6 度），ENC 主动降噪使噪音降低 50%、启停振动下降 60%。",
+          "price": "—（P7+ 车系在售）"
+        },
+        {
+          "time": "01.08",
+          "tag": "id",
+          "tagText": "增程",
+          "st": "已发布",
+          "title": "背景：小鹏 X9 超级增程 12 月交付 5424 辆，同比 +289.1%",
+          "desc": "何小鹏在发布会期间宣布，小鹏首款增程车型 <b>X9 超级增程</b>在 12 月交付 <b>5424 辆</b>，同比增长 <b>289.1%</b>。这验证了「一车双能」策略的可行性——增程动力精准击中北方用户的续航痛点，也让更多人愿意为小鹏的智能化买单。何小鹏在广州车展期间宣布，2026 年将推出<b>七款</b>「一车双能」车型。",
+          "price": "—（前序车型销量）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "小鹏集团 8 月交付 39,107 台",
+      "meta": "产销",
+      "items": [
+        {
+          "time": "08月",
+          "tag": "id",
+          "tagText": "产销",
+          "st": "已发布",
+          "title": "小鹏集团 8 月共交付新车 39,107 台，同环比双增长",
+          "desc": "小鹏集团 8 月交付 <b>39,107 台</b>，实现同比与环比双增长。管理层此前表示，公司目标在第四季度实现单月销量超过 <b>6 万台</b>。同期小鹏在售产品矩阵已扩展至：MONA M03 · MONA L03 · P7 · P7+ · G6 · G7（含超级增程）· G9 / G9L · X9（含黑武士版）· GX。",
+          "price": "—（产销数据）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "小鹏 G9L 正式上市",
+      "meta": "年度旗舰",
+      "items": [
+        {
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "① 小鹏 G9L 上市：6 个版本，限时 23.18 万起",
+          "desc": "小鹏年度重磅车型，定位「黄金大五座科技旗舰」。共 6 个版本，限时官方售价 <b>23.18 万元起</b>。演员尹正作为性能检验官称其为「西装暴徒」。",
+          "price": "限时 <b>23.18 万起</b>（纯电 23.18–30.98 万 / 超级增程 24.98–29.98 万）",
+          "time": "09月"
+        },
+        {
+          "tag": "",
+          "tagText": "版本",
+          "st": "已开售",
+          "title": "② G9L 六个版本价格明细",
+          "desc": "纯电 702 两驱 Max <b>23.18 万</b>、纯电 660 四驱 Ultra SE <b>24.98 万</b>、纯电 660 四驱 Ultra <b>27.98 万</b>、纯电 755 四驱 Ultra 旗舰版 <b>30.98 万</b>；超级增程 1602 四驱 Ultra SE <b>24.98 万</b>、超级增程 1602 四驱 Ultra 旗舰版 <b>29.98 万</b>。外观 5 色（托斯卡纳绿 / 普罗旺斯紫 / 极夜黑 / 珠峰白 / 峡湾灰）+ 黑金套件（限时 1 万元），内饰 4 色。",
+          "price": "23.18–30.98 万",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "空间",
+          "st": "已开售",
+          "title": "③ 空间：「六座空间、五座布局」",
+          "desc": "车长 <b>5120mm</b>、轴距 <b>3100mm</b>、<b>0.605 黄金轴长比</b>，190cm 乘客后排依旧舒展；后备箱 <b>1152L</b> + 230L 下沉空间，全车 <b>66 处</b>收纳。",
+          "price": "—",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "操控",
+          "st": "已开售",
+          "title": "④ 操控：全系后轮转向 + 双腔空悬 + 全铝底盘",
+          "desc": "全系标配<b>后轮转向</b>（转弯半径 <b>5.4 米</b>）+ 双腔空气悬架 + DCC 智能可变阻尼减振器（70mm 可调范围）+ 全铝轻量化底盘（比传统底盘减重 35kg）+ 自研 X-VMC 底盘运动控制系统。麋鹿测试 <b>80km/h 以上</b>、零百最快 <b>4.45s</b>、百公里制动最短 <b>34.2m</b>。",
+          "price": "—",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "智能",
+          "st": "已开售",
+          "title": "⑤ 智能：3 颗图灵 AI 芯片 + 首发第二代 VLA 大模型",
+          "desc": "最高搭载 <b>3 颗图灵 AI 芯片</b>（算力 2250TOPS），首发<b>第二代 VLA 大模型</b>智驾系统。",
+          "price": "—",
+          "time": "09月"
+        },
+        {
+          "tag": "pu",
+          "tagText": "舒适",
+          "st": "已开售",
+          "title": "⑥ 舒适配置与购车权益",
+          "desc": "ENC + RNC 主动降噪、9 块双层夹胶玻璃、全车 122 处声学材料、AI 主动贴合座椅、后排零重力座椅、车载冰箱、三面电动遮阳帘、21.4 英寸 3K 娱乐屏、一键大床房模式。权益：11 月 15 日 24 点前下定享至高超 <b>63,000 元</b>配置 / 权益，老用户复购权益至高超 <b>82,000 元</b>。",
+          "price": "权益至高 <b>63,000 元</b> / 复购至高 <b>82,000 元</b>",
+          "time": "09月"
+        }
+      ]
+    },
+    {
+      "m": "10月",
+      "label": "小鹏 G9L 巴黎全球上市",
+      "meta": "出海",
+      "items": [
+        {
+          "time": "10.12",
+          "tag": "pu",
+          "tagText": "出海",
+          "st": "待发布",
+          "next": true,
+          "title": "小鹏 G9L 于法国巴黎举办全球上市发布会，广州 + 格拉茨双工厂生产",
+          "desc": "官方在 G9L 中国上市发布会上宣布，G9L 将于 <b>10 月 12 日</b>在法国巴黎举办<b>全球上市发布会</b>，同时实现<b>全球生产</b>——在中国广州工厂与奥地利<b>格拉茨工厂</b>同步开启制造。这是小鹏「全球标准」产品策略的代表作：完全按照 9 系旗舰 SUV 标准打造，多项配置与小鹏 GX 同根同源，满足全球更严苛的安全法规。出海前序：右舵版 G9L 已在广州工厂下线，首批将发往澳大利亚，车型将进入 <b>64 个</b>国家和地区。截至 2026 年，小鹏自营充电网络超 <b>2000</b> 站点、覆盖全国 <b>420</b> 余城，主打 S5 液冷超快充（「充电 1 秒钟，不止 1 公里」）。",
+          "price": "—（欧洲售价待公布；国内 G9L 23.18 万起）"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待发布与目标",
+      "meta": "待验证",
+      "items": [
+        {
+          "tag": "id",
+          "tagText": "目标",
+          "st": "待发布",
+          "title": "① 目标：第四季度单月销量超 6 万台",
+          "desc": "管理层称公司目标是第四季度实现单月销量超过 <b>6 万台</b>（官方口径）。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "pu",
+          "tagText": "战略",
+          "st": "待发布",
+          "title": "② 七款「一车双能」车型陆续落地",
+          "desc": "何小鹏在广州车展宣布 2026 年将推出<b>七款</b>「一车双能」（纯电 + 超级增程同车提供）车型，截至整理日已落地 P7+、G7、G9L 等，剩余车型的具体名称与时间<b>官方尚未逐一披露</b>。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        },
+        {
+          "tag": "wa",
+          "tagText": "未确认",
+          "st": "待发布",
+          "title": "③ 2026 款 P7+ / G7 后续改款 · MONA 系列新车",
+          "desc": "2026 款 P7+ 与 G7 的后续改款、MONA 系列新车型等均属媒体推测，<b>未见官方完整确认</b>，此处不作罗列。",
+          "price": "待公布",
+          "next": true,
+          "time": "Q4"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>在售矩阵</b>：MONA M03 / MONA L03（年轻人第一台智能时尚 SUV）· P7（未来 AI 豪华轿跑）· 2026 款 P7+（超大空间 AI 智能轿车）· G6（AI 智能越级 SUV，17.68 万起）· G7 / G7 超级增程（1704km 全球续航最长 SUV）· 2026 款 G9 / G9L（黄金大五座科技旗舰）· X9 / X9 黑武士（含超级增程）· GX",
+    "<b>全年主线</b>：1/8 四车齐发（P7+ / G7超级增程 / G6 / G9）→ 8 月交付 39,107 台 → 9/17 G9L 上市（23.18 万起）→ 10/12 G9L 巴黎全球上市",
+    "<b>技术底座</b>：800V 高压 SiC 碳化硅平台 · 5C 超充 AI 电池（12 分钟 10–80%）· 鲲鹏超级增程（G7 综合 1704km）· 自研图灵 AI 芯片（最高 2250TOPS）· 第二代 VLA 大模型 · X-HP 3.5 智能热管理 · X-VMC 底盘运动控制",
+    "<b>出海</b>：G9L 10/12 巴黎全球上市 · 中国广州 + 奥地利格拉茨双工厂全球生产 · 右舵版已下线，将进入 64 个国家和地区 · 自营充电超 2000 站点、覆盖 420 余城",
+    "<b>口径提示</b>：① G9L 为<b>限时</b>官方售价 23.18 万起，非长期指导价，引用时须写明「限时」；② 「全球同级最低纯电能耗 10.9kWh」「全球续航最长 SUV 1704km」「热效率行业第一」等均为<b>小鹏官方口径或小鹏实验室数据</b>，部分对比（如对比奔驰 E-class、特斯拉 Model 3）为厂商自测，未见第三方复现；③ 四驱版 i6 类车型存在「性能提升但续航下降」现象，选购时须核对具体版本（如 G9L 纯电 702 两驱 vs 660 四驱）；④ 剩余「一车双能」车型名单与时间表官方尚未完整披露"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：小鹏汽车官网 · 小鹏汽车官方发布会 · 中国网汽车 · 红星新闻 / 长沙晚报 · 雷科技 · CnEVPost / EVMagz 等行业媒体"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

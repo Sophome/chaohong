@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>广汽集团 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0b5cab; --accent-soft:#e6eff9;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5da4e8; --accent-soft:#12243a;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0b5cab}
+  .sqd i:nth-child(2){background:#c8102e}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html" class="on" aria-current="page">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>品牌矩阵 · 技术底座 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "GAC GROUP · 2026 LAUNCH TIMELINE",
+  "title": "广汽集团 2026 新品发布年表",
+  "subtitle": "传祺 / 埃安 / 昊铂 / 启境 四大自主品牌 + 广汽丰田 / 广汽本田合资板块，2026 全年新车节奏",
+  "badge": "全年 9 场 · 自主四品牌焕新",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "自主品牌焕新",
+      "s": "4.24 北京车展：传祺「一祺智行更美好」· 埃安新 LOGO「AION 爱生活」· 昊铂「超凡科技享受」· 全新高端品牌启境（广汽 + 华为）"
+    },
+    {
+      "k": "最密集节点",
+      "v": "4.24 车展五车齐发",
+      "s": "启境品牌发布 + 昊铂 / 埃安 / 传祺多款新车同台，广汽全年最大信息密度节点"
+    },
+    {
+      "k": "走量主力",
+      "v": "埃安 N60",
+      "s": "10.98–12.98 万指导价，全系标配激光雷达 + 4D 毫米波雷达，10–13 万级激光雷达 SUV 销冠"
+    },
+    {
+      "k": "销量与出海",
+      "v": "1–8 月 101.26 万辆",
+      "s": "新能源累计 36.82 万辆（+63.06%）；自主出口累计 17.2 万辆（+136%），覆盖 102 国"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "昊铂 A800 上市 · 上半年首款高端新车",
+      "meta": "",
+      "items": [
+        {
+          "time": "03月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "昊铂 A800 上市",
+          "desc": "昊铂品牌上半年高端新车，承担广汽自主向上突破的价格锚点。与 6 月上市的昊铂 S600 形成双车组合，覆盖 20 万级纯电与增程两条主线。",
+          "price": "价格以官方上市稿为准"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "北京车展 + 埃安 N60 上市",
+      "meta": "全年密度最高",
+      "items": [
+        {
+          "time": "04.16",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "① 埃安 N60 开启预售",
+          "desc": "10–13 万级紧凑型 SUV。车身 <b>4615×1883×1673mm</b>，轴距 <b>2775mm</b>。全系标配 <b>激光雷达 + 4D 毫米波雷达</b>，搭载高通 <b>8650</b> 芯片（200TOPS）。",
+          "price": "预售开启"
+        },
+        {
+          "time": "04.24",
+          "tag": "pu",
+          "tagText": "品牌",
+          "st": "已发布",
+          "title": "② 北京车展：自主品牌集体焕新 + 启境品牌发布",
+          "desc": "传祺发布「<b>一祺智行更美好</b>」品牌主张；埃安启用以「<b>AION 爱生活</b>」为核心的新 LOGO；昊铂发布「<b>超凡科技享受</b>」定位。同期发布全新高端品牌 <b>启境</b>（广汽 + 华为），五款新车齐发。",
+          "price": "品牌战略发布"
+        },
+        {
+          "time": "04.28",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "③ 埃安 N60 正式上市",
+          "desc": "指导价 <b>10.98–12.98 万</b>，限时焕新价 10.68 / 11.68 / 12.68 万（对应 410 / 510 / 610km）。搭载 <b>ADiGO GSD 3.0</b>（与文远知行共研，L4 同源一段式端到端大模型）、<b>非晶合金夸克电驱 2.0</b>（效率 99%、电耗 11.7kWh/100km）、<b>弹匣电池 2.0</b>、副驾零重力座椅。B 站「智驾纽北」唯一全程 0 接管车型。",
+          "price": "指导价 10.98–12.98 万 · 限时焕新价 10.68 万起"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "昊铂 S600 上市 · 昊铂首届用户日",
+      "meta": "",
+      "items": [
+        {
+          "time": "06.12",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "昊铂 S600 上市",
+          "desc": "广州阿那亚 · 昊铂小镇（昊铂首届用户日）上市。四款车型：纯电 660Max / 纯电 660Max+ / 增程 230Max / 增程 215 四驱 Ultra+。<b>全系 140+ 项标配</b>，前双叉臂后五连杆；<b>20 万内唯一四驱双腔空悬 + SDC + 智能魔毯</b>；8295P 芯片、17.3 英寸中控 + 27 英寸 HUD、激光雷达 + 27 感知单元。双电机四驱零百 <b>4.3s</b>、亏电 5.6s。承诺「三担责」，首任车主三电 + 空簧终身质保。",
+          "price": "指导价 19.99–21.99 万 · 限时权益价 17.99–19.99 万"
+        },
+        {
+          "time": "06月底",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "启境 GT7 量产上市",
+          "desc": "广汽 + 华为联合打造的全新高端品牌首款车型。搭载 <b>华为鸿蒙座舱 + 乾崑 ADS</b>、<b>800V</b> 高压平台、空气悬架；获欧洲设计铂金奖。共 5 款纯电 + 1 款增程在售。",
+          "price": "20.99–32.99 万（媒体口径）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "传祺越7 上市 · 方盒子硬派 SUV",
+      "meta": "",
+      "items": [
+        {
+          "time": "09.12",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "传祺越7 官宣预售",
+          "desc": "广汽传祺首款硬派方盒子 SUV，预售价 <b>17.98–22.58 万</b>，预售权益价 <b>17.18–21.78 万</b>。",
+          "price": "预售 17.98–22.58 万 · 权益价 17.18 万起"
+        },
+        {
+          "time": "09.22",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "传祺越7 正式上市",
+          "desc": "四款配置：两驱 Pro <b>17.18</b> / 两驱 Max <b>18.78</b> / 四驱 Max <b>20.78</b> / 四驱 Ultra <b>21.78</b> 万。车身 4999（两驱）/ 5045（四驱）×2004×1933/1916mm、轴距 <b>2900mm</b>。1.5TGDI-4A + GMC3.0 雷霆版，零百最快 <b>4.2s</b>。电池 28.3 / 38.883 / 45.975kWh，CLTC 纯电最长 <b>261km</b>、综合 <b>1352km</b>、30→80% 仅 <b>15 分钟</b>。闭式双腔空悬 + SDC；前后机械差速锁 + 能量中锁；9+X 智能全地形；780mm 涉水、离地 310mm。星河智舱 ADiGO 7.0、15.6 英寸 2.5K 屏、1.1 米全景贯穿星际屏、骁龙 8838。截至 8 月底先享计划订单超 <b>1.5 万辆</b>。",
+          "price": "17.18–21.78 万"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待公布 · 下半年新车与合资改款",
+      "meta": "待公布",
+      "items": [
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "埃安 Ray7 · 启境 GX7",
+          "desc": "埃安 Ray7 为超级纯电轿车（已亮相）；启境 GX7 为启境品牌第二款车型。两款正式上市时间与价格待官方公布。",
+          "price": "待公布",
+          "next": true
+        },
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "合资",
+          "st": "待发布",
+          "title": "广汽丰田汉兰达增程版 · 广汽本田奥德赛改款",
+          "desc": "合资板块新能源化推进：汉兰达增程版与奥德赛改款按规划推进，具体时点以合资公司公告为准。",
+          "price": "待公布",
+          "next": true
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>自主品牌矩阵</b>：传祺（含向往 E8 PHEV 星源插混，3.98L/100km、综合 1537km 两项世界纪录；M8 第 50 万辆下线、全球用户破 90 万）· 埃安（N60 / i60 / Ray7）· 昊铂（A800 / S600）· 启境（GT7 / GX7，广汽 + 华为）",
+    "<b>合资板块</b>：广汽丰田（上半年 35.60 万辆，+3.29%）· 广汽本田",
+    "<b>四大技术矩阵</b>：星源动力（增程油电转化率 3.73kWh/L、发电 85kW、怠速 34dB）· 星舰车身（嵌入式大梁 + 多元环笼）· 星河智舱（端侧响应 <1.6s、识别率 >95%）· 星灵架构 4.0（全车 OTA 最快 8 分钟、3600+ 功能原子、TÜV 莱茵全球首张预计功能安全证书）",
+    "<b>销量（1–8 月）</b>：累计 <b>101.26 万辆</b>；新能源累计 <b>36.82 万辆</b>（+63.06%）；8 月自主品牌 61,378 辆（+20.43%，占比 48.49%）；昊铂埃安 BU 8 月 33,694 辆（+38.56%）、1–8 月约 24.41 万辆（+58.37%）；传祺 8 月 26,584 辆（环比 +16.91%）、1–8 月 21.37 万辆（+8.47%）；启境 7–8 月累计近 4,000 辆；埃安 i60 月销破 11,027 辆",
+    "<b>半年报（8.28）</b>：合并营收超 465 亿（+9.13%）、海外收入 140.13 亿（+109.27%）、研发投入超 48 亿（+27.58%）、累计研发超 670 亿；H1 全集团销量 77.31 万辆（+2.35%）、新能源 26.02 万辆（+68.80%）、自主品牌 34.60 万辆（+35.69%，占比 44.75%）、自主出口 12.15 万辆（+132%）",
+    "<b>出海与渠道</b>：业务覆盖 102 国、650 个销售服务网点、5 座海外 KD 工厂、9 个海外零部件仓库；自主出口 1–8 月累计 17.2 万辆（+136%），非洲 +881%、美洲 +93%、希腊纯电市场第二、中东累计用户破 10 万。目标 2030 海外年销百万辆、进入 120 国、超 2000 家海外网点；年内规划 1000 家县域授权门店、超 2.5 万根自营充电桩",
+    "<b>生态延伸</b>：芯片生态 105 家伙伴、近 400 款联合定义、51 款填补空白；GOVY AirCab 飞行汽车；GoMate Mini 人形机器人",
+    "<b>口径提示</b>：启境 GT7 的 20.99–32.99 万为易车等媒体口径，广汽官方未发布统一上市价；昊铂 A800 上市月份为「上半年 / 3 月」的公开报道口径，精确日期以官方公告为准；合资板块（广汽丰田 / 广汽本田）改款时点属规划口径；CLTC 续航为实验室工况，实际使用存在差异"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：广汽集团官网 · 广汽集团 2026 半年报（8.28）· 广汽集团 1–8 月销量公告（9.04）· 北京车展官方信息 · 埃安 / 昊铂 / 传祺 / 启境官方发布 · 易车网 · 汽车之家"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

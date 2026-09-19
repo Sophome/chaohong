@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>吉利汽车集团 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#1e3a8a; --accent-soft:#e7ecf8;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#7f9df0; --accent-soft:#161d33;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#1e3a8a}
+  .sqd i:nth-child(2){background:#c7000b}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html" class="on" aria-current="page">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>品牌矩阵 · 技术底座 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "GEELY HOLDING · 2026 LAUNCH TIMELINE",
+  "title": "吉利汽车集团 2026 新品发布年表",
+  "subtitle": "吉利银河 / 吉利汽车 / 极氪 / 领克 四大品牌，2026 全年新车节奏与销量拆分",
+  "badge": "全年 8 场 · 目标 345 万辆",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "一个吉利整合收官",
+      "s": "2025.02 极氪完成领克收购注资 → 2025.07 吉利与极氪签合并协议 → 2025.12 极氪私有化对价落地，四大品牌同表运营"
+    },
+    {
+      "k": "最密集节点",
+      "v": "04.17 极氪 8X",
+      "s": "上市 29 分钟大定破万，Ultra 及以上占 95.6%、均价超 40 万；5 月销量 6,103 台夺 30–50 万混动 SUV 销冠"
+    },
+    {
+      "k": "走量爆款",
+      "v": "银河星舰7 EV 远航家",
+      "s": "上市限时 9.98–11.98 万，605km 神盾金砖电池全系标配；星舰7 全系 17 个月畅销 57 国、累计超 22 万辆"
+    },
+    {
+      "k": "销量与目标",
+      "v": "2026 目标 345 万辆",
+      "s": "2025 全年 302 万辆（新能源 168 万辆、占比 56%）；2026 1–5 月狭义乘用车零售 848,116 辆、份额 11.9% 夺国内零售第一"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "年度规划发布 · 银河 V900 上市",
+      "meta": "",
+      "items": [
+        {
+          "time": "01.19",
+          "tag": "pu",
+          "tagText": "战略",
+          "st": "已发布",
+          "title": "① 发布 2026 年新车规划",
+          "desc": "全年约 <b>10 款</b>新车规划对外披露，覆盖银河、领克、极氪三大品牌线，含 4–5 款 i-HEV 智擎混动车型。",
+          "price": "规划发布"
+        },
+        {
+          "time": "01.20",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "② 吉利银河 V900 上市",
+          "desc": "中大型增程 MPV，<b>5399×1998×1940mm</b>、轴距 <b>3200mm</b>，提供 6 / 7 / 8 座。1.5T + 双电机（340kW）；43.3 / 50kWh 宁德时代骁遥电池，CLTC 纯电 <b>220 / 260km</b>、综合 <b>1180 / 1220km</b>。Flyme Auto 2、15.4 英寸中控 + 10.25 英寸仪表 + 19.8 英寸 AR-HUD、二排 17.3 英寸屏；千里浩瀚 <b>H5</b>（高速 / 城市 NOA + 全场景泊车）；空悬 + CCD + 主动魔毯。",
+          "price": "指导价 29.98–36.98 万（媒体另有 26.98–32.98 万口径）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "银河 V900 Air 版上市",
+      "meta": "",
+      "items": [
+        {
+          "time": "03.03",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "银河 V900 Air 版上市",
+          "desc": "V900 入门版型补齐价格带，拉低中大型增程 MPV 的入手门槛，主攻家庭多人出行场景。",
+          "price": "价格以车型表为准"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "极氪 8X + 北京车展 + 银河 M7",
+      "meta": "全年密度最高",
+      "items": [
+        {
+          "time": "04.17",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "① 极氪 8X 上市（宁波 · 极氪五周年）",
+          "desc": "Max / Ultra / Ultra+ 零售价 <b>35.68 / 37.68 / 42.68 万</b>起，权益后限时 <b>32.98 / 34.98 / 39.98 万</b>起；曜影零售 50.08 万起、限时 <b>47.38 万</b>。浩瀚-S 超级电混 + <b>全球首个全栈 900V 高压混动</b>。双电机 660kW 零百 <b>3.7s</b>；曜影兆瓦级三电机 1030kW 零百 <b>2.96s</b>（全球最快混动 SUV）。70kWh 6C 电池、CLTC 纯电 <b>410km</b>、综合 <b>1416km</b>、20→80% <b>9 分钟</b>（-30℃ 10 分钟）、极充最高 600kW。前双叉臂 + 后集成多连杆、闭式双腔空悬 + 双阀 CCD + 主动稳定杆；麋鹿 83.6 / 76.3km/h。43 传感器 / 5 激光雷达 / 双 Thor-U / 1400TOPS；超级 Eva 舱驾融合智能体 + 千里浩瀚 G-ASD 4.0。<b>上市 29 分钟大定破万，Ultra 及以上占 95.6%，均价超 40 万</b>；5 月销量 6,103 台，夺 30–50 万混动 SUV 销冠，H9 版型 7 月启动交付。",
+          "price": "限时 32.98 万起 · 曜影限时 47.38 万起"
+        },
+        {
+          "time": "04.25",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "② 北京车展：银河 M7 亮相",
+          "desc": "紧凑级 SUV，银河 L7 中期改款。<b>4770×1905×1685mm</b>、轴距 <b>2785mm</b>；1.5L 雷神 AI 电混 2.0，馈电油耗低至 <b>4.69L</b>。",
+          "price": "价格于 4.28 上市公布"
+        },
+        {
+          "time": "04.27",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "③ 领克 900 2026 款在售",
+          "desc": "在售 29.98–41.69 万，含 1.5T 220km Halo 5 座 / Ultra 5 座 / 2.0T 280km Ultra。<b>5240×1999×1810mm</b>、轴距 <b>3160mm</b>。",
+          "price": "29.98–41.69 万"
+        },
+        {
+          "time": "04.28",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "④ 银河 M7 正式上市",
+          "desc": "接棒 L7 成为银河紧凑级 SUV 主力，雷神 AI 电混 2.0 + 4.69L 馈电油耗为核心卖点。",
+          "price": "以官方上市稿为准"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "银河星耀7 MAX 上市",
+      "meta": "",
+      "items": [
+        {
+          "time": "05.22",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "银河星耀7 MAX 上市",
+          "desc": "中级电混轿车，基于 <b>GEA Evo</b> 架构。<b>4958×1915×1505mm</b>、轴距 <b>2852mm</b>；1.5L + 120kW 电机；18.99 / 28.3kWh 电池，对应 <b>115 / 120 / 165km</b> 纯电续航。",
+          "price": "以官方上市稿为准"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "银河星舰7 EV 远航家上市",
+      "meta": "",
+      "items": [
+        {
+          "time": "06.10",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "银河星舰7 EV 远航家 上市",
+          "desc": "官方指导价 <b>10.98–12.98 万</b>，上市限时指导价 <b>9.98–11.98 万</b>（605km 远航版 / 远航+版，525km 版本反选减 1 万）。<b>4750×1905×1680mm</b>、轴距 <b>2755mm</b>。<b>神盾金砖电池全系标配、605km</b>；雷霆 11 合 1 电驱 160kW、零百 <b>7.3s</b>、电耗 12.4kWh、每公里 4 分钱。84.3% 得房率；Flyme Auto、14.6 英寸屏 + 13.8 英寸 W-HUD、16 扬声器。星舰7 全系上市 17 个月畅销 <b>57 国</b>、累计超 <b>22 万辆</b>。",
+          "price": "限时指导价 9.98–11.98 万"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "银河 TT Ultra + 领克 07GT 上市",
+      "meta": "",
+      "items": [
+        {
+          "time": "07.12",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "① 银河 TT Ultra 全球竞速版发布",
+          "desc": "C 级 AI 纯电运动轿车，承担银河品牌向上与性能形象的双重任务。",
+          "price": "发布"
+        },
+        {
+          "time": "07.23",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "② 领克 07GT 上市（杭州）",
+          "desc": "中型插混运动旅行车。指导价 <b>15.78–20.88 万</b>，限时价 <b>14.58–19.68 万</b>。EM-P，四驱综合 390kW / 765N·m，两驱 CLTC 纯电 <b>200km</b>、综合 <b>1422km</b>、30→80% <b>14 分钟</b>。同级唯一 <b>MRC 磁流变悬架</b>（1ms 响应）；车顶 + 拖挂工况麋鹿 82.1 / 81.9km/h；后备箱 640L→1665L、1.6t 合规拖挂、6kW 外放电。Flyme Auto 2.5、8295 芯片、95 英寸 AR-HUD、千里浩瀚 <b>H7</b> + Thor-U（700TOPS）+ 激光雷达。<b>上市 27 分钟大定破万，预售 24 天订单超 3.5 万，首发 1007 台时间限量版 3 分钟售罄</b>；7.24 开启交付，8.08–09 首批百台集中交付。",
+          "price": "限时 14.58–19.68 万"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "银河 TT 公布 · Monjaro EM-i 全球首发",
+      "meta": "",
+      "items": [
+        {
+          "time": "08.13",
+          "tag": "pu",
+          "tagText": "新品",
+          "st": "已发布",
+          "title": "① 银河 TT C 级纯电轿跑公布",
+          "desc": "银河品牌 C 级纯电轿跑车型对外公布，与 TT Ultra 形成组合。",
+          "price": "待公布"
+        },
+        {
+          "time": "08月底",
+          "tag": "pu",
+          "tagText": "出海",
+          "st": "海外",
+          "title": "② Geely Monjaro EM-i 全球上市（首发埃及）",
+          "desc": "吉利<b>首款全球 D-SUV</b>全球车，启动全球上市节奏，首发市场为埃及。",
+          "price": "海外定价"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待公布 · 规划中车型",
+      "meta": "待公布",
+      "items": [
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "银河战舰 · 首款「方盒子」硬派 SUV",
+          "desc": "AI 智能四驱 + GVMC 动态控制，支持蟹行 / 原地掉头 / 爆胎行驶 / <b>800mm 涉水</b> / 卫星通信。市场预期 28–38 万，计划下半年推出。",
+          "price": "预期 28–38 万（未官宣）",
+          "next": true
+        },
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "领克 800 · 领克 07 EM-P 旅行版 · 极氪 009 插混版",
+          "desc": "领克 800 为中大型高端 SUV（30 万级，原规划 Q2）；领克 07 EM-P 旅行版（原规划 Q2）；极氪 009 插混版计划下半年推出。",
+          "price": "待公布",
+          "next": true
+        },
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "银河 / 吉利更多新车排队",
+          "desc": "星耀8 纯电版、星耀6、E5 改款、M5 / M8、博越 REV（紧凑型增程 SUV，CLTC 纯电 375km、综合 1525km）、A0 级纯电两厢车，以及全年 4–5 款 i-HEV 智擎混动车型。",
+          "price": "待公布",
+          "next": true
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>四大品牌矩阵</b>：吉利银河（星愿 / 星舰7 / 星耀7 / 星耀6 / 星耀8 / 银河 M7 / M9 / E5 / A7 / V900 / TT）· 吉利汽车（博越 REV / 熊猫 / 中国星）· 极氪（8X / 9X / 7X / 007GT / 009）· 领克（900 / 07GT / 03 / 10 / 08 EM-P）",
+    "<b>技术底座</b>：GEA Evo 架构（雷神 EM-P AI 电混、46.5% 热效率涡轮增压、三档 DHT、镁合金双电机；「六纵十横」+「三叉戟」+ 象鼻形 Shotgun 纵梁；GVMC；卫星通信）· 雷神 AI 电混 2.0 · 千里浩瀚智驾（H5 / H7 / G-ASD 4.0）· 神盾金砖电池 · Flyme Auto / LYNK Flyme Auto",
+    "<b>8 月销量拆分</b>：吉利银河 <b>76,028 辆</b>（42.7%）· 吉利汽车 55,283 辆（31.0%）· 极氪 20,803 辆（11.7%）· 领克 18,470 辆（10.4%）",
+    "<b>1–8 月累计</b>：吉利银河 514,816 · 吉利汽车 492,212 · 极氪 182,871 · 领克 137,648 · 沃尔沃亚太 57,783 · smart 12,968（辆）",
+    "<b>8 月主力车型</b>：星愿 39,651（累计 266,116，占银河当月 22%）· 银河星舰7 5,645 · 银河 M7 5,145 · E5 4,617 · 熊猫 3,783 · 星耀7 3,740 · 星耀6 3,087 · 银河 A7 EM 2,625 · M9 2,422 · A7 EV 2,402 · 星耀8 2,190 · TT 414 · V900 307 · 极氪 007GT 5,865 · 7X 4,887 · 009 3,048 · 9X 2,887（累计 52,021）· 8X 2,376 · 领克 07GT 首月 6,056 · 03 2,436 · 10 2,256 · 10 EM-P 1,816 · 08 EM-P 1,803",
+    "<b>规模与资本市场</b>：2025 全年 302 万辆（首入 300 万俱乐部），新能源 168 万辆（+90%）、占比 56%；<b>2026 目标 345 万辆</b>；2026 1–5 月狭义乘用车零售 848,116 辆、份额 11.9% 夺国内零售第一；6.10 吉利汽车股价收 19.32 港元（+4.04%），年初至今港股汽车板块唯一上涨；李东辉 5.27–29 与 6.2–5 合计增持 230 万股（约 4,305.2 万港元）",
+    "<b>口径提示</b>：银河 V900 官方指导价 29.98–36.98 万与媒体 26.98–32.98 万两个口径并存；极氪 007GT 8 月销量有 5,865 与 9,487 两个口径；领克 07GT 8 月销量 5,380 与「首完整月 6,056」两个口径并存；银河战舰的 28–38 万为市场预期而非官方定价；领克 800 / 07 EM-P 旅行版原规划 Q2，实际是否延期以官方为准"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：吉利控股集团官网 · 极氪官方（4.17 极氪 8X 上市）· 领克官方（7.23 领克 07GT 上市）· 吉利银河官方（6.10 星舰7 EV 远航家）· 2026 北京车展官方信息 · 新浪财经 · 芝能汽车 · 易车网 · 汽车之家"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

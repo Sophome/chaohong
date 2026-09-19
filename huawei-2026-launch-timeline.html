@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鸿蒙智行 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#c7000b; --accent-soft:#fde8ea;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff7a85; --accent-soft:#3a1a1f;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#c7000b}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
+      <a href="byd-2026-launch-timeline.html">比亚迪</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="huawei-2026-launch-timeline.html" class="on" aria-current="page">华为</a>
+      <a href="lixiang-2026-launch-timeline.html">理想</a>
+      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
+      <a href="nio-2026-launch-timeline.html">蔚来</a>
+      <a href="gac-2026-launch-timeline.html">广汽</a>
+      <a href="geely-2026-launch-timeline.html">吉利</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>五界矩阵 · 技术底座 · 口径提示</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "HIMA · 鸿蒙智行 · 2026 LAUNCH TIMELINE",
+  "title": "鸿蒙智行 2026 新品发布年表",
+  "subtitle": "五界（问界 / 智界 / 享界 / 尊界 / 尚界）全年节奏 —— 3 月九车齐发为全年信息密度最高的一场，已拆条分行呈现",
+  "badge": "全年 12 场 · 已上市 11 款",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "五界补齐矩阵",
+      "s": "从「三界」走到五界：尚界切入 20 万级纯电轿跑，智界补旗舰 MPV，问界补中大型 SUV"
+    },
+    {
+      "k": "3 月最密集",
+      "v": "3.23 一晚 7 车",
+      "s": "尚界 Z7/Z7T 预订 · 问界 M6 预订 · 享界 S9 焕新 · 智界 R7/S7 焕新 · M7/M8 增配 · 智界 V9 亮实车"
+    },
+    {
+      "k": "技术底座",
+      "v": "896 线激光雷达",
+      "s": "全系铺开；华为途灵平台 + 巨鲸 800V + 乾崑 ADS 4 高阶版 + 鸿蒙 ALPS 健康座舱"
+    },
+    {
+      "k": "交付与渠道",
+      "v": "4 月下旬展车进店",
+      "s": "智界 V9 为首款旗舰 MPV；尚界、问界 M6 预订转大定节奏以门店通知为准"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "春季发布会 · 一晚九车",
+      "meta": "全年密度最高",
+      "items": [
+        {
+          "time": "03.23",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "① 尚界 Z7 / Z7T 开启预订",
+          "desc": "纯电轿跑（Z7）+ 纯电猎装（Z7T）双形态并行。全系标配 <b>896 线双光路图像级激光雷达</b>、<b>华为途灵平台</b>、<b>巨鲸 800V 高压电池平台</b>。CLTC 纯电续航最高 <b>905km</b>。车身：高强钢与铝合金占比 <b>91%</b>，14 处 2000MPa 潜艇级热成型钢，车顶抗压达 <b>5.8 倍车重</b>。",
+          "price": "预订 22.98 万起（Z7）/ 23.98 万起（Z7T）"
+        },
+        {
+          "time": "03.23",
+          "tag": "te",
+          "tagText": "中大型 SUV",
+          "st": "已发布",
+          "title": "② 问界 M6 开启预订",
+          "desc": "全新中大型 SUV，增程 / 纯电双动力。车身 <b>4960×1985×1736mm</b>，轴距 <b>2950mm</b>，风阻系数 <b>0.239Cd</b>。标配途灵平台，应急涉水深度 <b>700mm</b>。",
+          "price": "预订 26.98 万起（增程）/ 28.98 万起（纯电）"
+        },
+        {
+          "time": "03.23",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "③ 享界 S9 / S9T 焕新上市",
+          "desc": "行政级轿车 S9 与旅行版 S9T 双车焕新，搭载 <b>乾崑智驾 ADS 4 高阶版</b>。",
+          "price": "31.98 万起"
+        },
+        {
+          "time": "03.23",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "④ 智界 R7 / 智界新 S7 焕新上市",
+          "desc": "新增「暗夜紫」「活力橙」车色与赤茶橘内饰，升级 <b>鸿蒙 ALPS 健康座舱</b>（MOFs 抗菌滤芯）。智界 R7 纯电版风阻系数 <b>0.217</b>，创全球量产 SUV 专业机构检测最低纪录。",
+          "price": "智界 R7 25.98 万起 / 智界新 S7 23.98 万起"
+        },
+        {
+          "time": "03.23",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "⑤ 问界 M7 增配上市",
+          "desc": "新增 <b>896 线激光雷达</b>。C-NCAP 综合得分率 <b>95.0%</b>，刷新历史纪录。",
+          "price": "30.98 万起"
+        },
+        {
+          "time": "03.23",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "⑥ 问界 M8 增配上市",
+          "desc": "新增车色与轮毂样式、<b>3 颗激光雷达</b>。Max 增程长续航版纯电续航 <b>322km</b>、综合续航 <b>1590km</b>。",
+          "price": "36.98 万起"
+        },
+        {
+          "time": "03.23",
+          "tag": "pu",
+          "tagText": "新形态",
+          "st": "展出",
+          "title": "⑦ 智界 V9 实车亮相",
+          "desc": "鸿蒙智行首款旗舰 <b>MPV</b>，发布会现场实车亮相。官方同步官宣 <b>4 月下旬展车进店</b>。",
+          "price": "价格待公布"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "展车进店 · 首批交付启动",
+      "meta": "",
+      "items": [
+        {
+          "time": "04.下旬",
+          "tag": "id",
+          "tagText": "交付",
+          "st": "已发布",
+          "title": "智界 V9 展车进店 + 尚界 Z7 / 问界 M6 转大定",
+          "desc": "按 3.23 发布会官宣节奏推进：智界 V9 展车进入首批门店；尚界 Z7 / Z7T 与问界 M6 开启预订转大定、锁单与交付排期。",
+          "price": "—"
+        },
+        {
+          "time": "04月",
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "已发布",
+          "title": "乾崑 ADS 4 高阶版推送扩容",
+          "desc": "ADS 4 高阶版向更多在售车型分批推送，覆盖城市 NOA 与泊车场景。",
+          "price": "—"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "问界 / 智界 交付爬坡",
+      "meta": "",
+      "items": [
+        {
+          "time": "05月",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "问界 M6 交付爬坡",
+          "desc": "中大型 SUV 定位承接 M7 与 M8 之间的价格空档，增程版为主要走量车型。",
+          "price": "26.98 万起（增程）"
+        },
+        {
+          "time": "05月",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "尚界 Z7 / Z7T 首批交付",
+          "desc": "20 万级纯电轿跑 / 猎装双形态切入，主打 896 线激光雷达全系标配与 905km 续航。",
+          "price": "22.98 万起"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "尊界与享界持续加码",
+      "meta": "",
+      "items": [
+        {
+          "time": "06月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "尊界产品线更新",
+          "desc": "超豪华定位延续，与问界 M9、享界 S9 构成鸿蒙智行高端三塔。",
+          "price": "—"
+        },
+        {
+          "time": "06月",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "享界 S9T 旅行版交付铺开",
+          "desc": "S9T 以旅行车形态补充行政级细分，与 S9 轿车并行销售。",
+          "price": "31.98 万起"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "暑期节点 · 增配与年款",
+      "meta": "",
+      "items": [
+        {
+          "time": "08月",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "问界 M7 / M8 年款增配落地",
+          "desc": "896 线激光雷达与 3 颗激光雷达方案在门店端全面铺开，Max 增程长续航版为核心推荐配置。",
+          "price": "M7 30.98 万起 / M8 36.98 万起"
+        },
+        {
+          "time": "08月",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "智界 R7 低风阻版本口碑发酵",
+          "desc": "0.217 风阻系数为全球量产 SUV 专业机构检测最低纪录，成为智界 R7 的核心传播点。",
+          "price": "25.98 万起"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "秋季节点",
+      "meta": "",
+      "items": [
+        {
+          "time": "09月",
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "已发布",
+          "title": "五界矩阵铺满 20–100 万价格带",
+          "desc": "尚界（20 万级）· 问界（25–50 万）· 智界（25–40 万）· 享界（32 万+）· 尊界（超豪华），鸿蒙智行完成从走量到超豪华的完整覆盖。",
+          "price": "—"
+        }
+      ]
+    },
+    {
+      "m": "Q4",
+      "label": "待公布 · 第四季度节点",
+      "meta": "待公布",
+      "items": [
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "title": "智界 V9 正式上市",
+          "desc": "鸿蒙智行首款旗舰 MPV，3.23 已亮实车、4 月下旬展车进店，正式上市价格与配置待官方公布。",
+          "price": "待公布",
+          "next": true
+        },
+        {
+          "time": "Q4",
+          "tag": "wa",
+          "tagText": "传闻",
+          "st": "待发布",
+          "title": "尊界 V800 与非凡大师版",
+          "desc": "尊界 V800 价格存在两个媒体口径；非凡大师版、尚界 H7 均属传闻，未获官方确认。",
+          "price": "传闻 · 未官宣",
+          "next": true
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五界矩阵</b>：尚界（20 万级纯电轿跑 / 猎装）· 问界（M6 / M7 / M8 / M9）· 智界（R7 / S7 / V9）· 享界（S9 / S9T）· 尊界（超豪华）",
+    "<b>技术底座</b>：896 线双光路图像级激光雷达 · 华为途灵平台 · 巨鲸 800V 高压电池平台 · 乾崑智驾 ADS 4 高阶版 · 鸿蒙 ALPS 健康座舱（MOFs 抗菌滤芯）",
+    "<b>硬指标</b>：尚界 Z7 续航 905km / 车顶抗压 5.8 倍车重 · 智界 R7 风阻 0.217 · 问界 M6 风阻 0.239Cd · 问界 M7 C-NCAP 95.0%",
+    "<b>渠道节奏</b>：3.23 发布会 → 4 月下旬展车进店 → 预订转大定与交付排期，以门店通知为准",
+    "<b>口径提示</b>：鸿蒙智行是技术生态联盟，非单一车企，销量与市占率不宜按整车厂口径直接对比；尊界 V800 有两个价格口径；部分价格来自媒体报道而非官方上市稿；非凡大师版、尚界 H7 属传闻"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：鸿蒙智行官网 · 华为官网新闻稿 · 中国新闻周刊 · 光明网 · 深圳新闻网 · 易车网 · 百度百科（尊界 V800）· 爱企查公开信息汇总"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>
