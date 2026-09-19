@@ -418,7 +418,7 @@
     <h1>超红传媒 · 知识库导航</h1>
     <p>家电数码测评内容策划中心 &nbsp;|&nbsp; SOP 指南 · 商单数据</p>
     <div class="header-meta">
-      <span class="header-badge">📁 124 篇文档</span>
+      <span class="header-badge">📁 146 篇文档</span>
       <span class="header-badge">🏷️ 9 大模块</span>
       <span class="header-badge">📡 三平台同步</span>
     </div>
@@ -1053,18 +1053,45 @@
 </script>
 
 <script>
-  // ── 访问密码验证 ──
+  // ── 访问密码验证（登录一次，7 天内免登）──
   (function () {
-    var KEY = 'chaohong-pass', PASS = '202608';
+    var KEY = 'chaohong-pass', PASS = 'cc';
+    var TTL = 7 * 24 * 60 * 60 * 1000;   // 7 天
     var overlay = document.getElementById('passOverlay');
     if (!overlay) return;
-    if (sessionStorage.getItem(KEY) === '1') { overlay.style.display = 'none'; return; }
+
+    // localStorage 优先，不可用时降级到 sessionStorage
+    function save(v) {
+      try { localStorage.setItem(KEY, v); return; } catch (e) {}
+      try { sessionStorage.setItem(KEY, v); } catch (e) {}
+    }
+    function load() {
+      try { var v = localStorage.getItem(KEY); if (v) return v; } catch (e) {}
+      try { return sessionStorage.getItem(KEY); } catch (e) {}
+      return null;
+    }
+    function granted() {
+      var raw = load();
+      if (!raw) return false;
+      var t = parseInt(raw, 10);
+      // 旧版存的 '1' 不是时间戳，视为过期；超过 TTL 也视为过期
+      if (!t || Date.now() - t >= TTL) {
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        try { sessionStorage.removeItem(KEY); } catch (e) {}
+        return false;
+      }
+      return true;
+    }
+
+    if (granted()) { overlay.style.display = 'none'; return; }
+
     var input = document.getElementById('passInput');
     var btn = document.getElementById('passBtn');
     var err = document.getElementById('passErr');
+
     function check() {
       if (input.value === PASS) {
-        sessionStorage.setItem(KEY, '1');
+        save(String(Date.now()));
         overlay.style.display = 'none';
       } else {
         err.style.display = 'block';
