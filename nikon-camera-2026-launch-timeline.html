@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>尼康 Z 系列相机 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#f0a500; --accent-soft:#fdf3dc;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ffc74d; --accent-soft:#3a2c12;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#ffd100}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="sony-camera-2026-launch-timeline.html">索尼</a>
+      <a href="canon-camera-2026-launch-timeline.html">佳能</a>
+      <a href="nikon-camera-2026-launch-timeline.html" class="on" aria-current="page">尼康</a>
+      <a href="panasonic-camera-2026-launch-timeline.html">松下</a>
+      <a href="dji-camera-2026-launch-timeline.html">大疆</a>
+      <a href="insta360-camera-2026-launch-timeline.html">影石</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售机身与 Z 卡口镜头 · 价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "NIKON Z · 2022–2026 LAUNCH TIMELINE",
+  "title": "尼康 Z 系列相机 2022–2026 产品发布年表",
+  "subtitle": "五年主线：Z9 确立旗舰 → Z8 把旗舰能力下放 → Z6 III 补中端视频 → 2025 年 Z5 II 与 ZR 双线并进 · 收购 RED 后影像管线明显受益",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "2022 Z9 立旗舰 → 2023 Z8 下放 → 2024 Z6 III 补中端 → 2025 Z5 II 入门 + ZR 视频机 → 2026 高像素线待补",
+      "s": "产品矩阵"
+    },
+    {
+      "k": "年度技术",
+      "v": "2021 年 Z9 首搭无机械快门堆栈式机身；2023 年后靠 EXPEED 7 把主体识别扩到 9 类；2024 年 Z6 III 首用部分堆栈式 CMOS",
+      "s": "技术节奏"
+    },
+    {
+      "k": "卡口生态",
+      "v": "Z 卡口从「镜头稀少」变成「路线最清晰」：f/1.2 S 线、f/2.8 大三元、轻量 f/4 线并行；2024 年收购 RED 强化视频基因",
+      "s": "生态位"
+    },
+    {
+      "k": "价格带",
+      "v": "APS-C Z50 II 约 7000 元起 · 入门全画幅 Z5 II 约 1.1 万元 · 中端 Z6 III 约 2 万元 · 旗舰 Z9 / Z8 约 2.7–4 万元",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022",
+      "label": "旗舰确立：Z9 全面成熟 · Z30 补 vlog",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2022.01",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Z9 正式开售：尼康首台无机械快门旗舰",
+          "desc": "2021 年 10 月发布的 Z9 在 2022 年初大规模交付。4570 万像素堆栈式 CMOS + <b>无机械快门</b>设计，8K60p、120fps 连拍、9 类主体识别。这台机器把尼康从「Z6 / Z7 的犹豫期」直接拉回旗舰赛道。",
+          "price": "发布时约 <b>5499</b> 美元 / 国内约 <b>35999</b> 元"
+        },
+        {
+          "time": "2022.06",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Z30：APS-C 无 EVF vlog 机身",
+          "desc": "2088 万像素 APS-C、翻转屏、无电子取景器，定位 vlog 与入门。这是尼康在 Z50 之外开辟的视频取向 APS-C 机型。",
+          "price": "发布时约 <b>749</b> 美元（套机）"
+        },
+        {
+          "time": "2022.11",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Z9 固件 3.0：视频与追踪再补强",
+          "desc": "通过固件给 Z9 补上更长的录制规格与自动对焦改进。尼康在旗舰机上走「持续固件升级」路线，这一点与索尼、佳能一致。",
+          "price": "—（固件更新）"
+        }
+      ]
+    },
+    {
+      "m": "2023",
+      "label": "下放之年：Z8 把 Z9 装进更小机身",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2023.05.10",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Z8：4570 万像素的「小 Z9」",
+          "desc": "这年最重要的一台。与 Z9 <b>完全同款</b>的 4570 万像素堆栈式传感器与 EXPEED 7 处理引擎，保留 8K60p、9 类主体识别、无机械快门，但机身缩到 D850 级别、取消了手柄一体结构。价格比 Z9 低约三成，直接把尼康的旗舰能力铺到更大人群。",
+          "price": "发布时约 <b>3999</b> 美元 / 国内约 <b>27999</b> 元"
+        },
+        {
+          "time": "2023.09",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Zf：复古全画幅机身",
+          "desc": "把 Z6 II 的 2450 万像素传感器装进 Df 风格复古机身，加入 EXPEED 7 与 3D 追踪。Zf 是尼康少见的「设计驱动」产品，主打情绪价值与外观消费。",
+          "price": "发布时约 <b>1999</b> 美元 / 国内约 <b>14999</b> 元"
+        },
+        {
+          "time": "2023.10",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Z 400mm f/4.5 VR S 等长焦补位",
+          "desc": "尼康持续补 Z 卡口长焦与超长焦，配合 Z8 / Z9 面向体育与生态摄影。这条线在 Z 卡口早期是最大短板，到 2023 年已基本补齐。",
+          "price": "以官方公布价为准"
+        }
+      ]
+    },
+    {
+      "m": "2024",
+      "label": "中端换代：Z6 III 首用部分堆栈式 CMOS",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2024.06.17",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Z6 III：首台「部分堆栈式」全画幅",
+          "desc": "尼康在这台机器上首用 <b>部分堆栈式 CMOS</b>（Partially Stacked）—— 在像素区上下各加高速处理电路，读取速度比传统背照式快得多，但成本低于全堆栈。2450 万像素、6K60p 视频、更亮的 576 万点 EVF。Z6 III 是尼康中端价位真正的换代。",
+          "price": "发布时约 <b>2499</b> 美元 / 国内约 <b>18999</b> 元"
+        },
+        {
+          "time": "2024.03",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "尼康完成对 RED 的收购",
+          "desc": "尼康 2024 年 3 月宣布收购 <b>RED</b>（相机与电影机业务），把电影摄影机的色彩科学与编码专利纳入集团。这是尼康把视频能力做长线的关键一步，后续 ZR 等机型的视频基因直接受益。",
+          "price": "—（资本动作）"
+        },
+        {
+          "time": "2024.10",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Z50 II：APS-C 入门换代",
+          "desc": "换成 EXPEED 7 处理引擎，补齐主体识别与 4K60p。尼康把旗舰的对焦算法下放到最便宜的一台机身上。",
+          "price": "发布时约 <b>999</b> 美元（套机）"
+        }
+      ]
+    },
+    {
+      "m": "2025",
+      "label": "双线并进：Z5 II 入门 · ZR 视频机",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2025.04.03",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Z5 II：入门全画幅换代，补上 EXPEED 7",
+          "desc": "Z5 的五年换代。2450 万像素背照式 CMOS + EXPEED 7，把主体识别、自动对焦与视频规格一次性拉到当代水平，价格维持在入门档。这台是尼康对抗索尼 A7C / 佳能 R8 的主力。",
+          "price": "发布时约 <b>1699</b> 美元 / 国内约 <b>11999</b> 元"
+        },
+        {
+          "time": "2025.09.10",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "ZR：尼康首台方块式视频相机（RED 技术下放）",
+          "desc": "收购 RED 之后的第一台「视频专机」。方块机身、内建高规格编码、采用 RED 相关的影像处理与色彩方案，定位独立创作者与小型剧组。尼康正式把 Z 卡口延伸到电影机形态。",
+          "price": "发布时约 <b>2999</b> 美元（以官方公布为准）"
+        },
+        {
+          "time": "2025.11",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Z8 / Z9 固件升级：对焦与视频持续补强",
+          "desc": "尼康保持旗舰机的固件更新节奏，把 Z6 III / ZR 上验证的新算法回灌到旗舰机身。",
+          "price": "—（固件更新）"
+        }
+      ]
+    },
+    {
+      "m": "2026",
+      "label": "高像素线待补：Z7 后续仍是空白",
+      "meta": "2 机身",
+      "items": [
+        {
+          "time": "2026.02",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "ZR 固件与 Z 卡口电影镜头扩充",
+          "desc": "尼康延续 RED 技术融合路线，围绕 ZR 补专业视频附件与镜头体系。视频线从「一台机器」变成「一套方案」。",
+          "price": "以官方公布价为准"
+        },
+        {
+          "time": "2026.06",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "next": true,
+          "title": "高像素全画幅（Z7 后续 / Z9 II）传闻",
+          "desc": "Z7 II 发布于 2020 年，高像素线已六年未更新；Z9 也进入换代周期。业内普遍预期尼康会补一台 6000 万像素级机身，但截至本表整理日<b>官方未公布任何信息</b>。",
+          "price": "未公布"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五年机身脉络</b>：2022 Z9 交付 · Z30 → 2023 Z8 · Zf → 2024 Z6 III · Z50 II（+ 收购 RED）→ 2025 Z5 II · ZR → 2026 ZR 生态扩充",
+    "<b>技术下放路径</b>：Z9（2021，4570 万堆栈式 + 无机械快门）→ Z8（2023，同传感器更小机身）→ Z6 III（2024，首用部分堆栈式）→ Z5 II / Z50 II（2024–2025，EXPEED 7 铺到入门）",
+    "<b>Z 卡口镜头线</b>：f/1.2 S 线（50 / 85mm）· f/2.8 大三元 · 轻量 f/4 与 f/1.8 线 · 长焦与超长焦（400mm f/4.5 等）补齐于 2023 年",
+    "<b>RED 整合</b>：2024 年 3 月收购 RED，2025 年 ZR 成为首台体现 RED 技术基因的尼康机身 —— 这是尼康与索尼 / 佳能在视频路线上的最大差异化",
+    "<b>口径提示</b>：价格为发布时建议零售价 / 官方公布价，非当前渠道价；2025 ZR 与 2026 年条目规格、价格以官方最终公布为准，本表部分数据来自发布报道"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：尼康中国官网新品页 / Nikon USA 新闻稿 / DPReview 发布报道 · 价格均为发布时口径"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

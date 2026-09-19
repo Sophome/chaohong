@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>掌阅 iReader 电纸书 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#c62828; --accent-soft:#fce9e9;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff8a80; --accent-soft:#3a1c1c;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#c62828}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#b8860b}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .brandnav a{padding:6px 10px;font-size:11px}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="hanvon-2026-launch-timeline.html">汉王</a>
+      <a href="boox-2026-launch-timeline.html">文石</a>
+      <a href="ireader-2026-launch-timeline.html" class="on" aria-current="page">掌阅</a>
+      <a href="iflytek-2026-launch-timeline.html">科大讯飞</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线体系与软件版本线</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "IREADER · 2022–2026 LAUNCH TIMELINE",
+  "title": "掌阅 iReader 电纸书 2022–2026 产品发布年表",
+  "subtitle": "5 年主轴：2022 Smart 3 / Ocean 2 立住读写双线 → 2023 SmartOS 卡片系统重构 → 2024 Ocean 4 与首款彩墨 → 2025 Tango 手机型 + Smart X 旗舰 → 2026 高频换代与超刷",
+  "badge": "2022–2026",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "掌阅是四家中「软件驱动」特征最强的：SmartOS 从 2023 年卡片式系统起步，逐步叠加快刷、夜览、图层、语音转写、AI 能力，硬件迭代始终跟着系统版本走",
+      "s": "软件驱动"
+    },
+    {
+      "k": "产品矩阵",
+      "v": "阅读器线 Ocean（7″）/ Light（6″）/ Neo（6″）/ Air（8.2″）/ Tango（6.13″ 手机型）；办公本线 Smart（10.3″）/ Smart X（旗舰）/ Smart Air（8″）",
+      "s": "双线六族"
+    },
+    {
+      "k": "技术节点",
+      "v": "Carta 1200（2022）→ Carta 1300（2024 Neo 2）→ Kaleido 3 彩墨（2024 Smart 5C / 2025 Light 4C）→ 无前光设计（2025 Smart X5 Ultra）→ 无前光 + 实体按键（2026-08）",
+      "s": "六次跃迁"
+    },
+    {
+      "k": "生态外延",
+      "v": "海外副牌 Musnap（Ocean C / Neo C / Aura C，需绑 GSF ID 走 Google Play），是国内四家中海外本地化做得最实的一家",
+      "s": "海外副牌"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022年",
+      "label": "「这一次，读写更好」· Smart 3 + Ocean 2 双新品",
+      "meta": "双线奠基",
+      "items": [
+        {
+          "time": "04.21",
+          "tag": "te",
+          "tagText": "双发",
+          "st": "已开售",
+          "title": "春季新品发布会：Smart 3 + Ocean 2 发布，REINK 3.0 与微信直传同步上线",
+          "desc": "掌阅年度最重要的发布会之一，一次发两台并同时亮出软件底牌。①②<b>Smart 3</b>：市面上首款自带物理按键的 <b>10.3″</b> 智能墨水屏阅读器，按键操作可自定义；2.0GHz 高频 CPU，全新屏幕贴合工艺让清晰度提升 <b>19.07%</b>；227ppi、64GB 存储、4000mAh（官方称待机 30 天 / 阅读数周）、6.2mm / 368g，免充电电磁笔支持 <b>4096 级压感</b>。②<b>Ocean 2</b>：7″ <b>Carta 1200</b> 墨水屏、300PPI、1440×1072，响应速度快 20%、对比度提升 15%；28 级 DC 冷暖调光 + 纳米导光；三边窄边框仅 5.8mm，右侧厚书脊放两颗可自定义物理按键；3.5mm / <b>170g</b>（带磁吸套约 230g）、1800mAh、72 小时阅读。软件侧同步发布 <b>REINK 排版引擎 3.0</b>（27 种格式、多字体排版、图文混排、自动裁边）、支持 256 级灰阶、首笔响应速度提升 50%，并上线<b>微信直传</b>（微信文件直接传进阅读器）。",
+          "price": "Smart 3 <b>2299</b> 元起（含触控笔）｜Ocean 2 32GB <b>1299</b> 元 / 128GB <b>1599</b> 元"
+        },
+        {
+          "time": "12.10",
+          "tag": "te",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "2022「超灵动」冬季发布会：Smart Air + Smart Air Pro（8″ 300PPI 柔性屏）",
+          "desc": "掌阅 2022 年收官之作，也是当年国内唯一一台 <b>8″ 300PPI 柔性屏</b>智能记事本。①<b>Smart Air</b>：8″ Carta 1200 柔性屏（1920×1440 / 300PPI），刷新速度提升 22%、对比度增加 15%、厚度减少 38.5%；升级屏幕表层蚀刻工艺，透光率达 <b>91.83%</b>，清晰度提升 20%；新柔性墨水膜 V400SU。6.3mm / <b>225g</b>，面积比普通 A5 笔记本还小 17.9%，5.8mm 超窄三边等宽、屏占比 77.3%。双核 2GHz + 64GB + 2400mAh（续航 75 小时 / 待机 45 天），28 级冷暖双色灯，4096 级压感触控笔（360 次/秒采样率、支持倾斜压感与笔锋书写、免充电）。软件同步升级<b>夜览模式</b>（黑底白字，官方称国内墨水屏行业首创）、<b>笔记本 3.0</b>（图层 / 笔记成书 / 手写转文字 / 录音转文字 / 智能识别转图形）、学习模式 2.0、双语系统，内置 130+ 笔记模板。②<b>Smart Air Pro</b> 为升级版。",
+          "price": "Smart Air 首发 <b>1899</b> 元起｜简意白配色 12/31 开售 1899 元"
+        }
+      ]
+    },
+    {
+      "m": "2023年",
+      "label": "SmartOS 卡片式系统登场 · 一年四次发布把矩阵铺满",
+      "meta": "系统重构年",
+      "items": [
+        {
+          "time": "03月",
+          "tag": "te",
+          "tagText": "阅读器",
+          "st": "已开售",
+          "title": "「巨！清晰」发布会：Ocean 3 发布（Ocean 系列第三代）",
+          "desc": "Ocean 系列第三代，主打「巨清晰」——把显示清晰度作为核心卖点，延续 7″ 便携阅读定位。Ocean 系列是掌阅出货量最大的阅读器线（Ocean 2 → 3 → 3 Plus → 4 → 4C → 5C），每年保持一次迭代。",
+          "price": "—（7″ 档位定价）"
+        },
+        {
+          "time": "04.21",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "春季新品发布会：Smart 4 / Smart 4 Pro + Neo / Neo Pro 四机型 + 全新 SmartOS",
+          "desc": "掌阅 2023 年最关键的一场发布会，一次发四台硬件加一套新系统。<b>硬件</b>：① Smart 4 与 Smart 4 Pro（10.3″ 智能办公本）② Neo 与 Neo Pro（6″ 智能阅读本，Neo 为 212PPI、Neo Pro 为 300PPI，6mm / 149g、1500mAh、28 级冷暖灯）。<b>软件才是重点</b>：全新 <b>SmartOS 卡片式交互系统</b>——掌阅对墨水屏系统做了全面重构与全新交互设计，UI 视觉与办公应用重做。三大核心组件：① <b>SmartToDo</b> 智能日程管理（多模板切换、任务进度直观）② <b>SmartNote</b> 系统笔记（会议 / 课堂录音、智能一键转文本、手写笔转文本 / 转图形、新增图层、内置 130+ 笔记模板）③ <b>SmartSync</b> 多终端云同步（支持微信 / 百度网盘 / WiFi 导入文件）。掌阅 CEO 程超在发布会上强调：墨水屏在「看」和「写」两个维度能提供远超手机平板的舒适体验，而掌阅是国内唯一同时拥有强大图书版权与自研团队的墨水屏公司。",
+          "price": "Smart 4 系列 10.3″ 档｜Neo / Neo Pro 6″ 档（具体售价分版本）"
+        },
+        {
+          "time": "08月",
+          "tag": "te",
+          "tagText": "阅读器",
+          "st": "已开售",
+          "title": "Ocean 3 Plus 发布（7″ 柔性屏，主打巨清晰）",
+          "desc": "Ocean 系列的中期加推款，最大特征是用<b>柔性屏</b>——柔性墨水屏在抗摔性与厚度上有优势，成本更高。主打「巨清晰」的显示调校，与 3 月的 Ocean 3 形成同代双 SKU。",
+          "price": "—（7″ 档位定价）"
+        },
+        {
+          "time": "10月",
+          "tag": "te",
+          "tagText": "秋季旗舰",
+          "st": "已开售",
+          "title": "秋季旗舰新品发布会：Light 3 / Light 3 Turbo / Ocean 3 Turbo / Smart X3 四款 + SmartOS 全面升级",
+          "desc": "掌阅 2023 年的收官发布会，一次补齐四条线：① <b>Light 3</b> 与 <b>Light 3 Turbo</b>（6″ 智能阅读本，Turbo 为快刷版）② <b>Ocean 3 Turbo</b>（7″ 快刷阅读器）③ <b>Smart X3</b>（旗舰智能办公本，X 系列在掌阅体系里定位高于 Smart 数字系列）。同时宣布对 <b>SmartOS 系统进行全面升级</b>。至此掌阅在 2023 年完成 4 次发布会、覆盖 6″ / 7″ / 8″ / 10.3″ 四个尺寸段，产品矩阵基本铺满。",
+          "price": "—（分机型另发）"
+        },
+        {
+          "time": "12月",
+          "tag": "pu",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "Color 7 发布：掌阅首款快刷彩色电子纸智能阅读本",
+          "desc": "掌阅正式进入彩色电子纸赛道。Color 7 采用 <b>Kaleido 3</b> 新一代彩色电子纸技术，并搭载掌阅与<b>元太科技联合研发调校</b>的 <b>i-Colorful 自研色彩提升引擎</b>——官方口径鲜艳度提升 <b>30%</b>、色彩对比度提升 <b>40%</b>。与原厂面板厂商联合调校色彩引擎，是掌阅在彩墨赛道区别于单纯「买面板」的差异点。",
+          "price": "—（7″ 彩墨档定价）"
+        }
+      ]
+    },
+    {
+      "m": "2024年",
+      "label": "Carta 1300 换代 · Ocean 4 系列与首款彩墨办公本",
+      "meta": "面板换代年",
+      "items": [
+        {
+          "time": "02.27",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "Neo 2 发布（6″ Carta 1300，300PPI，989 元）",
+          "desc": "6″ 走量线的关键换代：屏幕升到 <b>Carta 1300</b>（元太当年最新黑白电子纸世代），<b>300PPI</b>，1700mAh，定价 <b>989</b> 元。这个价格把「Carta 1300 + 300PPI」组合压进了千元内，是掌阅在 Kindle 退出中国后的入门市场卡位动作。",
+          "price": "<b>989</b> 元"
+        },
+        {
+          "time": "07.22",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "Ocean 4 系列发布（Ocean 4 长续航版 + Ocean 4 Turbo，7″ 300PPI，预售 1528 元起）",
+          "desc": "掌阅 2024 年在 7″ 主力段的双 SKU 布局：① <b>Ocean 4 长续航版</b>——主打续航与日常阅读 ② <b>Ocean 4 Turbo</b>——主打快刷与流畅度。两款均为 7″ <b>300PPI</b>，预售 1528 元起，<b>7 月 29 日首销</b>。同时上线 Carta 1300 面板，对比度与刷新较上代提升。",
+          "price": "预售 <b>1528</b> 元起｜7/29 首销"
+        },
+        {
+          "time": "09.27",
+          "tag": "",
+          "tagText": "彩墨办公",
+          "st": "已开售",
+          "title": "Smart 5C 发布：掌阅首款 10.3″ 彩墨办公本（8+128GB，3599 元）",
+          "desc": "把彩墨从阅读本推进到<b>办公本</b>品类——这是掌阅彩墨路线的关键一步。10.3″ 彩色电子纸、<b>8GB + 128GB</b>（当年国产电纸书的顶配内存组合）、396g、<b>3599</b> 元。彩色在办公场景的价值在于图表批注、PDF 标注、多色笔记分类，而非看重度阅读。",
+          "price": "<b>3599</b> 元"
+        },
+        {
+          "time": "10.14",
+          "tag": "id",
+          "tagText": "配色",
+          "st": "已开售",
+          "title": "Ocean 4 Turbo「北极白」配色发售（4+64GB，1599 元）",
+          "desc": "Ocean 4 Turbo 的配色延展款，4GB + 64GB 版本 <b>1599</b> 元。白色配色在墨水屏行业普遍有轻微溢价，掌阅用它在产品周期中段维持 Ocean 4 系列的关注度。",
+          "price": "<b>1599</b> 元"
+        },
+        {
+          "time": "11.18",
+          "tag": "te",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "SmartOS 2.4 发布：快刷模式上线，刷新增速 78%",
+          "desc": "掌阅把「快刷」做成系统级能力而非硬件专属：SmartOS 2.4 加入<b>快刷模式</b>，官方口径刷新增速达 <b>78%</b>。这意味着老机型也能通过 OTA 获得流畅度提升——对墨水屏设备来说，快刷能力长期是硬件壁垒（文石走的是自研快刷芯片），掌阅选择用软件算法路线切入。",
+          "price": "—（全系 OTA）"
+        },
+        {
+          "time": "12.25",
+          "tag": "te",
+          "tagText": "彩墨",
+          "st": "已发布",
+          "title": "Ocean 4C 亮相（7″ 可手写彩墨，首款电容笔 iReader Pencil）",
+          "desc": "掌阅把彩墨下放到 7″ 主流阅读器，并首次引入手写。核心是自研 <b>iReader Pencil</b> 电容笔：<b>1.7mm 碳纤维笔尖</b>、60° 倾斜压感。这是掌阅第一次在「彩色 + 手写」两个能力上同时落地——此前彩墨（Color 7 / Smart 5C）与手写（Smart 系列）是两条分开的线。",
+          "price": "—（12/25 亮相，价格 2025-01 发布时公布）"
+        }
+      ]
+    },
+    {
+      "m": "2025年",
+      "label": "彩墨普及 + 手机型新品 + Smart X 无前光旗舰",
+      "meta": "三条新线",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "te",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "Ocean 4C 正式发布（7″ 彩墨可手写，179g，1699 元起）｜1/13 开售",
+          "desc": "1 月 6 日发布、1 月 13 日开售。7″ 彩墨 + 可手写，机身 <b>179g</b>，<b>1699</b> 元起。Ocean 4C 是掌阅第一台「彩墨 + 手写」的量产走量机型，把彩色电子纸从 Smart 5C（3599 元）的高价位拉到了 1700 元档。",
+          "price": "<b>1699</b> 元起"
+        },
+        {
+          "time": "04.23",
+          "tag": "te",
+          "tagText": "春季发布",
+          "st": "已开售",
+          "title": "春季发布会：Ocean 4 长续航版 2025 款 + Light 4C + Light 4 长续航版 / Turbo",
+          "desc": "掌阅 2025 年规模最大的一场发布，一次更新三条线、覆盖 6″ 与 7″ 两端：① <b>Ocean 4 长续航版 2025 款</b>——7″ Carta 1300，1GB + 64GB，<b>1399</b> 元；② <b>Light 4C</b>——6″ <b>Kaleido 3</b> 彩墨，2GB + 64GB，<b>1199</b> 元，把彩墨阅读器拉进 1200 元档；③ <b>Light 4 长续航版 / Light 4 Turbo</b>——6″ Carta 1200，<b>699</b> 元起，是掌阅当年最便宜的入门机型。",
+          "price": "Ocean 4 长续航版 2025 <b>1399</b> 元 · Light 4C <b>1199</b> 元 · Light 4 <b>699</b> 元起"
+        },
+        {
+          "time": "05.20",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "Tango 系列发布（6.13″ 手机形态，1799 元）",
+          "desc": "掌阅进入<b>手机型墨水屏</b>赛道（该形态由文石 Palma 于 2023 年开创）。6.13″ 手机比例机身，<b>ComfortLight Pro+</b> 前光、<b>快刷 2.0</b>、<b>6nm 八核</b>处理器、8GB + 128GB、<b>3900mAh</b>、官方称待机 <b>27 天</b>，1799 元。Tango 系列此后成为掌阅更新最快的一条线（2026 年 Tango 2 Pro、Tango 2s）。",
+          "price": "<b>1799</b> 元"
+        },
+        {
+          "time": "06.09",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "Smart X5 Ultra 发布（10.3″ Carta 1300，柔性屏 + 无前光，3899 元起）",
+          "desc": "掌阅 2025 年的技术旗舰，也是四家厂商里罕见的「<b>无前光</b>」设计：① <b>Carta 1300</b>、300PPI ② <b>柔性屏</b>（抗摔、更薄） ③ <b>纳米蚀刻玻璃</b>（提升书写摩擦力，模拟纸张） ④ <b>去掉前光层</b>——去掉前光后屏幕透光率与底色白度显著提升，显示更接近真实纸张，代价是暗环境无法阅读。这与汉王的「减屏层」（去掉电容屏与导光板）是同一思路的不同实现路径。3899 元起，定位专业读写旗舰。",
+          "price": "<b>3899</b> 元起"
+        },
+        {
+          "time": "10.17",
+          "tag": "te",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "Ocean 5C 发布（7″ 彩墨可手写，1799 元）｜10/20 首销",
+          "desc": "Ocean 4C 的年度迭代（Ocean 系列跳过「5」直接到 5C，主线仍以彩墨为主）：7″ 彩墨、支持手写笔，<b>1799</b> 元。10 月 17 日发布、10 月 20 日首销。至此 Ocean 系列已从 2022 年的 Ocean 2 迭代到第五代，是四家中同系列迭代代数最多的阅读器产品线。",
+          "price": "<b>1799</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "2026年",
+      "label": "高频换代 · 超刷 50 帧 + 8.2″ Air 3 Pro + 取消前光新机",
+      "meta": "2026 · 全年最密集",
+      "items": [
+        {
+          "time": "03.02",
+          "tag": "pu",
+          "tagText": "手机型",
+          "st": "已开售",
+          "title": "Tango 2 Pro 发布（可插 SIM 蜂窝网络，50 帧超刷，1999 元）",
+          "desc": "Tango 系列第二代的高配版，两个突破：① <b>可插 SIM 卡、支持蜂窝网络</b>——这是手机型墨水屏第一次真正脱离 WiFi 独立联网，意义上接近「墨水屏手机」而非「墨水屏阅读器」；② <b>50 帧超刷</b>，刷新率规格在墨水屏里属激进水平。配 <b>800 万像素后摄</b>，官方称续航约 <b>101 小时</b>，<b>1999</b> 元。",
+          "price": "<b>1999</b> 元"
+        },
+        {
+          "time": "03.03",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "Neo 3 Ultra 发布（6″ Carta 1300，300PPI，云砚架构，深蓝配色）",
+          "desc": "6″ 走量线的高配款：<b>Carta 1300</b>、<b>300PPI</b>，搭载官方命名的<b>「云砚架构」</b>（掌阅自定义的系统架构术语，非行业标准）+ 八核 CPU，深蓝配色，机身<b>顶部新增触点接口</b>（用于扩展配件）。Neo 系列从 2023 年 Neo / Neo Pro 起步，已迭代到 3 代。",
+          "price": "—（6″ 高配档）"
+        },
+        {
+          "time": "03.20",
+          "tag": "te",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "iReader App v8.7.5.1 / v8.7.5.2 更新（3 月两连发）",
+          "desc": "掌阅与其他三家最大的不同：<b>它的软件版本更新本身构成一条公开的产品线</b>。3 月内连发两个版本（03.20 v8.7.5.1、03.25 v8.7.5.2），4 月 16 日又推 3.5.0 大版本。做年表时必须把 App 版本与硬件分开列，否则会误读成「月月发新机」。",
+          "price": "—（全系软件更新）"
+        },
+        {
+          "time": "04月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "Smart 6 Pro / Smart 6C Pro 发布（10.3″，X-Pen 5 电磁笔）",
+          "desc": "掌阅 2026 年的办公本主力换代，黑白与彩墨双版本同发。10.3″ <b>2480×1860</b>；配套 <b>X-Pen 5 电磁笔</b>：<b>4096 阶</b>压感 + <b>笔尾橡皮擦</b>。Smart 6 Pro 走黑白、Smart 6C Pro 走彩墨，对应 2024 年 Smart 5C 的彩墨办公本定位。",
+          "price": "—（10.3″ 办公本档）"
+        },
+        {
+          "time": "04.16",
+          "tag": "te",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "iReader App 3.5.0 大版本更新",
+          "desc": "3 月两个小版本之后的大版本更新，掌阅 App 侧的年度主线迭代。",
+          "price": "—（软件更新）"
+        },
+        {
+          "time": "07.28",
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "待发布",
+          "next": true,
+          "title": "官方预热：新款黑白墨水屏（Carta 1300 · 取消前光 · 实体交互按键）",
+          "desc": "掌阅官方在 7 月 28 日放出预热：新款黑白墨水屏机型，<b>Carta 1300</b> 面板、<b>取消前光设计</b>（延续 Smart X5 Ultra 的无前光思路，换取透光率与底色白度）、<b>实体交互按键</b>，官方称「下月推出」（即 2026 年 8 月）。这条预告的价值在于确认了掌阅已把「无前光」从旗舰（Smart X5 Ultra）向主流机型下放。",
+          "price": "—（官方未公布，预热阶段）"
+        },
+        {
+          "time": "08月",
+          "tag": "te",
+          "tagText": "阅读器",
+          "st": "已开售",
+          "title": "Air 3 Pro 发布（8.2″ Carta 1300，1920×1440 / 293ppi）",
+          "desc": "Air 系列回归——2022 年 Smart Air 立住 8″ 段后，掌阅用 Air 3 Pro 重新加固这个尺寸：8.2″ <b>Carta 1300</b>，1920×1440（<b>293ppi</b>）。8″ 是「单页 A5 阅读 + 轻办公」的最佳平衡点，掌阅与科大讯飞（Air 3 系列 8.2″）在 2026 年同时押注这个尺寸。",
+          "price": "—（8.2″ 档定价）"
+        },
+        {
+          "time": "09月",
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "待发布",
+          "next": true,
+          "title": "Tango 2s 官方预热：5.84″「全球首发」300PPI",
+          "desc": "掌阅在 9 月放出 Tango 2s 预热：把手机型墨水屏进一步缩小到 <b>5.84″</b>，官方口径称 300PPI 为「全球首发」。至此掌阅在手机型墨水屏赛道已布局 Tango（6.13″）→ Tango 2 Pro（6.13″ + 蜂窝）→ Tango 2s（5.84″），尺寸持续缩小、向真正「手机」形态靠拢。",
+          "price": "—（官方预热，价格未公布）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>阅读器线</b>：Light 4 长续航版 / Light 4 Turbo（6″ Carta 1200，699 起）· Light 4C（6″ Kaleido 3 彩墨，1199）· Neo 2（6″ Carta 1300，989）· Neo 3 Ultra（6″ Carta 1300，云砚架构）· Ocean 4 长续航版 2025 款（7″，1399）· Ocean 4 Turbo（7″，1528 起 / 北极白 1599）· Ocean 4C（7″ 彩墨手写，1699 起）· Ocean 5C（7″ 彩墨，1799）· Air 3 Pro（8.2″ Carta 1300，293ppi）",
+    "<b>手机型墨水屏线 Tango</b>：Tango（6.13″，1799）· Tango 2 Pro（6.13″，可插 SIM 蜂窝网络 + 50 帧超刷 + 800 万像素后摄，1999）· Tango 2s（5.84″ 300PPI，官方预热）—— 该形态由文石 Palma 开创，掌阅 2025 年进入、2026 年做到最激进",
+    "<b>办公本线 Smart</b>：Smart 3（10.3″，2299 起）· Smart 4 / Smart 4 Pro（10.3″）· Smart X3（旗舰）· Smart 5C（10.3″ 彩墨，8+128GB，3599）· Smart 6 Pro / Smart 6C Pro（10.3″，X-Pen 5）· Smart X5 Ultra（10.3″ Carta 1300，柔性屏 + 纳米蚀刻玻璃 + 无前光，3899 起）",
+    "<b>记事本线 Smart Air</b>：Smart Air / Smart Air Pro（8″ 300PPI 柔性屏，1899 起，2022-12）· Air 3 Pro（8.2″ Carta 1300，2026-08）",
+    "<b>系统与软件线</b>：REINK 排版引擎 3.0（2022）· SmartOS 卡片式交互系统（2023-04）· SmartOS 2.4 快刷模式，刷新增速 78%（2024-11-18）· i-Colorful 自研色彩引擎（与元太联合调校，2023-12）· iReader App v8.7.5.1 / v8.7.5.2 / 3.5.0（2026-03 / 03 / 04）",
+    "<b>海外副牌 Musnap</b>：Musnap Ocean C / Neo C / Aura C —— 掌阅面向海外市场的彩墨副牌，需绑定 GSF ID 以使用 Google Play，是四家中海外本地化做得最实的",
+    "<b>口径提示</b>：掌阅定价以国内官方首发价为主（本表所列）；「云砚架构」为品牌自定义术语，非行业标准，请勿当作技术标准引用；Smart X5 Ultra 与 2026-07 预热新机的「无前光」为设计取舍（提升透光率与底色白度，代价是暗环境不可读），非单纯「减配」；2026-03 月内三次软件版本更新属 App 侧迭代，勿与硬件发布混淆"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：掌阅 iReader 官方发布 / IT之家 / 中国日报网 / 北青网科技 / 网易科技 / 新浪科技 / 凤凰网 / 中华网科技 / Good e-Reader"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

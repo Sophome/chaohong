@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>松下 Lumix 相机 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0b57d0; --accent-soft:#e6eefc;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#7aa8f7; --accent-soft:#16233c;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0b57d0}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#8b949e}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="sony-camera-2026-launch-timeline.html">索尼</a>
+      <a href="canon-camera-2026-launch-timeline.html">佳能</a>
+      <a href="nikon-camera-2026-launch-timeline.html">尼康</a>
+      <a href="panasonic-camera-2026-launch-timeline.html" class="on" aria-current="page">松下</a>
+      <a href="dji-camera-2026-launch-timeline.html">大疆</a>
+      <a href="insta360-camera-2026-launch-timeline.html">影石</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售机身与 L 卡口镜头 · 价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "PANASONIC LUMIX · 2022–2026 LAUNCH TIMELINE",
+  "title": "松下 Lumix 相机 2022–2026 产品发布年表",
+  "subtitle": "五年主线：相位对焦终于在 2023 年落地（S5 II / S5 IIX），全画幅与 M43 双线并进；2025 年 S1R II 与 S1 II 补回高端，2026 年把 S1 系列拆成 II / IIE 两档",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "2022 GH6 纯 M43 视频旗舰 → 2023 S5 II 首上相位对焦（分水岭）→ 2024 S9 / GH7 → 2025 S1R II · S1 II · S1 IIE → 2026 L10 与 S1 系列分档",
+      "s": "产品矩阵"
+    },
+    {
+      "k": "年度技术",
+      "v": "2023 年相位混合自动对焦（PDAF）终结松下「只会反差对焦」的历史；此后 ProRes 内录、SSD 外录、Open Gate 成为松下标配",
+      "s": "技术节奏"
+    },
+    {
+      "k": "卡口生态",
+      "v": "L 卡口联盟（徕卡 / 适马 / 松下）已成熟；松下自身靠视频规格差异化，M43 线则继续服务专业影视与轻量创作",
+      "s": "生态位"
+    },
+    {
+      "k": "价格带",
+      "v": "M43 G100D / G97 约 5000 元起 · 全画幅 S9 约 1.1 万元 · S1 II 系约 2–2.5 万元 · S1R II 约 2.5 万元起",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022",
+      "label": "M43 视频旗舰：GH6 主打 5.7K ProRes",
+      "meta": "2 机身",
+      "items": [
+        {
+          "time": "2022.02.22",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Lumix GH6：M43 视频旗舰",
+          "desc": "2520 万像素 Live MOS，支持 <b>5.7K60p / 4K120p</b> 与内录 <b>ProRes</b>，配主动散热结构。这一代 GH6 仍是反差对焦 —— 也是松下最后一代没有相位对焦的旗舰。",
+          "price": "发布时约 <b>2199</b> 美元 / 国内约 <b>14998</b> 元（单机身）"
+        },
+        {
+          "time": "2022.09",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Lumix G100D / G97 等 M43 入门更新",
+          "desc": "松下在 M43 入门段维持 G 系列铺货，主打轻量与 vlog。这一档在松下整体产品线里属于守位性质。",
+          "price": "以官方公布价为准"
+        }
+      ]
+    },
+    {
+      "m": "2023",
+      "label": "分水岭：S5 II 首上相位对焦",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2023.01.04",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Lumix S5 II / S5 IIX：松下首台相位对焦全画幅",
+          "desc": "松下五年里最关键的一台机器。<b>相位混合自动对焦（PDAF）</b>首次落地，终结了松下长期只有反差对焦的短板；2420 万像素、6K30p、4K60p、双原生 ISO。S5 IIX 额外支持 <b>ProRes 内录与 SSD 外录</b>、RAW over HDMI。此后松下全画幅的销量与口碑明显改善。",
+          "price": "S5 II 发布时约 <b>1999</b> 美元 / 国内约 <b>13998</b> 元；S5 IIX 约 <b>2199</b> 美元"
+        },
+        {
+          "time": "2023.09",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Lumix G9 II：M43 首次获得相位对焦",
+          "desc": "2520 万像素 M43 传感器，把 S5 II 的相位对焦体系带到 M43 线；60fps 连拍、C4K60p、ProRes 内录。G9 II 是 M43 用户等了多年的「对焦终于对得上」。",
+          "price": "发布时约 <b>1899</b> 美元"
+        },
+        {
+          "time": "2023.11",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Lumix S1 II / S1R II 换代预热，L 卡口镜头扩充",
+          "desc": "松下在年内持续补 L 卡口镜头（S 系列 F1.8 轻量定焦与大三元），为下一代全画幅做生态准备。",
+          "price": "以官方公布价为准"
+        }
+      ]
+    },
+    {
+      "m": "2024",
+      "label": "双线并进：S9 走量 · GH7 视频旗舰",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2024.05.22",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Lumix S9：最轻最小的全画幅 L 卡口",
+          "desc": "486g 机身、无 EVF、冷靴设计，主打「随身全画幅」。加入 <b>LUT 按钮</b>与实时 LUT 应用，直接打富士与索尼 ZV 系列的感受型用户。这台是松下把全画幅门槛压低的关键产品。",
+          "price": "发布时约 <b>1499</b> 美元 / 国内约 <b>10998</b> 元（套机）"
+        },
+        {
+          "time": "2024.06.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Lumix GH7：M43 视频旗舰补 ProRes RAW 内录",
+          "desc": "GH6 的换代。2520 万像素 + 相位对焦，支持 <b>ProRes RAW HQ 内录</b>、32bit 浮点音频、Open Gate 与实时 LUT。对独立制片与小剧组这是极少数能在机内完成完整工作流的机器。",
+          "price": "发布时约 <b>2199</b> 美元 / 国内约 <b>16998</b> 元"
+        },
+        {
+          "time": "2024.10",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Lumix S5 II 系列固件扩充：SSD 录制与 LUT 生态",
+          "desc": "松下用固件把 S5 II 的视频能力持续延长，并推广实时 LUT 工作流。松下是少数把 LUT 做成机身按钮的品牌。",
+          "price": "—（固件更新）"
+        }
+      ]
+    },
+    {
+      "m": "2025",
+      "label": "高端回归：S1R II 与 S1 II 双发",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2025.02.25",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Lumix S1R II：高像素全画幅旗舰换代",
+          "desc": "S1R 五年后的正式换代。<b>4430 万像素</b>背照式 CMOS + 相位对焦，支持 8K30p、<b>Open Gate 6K</b>、ProRes 内录与 SSD 外录，配 8 档机身防抖与手持高分辨率模式。这是松下第一次把高像素线与视频能力真正打通。",
+          "price": "发布时约 <b>3299</b> 美元 / 国内约 <b>23998</b> 元（单机身）"
+        },
+        {
+          "time": "2025.05.13",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Lumix S1 II 与 S1 IIE：中端全画幅双档",
+          "desc": "松下把 S1 序列拆成两档。S1 II 用部分堆栈式 CMOS，支持 <b>4K120p</b> 与更高码率；S1 IIE 用背照式 CMOS，规格略降但价格更友好。两档共享机身与防抖体系，是松下在中端全画幅的正面站位。",
+          "price": "S1 II 发布时约 <b>3199</b> 美元 / 国内约 <b>22998</b> 元；S1 IIE 约 <b>2499</b> 美元（以官方公布为准）"
+        },
+        {
+          "time": "2025.09",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Lumix S9 与 G 系列持续铺货，L 卡口镜头补齐",
+          "desc": "松下围绕 S9 补轻量镜头，同时维持 M43 线的 G 系列入门更新。",
+          "price": "以官方公布价为准"
+        }
+      ]
+    },
+    {
+      "m": "2026",
+      "label": "再补一档：L10 与 S1 系列规格调整",
+      "meta": "2 机身",
+      "items": [
+        {
+          "time": "2026.05.12",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "Lumix L10：全画幅入门新档",
+          "desc": "松下在全画幅线补出一个新的入门位，L 卡口机身序列从 S9 / S5 II / S1 II / S1R II 再往下延伸。这步与佳能 R8、尼康 Z5 II 的入门全画幅策略一致。",
+          "price": "发布时约 <b>1299</b> 美元（以官方公布为准）"
+        },
+        {
+          "time": "2026.08",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "S1 II / S1 IIE 固件与镜头体系扩充",
+          "desc": "松下继续以固件延长机身生命周期，同时补 L 卡口的高规格视频镜头。松下的产品力很大程度靠固件维持。",
+          "price": "—（固件与镜头更新）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五年机身脉络</b>：2022 GH6 → 2023 S5 II / S5 IIX（<b>首上相位对焦</b>）· G9 II → 2024 S9 · GH7 → 2025 S1R II · S1 II / S1 IIE → 2026 L10",
+    "<b>分水岭事件</b>：2023 年 1 月 S5 II 首次搭载相位混合自动对焦（PDAF），是松下产品力转折点 —— 此前松下全系只有反差对焦，是长期被诟病的核心短板",
+    "<b>M43 仍在更新</b>：GH6（2022）→ G9 II（2023）→ GH7（2024），M43 线服务独立制片与轻量剧组，未像其他厂商那样裁撤",
+    "<b>视频工作流标签</b>：ProRes 内录 · ProRes RAW HQ · SSD 外录 · Open Gate · 实时 LUT 按钮 · 32bit 浮点音频 —— 松下的差异化不在画质参数而在工作流完整度",
+    "<b>口径提示</b>：价格为发布时建议零售价 / 官方公布价，非当前渠道价；2026 年条目规格与价格以官方最终公布为准，本表部分数据来自发布报道"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：松下中国官网新品页 / Panasonic USA 新闻稿 / DPReview 发布报道 · 价格均为发布时口径"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

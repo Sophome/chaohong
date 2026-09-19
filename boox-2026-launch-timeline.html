@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文石 BOOX 电纸书 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0f6fbf; --accent-soft:#e4f0fa;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5cb3f0; --accent-soft:#12293b;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0f6fbf}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#6b4fd8}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .brandnav a{padding:6px 10px;font-size:11px}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="hanvon-2026-launch-timeline.html">汉王</a>
+      <a href="boox-2026-launch-timeline.html" class="on" aria-current="page">文石</a>
+      <a href="ireader-2026-launch-timeline.html">掌阅</a>
+      <a href="iflytek-2026-launch-timeline.html">科大讯飞</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线体系与海外渠道</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "BOOX (ONYX) · 2022–2026 LAUNCH TIMELINE",
+  "title": "文石 BOOX 电纸书 2022–2026 产品发布年表",
+  "subtitle": "5 年主轴：2022 用 Nova AirC 把彩墨做进安卓 → 2023 Tab Ultra C 立快刷彩墨 → 2024 Palma / Note Max 攻形态 → 2025 全系刷新与 25.3″ 显示器 → 2026 折叠彩墨 + 进军手机型 + 冲刺港股",
+  "badge": "2022–2026",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "文石是四家中唯一「安卓开放生态 + 快刷芯片」双押的厂商：所有机型跑 BOOX OS（基于 Android），可直接装 Google Play 与第三方 App",
+      "s": "开放生态"
+    },
+    {
+      "k": "技术节点",
+      "v": "2022 Nova AirC 首款安卓 11 彩墨 → 2023 Kaleido 3 快刷彩墨（Tab Ultra C）→ 2024 13.3″ Carta 1300（Note Max）→ 2026 三折叠超级彩墨本（Flex）",
+      "s": "四次跃迁"
+    },
+    {
+      "k": "形态开拓",
+      "v": "Palma 系列开辟 6.13″ 手机型墨水屏赛道（2023 首发 → 2026 Palma 3）；Picco（3.97″）把墨水屏压到极限小尺寸",
+      "s": "形态最激进"
+    },
+    {
+      "k": "资本动作",
+      "v": "2026-07-16 文石信息港股 IPO 招股书失效 —— 对做内容选题的人来说，这条的信息量不低于任何一台新机",
+      "s": "IPO 受阻"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022年",
+      "label": "Nova AirC 首秀：把彩墨 + 安卓 11 装进 7.8″",
+      "meta": "彩墨起点",
+      "items": [
+        {
+          "time": "03.24",
+          "tag": "pu",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "Nova AirC 彩色墨水平板发布（7.8″，首发 2680 元）",
+          "desc": "文石彩墨路线的正式起点，也是本文四家里最早的彩色电子纸产品之一。7.8″ 纯平墨水屏采用第四代彩色墨水屏技术（Kaleido Plus），官方口径：<b>彩色对比度提升 40%、饱和度提升 15%、底色白度提升 10%、黑白对比度提升 30%</b>。黑白分辨率 1404×1872，彩色 468×624，支持冷暖双色温 <b>DC 调光</b>；八核处理器、3GB + 32GB、<b>电容与电磁双触控</b>，跑基于 <b>Android 11</b> 的 BOOX OS。标配原装电磁笔。",
+          "price": "首发 <b>2680</b> 元｜3/29 正式开售"
+        }
+      ]
+    },
+    {
+      "m": "2023年",
+      "label": "Kaleido 3 世代 · 快刷彩墨 + 手机型墨水屏双线突破",
+      "meta": "产品大年",
+      "items": [
+        {
+          "time": "05.05",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "BOOX Tab Ultra C / Tab10 C 发布（10.3″ Kaleido 3 快刷彩墨）· 国内 5/5 19:00",
+          "desc": "文石 2023 年最重要的产品，也是<b>首款快刷彩色墨水屏平板</b>。海外于 4 月先行发布 Tab Ultra C（$599.99 约 4158 元），国内版本 5 月 5 日晚 19:00 以 <b>BOOX Tab10 C 快刷彩墨平板</b>之名正式发布。核心组合：文石自研<b>快刷芯片</b> + 高通骁龙处理器 + 全新 Kaleido 3 技术 10.3″ 彩色墨水屏；黑白分辨率 <b>300PPI</b>、彩色 <b>150PPI</b>，官方称黑白更细腻、色彩更鲜艳。配<b>磁性键盘</b>可像平板一样打字与导航，把墨水屏从「阅读 / 记录」推进到「生产力办公」场景。",
+          "price": "海外 <b>$599.99</b>（约 4158 元）｜国内 Tab10 C 定价另发"
+        },
+        {
+          "time": "10月",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "BOOX Note Air3 C 发布（10.3″ Kaleido 3，430g）",
+          "desc": "Tab Ultra C 之后文石把 Kaleido 3 下放到 <b>Note 系列</b>，形成「Note = 读写主力 / Tab = 高性能生产力」的分工。规格：10.3″ Kaleido 3 彩色电子纸，<b>黑白 2480×1860（300PPI）/ 彩色 1240×930（150PPI）</b>；纯平玻璃盖板 + E Ink <b>ComfortGaze</b> 冷暖双色前光；2.4GHz <b>八核</b> + <b>BSR 快刷</b>（官方未公开完整型号）、4GB + 64GB、支持 microSD 扩展；<b>Wacom EMR</b> 手写；WiFi 2.4/5GHz + 蓝牙；带麦克风与扬声器、无摄像头；3700mAh，机身 226×193×5.8mm / 约 430g，跑 <b>Android 12</b>。",
+          "price": "—（各区域定价不一，海外渠道为主）"
+        },
+        {
+          "time": "2023年",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "BOOX Palma 发布（6.13″ 手机型墨水屏）· 开辟新赛道",
+          "desc": "文石最被行业记住的一次形态创新：把墨水屏做成<b>手机尺寸与手机形态</b>，可单手操作、可装进口袋，跑 Android 与 Google Play，能装 Kindle / 微信读书 / 番茄等阅读 App。<b>Palma 系列由此成为整个电纸书行业「手机型墨水屏」的开创者</b>——2026 年汉王（Clear Mobile Plus）、掌阅（Tango 系列）都进入了这条赛道。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "2023年",
+          "tag": "te",
+          "tagText": "小屏彩墨",
+          "st": "已开售",
+          "title": "BOOX Tab Mini C 发布（7.8″ Kaleido 3 快刷彩墨）",
+          "desc": "把 Tab 系列的快刷 + 彩墨组合塞进 7.8″：Kaleido 3 面板，黑白 1404×1872（300PPI）/ 彩色 468×624，八核处理器、4GB + 64GB、5000mAh、8.3mm / 310g，跑 <b>Android 11</b>，支持 Google Play。当年被海外媒体评为「最佳 A6 尺寸彩色墨水屏」。",
+          "price": "—（海外渠道为主）"
+        }
+      ]
+    },
+    {
+      "m": "2024年",
+      "label": "大屏极限与手机型迭代 · Note Max 13.3″ + Palma 2",
+      "meta": "两极扩张",
+      "items": [
+        {
+          "time": "10.23",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "BOOX Palma 2 发布（第二代手机型墨水屏）",
+          "desc": "Palma 的迭代款，延续 6.13″ 手机形态与 Android 开放生态，重点提升处理器性能与系统流畅度，并跟进新一代 Android 版本。<b>Palma 2 让「手机型墨水屏」从尝鲜品变成文石稳定的产品线</b>，也为 2026 年的 Palma 3 做了铺垫。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "12.31",
+          "tag": "",
+          "tagText": "旗舰大屏",
+          "st": "已开售",
+          "title": "BOOX Note Max 发布（13.3″ Carta 1300，年度收官）",
+          "desc": "文石在 2024 年最后一天发布的 A4 级大屏旗舰：<b>13.3″ Carta 1300</b> 面板——这是元太当年最新的黑白电子纸世代，对比度与刷新速度较 Carta 1200 明显提升。定位面向专业阅读与文档批注（学术论文、技术手册、乐谱、建筑图纸），也是文石与汉王 N10 Max（13.3″）在超大屏段的正面竞争。",
+          "price": "—（海外渠道为主）"
+        }
+      ]
+    },
+    {
+      "m": "2025年",
+      "label": "固件 V4.0 + 全系刷新 + 25.3″ 台式彩色墨水屏",
+      "meta": "生态年",
+      "items": [
+        {
+          "time": "04.10",
+          "tag": "te",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "BOOX 固件 V4.0 发布（系统级大版本）",
+          "desc": "文石把竞争重心从硬件转向软件：V4.0 是一次系统级大版本更新，覆盖界面、笔记、阅读引擎与多设备协同。<b>固件版本号本身成为文石的产品节奏节点</b>——2026 年 4 月 21 日又跟进 V4.2。对开放安卓路线的厂商来说，系统长期维护能力才是生态壁垒。",
+          "price": "—（全系 OTA）"
+        },
+        {
+          "time": "2025年",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "BOOX Go 7 系列发布（7″ 阅读器主力线）",
+          "desc": "Go 系列是文石 2025 年在 7″ 走量段的布局，主打「安卓开放 + 高 PPI 阅读 + 便携」，对标掌阅 Ocean 与汉王 Clear7 系列。Go 系列此后成为文石更新最频繁的产品线（2026 年继续推出 Go 10.3 Gen II、Go 6 二代）。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "2025年",
+          "tag": "",
+          "tagText": "巨屏",
+          "st": "已开售",
+          "title": "BOOX Tab X C 发布（13.3″ 快刷彩墨平板）",
+          "desc": "把 Tab 系列做到 13.3″ 并配上 Kaleido 3 彩墨 + BSR 快刷：定位桌面级彩色电子纸工作站，用于 PDF 批注、图表审阅、多窗口办公。这是文石在超大屏 + 彩色 + 快刷三个维度上的合集产品。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "2025年",
+          "tag": "pu",
+          "tagText": "新形态",
+          "st": "已开售",
+          "title": "BOOX Mira Pro 彩色版发布（25.3″ 台式彩色墨水屏显示器）",
+          "desc": "文石第一次做<b>桌面显示器形态</b>：25.3″ 彩色墨水屏，接电脑当护眼副屏 / 主屏使用。这条 Mira 系列承担的是「墨水屏进入办公桌面」的叙事，也是文石唯一不装电池、不跑安卓的产品线——纯显示设备。",
+          "price": "—（专业显示器定价区间）"
+        },
+        {
+          "time": "2025年",
+          "tag": "id",
+          "tagText": "限量",
+          "st": "已开售",
+          "title": "BOOX Go 6 雪白限量款发布",
+          "desc": "Go 6 的限量配色版，走「颜值款」运营路线。文石在售机型上投放限定配色已成常态（2026 年 Leaf5+ 又追加「森林绿」），用于在产品周期中段制造话题。",
+          "price": "—（限量款）"
+        },
+        {
+          "time": "2025秋",
+          "tag": "pu",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "2025 秋季：两款彩墨新品齐发",
+          "desc": "文石在 2025 年秋季一次性投放两款彩墨新品，继续加密彩色产品线。至此文石在彩墨赛道已覆盖 7.8″（Tab Mini C）、10.3″（Tab Ultra C / Note Air3 C）、13.3″（Tab X C）三个尺寸段，是四家中彩色产品矩阵最全的厂商。",
+          "price": "—（分机型另发）"
+        }
+      ]
+    },
+    {
+      "m": "2026年",
+      "label": "三折叠彩墨 + 手机型续作 + IPO 受阻 · 全年最激进",
+      "meta": "2026 · 全年最密集",
+      "items": [
+        {
+          "time": "03月",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "BOOX P6+ / T10C+ 发布（6.13″ / 10.3″ 双线更新）",
+          "desc": "文石 2026 年的第一波更新，两条主力线同步换代。<b>P6+</b>：6.13″ 300PPI、6GB + 128GB、3950mAh、<b>175g</b>，定位便携阅读主力；<b>T10C+</b>：10.3″ Kaleido 3（黑白 300PPI / 彩色 150PPI）、4GB + 128GB、3700mAh、420g，定位彩色办公主力。两款均为<b>高通八核</b>，跑 Android 13 + BOOX OS，支持 Google Play。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "04.01",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "BOOX Flex 发布：三折叠超级彩墨本",
+          "desc": "2026 年整个电纸书行业形态最激进的一款。<b>三折叠</b>结构 + 彩墨屏，折叠时可单手携带、展开后可当大屏办公本使用，本质是把「便携阅读器」与「大屏墨水屏平板」两个需求用一套柔性结构同时满足。文石在 Palma（手机型）与 Note Max（13.3″ A4）之外，又开了一条折中形态路线。",
+          "price": "—（发布时未公布统一零售价）"
+        },
+        {
+          "time": "04.18",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "BOOX Go 10.3 (Gen II) 系列发布（10.3″ 主力换代）",
+          "desc": "Go 系列第二代往 10.3″ 上探：把「安卓开放 + 快刷 + 高 PPI」的组合放到文石最卷的 10.3″ 尺寸段，正面对上汉王 N10 Pro 三代、掌阅 Smart 6 Pro 与科大讯飞 Air 系列。Go 10.3 走的是「不含手写生态溢价的纯阅读 / 轻办公」定位，与 Note 系列形成价格梯度。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "04.21",
+          "tag": "te",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "BOOX 固件 V4.2 发布",
+          "desc": "距 V4.0 发布约一年的大版本迭代，延续「固件即产品节奏」的打法。对文石这类开放安卓路线的厂商，老机型能否持续拿到系统更新，直接决定二手机残值与用户口碑。",
+          "price": "—（全系 OTA）"
+        },
+        {
+          "time": "04.23",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "BOOX Leaf5+ 发布（黑白墨水屏，1749 元）",
+          "desc": "Leaf 系列是文石在国内电商渠道的主力走量线，5+ 是这一代的中期改款：黑白墨水屏、1749 元，定价与汉王 Clear7C 彩墨（1749 元）、掌阅 Ocean 系列正面撞车。5 月 18 日追加<b>「森林绿」配色</b>，5 月 21 日发售。",
+          "price": "<b>1749</b> 元｜森林绿配色同期追加"
+        },
+        {
+          "time": "05.21",
+          "tag": "te",
+          "tagText": "阅读器",
+          "st": "已开售",
+          "title": "BOOX Poke 7 系列发布（6″，300PPI，1199 元起）",
+          "desc": "Poke 是文石历史最久的阅读器产品线之一，7 代回到 6″ 走量段：<b>300PPI</b>，官方强调<b>前光均匀性达 90%</b>（这是 6″ 小屏阅读器最常见的翻车点——四角发暗），1199 元起。正面竞争掌阅 Light 系列与汉王 Clear6 Pro。",
+          "price": "<b>1199</b> 元起"
+        },
+        {
+          "time": "05.29",
+          "tag": "te",
+          "tagText": "办公本",
+          "st": "已开售",
+          "title": "BOOX Note X6 墨水屏办公本发布（10.3″，高通 6690，3299 元）",
+          "desc": "Note 系列 2026 年的主力办公本：10.3″ 墨水屏、<b>高通 6690</b> 处理器，3299 元。定价高于 Go 10.3 但低于 Note Air 系列，属于「性能够用 + 安卓开放 + 有手写」的中间价位。对标掌阅 Smart 6 Pro、科大讯飞办公本 Air 3 Pro。",
+          "price": "<b>3299</b> 元"
+        },
+        {
+          "time": "06.10",
+          "tag": "id",
+          "tagText": "便携",
+          "st": "已开售",
+          "title": "BOOX Go 6 二代发布（6″ 口袋型阅读器）",
+          "desc": "Go 6 的换代，继续守在 6″ 口袋阅读器这个最小众但最刚需的尺寸。文石在 6″ 段同时运营 Poke 7（国内走量）与 Go 6 二代（海外 / 便携线）两个系列，靠命名与渠道做价格分层。",
+          "price": "—（海外渠道为主）"
+        },
+        {
+          "time": "07.16",
+          "tag": "pu",
+          "tagText": "资本",
+          "st": "已发布",
+          "next": true,
+          "title": "文石信息港股 IPO 招股书失效",
+          "desc": "文石在港交所递交的上市申请（招股书）因逾期未更新而<b>失效</b>。这是本文四家电纸书厂商里唯一一条资本市场动作，其信息量不低于任何一台新机——招股书失效意味着上市进程受阻，需要重新递交并更新财务数据。对做行业内容的人来说，这条比「又发了一台新机」更值得单独成条。",
+          "price": "—（资本事件）"
+        },
+        {
+          "time": "09.07",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "BOOX Picco 发布：3.97″ 迷你电纸书",
+          "desc": "文石把墨水屏压到极限尺寸：<b>3.97″</b>。定位「口袋便签 / 极简阅读器」，是针对「手机太耗神、阅读器太大」这个夹缝需求的产品。文石在形态上的激进程度在四家中最高——从 3.97″ 到 25.3″ 全尺寸覆盖。",
+          "price": "—（迷你款定价区间）"
+        },
+        {
+          "time": "09.16",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "next": true,
+          "title": "BOOX Palma 3 + Note Air6 C 同发（手机型第三代 + 10.3″ 彩墨）",
+          "desc": "两条线同一天更新。<b>Palma 3</b>：6.13″ 墨水屏、<b>铝边框</b>、跑 <b>Android 16</b>（四家中最新的 Android 版本），售价 <b>$320</b>——Palma 系列第三代，已从「尝鲜形态」变成稳定迭代的成熟产品线。<b>Note Air6 C</b>：10.3″ 彩墨屏，<b>3901</b> 元，是 Note Air3 C 的后继，继续加固文石在 10.3″ 彩色办公本段的地位。",
+          "price": "Palma 3 <b>$320</b>｜Note Air6 C <b>3901</b> 元"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>阅读器线</b>：Poke 7 系列（6″，1199 起）· Go 6 二代（6″ 口袋型）· Go 7 系列（7″）· Leaf5+（黑白，1749 / 森林绿）· P6+（6.13″，175g）· Picco（3.97″ 迷你）· Mira Pro 彩色版（25.3″ 台式显示器）",
+    "<b>手机型墨水屏线</b>：Palma（2023 首发）· Palma 2（2024-10）· Palma 3（2026-09，铝边框 + Android 16，$320）—— 文石是该形态的开创者，汉王、掌阅 2026 年相继跟进",
+    "<b>手写办公线 Note / Note Air</b>：Note Air3 C（10.3″ Kaleido 3，2023-10，Android 12）· Note Max（13.3″ Carta 1300，2024-12-31）· Note X6（10.3″，高通 6690，3299 元）· Note Air6 C（10.3″ 彩墨，3901 元）",
+    "<b>快刷彩墨线 Tab</b>：Tab Ultra C / Tab10 C（10.3″，2023-05）· Tab Mini C（7.8″，2023）· Tab X C（13.3″ 彩墨，2025）",
+    "<b>形态创新</b>：BOOX Flex 三折叠超级彩墨本（2026-04-01）· Palma 系列手机型 · Picco 3.97″ 迷你",
+    "<b>系统 / 固件</b>：BOOX OS（基于 Android，支持 Google Play）· 固件 V4.0（2025-04-10）· 固件 V4.2（2026-04-21）",
+    "<b>口径提示</b>：文石为海外渠道优先型厂商，多数机型以美元 / 欧元定价（Palma 3 $320、Tab Ultra C 海外 $599.99），与国内定价不构成直接换算；国内专供 SKU（Leaf5+ 1749 元、Poke 7 1199 元起、Note X6 3299 元、Note Air6 C 3901 元）与海外型号名不完全对应；IPO 招股书失效为公开市场信息，具体原因未获公司说明"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：文石 BOOX 官方发布 / IT之家 / 新浪财经 / Good e-Reader / gsmchoice 规格库 / readwithpro 机型库 / 香港交易所披露易（招股书状态）"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

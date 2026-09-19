@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>索尼 Alpha 相机 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#c8102e; --accent-soft:#fde8eb;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff6b7d; --accent-soft:#3a161d;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#c8102e}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="sony-camera-2026-launch-timeline.html" class="on" aria-current="page">索尼</a>
+      <a href="canon-camera-2026-launch-timeline.html">佳能</a>
+      <a href="nikon-camera-2026-launch-timeline.html">尼康</a>
+      <a href="panasonic-camera-2026-launch-timeline.html">松下</a>
+      <a href="dji-camera-2026-launch-timeline.html">大疆</a>
+      <a href="insta360-camera-2026-launch-timeline.html">影石</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售机身与镜头群 · 价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "SONY ALPHA · 2022–2026 LAUNCH TIMELINE",
+  "title": "索尼 Alpha 相机 2022–2026 产品发布年表",
+  "subtitle": "五年主线：全画幅从 A7 IV 走向 A7 V 与 A7R VI，视频线从 FX3 扩到 FX2 / FX5，APS-C 交给 vlog 专用 ZV-E10 II · 价格一律标注发布时为口径",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "全画幅主体（A7 / A7R / A7S / A1 / A9）跑通「AI 芯片 + 全局快门 + 8K」；视频线单独立 FX 门类；APS-C 收缩为 ZV 系列",
+      "s": "产品矩阵"
+    },
+    {
+      "k": "年度技术",
+      "v": "2024 年 A9 III 首颗全画幅全局快门 → 2025 年 A1 II 补 AI 芯片 → 2026 年 A7R VI 把 6100 万像素推上 8K 视频",
+      "s": "技术节奏"
+    },
+    {
+      "k": "卡口生态",
+      "v": "E 卡口开放策略维持：机身上限不设，靠 G / GM 镜头与第三方镜头群形成锁定",
+      "s": "生态位"
+    },
+    {
+      "k": "价格带",
+      "v": "APS-C ZV-E10 II 约 6800 元起 · 全画幅入门 A7 V 约 1.7 万元 · 旗舰 A1 II / A9 III 约 4.7 万元",
+      "s": "三档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022",
+      "label": "全画幅补完：A7 IV 铺量 · A7R V 上 AI 对焦",
+      "meta": "4 机身",
+      "items": [
+        {
+          "time": "2022.03",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Alpha 7 IV（ILCE-7M4）继续铺量",
+          "desc": "3300 万像素 Exmor R 背照式 CMOS + BIONZ XR，是索尼把「入门全画幅」标准拉到 33MP 的一代。10bit 4:2:2、4K60p（Super35 裁切）、S-Cinetone 直出，摄影与视频各拿一半。",
+          "price": "发布时建议零售价约 <b>16999</b> 元（单机身）"
+        },
+        {
+          "time": "2022.10.26",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Alpha 7R V：6100 万像素 + 首搭 AI 处理单元",
+          "desc": "索尼第一台把<b>独立 AI 处理单元</b>塞进机身的 Alpha，实时识别从人眼扩到人体、动物、鸟、昆虫、汽车、火车、飞机共 <b>7 类</b>主体。6100 万像素背照式 CMOS 配 8 档机身防抖，八向翻转屏也是首次。",
+          "price": "发布时约 <b>25999</b> 元（单机身）"
+        },
+        {
+          "time": "2022.09",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "ZV-E10 与 ZV-1 延续 vlog 线",
+          "desc": "APS-C 的 ZV-E10 与 1″ 黑卡的 ZV-1 构成索尼 vlog 入门双线，主打翻转屏 + 三胶囊麦克风 + 产品展示模式。这两台机器撑住了索尼在内容创作者市场的入门位。",
+          "price": "ZV-E10 发布时约 <b>5499</b> 元（套机）"
+        }
+      ]
+    },
+    {
+      "m": "2023",
+      "label": "全局快门落地：A9 III 改写快门概念",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2023.01",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Alpha 7R V 供货趋稳，FE 20-70mm F4 G 发布",
+          "desc": "索尼补上「轻量小三元」位的 FE 20-70mm F4 G，20mm 起跳的 F4 标准变焦。镜头侧这一年在补 G 系列的中端空缺。",
+          "price": "FE 20-70mm F4 G 发布时约 <b>1199</b> 美元"
+        },
+        {
+          "time": "2023.08.29",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Alpha 7C II / Alpha 7CR：紧凑全画幅双发",
+          "desc": "7C II 是 3300 万像素的紧凑全画幅，7CR 直接塞进 6100 万像素。两台共用同一套紧凑机身与 AI 识别，把「小巧 + 高画质」这条线做成系列。",
+          "price": "A7C II 发布时约 <b>17999</b> 元；A7CR 约 <b>23999</b> 元"
+        },
+        {
+          "time": "2023.11.08",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Alpha 9 III：全球首款全画幅全局快门相机",
+          "desc": "这年最重要的一台。Exmor RS 全局快门 CMOS 彻底消除果冻效应，实现<b>全速闪光同步</b>（任意快门速度可同步闪光）与 <b>120fps 无黑屏连拍</b>。代价是基础 ISO 从 100 起、动态范围略逊于堆栈式。",
+          "price": "发布时约 <b>46999</b> 元（单机身）"
+        }
+      ]
+    },
+    {
+      "m": "2024",
+      "label": "影像线扩张：ZV 补位 · A1 II 补 AI",
+      "meta": "4 机身",
+      "items": [
+        {
+          "time": "2024.02",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "FE 24-50mm F2.8 G：便宜量足的标准变焦",
+          "desc": "索尼少见的「低价 F2.8 恒光圈」标准变焦，24-50mm 焦段偏窄但轻便便宜，明显是给 A7C 系列与 ZV-E1 用户配的挂机头。",
+          "price": "发布时约 <b>7999</b> 元"
+        },
+        {
+          "time": "2024.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Alpha 9 III 固件升级解锁 4K120p",
+          "desc": "通过固件把 4K120p 视频能力补齐，同时改善自动对焦与防抖表现。索尼在全局快门上继续压榨这台机器的视频价值。",
+          "price": "—（固件更新）"
+        },
+        {
+          "time": "2024.06",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "ZV-E10 II：APS-C vlog 专用换代",
+          "desc": "2600 万像素 APS-C 传感器 + BIONZ XR，加入 4K60p（裁切）、三胶囊麦克风、AI 主体识别。这是索尼把 APS-C 彻底转向「创作者工具」的信号 —— A6000 系列不再更新。",
+          "price": "发布时约 <b>6999</b> 元（套机）"
+        },
+        {
+          "time": "2024.11.19",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Alpha 1 II：旗舰补上 AI 处理单元与预拍摄",
+          "desc": "5010 万像素堆栈式 CMOS 不变，但补上 <b>AI 处理单元</b>、增强防抖、预拍摄（Pre-capture）与更快的 8K30p 编码。这是把 A1 从「参数旗舰」推到「体验旗舰」的一次改款。",
+          "price": "发布时约 <b>47999</b> 元（单机身）"
+        }
+      ]
+    },
+    {
+      "m": "2025",
+      "label": "视频线独立：FX2 与 FX5 撑起专业门类",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2025.02.25",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Alpha 7 V 曝光预告与 FE 400-800mm F6.3-8 G 发布",
+          "desc": "超长焦变焦把 800mm 做到消费级，配合 A9 III 的 120fps 连拍主打生态与航空摄影。索尼在「荒野题材」这条线上越做越深。",
+          "price": "FE 400-800mm F6.3-8 G 发布时约 <b>15999</b> 元"
+        },
+        {
+          "time": "2025.05.29",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "FX2：影院盒式机身的混合式改款",
+          "desc": "延续 FX3 的盒式机身语言，加入可倾斜电子取景器与更完整的机身操作，定位「一人剧组」的 A / B 机。索尼把 FX 线从纯电影机往混合拍摄推。",
+          "price": "发布时约 <b>2799</b> 美元"
+        },
+        {
+          "time": "2025.12.02",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Alpha 7 V：全画幅入门换代",
+          "desc": "时隔四年半的 A7 迭代。3300 万级传感器 + BIONZ XR + AI 处理单元，4K60p 补齐、机身防抖升级、菜单与握持重新设计。索尼称其为「最平衡的一代 A7」。",
+          "price": "发布时约 <b>16999</b> 元（单机身）"
+        }
+      ]
+    },
+    {
+      "m": "2026",
+      "label": "高像素与视频双向推进：A7R VI · FX5",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2026.05.13",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "Alpha 7R VI：6100 万像素首上 8K 视频",
+          "desc": "索尼高像素线的关键一跃 —— 首次让 6100 万像素机身具备 <b>8K</b> 视频能力，同时补上 AI 处理单元与新一代防抖。对风光与商业摄影用户，这是「静态 + 视频」不再二选一的一代。",
+          "price": "发布时约 <b>27999</b> 元（单机身，以官方公布为准）"
+        },
+        {
+          "time": "2026.07.22",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "next": true,
+          "title": "FX5：FX 线再向上一级",
+          "desc": "在 FX3 / FX2 之上补齐更高规格的电影机身，定位大制作 B 机与独立电影机。索尼把 FX 序列做成 3 / 2 / 5 三档，价格与规格同步上探。",
+          "price": "发布时约 <b>3999</b> 美元（待官方确认为准）"
+        },
+        {
+          "time": "2026.09",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "next": true,
+          "title": "A7S IV 传闻：视频旗舰何时换代",
+          "desc": "A7S III 发布于 2020 年，至今未换代。业内普遍预期索尼会在高感视频线上给出新答案，但截至本表整理日<b>官方未公布任何信息</b>。",
+          "price": "未公布"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五年机身脉络</b>：2022 A7 IV / A7R V → 2023 A7C II · A7CR · A9 III（首款全画幅全局快门）→ 2024 A9 III 固件 4K120p · ZV-E10 II · A1 II → 2025 FX2 · A7 V → 2026 A7R VI · FX5",
+    "<b>APS-C 收缩</b>：ZV-E10 II 之后 A6000 系列停止更新，APS-C 全线归入 ZV vlog 品牌；A6x00 用户升级路径指向全画幅 A7C II",
+    "<b>镜头侧重点</b>：FE 20-70mm F4 G（2023）· FE 24-50mm F2.8 G（2024）· FE 400-800mm F6.3-8 G（2025）—— 轻量变焦 + 超长焦两端同时补",
+    "<b>视频门类</b>：FX3（2021）→ FX2（2025）→ FX5（2026），三档并行；机身不再只靠 Alpha 承载专业视频",
+    "<b>口径提示</b>：价格均为发布时建议零售价 / 官方公布价，非当前渠道价；2026 年条目中 FX5 规格与价格、A7S IV 均以官方最终公布为准，本表整理日部分数据来自发布报道而非官网规格页"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：索尼中国官网新品页 / DPReview 发布报道 / 索尼 Alpha 官方规格表 · 价格均为发布时口径"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

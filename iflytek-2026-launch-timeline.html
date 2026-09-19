@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科大讯飞智能办公本 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0d7a72; --accent-soft:#e3f2f0;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5cc2b8; --accent-soft:#12302e;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0d7a72}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0f6fbf}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .brandnav a{padding:6px 10px;font-size:11px}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="hanvon-2026-launch-timeline.html">汉王</a>
+      <a href="boox-2026-launch-timeline.html">文石</a>
+      <a href="ireader-2026-launch-timeline.html">掌阅</a>
+      <a href="iflytek-2026-launch-timeline.html" class="on" aria-current="page">科大讯飞</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线体系与市场站位</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "IFLYTEK · 2022–2026 LAUNCH TIMELINE",
+  "title": "科大讯飞智能办公本 2022–2026 产品发布年表",
+  "subtitle": "5 年主轴：2022 Air 把办公本做到 7.8″ 便携 → 2023 X3 接入星火大模型 → 2024 Air 2 三大 AI 绝招 → 2025 X5 本地大模型 + 离线 AI → 2026 Air 3 系列 + NoteClaw 龙虾助手",
+  "badge": "2022–2026",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "讯飞把「语音转写」作为不可替代的护城河：八麦克风阵列 + 语义转折点识别 + 行业词库 + 方言 / 外语覆盖，是四家中唯一以「会议效率」而非「读写体验」定义品类的厂商",
+      "s": "语音护城河"
+    },
+    {
+      "k": "产品矩阵",
+      "v": "X 系列（10.65″ 旗舰：X3 / X5 / X5 Pro）· Air 系列（8.2″ 便携：Air / Air 2 / Air 3 系列）· MAX（13.3″ 超大屏）· 讯飞·起点阅读器（7″ 彩屏）",
+      "s": "四条线"
+    },
+    {
+      "k": "AI 节点",
+      "v": "2023 星火大模型上车（X3）→ 2024 三大 AI 绝招（Air 2）→ 2025 全球首款本地大模型墨水屏办公设备 + 五大离线 AI（X5）→ 2026 NoteClaw 龙虾助手「天天」跨端协同",
+      "s": "四代 AI"
+    },
+    {
+      "k": "市场站位",
+      "v": "洛图科技报告：科大讯飞办公本在中国智能办公本市场<b>连续 6 年销量第一</b>——这是四家中唯一有公开第三方份额口径背书的一家",
+      "s": "六年第一"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022年",
+      "label": "Air 问世 · 办公本从 10.3″ 走到 7.8″",
+      "meta": "尺寸下探年",
+      "items": [
+        {
+          "time": "05.23",
+          "tag": "te",
+          "tagText": "便携",
+          "st": "已开售",
+          "title": "智能办公本 Air 发布（7.8″ E Ink 300PPI，首发 2799 元起）",
+          "desc": "讯飞办公本的一次关键尺寸下探：此前 X 系列固定在 10.3″，Air 把整机压到 <b>7.8″</b>、<b>5mm 厚 / 约 230g</b>，用<b>镁铝合金</b>机身实现轻薄。屏幕为 7.8″ E Ink <b>300PPI</b>；配套 <b>Wacom 定制电磁笔</b>（<b>23ms 延迟</b>、<b>4096 级压感</b>）；跑 Android 11 定制系统；核心能力是语音——转写准确率 <b>98%</b>，支持 <b>12 种方言 + 6 种外语互译</b>，配 500 万像素摄像头（拍照转文档）。Air 系列此后成为讯飞出货量最大的产品线，也是它对标掌阅 Smart Air、汉王 N10 mini 的主力。",
+          "price": "首发 <b>2799</b> 元起"
+        },
+        {
+          "time": "12.19",
+          "tag": "pu",
+          "tagText": "荣誉",
+          "st": "已发布",
+          "title": "智能办公本 Air 入选第十九届人民匠心奖",
+          "desc": "产品力之外的品牌背书节点。讯飞办公本的政企 / 国企客群占比高，这类官方奖项对其渠道说服力有实际价值——做年表时不应只收硬件事件，荣誉与渠道类节点同样影响产品的市场表现。",
+          "price": "—（奖项）"
+        }
+      ]
+    },
+    {
+      "m": "2023年",
+      "label": "X3 发布 · 星火大模型首次上车",
+      "meta": "AI 元年",
+      "items": [
+        {
+          "time": "08.09",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "智能办公本 X3 发布（10.65″，八麦克风阵列，全面应用星火大模型，4999 元起）",
+          "desc": "讯飞办公本历史上最重要的一次升级，也是大模型第一次成为办公本的核心卖点。<b>硬件</b>：10.65″ E Ink 柔性墨水屏、<b>300ppi</b> 视网膜级显示，Wacom 定制磁吸电磁笔；开创性采用<b>灵动条</b>设计——解决墨水屏设备长期存在的翻页慢难题；<b>首次搭载八麦克风阵列</b>，支持 360° 拾音及声源定位，实现更精准的语音转写与说话人识别。<b>AI 能力</b>：全面应用<b>讯飞星火认知大模型</b>——AI 自动生成会议纪要、自动生成工作周报；右滑呼出灵动条即可调用星火做开放式多轮对话；个人日程管理也深度结合星火，会议中在重要事项前手绘<b>五角星或圆圈</b>即生成「关注星」或「待办」，自动汇聚到日程。<b>其它</b>：专业文档扫描摄像头（纸质转电子、印刷体与手写体转可编辑文本、新增表格识别）、读写客 App 新增「文件驿站」跨设备传输、支持 <b>4G 全网通</b> / 多邮箱 / WPS Office 文档编辑、讯飞语音合成 4.0（二十多位朗读主播、支持方言与外语听书）。发布会邀请人文财经观察家<b>秦朔</b>做「智能化红利与个人办公的未来」主题分享。",
+          "price": "<b>4999</b> 元起｜8/9 线上线下同步开售"
+        }
+      ]
+    },
+    {
+      "m": "2024年",
+      "label": "Air 2 系列 · 三大 AI 绝招与 88.5% 屏占比",
+      "meta": "AI 深化年",
+      "items": [
+        {
+          "time": "08.06",
+          "tag": "te",
+          "tagText": "便携",
+          "st": "已开售",
+          "title": "智能办公本 Air 2 / Air 2 Pro 发布（8.2″，三大 AI 绝招，2899 / 3399 元）",
+          "desc": "在成都举办「AI 懂你，轻得自在」发布会。①<b>Air 2</b>：屏幕从 Air 的 7.8″ 升到 <b>8.2″ E Ink</b>，视觉屏占比达 <b>88.5%</b>，同时保持 <b>5mm 厚 / 230g</b> 的轻薄；配 Wacom 定制磁吸电磁笔；搭载家族标志性的灵动条（右滑即唤出星火做开放式问答）。②<b>Air 2 Pro</b>：<b>首款支持 4G 网络的 8.2″ 便携墨水屏设备</b>，无需配网、AI 能力随时在线。<b>转写升级</b>：上下分布<b>四麦阵列</b>、360° 拾音，首次采用<b>语义转折点识别算法</b>，大幅提升多人会议<b>分角色转写</b>准确率；专门消除书写时的屏笔摩擦噪音；支持 <b>12 种方言识别 / 8 种外语互译 / 16 大行业词库</b>。<b>三大 AI 绝招</b>：① 会议纪要——自动生成纪要，且能<b>根据不同发言人分别总结</b>，并针对政企会议提供「专业版纪要」（按模板自动组织格式）② 笔记分析——首次推出，含「知识洞察」与「知识挖掘」，可归纳历史笔记、<b>自动生成脑图</b>、按提问直接分析生成答案 ③ AI 写作——填表 + 关键词即生成各类文稿，含即兴发言 / 公文写作 / 营销文案等几十种模板，支持多轮打磨。另有 AI 文档助手、AI 周报、划词搜索。办公侧支持 Word 与 PPT <b>边写边录</b>、一键转文字；读写客新增手机端拍照插入笔记，实现录音转写 / 手写 / 拍照三合一。阅读侧融合讯飞、京东读书、当当三大书城，支持<b>一句话声音复刻</b>听书。官方同期披露：讯飞智能办公本自 <b>2019 年首发</b>以来，用户规模从千人增长到<b>一百多万人</b>。",
+          "price": "Air 2 <b>2899</b> 元｜Air 2 Pro <b>3399</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "2025年",
+      "label": "X5 发布 · 全球首款本地大模型墨水屏办公设备",
+      "meta": "年度技术高点",
+      "items": [
+        {
+          "time": "07.22",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "智能办公本 X5 发布（10.65″，离线 AI + 八麦克风，4999 / 5699 元）",
+          "desc": "讯飞办公本的技术顶点，也是四家厂商 2025 年最有分量的一台设备——官方定位<b>「全球首款本地大模型墨水屏办公设备」</b>。<b>硬件</b>：10.65″ E Ink <b>300PPI</b>，<b>355g / 4.6mm</b>（官方称同尺寸全球最轻最薄）；<b>8 核 MT8189</b>（6nm）+ <b>9T NPU</b>，GPU 快刷提速 <b>50%+</b>；<b>比亚迪定制 4500mAh 超薄高压电池</b>；Wacom 定制<b>第三代东云笔</b>。<b>语音与 AI</b>：<b>八麦克风阵列</b> 360° 全向拾音，支持 <b>200+ 方言</b>、<b>8 种外语互译</b>、9 种外语识别、16 大行业词库；核心是<b>五大离线 AI</b>——离线降噪 / 离线转写 / 离线分角色转写 / 中英离线互译 / 离线会议纪要，全部可在断网状态本地完成（大模型跑在端侧）。<b>安全设计</b>：物理<b>离线拨键</b> + <b>微孔指示灯</b> + <b>笔记保密箱</b>，面向涉密会议与政企场景——这是讯飞相对其它三家最不可替代的差异化。<b>配置</b>：标准版 6+64GB 曜石灰、Pro 版 6+128GB；官方同期预告 <b>X5 LAMY 联名款</b>即将推出。",
+          "price": "标准版 <b>4999</b> 元（6+64GB 曜石灰）｜Pro 版 <b>5699</b> 元（6+128GB）"
+        }
+      ]
+    },
+    {
+      "m": "2026年",
+      "label": "Air 3 系列 + NoteClaw 龙虾助手 · 大屏与彩屏补齐矩阵",
+      "meta": "2026 · 生态外扩",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "智能办公本 X5 Pro 发布（10.65″，2560×1600，128GB）",
+          "desc": "X5 的高配迭代：10.65″ 分辨率升至 <b>2560×1600</b>、存储 <b>128GB</b>、八核处理器。官方商城售价约 <b>5699</b> 元（京东第三方渠道标价 11518.4 元，为溢价标价，不构成官方价格口径）。",
+          "price": "官方约 <b>5699</b> 元"
+        },
+        {
+          "time": "2026年",
+          "tag": "te",
+          "tagText": "大屏",
+          "st": "已开售",
+          "title": "智能办公本 MAX2 发布（13.3″ 超大屏，6399 元）",
+          "desc": "讯飞补齐 13.3″ A4 级超大屏段，与汉王 N10 Max、文石 Note Max 在同一尺寸竞争。定位「文档密集型办公 + 大屏批注」，6399 元。<b>此前讯飞办公本最长期缺失的就是 13.3″ 这一档</b>，MAX2 补上了产品矩阵的最后一块。",
+          "price": "<b>6399</b> 元"
+        },
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "彩屏",
+          "st": "已开售",
+          "title": "讯飞·起点阅读器发布（7″ 彩屏，1299 元）",
+          "desc": "讯飞罕见的「纯阅读器」产品——与起点（阅文旗下）联名的 7″ 彩屏电子书阅读器，1299 元。此前讯飞办公本全部定位办公场景（学习机与录音笔另算），这台机器意味着它开始向「阅读」场景外扩，且定价直接对标掌阅 Ocean 5C（1799 元）与汉王 Clear7C（1749 元）的更低一档。",
+          "price": "<b>1299</b> 元"
+        },
+        {
+          "time": "05.24",
+          "tag": "",
+          "tagText": "走量旗舰",
+          "st": "已开售",
+          "title": "办公本 Air 3 系列发布（深圳发布会）· Air 3 / Air 3 Neo / Air 3 Pro",
+          "desc": "讯飞 2026 年最重要的发布会，一次发三款。<b>硬件</b>：8.2″ 墨水屏，Pro 版为 <b>Carta 1300</b>（300PPI，屏占比 <b>88.5%</b>，<b>24 级冷暖前光</b>）；4 核或 8 核 CPU + <b>4T NPU</b>；约 <b>235g / 5mm</b>；<b>4 麦克风花瓣开孔阵列</b>（设计上比 Air 2 的上下两排更隐蔽）；标配 Wacom 定制电磁笔。<b>AI 能力</b>：本地离线 AI 转写、<b>200+ 方言</b>、16 大行业词库、8 种语言实时互译；首发 <b>NoteClaw 龙虾助手「天天」</b>——可通过<b>微信语音或文字指令</b>跨端协同，让手机侧直接指挥办公本执行任务，是讯飞第一次把 AI 助手做成跨设备形态。",
+          "price": "Air 3 标准版 <b>2999</b> 元｜Air 3 Neo <b>2499</b> 元｜Air 3 Pro <b>3599</b> 元"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>旗舰办公本线 X</b>：X3（10.65″，八麦克风 + 星火大模型，4999 起，2023-08-09）· X5（10.65″，离线 AI + 9T NPU + 五离线能力，4999 / 5699，2025-07-22）· X5 Pro（10.65″，2560×1600 + 128GB，约 5699）· X5 LAMY 联名款（2025 年预告）",
+    "<b>便携办公本线 Air</b>：Air（7.8″ 300PPI，5mm / 230g，2799 起，2022-05-23）· Air 2 / Air 2 Pro（8.2″，88.5% 屏占比，三大 AI 绝招，2899 / 3399，2024-08-06）· Air 3 / Air 3 Neo / Air 3 Pro（8.2″，Carta 1300，4T NPU，NoteClaw 龙虾助手，2499 / 2999 / 3599，2026-05-24）",
+    "<b>超大屏线 MAX</b>：MAX2（13.3″ 超大屏，6399 元）—— 讯飞此前长期缺失 13.3″ 档，MAX2 补上矩阵最后一块",
+    "<b>阅读器线</b>：讯飞·起点阅读器（7″ 彩屏，1299 元）—— 与起点联名，意味着讯飞从纯办公场景向阅读场景外扩",
+    "<b>AI 能力代际</b>：星火大模型首次上车（X3，2023）→ 三大 AI 绝招：会议纪要 / 笔记分析 / AI 写作（Air 2，2024）→ 五大离线 AI：离线降噪 / 转写 / 分角色转写 / 中英互译 / 会议纪要（X5，2025）→ NoteClaw 龙虾助手「天天」跨端协同（Air 3 系列，2026）",
+    "<b>市场站位</b>：洛图科技报告显示，科大讯飞办公本在中国智能办公本市场<b>连续 6 年销量第一</b>；用户规模自 2019 年首发以来从「千人」增长到「一百多万人」（2024-08 官方口径）",
+    "<b>口径提示</b>：X5 Pro 京东第三方渠道标价 11518.4 元为溢价标价，官方商城口径约 5699 元，请以官方为准；「全球首款本地大模型墨水屏办公设备」「同尺寸全球最轻最薄」「转写准确率 98%」均为<b>厂商口径，未获第三方验证</b>；「NoteClaw 龙虾助手」「东云笔」「灵动条」为品牌自定义命名，非行业标准术语；「连续 6 年销量第一」引自洛图科技报告，统计口径为「中国智能办公本市场」"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：科大讯飞官方商城 xunfei.cn / 中国网 / 腾讯新闻 / 三秦网 / 中华网科技 / 东方财富 / CNMO 手机中国 / 南方+ / 中安在线 / 洛图科技（RUNTO）报告"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

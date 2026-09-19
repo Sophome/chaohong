@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>影石 Insta360 摄影器材 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#f5a623; --accent-soft:#fdf1dd;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ffc861; --accent-soft:#3a2c12;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#f5a623}
+  .sqd i:nth-child(2){background:#111827}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="sony-camera-2026-launch-timeline.html">索尼</a>
+      <a href="canon-camera-2026-launch-timeline.html">佳能</a>
+      <a href="nikon-camera-2026-launch-timeline.html">尼康</a>
+      <a href="panasonic-camera-2026-launch-timeline.html">松下</a>
+      <a href="dji-camera-2026-launch-timeline.html">大疆</a>
+      <a href="insta360-camera-2026-launch-timeline.html" class="on" aria-current="page">影石</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售产品线与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "INSTA360 · 2022–2026 LAUNCH TIMELINE",
+  "title": "影石 Insta360 摄影器材 2022–2026 产品发布年表",
+  "subtitle": "五年主线：X 系列 360° 全景从 X3 走到 X6，GO 系列拇指相机三次迭代，2024 年 Ace Pro 切入运动相机，2026 年 Luna 系列用双摄云台进军人像视频",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "四条线：X 系列（360° 全景，五年五代）· GO 系列（拇指相机）· Ace 系列（运动相机）· Luna 系列（2026 新开云台相机）",
+      "s": "产品矩阵"
+    },
+    {
+      "k": "年度技术",
+      "v": "2023 年 X3 把 5.7K 全景做成常态；2025 年 X5 上更大传感器；2026 年 X6 到 8K50fps；Luna Ultra 首次用双徕卡 Summicron 做云台双摄",
+      "s": "技术节奏"
+    },
+    {
+      "k": "市场站位",
+      "v": "IDC 数据：2025 年全球手持智能相机出货份额影石 <b>20.4%</b>，位列第二（大疆 62.4% / GoPro 10.8%）",
+      "s": "份额第二"
+    },
+    {
+      "k": "价格带",
+      "v": "GO 系列约 2000 元级 · Ace Pro 2 约 2698 元 · X 系列 2399–3999 元 · Luna 系列 3099 元起 / Ultra 3999 元起",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022–2023",
+      "label": "全景与拇指相机双线成型",
+      "meta": "5 款",
+      "items": [
+        {
+          "time": "2022.09",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Insta360 X3：5.7K 全景相机",
+          "desc": "X2 的换代。双 1/2.3″ 传感器、<b>5.7K30fps 全景视频</b>、7200 万像素全景照片，1/2″ 传感器与更大的 2.29″ 触摸屏。X3 把全景相机的画质与易用性同时抬高一档。",
+          "price": "发布时约 <b>2998</b> 元"
+        },
+        {
+          "time": "2023.06.27",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Insta360 GO 3：拇指相机 + 翻转屏充电盒",
+          "desc": "GO 2 的换代。相机本体仅 <b>35g</b>，通过带翻转触摸屏的充电盒实现「取下来拍 + 放回去看」，解决了 GO 系列此前不便监看的痛点。GO 3 是小体积 POV 拍摄的代表产品。",
+          "price": "发布时约 <b>2298</b> 元起"
+        },
+        {
+          "time": "2023.09",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Insta360 ONE RS 1英寸全景版等机型铺货",
+          "desc": "影石在这一年维持模块化 ONE RS 线与全景线并行铺货，为后续 X 系列的独立演进做铺垫。",
+          "price": "以官方公布价为准"
+        },
+        {
+          "time": "2023.11",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Insta360 Ace Pro：首次切入运动相机主赛道",
+          "desc": "影石正式做传统形态运动相机，与 GoPro / 大疆正面竞争。1/1.3″ 传感器、<b>徕卡联名镜头</b>、2.4″ 翻转屏、AI 剪辑。此后 Ace 成为影石第四条产品线。",
+          "price": "发布时约 <b>2798</b> 元"
+        },
+        {
+          "time": "2023.09",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Insta360 Link 2 等 AI 摄像头线扩充",
+          "desc": "影石把 AI 追踪能力用到桌面直播摄像头，形成「拍摄 + 会议 + 直播」的旁支产品线。",
+          "price": "以官方公布价为准"
+        }
+      ]
+    },
+    {
+      "m": "2024",
+      "label": "Ace Pro 2 双芯 · X4 迭代",
+      "meta": "3 款",
+      "items": [
+        {
+          "time": "2024.04",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Insta360 X4：8K 全景落地",
+          "desc": "X3 的换代。<b>8K30fps 全景视频</b>、7200 万像素照片、可换镜头保护镜、更大的 2.5″ 屏与 2290mAh 电池。X4 把全景相机推进 8K 时代，也是影石销量最大的机型之一。",
+          "price": "发布时约 <b>3498</b> 元"
+        },
+        {
+          "time": "2024.10.22",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Insta360 Ace Pro 2：AI 双芯 + 1/1.3″ 传感器",
+          "desc": "Ace Pro 的换代。核心是<b>双芯架构</b>（专业影像芯片 + AI 芯片）分担降噪与画质处理，配 1/1.3″ 8K 传感器与徕卡 SUMMARIT 镜头。影石在运动相机上第一次拿到明显的参数与技术优势。",
+          "price": "发布时约 <b>2698</b> 元 / <b>399.99</b> 美元"
+        },
+        {
+          "time": "2024.06",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Insta360 GO 3S：4K 拇指相机",
+          "desc": "GO 3 的小改款，把分辨率提升到 <b>4K</b>，机身依旧 39g 级，继续巩固「最小的 4K 相机」定位。",
+          "price": "发布时约 <b>2498</b> 元起"
+        }
+      ]
+    },
+    {
+      "m": "2025",
+      "label": "GO Ultra 与 X5：传感器全面升级",
+      "meta": "4 款",
+      "items": [
+        {
+          "time": "2025.04",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "Insta360 X5：更大传感器 + 可换镜头",
+          "desc": "X4 的换代，重点在传感器尺寸与夜景画质提升，同时延续可换镜头保护镜设计。<b>8K30fps</b> 全景维持，动态范围与暗部噪声明显改善。",
+          "price": "发布时约 <b>3898</b> 元（以官方公布为准）"
+        },
+        {
+          "time": "2025.08.21",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Insta360 GO Ultra：53g 的 1/1.28″ 拇指相机",
+          "desc": "GO 系列的大改款。机身约 <b>53g</b>，传感器升级到 <b>1/1.28″</b>，支持 4K60fps。传感器尺寸在这个体积里属于激进配置，暗光表现明显强于前代。",
+          "price": "发布时约 <b>449.99</b> 美元"
+        },
+        {
+          "time": "2025.10.28",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "Insta360 X4 Air：165g 轻量全景相机",
+          "desc": "影石把全景相机做轻。<b>165g</b> 机身、双 1/1.8″ 传感器、8K30fps，价格压到 2399 元起。X4 Air 让「随身全景」的门槛显著降低，是大疆 Osmo 360 的直接对手。",
+          "price": "发布时约 <b>2399</b> 元起"
+        },
+        {
+          "time": "2025.12.04",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "Insta360 Antigravity A1：全景无人机",
+          "desc": "影石首次进入无人机形态，用全景相机思路做飞行平台。这是影石在「全景」这个核心能力上向外延展的一步，直接进入大疆的主场。",
+          "price": "发布时约 <b>3998</b> 元起（以官方公布为准）"
+        }
+      ]
+    },
+    {
+      "m": "2026",
+      "label": "Luna 双摄云台与 X6：进军人像视频",
+      "meta": "4 款",
+      "items": [
+        {
+          "time": "2026.05.19",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "Insta360 Mic Pro：无线麦克风",
+          "desc": "影石补上音频外设。标准版单发 <b>698</b> 元，限时 <b>528</b> 元。这一步与大疆 Mic 系列逻辑一致 —— 把拍摄套装做完整。",
+          "price": "标准版单发 <b>698</b> 元；限时价 <b>528</b> 元"
+        },
+        {
+          "time": "2026.06.10",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "next": true,
+          "title": "Insta360 Luna Pro：单摄云台相机",
+          "desc": "影石新开 Luna 系列，正式进入云台相机品类（直接对位大疆 Pocket）。Luna Pro 用单 <b>1″ 摄</b>、8K30fps，海外 <b>599.99</b> 美元起 / 国内 <b>3099</b> 元。",
+          "price": "国内 <b>3099</b> 元；海外 <b>599.99</b> 美元起"
+        },
+        {
+          "time": "2026.06.10",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "Insta360 Luna Ultra：行业首款旗舰双摄云台相机",
+          "desc": "与 Luna Pro 同日发布的高配版。核心是<b>双徕卡 Summicron 镜头</b>：<b>1″ 8K 主摄</b> + <b>1/1.3″ 超级长焦</b>，支持 12 倍变焦（6 倍无损），配 AI 三芯（高通 4nm + 双影像芯片）。视频能力：8K30fps 杜比视界、4K120fps、3700 万像素照片、2 亿像素 2:1 风景照、14 档 10bit I-Log。形态上带可拆卸图传遥控屏（20 米）与头追模块。国内限时售价 <b>3999</b> 元起，上线 5 分钟售罄。",
+          "price": "国内限时 <b>3999</b> 元起"
+        },
+        {
+          "time": "2026.08.12",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "Insta360 X6：8K50fps 全景相机",
+          "desc": "X 系列新一代旗舰全景。<b>1.2 亿像素</b>传感器、<b>8K50fps</b> 全景视频、<b>14.5 档</b>动态范围。X6 把全景相机的视频帧率与宽容度同时抬高，国内 <b>3999</b> 元起。",
+          "price": "发布时约 <b>3999</b> 元起"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五年产品脉络</b>：2022 X3 → 2023 <b>GO 3</b> · <b>Ace Pro（首台运动相机）</b> → 2024 X4 · <b>Ace Pro 2（AI 双芯）</b> · GO 3S → 2025 X5 · <b>GO Ultra（1/1.28″）</b> · X4 Air · Antigravity A1 → 2026 Mic Pro · <b>Luna Pro / Luna Ultra（双摄云台）</b> · X6",
+    "<b>四条产品线</b>：X 系列（360° 全景，五年五代）· GO 系列（拇指相机，GO 3 / 3S / Ultra）· Ace 系列（运动相机）· Luna 系列（2026 新开的云台相机）",
+    "<b>市场地位</b>：IDC 数据，2025 年全球手持智能相机出货份额影石 <b>20.4%</b> 位列第二，大疆 62.4%、GoPro 10.8%，三家合计 93.7%",
+    "<b>关键能力标签</b>：徕卡联名镜头（Ace Pro / Luna 系列）· AI 双芯架构 · 全景 8K（X4→X6）· 极小体积传感器（GO Ultra 53g / 1/1.28″）",
+    "<b>口径提示</b>：价格均为发布时官方公布价或限时价，非当前渠道价；Luna Ultra 的 3999 元为限时首发价，常规售价以官方为准；2026 年条目中部分精确发布日与规格来自发布报道，以官方规格页最终公布为准"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：影石 Insta360 官网新品页 / 官方新闻稿 / 影像媒体发布报道 / IDC 手持智能相机出货数据 · 价格均为发布时口径"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

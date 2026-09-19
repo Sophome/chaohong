@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>汉王电纸书 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#b8860b; --accent-soft:#faf1dd;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#e0b84a; --accent-soft:#332a14;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#b8860b}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#0d7a72}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .brandnav a{padding:6px 10px;font-size:11px}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="hanvon-2026-launch-timeline.html" class="on" aria-current="page">汉王</a>
+      <a href="boox-2026-launch-timeline.html">文石</a>
+      <a href="ireader-2026-launch-timeline.html">掌阅</a>
+      <a href="iflytek-2026-launch-timeline.html">科大讯飞</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售系列与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "HANVON · 2022–2026 LAUNCH TIMELINE",
+  "title": "汉王电纸书 2022–2026 产品发布年表",
+  "subtitle": "5 年主轴：2022 用「减屏层」N10 系列立住手写电纸本 → 2023 补齐 mini / Touch / Max 三尺寸 → 2024 全系换代 → 2025 押注安卓与彩墨 → 2026 上自研「天地」大模型",
+  "badge": "2022–2026",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "减屏层（去电容屏 + 去导光板）是贯穿全程的技术原点：屏白如纸、透光率翻倍，代价是放弃触控，靠实体按键与电磁笔操控",
+      "s": "技术原点"
+    },
+    {
+      "k": "产品矩阵",
+      "v": "Clear（阅读器：6 / 6 Pro / 7 / 7C / Mobile Plus）· N（手写本：N10 / N10 mini / N10 Touch / N10 Max / N10 Pro）· M（办公本：M6 / M10C）· 学习本 / 绘图板 / 墨水屏显示器",
+      "s": "五条线"
+    },
+    {
+      "k": "2026 转折",
+      "v": "CES 发布自研「天地」大模型并接入 DeepSeek 与通义千问，产品从硬件堆料转入「AI + 手写」叙事",
+      "s": "AI 元年"
+    },
+    {
+      "k": "价格带",
+      "v": "入门 1049（Clear6 Pro 二代）→ 主流 1599–2399 → 高端 2609–2609（N10 Pro 三代 / N6 Pro）→ 大屏 4798（N10 Max）",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022年",
+      "label": "减屏层开局 · N10 系列四机型铺满 10.3″ 以上",
+      "meta": "品牌转折年",
+      "items": [
+        {
+          "time": "05.10",
+          "tag": "",
+          "tagText": "奠基",
+          "st": "已开售",
+          "title": "汉王手写电纸本 N10 发布（10.3″，首发 1999 元）",
+          "desc": "汉王电纸书业务真正意义上的转折点。核心是首创的<b>「减屏层」设计</b>：直接去掉电容触控屏与导光板，只保留墨水屏本体与一层手写膜，让墨水屏透光率提升到常规触控设备的 <b>156%</b>，屏幕上层厚度减少 <b>55%</b>。结果就是官方反复强调的<b>「屏白如纸」</b>——底色白度显著高于同期 Kindle 系与国产电容触控机型，文字像浮在纸面上。代价同样明确：<b>没有触控</b>，全部操作靠左侧 9 颗实体按键（8 颗可自定义）与电磁笔完成。硬件为 10.3″ 1872×1404（227PPI）Carta 屏、四核 1.8GHz、2GB LPDDR4X + 64GB、<b>6000mAh</b> 电池（官方标称待机 120 天，睡眠态日耗约 50mAh）、5.5mm / 374g、双频 WiFi + 蓝牙 5.0。",
+          "price": "首发 <b>1999</b> 元（国内）｜后续海外版 $499.99（Good e-Reader 渠道）"
+        },
+        {
+          "time": "10月",
+          "tag": "te",
+          "tagText": "小屏",
+          "st": "已开售",
+          "title": "N10 mini 发布（7.8″，1899 元起）· 响应小尺寸呼声",
+          "desc": "N10 上市后用户最集中的诉求是「同样屏白，但要能单手拿」。同年 10 月，7.8″ 的 N10 mini 问世，<b>完整继承「加减有道」的减屏层理念</b>：同样去掉电容屏与导光板，18 级灰阶算法模拟 256 级效果，4096 级压感手写笔。与小屏化相对的是<b>新增麦克风与扬声器</b>——这是 N10 系列第一次具备听书与语音能力，官方定位从「读写本」扩到「便携读写 + 听」。",
+          "price": "首发 <b>1899</b> 元起（2GB+32GB）｜12 月 4GB+64GB 高配版上架 <b>2199</b> 元"
+        },
+        {
+          "time": "12月",
+          "tag": "te",
+          "tagText": "参数",
+          "st": "已开售",
+          "title": "N10 mini 4GB+64GB 高配版上架",
+          "desc": "补上小屏段的存储短板：原版 2GB+32GB 在多任务与大型 PDF 下吃紧，高配版升到 <b>4GB+64GB</b>，芯片为瑞芯微 RK3566。同期官方把软件能力讲清：自研 OCR 可把手写笔记、图片、PDF 快速转成可编辑文本并分享，支持<b>外放</b>与内置听书模块（普通话 / 粤语 / 英语，男女声可选，支持音量 / 语速 / 定时）。",
+          "price": "<b>2199</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "2023年",
+      "label": "三尺寸补齐 + 品类外扩 · 从电纸书走向「无纸化全家桶」",
+      "meta": "矩阵成型",
+      "items": [
+        {
+          "time": "09.01",
+          "tag": "pu",
+          "tagText": "新品类",
+          "st": "已开售",
+          "title": "PM1301 墨水屏便携显示器（13.3″，首发 3999 元）",
+          "desc": "汉王把「减屏层」逻辑搬出电纸书品类：13.3″ 墨水屏<b>显示器</b>，同样去掉触摸屏与导光板使透光率翻倍。亮点是自研高刷方案——官方称可直接<b>看视频</b>，并提供多种刷新模式与对比度 / 文字锐度手动调节。这是汉王对「墨水屏不只是阅读器」的一次品类试探，也为后面做绘图板铺了路。",
+          "price": "首发 <b>3999</b> 元"
+        },
+        {
+          "time": "10.12",
+          "tag": "te",
+          "tagText": "小屏",
+          "st": "已开售",
+          "title": "N10 Touch 10.3″（国内 1899–2199 元档）· 唯一保留触控的 N10",
+          "desc": "N10 家族里的<b>异类</b>：它是唯一没有走减屏层的机型，保留了 10.3″ <b>电容触控屏 + 前光</b>，代价是放弃了「屏白如纸」的底色优势。规格为 1872×1404（227PPI）Carta HD、纯平玻璃盖板、<b>无 Wacom 层</b>，改用自研主动式电磁笔（4096 级压感 + 笔尾橡皮擦）；四核 1.8GHz、4GB + 64GB、4000mAh、WiFi + 蓝牙 5.1、双扬声器（可听有声书与播客、可连蓝牙耳机）。冷暖双色前光可调。这条线的意义是<b>守住「需要触控」的用户</b>，与减屏层机型形成互补而非替代。",
+          "price": "国内 1899–2199 元档｜海外 $499.99"
+        },
+        {
+          "time": "12月",
+          "tag": "",
+          "tagText": "大屏",
+          "st": "已开售",
+          "title": "N10 Max 发布（13.3″ 柔性屏，8GB+128GB，首发 5680 元）",
+          "desc": "把减屏层推到 A4 尺寸。13.3″ 柔性超大墨水屏，可视面积比 10.3″ 提升约 <b>40%</b>，接近 A4；8GB 运行内存 + 128GB 存储（当时电纸书里的顶配）。配套汉王自研<b>龙葵紫电磁笔</b>，无线无源免充电，附 2 根替换笔芯，4096 级压感。书写体验上做了一件少见的事——<b>柔性屏微悬空设计</b>，下笔时屏幕有软弹缓冲，模拟写在厚纸上的手感，配 6 种书写笔型与底纹，支持一笔成型、提笔忘字提示。软件侧搭载最新自研解析核心，复杂 PDF 打开与翻页速度提升 <b>1 倍</b>，支持十余种文档格式与手写批注（15 款字体）；自带分屏笔记，可阅读与手写同步进行；自研 OCR 与即时翻译免费不限次数。内容侧内置 1200+ 本地图书、100 万+ 在线资源、四大在线书城，并内置定制版《参考消息》（每日早 8 点自动更新，支持语音播报）。",
+          "price": "官方 <b>5880</b> 元 · 首发 <b>5680</b> 元（8GB+128GB）｜2026 年电商常卖价已降至 <b>4798–4999</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "2024年",
+      "label": "全线换代 · N10 二代与 Clear 系列双线并进",
+      "meta": "迭代年",
+      "items": [
+        {
+          "time": "02月",
+          "tag": "id",
+          "tagText": "入门",
+          "st": "已开售",
+          "title": "Clear6 发布（6″ 入门阅读器）",
+          "desc": "汉王首次把减屏层思路下放到 <b>6″ 纯阅读</b>形态：主打便携与底色白度，走 500 元档的走量线。Clear 系列由此成为汉王出货量最大的阅读器产品线，与手写向的 N 系列分工明确——Clear 管「读」，N 管「写」。",
+          "price": "入门档（约 500 元级）"
+        },
+        {
+          "time": "04.10",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "N10 2024 款 / N10 mini 2024 款 同发（2399 / 1879 元）",
+          "desc": "N10 家族自 2022 年首发后的第一次系统性迭代，两款同步更新。核心升级是<b>手写笔从 4096 级升到 8192 级压感</b>，跟手感与笔锋表现明显改善；同时在处理器与系统响应上做了优化。定价上 N10 微涨到 2399 元、N10 mini 维持在 1879 元档，继续锚定「10.3″ 大屏手写」与「7.8″ 便携手写」两个价格心智。",
+          "price": "N10 2024 <b>2399</b> 元 · N10 mini 2024 <b>1879</b> 元"
+        },
+        {
+          "time": "06月",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "Clear6 Pro 发布（6″，998 元）",
+          "desc": "Clear6 的升级款，把 6″ 阅读器拉到<b>千元内</b>：屏幕素质与刷新速度提升，外观更接近纯平一体化。这是汉王在「Kindle 退出后」的入门阅读器空窗期里抢到的关键价位——998 元的定价直接对标掌阅 Light 系列。",
+          "price": "<b>998</b> 元"
+        },
+        {
+          "time": "08月",
+          "tag": "",
+          "tagText": "大屏",
+          "st": "已开售",
+          "title": "N10 Pro 发布（10.3″ 300PPI，2999 元起）",
+          "desc": "汉王在 10.3″ 段的分水岭：<b>分辨率从 227PPI 提到 300PPI</b>，终于补齐了与掌阅 Smart X 系列、文石 Note 系列在清晰度上的差距。同时叠加减屏层带来的底色优势，形成「白底 + 高清」的组合。定价 2999 元起，站稳国产 10.3″ 手写本的第一梯队价格带。",
+          "price": "<b>2999</b> 元起"
+        }
+      ]
+    },
+    {
+      "m": "2025年",
+      "label": "安卓化 + 彩墨首秀 · 「快刷」成为新关键词",
+      "meta": "形态扩张",
+      "items": [
+        {
+          "time": "05.18",
+          "tag": "te",
+          "tagText": "快刷",
+          "st": "已开售",
+          "title": "Clear7 Turbo+ 发布（7.1″，Android 14，1549 元）· 同期 M10C 开启预约",
+          "desc": "汉王第一次把 <b>Android 14</b> 与「快刷」作为核心卖点：7.1″ 墨水屏配 2700mAh 电池，支持安装第三方 Android 应用（微信读书、番茄、知乎等直接跑），把阅读器从「封闭书城终端」变成「墨水屏安卓平板」。同期官宣 <b>M10C</b>——汉王<b>首款彩墨办公本</b>并开启预约，标志着汉王正式进入彩色电子纸赛道。",
+          "price": "Clear7 Turbo+ <b>1549</b> 元"
+        },
+        {
+          "time": "05.29",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "N10 Pro 二代发布（10.3″ 300PPI，国补价 2149 元）",
+          "desc": "N10 Pro 的年度改款，维持 10.3″ <b>300PPI</b> 与减屏层设计，重点优化系统流畅度与手写延迟。国补后到手价压到 <b>2149</b> 元，直接把「300PPI 大屏手写本」打进 2000 元档——这是 2025 年国产大屏手写本竞争最激烈的位置。",
+          "price": "原价约 2399 元 · <b>国补价 2149</b> 元"
+        },
+        {
+          "time": "07.18",
+          "tag": "id",
+          "tagText": "配色",
+          "st": "已开售",
+          "title": "Clear7 Turbo+ 皓月白配色开售（1519 元起）",
+          "desc": "在售机型的配色延展：皓月白上市，首发 1519 元，7 月 30 日 / 8 月 9 日两轮促销进一步下探至 1329 元。汉王此后把「同机型多配色 + 分阶段阶梯价」当作常态运营手段，用于维持产品在整个销售周期的话题度。",
+          "price": "首发 <b>1519</b> 元 → 促销低至 <b>1329</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "2026年",
+      "label": "CES 上自研大模型 · 全年 12 款新品，密度为五年之最",
+      "meta": "AI 元年 · 全年最密集",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "CES 2026：Clear7 Ultra + M6 系列亮相，首发自研「天地」大模型",
+          "desc": "汉王在 CES 2026 一次性抛出两条线：阅读器 <b>Clear7 Ultra</b> 与办公本 <b>M6 系列</b>。真正的重点是软件——首发自研<b>「天地」大模型</b>，并宣布<b>同时接入 DeepSeek 与通义千问</b>两个第三方大模型。这是汉王第一次把 AI 能力当作发布会主标题，产品叙事从「减屏层 / 屏白如纸」的硬件差异化，转向「AI 办公 + AI 阅读」的能力差异化。",
+          "price": "—（CES 发布，国内价格另发）"
+        },
+        {
+          "time": "01.23",
+          "tag": "te",
+          "tagText": "便携",
+          "st": "已开售",
+          "title": "N10 mini 二代发布（7.8″ 300PPI，2399 元）",
+          "desc": "小屏手写线的关键升级：<b>分辨率提到 300PPI</b>，并延续<b>减屏层设计</b>（去电容屏、去导光板，保留手写膜），在 7.8″ 这个最需要「纸感」的尺寸上把底色白度与文字锐度同时拉满。定位为「单手可握的全功能手写本」——大屏 N10 Pro 负责桌面办公，mini 二代负责随身记录。",
+          "price": "<b>2399</b> 元"
+        },
+        {
+          "time": "04.15",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "Clear7 锦鲤发售（7.1″，T2000 增压快刷引擎，2169 元起）",
+          "desc": "汉王 2026 年阅读器线的走量主力。「锦鲤」是新的产品命名系列，核心是自研 <b>T2000 增压快刷引擎</b>——针对墨水屏残影与翻页迟滞做算法级优化，官方定位是「翻页看不出是墨水屏」。7.1″ 尺寸卡在便携与可视面积之间，配 2169 元起的价格，直指文石 Leaf 与掌阅 Ocean 系列的主战场。",
+          "price": "<b>2169</b> 元起"
+        },
+        {
+          "time": "04.23",
+          "tag": "te",
+          "tagText": "彩墨",
+          "st": "已开售",
+          "title": "Clear7C 彩墨阅读器发布（7″ Kaleido 3，175g / 3.9mm，1749 元）",
+          "desc": "汉王在彩墨阅读器上的正式落地：7″ <b>Kaleido 3</b> 彩色电子纸，机身做到 <b>175g 重 / 3.9mm 厚</b>——这是本文所列四家里最薄的一台彩墨设备。彩色显示用于杂志、漫画、绘本与标注，黑白模式下仍保持高 PPI 文本。1749 元定价把彩墨从「尝鲜溢价」拉到了与黑白机型接近的区间。",
+          "price": "<b>1749</b> 元"
+        },
+        {
+          "time": "05.13",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "录写本 M6 发布（6″ 黑白墨水屏，4 麦克风阵列，1599 元）",
+          "desc": "汉王新开的一条产品线，定位很明确：<b>便宜的会议录音 + 手写记录设备</b>。6″ 黑白墨水屏 + <b>4 麦克风阵列</b>（拾音与降噪），主打会议场景的「录 + 转 + 写」三合一。1599 元的定价远低于科大讯飞办公本的 2999 元起步档，是汉王对「墨水屏会议本」这个被讯飞做大的市场发起的性价比冲击。",
+          "price": "<b>1599</b> 元"
+        },
+        {
+          "time": "05.31",
+          "tag": "",
+          "tagText": "大屏",
+          "st": "已开售",
+          "title": "N10 Pro 第三代发布（10.3″ 300PPI，八核，政补价 2609.1 元）",
+          "desc": "N10 Pro 的第三代。维持 10.3″ <b>300PPI</b> 与减屏层，处理器升级到<b>八核</b>，主要改善多任务与大型 PDF / 多图层笔记的响应。首发叠加政府补贴后到手 <b>2609.1</b> 元。至此汉王在 10.3″ 段形成了 N10 Pro 三代（新）与 N10 Pro 二代（旧，2149 元）的双价位并存。",
+          "price": "原价约 2899 元 · <b>政补价 2609.1</b> 元"
+        },
+        {
+          "time": "06.08",
+          "tag": "id",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "Clear Mobile Plus 发布（6.13″ Carta 1300，手机造型，1899 元）",
+          "desc": "汉王首次进入「<b>手机形态墨水屏</b>」这个由文石 Palma 系列开辟的新赛道：6.13″ <b>Carta 1300</b> 屏、手机比例与握持设计，主打单手操作与随身携带。1899 元定价略高于文石 Palma 系的海外价折算水平，走「国内可买到的手机型墨水屏」定位。",
+          "price": "<b>1899</b> 元"
+        },
+        {
+          "time": "06.18",
+          "tag": "id",
+          "tagText": "配色",
+          "st": "已开售",
+          "title": "Clear7C 皓月白配色开售（1949 元）",
+          "desc": "Clear7C 的配色延展。皓月白定价 <b>1949</b> 元，比首发黑色高 200 元——汉王对白色版维持轻微溢价，延续 Clear7 Turbo+ 皓月白的运营逻辑。",
+          "price": "<b>1949</b> 元"
+        },
+        {
+          "time": "07.21",
+          "tag": "id",
+          "tagText": "配色",
+          "st": "已开售",
+          "title": "Clear7 锦鲤「耀晶灰」配色，首发 2149 元",
+          "desc": "锦鲤系列的第二次配色投放，首发 <b>2149</b> 元，略低于黑色版首发价 2169 元。至此汉王 2026 年在 Clear 系列上已投出锦鲤（黑 / 耀晶灰）、Clear7C（黑 / 皓月白）四个 SKU，靠配色而非新硬件维持产品线热度。",
+          "price": "首发 <b>2149</b> 元"
+        },
+        {
+          "time": "08.18",
+          "tag": "te",
+          "tagText": "便携",
+          "st": "已开售",
+          "title": "N6 Pro 发布（6″ 手写，6.8mm / 189g，8192 级压感，2199 元）",
+          "desc": "汉王把手写能力下压到 <b>6″</b> 这个历来只做纯阅读的尺寸：6.8mm 厚 / 189g 重，<b>8192 级压感</b>手写，定位「能塞进口袋的手写本」。2199 元的定价高于同尺寸纯阅读器一倍以上，赌的是「随身速记」这个细分需求愿意为手写付溢价。",
+          "price": "<b>2199</b> 元"
+        },
+        {
+          "time": "09.04",
+          "tag": "pu",
+          "tagText": "新品类",
+          "st": "已开售",
+          "title": "汉王 XPPen Magic Pro 13 安卓绘图板（12.95″ 3K，16384 级压感）",
+          "desc": "汉王与 XPPen 联合的安卓绘图板：12.95″ <b>3K</b> 分辨率、<b>16384 级压感</b>。这是汉王把「手写笔 + 屏幕」的能力从办公场景外扩到<b>绘画 / 设计专业场景</b>的尝试，也是它第三次做品类外扩（前两次为墨水屏显示器 PM1301 与学习本）。",
+          "price": "—（专业绘图板定价区间）"
+        },
+        {
+          "time": "09.09",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "Clear6 Pro 二代开售（6″ Carta1300，纯平，1049 元起）",
+          "desc": "入门走量款的换代：6″ <b>Carta 1300</b> 屏、纯平一体化外观，1049 元起。相比 2024 年的 Clear6 Pro（998 元）小幅提价，换来的面板代际与做工升级。这是汉王 2026 年为数不多守千元档的产品。",
+          "price": "<b>1049</b> 元起"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>阅读器线 Clear</b>：Clear6 Pro 二代（6″，1049 起）· Clear7 锦鲤（7.1″，2169 起 / 耀晶灰 2149）· Clear7C（7″ Kaleido 3，1749 / 皓月白 1949）· Clear7 Ultra（CES 2026 亮相）· Clear Mobile Plus（6.13″ 手机形态，1899）· Clear7 Turbo+（7.1″ Android 14，1549 / 皓月白 1519）",
+    "<b>手写线 N</b>：N10（10.3″，1999 → 2024 款 2399）· N10 mini（7.8″，1899 → 2024 款 1879 → 二代 2399）· N10 Touch（10.3″ 唯一保留触控，1899–2199）· N10 Max（13.3″，首发 5680，现约 4798）· N10 Pro（10.3″，2999 起 → 二代 2149 → 三代 2609.1）· N6 Pro（6″ 手写，2199）",
+    "<b>办公 / 会议线 M</b>：录写本 M6（6″ + 4 麦，1599）· M10C（首款彩墨办公本，2025-05 预约）",
+    "<b>品类外扩</b>：PM1301 墨水屏便携显示器（13.3″，3999）· XPPen Magic Pro 13 安卓绘图板（12.95″ 3K，16384 级压感）· 汉王 AI 电纸学习本（与教辅品牌「53」战略合作）",
+    "<b>软件 / AI</b>：自研「天地」大模型（CES 2026 首发）· 接入 DeepSeek 与通义千问 · 自研 OCR（免费不限次数）· T2000 增压快刷引擎",
+    "<b>口径提示</b>：汉王多款机型为电商页面价与国补 / 政补后到手价两套口径（如 N10 Pro 三代原价约 2899、政补价 2609.1），页面价随促销浮动；海外价格由 Good e-Reader 等渠道以美元标价，与国内价不构成直接换算；N10 Max 2023 年官方指导价 5880 元、首发 5680 元，2026 年电商常卖价已降至 4798–4999 元，属正常产品生命周期降价，非降价促销口径"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：汉王科技官网及官方新闻稿（hw99.com）/ IT之家 / einkCN / 新浪财经 / 东方财富 / 天猫汉王官方旗舰店与汉王汉智阅读专卖店 / Good e-Reader"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

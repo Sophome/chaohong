@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>佳能 EOS 相机 2022–2026 产品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#b8121b; --accent-soft:#fde9ea;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff7b83; --accent-soft:#3a161a;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#b8121b}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#8b949e}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">数码新品表</a>
+      <a href="sony-camera-2026-launch-timeline.html">索尼</a>
+      <a href="canon-camera-2026-launch-timeline.html" class="on" aria-current="page">佳能</a>
+      <a href="nikon-camera-2026-launch-timeline.html">尼康</a>
+      <a href="panasonic-camera-2026-launch-timeline.html">松下</a>
+      <a href="dji-camera-2026-launch-timeline.html">大疆</a>
+      <a href="insta360-camera-2026-launch-timeline.html">影石</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>在售机身与 RF 镜头 · 价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "CANON EOS · 2022–2026 LAUNCH TIMELINE",
+  "title": "佳能 EOS 相机 2022–2026 产品发布年表",
+  "subtitle": "五年主线：RF 卡口从「只有高端」补到入门（R50 / R100 / R8），APS-C 与全画幅双线并行；2025 年 R6 Mark III 与 2026 年 R6 V 把中端做成主力",
+  "badge": "V1 · 09-19",
+  "keyInfo": [
+    {
+      "k": "五年主线",
+      "v": "RF 卡口补齐入门段：2022 R10 / R7 / R6 II → 2023 R8 / R50 / R100 → 2024 R5 II / R1 登顶 → 2025 R6 III → 2026 R6 V / R8 II",
+      "s": "产品矩阵"
+    },
+    {
+      "k": "年度技术",
+      "v": "2024 年 R5 II 与 R1 带来堆栈式 + 十字型对焦；2025–2026 年把 AI 识别与预拍摄下放到 R6 级中端机身",
+      "s": "技术节奏"
+    },
+    {
+      "k": "卡口生态",
+      "v": "RF 卡口封闭策略松动：开放第三方 APS-C 镜头授权，同时靠 RF 红圈 L 镜头维持高端锁定",
+      "s": "生态位"
+    },
+    {
+      "k": "价格带",
+      "v": "APS-C R50 约 5000 元起 · 全画幅入门 R8 约 1.1 万元 · 中端 R6 系约 2 万元 · 旗舰 R1 / R5 II 约 4 万元",
+      "s": "四档"
+    }
+  ],
+  "months": [
+    {
+      "m": "2022",
+      "label": "RF 卡口补完：APS-C 与中端全画幅同时铺开",
+      "meta": "4 机身",
+      "items": [
+        {
+          "time": "2022.05.24",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "EOS R7 / EOS R10：RF 卡口首批 APS-C 机身",
+          "desc": "佳能终于把 RF 卡口下放到 APS-C。R7 是 3250 万像素、带机身防抖的「7D 精神续作」，R10 是 2420 万像素的轻量入门。这两台把 RF 系统从全画幅专属变成完整系统。",
+          "price": "R7 发布时约 <b>1399</b> 美元；R10 约 <b>979</b> 美元（单机身）"
+        },
+        {
+          "time": "2022.09",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "EOS R5 固件升级：补齐视频与对焦短板",
+          "desc": "通过固件改善 R5 的过热控制、自动对焦与视频编码选项。R5 作为 2020 年的 8K 机型，靠固件持续延寿。",
+          "price": "—（固件更新）"
+        },
+        {
+          "time": "2022.11.02",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "EOS R6 Mark II：中端全画幅换代",
+          "desc": "2420 万像素新传感器，连拍提到 <b>40fps 电子快门</b>，视频加入 4K60p 无裁切与 6K 超采样。R6 II 是佳能这五年里真正的中端走量主力，一直卖到 2025 年才换代。",
+          "price": "发布时约 <b>2499</b> 美元 / 国内约 <b>17999</b> 元"
+        },
+        {
+          "time": "2022.09",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "RF 24mm F1.8 MACRO IS STM 等轻量定焦铺货",
+          "desc": "佳能连续补 F1.8 轻量定焦（16 / 24 / 35 / 50 / 85mm），做「便宜大光圈」这条线来补 RF 卡口副厂缺位的问题。",
+          "price": "RF 24mm F1.8 发布时约 <b>599</b> 美元"
+        }
+      ]
+    },
+    {
+      "m": "2023",
+      "label": "入门双发：R50 与 R100 把门槛压到五千",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2023.02.08",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "EOS R8：最轻的全画幅 RF 机身",
+          "desc": "把 R6 II 的 2420 万像素传感器塞进 R10 级别的轻量机身，461g。代价是砍掉机身防抖、用回小电池。定位明确 —— 抢「第一台全画幅」的用户。",
+          "price": "发布时约 <b>1499</b> 美元 / 国内约 <b>11999</b> 元"
+        },
+        {
+          "time": "2023.02.08",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "EOS R50 / EOS R100：APS-C 入门双机",
+          "desc": "R50 用 2420 万像素与全像素双核自动对焦，主打 vlog 与入门；R100 更进一步砍到 2410 万像素、无翻转触控屏，把价格压到最低。两台机器是佳能在亚太入门市场的走量主力。",
+          "price": "R50 发布时约 <b>679</b> 美元；R100 约 <b>479</b> 美元"
+        },
+        {
+          "time": "2023.05",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "RF 100-300mm F2.8L IS USM 等专业长焦补位",
+          "desc": "佳能在长焦端补上 F2.8 恒定大光圈变焦，配合 R3 / R5 面向体育与新闻。RF 红圈线的完整性这一年明显提升。",
+          "price": "RF 100-300mm F2.8L 发布时约 <b>9499</b> 美元"
+        }
+      ]
+    },
+    {
+      "m": "2024",
+      "label": "登顶之年：R1 与 R5 Mark II 双旗舰",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2024.07.17",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "EOS R1 与 EOS R5 Mark II 同步发布",
+          "desc": "佳能五年里最重要的发布。R1 用 <b>2420 万像素堆栈式</b>传感器，主打 <b>十字型双像素自动对焦</b>（Cross-type AF，边角也能十字对焦）与 40fps 连拍；R5 II 用 <b>4500 万像素堆栈式</b>背照式传感器，加入「动作优先」预拍摄与 8K60p RAW。两台共享 Accelerated Capture 影像处理架构。",
+          "price": "R1 发布时约 <b>6299</b> 美元 / 国内约 <b>49999</b> 元；R5 II 约 <b>4299</b> 美元 / 国内约 <b>31999</b> 元"
+        },
+        {
+          "time": "2024.11",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "EOS R5 II 与 R1 出货趋稳，固件持续补功能",
+          "desc": "佳能在年内通过固件给 R5 II / R1 补上长时录制与对焦改进，把平台价值做长。",
+          "price": "—（固件更新）"
+        },
+        {
+          "time": "2024.09",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "RF 28-70mm F2.8 IS STM 等中端变焦补位",
+          "desc": "佳能补上「便宜且实用」的 F2.8 标准变焦，直接对位索尼 FE 24-50mm F2.8 G。RF 卡口中端镜头空缺在这一年被填。",
+          "price": "RF 28-70mm F2.8 IS STM 发布时约 <b>1099</b> 美元"
+        }
+      ]
+    },
+    {
+      "m": "2025",
+      "label": "中端换代：R6 Mark III 重做对焦与视频",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2025.02",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "EOS R50 V：APS-C 竖拍视频机",
+          "desc": "佳能对位索尼 ZV 系列的产物，机身重做为竖拍友好结构，加入面部优先与「影片模式」。佳能正式把 APS-C 线拆出视频专用子系列。",
+          "price": "发布时约 <b>899</b> 美元"
+        },
+        {
+          "time": "2025.09",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已发布",
+          "title": "RF 20-50mm 等轻量变焦发布",
+          "desc": "佳能延续「轻量化 RF 镜头」策略，给 R8 / R50 用户配高性价比挂机头。",
+          "price": "以官方公布价为准"
+        },
+        {
+          "time": "2025.11.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "next": true,
+          "title": "EOS R6 Mark III：中端主力换代",
+          "desc": "R6 II 三年后的正换代。传感器与处理架构对齐 R5 II 平台，自动对焦引入更新一代 AI 主体识别，视频规格再上探。R6 III 承接的是佳能销量最大的全画幅价位段。",
+          "price": "发布时约 <b>2899</b> 美元 / 国内约 <b>20999</b> 元（以官方公布为准）"
+        }
+      ]
+    },
+    {
+      "m": "2026",
+      "label": "中端双机接力：R6 V 与 R8 Mark II",
+      "meta": "3 机身",
+      "items": [
+        {
+          "time": "2026.05.13",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "next": true,
+          "title": "EOS R6 V：视频取向的中端全画幅",
+          "desc": "佳能在 R6 序列里拆出 V（Video）支线，强化视频编码、散热与机身视频操作。这一步与索尼把 FX 线独立、松下把 S1 II / IIE 分档是同一套逻辑 —— 中端市场开始按「拍照片」与「拍视频」分叉。",
+          "price": "发布时约 <b>2699</b> 美元（以官方公布为准）"
+        },
+        {
+          "time": "2026.09.16",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "next": true,
+          "title": "EOS R8 Mark II：入门全画幅换代",
+          "desc": "R8 三年后换代，继续扛「最便宜的全画幅 RF 机身」这个位。预计补齐机身防抖与新一代对焦，价格维持入门档。这条线是佳能对抗二手全画幅市场的主力。",
+          "price": "发布时约 <b>1599</b> 美元（以官方公布为准）"
+        },
+        {
+          "time": "2026.03",
+          "tag": "wa",
+          "tagText": "待公布",
+          "st": "待发布",
+          "next": true,
+          "title": "EOS R7 Mark II 传闻：APS-C 高端线是否续命",
+          "desc": "R7 发布于 2022 年，四年未换代。随着佳能把 APS-C 重心移向 R50 / R50 V，R7 序列的后续存在不确定性，截至本表整理日<b>官方未公布任何信息</b>。",
+          "price": "未公布"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>五年机身脉络</b>：2022 R7 / R10 / R6 II → 2023 R8 / R50 / R100 → 2024 R1 · R5 II → 2025 R50 V · R6 III → 2026 R6 V · R8 II",
+    "<b>RF 卡口补齐路线</b>：2022 年才有首批 APS-C RF 机身（R7 / R10），2023 年压到 R100 的入门价位 —— 佳能用两年把 RF 从「高端专属」做成完整系统",
+    "<b>镜头策略</b>：F1.8 轻量定焦（16/24/35/50/85mm）补副厂缺位 · 2024 年 RF 28-70mm F2.8 IS STM 补中端变焦 · RF 100-300mm F2.8L 补专业长焦",
+    "<b>双旗舰站位</b>：R1 用 2420 万像素换速度与十字对焦（体育 / 新闻），R5 II 用 4500 万像素兼顾画质与 8K —— 与索尼 A1 II 单机通吃的路线不同",
+    "<b>口径提示</b>：价格为发布时建议零售价 / 官方公布价，非当前渠道价；2026 年 R6 V / R8 II 规格与价格以官方最终公布为准，本表部分数据来自发布报道"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：佳能中国官网新品页 / Canon USA 新闻稿 / DPReview 发布报道 · 价格均为发布时口径"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>
