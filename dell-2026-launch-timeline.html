@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>戴尔笔记本 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0b5cab; --accent-soft:#e7f0fa;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5f9fe0; --accent-soft:#152538;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0b5cab}
+  .sqd i:nth-child(2){background:#00b0d8}
+  .sqd i:nth-child(3){background:#1c2024}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html">联想</a>
+      <a href="asus-2026-launch-timeline.html">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html">惠普</a>
+      <a href="dell-2026-launch-timeline.html" class="on" aria-current="page">戴尔</a>
+      <a href="apple-2026-launch-timeline.html">苹果</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线结构与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "DELL · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "戴尔笔记本 2026 新品发布年表",
+  "subtitle": "CES 阵容确认 → 3月 XPS 品牌回归 → 4月 XPS 13 / 14 上市 → 9.5 XPS 13 Air 京东独家开售（12.7mm / 1kg，国补后 6799.15 元）· 消费线并入 XPS / Dell / Dell Pro / Alienware 四级",
+  "badge": "2026",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "消费线命名重构落地：灵越 / Latitude / Precision 并入 XPS / Dell / Dell Pro / Alienware 四级体系，XPS 重新成为高端轻薄与创作旗舰品牌",
+      "s": "品牌重构"
+    },
+    {
+      "k": "发布节奏",
+      "v": "CES 阵容确认 → 3 月 XPS 品牌回归 → 4 月 XPS 13 / 14 上市 → 9.5 XPS 13 Air 京东独家开售（国补后 6799.15 元）",
+      "s": "四个节点"
+    },
+    {
+      "k": "年度亮点",
+      "v": "XPS 13 Air：戴尔最轻薄 XPS（12.7mm / 约 1kg / CNC 一体成型），13.4″ 2.5K 触控 + 30–120Hz VRR，酷睿 5 320 仅 25W 持续释放——轻薄优先、性能克制",
+      "s": "轻薄优先"
+    },
+    {
+      "k": "价格带",
+      "v": "XPS 13 Air 8499 元官方价（国补后 6799.15）｜美国 $699 起 → XPS 14 约 25999 元起 → XPS 16 尊享版约 32724 元｜中美定价差距大，引用需注明市场",
+      "s": "跨度大"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES 2026 · 新 XPS 首发与国内上架",
+      "meta": "开年",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "戴尔全新 XPS 14 发布（CES 2026）",
+          "desc": "戴尔在 CES 2026 正式推出全新 XPS 14。处理器可选英特尔酷睿 <b>Ultra 5 325 / Ultra 7 355</b>（8 核，带 4 核集显），或 <b>Ultra X7 358H / Ultra X9 388H</b>（16 核，带 12 核显卡）；内存最高 <b>64GB</b> 板载 LPDDR5x，存储最高 4TB。最受关注的改动是设计纠错——此前备受争议的<b>触控式功能键被取消，重新回归物理功能键</b>，键盘键程经过优化；触控板增加细微蚀刻纹路清晰界定操作区域。机身在保持质感的同时大幅减重至 <b>1.36kg</b>。屏幕配 1920×1200 LCD 触控（500nits / 120Hz），可选 2880×1800 120Hz 400nits OLED 触控屏。含 100W USB-C 适配器，支持 Wi-Fi 7 与蓝牙 6.0，预装 Windows 11（后续提供 Ubuntu 24.02 LTS 版本）。起售价 <b>1650 美元</b>（约 11530 元）。XPS 14 与 XPS 16 于 1 月 6 日在美国开售，XPS 14 起 <b>$2,049.99</b>、XPS 16 起 <b>$2,199.99</b>，首发仅限美国市场与少量配置。",
+          "price": "美国起售 <b>1650</b> 美元（约 11530 元）｜开售配置：XPS 14 $2,049.99 / XPS 16 $2,199.99"
+        },
+        {
+          "time": "01.28",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "2026 款 Dell XPS 轻薄本上架戴尔官网（20,998.99 元起）",
+          "desc": "戴尔在中国官网正式上架 2026 款 Dell XPS 轻薄本：14 英寸型号起售价 <b>20998.99</b> 元，16 英寸型号起售价 <b>21999</b> 元。两款均搭载英特尔酷睿 <b>Ultra X7 358H</b>，配 32GB LPDDR5x-9600 内存与 1TB M.2 PCIe NVMe 固态硬盘；采用 CNC 铝合金机身，掌托覆 Corning Gorilla Glass 3 玻璃，四扬声器音频系统，70Wh 电池，带 Windows Hello 人脸识别摄像头。屏幕：14 英寸为 2.8K 20–120Hz 400nits OLED 触控屏（起始重量 1.36kg、厚 14.62mm）；16 英寸为 3.2K 20–120Hz 400nits OLED 触控屏（起始重量 1.65kg、厚 14.62mm）。",
+          "price": "XPS 14 起 <b>20998.99</b> 元｜XPS 16 起 <b>21999</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "XPS 国内预约与 Alienware 换屏",
+      "meta": "双线推进",
+      "items": [
+        {
+          "time": "03.10",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "戴尔 XPS 14 2026 京东开启新品预约（20999 元）",
+          "desc": "戴尔 XPS 14 2026 在京东开启新品预约，主打商务办公用户，定金 1000 元、标价 <b>20999</b> 元。核心配置为英特尔酷睿 <b>Ultra X7-358H</b>（Panther Lake 架构），至高可选 32GB LPDDR5X 9600MT/s 内存与 2TB PCIe 4 固态硬盘，机身最薄处 14.62mm，配色为星夜灰与星砂银。外观为整块铝材 CNC 一体精雕，全新转轴支持单手开合，C 面搭载全新隐藏式扬声器、无缝式键盘与无缝玻璃触控板，整个掌托采用康宁大猩猩玻璃。屏幕为 <b>2.8K Tandem 双层 OLED 触控全面屏</b>（100% DCI-P3、对比度 1,000,000:1、20–120Hz 自适应、峰值 500 尼特），配 10W 双扬声器系统与杜比全景声。另有 800 万像素 4K HDR 摄像头（支持红外识别与用户感应）、液晶聚合物扇叶 + 石墨散热片 + Gore 气凝胶全链路散热、3 个雷电 4 USB Type-C 与 1 个音频插孔、英特尔 Killer 1750i 网卡。",
+          "price": "标价 <b>20999</b> 元（定金 1000 元）"
+        },
+        {
+          "time": "03.18",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "Alienware 16X Aurora 发布 — 重新把 OLED 引入核心产品线",
+          "desc": "戴尔外星人发布新款 Alienware 16X Aurora 游戏本，宣布<b>重新将 OLED 面板引入核心产品线</b>（仅限 16 英寸机型）。该机采用 AW30 设计语言，顶底面板为阳极氧化铝、星际蓝配色，搭载全新 <b>Cryo-Chamber 散热系统</b>（集成于底部，双风扇三热管四出风，整机 <b>155W TPP</b> / 显卡 <b>115W TGP</b>），支持隐身 / 性能 / 安静三种模式一键切换。屏幕为 <b>240Hz 防眩光 OLED</b>（0.2ms 响应、620nits HDR 峰值、120% DCI-P3），通过 VESA DisplayHDR True Black 500 与 ClearMR 9000 认证，含 AI 防烧屏像素保护。",
+          "price": "—（与 Area-51 系列一同计划 2026 年第一季度上市）"
+        },
+        {
+          "time": "03.18",
+          "tag": "te",
+          "tagText": "大屏旗舰",
+          "st": "已发布",
+          "title": "Alienware 16 / 18 Area-51 同批升级 — 18″ 刷新率提至 300Hz",
+          "desc": "与 16X Aurora 同批更新的 Area-51 系列。<b>16 Area-51</b> 与 16X Aurora 共享那块 240Hz 防眩光 OLED 面板；<b>18 Area-51</b> 仍为 18 英寸 IPS，但刷新率提升至 <b>300Hz</b>。16 / 18 英寸 Area-51 均升级自英特尔酷睿 <b>Ultra 200HX</b> 系列，最高可选 <b>RTX 5090</b>、64GB DDR5-6400 与 <b>12TB</b> 存储。戴尔同场预告两款概念机：<b>Ultra-Slim</b>（约 17mm 厚，14 / 16 英寸两档）与 <b>Entry-Level</b>。",
+          "price": "—（计划 2026 年第一季度上市）"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "Alienware 星舰 16X 国内上架",
+      "meta": "游戏线",
+      "items": [
+        {
+          "time": "04.20",
+          "tag": "te",
+          "tagText": "游戏",
+          "st": "已开售",
+          "title": "ALIENWARE AURORA 16X 星舰 2026 款上市",
+          "desc": "戴尔在电商平台上架新款 ALIENWARE AURORA 16X 星舰游戏笔记本，提供两个配置：英特尔酷睿 <b>Ultra 7 270HX Plus</b> 与 <b>Ultra 9 290HX Plus</b>。配 16 英寸 2560×1600 240Hz OLED 屏（100% DCI-P3，过 VESA DisplayHDR True Black 500 与 ClearMR 9000），采用 Cryo-tech 散热系统，配 32GB DDR5 内存与 1TB PCIe Gen4 SSD。海外版本（Alienware 16X Aurora）最高可配 RTX 5070 Ti，支持 64GB DDR5-5600 与 2TB 存储、Wi-Fi 7 / 蓝牙 5.4、90Wh 电池；配 180W 圆口适配器（RTX 5070 及以上机型标配 280W），可选 130W USB-C 适配器。接口有 RJ-45、2 个 USB-A 3.2 Gen1、雷电 4、USB-C 3.2 与 HDMI 2.1。",
+          "price": "酷睿 Ultra 7 270HX Plus 款原价 <b>17499</b> 元｜酷睿 Ultra 9 290HX Plus 款原价 <b>19499</b> 元（可享国补等优惠）"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "Alienware 16X Aurora 配置补充",
+      "meta": "",
+      "items": [
+        {
+          "time": "06.19",
+          "tag": "te",
+          "tagText": "游戏",
+          "st": "已开售",
+          "title": "Alienware 16X Aurora 新增高配型号（RTX 5070 / 64GB / 4TB）",
+          "desc": "戴尔为 16X Aurora 推出特定配置型号：GeForce <b>RTX 5070</b> 显卡 + <b>64GB</b> 内存 + <b>4TB</b> 固态硬盘，进一步拉高该机的存储与内存上限，满足重度创作者与本地 AI 负载需求。",
+          "price": "—（配置机型，价格随渠道浮动）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "XPS 13 Air 京东独家开售",
+      "meta": "",
+      "items": [
+        {
+          "time": "09.05",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "XPS 13 Air 京东独家开售：戴尔最轻薄 XPS，到手 6799.15 元",
+          "desc": "戴尔最轻薄的 XPS 机型，也是 2026 年 XPS 品牌回归后的入门款（型号 DX13260）。CNC 一体成型全铝机身，暮云灰配色，<b>最厚处 12.7mm、约 1kg</b>——比苹果 MacBook Neo 更紧凑轻便，屏幕反而更大。13.4″ <b>2.5K QHD+（2560×1600）触控全面屏</b>，InfinityEdge 极窄边框，峰值 500nits，100% DCI-P3，30–120Hz 自适应刷新，VESA DisplayHDR 400 + 杜比视界。搭第三代英特尔 <b>酷睿 5 320</b>（6 核 6 线程，加速 4.6GHz，NPU 16 TOPS），<b>25W 持续 / 35W 峰值</b>释放，Xe 核显；16GB LPDDR5x 7467MT/s + 512GB（至 32GB+1TB 版本尚未上架）。52Whr 电池，官方标最长 17 小时流媒体，支持戴尔极速快充 1.0；2×雷电 4（DisplayPort 2.1）；1080P 红外摄像头支持 Windows Hello；<b>8W 四扬声器</b>杜比全景声；Wi-Fi 7 + 蓝牙 6.0。通过 EPEAT 金牌与能源之星认证。海外起价 <b>$699</b>（另有 Core Ultra 7 355 / 16GB / 512GB 顶配版）。",
+          "price": "官方定价 <b>8499</b> 元 → 首发 500 元券 → 部分地区叠加国补后到手 <b>6799.15</b> 元｜京东独家发售｜美国市场 <b>$699</b> 起",
+          "next": false
+        }
+      ]
+    },
+    {
+      "m": "在售",
+      "label": "消费与商用主力机型",
+      "meta": "渠道价",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "新 XPS 13、Dell 14 Plus / 16S 覆盖中低价位",
+          "desc": "戴尔官网在售的入门至中端机型包括：<b>新 XPS 13 笔记本（2026）</b>——英特尔酷睿 Ultra 7 355（8 核 / 最高 4.7GHz）、16GB LPDDR5X、1TB SSD、13.4 英寸 2.5K（2560×1600）WLED，国内官网标价 <b>11499</b> 元，美国市场起售 <b>$699</b>（学生价 $599）；另有 XPS 13 9345 等配置版本（Core 5 320 / 16G / 512G / 13.4″ 2.8K OLED）渠道价约 8749–10999 元。<b>Dell 14 Plus / 16S</b> 作为 Copilot+ PC 承担主流价位，官网促销至高立减 570–600 美元。",
+          "price": "新 XPS 13（2026）官网 <b>11499</b> 元（美国 $699 起 / 学生 $599）｜XPS 13 部分配置渠道价 8749 元起"
+        },
+        {
+          "time": "2026年",
+          "tag": "pu",
+          "tagText": "品牌",
+          "st": "已开售",
+          "title": "产品线命名体系：XPS / Dell / Dell Pro / Alienware 四级",
+          "desc": "戴尔当前消费与商用体系为：<b>XPS</b>（高端消费旗舰）· <b>Dell / Dell Plus</b>（主流消费）· <b>Dell Pro</b>（商用）· <b>Alienware</b>（游戏）。原有的灵越（Inspiron）、Latitude、Precision 等命名已并入新体系，选购时需注意页面标注的具体系列名。",
+          "price": "—"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>产品线结构</b>：XPS（高端消费旗舰，含 XPS 13 / 14 / 16）· Dell / Dell Plus（主流消费）· Dell Pro（商用）· Alienware（游戏：Aurora 星舰 16X / Area-51 16 / Area-51 18）· Dell 14S / 16S（Copilot+ PC）",
+    "<b>设计纠错</b>：2026 款 XPS 取消争议的触控式功能键、回归物理功能键，键盘键程与触控板蚀刻纹路同步优化 —— 这是对 2024–2025 款 XPS 用户反馈的直接回应",
+    "<b>屏幕策略</b>：XPS 14 用 2.8K Tandem 双层 OLED 触控屏；Alienware 16 英寸机型（16X Aurora / 16 Area-51）重新引入 240Hz 防眩光 OLED，18 Area-51 保持 IPS 但刷新率升至 300Hz",
+    "<b>价格带</b>：新 XPS 13（2026）国内 11499 元 / 美国 $699 起 → XPS 14 起 20998.99 元 → XPS 16 起 21999 元 → Alienware 星舰 16X 17499–19499 元",
+    "<b>口径提示</b>：XPS 系列中美定价差距极大（美国 $2,049.99 ≈ 约 14800 元，国内起售 20998.99 元），引用时必须写明市场；国内戴尔销售常含赠品（8 合 1 扩展坞 / 支架 / 鼠标垫）与晒单活动，机器发票价与订单成交价可能不一致；Alienware「155W TPP / 115W TGP」为厂商标称功耗上限"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：快科技 / 新浪科技（CES XPS 14）/ IT之家（1.28 上架、3.10 预约）/ TechRadar / 太平洋电脑网（3.18 Alienware OLED、4.20 星舰 16X）/ Notebookcheck / 戴尔中国官网"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

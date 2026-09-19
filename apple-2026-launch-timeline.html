@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>苹果 MacBook 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#333336; --accent-soft:#eeeef1;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#b8b8c2; --accent-soft:#26262a;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#333336}
+  .sqd i:nth-child(2){background:#a2aaad}
+  .sqd i:nth-child(3){background:#0b5cab}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html">联想</a>
+      <a href="asus-2026-launch-timeline.html">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html">惠普</a>
+      <a href="dell-2026-launch-timeline.html">戴尔</a>
+      <a href="apple-2026-launch-timeline.html" class="on" aria-current="page">苹果</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>Mac 产品线与价格口径</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "APPLE MACBOOK · 2026 LAUNCH TIMELINE",
+  "title": "苹果 MacBook 2026 新品发布年表",
+  "subtitle": "3.4 春季硬件周（MacBook Air M5 / MacBook Neo）→ 6月 WWDC（M5 系列补齐 + 涨价）→ 9月硬件空窗（9.14–9.16 服务侧调整）→ 10 月底–11 月初 M6 MacBook Pro（仅基础款 14″，首个 2nm）",
+  "badge": "2026",
+  "keyInfo": [
+    {
+      "k": "年度主线",
+      "v": "春季 M5 系列落地 + MacBook Neo 下探入门价 → 6 月 WWDC 因存储涨价全线上调 → 秋季转向 M6，本代只发基础款 14″ MacBook Pro（Pro / Max 跳过）",
+      "s": "三代芯片跨年"
+    },
+    {
+      "k": "发布节奏",
+      "v": "3.4 春季硬件周（MacBook Air M5 / MacBook Neo）→ 6 月 WWDC（M5 系列补齐 + 涨价）→ 9 月硬件空窗（仅 9.14–9.16 服务侧调整）→ 10 月底–11 月初 M6 MacBook Pro",
+      "s": "四个节点"
+    },
+    {
+      "k": "年度亮点",
+      "v": "M6 是首个 2nm 苹果芯片：基础款 12 核 CPU + 12 核 GPU（M5 为 10+10）、首次引入 super / performance / efficiency 三类核心、神经引擎升级为双 16 核、峰值算力翻倍",
+      "s": "架构重构"
+    },
+    {
+      "k": "价格带",
+      "v": "MacBook Neo 由 $599 升至 $699｜MacBook Air / Pro 涨 $100–$400｜M6 MacBook Pro 预计维持 $1999 起（未经确认，受存储涨价存在上调可能）",
+      "s": "全线涨价"
+    }
+  ],
+  "months": [
+    {
+      "m": "03月",
+      "label": "春季 Mac 大更新 · 一晚三机",
+      "meta": "年度主节点",
+      "items": [
+        {
+          "time": "03.03",
+          "tag": "pu",
+          "tagText": "新品类",
+          "st": "已开售",
+          "title": "① MacBook Neo 发布 — 苹果史上最便宜 Mac 笔记本（$599）",
+          "desc": "苹果推出全新的入门级 MacBook 产品线 <b>MacBook Neo</b>，搭载 <b>A18 Pro</b> 芯片（手机 SoC 下放到笔记本），起售价 <b>$599</b>（教育优惠低至 $499），面向学生与首次进入 Mac 生态的用户群体。该机是苹果史上最便宜的 Mac 笔记本，也是 MacBook 家族的新成员。上市初期即出现售罄。后续因存储芯片价格上涨，其起步价已上调至 <b>$699</b>。彭博社报道苹果正在开发下一代 MacBook Neo，将提供更大内存、升级至 <b>A19 Pro</b> 芯片并增加更多配色。",
+          "price": "首发 <b>$599</b>（教育价 $499）→ 现起步价 <b>$699</b>（受存储涨价影响）"
+        },
+        {
+          "time": "03.03",
+          "tag": "te",
+          "tagText": "主力",
+          "st": "已开售",
+          "title": "② M5 MacBook Air 发布 — 起步存储翻倍至 512GB",
+          "desc": "搭载 M5 芯片的 MacBook Air 沿用前代模具，提供 13 英寸与 15 英寸两种尺寸（重量分别 1.23kg / 1.51kg），沿用 13.6 英寸 LCD 面板与 1200 万像素 Center Stage 摄像头，提供四种配色。M5 采用第三代 3nm 制程，最高 10 核 CPU 与 10 核 GPU（可选 8 核或 10 核图形处理器），多线程 CPU 性能提升 15%–22%、GPU 性能跃升 30%–35%。存储是本次最大升级：<b>起步容量由上代 256GB 翻倍至 512GB</b>，最高可选 4TB（上代上限 2TB），SSD 读写性能比上代提升 <b>2 倍</b>。标配 16GB 内存（支持灵活选配）。搭载 Apple N1 芯片，支持 Wi-Fi 7 与蓝牙 6；内置 53.8 瓦时电池，最长可播放 18 小时流媒体视频。",
+          "price": "13 英寸 <b>8499</b> 元起｜15 英寸 <b>9999</b> 元起（美国 13″ $1,099、15″ $1,299，均较 M4 版涨价 $100）"
+        },
+        {
+          "time": "03.03",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "③ M5 Pro / M5 Max MacBook Pro 发布 — 起步存储升至 1TB",
+          "desc": "MacBook Pro 换上 <b>M5 Pro 与 M5 Max</b> 芯片，AI 性能较上代提升最高 <b>4 倍</b>、较 M1 机型提升最高 <b>8 倍</b>。M5 Pro 与 M5 Max 均为 <b>18 核 CPU</b>，M5 Pro 最高 20 核 GPU、M5 Max 最高 40 核 GPU；最高可选 128GB 内存与 8TB 固态硬盘。全系起步存储由 512GB 提升至 <b>1TB</b>。配备 Apple N1 芯片（Wi-Fi 7 与蓝牙 6）、Liquid 视网膜 XDR 显示屏（可选纳米纹理玻璃）、120Hz 自适应刷新率、对比度 1,000,000:1、最高亮度 1600 尼特，支持雷雳 5 接口、1200 万像素 Center Stage 摄像头、录音棚级麦克风与沉浸式六扬声器音响，运行 macOS Tahoe。电池续航长达 <b>24 小时</b>。重量按机型在 1.60–2.15kg 之间。",
+          "price": "基础 14″ <b>17999</b> 元起（美国 $1,699，较上代 $1,599 涨价 $100）｜M5 Pro 版美国 $2,199 起（涨 $200）｜M5 Max 版美国 $3,599 起（涨 $400）"
+        },
+        {
+          "time": "03.04",
+          "tag": "id",
+          "tagText": "预售",
+          "st": "已开售",
+          "title": "④ 三款新机开启预购（22:15），3 月 11 正式发售",
+          "desc": "MacBook Neo、MacBook Air（M5）与 MacBook Pro（M5 Pro / Max）均于 <b>3 月 4 日 22:15</b> 开启预购，<b>3 月 11 日</b>正式发售。苹果同步更新了 Studio Display 显示器，被评价为「一年多以来规模最大的 Mac 产品更新」。同期中国市场提供国补 15%（Air 至高 1500 元、Pro 立减 1500 元）、教育优惠（Air 800 元起、Pro 1200 元起）与以旧换新补贴（至高 1100 元）。",
+          "price": "国补 15% + 教育优惠 + 以旧换新最高 1100 元叠加"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "WWDC 2026 · 软件基线与后续机型预热",
+      "meta": "软件主场",
+      "items": [
+        {
+          "time": "06.08",
+          "tag": "pu",
+          "tagText": "系统",
+          "st": "已发布",
+          "title": "WWDC 2026 开幕（6.8–6.12）· macOS 27 成 Apple Silicon 独占",
+          "desc": "苹果 WWDC 2026 于 6 月 8 日至 12 日举办。最硬的一条基线是 <b>macOS 27 将只支持 Apple Silicon</b>，Intel Mac 不再获得新功能与 Apple Intelligence，过渡期后连安全更新也将停止——英特尔平台用户的完整软件支持窗口在 2026 年基本走完。大会中心议题是重建版 Siri（传闻由定制版 Google Gemini 驱动）与扩展到 Final Cut Pro、Logic 等 Pro 应用的 Apple Intelligence 能力。业界普遍认为 WWDC 不会发布 Mac 硬件，但会为秋季机型铺路。",
+          "price": "—（系统与软件）"
+        },
+        {
+          "time": "06月",
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "待发布",
+          "title": "秋季 Mac 路线图：Mac mini M5、Mac Studio M5 Max/Ultra 与触屏 MacBook Pro",
+          "desc": "按当时各方信息：<b>Mac mini M5 / M5 Pro</b> 预计围绕 WWDC 前后更新；<b>Mac Studio M5 Max / M5 Ultra</b> 瞄准 2026 年中；最受关注的<b>触屏 MacBook Pro（M6 世代）</b>因 AI 数据中心抢占产能导致的全球内存短缺，被推迟到最早 2027 年初。另有报道称苹果在测试搭载 <b>M5 Pro</b> 的 Mac mini 与搭载 <b>M6</b> 的机型；M5 Max MacBook Pro 16″ 与 Mac Studio 的刷新预计落在 10–11 月。",
+          "price": "—（未公布）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "桌面线补位与技术路线调整",
+      "meta": "下半场",
+      "items": [
+        {
+          "time": "08.09",
+          "tag": "wa",
+          "tagText": "路线",
+          "st": "待发布",
+          "title": "苹果调整自研芯片路线：舍弃 M6 Pro / Max / Ultra，集中资源研发 M7",
+          "desc": "彭博社援引供应链消息称，苹果确认调整芯片迭代路线，<b>直接舍弃 M6 Pro、M6 Max、M6 Ultra 高阶版本</b>，M6 系列仅保留基础款，以集中资源研发新一代 M7 处理器。影响是：计划于 <b>2026 年底或 2027 年初</b>发布的新款 MacBook Pro 将沿用现有 <b>M5 Pro / Max</b> 配置；M7 预计 2027 年春季面世，比常规秋季更新周期有所提前。另据报道，苹果计划跳过 M6 一代的常规步进。",
+          "price": "—（芯片路线）"
+        },
+        {
+          "time": "08.26",
+          "tag": "te",
+          "tagText": "桌面",
+          "st": "已开售",
+          "title": "M5 Ultra 芯片随新款 Mac Studio 与 Mac mini 正式亮相",
+          "desc": "全新 <b>M5 Ultra</b> 芯片于 8 月 26 日随新款 Mac Studio 及 Mac mini 正式亮相，补齐 M5 世代在桌面端的最上层。9 月 16 日公开的 Geekbench 7 跑分显示：M5 Ultra（36 核）多核成绩比 96 核 192 线程的 AMD 线程撕裂者 PRO 9995WX 高约 <b>10.8%</b>，单核成绩（3774 分对 2578 分）高约 <b>46.4%</b>；在照片编辑、HDR 等测试中领先，但在光线追踪、Clang 编译等高度并行负载下仍落后。",
+          "price": "—（桌面机型，另见 Mac 桌面页）"
+        },
+        {
+          "time": "09月",
+          "tag": "pu",
+          "tagText": "换新",
+          "st": "已发布",
+          "next": true,
+          "title": "苹果售后为过时 MacBook 用户免费换新（2020 款 Air → M5 Air）",
+          "desc": "9 月 14 日起，苹果售后为已处于「过时」状态的 2020 款 MacBook Air 用户免费升级至 <b>M5 款 MacBook Air</b>，用户需关闭「查找我的 Mac」、退出 iCloud、抹掉数据并寄回旧机。此前已有案例：2018 款 MacBook Pro 用户获免费更换为 <b>M4 Max</b> MacBook Pro，2019 款英特尔 MacBook Pro 用户获免费更换为 <b>M5</b> 版本。同期另有 3 月为 M5 发布前下单 M4 系列 MacBook 用户免费升级至 M5 机型的操作。",
+          "price": "—（售后政策，非新品）"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "硬件空窗期 · 服务侧动作",
+      "meta": "本月无新 Mac 硬件",
+      "items": [
+        {
+          "time": "09.14",
+          "tag": "pu",
+          "tagText": "服务",
+          "st": "已发布",
+          "title": "Mac 服务 / 保修政策调整（9.14–9.16）",
+          "desc": "9 月苹果在 Mac 硬件上<b>没有发布新品</b>，动作集中在服务侧：9.14–9.16 期间调整了 Mac 的服务与保修换新政策。对购机决策的实际影响大于多数常规迭代——需换机的用户应同步核对 AppleCare+ 条款与换新机型范围。",
+          "price": "—（政策调整，非产品）",
+          "next": false
+        }
+      ]
+    },
+    {
+      "m": "10月",
+      "label": "M6 MacBook Pro 待发布",
+      "meta": "秋季重点",
+      "items": [
+        {
+          "time": "10月底",
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "title": "M6 MacBook Pro 计划 10 月底–11 月初发布",
+          "desc": "苹果秋季硬件重头戏，<b>本代只发基础款 14 英寸</b>——M6 Pro 与 M6 Max 被<b>完全跳过</b>，高端用户需等 2027 年的 M7 系列。芯片是 M6 而非简单迭代：<b>首个 2nm 工艺</b>的苹果芯片；基础款从 M5 的 10 核 CPU / 10 核 GPU 升到 <b>12 核 CPU + 12 核 GPU</b>；首次在基础款引入<b>三类 CPU 核心</b>（2 个 super 核 + 4 个 performance 核 + 6 个 efficiency 核，此前 only M5 Pro / Max / Ultra 才有）；神经引擎升级为<b>双 16 核</b>，峰值算力翻倍。传闻屏幕将全系切<b>串联（Tandem）OLED</b> 替代 Mini-LED Liquid Retina XDR（另有消息称沿用 mini-LED，两说并存，需以官方为准）。内存 / 存储预计维持 16GB / 1TB 起步。同期还有 <b>iMac</b>（基础 M6 + 新配色）与采用上代 <b>M5 Pro / M5 Max</b> 的高端 <b>MacBook Ultra</b>。2027 春季预计 iPad Pro 与 MacBook Air 跟进 M6。",
+          "price": "预计维持 <b>$1999</b> 起（<b>未经官方确认</b>；受存储涨价影响存在上调可能）",
+          "next": true
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>产品线结构</b>：MacBook Neo（入门新品类，A 系列芯片）· MacBook Air（主力轻薄，M5）· MacBook Pro 14 / 16（专业，M5 / M5 Pro / M5 Max）· 桌面线（Mac mini / Mac Studio / iMac / Mac Pro）",
+    "<b>2026 芯片时间线</b>：M5（3 月随 Air / Pro 14 基础版）· M5 Pro / M5 Max（3 月随 MacBook Pro 14/16）· M5 Ultra（8 月 26 日随 Mac Studio 与 Mac mini）· M6 系列仅保留基础款（高阶版本已取消，资源转向 M7）",
+    "<b>价格带（中国）</b>：MacBook Neo $599 起（现 $699）· MacBook Air 13″ <b>8499</b> 元起 / 15″ 9999 元起 · MacBook Pro <b>17999</b> 元起（美国基础 14″ $1,699 / M5 Pro $2,199 / M5 Max $3,599 起）",
+    "<b>全系涨价原因</b>：存储芯片价格飙升（TrendForce 预估 2026 年 Q2 DRAM 合约价环比再涨 58%–63%、NAND 涨 70%–75%），叠加 AI 数据中心抢占产能；苹果 Air 与 Pro 全线较上代涨价 $100–$400，MacBook Neo 起步价也由 $599 升至 $699",
+    "<b>口径提示</b>：秋季触屏 OLED MacBook Pro 的「10 月发布」「M5 Pro 驱动」均为<b>媒体（彭博社 Gurman）预测，苹果未确认</b>；MacBook Neo 下一代（A19 Pro / 更多配色）同属传闻；「续航超过 MacBook Pro M5」类对比为第三方或厂商口径，需注明测试条件；macOS 27 的 Intel Mac 支持终止以苹果官方公告为准"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：Apple 官网 / The Verge / 腾讯新闻 / 中国经济新闻网 / 百度百科（M5 系列芯片）/ Mashable（彭博社 Gurman 报道）/ Macworld 2026 指南"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

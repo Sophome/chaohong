@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华硕笔记本 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0b4f9e; --accent-soft:#e8f0fb;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#6aa9f0; --accent-soft:#152438;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0b4f9e}
+  .sqd i:nth-child(2){background:#e2231a}
+  .sqd i:nth-child(3){background:#00a8e8}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html">联想</a>
+      <a href="asus-2026-launch-timeline.html" class="on" aria-current="page">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html">惠普</a>
+      <a href="dell-2026-launch-timeline.html">戴尔</a>
+      <a href="apple-2026-launch-timeline.html">苹果</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线结构与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "ASUS · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "华硕笔记本 2026 新品发布年表",
+  "subtitle": "CES 双屏与轻薄旗舰 → 3月专业创作线 → 8月底 灵耀14 双平台下探 6999 元 → 9.2–9.5 IFA 2026 ProArt 全系换芯 RTX Spark（P16 / P14 / GR1X）· 小硕知道贯穿全年",
+  "badge": "2026",
+  "keyInfo": [
+    {
+      "k": "RTX Spark 落地",
+      "v": "9.2–9.5 IFA 2026：ProArt P16 / P14 / GR1X 全系换芯 RTX Spark，128GB 统一内存 + 1 PFLOPS（FP4），可本地跑 120B 模型、渲染 90GB+ 3D 场景，秋季上市",
+      "s": "全年核心看点"
+    },
+    {
+      "k": "发布节奏",
+      "v": "CES 双屏 + 轻薄旗舰 → 3 月专业创作线 → 8 月底 灵耀14 双平台上架（6999 起）→ 9.2 IFA 媒体展示间（ProArt / Zenbook 14 / ExpertBook Ultra）→ 9.11 IBC 2026 欧洲首展",
+      "s": "五个节点"
+    },
+    {
+      "k": "年度亮点",
+      "v": "灵耀14 2026：酷睿 / 骁龙双平台共用模具，13.9mm + 陶瓷铝机身，价差千元但酷睿版电池更大（70Wh vs 50Wh）；ProArt P16 用液态金属导热而非均热板",
+      "s": "价位下探"
+    },
+    {
+      "k": "价格带",
+      "v": "灵耀14 骁龙版 6999 / 酷睿版 7999 起 → 灵耀14 双屏 16949 起 → ProArt P16 / P14 / GR1X 价格待公布（预计 10 月起出货）",
+      "s": "三档"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES + 连续两场全系发布会",
+      "meta": "全年密度最高",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "CES 2026：ROG 幻系列全面更新（幻16 双屏 / 幻14 Air / 幻16 Air）",
+          "desc": "ROG 在 CES 推出全球首款 <b>16″ 双大屏</b>旗舰全能本 ROG 幻16 双屏，支持五大形态切换，双屏均 2.8K / 120Hz / 0.2ms / 1100nits，覆盖康宁大猩猩玻璃与 DXC 抗反涂层，最高配 <b>酷睿 Ultra 9 386H + RTX 5090</b>，整机核心总功耗 150W（GPU 最高 135W）。ROG 幻14 Air 2026 轻约 1.57kg / 薄至 1.59cm，配 Ultra 9 386H + 至高 RTX 5070 Ti，总功耗 150W；ROG 幻16 Air 2026 为 16 英寸 2.5K 240Hz 屏，Ultra 9 386H + 至高 RTX 5090，核心功耗提升至 <b>175W</b>，机身仍保持 1.95kg / 1.49cm。同期发布 ROG 枪神10X 旗舰电竞台式机（内置 AniMe Holo 全息风扇、420mm 一体液冷）。",
+          "price": "—（CES 首发，各国分批定价）"
+        },
+        {
+          "time": "01.22",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "2026 全系 AMD 锐龙 AI PC 发布（ProArt / 灵耀 / a豆 / 无畏）",
+          "desc": "以「超能芯生 智启未来」为主题一次性铺开四条线：专业创作 <b>ProArt 创13 2026</b>（锐龙 AI Max+ 395，16 核 32 线程 / 最高 5.1GHz，Radeon 8060S，至高 64GB LPDDR5X 8000MT/s，13.3″ 2.8K OLED 触控 360° 翻转，1.39kg，73Wh，首发 14999 元）；高端轻薄 <b>灵耀16 Air 2026</b>（锐龙 AI 9 H 465，NPU 50 TOPS，2.8K 120Hz OLED 1100nits，83Wh，宣称续航 25 小时，首发 9999 元）；年轻潮流 <b>a豆14 Air 2026</b>（轻至 990g / 薄至 14.9mm，45W 释放，2.8K 120Hz OLED，70Wh，首发 6999 元起）；全能性价比 <b>无畏Pro14 / 16 2026</b>（锐龙 AI 9 H 465 + Radeon 880M，冰锋 Pro 散热，性能释放 80W，6799 / 6999 元）。",
+          "price": "ProArt 创13 <b>14999</b> 元｜灵耀16 Air <b>9999</b> 元｜a豆14 Air <b>6999</b> 元起｜无畏Pro16 <b>6999</b> 元｜无畏Pro14 <b>6799</b> 元"
+        },
+        {
+          "time": "01.27",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "2026 酷睿 Ultra AI PC 发布（灵耀 / 无畏 Pro 酷睿版）",
+          "desc": "以「向芯而行 越界共生」为主题首发灵耀、无畏系列酷睿 Ultra 机型，基于 <b>Intel 18A</b> 制程。<b>灵耀 14 双屏 2026</b> 搭载酷睿 Ultra X9，双 2.8K 144Hz OLED 触控屏 + 陶瓷铝机身，轻约 1.35kg，支持五种形态，99Wh 双电池宣称续航 32 小时，180 TOPS AI 总算力；<b>灵耀 14 Air 2026</b> 轻至 1.19kg，酷睿 Ultra 9 + 50 TOPS，首发 9999 元，1 月 27 日预约、<b>2 月 5 日开售</b>；<b>无畏 Pro16 2026</b> 凭酷睿 Ultra X7 实现 85W 释放，2.5K 165Hz OLED（1100nits），首发 7999 元；<b>无畏 Pro14 2026</b> 轻约 1.39kg，酷睿 Ultra 7 + 2.8K 屏，首发 6999 元。全系标配「小硕知道」AI 助手，上半年与智谱合作升级 AutoGLM。",
+          "price": "灵耀 14 Air 2026 <b>9999</b> 元｜无畏 Pro16 2026 <b>7999</b> 元｜无畏 Pro14 2026 <b>6999</b> 元（最高配 7999 元）"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "ROG 20 周年 · 枪神 10 系列发布与首发",
+      "meta": "电竞主场",
+      "items": [
+        {
+          "time": "05.11",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "ROG 2026 新品技术前瞻会（北京）：枪神 10 系列正式发布",
+          "desc": "以冰川散热架构 4.0、星云原画屏 3.0、全新英特尔酷睿 Ultra 200HX Plus 平台三大核心技术更新电竞本。<b>ROG 枪神10 Plus 超竞版</b>搭载酷睿 Ultra 9 290HX Plus（Arrow Lake Refresh，8P+16E，最高 5.5GHz，处理器功耗可达 200W），显卡至高 RTX 5090，配冰川散热架构 4.0（改良液金 + 加厚均温板 + 三风扇内吹 + 贯穿式后出风），实现至高 <b>320W</b> 极限性能释放；首发与京东方联合定制的 <b>18 英寸 4K 240Hz MiniLED「星云原画屏 3.0」</b>（3ms 响应、1600nits 峰值、AGLR 抗反、ClearMR 11000）。现场同时展出幻16 双屏与幻 Air 2026。",
+          "price": "—（5 月 20 日首发开售）"
+        },
+        {
+          "time": "05.15",
+          "tag": "pu",
+          "tagText": "20 周年",
+          "st": "已发布",
+          "title": "ROG DAY 2026（广州）· 周冠宇代言，枪神 10 / 魔霸 10 全系亮相",
+          "desc": "ROG 品牌 20 周年现场，携手品牌代言人周冠宇正式发布 <b>ROG 枪神10 系列、枪神10 超竞版系列与魔霸10 系列</b>游戏本。枪神10 系列推 16 英寸枪神10 与 18 英寸枪神10 Plus，全系标配酷睿 Ultra 9 290HX Plus（24 核 24 线程）；18″ 的枪神10 Plus 至高搭载 RTX 5080，同样可实现 320W 核心总功耗。魔霸10 系列提供锐龙 9 9955HX3D 版本，整机性能释放至高 215W，主打高性价比电竞。全系新品 <b>5 月 15 日 9:00 上架预约，5 月 20 日 20:00 首发开售</b>。",
+          "price": "—（5.20 首发，价格随配置浮动）"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "ROG 20 周年台北发布会",
+      "meta": "",
+      "items": [
+        {
+          "time": "06.01",
+          "tag": "pu",
+          "tagText": "20 周年",
+          "st": "已发布",
+          "title": "ROG 20 周年台北发布会（三创生活园区）",
+          "desc": "侧重品牌庆典与全球新品展示，配套推出 20 周年纪念硬件：ROG CROSSHAIR 2006 复刻版主板、幻刃 DDR5 RGB 20 周年版内存及全套 20 周年全家桶典藏版；并发布与 XREAL 联名的 R1 游戏 AR 眼镜（FHD 240Hz）、魔导士 Falchion Ace 75 HE 磁轴键盘新配色与 ROG NUC 2026 电竞迷你主机。ASUS &amp; ROG Fest 2026 线上活动持续至 8 月 31 日。",
+          "price": "—（纪念版 / 外设定价另计）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "灵耀 14 2026 双平台上架",
+      "meta": "",
+      "items": [
+        {
+          "time": "08月底",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "灵耀 14 2026 上架：酷睿 / 骁龙双平台同一模具，6999–8999 元",
+          "desc": "华硕把 AI 轻薄本拉到主流价位。酷睿版与骁龙版<b>共用同一模具</b>：14″ 2.8K 120Hz OLED、峰值 1100nits、100% DCI-P3，机身厚度同样 <b>13.9mm</b>，A 面用了「高科技陶瓷铝」（CD 面铝合金），C 面触控板支持 <b>240Hz 采样率</b>，边缘滑动可调音量 / 亮度 / 视频进度。酷睿版搭 <b>Ultra 5 325 或 Ultra 7 355</b>（均为 8 核 8 线程、12MB 智能缓存、4 个 Xe3 核显核心，<b>无 H 后缀</b>），16GB LPDDR5X + 1TB PCIe 4.0 SSD，<b>70Wh</b> 电池、约 12–15 小时，1.2kg，三色可选（北极蓝 / 珊瑚粉 / 茶釉棕）。骁龙版搭高通骁龙 X（8 核、45 TOPS NPU），16GB 8448MT/s + 512GB，<b>仅北极蓝一色</b>，50Wh 电池、官方标 21 小时本地视频，1.1kg。值得注意的是，骁龙版无额外硬盘位，扩容需拆旧换新并重装系统。",
+          "price": "首发 <b>6999–8999</b> 元（骁龙版 6999 起 / 酷睿版 Ultra 5 325 起 7999 元，部分地区叠加 15% 国补）；另有灵耀 14 双屏 2026（Ultra X7 358H，双 2.8K OLED 触控屏）在售 <b>16949–16999</b> 元起",
+          "next": false
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "IFA 2026 · ProArt 全系换芯 RTX Spark",
+      "meta": "全年技术密度最高",
+      "items": [
+        {
+          "time": "09.02",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "① Zenbook 14 首发 — Ceraluminum 陶瓷铝顶盖，三色可选",
+          "desc": "华硕在柏林 IFA 媒体展示间首发的消费轻薄本。处理器可选 <b>Intel Core Ultra 系列 3</b> 或 <b>骁龙 X</b>，顶盖采用华硕标志性的 <b>Ceraluminum 陶瓷铝</b>材质（陶瓷质感 + 铝的轻量）。提供三款配色：<b>Komodo Coral / Arctic Blue / Zabriskie Beige</b>。定位日常创作与通勤轻薄本。",
+          "price": "—（未公布）"
+        },
+        {
+          "time": "09.02",
+          "tag": "te",
+          "tagText": "商用旗舰",
+          "st": "已发布",
+          "title": "② ExpertBook Ultra 首发 — 1.09kg / 3K 串联 OLED 商用旗舰",
+          "desc": "华硕商用线新旗舰。<b>镁铝合金 CNC</b> 机身 + <b>9H 纳米陶瓷</b>涂层，重量 <b>2.4lbs ≈ 1.09kg</b>。搭 <b>Intel Core Ultra X9 Series 3</b> + Arc Pro 核显 + vPro，<b>ExpertCool Pro</b> 散热至高 <b>50W TDP</b>。屏幕 14″ <b>3K 串联（Tandem）OLED 触控屏</b>，峰值 <b>1400nits HDR</b>，康宁大猩猩 Victus + 磨砂。六扬声器杜比全景声，<b>70Wh</b> 电池官方标 <b>26 小时</b>。安全侧配 <b>ExpertGuardian 后量子加密</b>与 NIST SP 800-193 固件安全。该机后续于 9.11 在菲律宾达沃办了区域上市会。",
+          "price": "—（未公布）"
+        },
+        {
+          "time": "09.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "③ ProArt P16 (RTX Spark) 发布：华硕最薄的 16 英寸 ProArt",
+          "desc": "创作者旗舰。平台同为 RTX Spark N1X（20 核 Grace + 6144 CUDA 核心 Blackwell，NVLink-C2C，<b>1 PFLOPS（FP4）</b>，最高 <b>128GB 统一内存</b>），官方称可本地跑 <b>1200 亿参数</b> LLM、渲染 <b>90GB+ 3D 场景</b>、4K 生成式视频与 12K 4:2:2 视频剪辑。屏幕为 <b>ASUS Lumina Pro OLED，16″ 4K 120Hz VRR，支持 NVIDIA G-SYNC，峰值 1600nits</b>，<b>ΔE&lt;1</b>，带抗反射涂层。机身 <b>12.9mm / 1.77kg</b>，是同配 16″ 里最薄的一档，CNC 工艺 + 精密触觉触控板，Nano Black / Neo White 双色。散热用<b>液态金属导热 + 传统热管</b>而非均热板（Notebookcheck 分析：RTX Spark 芯片面积大，均热板可能导致安装压力不均反而降低散热效率），热管周围设海绵屏障防液金溢出。<b>99Wh</b> 电池。",
+          "price": "—（未公布；预计 2026 年秋季上市，10 月起陆续出货）",
+          "next": true
+        },
+        {
+          "time": "09.04",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "④ ProArt P14 (RTX Spark) 发布：华硕史上最轻 ProArt",
+          "desc": "同平台的 14 英寸版本，<b>1.48kg</b>，是华硕有史以来最轻的 ProArt 笔记本。屏幕 14″ <b>3K 120Hz OLED</b>，同样 Lumina Pro 面板、ΔE&lt;1、峰值最高 1600nits。统一内存上限同为 128GB，AI 算力 1 PFLOPS（FP4）。<b>90Wh</b> 电池。与 P16 共用 MuseTree（已接入 FLUX.2 模型 + Idea Craft 自然语言图像/视频生成）、StoryCube 素材管理，以及<b>经官方验证的 ComfyUI 智能体工作流</b> + 随机附赠 Google AI Pro 订阅。Nano Black / Neo White 双色。",
+          "price": "—（未公布）",
+          "next": true
+        },
+        {
+          "time": "09.04",
+          "tag": "pu",
+          "tagText": "形态·生态",
+          "st": "已发布",
+          "title": "⑤ ProArt GR1X 迷你主机：把 RTX Spark 压进 150×150×51mm",
+          "desc": "「一台永不下线的 AI 智能体」——掌心大小的 Agentic AI 桌面机，同样搭载 RTX Spark，<b>1 PFLOPS（FP4）+ 128GB 统一内存</b>。为<b>7×24 小时持续运行</b>设计：双风扇 <b>218 片扇叶</b>散热系统。接口给到 <b>10GbE 有线网口</b>、Wi-Fi 7，支持<b>四路 4K 输出</b>。黑 / 银两色，延续 ProArt 设计语言。适合要常驻跑模型 / 智能体的开发者与工作室。",
+          "price": "—（未公布；预计 2026 年秋季上市）",
+          "next": true
+        },
+        {
+          "time": "09.11",
+          "tag": "id",
+          "tagText": "海外",
+          "st": "展出",
+          "title": "⑥ IBC 2026（阿姆斯特丹）：ProArt P16 / P14 RTX Spark 欧洲首展",
+          "desc": "华硕把 RTX Spark 创作本带到广电行业展会 IBC（9.11–9.14，RAI 会展中心 Hall 11 B36 展位），主推影视后期场景：<b>世界构建</b>与<b>电影级 IP LoRA 训练</b>（保证角色、场景、视觉风格一致性），本地跑 120B 参数 LLM、自动 Roto、<b>90GB+ 3D 项目渲染</b>、4K 生成式视频、12K 4:2:2 剪辑。同场展出 <b>ProArt PX13</b>（AMD 锐龙 AI Max+ 395，360° 翻转）、<b>ProArt PZ14</b>（骁龙 X2 Elite 创作者平板）、<b>ProArt P16 RTX 5090 版</b>（GeForce 独显路线），以及 <b>ProArt PA27UCDV</b> 4K QD-OLED、带 12G-SDI 的 <b>PA27USD</b> 与双 SDI 的 <b>PA32USD</b> 监视器。另有 XG Core 外接显卡坞与 Zenbook 14 联动演示，<b>单根 USB4 线</b>补上超薄本的 GPU 性能缺口。",
+          "price": "—（展会展示）",
+          "next": false
+        }
+      ]
+    },
+    {
+      "m": "全年",
+      "label": "消费线持续铺货",
+      "meta": "常规",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "天选 7 与天选 7X、破晓 7 系列陆续在售",
+          "desc": "天选 7 锐龙版搭载 <b>锐龙 7 H 260</b> + RTX 5050（16G+512G），16 英寸 2.5K OLED 电竞屏（1100nits 广色域），页面价约 12099 元 / 常卖 11599 元；天选7 Pro 2026 酷睿版同系列在售。破晓 7 / 破晓 7X / 破晓 7 Pro 覆盖入门到主流商务线。ROG 幻世神 ProArt 创X 2026 补位专业创作带。",
+          "price": "天选7 锐龙版页面价约 <b>12099</b> 元 / 常卖 11599 元｜无畏Pro16 旧款约 4121 元起（渠道清仓价）"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>产品线结构</b>：ROG（玩家国度，电竞旗舰：枪神 / 魔霸 / 幻系列）· 天选（主流游戏本）· 灵耀（高端轻薄）· 无畏 / 破晓（主流全能本）· ProArt（专业创作）· a豆（年轻潮流）· 华硕破晓（商务）",
+    "<b>双平台策略</b>：同一系列常同时给 AMD 锐龙 AI 与 Intel 酷睿 Ultra 两套版本，AMD 系在 1.22 发布、Intel 系在 1.27 发布，形成年内最早的一轮全系换代",
+    "<b>ROG 2026 电竞家族</b>：枪神10（16″）/ 枪神10 Plus（18″）/ 枪神10 超竞版 / 枪神10 Plus 超竞版（320W · RTX 5090 · 4K 240Hz MiniLED）/ 魔霸10（锐龙 9 9955HX3D · 215W）/ 幻16 双屏 / 幻14 Air / 幻16 Air",
+    "<b>价格带</b>：a豆14 Air 6999 → 无畏Pro14 6799 → 灵耀16 Air 9999 → 灵耀 14 Air 9999 → 天选7 约 12099 → ProArt 创13 14999 → ROG 枪神10 Plus 超竞版（万元级以上，以渠道为准）",
+    "<b>口径提示</b>：华硕各线官方首发价与电商常卖价差距明显，天选 / 无畏等走量线的页面价常含国补 15%；ROG 电竞本普遍不公布统一首发价，以渠道实时价为准"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：华硕官网 / 华硕菲律宾 ROG 博客 / 网易科技 / 搜狐科技 / 3DMGame / 南方+ / IT之家"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

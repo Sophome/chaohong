@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>小米 / Redmi 笔记本 2026 新品发布年表</title>
+<title>雷神笔记本 2026 新品发布年表</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
-    --line:#e6e9ee; --accent:#ff6900; --accent-soft:#fff0e3;
+    --line:#e6e9ee; --accent:#d81e06; --accent-soft:#fdeae8;
     --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
     --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
     --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
@@ -18,7 +18,7 @@
   }
   html[data-theme="dark"]{
     --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
-    --line:#2a2f36; --accent:#ffa259; --accent-soft:#3a2415;
+    --line:#2a2f36; --accent:#ff5a45; --accent-soft:#3a1a15;
     --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
     --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -33,9 +33,9 @@
   .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .sqd{display:inline-flex;gap:3px}
   .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
-  .sqd i:nth-child(1){background:#ff6900}
-  .sqd i:nth-child(2){background:#ff4d00}
-  .sqd i:nth-child(3){background:#1c2024}
+  .sqd i:nth-child(1){background:#d81e06}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#3a3f47}
   h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
   .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
   .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
@@ -123,11 +123,11 @@
       <a href="digital-launch-timeline.html">总表</a>
       <a href="lenovo-2026-launch-timeline.html">联想</a>
       <a href="asus-2026-launch-timeline.html">华硕</a>
-      <a href="xiaomi-2026-launch-timeline.html" class="on" aria-current="page">小米/Redmi</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
       <a href="huawei-2026-launch-timeline.html">华为</a>
       <a href="honor-2026-launch-timeline.html">荣耀</a>
       <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
-      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="thunderobot-2026-launch-timeline.html" class="on" aria-current="page">雷神</a>
       <a href="machenike-2026-launch-timeline.html">机械师</a>
       <a href="hp-2026-launch-timeline.html">惠普</a>
       <a href="dell-2026-launch-timeline.html">戴尔</a>
@@ -143,7 +143,7 @@
   <div id="months"></div>
 
   <div class="sec">
-    <h2>双品牌产品线与价格带</h2>
+    <h2>产品线结构与价格带</h2>
     <div class="plain"><ul id="overseas"></ul></div>
   </div>
 
@@ -162,125 +162,158 @@
    st:   已开售 · 已发布 · 海外 · 展出
    ═══════════════════════════════════════════════════ */
 const PAGE = {
-  "eyebrow": "XIAOMI / REDMI · 2026 LAPTOP LAUNCH TIMELINE",
-  "title": "小米 / Redmi 笔记本 2026 新品发布年表",
-  "subtitle": "CES 轻薄本 → 3.18 新品季集中发布 → 8月底 REDMI Book Pro 2026 开售（全系第三代酷睿 Ultra，14″/16″ 各 3 SKU）· 超级小爱接端云融合大模型",
+  "eyebrow": "THUNDEROBOT · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "雷神笔记本 2026 新品发布年表",
+  "subtitle": "CES 2026 ZERO Air 15「小轻龙」首秀 → 6.15 aibook14 Air Carbon 开售（1.05kg）→ 7.10 BW2026 ZERO Air 16 赛车版首秀 → 8 月赛车版上市 · 「轻量化」是全年唯一主线",
   "badge": "2026",
   "keyInfo": [
     {
       "k": "年度主线",
-      "v": "全系切第三代英特尔酷睿 Ultra（Panther Lake），REDMI Book Pro 2026 三 SKU 分别为 Ultra 5 325 / 338H / X7 358H，高配 AI 算力最高 180 TOPS",
-      "s": "平台换代"
+      "v": "全品牌唯一押注「轻量化」：把 16 英寸独显游戏本压到 1.64kg、14 英寸轻薄本压到 1.05kg，用碳纤维 / 镁合金材料 + VC 真空腔散热换重量",
+      "s": "主打轻"
     },
     {
       "k": "发布节奏",
-      "v": "CES 轻薄本 → 3.18 新品季集中发布 → 8 月底 REDMI Book Pro 2026 系列开售（14″ / 16″ 各 3 个 SKU）",
-      "s": "三个节点"
+      "v": "1.06 CES 2026 ZERO Air 15 首秀 → 6.15 aibook14 Air Carbon 开售 → 7.10 BW2026 ZERO Air 16 赛车版首秀 → 8 月赛车版上市 → Q1 末存货 11.78 亿元备货涨价",
+      "s": "四个节点"
     },
     {
       "k": "年度亮点",
-      "v": "90W 反向充电（可给手机应急）· 双 M.2 硬盘位 · 超级小爱端云融合大模型打通六大 AI 能力 · 小米澎湃智联支持苹果设备文件互传",
-      "s": "生态能力"
+      "v": "ZERO Air 16 赛车版：A/C/D 三面碳纤维 + ZM 零公里飘移车队联名，1.64kg / 160W 双满功耗；aibook14 Air Carbon 用准分子 UV 漆 + 碳纤维做到 1.05kg / 15.5mm，比 MacBook Air 轻约 20%",
+      "s": "两个纪录"
     },
     {
       "k": "价格带",
-      "v": "14″ 国补价 5949 / 6799 / 8074 元（官方 6999 / 7999 / 9499）｜16″ 国补价 6119 / 6969 / 8244 元｜页面标价与国补后差距可达 15%",
-      "s": "国补为主"
+      "v": "aibook14 Air Carbon 首发 7999 元 → ZERO Air 15 高配（Ultra 9 386H + RTX 5070 / 32G）约 15499 元 → ZERO 16 Pro（Ultra 9 290HX Plus + RTX 5070 Ti）万元级",
+      "s": "8000–15500"
     }
   ],
   "months": [
     {
-      "m": "03月",
-      "label": "小米春季新品发布会 · Xiaomi 品牌回归高端",
-      "meta": "年度重磅",
+      "m": "01月",
+      "label": "CES 2026 · ZERO Air 15「小轻龙」首秀",
+      "meta": "年度首发",
       "items": [
         {
-          "time": "03.19",
+          "time": "01.06",
           "tag": "",
           "tagText": "旗舰",
+          "st": "已发布",
+          "title": "① ZERO Air 15「小轻龙」CES 首秀 — 15.3″ OLED 独显本压到 1.54kg",
+          "desc": "雷神 2026 年的开年主角。航空级<b>全镁合金</b>机身（官方称强度提升约 21%），最高搭 <b>酷睿 Ultra 9 386H</b>（Intel 18A 工艺，官方口径性能 +50% / 功耗 −30%）配 <b>RTX 5070 Laptop</b>（Blackwell，支持 DLSS 4.5），<b>160W 双满血释放</b>。散热为自研 <b>Aero VC 真空腔散热</b>：大面积 VC 均热板 + 定制静音风扇 + 霍尼韦尔相变硅脂。屏幕 15.3″ <b>2.5K 165Hz OLED 超竞屏</b>，1,000,000:1 对比度、100% DCI-P3、出厂校色。整机 <b>1.54kg</b>。",
+          "price": "高配（Ultra 9 386H + RTX 5070 + 32G）约 <b>15499</b> 元"
+        },
+        {
+          "time": "01.06",
+          "tag": "id",
+          "tagText": "走量",
           "st": "已开售",
-          "title": "Xiaomi Book Pro 14 发布（3.21 开售）",
-          "desc": "以 Xiaomi 品牌首次回归亮相的高端超轻薄笔记本。机身采用<b>一体压铸镁合金 + 热压碳纤维底盖 + 钛合金键盘托架 + 石墨烯铝合金散热鳍片</b>的混合架构，轻至 <b>1.08kg</b>、薄约 14.95mm，却实现 <b>50W</b> 性能释放。配备 14.6 英寸 <b>3.1K 120Hz OLED 触控屏</b>（峰值 1600nits、支持杜比视界、VESA DisplayHDR 认证，通过莱茵低蓝光与无频闪认证），搭载第三代英特尔酷睿 Ultra 处理器（至高 <b>Ultra X7 358H</b>，12 核 Xe3 核显），内存至高 9600MT/s LPDDR5X。内置 72Wh 高密度电池，宣称 19.8 小时续航、100W 快充 26 分钟充至 50%（官方称续航超过 MacBook Pro M5，未获第三方验证）。配全域压感触控板、双 M.2 硬盘位（至高 4TB）、雷电4 / USB-C / USB-A / HDMI 2.1 接口；软件侧有 PC 超级小爱、AI 深度搜索、AI 个人知识库，并创新支持「关机远控」。",
-          "price": "售价 <b>8499</b> 元起，首销限时优惠 500 元，部分地区叠加 15% 国补 → 到手低至 <b>6799.15</b> 元起"
+          "title": "② 现款小轻龙 15 与 aibook15 / 911T 构成在售阵列",
+          "desc": "CES 同场亮相的还有迭代中的 aibook15 2026、911T 2026 等机型，与现行小轻龙 15 一同构成雷神 2026 年上半年在售主线。小轻龙系列定位「轻量独显本」，是雷神区别于传统厚重游戏本品牌的差异点。",
+          "price": "小轻龙 15 首发价 <b>13999</b> 元起"
         }
       ]
     },
     {
-      "m": "04月",
-      "label": "Redmi 双线接力 · 走量与中高端",
-      "meta": "全年最密集",
+      "m": "06月",
+      "label": "aibook14 Air Carbon 开售 · 1.05kg 碳纤维轻薄本",
+      "meta": "超轻薄",
       "items": [
         {
-          "time": "04.10",
+          "time": "06.15",
           "tag": "te",
-          "tagText": "中高端",
+          "tagText": "超轻薄",
           "st": "已开售",
-          "title": "① REDMI Book Pro 2026 官宣发布（4.21 正式上市）",
-          "desc": "提供 14 与 16 英寸两款，最高可选第三代英特尔酷睿 <b>Ultra X7 358H</b>，配置梯度为 Ultra 5 325 / Ultra 5 338H / Ultra X7 358H 三档，内置 NPU AI 算力最高 <b>180 TOPS</b>。全金属机身、厚约 15.9mm，14 英寸版约 1.48kg、16 英寸版约 1.88kg，性能释放最高约 80W。屏幕：14 英寸为 2.8K（2880×1800）120Hz LCD（100% sRGB），16 英寸为 3.2K（3200×2000）165Hz LCD（100% DCI-P3），均支持 DC 调光与小米青山护眼技术。电池：14 英寸 92Wh、16 英寸 99Wh，全系 100W 有线快充 + 最高 90W 反向快充（官方称 14 英寸本地视频播放可达 37 小时，为厂商口径）。内存最高 32GB LPDDR5X 9600MT/s，存储 1TB PCIe 4.0 SSD 并支持额外 M.2 扩展；接口有雷电4、全功能 USB-C、HDMI 2.1、双 USB-A 3.2 Gen1、3.5mm。运行 Windows 11 AI+，预装 Office 家庭版 2024，内置小爱 AI 助手与个人知识库，接入小米澎湃智联。",
-          "price": "预计 <b>7000–8000</b> 元档（Ultra X7 358H 顶配；官方于 4.21 公布）"
+          "title": "aibook14 Air Carbon 正式开售 — 1.05kg / 15.5mm 碳纤维机身",
+          "desc": "CES 2026 亮相后落地开售。机身采用<b>航空级碳纤维复合材料</b> + 准分子 UV 漆工艺，重量压至约 <b>1.05kg</b>、厚度 <b>15.5mm</b> —— 官方口径比 MacBook Air 轻约 <b>20%</b>、强度高约 <b>25%</b>。搭 AMD <b>AI9 H 365</b>，<b>45W</b> 持续性能释放。屏幕 14″ <b>2.8K 120Hz OLED</b>，100% DCI-P3，可选蜂鸟护眼屏（ACR 防眩光 + 硬件级防蓝光）。<b>85Wh</b> 大电池，标称续航 18 小时、实测 1080P 视频播放约 17 小时。",
+          "price": "首发价 <b>7999</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "BW2026 · ZERO Air 16「小轻龙」赛车版首秀",
+      "meta": "联名首秀",
+      "items": [
+        {
+          "time": "07.10",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "ZERO Air 16 赛车版 BW2026 首秀 — 16″ 独显本 1.64kg",
+          "desc": "雷神在 BilibiliWorld 2026（7.10–7.12，4.1H 馆 4A19 展位，主题「无尽轻竞领域」）展出 ZERO Air 16「小轻龙」赛车版。<b>A / C / D 三面全碳纤维</b>机身，与 <b>ZM 零公里飘移车队</b>深度联名定制赛车 ID 外观。最高搭 <b>酷睿 Ultra 7 356H</b> + <b>RTX 5070</b>，<b>160W 双满功耗</b>释放，整机 <b>1.64kg</b>（比主流 16″ 游戏本轻近 1kg），配 <b>210W</b> 轻量化适配器后旅行重量约 2kg。屏幕为蜂鸟护眼屏 2.5K 240Hz、100% DCI-P3、ACR 防眩光。接口给到雷电 4、HDMI 2.1、Mini DP、标准 RJ45。存储 32GB + 1TB。展台同步开启「称重挑战」活动造势。",
+          "price": "—（首秀未公布）"
         },
         {
-          "time": "04.17",
-          "tag": "id",
-          "tagText": "走量",
-          "st": "已开售",
-          "title": "② REDMI Book 14 / 16 2026 发布并即日开售",
-          "desc": "走量主力双机。均搭载英特尔<b>酷睿 Ultra 5 125H</b>（14 核 18 线程，Meteor Lake），双风扇双热管散热，性能释放至高 <b>60W</b>。屏幕均支持 120Hz：14 英寸为 2.8K（2880×1800）500nits 镜面屏，16 英寸为 2.5K（2560×1600）400nits 镜面屏。内存 / 存储从 16GB+512GB 到 32GB+1TB，LPDDR5X 7467MT/s，PCIe 4.0 SSD 并支持 M.2 扩展。两机同为 80Wh 电池 + 100W GaN USB-C 充电器（可快充手机），接口有雷电4、全功能 USB-C、HDMI 2.1、USB-A 与 3.5mm。14 英寸重约 1.49kg，16 英寸约 1.86kg；官方称 16 英寸本地视频播放约 24.8 小时。支持跨设备相机、NFC、统一设备控制与键鼠共享。",
-          "price": "14″：16+512G <b>5999</b> / 16+1T 6499 / 32+1T 6999 元｜16″：16+512G <b>6199</b> / 16+1T 6699 / 32+1T 7199 元（4.23 前下单限时减 500 元）"
-        },
-        {
-          "time": "04.21",
-          "tag": "te",
-          "tagText": "中高端",
-          "st": "已开售",
-          "title": "③ REDMI Book Pro 2026 正式上市（与 Redmi K90 Max 手机同场）",
-          "desc": "承接 4.10 官宣，Redmi Book Pro 2026 在 4 月 21 日的发布会中与 Redmi K90 Max 手机同场正式开卖，成为小米在 7000 元价位的国产超轻薄旗舰替代方案。",
-          "price": "<b>7999</b> 元起（官方公布口径）"
+          "time": "07.25",
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "待发布",
+          "title": "官方确认赛车版 8 月上市 — 进入装载调试最后阶段",
+          "desc": "雷神创始人路凯林 7 月 25 日公开表示，ZERO Air 16 赛车版已进入<b>装载调试的最后阶段</b>，预计 8 月正式上市。同期雷神还展出 <b>MIX G2 迷你机</b> —— 把移动版 RTX 5090 + 酷睿 Ultra 7 275HX + 64GB 内存 + 1TB SSD 塞进约 3 升体积，可立可卧；以及 5G CPE / 随身 Wi-Fi 等新品类，显示品牌正在从单一游戏本向多品类扩张。",
+          "price": "—"
         }
       ]
     },
     {
       "m": "08月",
-      "label": "REDMI Book Pro 2026 开售",
-      "meta": "",
+      "label": "ZERO Air 16 赛车版正式上市",
+      "meta": "落地开售",
       "items": [
         {
-          "time": "08月底",
-          "tag": "id",
-          "tagText": "走量",
+          "time": "08月",
+          "tag": "",
+          "tagText": "旗舰",
           "st": "已开售",
-          "title": "REDMI Book Pro 2026 系列开售：全系第三代酷睿 Ultra，14″ / 16″ 双尺寸三 SKU",
-          "desc": "小米走量主力换芯。14″ 与 16″ 均采用全金属一体化压铸机身、厚 15.9mm，重量 1.48kg / 1.88kg。屏幕：14″ 2.8K 120Hz、16″ 3.2K 165Hz，均 500nits、100% DCI-P3，支持小米青山护眼（莱茵低频闪 + 莱茵低蓝光）。各提供 3 个 SKU（均标配 1TB PCIe 4.0 SSD）：低配 <b>Ultra 5 325</b> + 24GB 7467MT/s；中配 <b>Ultra 5 338H</b>（12 核，最高 4.7GHz，Arc B370 核显）+ 32GB 8533MT/s；高配 <b>Ultra X7 358H</b>（18A 工艺，AI 算力最高 180 TOPS）+ 32GB 9600MT/s。功耗释放 14″ 70W / 16″ 80W（双风扇双热管 / 三热管），均内置<b>双 M.2 硬盘位</b>。电池 92Wh / 99Wh，100W 快充 + <b>90W 反向充电</b>，官方称本地 1080P 播放 30 小时以上。内置<b>超级小爱</b>端云融合大模型，打通 AI 调度 / 感知 / 办公 / 创作 / 隐私与跨端智联六大能力。",
-          "price": "14″ 国补价 <b>5949 / 6799 / 8074</b> 元（官方 6999 / 7999 / 9499，即低配 6999、中配 7999、高配 9499）｜16″ 国补价 <b>6119 / 6969 / 8244</b> 元｜页面标价与国补后差距明显",
-          "next": false
+          "title": "ZERO Air 16 赛车版正式上市 — 碳纤维 + 160W 双满",
+          "desc": "BW2026 首秀后按官方节奏于 8 月正式上市。同时提供<b>赛车版与标准版</b>双版本：标准版搭 <b>Ultra 7 255H + RTX 5060</b>，16GB DDR5 + 1TB。同月同价位竞品机械革命耀世 16 Air 2026（Ultra 7 356H + RTX 5060，170W 满血）已先行开卖，两者构成 16″ 轻薄性能本的直接对位。存储涨价背景下，开学季中配「数码三件套」较去年多花 1500–2500 元，雷神的轻量化定价策略在此时点具备相对优势。",
+          "price": "首发 <b>13999</b> 元起（官方口径）"
         }
       ]
     },
     {
-      "m": "下半年",
-      "label": "产品线延续",
-      "meta": "常规",
+      "m": "在售",
+      "label": "电商在售机型与价格带",
+      "meta": "渠道价",
       "items": [
+        {
+          "time": "2026年",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "ZERO 16 Pro「AI 高静 Plus」— 205W 双烤旗舰",
+          "desc": "搭 <b>酷睿 Ultra 9 290HX Plus</b> + <b>RTX 5070 Ti</b>，<b>205W 双烤</b>性能释放，整机约 <b>2.55kg</b>。定位「AI 高静 Plus」游戏本，是雷神在传统高性能路线的代表作，与 ZERO Air 轻量化线形成「重性能 / 轻便携」双轨。",
+          "price": "万元级"
+        },
         {
           "time": "2026年",
           "tag": "id",
           "tagText": "走量",
           "st": "已开售",
-          "title": "REDMI Book 旧款与 Xiaomi Book 14 继续在售",
-          "desc": "REDMI Book 16 2025 / Book 14 2025、REDMI Book 锐龙版 2025 与无年份版本仍接入小米澎湃智联持续在售；Xiaomi Book 14（2.8K 屏、Windows 11）作为全球在售的非 Pro 型号继续覆盖入门带。",
-          "price": "REDMI Book 14 2025 约 <b>4000–5000</b> 元档（以渠道为准）"
+          "title": "猎刃 S 2026 与猎刃 16 覆盖主流游戏本",
+          "desc": "猎刃 S 2026 可选 <b>R9-9850HX + RTX 5070 Ti</b> 或 <b>Ultra 7-255HX + RTX 5060</b>；猎刃 S QS61（R7-7745HX + RTX 5070 Ti，2.5K 240Hz）618 期间为国补热门；猎刃 16（i7-13650HX + RTX 5070，300Hz 2.5K）为高刷入门选择。电商在售另有 aibook15 2026、911T 2026，价格从 4000 多元到近万元。",
+          "price": "猎刃 S QS61 补贴后约 <b>6299</b> 元 · 猎刃 16 约 <b>9299</b> 元"
+        },
+        {
+          "time": "2026年",
+          "tag": "pu",
+          "tagText": "供应链",
+          "st": "已发布",
+          "title": "Q1 末存货 11.78 亿元 — 为 CPU / 内存 / 硬盘涨价备货",
+          "desc": "雷神 2026 年一季度末存货达 <b>11.78 亿元</b>，较上年末增长约 <b>59.26%</b>，主要系为应对 CPU、内存、硬盘等核心元器件涨价而提前备货。在 TrendForce 口径下 2026 Q2 DRAM 合约价环比上涨 58–63%、NAND 上涨 70–75% 的背景下，这一备货动作直接影响下半年整机定价空间。",
+          "price": "—"
         }
       ]
     }
   ],
   "overseas": [
-    "<b>双品牌结构</b>：Xiaomi Book（高端，2026 由 Book Pro 14 重启）· REDMI Book（走量，数字系列）· REDMI Book Pro（中高端，数字 Pro 系列）",
-    "<b>平台策略</b>：2026 款全面转向第三代英特尔酷睿 Ultra（Panther Lake），Xiaomi Book Pro 14 是全球首批搭载 Core Ultra X7 358H 的机型之一",
-    "<b>价格带</b>：REDMI Book 14/16 2026 5999–7199 → REDMI Book Pro 2026 7999 起 → Xiaomi Book Pro 14 8499 起（国补到手 6799.15 起）",
-    "<b>生态差异点</b>：小米澎湃智联（跨设备相机、NFC 一碰、统一设备控制、键鼠共享）+ PC 超级小爱 / AI 深度搜索 / 个人知识库；Xiaomi Book Pro 14 另支持「关机远控」",
-    "<b>口径提示</b>：Redmi Book Pro 2026 的「14 英寸续航 37 小时」与 Xiaomi Book Pro 14「续航超过 MacBook Pro M5」均为<b>厂商口径，未见第三方实测</b>；国补叠加首销优惠后的到手价与页面标价差距可达 1500 元以上"
+    "<b>产品线结构</b>：ZERO Air（轻量化独显本：15 / 16）· ZERO（传统旗舰：16 Pro / 18 Pro）· 猎刃（主流游戏本：S / 16 / QS61）· aibook（轻薄本：14 Air Carbon / 15）· 911T（高刷游戏本）· MIX（迷你机）",
+    "<b>2026 发布特征</b>：全年围绕「轻」展开，不开大型发布会而是走 CES → 开售 → BW 首秀 → 上市的滚动节奏；用材料学（碳纤维 / 镁合金）而非单纯堆料换取重量优势，是二线品牌里定位最清晰的一条路线",
+    "<b>关键技术点</b>：ZERO Air 16 的 A/C/D 三面碳纤维 + 1.64kg / 160W 双满功耗 · aibook14 Air Carbon 的 1.05kg / 15.5mm + 准分子 UV 漆 · Aero VC 真空腔散热 · 霍尼韦尔相变硅脂 · 210W 轻量化适配器",
+    "<b>价格带</b>：aibook14 Air Carbon 7999 元 → ZERO Air 15 高配约 15499 元 → ZERO 16 Pro 万元级",
+    "<b>口径提示</b>：官方关于 Ultra 9 386H「性能 +50% / 功耗 −30%」、碳纤维机身「轻 20% / 强度高 25%」均为厂商口径，未见第三方实测；ZERO Air 16 赛车版电池容量截至 9 月仍未公布；小轻龙 15 高配价 15499 元来自渠道页面，与官网口径可能有差"
   ],
-  "footL": "整理于 2026-09-19 · 来源：小米官网 / 百度百科（REDMI Book Pro 2026）/ Gizmochina / GizChina / Notebookcheck / 泡泡网 / 太平洋科技 / LaptopsCheck"
+  "footL": "整理于 2026-09-19 · 来源：雷神官网 / CES 2026 展台资料 / BW2026 现场报道（快科技、热点科技、IT之家）/ 京东渠道页面"
 };
 
 /* ═══════════════════════════════════════════════════

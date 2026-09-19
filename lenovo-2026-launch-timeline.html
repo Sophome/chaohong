@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>联想笔记本 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#e2231a; --accent-soft:#fdeaea;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#ff7d76; --accent-soft:#3a1a18;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#e2231a}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#8b949e}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html" class="on" aria-current="page">联想</a>
+      <a href="asus-2026-launch-timeline.html">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html">惠普</a>
+      <a href="dell-2026-launch-timeline.html">戴尔</a>
+      <a href="apple-2026-launch-timeline.html">苹果</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线结构与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "LENOVO · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "联想笔记本 2026 新品发布年表",
+  "subtitle": "1月 ThinkBook 打头 → 3月小新/YOGA 元启版 → 4月 ThinkPad X1 Carbon Aura → 5.19 拯救者 Y9000P 与 YOGA Air → 9.3 IFA 首发 RTX Spark 双旗舰（千亿参数大模型本地跑）· 天禧 AI 贯穿全年 · 子品牌来酷 Air14 / Air16 / Pro14 / 斗战者四条线覆盖 3400–17500 元",
+  "badge": "2026",
+  "keyInfo": [
+    {
+      "k": "RTX Spark 落地",
+      "v": "9.3 IFA / 9.4 创新世界：YOGA Pro 9n（国行 YOGA Pro 15 Spark）把 1200 亿参数大模型装进 1.65kg 机身，128GB 统一内存 + 1 PFLOPS（FP4），国行已预热、价格待公布",
+      "s": "全年核心看点"
+    },
+    {
+      "k": "发布节奏",
+      "v": "1 月 ThinkBook → 3.18 春季品鉴会 → 4.22 ThinkPad 专场 → 5.19「超能之夜」→ 7.10 BW2026 来酷斗战者战 7000X → 9.3 IFA / 9.4 创新世界（RTX Spark 双旗舰 + 全品类）→ 9.7 ThinkPad E16 开售 → 9.16 YOGA Pro 15 Spark 国行预热",
+      "s": "七个节点"
+    },
+    {
+      "k": "子品牌来酷",
+      "v": "来酷 Lecoo 承担联想价格带下探，2026 年形成四条线：Air14（990g / 12.95mm，酷睿 3 304 / 5 315 / 5 320 三档，国补后 3399.15 元起）· Air16（三档 CPU，国补后 4249.15 元起）· Pro 14（24GB 板载 + OCuLink，国补后 4929.15 元）· 斗战者（战 7000X / 7000P / 7000 游戏本，8999 元起）",
+      "s": "四条产品线"
+    },
+    {
+      "k": "价格带",
+      "v": "来酷 14 4199 → 来酷 Air16 4999（国补后 4249.15）→ 小新 Air13 5199 → ThinkBook 14+ 10999 → 拯救者 Y9000P 14299 → X1 Carbon Aura 17999 → X9 15p 19999｜RTX Spark 双旗舰待公布",
+      "s": "3999–19999"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES 2026 · ThinkBook 率先开卖",
+      "meta": "开年",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "展出",
+          "title": "CES 2026：ThinkPad X1 Carbon Aura AI 元启版 2026 全球亮相",
+          "desc": "联想在 CES 首发新一代 ThinkPad 旗舰，<b>A 面碳纤维</b>顶盖、<b>不足 984g</b> 的整机重量，搭载第三代英特尔酷睿 Ultra 7 356H，14 英寸 2.8K OLED 背光屏（120Hz / 100% DCI-P3），内置 SIM 卡（12 个月 ×15G/月流量）主打「全互联本」。同期公布 ThinkPad X14 2026 与 ThinkPad X9 15p Aura 2026。",
+          "price": "X1 Carbon Aura 2026 <b>17999</b> 元（32GB+1TB 版）｜X14 <b>12999</b> 元｜X9 15p <b>19999</b> 元"
+        },
+        {
+          "time": "01.22",
+          "tag": "te",
+          "tagText": "全能",
+          "st": "已开售",
+          "title": "ThinkBook 14+ 2026 锐龙版上市（首发 5999 元）",
+          "desc": "2026 年联想<b>第一款大规模铺货</b>的新机。锐龙 7 H255 + 14 英寸 3072×1920 IPS（100% DCI-P3、Delta E&lt;1、500nits、30–120Hz VRR），业界少见地同时拿到 PANTONE Validated 与 PANTONE SkinTone Validated 双认证。立轴式设计带来最高 <b>87W</b> 性能释放；接口给到两个 USB4（支持 140W 快充）、USB-A、全尺寸 HDMI 2.1、RJ45 网口与 SD 读卡器，并保留 TGX 显卡扩展坞接口。整机轻约 1.5kg、薄至 15.9mm。",
+          "price": "首发价 <b>5999</b> 元（星耀白 / 锐龙 7 H255）｜32G+1T 版约 9199 元"
+        }
+      ]
+    },
+    {
+      "m": "02月",
+      "label": "YOGA 高端线预售",
+      "meta": "高端",
+      "items": [
+        {
+          "time": "02月",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "YOGA Pro 15 / 16 2026 Aura AI 元启版开启预售",
+          "desc": "联想高端轻薄线先行开售，采用 Aura 命名体系与天禧 AI 能力，主打高色准屏与稳定性能释放，面向设计 / 创作人群。",
+          "price": "—（正式价以渠道为准）"
+        }
+      ]
+    },
+    {
+      "m": "03月",
+      "label": "春季新品品鉴会 · 小新 / YOGA 元启版",
+      "meta": "走量",
+      "items": [
+        {
+          "time": "03.18",
+          "tag": "te",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "小新系列与 YOGA 旗舰集中发布（全系第三代酷睿 Ultra）",
+          "desc": "本场发布会聚焦 <b>AI PC 升级</b>，全线搭载第三代英特尔酷睿 Ultra 处理器与天禧 AI 引擎。笔记本侧包括小新 Pro 16 GT / Pro 14 GT / Pro 16 / Pro 14 的 2026 AI 元启版，以及 14 360 AI 元启版；YOGA 旗舰线推出 Pro 16 Aura AI 元启版与 Pro 15 Aura AI 元启版。同场还有 AI 平板（拯救者 Y700 五代、小新 Pro 13 系列、YOGA Pad Pro 14.5 AI 元启版）与显示器 YOGA Pro 27 UD 4K 创意屏。小新 Pro16 GT 2026 由此在 3 月上市，Pro 16 后续新增 FIFA 世界杯联名版。",
+          "price": "小新 Pro 16 GT 2026 <b>3999</b> 元起（Pro16 GT FIFA 联名版 2999 起）"
+        },
+        {
+          "time": "03月",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "ThinkBook 16+ 2026 与 ThinkBook X 陆续上市",
+          "desc": "ThinkBook 14+ / 16+ 2026 在 1–3 月分批次上市，提供锐龙与酷睿双平台；14+ / 16+ 酷睿 Ultra X7 358H 版（32G+1TB、3K/3.2K 高刷、星耀白）定价 <b>10999</b> 元。ThinkBook X 2026 相对更晚。",
+          "price": "ThinkBook 14+ / 16+ 2026（Ultra X7 358H）<b>10999</b> 元｜ThinkBook 14 2026（Ultra 5 336H）8999 元"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "ThinkPad 新品暨天禧 AI 生态发布会",
+      "meta": "商务主场",
+      "items": [
+        {
+          "time": "04.18",
+          "tag": "pu",
+          "tagText": "生态",
+          "st": "已发布",
+          "title": "联想创新科技大会：十余款 AI PC 元启版齐发，小天个人智能体登场",
+          "desc": "发布 YOGA Book 9i、YOGA Pro 16s、ThinkPad T14p、ThinkBook 16p、YOGA Air 14、小新 Pro 16 等十余款「元启版」新机，并正式发布业内首款 AI PC 个人智能体——<b>联想小天</b>。这批产品具备内嵌个人大模型、本地异构 AI 算力、个人知识库等五大特征。",
+          "price": "—（5 月 20 日集中发售）"
+        },
+        {
+          "time": "04.22",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "ThinkPad X1 Carbon Aura AI 2026 发布，14999 元起",
+          "desc": "联想以「我·即我们」为主题举办 2026 ThinkPad 新品暨天禧 AI 生态发布，交出「超级个体」的 AI 生产力答卷。核心是 <b>ThinkPad X1 Carbon Aura AI 2026</b>——A 面碳纤维、重量不足 984g，配 14 英寸 2.8K OLED（120Hz / 100% DCI-P3）与内置 SIM 卡，主打全时在线的商务场景。同场推出 ThinkPad X14 AI 2026（支持 Magic Bay 模块扩展）与 ThinkPad X9 15p Aura AI 2026（15.3 英寸 2.8K OLED 触控屏 + ForcePad 全域压感触控板）。全系搭载天禧 AI 生态，强调 AI 会议记录与数据安全加密。",
+          "price": "X1 Carbon Aura AI 2026 <b>14999</b> 元起（32GB+1TB 高配 17999 元）｜X14 AI 2026 <b>10299</b> 元｜X9 15p Aura 2026 <b>19999</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "05月",
+      "label": "天禧 AI · 一体多端 · 全场景新品超能之夜",
+      "meta": "全年密度最高",
+      "items": [
+        {
+          "time": "05.14",
+          "tag": "id",
+          "tagText": "来酷·轻薄",
+          "st": "已开售",
+          "title": "① 来酷 Lecoo Air 16 酷睿版上市 — 三档 CPU，4249 元起",
+          "desc": "联想子品牌来酷的大屏轻薄走量机型，承担联想体系向 4000 元档下探的任务。16″ IPS <b>2560×1600 120Hz</b> 高分高刷护眼屏，99.5% sRGB。提供<b>三档处理器</b>：<b>酷睿 Ultra 5 125H</b>（32GB + 1TB，4999 元）、<b>Ultra 5 226V</b>（16GB + 512GB，4999 元）、<b>Ultra 5 228V</b>（32GB + 512GB，5999 元）。后两档为 Lunar Lake 平台，16GB / 32GB LPDDR5X-8533 板载。<b>60Wh</b> 电池，1.5mm 键程无间隙键盘，Wi-Fi 6，2× 全功能 USB-C + 2× USB-A + HDMI + 3.5mm。全系享联想全国联保。",
+          "price": "Ultra 5 226V 16G+512G <b>4999</b> 元（国补后 <b>4249.15</b>）｜Ultra 5 228V 32G+512G <b>5999</b> 元（国补后 <b>5099.15</b>）｜125H 32G+1TB <b>4999</b> 元"
+        },
+        {
+          "time": "05.19",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "② 拯救者 Y9000P 2026 发布（Ultra 9 290HX Plus）",
+          "desc": "联想年度最重要的游戏本节点。Y9000P 2026 搭载全新一代英特尔<b>酷睿 Ultra 9 290HX Plus</b>（8P+16E、最高 5.5GHz），配备 <b>0.08ms 响应</b> OLED 专业超竞屏，主打「满功耗独显 + 乾坤 Pro 散热」。同场还有拯救者 Y7000X 笔记本（2.5K 165Hz OLED、主打「轻薄游戏」）亮相，以及 Y70 手机、Y900 平板、moto razr fold 折叠屏等全场景新品。",
+          "price": "拯救者 Y9000P 2026 <b>14299</b> 元｜拯救者 R7000X 2026 <b>12599</b> 元"
+        },
+        {
+          "time": "05.19",
+          "tag": "te",
+          "tagText": "轻薄",
+          "st": "已开售",
+          "title": "③ YOGA Air 14 Aura 2026 开售（14 日上架，19 日 20:00 首发）",
+          "desc": "主打极致轻薄与 AI 体验的旗舰轻薄本，搭载英特尔酷睿 <b>Ultra 7 258V</b>，配 32GB 内存与 1TB SSD。该机 5 月 14 日登陆电商平台、5 月 19 日晚 8 点开启销售，与 Y9000P 同日构成「轻薄 + 游戏」双箭头发售。",
+          "price": "—（首发价以渠道页面为准）"
+        },
+        {
+          "time": "05.19",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "④ 小新 Air 14 2026 发布，小新 Air13 6 月 10 日开售",
+          "desc": "走量主力机型在 5 月 19 日与旗舰同场发布，部分配置 6 月 10 日全面上市；小新 Air13 定于 <b>6 月 10 日 10:00</b> 开售，首发价 5199 元。",
+          "price": "小新 Air13 <b>5199</b> 元"
+        },
+        {
+          "time": "05.30",
+          "tag": "id",
+          "tagText": "来酷·轻薄",
+          "st": "已开售",
+          "title": "⑤ 来酷 Lecoo Air 14 首发开售 — 990g / 12.95mm，3999 元档起",
+          "desc": "来酷轻薄线的主力机型，也是联想体系里<b>最轻的一档 14 英寸本</b>。一体式<b>全金属机身</b> + 极简底面设计，厚仅 <b>12.95mm</b>、重仅 <b>990g</b>。首发搭载英特尔第三代酷睿 <b>酷睿 5 315</b>（Intel 18A 制程，6 核 6 线程），平台 AI 算力 <b>40 TOPS</b>。14″ <b>1920×1200</b> 16:10 LCD 屏，300nits，100% sRGB，支持 DC 无频闪调光。1.2mm 键程三档背光键盘。<b>50Wh</b> 电池 + 65W PD 适配器，官方标称办公续航 <b>16.8 小时</b>。接口：左侧 2× 全功能 USB-C（5Gbps / DP 1.4 / 100W PD）+ 右侧 1× USB-C + 3.5mm。配色含暮霞紫 / 涧云蓝。",
+          "price": "首发价 <b>4499</b> 元（12GB + 512GB，国补后约 <b>3999.15</b>）｜5 月 30 日 20:00 开售"
+        }
+      ]
+    },
+    {
+      "m": "06月",
+      "label": "配置补充与首销",
+      "meta": "收尾",
+      "items": [
+        {
+          "time": "06.12",
+          "tag": "te",
+          "tagText": "商务",
+          "st": "已开售",
+          "title": "ThinkBook X 2026 正式开售",
+          "desc": "ThinkBook 系列中定位更高的一支，在 6 月 12 日正式开售，补齐联想在高端商务全能本的价位段。",
+          "price": "—（以渠道页面为准）"
+        },
+        {
+          "time": "06月",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "ThinkPad T1g 2026 新增配置并开启首销",
+          "desc": "ThinkPad T 系列 2026 款在 6 月新增配置后开启首销。海外方面联想同步公布 2026 ThinkPad 全 10 款机型阵容：X13 Gen 7（5 月中旬起，AMD 版 5 月下旬）、X13 Detachable Gen 1（7 月下旬起）、L14 Gen 7 与 L16 Gen 3（均 5 月中旬起），可选英特尔酷睿 Ultra 系列 3 或 AMD 锐龙 AI PRO 400 系列。",
+          "price": "—（分批公布）"
+        }
+      ]
+    },
+    {
+      "m": "07月",
+      "label": "BW2026 · 来酷斗战者战 7000X 首秀 + 来酷 Pro 14 公布",
+      "meta": "子品牌动作",
+      "items": [
+        {
+          "time": "07.10",
+          "tag": "te",
+          "tagText": "来酷·游戏本",
+          "st": "已发布",
+          "title": "① 来酷斗战者战 7000X 于 BW2026 发布 — 1.99kg 的 16″ 独显轻薄游戏本",
+          "desc": "来酷在 BilibiliWorld 2026 发布斗战者系列新款轻薄游戏本战 7000X。16″ 机身，可选 <b>酷睿 Ultra 7 251HX</b> 或 <b>酷睿 7 245HX</b>（Arrow Lake，245HX 功耗 110W），全系搭 <b>RTX 5060 Laptop</b>（115W 上限），支持至 <b>180W 整机性能释放</b>。屏幕 <b>2560×1600 180Hz</b>、500nits、100% sRGB。机身<b>轻约 1.99kg / 薄约 18.95mm</b>。标配 <b>16GB DDR5（非板载，可自行升级）</b>，<b>80Wh</b> 电池 + <b>245W GaN</b> 适配器，2× USB-C + 3× USB-A + HDMI + 1GbE RJ45 + 3.5mm。",
+          "price": "Core 7 245HX + 16G + 512G <b>7905</b> 元 · Ultra 7 251HX + 16G + 512G <b>8999</b> 元"
+        },
+        {
+          "time": "07.16",
+          "tag": "id",
+          "tagText": "来酷·轻薄",
+          "st": "已开售",
+          "title": "② 来酷 Pro 14 公布 — 酷睿 / 锐龙双版本，国补后 4929.15 元",
+          "desc": "来酷 Pro 14 轻薄本可选 <b>酷睿 Ultra 5 处理器 135H</b> 或 <b>AMD 锐龙 7 H 255</b>。双版本均配 <b>24GB 板载 LPDDR5</b> + 512GB，14″ 级 <b>2.8K 120Hz 400nits</b> 高色域雾面屏，立轴设计支持约 180° 开合。双风扇尾部喷气式直出散热，<b>65W</b> 性能释放（酷睿版 3 热管 / 锐龙版 2 热管）。<b>1.48kg</b> + 100W 氮化镓 USB-C 电源，开机键集成指纹。接口含 2× 全功能 USB-C、3× USB-A、HDMI、1GbE RJ45、microSD 读卡器与 <b>OCuLink</b>（可外接显卡坞）。",
+          "price": "建议售价 <b>5799</b> 元 · 国补后到手 <b>4929.15</b> 元（7.22 10:00 发售）"
+        }
+      ]
+    },
+    {
+      "m": "08月",
+      "label": "来酷斗战者战 7000X 上市",
+      "meta": "子品牌落地",
+      "items": [
+        {
+          "time": "08.04",
+          "tag": "id",
+          "tagText": "来酷·游戏本",
+          "st": "已开售",
+          "title": "来酷斗战者战 7000X 上市开售",
+          "desc": "BW2026 首秀后于 8 月 4 日上市。电商渠道另在售 <b>战 7000P</b>（Ultra 7 251HX + RTX 5060，16G + 1T，2.5K 180Hz）与 <b>战 7000</b>（R9 8940HX 版）。来酷全程标注「享联想售后」，用共享售后网络作为子品牌的核心信任背书。来酷 2026 年同步扩张品类：<b>斗战者 AI 私有云主机</b>（AI NAS 900：Ultra 7 355 + 16GB；AI NAS 900 Pro：Ultra X9 388H + 64GB + 512GB，飞牛 fnOS，四盘位 RAID 0/1/5）与 XQ32q 显示器（31.5″ VA / 2K / 100Hz，9.18 发售）等。",
+          "price": "战 7000X 首销 <b>9499</b> 元（页面价 10299）· 战 7000P 页面价约 <b>12499</b> 元"
+        },
+        {
+          "time": "08.18",
+          "tag": "id",
+          "tagText": "来酷·轻薄",
+          "st": "已开售",
+          "title": "来酷 Air 14 2026 新增酷睿 3 304 / 酷睿 5 320 两档处理器版本",
+          "desc": "为来酷 Air 14 追加两档低价配置，把入门价进一步压到 <b>3400 元档</b>。两档均为英特尔第三代酷睿「Wildcat Lake」平台（Intel 18A 制程，官方称功耗较前代降低 <b>64%</b>、网页浏览性能提升 <b>45%</b>）：<b>酷睿 3 304</b> 为 5 核 5 线程、<b>酷睿 5 320</b> 为 6 核 6 线程。全系统一配 <b>12GB LPDDR5 5600MT/s</b>，存储最高 1TB NVMe。机身与首发版一致（12.95mm / 990g 全金属）。到此次上新后，来酷 Air 14 形成 <b>酷睿 3 304 → 酷睿 5 315 → 酷睿 5 320</b> 三档完整价格梯度。该机型被媒体直接对标 <b>苹果 MacBook Neo</b>（同为低价轻薄定位）。",
+          "price": "酷睿 3 304（12GB+512GB）<b>3999</b> 元 → 国补后 <b>3399.15</b> 元｜酷睿 5 320（12GB+1TB）<b>5199</b> 元 → 国补后 <b>4419.15</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "IFA 2026 · 联想创新世界 · RTX Spark 落地",
+      "meta": "全年最大发布窗口",
+      "items": [
+        {
+          "time": "09.03",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "① 联想 IFA 2026 / Innovation World：首批 RTX Spark 双旗舰领衔全品类",
+          "desc": "联想在柏林发布全新消费 AI 终端组合，核心是<b>行业首批搭载英伟达 RTX Spark 的两款 Yoga 旗舰</b>（见 ② ③ 条）。同场还铺开多条产品线：走量新线 <b>IdeaPad Vibe</b>、平板线 <b>Yoga Tab Plus Gen 2 / Yoga Tab Gen 2</b>、一体机 <b>IdeaCentre AIO i</b>、以及商用端的 <b>ThinkCentre X Ultra</b> 与 <b>ThinkBook 14 Gen 9</b>（见 ④–⑦ 条）。这是联想 2026 年规模最大的一场产品发布，覆盖消费 / 商用 / 平板 / 一体机 / 台式全形态。",
+          "price": "—（本场为全品类发布，各机型价格见对应条目）"
+        },
+        {
+          "time": "09.03",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已发布",
+          "title": "② IdeaPad Vibe 全新走量线：与 PANTONE 共创七色，$699.99 起",
+          "desc": "联想在 IFA 同期开辟的<b>全新走量产品线</b>。14 / 15 英寸两个尺寸，与 <b>PANTONE 色彩研究所</b>共创<b>七款配色</b>（含 Spicy Gold / Dreamy Violet / Chill Blue），并支持<b>可换键帽</b>。金属机身 <b>1.3kg 起</b>，处理器可选<b>骁龙 X</b> 或 <b>AMD 锐龙 AI 400 系列</b>，<b>10 月（AMD 版）/ 11 月（骁龙版）上市</b>。这是联想首次把「色彩个性化」做成独立产品线的核心卖点，直接对标惠普 OmniBook 的年轻化策略。",
+          "price": "<b>$699.99</b> 起（约 <b>799 欧元</b>，美国价）"
+        },
+        {
+          "time": "09.03",
+          "tag": "id",
+          "tagText": "平板",
+          "st": "已发布",
+          "title": "③ 平板线补齐 Yoga Tab Plus Gen 2 / Yoga Tab Gen 2",
+          "desc": "联想同步更新平板产品线：<b>Yoga Tab Plus Gen 2</b> 搭<b>骁龙 8 Elite</b> 处理器，13″ <b>4K 144Hz</b> 屏；<b>Yoga Tab Gen 2</b> 搭<b>天玑 9500s</b>，11.1″ 屏。两款均预装 <b>Android 17</b>，并承诺<b>7 年大版本更新</b>—— 这是安卓阵营目前最长的系统更新承诺之一，与三星 / 谷歌的旗舰平板策略对齐。",
+          "price": "Yoga Tab Gen 2 <b>$729.99</b> / Plus Gen 2 <b>$999.99</b>（美国价）"
+        },
+        {
+          "time": "09.03",
+          "tag": "id",
+          "tagText": "一体机",
+          "st": "已发布",
+          "title": "④ IdeaCentre AIO i 一体机更新：第三代酷睿 + 至高 40 TOPS",
+          "desc": "一体机产品线同步焕新。搭第三代英特尔酷睿处理器，<b>NPU 算力至高 40 TOPS</b>，符合 Copilot+ PC 门槛。屏幕提供 <b>23.8″ / 27″ FHD 120Hz</b> 两档可选。<b>11 月上市</b>，是联想消费台式线在 2026 年内唯一的一体机更新。",
+          "price": "24″ <b>$939.99</b> / 27″ <b>$1149.99</b> 起（美国价）"
+        },
+        {
+          "time": "09.03",
+          "tag": "te",
+          "tagText": "商用",
+          "st": "已发布",
+          "title": "⑤ ThinkCentre X Ultra（1.6L）与 ThinkBook 14 Gen 9 商用端亮相",
+          "desc": "商用线两款值得单独记的新品。<b>ThinkCentre X Ultra</b>：仅 <b>1.6L</b> 体积的迷你主机，搭 <b>AMD 锐龙 AI Max+ PRO 495</b> + <b>128GB 统一内存</b>，官方称<b>支持四机集群</b>—— 把「本地大模型推理集群」下放到桌面级形态。<b>ThinkBook 14 Gen 9</b>：搭<b>骁龙 X2 Plus</b>，标称 <b>26 小时视频播放</b>续航，是联想商用轻薄线在 Arm 平台上的主力机型。",
+          "price": "—（商用线，按企业采购目录定价）"
+        },
+        {
+          "time": "09.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "⑥ YOGA Pro 9n（国行 YOGA Pro 15 Spark）发布：把千亿参数大模型装进笔记本",
+          "desc": "联想与英伟达联合发布的旗舰 AI 创作本，是<b>行业首批 RTX Spark N1X 量产机</b>之一。平台把 <b>20 核 Grace CPU</b> 与 <b>6144 CUDA 核心的 Blackwell RTX GPU</b> 用 NVLink-C2C 集成在同一封装，AI 算力达 <b>1 PFLOPS（FP4）</b>，<b>最高 128GB LPDDR5X 9400MT/s 统一内存</b>（256bit / 16 通道）—— CPU 与 GPU 共享同一内存池，官方援引英伟达参考数据称本地可跑 <b>1200 亿参数、100 万 token 上下文</b>的大语言模型。屏幕 15.3″ 2560×1600 PureSight Pro OLED 玻璃屏，<b>48–165Hz VRR</b>，峰值 1100nits（HDR），100% sRGB / P3，<b>ΔE&lt;0.5</b>，杜比视界 + VESA DisplayHDR True Black 1000 + Eyesafe 2.0 + 彩通认证。100% 铝合金一体机身，1.65kg / 最薄 16.7mm，单指开合铰链；X Power 散热架构把 <b>80W TDP</b> 压进该厚度。存储给到<b>双 M.2 2242 插槽（一个 PCIe Gen4、一个 PCIe Gen5）</b>，最高 4TB。92.5Wh 电池 + 140W 适配器（15 分钟补能 3 小时）；接口有 HDMI 2.1（8K/60Hz）、2×USB4 40Gbps、2×USB-A 10Gbps、<b>UHS-II SD 读卡器</b>；920 万像素 MIPI 红外摄像头，A 面磁吸笔槽 + 带触觉反馈的 Force Pad 可兼作手绘板。静音 &lt;22dB。",
+          "price": "—（国行价与上市时间未公布；海外同期未公布价格，Engadget 归因于元器件市场波动）"
+        },
+        {
+          "time": "09.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "⑦ YOGA 9n 2-in-1 发布：双表面手写 + 可旋转条形音箱",
+          "desc": "与 Pro 9n 同平台的 360° 翻转本，是<b>首款 RTX Spark 翻转本</b>。统一内存<b>最高 64GB</b>（256bit / 9400MT/s / 16 通道），存储为 PCIe Gen4 QLC M.2 2242。屏幕 16″ 2880×1800 PureSight Pro OLED 触控屏，<b>30–120Hz VRR</b>，峰值 1100nits（HDR），ΔE&lt;1，同样拿下 DisplayHDR True Black 1000 与 Eyesafe 2.0。最大差异化在输入：<b>屏幕与触觉 Force Pad 双表面手写</b>，配 Yoga Pen Gen 2 支持倾斜感应、防误触与自定义按键；六扬声器杜比全景声，<b>两个高音单元集成在可旋转条形音箱</b>中。360° 翻转支持 Laptop / Tablet / Tent / Stand / Canvas 五种形态；100% 铝合金机身 1.94kg，<b>99.9Wh 电池</b> + 140W 快充，70W TDP。SD 读卡器为 UHS-I。",
+          "price": "—（未公布）"
+        },
+        {
+          "time": "09.04",
+          "tag": "pu",
+          "tagText": "概念机",
+          "st": "展出",
+          "title": "⑧ 两款概念本：Project Swan 卷轴屏商用本 + Project Aeroblade 无风扇全性能本",
+          "desc": "形态探索延续到商用场景。<b>Project Swan</b>：卷轴屏商用本，合拢是 14″ 笔记本，展开延展为 <b>17″ 16:9</b> 画布，机身厚 18.9mm、重 1.6kg。<b>Project Aeroblade</b>：机身<b>不足 10mm、重量不到 1000g</b>（实测口径约 830g），是无风扇全性能笔记本，用联想与 Frore Systems 合作的 Lenovo Active Flow 方案，以 <b>AirJet 固态主动散热模块</b>取代传统风扇。",
+          "price": "—（概念机，不量产）"
+        },
+        {
+          "time": "09.06",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "⑨ ThinkPad E16 2026 新增酷睿 5 320 版本，7299 元，9 月 7 日 0:00 开售",
+          "desc": "大屏商务线补主流价位段。搭载<b>酷睿 5 320</b>（6 核 6 线程，加速 4.6GHz），16G+512G 定价 <b>7299 元</b>。16″ 1920×1200 IPS 屏，60Hz、400nits，支持 <b>Eyesafe Certified 2.0</b> 与 AG 防眩光；杜比全景声 + 哈曼音效。48Wh 电池，1.71kg、厚 17.05mm。接口相当齐整：<b>2×雷电 4</b>、USB-A 3.2 Gen2、USB-A 3.2 Gen1、HDMI 2.1 TMDS、<b>RJ45 网口</b>、3.5mm 耳机口。与更高阶的酷睿 Ultra 版本形成梯度布局；该机型能效网规格型号为 ThinkPad E16 Gen 4。",
+          "price": "官方 <b>7299</b> 元 → 京东国补 15% 后页面实付 <b>¥6899</b>（30 天最低 ¥6299）"
+        },
+        {
+          "time": "09.16",
+          "tag": "wa",
+          "tagText": "预热",
+          "st": "待发布",
+          "title": "⑩ YOGA Pro 15 Spark 国行版开启预热",
+          "desc": "国行版预热启动，已知参数集中在存储扩展：<b>双 M.2 2242 插槽，一个 PCIe Gen4、一个 PCIe Gen5</b>，与海外 Yoga Pro 9n 一致。国行售价、完整配置与开卖时间<b>均未公布</b>；海外版同期同样未定价。另有非官方渠道流出 32GB / 128GB 两档 SKU 的占位价格（$1599 / $2199），<b>属渠道页口径，未经联想确认</b>，不建议引用。",
+          "price": "—（未公布，以联想商城为准）"
+        }
+      ]
+    },
+    {
+      "m": "下半年",
+      "label": "待发布",
+      "meta": "看点",
+      "items": [
+        {
+          "time": "秋季",
+          "tag": "wa",
+          "tagText": "待发布",
+          "st": "待发布",
+          "next": true,
+          "title": "搭载英伟达 RTX Spark 芯片的 AI PC 计划秋季发售",
+          "desc": "联想与英伟达联手打造的 AI PC，CEO 杨元庆已确认首批搭载 <b>RTX Spark</b> 芯片的机型将于 <b>2026 年秋季</b>正式发售，是下半年的核心看点。",
+          "price": "—（未公布）"
+        }
+      ]
+    },
+    {
+      "m": "在售",
+      "label": "",
+      "meta": "",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "来酷·入门",
+          "st": "已开售",
+          "title": "来酷全系列矩阵：Air（超轻薄）/ Pro（主流）/ 数字（入门）三条线覆盖 3400–6000 元档",
+          "desc": "来酷 2026 年形成三条清晰产品线：<b>Air 超轻薄线</b>（Air14 / Air16，990g–1.5kg，3400–6000 元档）· <b>Pro 主流线</b>（Pro 14 N155A/N155C/N156C，1.48kg，含 OCuLink，4900–6000 元档）· <b>数字入门线</b>（来酷 14，i5-13420H + 16GB + 512GB，14″ 2240×1400 100% sRGB，约 1.65kg，4199 元）。另有 <b>来酷 Pro14 (N155A)</b> （锐龙 7 H255 + 24GB + 512GB，5999 元）、<b>N156C</b>（i5-13420H + 16GB + 1T，15.6″ FHD，1.7kg，双天线 Wi-Fi 6）等。全系主打「联想全国联保 + 支持查验」的渠道信任，是联想价格带下探的主要承载。",
+          "price": "来酷 Air14 酷睿 3 304 版国补后 <b>3399.15</b> 元（全系列最低）· 来酷 14 <b>4199</b> 元 · 来酷 Air14 酷睿 5 315 版 <b>4499</b> 元 · 来酷 Pro14 (N155A) <b>5999</b> 元"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>产品线结构</b>：ThinkPad（商务旗舰 X1 / X / T / L 系列）· ThinkBook（年轻商务全能本）· 小新（大众轻薄走量）· YOGA（高端轻薄 / 双屏）· 拯救者（游戏本）· 来酷 Lecoo（入门价格线）",
+    "<b>2026 ThinkPad 海外阵容（全 10 款）</b>：X13 Gen 7（2026 年 5 月中旬起，AMD 版 5 月下旬）· X13 Detachable Gen 1（7 月下旬起）· L14 Gen 7 / L16 Gen 3（均 5 月中旬起），可选英特尔酷睿 Ultra 系列 3 或 AMD 锐龙 AI PRO 400 系列",
+    "<b>价格带</b>：来酷 Air14 3999 → 小新 Air13 5199 → 小新 Pro16 GT 3999 起 → ThinkBook 14+ 10999 → 拯救者 R7000X 12599 → 拯救者 Y9000P 14299 → ThinkPad X1 Carbon Aura 17999 → X9 15p Aura 19999 元",
+    "<b>口径提示</b>：上述为联想官网 / ThinkPad 官方商城标价，实际成交常见国补 15–20% 与教育优惠叠加；部分机型（YOGA Air 14、ThinkBook X、T1g）官方未公布统一首发价，页面价为渠道价",
+    "<b>集团口径</b>：联想同时运营 ThinkPad / ThinkBook（商用）、小新 / YOGA（消费）、拯救者（游戏）、来酷 Lecoo（入门）多条线，MOTO 手机与平板共用同一场发布会",
+    "<b>子品牌来酷 Lecoo 2026 节点</b>：5.14 Air 16 酷睿版上市 → 7.10 BW2026 斗战者战 7000X 首秀 → 7.16 来酷 Pro 14 公布（7.22 开售）→ 8.4 战 7000X 上市 → 9.18 XQ32q 显示器发售；同步扩张斗战者 AI 私有云主机（AI NAS 900 / 900 Pro）与显示器 / 键鼠 / 支架等周边"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：联想官网 / 联想社区 / ThinkPad 官方商城 / 来酷官网 lecoo.com / 百度百科 Lecoo 词条 / IT之家 / 新浪财经 / 京东 · 联想京东自营旗舰店页面"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

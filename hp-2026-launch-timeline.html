@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>惠普笔记本 2026 新品发布年表</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
+    --line:#e6e9ee; --accent:#0096d6; --accent-soft:#e5f4fc;
+    --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
+    --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
+    --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
+    /* 模块间距：改这三处即可整体收紧 / 放开 */
+    --gap-block:34px;   /* 关键卡 → 时间轴，月度分组之间 */
+    --gap-sec:40px;     /* 时间轴 → 分区标题 */
+    --gap-foot:48px;    /* 内容 → 页脚 */
+  }
+  html[data-theme="dark"]{
+    --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
+    --line:#2a2f36; --accent:#5cc4ee; --accent-soft:#12303c;
+    --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
+    --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+
+  header{padding:20px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sqd{display:inline-flex;gap:3px}
+  .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
+  .sqd i:nth-child(1){background:#0096d6}
+  .sqd i:nth-child(2){background:#e2231a}
+  .sqd i:nth-child(3){background:#1c2024}
+  h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
+  .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
+  .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
+
+  .keybar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:var(--gap-block)}
+  .keycard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+  .keycard .k{font-size:11px;letter-spacing:.1em;color:var(--ink3)}
+  .keycard .v{margin-top:6px;font-size:14px;font-weight:600;line-height:1.5}
+  .keycard .s{margin-top:8px;display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+
+  /* 间距层级：月度分组之间 --gap-block，组内条目之间 12px */
+  .month{margin-bottom:var(--gap-block)}
+  .month:last-child{margin-bottom:0}
+  .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mnum{font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .mlabel{font-size:13px;color:var(--ink2)}
+  .mmeta{margin-left:auto;font-size:12px;color:var(--ink3);white-space:nowrap}
+
+  .tl{position:relative;padding-left:104px}
+  .tl::before{content:"";position:absolute;left:88px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .item{position:relative;margin-bottom:12px}
+  .item:last-child{margin-bottom:0}
+  .item .time{position:absolute;left:-104px;top:14px;width:76px;text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .item .time small{display:block;font-weight:400;font-size:11px;color:var(--ink3)}
+  .item .dot{position:absolute;left:-20px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .item .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;box-shadow:var(--shadow)}
+  .item .t{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .tag.pu{background:var(--purple-soft);color:var(--purple)}
+  .tag.te{background:var(--teal-soft);color:var(--teal)}
+  .tag.id{background:var(--idle-soft);color:var(--idle)}
+  .tag.wa{background:var(--warn-soft);color:var(--warn)}
+  .item .d{margin-top:6px;font-size:13px;color:var(--ink2)}
+  .item .p{margin-top:8px;font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:7px}
+  .item .p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .item.next .dot{background:var(--warn)}
+
+  .sec{margin-top:var(--gap-sec)}
+  .sec h2{font-size:13px;letter-spacing:.12em;color:var(--ink3);font-weight:600;margin:0 0 12px}
+  .plain{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .plain ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink2)}
+  .plain li{margin-bottom:7px}
+  .plain li:last-child{margin-bottom:0}
+  .plain li b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:var(--gap-foot);padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .brandnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;padding-right:52px}
+  .brandnav a{font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink3);text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
+  .brandnav a:hover{color:var(--ink);border-color:var(--accent)}
+  .brandnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .toggle{position:fixed;right:16px;top:16px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;font-size:16px;box-shadow:var(--shadow)}
+
+  @media (max-width:680px){
+    :root{--gap-block:28px; --gap-sec:32px; --gap-foot:36px}
+    .wrap{padding:18px 14px 56px}
+    h1{font-size:23px}
+    .tl{padding-left:0}
+    .tl::before{left:5px}
+    .item{padding-left:24px}
+    .item .time{position:static;width:auto;text-align:left;margin-bottom:4px}
+    .item .time small{display:inline;margin-left:6px}
+    .item .dot{left:1px;top:8px}
+    .mmeta{margin-left:0}
+    .brandnav{flex-wrap:nowrap;overflow-x:auto;padding-right:56px;scrollbar-width:none}
+    .brandnav::-webkit-scrollbar{display:none}
+    .keybar{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .toggle{display:none}
+    .brandnav{display:none}
+    .wrap{max-width:none;padding:0}
+    .keycard,.item .card,.plain{box-shadow:none;break-inside:avoid}
+    .item,.month{break-inside:avoid}
+    .month,.sec{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="brandnav">
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html">联想</a>
+      <a href="asus-2026-launch-timeline.html">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
+      <a href="huawei-2026-launch-timeline.html">华为</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html" class="on" aria-current="page">惠普</a>
+      <a href="dell-2026-launch-timeline.html">戴尔</a>
+      <a href="apple-2026-launch-timeline.html">苹果</a>
+    </nav>
+    <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
+    <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+
+  <div class="keybar" id="keybar"></div>
+
+  <div id="months"></div>
+
+  <div class="sec">
+    <h2>产品线结构与价格带</h2>
+    <div class="plain"><ul id="overseas"></ul></div>
+  </div>
+
+  <footer>
+    <span id="footL"></span>
+    <span>改 PAGE 常量即可更新 · 样式不用动</span>
+  </footer>
+</div>
+
+<button class="toggle" id="tg" title="切换深浅">◐</button>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   只改这里 —— 数据区
+   tag:  空=旗舰 / te=高端 / pu=形态·资本 / id=走量·海外 / wa=预告
+   st:   已开售 · 已发布 · 海外 · 展出
+   ═══════════════════════════════════════════════════ */
+const PAGE = {
+  "eyebrow": "HP · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "惠普笔记本 2026 新品发布年表",
+  "subtitle": "1.6 CES 全系亮相 + HyperX 品牌融合 → 4.27/4.28 星 Book 两场连发（含 1kg 游戏级轻薄本）→ 9.4 IFA 2026 RTX Spark 双机（OmniBook Ultra 16 全球最薄 / X 14）· 暗影精灵回归 HyperX 命名",
+  "badge": "2026",
+  "keyInfo": [
+    {
+      "k": "RTX Spark 落地",
+      "v": "9.4 发布 OmniBook Ultra 16 与 OmniBook X 14：行业首批公布定价的 RTX Spark 机型（€3299 起），Ultra 16 以 15.73mm 称「全球最薄 RTX Spark 笔记本」",
+      "s": "全年核心看点"
+    },
+    {
+      "k": "发布节奏",
+      "v": "1.6 CES 全系首秀 → 4.27 京东首发暗影精灵 + 星Book Pro 14 锐龙版 → 4.28 两场星 Book 发布会 → 9.4 IFA 2026 RTX Spark 双机 + OmniDesk 披露 → 9.8 战 99 16″ 上架",
+      "s": "五个节点"
+    },
+    {
+      "k": "年度亮点",
+      "v": "星 Book Pro Air 14（1.09kg 实现 45W 释放，「1kg 游戏级轻薄本」）· OmniBook Ultra 16（惠普首个消费级塔式铰链 + 主干风道散热，99Wh 电池）· OmniDesk（2027.4 上市的常开 AI 台式机）",
+      "s": "三条亮点"
+    },
+    {
+      "k": "价格带",
+      "v": "星Book 16 5699–6599 → 星Book Pro Air 14 约 7499–7999 → 战 99 16″ 9999 → 星Book Pro 14 锐龙版顶配 10999 → OmniBook Ultra 16 €3299 起 → 暗影精灵 MAX 万元级",
+      "s": "六档"
+    }
+  ],
+  "months": [
+    {
+      "m": "01月",
+      "label": "CES 2026 · 全系首秀与游戏品牌战略升级",
+      "meta": "海外主场",
+      "items": [
+        {
+          "time": "01.06",
+          "tag": "pu",
+          "tagText": "品牌",
+          "st": "已发布",
+          "title": "CES 2026：HyperX 与 OMEN 暗影精灵正式融合",
+          "desc": "惠普宣布旗下游戏品牌<b>战略升级</b>：HyperX 与 OMEN 暗影精灵融合，共同打造全新「HyperX 暗影精灵」游戏 PC，构建全新桌面游戏生态。首发阵容包括：<b>HyperX 暗影精灵 MAX 2026 旗舰游戏本</b>（峰值功耗高达 300W，搭载新一代 Intel Core Ultra 200HX 或 AMD Ryzen AI 处理器，最高可选 RTX 5090 笔记本 GPU，配升级版酷凉风暴 MAX 三风扇散热、高轮询率「闪击键盘」与 16″ OLED 240Hz 屏；OGH 游戏控制中心的 OMEN AI 可一键优化设置提升帧率）、HyperX 暗影精灵 34″ OLED 曲面游戏显示器（V-stripe QD-OLED，360Hz，0.03ms，含 OLED CoreProtect 防烧屏）、HyperX 极度未知幻刃格斗键盘（惠普首款获 Xbox 官方授权，磁性开关 + TMR 传感器）。中国侧另有与英特尔、逗逗游戏伙伴合作的端侧边缘 AI 游戏创新（NPU 驱动性能优化与场景识别）。",
+          "price": "—（预计 2026 年春季发售，价格上市前公布）"
+        },
+        {
+          "time": "01.06",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "CES AI PC 阵容：EliteBoard G1a / EliteBook X G2 / OmniBook Ultra 14 / OmniBook 3",
+          "desc": "<b>EliteBook X G2</b> 商用笔记本系列与 <b>EliteBoard G1a</b> 同获 2026 年度 CES 创新奖，后者是惠普迄今最小最轻的 AI PC（全功能整合进键盘，仅 0.75kg）。消费线推出 <b>OmniBook Ultra 14（星 Book Ultra 14）</b>，搭载新一代 Intel Core Ultra 处理器；全新 <b>OmniBook 消费级笔记本系列（惠普星 Book 系列）</b>主打续航与显示，其中 OmniBook 3（星 Book）16 英寸机型在同级别 OLED AI 笔记本中实现领先续航，本地视频播放最长可达 <b>45 小时</b>。产品上市：EliteBoard G1a 预计 2026 年 3 月发售，EliteBook X G2 预计 2026 年春季发售。",
+          "price": "—（上市前公布）"
+        }
+      ]
+    },
+    {
+      "m": "04月",
+      "label": "星 Book 连续两场发布会 · 全年最密集",
+      "meta": "国内主场",
+      "items": [
+        {
+          "time": "04.27",
+          "tag": "id",
+          "tagText": "首发",
+          "st": "已开售",
+          "title": "① 京东首发 HyperX 暗影精灵高性能游戏本 + 星Book Pro 14 锐龙版",
+          "desc": "惠普在京东首发全新一代 <b>HyperX 暗影精灵</b>高性能游戏本与 <b>星Book Pro 14 锐龙版</b>。游戏本提供酷睿 Ultra 2 处理器与 AMD R9 HX 处理器双版本，全系搭载 <b>QHD 240Hz</b> 高刷电竞屏；其中 HyperX 暗影精灵 MAX 系列整机性能释放至高可达 <b>300W 以上</b>，Pro 系列配备高回报率 8K 闪击键盘，全系支持 26 键无冲与四分区 RGB 背光，采用酷凉风暴 MAX+ 散热方案，并通过 MIL-STD-810H 军规认证。星Book Pro 14 锐龙版采用雾绒全金属机身，搭载全新锐龙系列处理器，配 2.8K OLED 全感屏。",
+          "price": "首发期国补至高立减 1500 元，到手价分别 <b>8074</b> 元起（暗影精灵）与 <b>5948.3</b> 元起（星Book Pro 14）"
+        },
+        {
+          "time": "04.28",
+          "tag": "te",
+          "tagText": "轻薄",
+          "st": "已开售",
+          "title": "② 星 Book AMD 新品首发专场（18:00–19:30）：四款锐龙机型",
+          "desc": "首场发布会推出基于 AMD 锐龙处理器的四款机型：<b>星 Book Pro 14</b>、<b>星 Book 16</b>、<b>星 Book Plus 14</b>、<b>星 Book X 360 14</b>，覆盖从专业创作到日常办公、从传统形态到二合一翻转本的多个细分市场。其中星 Book Pro 14 2026 锐龙版定位最清晰：14 英寸 2880×1800 120Hz OLED 屏（峰值 <b>1100nits</b>、100% DCI-P3、120Hz VRR、0.2ms 响应），双风扇双热管转轴出风散热（最高 <b>65W</b> 释放），DTS + Poly 音效系统，5MP + IR 摄像头，68Wh 电池，薄约 14.95mm / 轻约 1.5kg，通过 11 项军标认证。接口为 2 个全功能 USB-C、USB-A 10Gbps、USB-A 5Gbps、HDMI、3.5mm 二合一，支持 Wi-Fi 7 与蓝牙 6.0。",
+          "price": "锐龙 7 H 255 + 32GB + 1TB：灰 <b>6999</b> / 粉 7099 元｜锐龙 AI 7 H 450 + 32GB + 1TB：<b>9999</b> 元｜锐龙 AI 9 HX 475 + 32GB + 1TB：<b>10999</b> 元"
+        },
+        {
+          "time": "04.28",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已开售",
+          "title": "③ 星 Book 2026 新品发布专场（20:00）：5 大重磅新品，含「1kg 游戏级轻薄本」",
+          "desc": "第二场发布会推出「5 大重磅新品」，其中最大看点是官方称为「<b>1kg 游戏级轻薄本</b>」的 <b>惠普星Book Pro Air 14</b>。该机整机重量仅 <b>1.09kg</b>（约 1 千克级别），却可实现至高 <b>45W</b> 稳定性能释放，至高搭载英特尔酷睿 <b>Ultra 7 255H</b> 处理器与集成锐炫 140T 光追核显，官方称可流畅运行《英雄联盟》《CS2》《原神》等主流游戏，同时胜任图像渲染、视频编辑等高负荷任务；内置 NPU 加速本地 AI 应用。机身薄至 <b>12.75mm</b>，全铝合金金属机身，屏幕支持约 180° 超大开合角度。同场还有<b>星 Book Pro 16 2026</b>（16 英寸 2.5K 屏）与星 Book Pro 14 2026 共同亮相，覆盖 14–16 英寸主流尺寸。发布方引用数据称 <b>38%</b> 的轻薄本用户每周都会在笔记本上玩游戏，这是该产品定义的直接依据。",
+          "price": "星 Book Pro Air 14：官方页面约 <b>7499–7999</b> 元（原价 10499 元档）｜星 Book Pro 16 2026（Ultra 5 / 16G+1T）约 <b>9199</b> 元"
+        }
+      ]
+    },
+    {
+      "m": "09月",
+      "label": "IFA 2026 · RTX Spark 双机 + 战 99 上架",
+      "meta": "全年技术密度最高",
+      "items": [
+        {
+          "time": "09.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "① OmniBook Ultra 16 发布：全球最薄的 RTX Spark 笔记本",
+          "desc": "惠普首次把 RTX Spark 带进消费线，也是<b>全行业第一个给出定价的 RTX Spark 机型</b>。平台为 RTX Spark N1X（20 核 Grace + 6144 CUDA 核心 Blackwell，NVLink-C2C，FP4 下 <b>1 PFLOPS</b>），统一内存最高 <b>128GB</b>，存储至 2TB Gen5。机身<b>仅 15.73mm</b>——HP 称其为「世界最薄 RTX Spark 笔记本」。屏幕 16″ <b>3K OLED</b>，VESA DisplayHDR True Black 1000 认证，最高 120Hz。散热是惠普<b>首个消费级塔式铰链 + 主干风道架构</b>：加大热管 + 双超薄风扇，为持续 AI / 开发 / 创作负载设计。四扬声器（智能功放），<b>99Wh 电池</b>，官方标 17 小时续航、<b>30 分钟充至 50%</b>。配置矩阵跨度很大：CPU/GPU 有 <b>18 核 + 5120 CUDA</b> 与 <b>20 核 + 6144 CUDA</b> 两档，内存 32 / 64 / 128GB，存储 1 或 2TB。",
+          "price": "<b>€3299</b> 起（德国首发价，含 19% VAT，折税前约 €2772）；德国 11 月中旬上市；美国经 HP.com 与 Best Buy 秋季开卖，价格临近上市公布。注意该价为入门配置，顶配将远高于此",
+          "next": true
+        },
+        {
+          "time": "09.04",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已发布",
+          "title": "② OmniBook X 14 发布：同平台的便携版",
+          "desc": "把 RTX Spark 策略延伸到手更轻的形态，面向经常不在工位上的创作者、开发者与 AI 爱好者。同样集成本地 AI、个人智能体、创作与 RTX 图形能力，OLED 屏同样拿到 <b>VESA DisplayHDR True Black 1000</b> 认证。官方标续航最高 <b>15 小时</b>，配 <b>140W USB-C GaN</b> 适配器，约 30 分钟充至 50%。与 Ultra 16 同批发布，渠道同样走 HP.com 与其他零售商，秋季上市。",
+          "price": "—（未公布，临近上市公布）",
+          "next": true
+        },
+        {
+          "time": "09.04",
+          "tag": "pu",
+          "tagText": "形态·生态",
+          "st": "已发布",
+          "title": "③ OmniDesk 披露：RTX Spark 台式机，2027 年 4 月上市",
+          "desc": "惠普首次披露 RTX Spark 桌面机型。定位紧凑高性能 AI 计算主机，核心设计取向是<b>「常开」（always-on）</b>——让 AI 智能体与其他长时任务在用户离开电脑时继续运行。RTX Spark 平台确认将覆盖 8 款不同笔记本，加上台式形态，跨型号配置混淆风险较高（如「128GB 统一内存」的宣传对应到 32GB 配置会产生预期落差）。规格与价格未公布。",
+          "price": "—（未公布；预计 <b>2027 年 4 月</b>上市）",
+          "next": true
+        },
+        {
+          "time": "09.04",
+          "tag": "id",
+          "tagText": "海外",
+          "st": "已发布",
+          "title": "④ 新一代 OmniBook 家族区域上市：Ultra 14 / X / 5 刷新",
+          "desc": "惠普完成 OmniBook 全线 2026 刷新，该品牌现已<b>取代旧 Pavilion / Envy 命名</b>成为惠普 AI PC 统一品牌。新增三个高位 SKU：<b>OmniBook Ultra 14</b>（可选 Intel Core Ultra 或骁龙 X，官方口径骁龙版续航最高 22.75 小时）、<b>OmniBook X</b>（Core Ultra 7 355，NPU 最高 80 TOPS，稳过 Copilot+ 门槛）、<b>OmniBook 5 (2026)</b>（14″ 2K OLED 300nits，NPU 最高 49 TOPS）。RTX Spark 版 OmniBook X 14 在部分市场另有独立定价，如印度地区早期预估约 ₹199999。",
+          "price": "印度市场：Ultra 14 <b>₹189999</b>（骁龙）/ <b>₹214999</b>（Intel）｜X <b>₹169999</b> 起｜OmniBook 5 <b>₹124999</b> 起（价格截至 2026-09-13，区域市场口径）",
+          "next": false
+        },
+        {
+          "time": "09.08",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "⑤ 战 99 16 英寸新款上架：9999 元，83Whr 大电池工作站级",
+          "desc": "商用工作站线补位。搭 <b>酷睿 Ultra 7 255H</b>（16 核 16 线程），16GB DDR5（至 64GB）+ 1TB PCIe SSD。16″ <b>2.5K 120Hz IPS</b>，100% DCI-P3，峰值 400nits，带低蓝光护眼。双风扇双热管散热，<b>83Whr</b> 大电池。接口全规格：<b>2×雷电 4</b>（支持三屏输出）、USB-A、<b>RJ45 网口</b>、HDMI 2.1，Wi-Fi 7 + 蓝牙 5.4，指纹识别，500 万像素红外摄像头，整机 <b>2kg</b>，通过 21 项 MIL-STD-810H 军规可靠性测试。出厂自带「战 AI」一站式智能平台。另有 Ultra 5 225H 集显版本同价区间、以及 Ultra 7 255H + <b>RTX PRO 500 6G 独显</b>版（页面价 19999 元）可选。",
+          "price": "官方定价 <b>9999</b> 元（京东自营上架）｜常卖价 ¥9799｜历史最低曾至 ¥6999（30 天最低 ¥9699）",
+          "next": false
+        }
+      ]
+    },
+    {
+      "m": "在售",
+      "label": "消费与商用主力机型",
+      "meta": "渠道价",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "星Book 16 2026 与战 66 八代覆盖大众与商务",
+          "desc": "星Book 16 2026（酷睿 5 210H / 16G+512G）：16 英寸 1920×1200 IPS、100% sRGB、68Wh 电池、1.64kg，页面价约 6599 元、促销低至 5299 元；另有锐龙 7 H 255 版本约 5699 元。商务线 <b>战 66 八代</b> 16 英寸（锐龙 7 255H / 16 英寸 2.5K IPS 400nit 120Hz / 16GB+1TB / Wi-Fi 6E）约 <b>6599</b> 元。",
+          "price": "星Book 16 2026 页面约 <b>6599</b> 元（618 低至 5299 元）｜锐龙版约 5699 元｜战 66 八代 16″ 约 <b>6599</b> 元"
+        }
+      ]
+    }
+  ],
+  "overseas": [
+    "<b>产品线结构</b>：星 Book / OmniBook（消费轻薄：Ultra / Pro / Air / 数字系列 / X 360 翻转本）· HyperX 暗影精灵（游戏，原 OMEN 融合 HyperX 品牌）· 战 66 / EliteBook（商用）· EliteBoard（键盘形态 AI PC）",
+    "<b>2026 品牌动作</b>：CES 宣布 HyperX 与 OMEN 暗影精灵融合；消费线统一为 OmniBook（中文「星 Book」）命名体系，取消原有 Envy / Pavilion 等旧命名",
+    "<b>关键机型</b>：星 Book Pro Air 14（1.09kg / 45W / Ultra 7 255H / 12.75mm）· 星 Book Pro 14 2026 锐龙版（2.8K OLED 1100nits / 65W）· HyperX 暗影精灵 MAX 2026（300W 峰值 / RTX 5090 / 16″ OLED 240Hz）· EliteBoard G1a（0.75kg 键盘主机）",
+    "<b>价格带</b>：星Book 16 2026 约 5699–6599 → 星Book Pro Air 14 约 7499–7999 → 星Book Pro 16 2026 约 9199 → 星Book Pro 14 锐龙版顶配 10999 → HyperX 暗影精灵 MAX 万元级",
+    "<b>口径提示</b>：惠普国内销售普遍叠加「国补 85 折 / 至高减 1500 元」，官方商城标价与补贴后实付价差距明显（如星 Book Pro Air 14 标价 9799–10499、实付 6999–7999）；「1kg 游戏级轻薄本」为营销定义，45W 释放下运行 3A 大作的实际画质 / 帧率需看具体设置；CES 公布的 OmniBook 3 16″「45 小时本地视频播放」为厂商实验室口径"
+  ],
+  "footL": "整理于 2026-09-19 · 来源：IT之家（4.28）/ 中国网（CES 2026）/ 搜狐科技 / 太平洋科技 / 网易 / 惠普中国官方商城 / 京东·天猫渠道页面"
+};
+
+/* ═══════════════════════════════════════════════════
+   渲染逻辑
+   ═══════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$('eyebrow').textContent  = PAGE.eyebrow;
+$('title').textContent    = PAGE.title;
+$('badge').textContent    = PAGE.badge;
+$('subtitle').textContent = PAGE.subtitle;
+$('footL').textContent    = PAGE.footL;
+
+$('keybar').innerHTML = PAGE.keyInfo.map(x => `
+  <div class="keycard">
+    <div class="k">${esc(x.k)}</div>
+    <div class="v">${esc(x.v)}</div>
+    <span class="s">${esc(x.s)}</span>
+  </div>`).join('');
+
+$('months').innerHTML = PAGE.months.map(mo => `
+  <section class="month">
+    <div class="mhead">
+      <span class="mnum">${esc(mo.m)}</span>
+      <span class="mlabel">${esc(mo.label)}</span>
+      <span class="mmeta">${esc(mo.meta || '')}</span>
+    </div>
+    <div class="tl">
+      ${mo.items.map(it => `
+        <div class="item ${it.next ? 'next' : ''}">
+          <div class="time">${esc(it.time)}</div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="t">
+              ${esc(it.title)}
+              <span class="tag ${it.tag}">${esc(it.tagText)}</span>
+              <span class="tag id">${esc(it.st)}</span>
+            </div>
+            <div class="d">${it.desc}</div>
+            <div class="p">${it.price}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+$('overseas').innerHTML = PAGE.overseas.map(x => `<li>${x}</li>`).join('');
+
+$('tg').onclick = () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+};
+</script>
+</body>
+</html>

@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>鸿蒙智行 2026 新品发布年表</title>
+<title>华为笔记本 2026 新品发布年表</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
-    --line:#e6e9ee; --accent:#c7000b; --accent-soft:#fde8ea;
+    --line:#e6e9ee; --accent:#c8102e; --accent-soft:#fde9ec;
     --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
     --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
     --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
@@ -18,7 +18,7 @@
   }
   html[data-theme="dark"]{
     --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
-    --line:#2a2f36; --accent:#ff7a85; --accent-soft:#3a1a1f;
+    --line:#2a2f36; --accent:#ff7a8a; --accent-soft:#3a181d;
     --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
     --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -33,9 +33,9 @@
   .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .sqd{display:inline-flex;gap:3px}
   .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
-  .sqd i:nth-child(1){background:#c7000b}
+  .sqd i:nth-child(1){background:#c8102e}
   .sqd i:nth-child(2){background:#1c2024}
-  .sqd i:nth-child(3){background:#0d7a72}
+  .sqd i:nth-child(3){background:#c9a227}
   h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
   .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
   .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
@@ -120,15 +120,18 @@
 <div class="wrap">
   <header>
     <nav class="brandnav">
-      <a href="car-brand-2026-launch-timeline.html">年表总览</a>
-      <a href="byd-2026-launch-timeline.html">比亚迪</a>
-      <a href="xiaomi-2026-launch-timeline.html">小米</a>
+      <a href="digital-launch-timeline.html">总表</a>
+      <a href="lenovo-2026-launch-timeline.html">联想</a>
+      <a href="asus-2026-launch-timeline.html">华硕</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
       <a href="huawei-2026-launch-timeline.html" class="on" aria-current="page">华为</a>
-      <a href="lixiang-2026-launch-timeline.html">理想</a>
-      <a href="xiaopeng-2026-launch-timeline.html">小鹏</a>
-      <a href="nio-2026-launch-timeline.html">蔚来</a>
-      <a href="gac-2026-launch-timeline.html">广汽</a>
-      <a href="geely-2026-launch-timeline.html">吉利</a>
+      <a href="honor-2026-launch-timeline.html">荣耀</a>
+      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="thunderobot-2026-launch-timeline.html">雷神</a>
+      <a href="machenike-2026-launch-timeline.html">机械师</a>
+      <a href="hp-2026-launch-timeline.html">惠普</a>
+      <a href="dell-2026-launch-timeline.html">戴尔</a>
+      <a href="apple-2026-launch-timeline.html">苹果</a>
     </nav>
     <div class="eyebrow"><span class="sqd"><i></i><i></i><i></i></span><span id="eyebrow"></span></div>
     <h1><span id="title"></span><span class="badge" id="badge"></span></h1>
@@ -140,7 +143,7 @@
   <div id="months"></div>
 
   <div class="sec">
-    <h2>五界矩阵 · 技术底座 · 口径提示</h2>
+    <h2>鸿蒙电脑产品线与价格带</h2>
     <div class="plain"><ul id="overseas"></ul></div>
   </div>
 
@@ -159,255 +162,162 @@
    st:   已开售 · 已发布 · 海外 · 展出
    ═══════════════════════════════════════════════════ */
 const PAGE = {
-  "eyebrow": "HIMA · 鸿蒙智行 · 2026 LAUNCH TIMELINE",
-  "title": "鸿蒙智行 2026 新品发布年表",
-  "subtitle": "五界（问界 / 智界 / 享界 / 尊界 / 尚界）全年节奏 —— 3 月九车齐发为全年信息密度最高的一场，已拆条分行呈现",
-  "badge": "全年 12 场 · 已上市 11 款",
+  "eyebrow": "HUAWEI MATEBOOK · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "华为笔记本 2026 新品发布年表",
+  "subtitle": "4月 MateBook 系列迭代 → 8.5 鸿蒙 PC 三旗舰齐发（MateBook Pro S 798g 刷新纪录 / MateBook Pro 970g / Fold 非凡大师 18″ 折叠巨幕）· 端侧盘古大模型与超级终端贯穿全年",
+  "badge": "2026",
   "keyInfo": [
     {
-      "k": "年度主线",
-      "v": "五界补齐矩阵",
-      "s": "从「三界」走到五界：尚界切入 20 万级纯电轿跑，智界补旗舰 MPV，问界补中大型 SUV"
+      "k": "鸿蒙 PC 三旗舰",
+      "v": "8.5 同场发布：MateBook Pro S（798g / 11.9mm / 灵盾防窥屏）· MateBook Pro（970g / 3.1K OLED 触控）· MateBook Fold 非凡大师（18″ 折叠 / 麒麟 X90 Plus）",
+      "s": "全年核心节点"
     },
     {
-      "k": "3 月最密集",
-      "v": "3.23 一晚 7 车",
-      "s": "尚界 Z7/Z7T 预订 · 问界 M6 预订 · 享界 S9 焕新 · 智界 R7/S7 焕新 · M7/M8 增配 · 智界 V9 亮实车"
+      "k": "发布节奏",
+      "v": "4 月 MateBook 系列迭代 → 8.5 全场景发布会三款鸿蒙旗舰齐发 → 9 月陆续开售（Fold 与 Pro 系列已在官方商城在售）",
+      "s": "三个节点"
     },
     {
-      "k": "技术底座",
-      "v": "896 线激光雷达",
-      "s": "全系铺开；华为途灵平台 + 巨鲸 800V + 乾崑 ADS 4 高阶版 + 鸿蒙 ALPS 健康座舱"
+      "k": "自研底座",
+      "v": "三款均搭自研麒麟芯片 + 鸿蒙系统：Pro S 为麒麟 XE90（官方口径单核 +23% / NPU +40%，20W 释放），Pro 为麒麟 X90 / X100，Fold 升级至麒麟 X90 Plus",
+      "s": "软硬芯云协同"
     },
     {
-      "k": "交付与渠道",
-      "v": "4 月下旬展车进店",
-      "s": "智界 V9 为首款旗舰 MPV；尚界、问界 M6 预订转大定节奏以门店通知为准"
+      "k": "价格带",
+      "v": "MateBook Pro S 7999 元起（国补后约 6799）→ MateBook Pro 7999–11999 元 → MateBook Fold 非凡大师 24999 / 26999 / 29999 元",
+      "s": "三档"
     }
   ],
   "months": [
     {
-      "m": "03月",
-      "label": "春季发布会 · 一晚九车",
-      "meta": "全年密度最高",
+      "m": "04月",
+      "label": "Pura 系列及全场景新品发布会",
+      "meta": "鸿蒙 PC 落地",
       "items": [
         {
-          "time": "03.23",
-          "tag": "te",
-          "tagText": "高端",
+          "time": "04.14",
+          "tag": "wa",
+          "tagText": "预告",
           "st": "已发布",
-          "title": "① 尚界 Z7 / Z7T 开启预订",
-          "desc": "纯电轿跑（Z7）+ 纯电猎装（Z7T）双形态并行。全系标配 <b>896 线双光路图像级激光雷达</b>、<b>华为途灵平台</b>、<b>巨鲸 800V 高压电池平台</b>。CLTC 纯电续航最高 <b>905km</b>。车身：高强钢与铝合金占比 <b>91%</b>，14 处 2000MPa 潜艇级热成型钢，车顶抗压达 <b>5.8 倍车重</b>。",
-          "price": "预订 22.98 万起（Z7）/ 23.98 万起（Z7T）"
+          "title": "华为终端官宣：MateBook 14 鸿蒙版定档 4 月 20 日 14:30",
+          "desc": "华为终端发布预热信息，官宣新款鸿蒙电脑 MateBook 14 鸿蒙版将于 <b>4 月 20 日 14:30</b> 在 HUAWEI Pura 系列及全场景新品发布会上正式亮相。预热披露两大设计点：<b>云晰柔光屏</b>与<b>波点艺术圆键盘</b>（键盘颜色与笔记本外观颜色一致）。此前已有消息显示，MateBook 14 2026（型号 MNTXM-32A）预装 6.1.0.117 版本系统，并通过开源鸿蒙 OpenHarmony 评测认证。",
+          "price": "—（未公布）"
         },
         {
-          "time": "03.23",
-          "tag": "te",
-          "tagText": "中大型 SUV",
-          "st": "已发布",
-          "title": "② 问界 M6 开启预订",
-          "desc": "全新中大型 SUV，增程 / 纯电双动力。车身 <b>4960×1985×1736mm</b>，轴距 <b>2950mm</b>，风阻系数 <b>0.239Cd</b>。标配途灵平台，应急涉水深度 <b>700mm</b>。",
-          "price": "预订 26.98 万起（增程）/ 28.98 万起（纯电）"
-        },
-        {
-          "time": "03.23",
+          "time": "04.20",
           "tag": "",
           "tagText": "旗舰",
-          "st": "已发布",
-          "title": "③ 享界 S9 / S9T 焕新上市",
-          "desc": "行政级轿车 S9 与旅行版 S9T 双车焕新，搭载 <b>乾崑智驾 ADS 4 高阶版</b>。",
-          "price": "31.98 万起"
+          "st": "已开售",
+          "title": "HUAWEI MateBook 14 鸿蒙版发布 — 鸿蒙电脑问世以来首款 MateBook 标准版",
+          "desc": "鸿蒙电脑问世以来，华为发布的<b>首款 MateBook 标准版笔记本</b>，也是面向主流消费市场的鸿蒙 PC 产品，意义在于把鸿蒙 PC 从高端折叠 / 旗舰机型下放到走量价位。屏幕为 <b>2.8K OLED 云晰柔光屏</b>，采用纳米蚀刻工艺降低环境光干扰，3:2 比例、120Hz 刷新率、100% P3 色域、10.7 亿色，通过德国莱茵 Eyecomfort 2.0 认证并支持 1920Hz 高频 PWM 调光。外观为金属一体化机身，厚约 14.5mm、重约 1.33kg，提供原野绿 / 樱粉金 / 深空灰三款配色，键盘为圆形设计与追色设计。硬件为华为自研麒麟系列处理器，配 70Wh 电池与华为智能低功耗平台。系统预装 6.1.0.117 版鸿蒙操作系统并已通过 OpenHarmony 评测认证，采用轻量化设计，小艺智能体升级带来深度研究、深度解题、小艺帮记等功能。可搭配 HUAWEI M-Pen 3 多功能笔与新增加 AI 键的华为无线鼠标 3；具备全场景互联能力。",
+          "price": "—（以华为官方渠道公布为准）"
         },
         {
-          "time": "03.23",
-          "tag": "te",
-          "tagText": "高端",
-          "st": "已发布",
-          "title": "④ 智界 R7 / 智界新 S7 焕新上市",
-          "desc": "新增「暗夜紫」「活力橙」车色与赤茶橘内饰，升级 <b>鸿蒙 ALPS 健康座舱</b>（MOFs 抗菌滤芯）。智界 R7 纯电版风阻系数 <b>0.217</b>，创全球量产 SUV 专业机构检测最低纪录。",
-          "price": "智界 R7 25.98 万起 / 智界新 S7 23.98 万起"
-        },
-        {
-          "time": "03.23",
-          "tag": "id",
-          "tagText": "走量",
-          "st": "已发布",
-          "title": "⑤ 问界 M7 增配上市",
-          "desc": "新增 <b>896 线激光雷达</b>。C-NCAP 综合得分率 <b>95.0%</b>，刷新历史纪录。",
-          "price": "30.98 万起"
-        },
-        {
-          "time": "03.23",
-          "tag": "te",
-          "tagText": "高端",
-          "st": "已发布",
-          "title": "⑥ 问界 M8 增配上市",
-          "desc": "新增车色与轮毂样式、<b>3 颗激光雷达</b>。Max 增程长续航版纯电续航 <b>322km</b>、综合续航 <b>1590km</b>。",
-          "price": "36.98 万起"
-        },
-        {
-          "time": "03.23",
-          "tag": "pu",
-          "tagText": "新形态",
-          "st": "展出",
-          "title": "⑦ 智界 V9 实车亮相",
-          "desc": "鸿蒙智行首款旗舰 <b>MPV</b>，发布会现场实车亮相。官方同步官宣 <b>4 月下旬展车进店</b>。",
-          "price": "价格待公布"
-        }
-      ]
-    },
-    {
-      "m": "04月",
-      "label": "展车进店 · 首批交付启动",
-      "meta": "",
-      "items": [
-        {
-          "time": "04.下旬",
-          "tag": "id",
-          "tagText": "交付",
-          "st": "已发布",
-          "title": "智界 V9 展车进店 + 尚界 Z7 / 问界 M6 转大定",
-          "desc": "按 3.23 发布会官宣节奏推进：智界 V9 展车进入首批门店；尚界 Z7 / Z7T 与问界 M6 开启预订转大定、锁单与交付排期。",
-          "price": "—"
-        },
-        {
-          "time": "04月",
+          "time": "04.21",
           "tag": "pu",
           "tagText": "生态",
           "st": "已发布",
-          "title": "乾崑 ADS 4 高阶版推送扩容",
-          "desc": "ADS 4 高阶版向更多在售车型分批推送，覆盖城市 NOA 与泊车场景。",
-          "price": "—"
+          "title": "Oseasy 虚拟机完成对 MateBook 14 鸿蒙版的深度适配",
+          "desc": "发布次日，Oseasy 虚拟机宣布完成对 MateBook 14 鸿蒙版的深度适配，回应主流用户最关心的「鸿蒙电脑能不能跑 Windows 应用」问题——这是鸿蒙 PC 走向大众市场必须补上的一环。",
+          "price": "—（软件适配）"
         }
       ]
     },
     {
-      "m": "05月",
-      "label": "问界 / 智界 交付爬坡",
-      "meta": "",
+      "m": "07月",
+      "label": "鸿蒙电脑新品技术沟通会",
+      "meta": "预热",
       "items": [
         {
-          "time": "05月",
-          "tag": "id",
-          "tagText": "走量",
-          "st": "已发布",
-          "title": "问界 M6 交付爬坡",
-          "desc": "中大型 SUV 定位承接 M7 与 M8 之间的价格空档，增程版为主要走量车型。",
-          "price": "26.98 万起（增程）"
-        },
-        {
-          "time": "05月",
-          "tag": "te",
-          "tagText": "高端",
-          "st": "已发布",
-          "title": "尚界 Z7 / Z7T 首批交付",
-          "desc": "20 万级纯电轿跑 / 猎装双形态切入，主打 896 线激光雷达全系标配与 905km 续航。",
-          "price": "22.98 万起"
-        }
-      ]
-    },
-    {
-      "m": "06月",
-      "label": "尊界与享界持续加码",
-      "meta": "",
-      "items": [
-        {
-          "time": "06月",
-          "tag": "",
-          "tagText": "旗舰",
-          "st": "已发布",
-          "title": "尊界产品线更新",
-          "desc": "超豪华定位延续，与问界 M9、享界 S9 构成鸿蒙智行高端三塔。",
-          "price": "—"
-        },
-        {
-          "time": "06月",
-          "tag": "te",
-          "tagText": "高端",
-          "st": "已发布",
-          "title": "享界 S9T 旅行版交付铺开",
-          "desc": "S9T 以旅行车形态补充行政级细分，与 S9 轿车并行销售。",
-          "price": "31.98 万起"
+          "time": "07.29",
+          "tag": "wa",
+          "tagText": "预告",
+          "st": "展出",
+          "title": "华为在北京 798 艺术区举办鸿蒙电脑新品技术沟通会",
+          "desc": "HUAWEI MateBook Pro S 首次公开亮相，官方披露将搭载「首款柔性 OLED 灵盾防窥屏」与「首发四天线设计，支持一公里外联网」。会议选择 798 艺术区而非标准场馆，配合该机的设计定位与配色叙事。",
+          "price": "—（未公布）"
         }
       ]
     },
     {
       "m": "08月",
-      "label": "暑期节点 · 增配与年款",
-      "meta": "",
+      "label": "MateBook Pro S 发布 · 798g 超轻薄",
+      "meta": "全年最重要节点",
       "items": [
         {
-          "time": "08月",
-          "tag": "id",
-          "tagText": "走量",
+          "time": "08.05",
+          "tag": "",
+          "tagText": "旗舰",
           "st": "已发布",
-          "title": "问界 M7 / M8 年款增配落地",
-          "desc": "896 线激光雷达与 3 颗激光雷达方案在门店端全面铺开，Max 增程长续航版为核心推荐配置。",
-          "price": "M7 30.98 万起 / M8 36.98 万起"
+          "title": "① HUAWEI MateBook Pro S 正式发布 — 798g 刷新 14 英寸全金属本纪录",
+          "desc": "全新一代超轻薄鸿蒙旗舰笔记本，集 <b>798g 机身</b>、麒麟 XE90 处理器、<b>3.1K 柔性 OLED 灵盾防窥屏</b>与鸿蒙 AI 于一体，从芯片、系统、交互三层重新定义轻薄本标杆。整机轻至 <b>798g</b>、薄至 <b>11.9mm</b>，首创微绒机身工艺，提供晨曦黄 / 仲夏紫 / 丝绒白 / 烟云灰 / 羽砂黑五款配色，配合四轴 CNC 精雕在机身两侧刻出「飞跃线」腰线。材料与结构：首次采用<b>镁锂合金</b>（行业最轻结构金属）+ 真空溅镀工艺，首次搭载 <b>10% 高硅电池</b>，采用三段式主板、榫卯一体化结构（<b>无螺丝设计</b>）与 3mm 厚 3D 阶梯式叶型金刚铝风扇。性能：麒麟 XE90 在单核性能、能效比与 NPU 算力全面跃升，配鲨鱼鳍散热系统，最高支持 <b>20W</b> 性能释放，结合鸿蒙与丝滑方舟引擎提升大文件启动、解压缩与表格计算速度。屏幕为业界首款<b>柔性 OLED 灵盾防窥屏</b>，机身右侧设独立「防窥屏」开关，一键在共享模式与防窥模式间切换；14.2 英寸 3.1K（3120×2080）120Hz，局部峰值 1600nits，对比度 2,000,000:1。A 面搭载 1080p 后置摄像头，与前置构成前后 AI 双摄系统。 华为首款超轻薄鸿蒙旗舰笔记本，也是<b>全金属 14 英寸里最轻的量产机</b>。镁锂合金机身 + 业界首创<b>微绒单涂工艺</b>，轻至 <b>798g</b>、薄至 <b>11.9mm</b>，五色可选（晨曦黄 / 仲夏紫 / 丝绒白 / 烟云灰 / 羽砂黑）。屏幕 14.2″ <b>3.1K 120Hz 柔性 OLED 触控屏</b>，峰值 <b>1600nits</b>；最大亮点是业界首款<b>灵盾防窥屏</b>（防窥版），采用「一区双像素」设计，可一键切换防窥模式；另有柔光版本可选。搭自研麒麟 XE90，官方口径单核提升 23%、NPU 算力增强 40%，<b>20W 稳定性能输出</b>——性能释放在同类里偏低，定位明确是办公。A 面还搭载<b>后置摄像头</b>用于文件扫描，前后双摄在笔记本中极为罕见。端侧盘古大模型支持离线转写与文档摘要。",
+          "price": "<b>7999</b> 元起"
         },
         {
-          "time": "08月",
+          "time": "08.05",
           "tag": "te",
           "tagText": "高端",
-          "st": "已发布",
-          "title": "智界 R7 低风阻版本口碑发酵",
-          "desc": "0.217 风阻系数为全球量产 SUV 专业机构检测最低纪录，成为智界 R7 的核心传播点。",
-          "price": "25.98 万起"
-        }
-      ]
-    },
-    {
-      "m": "09月",
-      "label": "秋季节点",
-      "meta": "",
-      "items": [
-        {
-          "time": "09月",
-          "tag": "pu",
-          "tagText": "生态",
-          "st": "已发布",
-          "title": "五界矩阵铺满 20–100 万价格带",
-          "desc": "尚界（20 万级）· 问界（25–50 万）· 智界（25–40 万）· 享界（32 万+）· 尊界（超豪华），鸿蒙智行完成从走量到超豪华的完整覆盖。",
-          "price": "—"
-        }
-      ]
-    },
-    {
-      "m": "Q4",
-      "label": "待公布 · 第四季度节点",
-      "meta": "待公布",
-      "items": [
-        {
-          "time": "Q4",
-          "tag": "wa",
-          "tagText": "待公布",
-          "st": "待发布",
-          "title": "智界 V9 正式上市",
-          "desc": "鸿蒙智行首款旗舰 MPV，3.23 已亮实车、4 月下旬展车进店，正式上市价格与配置待官方公布。",
-          "price": "待公布",
-          "next": true
+          "st": "已开售",
+          "title": "② MateBook Pro 发布：970g 全能性能鸿蒙本",
+          "desc": "三款里对主流用户最有参考价值的一台。14.2″ <b>3.1K OLED 触控屏</b>，120Hz 自适应刷新率，峰值 1000nits，屏占比 93%；低晶铝底板，厚约 13.5mm、重约 <b>970g</b>，四色（晴蓝 / 砚黑 / 宣白 / 拂晓粉）。搭自研麒麟 X90 / X100 系列，原生鸿蒙调度；存储基础款 24GB+512GB，最高 32GB+2TB；70–80Wh 电池，<b>140–160W 超级快充</b>，官方口径充电 10 分钟可支撑约 3 小时办公，支持反向给手机补能。可用应用生态：鸿蒙电脑原生独立应用已突破 18000 个，WPS 完成从零重构，飞书 PC 鸿蒙版 <b>2026-06-30</b> 上架；未原生支持的可通过虚拟 Windows 环境运行。",
+          "price": "24GB+512GB 约 <b>7999–8499</b> 元｜32GB+1TB 约 <b>8999</b> 元｜32GB+2TB 柔光版约 <b>11999</b> 元（发布时官方口径 7999 元起、高配 10999 元）",
+          "next": false
         },
         {
-          "time": "Q4",
-          "tag": "wa",
-          "tagText": "传闻",
-          "st": "待发布",
-          "title": "尊界 V800 与非凡大师版",
-          "desc": "尊界 V800 价格存在两个媒体口径；非凡大师版、尚界 H7 均属传闻，未获官方确认。",
-          "price": "传闻 · 未官宣",
-          "next": true
+          "time": "08.05",
+          "tag": "pu",
+          "tagText": "形态",
+          "st": "已开售",
+          "title": "③ MateBook Fold 非凡大师（2026）发布：18 英寸折叠巨幕",
+          "desc": "品牌形象机。18″ 双层 LTPO OLED 折叠屏，展开 <b>3296×2472（4:3）</b>，折叠后等同 13″ 笔记本、分辨率 2472×1648（3:2）；铰链为<b>锆基液态金属</b>，支持多角度悬停，背板内置弹出式支架。升级点主要是芯片——<b>麒麟 X90 Plus</b>（上代为 X90），最高 32GB + 2TB。预装 <b>HarmonyOS 6.1</b>，六扬声器 + 四麦克风，双频 Wi-Fi 6、蓝牙 5.2、支持卫星通信，电池沿用 74.69Wh。三色（幻影黑 / 流光金 / 天白）均为素皮后盖，已在国内官方商城开售。",
+          "price": "24GB+512GB <b>24999</b> 元｜24GB+1TB <b>26999</b> 元｜32GB+2TB <b>29999</b> 元（部分渠道叠加优惠后 1TB 版可低至约 19999 元）",
+          "next": false
+        },
+        {
+          "time": "08.09",
+          "tag": "pu",
+          "tagText": "营销",
+          "st": "已发布",
+          "title": "④ 余承东发布 MateBook Pro S 拆机视频",
+          "desc": "余承东亲自发布拆机视频，强调新品仅重 798g，号称「比一杯奶茶还轻」，把无螺丝榫卯结构、三段式主板与超薄金刚铝风扇作为主要说服点。这条内容带动了该机在社交平台的第一波讨论。",
+          "price": "—（内容营销）"
+        },
+        {
+          "time": "08.16",
+          "tag": "te",
+          "tagText": "生态",
+          "st": "已发布",
+          "title": "⑤ MateBook Pro S 通过星闪测试列名",
+          "desc": "据媒体报道，MateBook Pro S 鸿蒙笔记本已通过星闪（NearLink）测试列名，测试集包括 SLE 射频一致性测试、HID 协议一致性、高清音频协议一致性测试等，标志着华为新一代短距无线能力在 PC 端落地。",
+          "price": "—（认证）"
+        }
+      ]
+    },
+    {
+      "m": "在售",
+      "label": "鸿蒙电脑现役阵容",
+      "meta": "全线",
+      "items": [
+        {
+          "time": "2026年",
+          "tag": "te",
+          "tagText": "高端",
+          "st": "已开售",
+          "title": "MateBook Pro / MateBook X Pro / MateBook Fold 非凡大师 持续在售",
+          "desc": "华为官网电脑线现役包括：<b>MateBook Fold 非凡大师</b>（折叠旗舰，万元以上）、<b>MateBook Pro</b>、<b>MateBook X Pro</b>、<b>MateBook 14</b> 与 2026 新发布的 <b>MateBook Pro S</b>。产品线按「折叠 → 旗舰轻薄 → 主流」三层展开，全部运行鸿蒙操作系统。",
+          "price": "MateBook Fold 非凡大师万元以上｜MateBook Pro S <b>7999</b> 元起｜MateBook 14 鸿蒙版（以官方为准）"
         }
       ]
     }
   ],
   "overseas": [
-    "<b>五界矩阵</b>：尚界（20 万级纯电轿跑 / 猎装）· 问界（M6 / M7 / M8 / M9）· 智界（R7 / S7 / V9）· 享界（S9 / S9T）· 尊界（超豪华）",
-    "<b>技术底座</b>：896 线双光路图像级激光雷达 · 华为途灵平台 · 巨鲸 800V 高压电池平台 · 乾崑智驾 ADS 4 高阶版 · 鸿蒙 ALPS 健康座舱（MOFs 抗菌滤芯）",
-    "<b>硬指标</b>：尚界 Z7 续航 905km / 车顶抗压 5.8 倍车重 · 智界 R7 风阻 0.217 · 问界 M6 风阻 0.239Cd · 问界 M7 C-NCAP 95.0%",
-    "<b>渠道节奏</b>：3.23 发布会 → 4 月下旬展车进店 → 预订转大定与交付排期，以门店通知为准",
-    "<b>口径提示</b>：鸿蒙智行是技术生态联盟，非单一车企，销量与市占率不宜按整车厂口径直接对比；尊界 V800 有两个价格口径；部分价格来自媒体报道而非官方上市稿；非凡大师版、尚界 H7 属传闻"
+    "<b>产品线结构</b>：MateBook Fold 非凡大师（折叠旗舰）· MateBook X Pro / MateBook Pro（旗舰轻薄）· MateBook Pro S（798g 超轻薄，2026 新增）· MateBook 14 鸿蒙版（主流走量）· MateBook 数字系列",
+    "<b>操作系统</b>：2026 年鸿蒙电脑全面铺开，MateBook 14 鸿蒙版是鸿蒙 PC 问世以来首款 MateBook 标准版；MateBook 14 2026 预装 6.1.0.117 版并通过 OpenHarmony 评测认证",
+    "<b>价格带</b>：MateBook Pro S <b>7999</b> 元起 → MateBook 14 鸿蒙版（主流档）→ MateBook Pro / X Pro → MateBook Fold 非凡大师（万元以上）",
+    "<b>配件生态</b>：HUAWEI M-Pen 3 多功能笔 · 华为无线鼠标 3（新增 AI 键）· 星闪（NearLink）短距无线 · 多设备全场景互联",
+    "<b>口径提示</b>：「798g 最轻 14 英寸金属笔记本」「续航 / 性能提升百分比」等为<b>厂商口径，未见第三方实测</b>；MateBook 14 鸿蒙版的处理器型号官方未完全公开（媒体推测为麒麟系列）；「灵盾防窥屏」「云隼架构」「飞跃线」等均为品牌自定义术语"
   ],
-  "footL": "整理于 2026-09-19 · 来源：鸿蒙智行官网 · 华为官网新闻稿 · 中国新闻周刊 · 光明网 · 深圳新闻网 · 易车网 · 百度百科（尊界 V800）· 爱企查公开信息汇总"
+  "footL": "整理于 2026-09-19 · 来源：中国经济新闻网 / 百度百科（HUAWEI MateBook 14 鸿蒙版 / MateBook Pro S）/ 华为终端官方微博 / 大象新闻 / 华为官网电脑页"
 };
 
 /* ═══════════════════════════════════════════════════

@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>小米 / Redmi 笔记本 2026 新品发布年表</title>
+<title>机械革命笔记本 2026 新品发布年表</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --ink2:#5b6470; --ink3:#8b949e;
-    --line:#e6e9ee; --accent:#ff6900; --accent-soft:#fff0e3;
+    --line:#e6e9ee; --accent:#e8620c; --accent-soft:#fdefe5;
     --ok:#0f7b53; --ok-soft:#e6f4ee; --warn:#a86400; --warn-soft:#fdf1de;
     --idle:#6b7280; --idle-soft:#eef0f3; --purple:#6b4fd8; --purple-soft:#ede9fb; --teal:#0d7a72; --teal-soft:#e3f2f0;
     --radius:14px; --shadow:0 1px 2px rgba(20,30,45,.05), 0 8px 24px rgba(20,30,45,.05);
@@ -18,7 +18,7 @@
   }
   html[data-theme="dark"]{
     --bg:#14171b; --card:#1c2024; --ink:#e8eaed; --ink2:#a8b0ba; --ink3:#7a838e;
-    --line:#2a2f36; --accent:#ffa259; --accent-soft:#3a2415;
+    --line:#2a2f36; --accent:#ff9a5c; --accent-soft:#3a2315;
     --ok:#4ec08a; --ok-soft:#173026; --warn:#e0a952; --warn-soft:#322715; --idle:#8b949e; --idle-soft:#252a31;
     --purple:#a694f5; --purple-soft:#251f3d; --teal:#5cc2b8; --teal-soft:#12302e;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -33,9 +33,9 @@
   .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .sqd{display:inline-flex;gap:3px}
   .sqd i{width:7px;height:7px;border-radius:2px;display:block;border:1px solid rgba(120,120,140,.25)}
-  .sqd i:nth-child(1){background:#ff6900}
-  .sqd i:nth-child(2){background:#ff4d00}
-  .sqd i:nth-child(3){background:#1c2024}
+  .sqd i:nth-child(1){background:#e8620c}
+  .sqd i:nth-child(2){background:#1c2024}
+  .sqd i:nth-child(3){background:#3a3f47}
   h1{margin:0;font-size:31px;letter-spacing:-.01em;font-weight:700}
   .sub{margin:8px 0 0;color:var(--ink2);font-size:14px}
   .badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;vertical-align:middle}
@@ -123,10 +123,10 @@
       <a href="digital-launch-timeline.html">总表</a>
       <a href="lenovo-2026-launch-timeline.html">联想</a>
       <a href="asus-2026-launch-timeline.html">华硕</a>
-      <a href="xiaomi-2026-launch-timeline.html" class="on" aria-current="page">小米/Redmi</a>
+      <a href="xiaomi-2026-launch-timeline.html">小米/Redmi</a>
       <a href="huawei-2026-launch-timeline.html">华为</a>
       <a href="honor-2026-launch-timeline.html">荣耀</a>
-      <a href="mechrevo-2026-launch-timeline.html">机械革命</a>
+      <a href="mechrevo-2026-launch-timeline.html" class="on" aria-current="page">机械革命</a>
       <a href="thunderobot-2026-launch-timeline.html">雷神</a>
       <a href="machenike-2026-launch-timeline.html">机械师</a>
       <a href="hp-2026-launch-timeline.html">惠普</a>
@@ -143,7 +143,7 @@
   <div id="months"></div>
 
   <div class="sec">
-    <h2>双品牌产品线与价格带</h2>
+    <h2>产品线结构与价格带</h2>
     <div class="plain"><ul id="overseas"></ul></div>
   </div>
 
@@ -162,125 +162,146 @@
    st:   已开售 · 已发布 · 海外 · 展出
    ═══════════════════════════════════════════════════ */
 const PAGE = {
-  "eyebrow": "XIAOMI / REDMI · 2026 LAPTOP LAUNCH TIMELINE",
-  "title": "小米 / Redmi 笔记本 2026 新品发布年表",
-  "subtitle": "CES 轻薄本 → 3.18 新品季集中发布 → 8月底 REDMI Book Pro 2026 开售（全系第三代酷睿 Ultra，14″/16″ 各 3 SKU）· 超级小爱接端云融合大模型",
+  "eyebrow": "MECHREVO · 2026 LAPTOP LAUNCH TIMELINE",
+  "title": "机械革命笔记本 2026 新品发布年表",
+  "subtitle": "3.18 春季发布会 → 3.25 全渠道开售 → 8.30 翼龙 15 Air 2026 发布 → 9.4 锐龙 7 H 449 版发布（9.10 开售）与 9.16 无界 14S 锐龙版开售 · 高配下探至 4000 元档",
   "badge": "2026",
   "keyInfo": [
     {
       "k": "年度主线",
-      "v": "全系切第三代英特尔酷睿 Ultra（Panther Lake），REDMI Book Pro 2026 三 SKU 分别为 Ultra 5 325 / 338H / X7 358H，高配 AI 算力最高 180 TOPS",
-      "s": "平台换代"
+      "v": "翼龙（轻薄电竞）与无界（主流走量）双线并行，2026 年核心动作是在既有模具上追加 CPU 平台版本而非整机换代",
+      "s": "双线并行"
     },
     {
       "k": "发布节奏",
-      "v": "CES 轻薄本 → 3.18 新品季集中发布 → 8 月底 REDMI Book Pro 2026 系列开售（14″ / 16″ 各 3 个 SKU）",
-      "s": "三个节点"
+      "v": "3.18 春季发布会 → 3.25 全渠道开售 → 8.30 翼龙 15 Air 2026 发布 → 9.4 锐龙 7 H 449 版发布（9.10 开售）→ 9.11 无界 14S 锐龙版上架（9.16 开售）",
+      "s": "五个节点"
     },
     {
       "k": "年度亮点",
-      "v": "90W 反向充电（可给手机应急）· 双 M.2 硬盘位 · 超级小爱端云融合大模型打通六大 AI 能力 · 小米澎湃智联支持苹果设备文件互传",
-      "s": "生态能力"
+      "v": "翼龙 15 Air：170W 双烤塞进 1.6kg / 18.75mm（CPU 85W + GPU 115W），配 210W SiC 适配器且支持 140W 私有协议 PD；无界 14S 把 24GB+512GB 压到国补后 3994.15 元",
+      "s": "两个极端"
     },
     {
       "k": "价格带",
-      "v": "14″ 国补价 5949 / 6799 / 8074 元（官方 6999 / 7999 / 9499）｜16″ 国补价 6119 / 6969 / 8244 元｜页面标价与国补后差距可达 15%",
-      "s": "国补为主"
+      "v": "无界 14S 锐龙版 4699 元（国补后 3994.15）→ 翼龙 15 Air 锐龙 7 H 449 版 13999 元（首发 11499 / 国补后低至 9999）",
+      "s": "4000–14000"
     }
   ],
   "months": [
     {
       "m": "03月",
-      "label": "小米春季新品发布会 · Xiaomi 品牌回归高端",
-      "meta": "年度重磅",
+      "label": "杭州「精彩，一步到位」全家族新品发布会",
+      "meta": "全年唯一节点",
       "items": [
         {
-          "time": "03.19",
+          "time": "03.18",
           "tag": "",
           "tagText": "旗舰",
           "st": "已开售",
-          "title": "Xiaomi Book Pro 14 发布（3.21 开售）",
-          "desc": "以 Xiaomi 品牌首次回归亮相的高端超轻薄笔记本。机身采用<b>一体压铸镁合金 + 热压碳纤维底盖 + 钛合金键盘托架 + 石墨烯铝合金散热鳍片</b>的混合架构，轻至 <b>1.08kg</b>、薄约 14.95mm，却实现 <b>50W</b> 性能释放。配备 14.6 英寸 <b>3.1K 120Hz OLED 触控屏</b>（峰值 1600nits、支持杜比视界、VESA DisplayHDR 认证，通过莱茵低蓝光与无频闪认证），搭载第三代英特尔酷睿 Ultra 处理器（至高 <b>Ultra X7 358H</b>，12 核 Xe3 核显），内存至高 9600MT/s LPDDR5X。内置 72Wh 高密度电池，宣称 19.8 小时续航、100W 快充 26 分钟充至 50%（官方称续航超过 MacBook Pro M5，未获第三方验证）。配全域压感触控板、双 M.2 硬盘位（至高 4TB）、雷电4 / USB-C / USB-A / HDMI 2.1 接口；软件侧有 PC 超级小爱、AI 深度搜索、AI 个人知识库，并创新支持「关机远控」。",
-          "price": "售价 <b>8499</b> 元起，首销限时优惠 500 元，部分地区叠加 15% 国补 → 到手低至 <b>6799.15</b> 元起"
-        }
-      ]
-    },
-    {
-      "m": "04月",
-      "label": "Redmi 双线接力 · 走量与中高端",
-      "meta": "全年最密集",
-      "items": [
-        {
-          "time": "04.10",
-          "tag": "te",
-          "tagText": "中高端",
-          "st": "已开售",
-          "title": "① REDMI Book Pro 2026 官宣发布（4.21 正式上市）",
-          "desc": "提供 14 与 16 英寸两款，最高可选第三代英特尔酷睿 <b>Ultra X7 358H</b>，配置梯度为 Ultra 5 325 / Ultra 5 338H / Ultra X7 358H 三档，内置 NPU AI 算力最高 <b>180 TOPS</b>。全金属机身、厚约 15.9mm，14 英寸版约 1.48kg、16 英寸版约 1.88kg，性能释放最高约 80W。屏幕：14 英寸为 2.8K（2880×1800）120Hz LCD（100% sRGB），16 英寸为 3.2K（3200×2000）165Hz LCD（100% DCI-P3），均支持 DC 调光与小米青山护眼技术。电池：14 英寸 92Wh、16 英寸 99Wh，全系 100W 有线快充 + 最高 90W 反向快充（官方称 14 英寸本地视频播放可达 37 小时，为厂商口径）。内存最高 32GB LPDDR5X 9600MT/s，存储 1TB PCIe 4.0 SSD 并支持额外 M.2 扩展；接口有雷电4、全功能 USB-C、HDMI 2.1、双 USB-A 3.2 Gen1、3.5mm。运行 Windows 11 AI+，预装 Office 家庭版 2024，内置小爱 AI 助手与个人知识库，接入小米澎湃智联。",
-          "price": "预计 <b>7000–8000</b> 元档（Ultra X7 358H 顶配；官方于 4.21 公布）"
+          "title": "① 耀世 18 Pro 发布 — 18 英寸旗舰游戏本普及风暴",
+          "desc": "本次发布会的核心主角。搭载 <b>酷睿 Ultra 9 290HX Plus</b> 处理器，实现 CPU + GPU 双烤 <b>215W</b> 满血性能释放。最关键的突破是结构设计：把 18 英寸旗舰机身厚度压缩到约 <b>21.85mm</b>、重量控制在约 <b>2.8kg</b>，直接打破「大屏必笨重」的行业定式。屏幕为专属调校的 18 英寸 2.5K 旗舰电竞屏，官方称相较传统 16 英寸机型视野范围扩大约 <b>27%</b>。散热为自研冰霜架构散热系统，宣称在保障满血性能的同时实现极致静音，适配游戏、创作、办公全场景。",
+          "price": "3.18 开启京东预售，<b>3.25 全渠道开售</b>（首发福利含晒单返现、专属延保、定制配件礼包）"
         },
         {
-          "time": "04.17",
+          "time": "03.18",
+          "tag": "te",
+          "tagText": "大屏旗舰",
+          "st": "已开售",
+          "title": "② 耀世 16 Ultra 亮相 — 与耀世 18 Pro 构成大屏旗舰双矩阵",
+          "desc": "专为硬核玩家与顶级创作者打造的 16 英寸旗舰，同样搭载旗舰处理器与升级款散热架构，从核心硬件到细节体验全面拉满，与耀世 18 Pro 形成「大屏旗舰双矩阵」。同场还有耀世 16 Pro 2026、耀世 15 Pro 2026 同步焕新。",
+          "price": "—（开售时公布）"
+        },
+        {
+          "time": "03.18",
+          "tag": "te",
+          "tagText": "超轻薄",
+          "st": "已开售",
+          "title": "③ 无界 14 2026 首发 — 1.0kg 超轻薄本，打破「轻薄必减配」",
+          "desc": "采用<b>航空级镁合金</b>机身，薄至 <b>15.5mm</b>、轻约 <b>1.0kg</b>，放进背包几乎无感。凭借 3nm 制程处理器的高能效表现，实现 <b>19 小时以上</b>长效综合办公续航。配备 2.8K 雾面防眩光护眼屏与 120Hz 刷新率，兼顾细腻显示与长时间使用舒适度。同时配备雷电 4 接口、硬件级隐私防窥锁与全平台跨设备互联，在超轻薄机身中做到全场景体验无妥协。",
+          "price": "3.18 京东预售，<b>3.25 全渠道开售</b>"
+        },
+        {
+          "time": "03.18",
           "tag": "id",
-          "tagText": "走量",
+          "tagText": "全线焕新",
           "st": "已开售",
-          "title": "② REDMI Book 14 / 16 2026 发布并即日开售",
-          "desc": "走量主力双机。均搭载英特尔<b>酷睿 Ultra 5 125H</b>（14 核 18 线程，Meteor Lake），双风扇双热管散热，性能释放至高 <b>60W</b>。屏幕均支持 120Hz：14 英寸为 2.8K（2880×1800）500nits 镜面屏，16 英寸为 2.5K（2560×1600）400nits 镜面屏。内存 / 存储从 16GB+512GB 到 32GB+1TB，LPDDR5X 7467MT/s，PCIe 4.0 SSD 并支持 M.2 扩展。两机同为 80Wh 电池 + 100W GaN USB-C 充电器（可快充手机），接口有雷电4、全功能 USB-C、HDMI 2.1、USB-A 与 3.5mm。14 英寸重约 1.49kg，16 英寸约 1.86kg；官方称 16 英寸本地视频播放约 24.8 小时。支持跨设备相机、NFC、统一设备控制与键鼠共享。",
-          "price": "14″：16+512G <b>5999</b> / 16+1T 6499 / 32+1T 6999 元｜16″：16+512G <b>6199</b> / 16+1T 6699 / 32+1T 7199 元（4.23 前下单限时减 500 元）"
+          "title": "④ 极光 X 潮玩版 / 极光 X 2026 / 旷世 X 2026 等五机型同步焕新",
+          "desc": "发布会不止两大核心旗舰，更完成<b>全产品线焕新升级</b>：极光 X 潮玩版、极光 X 2026、旷世 X 2026、耀世 16 Pro、耀世 15 Pro 五大机型同步亮相，全系搭载新一代英特尔酷睿 Ultra 系列处理器。依托全新架构与先进制程，实现单核峰值性能、多核多线程调度、能效比与 AI 算力的全维度跃升，并通过机械革命专属深度调校完成新 CPU 与整机散热、功耗策略的全链路适配。",
+          "price": "—（3.25 起陆续开售）"
         },
         {
-          "time": "04.21",
-          "tag": "te",
-          "tagText": "中高端",
+          "time": "03.25",
+          "tag": "id",
+          "tagText": "开售",
           "st": "已开售",
-          "title": "③ REDMI Book Pro 2026 正式上市（与 Redmi K90 Max 手机同场）",
-          "desc": "承接 4.10 官宣，Redmi Book Pro 2026 在 4 月 21 日的发布会中与 Redmi K90 Max 手机同场正式开卖，成为小米在 7000 元价位的国产超轻薄旗舰替代方案。",
-          "price": "<b>7999</b> 元起（官方公布口径）"
+          "title": "⑤ 全家族新品全渠道开售",
+          "desc": "耀世 18 Pro 与无界 14 2026 领衔，全家族新品于 3 月 25 日转入全渠道正式开售，首发期统一提供晒单返现、专属延保服务与定制配件礼包等多重福利。",
+          "price": "—"
         }
       ]
     },
     {
-      "m": "08月",
-      "label": "REDMI Book Pro 2026 开售",
+      "m": "09月",
+      "label": "翼龙 15 Air 新配置 + 无界 14S 锐龙版",
       "meta": "",
       "items": [
         {
-          "time": "08月底",
+          "time": "09.04",
+          "tag": "",
+          "tagText": "旗舰",
+          "st": "已发布",
+          "title": "① 翼龙 15 Air 2026 锐龙 7 H 449 版发布，9 月 10 日开售",
+          "desc": "为翼龙 15 Air 追加配置版本。搭 AMD <b>锐龙 7 H 449</b>（4nm，8 核 16 线程，加速 5.0GHz，L2+L3 共 24MB，Radeon 860M 核显 RDNA 3.5 / 8 CU）配 <b>RTX 5060 Laptop</b>（8GB GDDR7，128bit，384GB/s），24GB LPDDR5X + 1TB PCIe 4.0 SSD。散热双风扇 + 后出风，<b>整机双烤功耗 170W</b>（CPU 单烤 85W / GPU 单烤 115W）。屏幕 15.3″ <b>2.5K 240Hz OLED 防眩光</b>，500nits、100% DCI-P3、出厂 ΔE&lt;1 并通过潘通色彩认证。机身为航空级镁合金骨架 + 三层准分子微绒 UV 肤感漆，<b>1.6kg / 18.75mm</b>，云杉青与云涧白两色。配 210W SiC 适配器，同时支持 <b>140W 私有协议 PD 充电</b>（出差可只带小 PD 头）。接口：3×USB-A、1×USB-C、1×USB4、Mini DP、HDMI 2.1、RJ45、3.5mm。AI 算力口径 572 TOPS，支持 DLSS 4.5 与 Reflex 2。",
+          "price": "日常价 <b>13999</b> 元 → 首发直降 2500，到手 <b>11499</b> 元 → 部分地区国补后低至 <b>9999</b> 元",
+          "next": false
+        },
+        {
+          "time": "09.11",
           "tag": "id",
           "tagText": "走量",
-          "st": "已开售",
-          "title": "REDMI Book Pro 2026 系列开售：全系第三代酷睿 Ultra，14″ / 16″ 双尺寸三 SKU",
-          "desc": "小米走量主力换芯。14″ 与 16″ 均采用全金属一体化压铸机身、厚 15.9mm，重量 1.48kg / 1.88kg。屏幕：14″ 2.8K 120Hz、16″ 3.2K 165Hz，均 500nits、100% DCI-P3，支持小米青山护眼（莱茵低频闪 + 莱茵低蓝光）。各提供 3 个 SKU（均标配 1TB PCIe 4.0 SSD）：低配 <b>Ultra 5 325</b> + 24GB 7467MT/s；中配 <b>Ultra 5 338H</b>（12 核，最高 4.7GHz，Arc B370 核显）+ 32GB 8533MT/s；高配 <b>Ultra X7 358H</b>（18A 工艺，AI 算力最高 180 TOPS）+ 32GB 9600MT/s。功耗释放 14″ 70W / 16″ 80W（双风扇双热管 / 三热管），均内置<b>双 M.2 硬盘位</b>。电池 92Wh / 99Wh，100W 快充 + <b>90W 反向充电</b>，官方称本地 1080P 播放 30 小时以上。内置<b>超级小爱</b>端云融合大模型，打通 AI 调度 / 感知 / 办公 / 创作 / 隐私与跨端智联六大能力。",
-          "price": "14″ 国补价 <b>5949 / 6799 / 8074</b> 元（官方 6999 / 7999 / 9499，即低配 6999、中配 7999、高配 9499）｜16″ 国补价 <b>6119 / 6969 / 8244</b> 元｜页面标价与国补后差距明显",
+          "st": "已发布",
+          "title": "② 无界 14S 2026 锐龙版上架，9 月 16 日 10:00 开售",
+          "desc": "入门走量线。搭 AMD <b>R7 H 255</b>（8 核 16 线程），最高 <b>45W</b> 性能释放，支持三档性能模式切换。14″ 雾面防眩光屏，1920×1200 / 60Hz / 100% sRGB。整机约 <b>1.1kg</b>，60Wh 电池。接口 2×全功能 USB-C（10Gbps）、2×USB-A（5Gbps）、HDMI 2.1 TMDS、3.5mm 二合一。24GB+512GB 配置，主打 4000 元档大内存。",
+          "price": "24GB+512GB <b>4699</b> 元 → 国补后 <b>3994.15</b> 元",
           "next": false
         }
       ]
     },
     {
-      "m": "下半年",
-      "label": "产品线延续",
-      "meta": "常规",
+      "m": "在售",
+      "label": "电商在售机型与价格带",
+      "meta": "渠道价",
       "items": [
         {
           "time": "2026年",
           "tag": "id",
           "tagText": "走量",
           "st": "已开售",
-          "title": "REDMI Book 旧款与 Xiaomi Book 14 继续在售",
-          "desc": "REDMI Book 16 2025 / Book 14 2025、REDMI Book 锐龙版 2025 与无年份版本仍接入小米澎湃智联持续在售；Xiaomi Book 14（2.8K 屏、Windows 11）作为全球在售的非 Pro 型号继续覆盖入门带。",
-          "price": "REDMI Book 14 2025 约 <b>4000–5000</b> 元档（以渠道为准）"
+          "title": "蛟龙 16Pro 潮玩版（R9-8940HX / RTX 5060）等在售",
+          "desc": "蛟龙系列是机械革命在电商渠道的主销游戏本线。蛟龙 16Pro 潮玩版搭载 R9-8940HX + RTX 5060（16G+1T）等配置，另有多档可选（R9-9955HX / RTX 5070、R7-8840HX / RTX 5050、R7 H 255 / RTX 5050 等），配色含璃光白、苍岩灰、海盐白、趣酷灰。",
+          "price": "蛟龙 16Pro 潮玩版页面价约 <b>8199</b> 元 / 常卖 <b>7099</b> 元（国补 15% 口径）；蛟龙 5 等旧款约 3800 元档"
+        },
+        {
+          "time": "2026年",
+          "tag": "id",
+          "tagText": "走量",
+          "st": "已开售",
+          "title": "无界 X 系列与星耀 14 系列覆盖轻薄段",
+          "desc": "无界 14X / 15X（R7-8745 + 2.5K/2.8K 120Hz）、无界 16S（U5-226V / 120Hz）、星耀 14（锐龙 7 H255 / 2.8K 120Hz OLED）等机型持续在电商渠道销售，构成机械革命在 3000–5000 元档的轻薄本阵列。",
+          "price": "无界 14X 页面价约 <b>3800</b> 元（历史最低 3199 元）"
         }
       ]
     }
   ],
   "overseas": [
-    "<b>双品牌结构</b>：Xiaomi Book（高端，2026 由 Book Pro 14 重启）· REDMI Book（走量，数字系列）· REDMI Book Pro（中高端，数字 Pro 系列）",
-    "<b>平台策略</b>：2026 款全面转向第三代英特尔酷睿 Ultra（Panther Lake），Xiaomi Book Pro 14 是全球首批搭载 Core Ultra X7 358H 的机型之一",
-    "<b>价格带</b>：REDMI Book 14/16 2026 5999–7199 → REDMI Book Pro 2026 7999 起 → Xiaomi Book Pro 14 8499 起（国补到手 6799.15 起）",
-    "<b>生态差异点</b>：小米澎湃智联（跨设备相机、NFC 一碰、统一设备控制、键鼠共享）+ PC 超级小爱 / AI 深度搜索 / 个人知识库；Xiaomi Book Pro 14 另支持「关机远控」",
-    "<b>口径提示</b>：Redmi Book Pro 2026 的「14 英寸续航 37 小时」与 Xiaomi Book Pro 14「续航超过 MacBook Pro M5」均为<b>厂商口径，未见第三方实测</b>；国补叠加首销优惠后的到手价与页面标价差距可达 1500 元以上"
+    "<b>产品线结构</b>：耀世（旗舰游戏本：18 Pro / 16 Ultra / 16 Pro / 15 Pro）· 旷世（高性能）· 极光（主流电竞，含潮玩版）· 蛟龙（主销游戏本）· 无界（超轻薄）· 星耀（轻薄 OLED）",
+    "<b>2026 发布特征</b>：全年仅一场大型发布会（3.18 杭州），但一次性推齐全家族 —— 从 18 英寸旗舰游戏本到 1.0kg 超轻薄本，发布会后 7 天（3.25）即全渠道开售，节奏比多数品牌更紧凑",
+    "<b>关键技术点</b>：耀世 18 Pro 的 21.85mm / 2.8kg 18 英寸机身（双烤 215W）· 无界 14 2026 的 1.0kg / 15.5mm 航空级镁合金 · 自研冰霜架构散热 · 全系切换英特尔新一代酷睿 Ultra",
+    "<b>价格带</b>：无界 14X 约 3800 元 → 蛟龙 16Pro 潮玩版约 8199 元（国补后 7099）→ 耀世 18 Pro 万元级",
+    "<b>口径提示</b>：机械革命机型在电商页面普遍标注「国补 15%」，页面价与补贴后到手价差距明显；「视野范围扩大 27%」「内吹风量提升」等为厂商口径，未见第三方实测；无界 14 2026 的「19 小时续航」为综合办公场景标称值"
   ],
-  "footL": "整理于 2026-09-19 · 来源：小米官网 / 百度百科（REDMI Book Pro 2026）/ Gizmochina / GizChina / Notebookcheck / 泡泡网 / 太平洋科技 / LaptopsCheck"
+  "footL": "整理于 2026-09-19 · 来源：机械革命官网新闻稿 / 中国网（iot.china.com.cn，3.20）/ 天猫 / 京东渠道页面"
 };
 
 /* ═══════════════════════════════════════════════════
